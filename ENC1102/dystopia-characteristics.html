@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dystopian Definitions &amp; Characteristics | ENC 1102 — Module Seven</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=Barlow:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --void:        #0a0a0b;
+    --concrete:    #111114;
+    --slab:        #1a1a1e;
+    --panel-bg:    #222228;
+    --surface:     #2c2c34;
+    --rule:        #3a3a44;
+    --mid:         #555560;
+    --muted:       #7a7a88;
+    --ash:         #a8a8b8;
+    --light:       #d0d0dc;
+    --white:       #e8e8f0;
+    --signal:      #00e5ff;
+    --signal-dim:  #007a8a;
+    --signal-glow: rgba(0,229,255,0.10);
+    --warn:        #ff4040;
+    --warn-dim:    rgba(255,64,64,0.10);
+    --amber:       #ffaa00;
+    --amber-dim:   rgba(255,170,0,0.10);
+    --green:       #00e676;
+    --green-dim:   rgba(0,230,118,0.10);
+    --grid-line:   rgba(255,255,255,0.03);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--void);
+    color: var(--ash);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 2px,
+      rgba(0,0,0,0.06) 2px, rgba(0,0,0,0.06) 4px
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ══ HERO ══ */
+  .hero {
+    position: relative;
+    z-index: 1;
+    min-height: 380px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 4rem 4rem 3.5rem;
+    overflow: hidden;
+    background:
+      linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(10,10,11,0.96) 70%, var(--void) 100%),
+      radial-gradient(ellipse at 65% 40%, #080f10 0%, #060608 70%);
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 2rem; left: 2rem;
+    width: 56px; height: 56px;
+    border-top: 2px solid var(--signal);
+    border-left: 2px solid var(--signal);
+    opacity: 0.5;
+  }
+  .hero-scan {
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--signal), transparent);
+    animation: scan 4s ease-in-out infinite;
+    opacity: 0.4;
+  }
+  @keyframes scan {
+    0%   { top: 0%;   opacity: 0; }
+    10%  { opacity: 0.4; }
+    90%  { opacity: 0.4; }
+    100% { top: 100%; opacity: 0; }
+  }
+  .hero-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    color: var(--signal);
+    margin-bottom: 1rem;
+    position: relative; z-index: 1;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .hero-tag::before { content: '▶'; font-size: 0.5rem; }
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 0.92;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    position: relative; z-index: 1;
+  }
+  .hero h1 .dim    { color: var(--mid); font-weight: 300; }
+  .hero h1 .accent { color: var(--signal); }
+  .hero-sub {
+    font-size: 1rem; font-weight: 300;
+    color: var(--muted);
+    margin-top: 1.1rem; max-width: 520px;
+    letter-spacing: 0.02em;
+    position: relative; z-index: 1;
+  }
+  .hero-bar {
+    width: 100%; height: 1px;
+    background: linear-gradient(90deg, var(--signal), var(--rule), transparent);
+    margin-top: 2rem;
+    position: relative; z-index: 1;
+  }
+
+  /* ══ LAYOUT ══ */
+  .page-wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 2.5rem 6rem;
+    position: relative; z-index: 1;
+  }
+
+  /* ══ SECTION HEADER ══ */
+  .section-head {
+    display: flex; align-items: baseline; gap: 1.5rem;
+    margin-bottom: 1.4rem; margin-top: 3.5rem;
+  }
+  .section-id {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.58rem; color: var(--signal);
+    letter-spacing: 0.15em; white-space: nowrap;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid var(--signal-dim);
+    background: var(--signal-glow);
+    flex-shrink: 0;
+  }
+  h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.8rem; font-weight: 700;
+    color: var(--white); text-transform: uppercase;
+    letter-spacing: 0.04em; line-height: 1;
+  }
+  h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem; font-weight: 600;
+    color: var(--signal); text-transform: uppercase;
+    letter-spacing: 0.12em; margin-bottom: 0.5rem;
+  }
+  p { margin-bottom: 1rem; color: var(--ash); }
+  p:last-child { margin-bottom: 0; }
+  em { color: var(--light); font-style: italic; }
+  strong { color: var(--light); font-weight: 500; }
+
+  /* ══ RULE ══ */
+  .rule {
+    height: 1px;
+    background: linear-gradient(90deg, var(--rule), transparent);
+    margin: 3rem 0; position: relative;
+  }
+  .rule::before {
+    content: '//'; position: absolute;
+    left: 0; top: -10px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.6rem; color: var(--mid); letter-spacing: 0.1em;
+  }
+
+  /* ══ DEFINITION SPLIT ══ */
+  .def-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: var(--rule);
+    border: 1px solid var(--rule); margin: 1.5rem 0;
+  }
+  .def-cell {
+    background: var(--concrete); padding: 1.8rem 2rem;
+    position: relative;
+  }
+  .def-cell::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+  }
+  .def-utopia::before  { background: var(--signal); }
+  .def-dystopia::before { background: var(--warn); }
+  .def-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.6rem; letter-spacing: 0.2em;
+    text-transform: uppercase; margin-bottom: 0.4rem;
+  }
+  .def-utopia  .def-label { color: var(--signal); }
+  .def-dystopia .def-label { color: var(--warn); }
+  .def-term {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.8rem; font-weight: 900;
+    text-transform: uppercase; letter-spacing: 0.04em;
+    line-height: 1; margin-bottom: 0.8rem;
+  }
+  .def-utopia  .def-term { color: var(--light); }
+  .def-dystopia .def-term { color: var(--warn); }
+  .def-cell p { font-size: 0.9rem; color: var(--muted); line-height: 1.65; }
+
+  /* ══ IMAGE PLACEHOLDER ══ */
+  .img-placeholder {
+    background: var(--slab); border: 1px solid var(--rule);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 0.4rem; position: relative; overflow: hidden;
+    min-height: 140px;
+  }
+  .img-placeholder::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(0,229,255,0.03) 0%, transparent 60%);
+  }
+  .img-ph-text {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.56rem; color: var(--mid);
+    letter-spacing: 0.15em; text-transform: uppercase;
+    text-align: center; line-height: 1.9;
+    position: relative; z-index: 1; padding: 1rem;
+  }
+  .img-ph-text .ph-title { display: block; font-size: 0.68rem; color: var(--muted); margin-bottom: 0.15rem; }
+  .img-ph-text .ph-year  { display: block; color: var(--signal); font-size: 0.6rem; }
+  .img-caption {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.56rem; color: var(--mid);
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.45rem 0.75rem;
+    border-top: 1px solid var(--rule);
+    background: var(--concrete); line-height: 1.5;
+  }
+
+  /* ══ FLOAT STILL ══ */
+  .float-wrap { overflow: hidden; margin-bottom: 1rem; }
+  .float-still {
+    float: right; width: 320px;
+    margin: 0 0 1.2rem 2rem;
+  }
+  .float-still .img-placeholder { aspect-ratio: 16/10; }
+
+  /* ══ CHARACTERISTIC CARDS ══ */
+  .char-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--rule);
+    border: 1px solid var(--rule);
+    margin: 1.5rem 0;
+  }
+  .char-card {
+    background: var(--concrete);
+    padding: 1.4rem 1.5rem;
+    position: relative;
+    transition: background 0.15s;
+  }
+  .char-card:hover { background: var(--slab); }
+  .char-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    background: var(--rule);
+    transition: background 0.15s;
+  }
+  .char-card:hover::before { background: var(--signal-dim); }
+  .char-num {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.58rem; color: var(--signal);
+    letter-spacing: 0.15em; margin-bottom: 0.5rem;
+    display: block;
+  }
+  .char-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.05rem; font-weight: 700;
+    color: var(--white); text-transform: uppercase;
+    letter-spacing: 0.06em; margin-bottom: 0.5rem;
+    line-height: 1.1;
+  }
+  .char-card p {
+    font-size: 0.82rem; color: var(--muted);
+    line-height: 1.55; margin-bottom: 0.5rem;
+  }
+  .char-example {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.58rem; color: var(--amber);
+    letter-spacing: 0.1em; margin-top: 0.5rem;
+    border-top: 1px solid var(--rule);
+    padding-top: 0.5rem; line-height: 1.6;
+  }
+  .char-example span { color: var(--mid); }
+
+  /* ══ CONTROL TYPE CARDS ══ */
+  .control-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: var(--rule);
+    border: 1px solid var(--rule); margin: 1.5rem 0;
+  }
+  .control-card {
+    background: var(--concrete); padding: 1.6rem 1.8rem;
+    position: relative;
+  }
+  .control-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; width: 3px; bottom: 0;
+  }
+  .ctrl-corporate::before   { background: var(--warn); }
+  .ctrl-bureaucratic::before { background: var(--amber); }
+  .ctrl-technological::before { background: var(--signal); }
+  .ctrl-philosophical::before { background: #c080ff; }
+  .control-type {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.58rem; letter-spacing: 0.18em;
+    text-transform: uppercase; margin-bottom: 0.4rem;
+  }
+  .ctrl-corporate   .control-type { color: var(--warn); }
+  .ctrl-bureaucratic .control-type { color: var(--amber); }
+  .ctrl-technological .control-type { color: var(--signal); }
+  .ctrl-philosophical .control-type { color: #c080ff; }
+  .control-card h3 {
+    font-size: 1.05rem; margin-bottom: 0.6rem;
+    color: var(--white);
+  }
+  .ctrl-corporate   h3 { color: var(--warn); }
+  .ctrl-bureaucratic h3 { color: var(--amber); }
+  .ctrl-technological h3 { color: var(--signal); }
+  .ctrl-philosophical h3 { color: #c080ff; }
+  .control-card p { font-size: 0.88rem; color: var(--muted); margin-bottom: 0.7rem; }
+  .control-examples {
+    display: flex; flex-direction: column; gap: 0.3rem;
+    margin-top: 0.5rem; border-top: 1px solid var(--rule);
+    padding-top: 0.6rem;
+  }
+  .ctrl-ex {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.58rem; color: var(--mid);
+    letter-spacing: 0.08em; line-height: 1.5;
+  }
+  .ctrl-ex strong { color: var(--muted); font-weight: 400; }
+
+  /* ══ ACTIVITY WRAPPER ══ */
+  .activity-section {
+    margin: 3rem 0;
+    border: 1px solid var(--rule);
+    background: var(--concrete);
+    position: relative;
+    overflow: hidden;
+  }
+  .activity-section::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--amber), transparent);
+  }
+  .activity-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--rule);
+    display: flex; align-items: center; gap: 1rem;
+    background: var(--slab);
+  }
+  .activity-badge {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.56rem; letter-spacing: 0.18em;
+    text-transform: uppercase; padding: 0.2rem 0.6rem;
+    border: 1px solid var(--amber); color: var(--amber);
+    background: var(--amber-dim); white-space: nowrap;
+  }
+  .activity-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem; font-weight: 600;
+    color: var(--white); text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .activity-body { padding: 1.8rem; }
+  .activity-prompt {
+    font-size: 0.9rem; color: var(--ash);
+    margin-bottom: 1.5rem; line-height: 1.7;
+  }
+
+  /* ══ ACTIVITY 1: MATCHING ══ */
+  .match-scenarios { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem; }
+  .scenario-item {
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    gap: 0; border: 1px solid var(--rule);
+    background: var(--slab);
+    transition: border-color 0.2s;
+  }
+  .scenario-item.correct  { border-color: var(--green); }
+  .scenario-item.incorrect { border-color: var(--warn); }
+  .scenario-text {
+    padding: 0.9rem 1.1rem;
+    font-size: 0.86rem; color: var(--ash); line-height: 1.55;
+    border-right: 1px solid var(--rule);
+  }
+  .scenario-text em { color: var(--amber); font-style: normal; font-family: 'Share Tech Mono', monospace; font-size: 0.78rem; }
+  .scenario-select-wrap {
+    padding: 0.7rem 0.8rem;
+    display: flex; align-items: center;
+  }
+  .scenario-select {
+    width: 100%; background: var(--panel-bg);
+    border: 1px solid var(--rule); color: var(--ash);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.64rem; letter-spacing: 0.08em;
+    padding: 0.5rem 0.6rem;
+    appearance: none; cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .scenario-select:focus { border-color: var(--signal); }
+  .scenario-select option { background: var(--slab); }
+
+  .match-feedback {
+    display: none; font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.1em;
+    padding: 0.4rem 0.8rem;
+    border-top: 1px solid var(--rule);
+    line-height: 1.6;
+  }
+  .scenario-item.correct  .match-feedback { display: block; color: var(--green); background: var(--green-dim); }
+  .scenario-item.incorrect .match-feedback { display: block; color: var(--warn); background: var(--warn-dim); }
+
+  /* ══ ACTIVITY 2: CLOSE READING ══ */
+  .excerpt-stack { display: flex; flex-direction: column; gap: 1.2rem; margin-bottom: 1.5rem; }
+  .excerpt-block {
+    border: 1px solid var(--rule); background: var(--slab);
+  }
+  .excerpt-source {
+    padding: 0.5rem 1rem;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.58rem; color: var(--signal);
+    letter-spacing: 0.15em; text-transform: uppercase;
+    border-bottom: 1px solid var(--rule);
+    background: var(--concrete);
+  }
+  .excerpt-text {
+    padding: 1rem 1.2rem;
+    font-size: 0.9rem; color: var(--light);
+    line-height: 1.75; font-style: italic;
+    border-bottom: 1px solid var(--rule);
+  }
+  .excerpt-q {
+    padding: 0.8rem 1.2rem;
+    display: grid; grid-template-columns: 1fr 220px;
+    gap: 0.8rem; align-items: center;
+  }
+  .excerpt-q-label {
+    font-size: 0.82rem; color: var(--muted);
+  }
+  .excerpt-select {
+    background: var(--panel-bg);
+    border: 1px solid var(--rule); color: var(--ash);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.62rem; letter-spacing: 0.06em;
+    padding: 0.5rem 0.6rem;
+    appearance: none; cursor: pointer; outline: none;
+    transition: border-color 0.2s; width: 100%;
+  }
+  .excerpt-select:focus { border-color: var(--signal); }
+  .excerpt-select option { background: var(--slab); }
+  .excerpt-feedback {
+    display: none;
+    padding: 0.6rem 1.2rem;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.68rem; letter-spacing: 0.08em;
+    border-top: 1px solid var(--rule); line-height: 1.6;
+  }
+  .excerpt-block.correct  .excerpt-feedback { display: block; color: var(--green); background: var(--green-dim); }
+  .excerpt-block.incorrect .excerpt-feedback { display: block; color: var(--warn); background: var(--warn-dim); }
+  .excerpt-block.correct  .excerpt-select { border-color: var(--green); }
+  .excerpt-block.incorrect .excerpt-select { border-color: var(--warn); }
+
+  /* ══ SUBMIT BUTTON ══ */
+  .activity-footer {
+    padding: 0 1.8rem 1.8rem;
+    display: flex; align-items: center; gap: 1.2rem;
+  }
+  .submit-btn {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.85rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--void); background: var(--signal);
+    border: none; padding: 0.7rem 1.8rem;
+    cursor: pointer; transition: background 0.15s, opacity 0.15s;
+  }
+  .submit-btn:hover { background: var(--white); }
+  .submit-btn:disabled { opacity: 0.4; cursor: default; }
+  .score-display {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem; color: var(--muted);
+    letter-spacing: 0.1em; display: none;
+  }
+  .score-display.visible { display: block; }
+  .score-display .score-val { color: var(--signal); font-size: 1rem; }
+
+  /* ══ RESET LINK ══ */
+  .reset-btn {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.62rem; color: var(--mid);
+    letter-spacing: 0.12em; text-transform: uppercase;
+    background: none; border: none;
+    cursor: pointer; text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .reset-btn:hover { color: var(--ash); }
+
+  /* ══ PANEL ══ */
+  .panel {
+    background: var(--concrete);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--signal-dim);
+    padding: 1.4rem 1.8rem; margin: 1.5rem 0;
+  }
+
+  /* ══ RESPONSIVE ══ */
+  @media (max-width: 700px) {
+    .hero { padding: 3rem 1.5rem 2.5rem; }
+    .page-wrap { padding: 0 1.25rem 4rem; }
+    .def-grid, .control-grid { grid-template-columns: 1fr; }
+    .char-grid { grid-template-columns: 1fr 1fr; }
+    .float-still { float: none; width: 100%; margin: 0 0 1.5rem; }
+    .scenario-item { grid-template-columns: 1fr; }
+    .scenario-text { border-right: none; border-bottom: 1px solid var(--rule); }
+    .excerpt-q { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    .char-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-scan"></div>
+  <p class="hero-tag">ENC 1102 &nbsp;·&nbsp; MODULE SEVEN &nbsp;·&nbsp; DYSTOPIAN LITERATURE &amp; FILM</p>
+  <h1>
+    <span class="dim">Dystopias:</span><br>
+    Definitions &amp;<br>
+    <span class="accent">Characteristics</span>
+  </h1>
+  <p class="hero-sub">What makes a society dystopian — and how do you recognize one when you see it? A working vocabulary for the analysis ahead.</p>
+  <div class="hero-bar"></div>
+</header>
+
+<main class="page-wrap">
+
+  <!-- ══ SEC 01: DEFINITIONS ══ -->
+  <section>
+    <div class="section-head">
+      <span class="section-id">SEC·01</span>
+      <h2>Utopia &amp; Dystopia: A Working Definition</h2>
+    </div>
+
+    <p>Dystopian fiction is always in dialogue with its opposite. Before you can understand what a dystopia <em>is</em>, you need to understand what it is responding to — and why the line between the two is so disturbingly thin.</p>
+
+    <div class="def-grid">
+      <div class="def-cell def-utopia">
+        <p class="def-label">Term 01</p>
+        <p class="def-term">Utopia</p>
+        <p>A place, state, or condition imagined as ideally perfect — in its politics, laws, customs, and social arrangements. The word was coined by Thomas More in 1516, from the Greek for <em>"no place"</em> — a perfect society that, by definition, cannot exist.</p>
+      </div>
+      <div class="def-cell def-dystopia">
+        <p class="def-label">Term 02</p>
+        <p class="def-term">Dystopia</p>
+        <p>A futuristic, imagined society in which oppressive control and the illusion of a perfect society are maintained through corporate, bureaucratic, technological, or totalitarian force. Dystopias, through exaggerated worst-case scenarios, make a criticism about a <em>current</em> trend, societal norm, or political system.</p>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>The Critical Insight</h3>
+      <p>Notice that the dystopia definition includes the phrase <strong>"illusion of a perfect society."</strong> Most dystopias do not present themselves as dark to the people living inside them — they present themselves as <em>optimal</em>. The citizens of Huxley's <em>Brave New World</em> are, by conventional measures, happy. The horror is not that people are suffering. The horror is that they have been engineered not to notice what they've lost.</p>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ══ SEC 02: CHARACTERISTICS ══ -->
+  <section>
+    <div class="section-head">
+      <span class="section-id">SEC·02</span>
+      <h2>Characteristics of a Dystopian Society</h2>
+    </div>
+
+    <div class="float-wrap">
+      <div class="float-still">
+        <div class="img-placeholder">
+          <div class="img-ph-text">
+            <span class="ph-title">Nineteen Eighty-Four (1984 film) or Metropolis</span>
+            <span class="ph-year">Suggested: surveillance / crowd conformity image</span>
+            e.g. Big Brother telescreen · workers marching in unison
+          </div>
+        </div>
+        <div class="img-caption">Suggested: surveillance or mass conformity still</div>
+      </div>
+
+      <p>Most dystopian works share a recognizable set of social features. These are not a checklist to apply mechanically — they are patterns to look for, and the most interesting dystopias complicate or combine them in unexpected ways. As you read and watch this module, you'll find yourself returning to this list.</p>
+      <p>Each characteristic below includes an example from a work in our literary or cinematic timelines. You don't need to have encountered all of these works — the examples are there to make the abstract concrete.</p>
+    </div>
+
+    <div class="char-grid">
+
+      <div class="char-card">
+        <span class="char-num">CHAR·01</span>
+        <p class="char-title">Propaganda Controls the Population</p>
+        <p>Citizens are fed a constant stream of state-approved messaging that shapes their perception of reality, history, and enemies — real or manufactured.</p>
+        <div class="char-example"><span>Literature →</span> Orwell's <em>Nineteen Eighty-Four</em>: the Ministry of Truth rewrites newspapers daily to match the Party's current position.<br><span>Cinema →</span> <em>The Hunger Games</em>: the Capitol broadcasts the Games as entertainment while suppressing any coverage of district poverty.</div>
+      </div>
+
+      <div class="char-card">
+        <span class="char-num">CHAR·02</span>
+        <p class="char-title">Information &amp; Independent Thought Are Suppressed</p>
+        <p>Access to knowledge — especially historical knowledge or outside perspectives — is restricted or destroyed. Thinking differently is not just discouraged; it is criminal.</p>
+        <div class="char-example"><span>Literature →</span> Bradbury's <em>Fahrenheit 451</em>: books are burned not by tyrants but by a population that stopped wanting to read them.<br><span>Cinema →</span> <em>Equilibrium</em> (2002): emotion itself is illegal, chemically suppressed to prevent conflict.</div>
+      </div>
+
+      <div class="char-card">
+        <span class="char-num">CHAR·03</span>
+        <p class="char-title">A Figurehead or Concept Is Worshipped</p>
+        <p>Citizens direct devotion — religious, political, or ideological — toward a leader, an abstraction, or an institution that legitimizes the social order.</p>
+        <div class="char-example"><span>Literature →</span> <em>Nineteen Eighty-Four</em>: "Big Brother is watching you" — a face that may not even exist, projected everywhere.<br><span>Cinema →</span> Metropolis's "Machine-Man" idol, worshipped by workers who do not understand what they serve.</div>
+      </div>
+
+      <div class="char-card">
+        <span class="char-num">CHAR·04</span>
+        <p class="char-title">Citizens Live Under Constant Surveillance</p>
+        <p>The state — or a corporation acting as the state — monitors behavior, communication, and movement. The awareness of being watched enforces compliance even when no one is actually watching.</p>
+        <div class="char-example"><span>Literature →</span> Zamyatin's <em>We</em>: citizens live in glass apartments, visible at all times to One State monitors.<br><span>Cinema →</span> <em>Severance</em>: Lumon Industries tracks employee behavior through maze-like architecture and opaque institutional rules.</div>
+      </div>
+
+      <div class="char-card">
+        <span class="char-num">CHAR·05</span>
+        <p class="char-title">Citizens Fear the Outside World</p>
+        <p>The world beyond the society's borders — or below its surface, or outside its walls — is presented as dangerous, contaminated, or nonexistent. The boundary contains the population as much as it protects them.</p>
+        <div class="char-example"><span>Literature →</span> Atwood's <em>The Handmaid's Tale</em>: Gilead's borders are closed; escape attempts are treated as evidence of moral failure.<br><span>Cinema →</span> <em>Logan's Run</em> (1976): citizens are told nothing exists beyond the city dome — and are executed at thirty to prevent anyone from living long enough to question it.</div>
+      </div>
+
+      <div class="char-card">
+        <span class="char-num">CHAR·06</span>
+        <p class="char-title">Citizens Live in a Dehumanized State</p>
+        <p>People are reduced to functions, numbers, or categories. Individual identity — name, history, relationships, body — is subordinated to the needs of the system.</p>
+        <div class="char-example"><span>Literature →</span> Zamyatin's <em>We</em>: citizens are assigned letter-number designations; names are abolished.<br><span>Cinema →</span> Ishiguro's <em>Never Let Me Go</em> (adapted 2010): clones raised for organ donation accept their fate with an eerie passivity — dehumanization internalized so completely it requires no enforcement.</div>
+      </div>
+
+      <div class="char-card">
+        <span class="char-num">CHAR·07</span>
+        <p class="char-title">The Natural World Is Banished or Destroyed</p>
+        <p>Nature — animals, weather, seasons, wilderness — has been eliminated, controlled, or rendered toxic. The absence of the natural world signals a society that has prioritized efficiency or control over life itself.</p>
+        <div class="char-example"><span>Literature →</span> Butler's <em>Parable of the Sower</em>: climate collapse has made water scarce, vegetation rare, and the California landscape into a war zone.<br><span>Cinema →</span> <em>Blade Runner 2049</em>: the world outside the city is ash-grey wasteland; real animals are so rare they function as luxury goods.</div>
+      </div>
+
+      <div class="char-card">
+        <span class="char-num">CHAR·08</span>
+        <p class="char-title">Conformity Is Enforced; Dissent Is Punished</p>
+        <p>Individuality is coded as dangerous. Citizens who express difference — in thought, appearance, behavior, or belief — face social exclusion, surveillance, or violence.</p>
+        <div class="char-example"><span>Literature →</span> Huxley's <em>Brave New World</em>: citizens are genetically sorted into castes and conditioned from birth to desire only the life their caste permits.<br><span>Cinema →</span> <em>The Matrix</em>: those who perceive the truth of the system are hunted by Agents — the enforcers of conformity to a reality that does not exist.</div>
+      </div>
+
+      <div class="char-card">
+        <span class="char-num">CHAR·09</span>
+        <p class="char-title">The Society Is an Illusion of Utopia</p>
+        <p>The system presents itself as ideal — safe, ordered, benevolent — while concealing its coercive mechanics. Citizens often believe they are lucky to live in such a well-designed world.</p>
+        <div class="char-example"><span>Literature →</span> Huxley's <em>Brave New World</em>: the World State's motto is "Community, Identity, Stability" — a utopian slogan concealing a totalitarian structure.<br><span>Cinema →</span> <em>The Truman Show</em> (1998): the protagonist's entire life is a manufactured paradise he has never been allowed to question.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ══ ACTIVITY 1: MATCHING ══ -->
+  <div class="activity-section" id="activity1">
+    <div class="activity-header">
+      <span class="activity-badge">Activity 01</span>
+      <span class="activity-title">Identify the Type of Control</span>
+    </div>
+    <div class="activity-body">
+      <p class="activity-prompt">
+        Dystopian societies maintain their power through one or more types of control. Read the four scenario descriptions below — each is drawn from a work in our timelines — and use the dropdown to identify which type of control is being illustrated. Submit when you're done to see how you did.
+      </p>
+
+      <div class="match-scenarios">
+
+        <div class="scenario-item" id="s1" data-answer="Technological Control">
+          <div class="scenario-text">
+            In <em>Severance</em>, Lumon Industries implants a "severance chip" in employees' brains that surgically separates their work memories from their personal ones. Workers cannot remember their outside lives while at the office — and cannot remember work once they leave. They cannot quit, because their "innie" (work self) has never consented to quitting, and their "outie" (home self) barely knows what happens in the building.
+          </div>
+          <div class="scenario-select-wrap">
+            <select class="scenario-select" onchange="checkMatch('s1', this.value)">
+              <option value="">— Select —</option>
+              <option>Corporate Control</option>
+              <option>Bureaucratic Control</option>
+              <option>Technological Control</option>
+              <option>Philosophical/Religious Control</option>
+            </select>
+          </div>
+          <div class="match-feedback" id="s1-fb"></div>
+        </div>
+
+        <div class="scenario-item" id="s2" data-answer="Philosophical/Religious Control">
+          <div class="scenario-text">
+            In Atwood's <em>The Handmaid's Tale</em>, the Republic of Gilead is governed by a strict interpretation of Old Testament scripture. Women are assigned roles — Wife, Martha, Handmaid — based on their fertility and social rank. All citizens are required to participate in public rituals that reinforce the regime's theology. Questioning scripture is considered the same as treason.
+          </div>
+          <div class="scenario-select-wrap">
+            <select class="scenario-select" onchange="checkMatch('s2', this.value)">
+              <option value="">— Select —</option>
+              <option>Corporate Control</option>
+              <option>Bureaucratic Control</option>
+              <option>Technological Control</option>
+              <option>Philosophical/Religious Control</option>
+            </select>
+          </div>
+          <div class="match-feedback" id="s2-fb"></div>
+        </div>
+
+        <div class="scenario-item" id="s3" data-answer="Corporate Control">
+          <div class="scenario-text">
+            In Scott's <em>Blade Runner</em>, the Tyrell Corporation has achieved a level of economic and political power that dwarfs any government. It manufactures artificial humans (replicants) for labor and combat, sets the terms of their existence, and determines whether they deserve to live. The city's skyline is dominated not by civic architecture but by the Tyrell pyramid — a corporate headquarters that doubles as a monument to its own authority.
+          </div>
+          <div class="scenario-select-wrap">
+            <select class="scenario-select" onchange="checkMatch('s3', this.value)">
+              <option value="">— Select —</option>
+              <option>Corporate Control</option>
+              <option>Bureaucratic Control</option>
+              <option>Technological Control</option>
+              <option>Philosophical/Religious Control</option>
+            </select>
+          </div>
+          <div class="match-feedback" id="s3-fb"></div>
+        </div>
+
+        <div class="scenario-item" id="s4" data-answer="Bureaucratic Control">
+          <div class="scenario-text">
+            In Terry Gilliam's <em>Brazil</em> (1985), a clerical error results in an innocent man's arrest and death. When the protagonist attempts to correct the mistake, he discovers a labyrinth of forms, departments, and regulations so complex that no one person is responsible for anything. The system is not malevolent — it is simply so entangled in its own procedures that human lives become collateral damage in the management of paperwork.
+          </div>
+          <div class="scenario-select-wrap">
+            <select class="scenario-select" onchange="checkMatch('s4', this.value)">
+              <option value="">— Select —</option>
+              <option>Corporate Control</option>
+              <option>Bureaucratic Control</option>
+              <option>Technological Control</option>
+              <option>Philosophical/Religious Control</option>
+            </select>
+          </div>
+          <div class="match-feedback" id="s4-fb"></div>
+        </div>
+
+      </div>
+    </div>
+    <div class="activity-footer">
+      <button class="submit-btn" onclick="submitActivity1()">Check Answers</button>
+      <div class="score-display" id="score1"></div>
+      <button class="reset-btn" onclick="resetActivity1()">Reset</button>
+    </div>
+  </div>
+
+  <!-- ══ SEC 03: TYPES OF CONTROL ══ -->
+  <section>
+    <div class="section-head">
+      <span class="section-id">SEC·03</span>
+      <h2>Types of Dystopian Control</h2>
+    </div>
+
+    <p>Most dystopian works present a world in which societal control is maintained through one or more of the following mechanisms. A single work may combine several — <em>Brave New World</em>, for instance, employs both technological and philosophical control simultaneously. Identifying which type of control dominates a given work is one of the most useful starting points for analysis.</p>
+
+    <div class="control-grid">
+
+      <div class="control-card ctrl-corporate">
+        <p class="control-type">Type 01</p>
+        <h3>Corporate Control</h3>
+        <p>One or more large corporations control society through products, advertising, and/or media. The corporation has absorbed the functions of government — security, infrastructure, social order — while remaining accountable to profit rather than to citizens.</p>
+        <div class="control-examples">
+          <div class="ctrl-ex"><strong>Blade Runner (1982) —</strong> The Tyrell Corporation manufactures sentient beings as product lines.</div>
+          <div class="ctrl-ex"><strong>RoboCop (1987) —</strong> Omni Consumer Products owns the Detroit police force.</div>
+          <div class="ctrl-ex"><strong>Don't Look Up (2021) —</strong> A tech billionaire redirects planetary defense policy for mining profit.</div>
+        </div>
+      </div>
+
+      <div class="control-card ctrl-bureaucratic">
+        <p class="control-type">Type 02</p>
+        <h3>Bureaucratic Control</h3>
+        <p>Society is controlled by a mindless bureaucracy through red tape, relentless regulations, and incompetent government. No individual is malevolent — the system simply produces malevolent outcomes through inertia, fragmentation, and unaccountability.</p>
+        <div class="control-examples">
+          <div class="ctrl-ex"><strong>Brazil (1985) —</strong> A clerical error destroys a man's life; no single person is responsible.</div>
+          <div class="ctrl-ex"><strong>The Trial (Kafka, 1925) —</strong> A man is prosecuted by an authority that never identifies itself or its charges.</div>
+          <div class="ctrl-ex"><strong>Sorry to Bother You (2018) —</strong> Labor contracts that employees cannot read or contest.</div>
+        </div>
+      </div>
+
+      <div class="control-card ctrl-technological">
+        <p class="control-type">Type 03</p>
+        <h3>Technological Control</h3>
+        <p>Society is controlled by technology — through computers, surveillance systems, bioengineering, or scientific means. The technology may be presented as a convenience, a safety measure, or a gift — which makes it all the more effective as a mechanism of control.</p>
+        <div class="control-examples">
+          <div class="ctrl-ex"><strong>We (1924) —</strong> Glass apartments make every citizen visible at all times.</div>
+          <div class="ctrl-ex"><strong>Severance (2022) —</strong> Surgical memory division eliminates the possibility of labor organizing.</div>
+          <div class="ctrl-ex"><strong>The Matrix (1999) —</strong> An entire simulated reality maintains human compliance.</div>
+        </div>
+      </div>
+
+      <div class="control-card ctrl-philosophical">
+        <p class="control-type">Type 04</p>
+        <h3>Philosophical / Religious Control</h3>
+        <p>Society is controlled by a philosophical or religious ideology, often enforced through a dictatorship or theocratic government. The ideology provides the moral framework that makes the regime's cruelties feel not just acceptable but <em>righteous</em>.</p>
+        <div class="control-examples">
+          <div class="ctrl-ex"><strong>The Handmaid's Tale (1985) —</strong> Old Testament theocracy governs every aspect of women's bodies and lives.</div>
+          <div class="ctrl-ex"><strong>Brave New World (1932) —</strong> Stability and pleasure are elevated to the status of supreme moral values.</div>
+          <div class="ctrl-ex"><strong>Equilibrium (2002) —</strong> The prohibition of emotion is codified as ethical doctrine.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Image placeholder: control type visual comparison -->
+    <div style="margin: 2rem 0;">
+      <div class="img-placeholder" style="aspect-ratio: 21/6;">
+        <div class="img-ph-text">
+          <span class="ph-title">Optional: Side-by-side still comparison across control types</span>
+          <span class="ph-year">e.g. Tyrell Corp pyramid (Corporate) · Lumon hallway (Technological) · Gilead ceremony (Philosophical) · Brazil office (Bureaucratic)</span>
+          Four-panel horizontal strip — one image per control type
+        </div>
+      </div>
+      <div class="img-caption">Suggested: four-panel still — one per control type, labeled</div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ══ ACTIVITY 2: CLOSE READING ══ -->
+  <div class="activity-section" id="activity2">
+    <div class="activity-header">
+      <span class="activity-badge">Activity 02</span>
+      <span class="activity-title">Which Characteristic Is This?</span>
+    </div>
+    <div class="activity-body">
+      <p class="activity-prompt">
+        Below are three brief passages — two from literature, one from a film description. Read each carefully and use the dropdown to identify which characteristic of a dystopian society is being illustrated. There is one correct answer for each. Submit to check your work.
+      </p>
+
+      <div class="excerpt-stack">
+
+        <div class="excerpt-block" id="e1" data-answer="Citizens Live Under Constant Surveillance">
+          <div class="excerpt-source">Excerpt A &nbsp;·&nbsp; George Orwell, Nineteen Eighty-Four (1949)</div>
+          <div class="excerpt-text">
+            "The telescreen received and transmitted simultaneously. Any sound that Winston made, above the level of a very low whisper, would be picked up by it; moreover, so long as he remained within the field of vision which the metal plaque commanded, he could be seen as well as heard. There was of course no way of knowing whether you were being watched at any given moment."
+          </div>
+          <div class="excerpt-q">
+            <span class="excerpt-q-label">Which characteristic of a dystopian society does this passage illustrate?</span>
+            <select class="excerpt-select" onchange="checkExcerpt('e1', this.value)">
+              <option value="">— Select —</option>
+              <option>Propaganda Controls the Population</option>
+              <option>Citizens Live Under Constant Surveillance</option>
+              <option>The Society Is an Illusion of Utopia</option>
+              <option>Citizens Live in a Dehumanized State</option>
+            </select>
+          </div>
+          <div class="excerpt-feedback" id="e1-fb"></div>
+        </div>
+
+        <div class="excerpt-block" id="e2" data-answer="The Natural World Is Banished or Destroyed">
+          <div class="excerpt-source">Excerpt B &nbsp;·&nbsp; Blade Runner 2049 (2017), dir. Denis Villeneuve — scene description</div>
+          <div class="excerpt-text">
+            K drives through a landscape of grey ash and orange smog stretching to every horizon. There are no plants, no animals, no visible sky. He passes a massive protein farm — rows of white grubs cultivated under industrial lighting — and a few figures in respiratory masks moving between structures. Later, at a black market, a live bee is displayed in a glass case. The vendor quotes a price equivalent to a month's salary. K stares at it for a long moment before walking away.
+          </div>
+          <div class="excerpt-q">
+            <span class="excerpt-q-label">Which characteristic of a dystopian society does this scene illustrate?</span>
+            <select class="excerpt-select" onchange="checkExcerpt('e2', this.value)">
+              <option value="">— Select —</option>
+              <option>Conformity Is Enforced; Dissent Is Punished</option>
+              <option>Citizens Fear the Outside World</option>
+              <option>The Natural World Is Banished or Destroyed</option>
+              <option>A Figurehead or Concept Is Worshipped</option>
+            </select>
+          </div>
+          <div class="excerpt-feedback" id="e2-fb"></div>
+        </div>
+
+        <div class="excerpt-block" id="e3" data-answer="The Society Is an Illusion of Utopia">
+          <div class="excerpt-source">Excerpt C &nbsp;·&nbsp; Aldous Huxley, Brave New World (1932)</div>
+          <div class="excerpt-text">
+            "And that," put in the Director sententiously, "that is the secret of happiness and virtue — liking what you've got to do. All conditioning aims at that: making people like their unescapable social destiny."
+          </div>
+          <div class="excerpt-q">
+            <span class="excerpt-q-label">Which characteristic of a dystopian society does this passage illustrate?</span>
+            <select class="excerpt-select" onchange="checkExcerpt('e3', this.value)">
+              <option value="">— Select —</option>
+              <option>Information &amp; Independent Thought Are Suppressed</option>
+              <option>Citizens Live in a Dehumanized State</option>
+              <option>The Society Is an Illusion of Utopia</option>
+              <option>Conformity Is Enforced; Dissent Is Punished</option>
+            </select>
+          </div>
+          <div class="excerpt-feedback" id="e3-fb"></div>
+        </div>
+
+      </div>
+    </div>
+    <div class="activity-footer">
+      <button class="submit-btn" onclick="submitActivity2()">Check Answers</button>
+      <div class="score-display" id="score2"></div>
+      <button class="reset-btn" onclick="resetActivity2()">Reset</button>
+    </div>
+  </div>
+
+</main>
+
+<script>
+  /* ══ ACTIVITY 1: MATCHING ══ */
+  const explanations = {
+    s1: {
+      correct: "Correct — The severance chip is a surgical technology used to divide and control workers' consciousness. This is Technological Control: the body and mind are modified by scientific means to serve institutional ends.",
+      incorrect: "Not quite. The key mechanism here is the implanted chip — a scientific/surgical technology that controls behavior at the neurological level. → Technological Control."
+    },
+    s2: {
+      correct: "Correct — Gilead's power rests entirely on a religious interpretation of scripture. Every law, role, and ritual is justified by theological doctrine. This is Philosophical/Religious Control.",
+      incorrect: "Not quite. Gilead's authority derives from religious scripture, not from a corporation, a bureaucracy, or technology. → Philosophical/Religious Control."
+    },
+    s3: {
+      correct: "Correct — The Tyrell Corporation has assumed the social functions of a government while remaining answerable only to its own interests. This is Corporate Control at its most architecturally literal.",
+      incorrect: "Not quite. The pyramid on the skyline is a corporate headquarters that has absorbed governmental authority. The controlling force here is a private company, not ideology, technology, or bureaucracy. → Corporate Control."
+    },
+    s4: {
+      correct: "Correct — No single person is responsible for the injustice in Brazil. The system operates through procedural inertia — forms, departments, and rules that produce cruelty as a byproduct of administration. This is Bureaucratic Control.",
+      incorrect: "Not quite. The horror of Brazil is not a tyrant or a corporation — it's paperwork. The system is so fragmented that no one can be held accountable. → Bureaucratic Control."
+    }
+  };
+
+  function checkMatch(id, value) {
+    if (!value) return;
+    const item = document.getElementById(id);
+    const correct = item.dataset.answer;
+    const fb = document.getElementById(id + '-fb');
+    item.classList.remove('correct', 'incorrect');
+    if (value === correct) {
+      item.classList.add('correct');
+      fb.textContent = '✓ ' + explanations[id].correct;
+    } else {
+      item.classList.add('incorrect');
+      fb.textContent = '✗ ' + explanations[id].incorrect;
+    }
+  }
+
+  function submitActivity1() {
+    const ids = ['s1','s2','s3','s4'];
+    let scored = 0, answered = 0;
+    ids.forEach(id => {
+      const sel = document.querySelector('#' + id + ' .scenario-select');
+      if (sel.value) {
+        answered++;
+        checkMatch(id, sel.value);
+        if (sel.value === document.getElementById(id).dataset.answer) scored++;
+      }
+    });
+    const display = document.getElementById('score1');
+    display.classList.add('visible');
+    if (answered < ids.length) {
+      display.innerHTML = `<span class="score-val">${scored}/${ids.length}</span> &nbsp; — complete all four to see your full score`;
+    } else {
+      const msg = scored === 4 ? ' — all correct' : scored >= 3 ? ' — nearly there' : ' — review the control types above';
+      display.innerHTML = `<span class="score-val">${scored}/4</span>${msg}`;
+    }
+  }
+
+  function resetActivity1() {
+    ['s1','s2','s3','s4'].forEach(id => {
+      const item = document.getElementById(id);
+      item.classList.remove('correct','incorrect');
+      item.querySelector('.scenario-select').value = '';
+      document.getElementById(id + '-fb').textContent = '';
+    });
+    const d = document.getElementById('score1');
+    d.classList.remove('visible');
+    d.innerHTML = '';
+  }
+
+  /* ══ ACTIVITY 2: CLOSE READING ══ */
+  const excerptExplanations = {
+    e1: {
+      correct: "Correct — The telescreen both transmits and receives at all times, and Winston knows he may be watched at any moment without confirmation either way. The uncertainty itself is the enforcement mechanism. This is Constant Surveillance — CHAR·04.",
+      incorrect: "Not quite. The telescreen passage is specifically about being watched — the technology of observation and the psychological effect of not knowing whether you are under observation. → Citizens Live Under Constant Surveillance."
+    },
+    e2: {
+      correct: "Correct — The ash-grey landscape, the absence of animals, and the extraordinary price of a single live bee all signal a world from which the natural has been almost entirely eliminated. → The Natural World Is Banished or Destroyed — CHAR·07.",
+      incorrect: "Not quite. The details to focus on are environmental: ash, smog, no visible plants or animals, a live bee as a luxury item. The natural world has been destroyed. → The Natural World Is Banished or Destroyed."
+    },
+    e3: {
+      correct: "Correct — The Director describes a society in which citizens are conditioned to desire only what they are permitted to have — and to experience that limitation as happiness. The dystopia presents itself as the solution to human misery. → The Society Is an Illusion of Utopia — CHAR·09.",
+      incorrect: "Not quite. The Director's argument is that the World State has engineered people to love their own subjugation — which is precisely what makes it a utopia from the inside and a dystopia from the outside. → The Society Is an Illusion of Utopia."
+    }
+  };
+
+  function checkExcerpt(id, value) {
+    if (!value) return;
+    const block = document.getElementById(id);
+    const correct = block.dataset.answer;
+    const fb = document.getElementById(id + '-fb');
+    block.classList.remove('correct','incorrect');
+    if (value === correct) {
+      block.classList.add('correct');
+      fb.textContent = '✓ ' + excerptExplanations[id].correct;
+    } else {
+      block.classList.add('incorrect');
+      fb.textContent = '✗ ' + excerptExplanations[id].incorrect;
+    }
+  }
+
+  function submitActivity2() {
+    const ids = ['e1','e2','e3'];
+    let scored = 0, answered = 0;
+    ids.forEach(id => {
+      const sel = document.querySelector('#' + id + ' .excerpt-select');
+      if (sel.value) {
+        answered++;
+        checkExcerpt(id, sel.value);
+        if (sel.value === document.getElementById(id).dataset.answer) scored++;
+      }
+    });
+    const display = document.getElementById('score2');
+    display.classList.add('visible');
+    if (answered < ids.length) {
+      display.innerHTML = `<span class="score-val">${scored}/${ids.length}</span> &nbsp; — answer all three to see your full score`;
+    } else {
+      const msg = scored === 3 ? ' — all correct' : scored === 2 ? ' — nearly there' : ' — review the characteristics above and try again';
+      display.innerHTML = `<span class="score-val">${scored}/3</span>${msg}`;
+    }
+  }
+
+  function resetActivity2() {
+    ['e1','e2','e3'].forEach(id => {
+      const block = document.getElementById(id);
+      block.classList.remove('correct','incorrect');
+      block.querySelector('.excerpt-select').value = '';
+      document.getElementById(id + '-fb').textContent = '';
+    });
+    const d = document.getElementById('score2');
+    d.classList.remove('visible');
+    d.innerHTML = '';
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A History of Dystopian Literature | ENC 1102 — Module Seven</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=Barlow:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+  /* ── TOKENS ── */
+  :root {
+    --void:        #0a0a0b;
+    --concrete:    #111114;
+    --slab:        #1a1a1e;
+    --panel:       #222228;
+    --surface:     #2c2c34;
+    --rule:        #3a3a44;
+    --mid:         #555560;
+    --muted:       #7a7a88;
+    --ash:         #a8a8b8;
+    --light:       #d0d0dc;
+    --white:       #e8e8f0;
+    --signal:      #00e5ff;       /* cold cyan accent */
+    --signal-dim:  #007a8a;
+    --signal-glow: rgba(0,229,255,0.12);
+    --warn:        #ff4040;       /* restricted/danger red */
+    --warn-dim:    rgba(255,64,64,0.12);
+    --grid-line:   rgba(255,255,255,0.03);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--void);
+    color: var(--ash);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  /* ── SURVEILLANCE GRID BACKGROUND ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── SCAN LINE OVERLAY ── */
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.07) 2px,
+      rgba(0,0,0,0.07) 4px
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 460px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 4rem 4rem 3.5rem;
+    overflow: hidden;
+    background:
+      linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(10,10,11,0.96) 75%, var(--void) 100%),
+      radial-gradient(ellipse at 60% 40%, #0d1a1e 0%, #080809 70%);
+    z-index: 1;
+  }
+
+  /* Corner bracket decorations */
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 2rem; left: 2rem;
+    width: 60px; height: 60px;
+    border-top: 2px solid var(--signal);
+    border-left: 2px solid var(--signal);
+    opacity: 0.6;
+  }
+
+  .hero-scan {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--signal), transparent);
+    animation: scan 4s ease-in-out infinite;
+    opacity: 0.5;
+  }
+
+  @keyframes scan {
+    0%   { top: 0%; opacity: 0; }
+    10%  { opacity: 0.5; }
+    90%  { opacity: 0.5; }
+    100% { top: 100%; opacity: 0; }
+  }
+
+  .hero-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--signal);
+    margin-bottom: 1.2rem;
+    position: relative; z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .hero-tag::before {
+    content: '▶';
+    font-size: 0.5rem;
+  }
+
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    position: relative; z-index: 1;
+  }
+
+  .hero h1 .dim { color: var(--mid); font-weight: 300; }
+  .hero h1 .accent { color: var(--signal); }
+
+  .hero-sub {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    color: var(--muted);
+    margin-top: 1.2rem;
+    max-width: 480px;
+    position: relative; z-index: 1;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-bar {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, var(--signal), var(--rule), transparent);
+    margin-top: 2rem;
+    position: relative; z-index: 1;
+  }
+
+  /* ── LAYOUT ── */
+  .page-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem 6rem;
+    position: relative; z-index: 1;
+  }
+
+  /* ── SECTION HEADER ── */
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 1.4rem;
+    margin-top: 3.5rem;
+  }
+
+  .section-id {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--signal);
+    letter-spacing: 0.15em;
+    white-space: nowrap;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid var(--signal-dim);
+    background: var(--signal-glow);
+  }
+
+  h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1;
+  }
+
+  h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--signal);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.5rem;
+  }
+
+  p { margin-bottom: 1rem; color: var(--ash); }
+  p:last-child { margin-bottom: 0; }
+
+  /* ── DIVIDER ── */
+  .rule {
+    height: 1px;
+    background: linear-gradient(90deg, var(--rule), transparent);
+    margin: 3rem 0;
+    position: relative;
+  }
+  .rule::before {
+    content: '//';
+    position: absolute;
+    left: 0; top: -10px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--mid);
+    letter-spacing: 0.1em;
+  }
+
+  /* ── VIDEO BLOCK ── */
+  .video-block {
+    margin: 2rem 0;
+    border: 1px solid var(--rule);
+    background: var(--concrete);
+    position: relative;
+  }
+  .video-block::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--signal), transparent);
+  }
+  .video-label {
+    padding: 0.7rem 1.2rem;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .video-label::before {
+    content: '⏵';
+    color: var(--signal);
+    font-size: 0.8rem;
+  }
+  .video-responsive {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+  }
+  .video-responsive iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: none;
+  }
+  .video-caption {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.8rem;
+    color: var(--mid);
+    font-family: 'Share Tech Mono', monospace;
+    letter-spacing: 0.05em;
+    border-top: 1px solid var(--rule);
+  }
+
+  /* ── CONTENT BLOCK ── */
+  .content-block {
+    margin: 2rem 0;
+  }
+
+  /* ── PANEL CARD ── */
+  .panel {
+    background: var(--concrete);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--signal-dim);
+    padding: 1.5rem 1.8rem;
+    margin: 1.5rem 0;
+    position: relative;
+  }
+
+  .panel-warn {
+    border-left-color: var(--warn);
+    background: var(--concrete);
+  }
+  .panel-warn h3 { color: var(--warn); }
+
+  /* ── DEFINITION BLOCK ── */
+  .def-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin: 1.5rem 0;
+  }
+  .def-cell {
+    background: var(--concrete);
+    padding: 1.5rem 1.8rem;
+    position: relative;
+  }
+  .def-cell::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+  }
+  .def-utopia::before { background: var(--signal); }
+  .def-dystopia::before { background: var(--warn); }
+  .def-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .def-utopia .def-label { color: var(--signal); }
+  .def-dystopia .def-label { color: var(--warn); }
+  .def-term {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.6rem;
+    line-height: 1;
+  }
+  .def-utopia .def-term { color: var(--light); }
+  .def-dystopia .def-term { color: var(--warn); }
+  .def-cell p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+
+  /* ── TIMELINE ── */
+  .timeline {
+    position: relative;
+    margin: 2rem 0;
+    padding-left: 0;
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 0;
+    margin-bottom: 0;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+  .timeline-item:first-child {
+    border-top: 1px solid var(--rule);
+  }
+  .timeline-item:hover {
+    background: var(--slab);
+  }
+
+  .timeline-year {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 400;
+    color: var(--signal);
+    letter-spacing: 0.08em;
+    padding: 1.2rem 1rem 1.2rem 0;
+    border-right: 1px solid var(--rule);
+    display: flex;
+    align-items: flex-start;
+    padding-top: 1.3rem;
+  }
+
+  .timeline-content {
+    padding: 1.2rem 0 1.2rem 1.5rem;
+  }
+
+  .timeline-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.15rem;
+  }
+  .timeline-title em {
+    font-style: italic;
+    color: var(--light);
+  }
+  .timeline-author {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--mid);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+  .timeline-content p {
+    font-size: 0.84rem;
+    color: var(--muted);
+    line-height: 1.55;
+    margin-bottom: 0;
+  }
+
+  /* ── SIGNIFICANCE TAG ── */
+  .sig-tag {
+    display: inline-block;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.45rem;
+    margin-right: 0.4rem;
+    margin-bottom: 0.4rem;
+    border: 1px solid;
+  }
+  .sig-tag.origin  { color: #6090a0; border-color: #6090a0; }
+  .sig-tag.tech    { color: #60a080; border-color: #60a080; }
+  .sig-tag.power   { color: #a06060; border-color: #a06060; }
+  .sig-tag.gender  { color: #a080a0; border-color: #a080a0; }
+  .sig-tag.race    { color: #a09060; border-color: #a09060; }
+  .sig-tag.canon   { color: var(--signal-dim); border-color: var(--signal-dim); }
+
+  /* ── RESTRICTED BOX ── */
+  .restricted {
+    border: 1px solid var(--warn-dim);
+    border-left: 3px solid var(--warn);
+    background: var(--warn-dim);
+    padding: 1.2rem 1.5rem;
+    margin: 2rem 0;
+    position: relative;
+  }
+  .restricted-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.58rem;
+    color: var(--warn);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .restricted-label::before { content: '⚠'; }
+  .restricted p { font-size: 0.88rem; color: var(--ash); margin-bottom: 0; }
+
+
+
+  /* ── BLINKING CURSOR ── */
+  .cursor {
+    display: inline-block;
+    width: 8px; height: 1em;
+    background: var(--signal);
+    vertical-align: text-bottom;
+    margin-left: 2px;
+    animation: blink 1.1s step-end infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .hero { padding: 3rem 1.5rem 2.5rem; }
+    .page-wrap { padding: 0 1.25rem 4rem; }
+    .def-grid { grid-template-columns: 1fr; }
+    .timeline-item { grid-template-columns: 80px 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<header class="hero">
+  <div class="hero-scan"></div>
+  <p class="hero-tag">ENC 1102 &nbsp;·&nbsp; MODULE SEVEN &nbsp;·&nbsp; DYSTOPIAN LITERATURE &amp; FILM</p>
+  <h1>
+    <span class="dim">A History of</span><br>
+    Dystopian<br>
+    <span class="accent">Literature</span><span class="cursor"></span>
+  </h1>
+  <p class="hero-sub">From Thomas More to Margaret Atwood — how a genre was forged from fear, power, and the question of what a perfect society actually costs.</p>
+  <div class="hero-bar"></div>
+</header>
+
+<main class="page-wrap">
+
+  <!-- ── VIDEO ── -->
+  <section class="content-block">
+    <div class="section-head">
+      <span class="section-id">SEC·01</span>
+      <h2>Watch First</h2>
+    </div>
+    <p>Before reading further, watch the short video below. It covers the genre's origins and core characteristics in under ten minutes and will give you the framework to make sense of everything that follows.</p>
+
+    <div class="video-block">
+      <div class="video-label">A Brief History of Dystopian Literature &nbsp;·&nbsp; TED-Ed / YouTube</div>
+      <div class="video-responsive">
+        <iframe
+          src="https://www.youtube.com/embed/6a6kbU88wu0"
+          title="A Brief History of Dystopian Literature"
+          loading="lazy"
+          allowfullscreen
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+        </iframe>
+      </div>
+      <div class="video-caption">// runtime approx. 5 min &nbsp;·&nbsp; captions available</div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ── WHAT IS DYSTOPIA ── -->
+  <section class="content-block">
+    <div class="section-head">
+      <span class="section-id">SEC·02</span>
+      <h2>Defining the Genre</h2>
+    </div>
+
+    <p>The word <em>dystopia</em> is the inverse of <em>utopia</em> — a term coined in 1516 by the English writer Thomas More for his satirical novel about a fictional island society. Understanding both terms is essential, because dystopian literature is always, at its core, about the collapse of a utopian promise.</p>
+
+    <div class="def-grid">
+      <div class="def-cell def-utopia">
+        <p class="def-label">Term 01</p>
+        <p class="def-term">Utopia</p>
+        <p>A place, state, or condition imagined as ideally perfect — in its politics, laws, customs, and social arrangements.</p>
+      </div>
+      <div class="def-cell def-dystopia">
+        <p class="def-label">Term 02</p>
+        <p class="def-term">Dystopia</p>
+        <p>A futuristic, imagined society in which oppressive control and the illusion of perfection are maintained through corporate, bureaucratic, technological, or totalitarian force.</p>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>The Core Argument</h3>
+      <p>Dystopian literature is not simply about bad futures. It is about the present — about <em>current</em> trends, systems, and ideologies taken to their logical extreme. Every dystopia is a warning dressed as fiction.</p>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ── ORIGINS ── -->
+  <section class="content-block">
+    <div class="section-head">
+      <span class="section-id">SEC·03</span>
+      <h2>Origins of the Genre</h2>
+    </div>
+
+    <p>Dystopian literature did not emerge fully formed. It developed over centuries, shaped by industrialization, war, revolution, and the recurring human habit of imagining ideal societies — and then confronting what those ideals actually require.</p>
+
+    <div class="panel">
+      <h3>The Utopian Tradition (1516–1850s)</h3>
+      <p>Long before anyone wrote a dystopia, writers were busy constructing utopias. Thomas More's <em>Utopia</em> (1516), Francis Bacon's <em>New Atlantis</em> (1627), and a long line of Enlightenment treatises imagined societies governed entirely by reason, virtue, or scientific progress. The problem? The more perfectly these societies were designed, the more totalitarian they began to look. The seeds of dystopia were planted inside utopia from the beginning.</p>
+    </div>
+
+    <div class="panel">
+      <h3>The Industrial Revolution Changes Everything (1800s)</h3>
+      <p>The 19th century gave writers the raw material dystopia needed: factories, mass poverty, urban squalor, and the rapid replacement of human labor with machines. Writers like Charles Dickens documented the costs of "progress" in realist terms. Others pushed further into speculation. Samuel Butler's <em>Erewhon</em> (1872) imagined a society that outlawed machinery altogether — an early signal that technology and human freedom might be in fundamental conflict.</p>
+    </div>
+
+    <div class="panel">
+      <h3>The 20th Century and the Age of Totalitarianism (1900–1950s)</h3>
+      <p>The genre as we know it was forged in the catastrophes of the early 20th century. The Russian Revolution, the rise of fascism in Europe, two World Wars, and the dawn of nuclear weapons gave writers something new to fear: not just poverty or machines, but the state itself. The three foundational texts of dystopian literature — Zamyatin's <em>We</em> (1924), Huxley's <em>Brave New World</em> (1932), and Orwell's <em>Nineteen Eighty-Four</em> (1949) — all emerged from this moment. They remain the genre's defining works.</p>
+    </div>
+
+    <div class="panel">
+      <h3>Expansion and Diversification (1960s–Present)</h3>
+      <p>After the Cold War locked dystopia into an "authoritarian state vs. individual freedom" framework, later writers broke it open. Ray Bradbury focused on media saturation and intellectual conformity. Margaret Atwood introduced patriarchal theocracy. Octavia Butler centered race, biology, and power. Kazuo Ishiguro explored bioethics and human cloning. The genre expanded from its white, male, Eurocentric origins to ask whose futures had always been dystopian — and whose utopias had been built on someone else's suffering.</p>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ── TIMELINE ── -->
+  <section class="content-block">
+    <div class="section-head">
+      <span class="section-id">SEC·04</span>
+      <h2>Literary Timeline</h2>
+    </div>
+
+    <p>The works below represent the genre's major fault lines — each one responding to the political and technological anxieties of its moment.</p>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-year">1516</div>
+        <div class="timeline-content">
+          <div class="timeline-title"><em>Utopia</em></div>
+          <div class="timeline-author">Thomas More</div>
+          <span class="sig-tag origin">Genre Origin</span>
+          <p>More coins the word "utopia" (Greek: "no place") for his satirical portrait of an ideal island society. The novel's irony — its perfection requires enforced conformity — makes it the unwitting prototype for everything that follows.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">1872</div>
+        <div class="timeline-content">
+          <div class="timeline-title"><em>Erewhon</em></div>
+          <div class="timeline-author">Samuel Butler</div>
+          <span class="sig-tag tech">Technology</span>
+          <p>A traveler discovers a society that has banned all machinery, fearing that machines will eventually evolve beyond human control. One of the first literary works to frame technology itself as an existential threat.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">1924</div>
+        <div class="timeline-content">
+          <div class="timeline-title"><em>We</em></div>
+          <div class="timeline-author">Yevgeny Zamyatin</div>
+          <span class="sig-tag power">State Control</span>
+          <span class="sig-tag canon">Canon</span>
+          <p>Written in Soviet Russia and immediately banned, <em>We</em> depicts a totalitarian "One State" governed entirely by mathematical logic, where citizens have numbers instead of names and live in glass apartments under constant surveillance. It is the direct ancestor of both <em>Brave New World</em> and <em>Nineteen Eighty-Four</em>.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">1932</div>
+        <div class="timeline-content">
+          <div class="timeline-title"><em>Brave New World</em></div>
+          <div class="timeline-author">Aldous Huxley</div>
+          <span class="sig-tag tech">Technology</span>
+          <span class="sig-tag canon">Canon</span>
+          <p>Huxley's "World State" controls its citizens not through fear but through pleasure — genetic engineering, conditioning, and a happiness drug called soma eliminate all desire for freedom. The novel's disturbing insight: people can be conditioned to love their own oppression.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">1949</div>
+        <div class="timeline-content">
+          <div class="timeline-title"><em>Nineteen Eighty-Four</em></div>
+          <div class="timeline-author">George Orwell</div>
+          <span class="sig-tag power">State Control</span>
+          <span class="sig-tag canon">Canon</span>
+          <p>The genre's most influential work. Orwell's Oceania operates through surveillance (Big Brother), language manipulation (Newspeak), and the rewriting of history. The novel gave the culture its most enduring dystopian vocabulary: doublethink, thoughtcrime, Room 101. Written as Orwell was dying of tuberculosis, it reads as a last warning.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">1953</div>
+        <div class="timeline-content">
+          <div class="timeline-title"><em>Fahrenheit 451</em></div>
+          <div class="timeline-author">Ray Bradbury</div>
+          <span class="sig-tag tech">Technology</span>
+          <p>In Bradbury's America, firemen don't extinguish fires — they start them, burning books in a society that has chosen entertainment over thought. The novel is less about censorship imposed from above than about the population's willing surrender of intellectual life to television and distraction.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">1985</div>
+        <div class="timeline-content">
+          <div class="timeline-title"><em>The Handmaid's Tale</em></div>
+          <div class="timeline-author">Margaret Atwood</div>
+          <span class="sig-tag gender">Gender &amp; Power</span>
+          <span class="sig-tag canon">Canon</span>
+          <p>Atwood's Gilead — a theocratic American regime that has stripped women of all rights — expanded the genre's scope beyond the male-centered narratives of Huxley and Orwell. Every detail, Atwood insisted, was drawn from historical fact. No element of the regime was invented.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">1993</div>
+        <div class="timeline-content">
+          <div class="timeline-title"><em>Parable of the Sower</em></div>
+          <div class="timeline-author">Octavia E. Butler</div>
+          <span class="sig-tag race">Race &amp; Survival</span>
+          <p>Butler's near-future California — ravaged by climate collapse, corporate enclaves, and social breakdown — centers a young Black woman building a new community from the ruins. Butler challenged the genre's tendency to treat dystopia as a hypothetical: for many Americans, she argued, it already existed.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">2005</div>
+        <div class="timeline-content">
+          <div class="timeline-title"><em>Never Let Me Go</em></div>
+          <div class="timeline-author">Kazuo Ishiguro</div>
+          <span class="sig-tag tech">Technology</span>
+          <p>Ishiguro's quietly devastating novel follows a group of young people raised to be organ donors — and their strange passivity in the face of their fate. Unlike most dystopias, there is no rebellion here, only a question: how much of our own dehumanization do we accept without noticing?</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ── WHY IT PERSISTS ── -->
+  <section class="content-block">
+    <div class="section-head">
+      <span class="section-id">SEC·05</span>
+      <h2>Why the Genre Endures</h2>
+    </div>
+
+    <p>Dystopian literature has never gone out of fashion — and that tells us something. The genre spikes in popularity during periods of political anxiety: the 1930s and 40s, the Cold War 1950s, the post-9/11 2000s, and the 2010s and 2020s. Its readers are not simply escaping into dark futures. They are looking for a language to describe fears that feel too large or diffuse to name directly.</p>
+
+    <div class="restricted">
+      <p class="restricted-label">Key Concept</p>
+      <p>Dystopian fiction works by <strong>making the familiar strange</strong>. By displacing contemporary anxieties into a fictional future, it allows readers to see what they might otherwise normalize. The genre's power is not prediction — it is <em>diagnosis</em>.</p>
+    </div>
+
+    <p>This is why the genre translates so powerfully to film, which you'll encounter throughout this module. Cinema can render surveillance, dehumanization, and environmental collapse in images that bypass the intellect and land directly in the body. The best dystopian films do not just describe oppression — they make you <em>feel</em> what it would be like to live inside it.</p>
+  </section>
+
+  <div class="rule"></div>
+
+
+
+</main>
+</body>
+</html>

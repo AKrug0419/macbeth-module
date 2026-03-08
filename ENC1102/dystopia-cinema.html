@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A History of Dystopian Cinema | ENC 1102 — Module Seven</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=Barlow:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --void:        #0a0a0b;
+    --concrete:    #111114;
+    --slab:        #1a1a1e;
+    --panel:       #222228;
+    --surface:     #2c2c34;
+    --rule:        #3a3a44;
+    --mid:         #555560;
+    --muted:       #7a7a88;
+    --ash:         #a8a8b8;
+    --light:       #d0d0dc;
+    --white:       #e8e8f0;
+    --signal:      #00e5ff;
+    --signal-dim:  #007a8a;
+    --signal-glow: rgba(0,229,255,0.10);
+    --warn:        #ff4040;
+    --warn-dim:    rgba(255,64,64,0.10);
+    --grid-line:   rgba(255,255,255,0.03);
+    --amber:       #ffaa00;
+    --amber-dim:   rgba(255,170,0,0.10);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--void);
+    color: var(--ash);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 2px,
+      rgba(0,0,0,0.06) 2px, rgba(0,0,0,0.06) 4px
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ══ HERO ══ */
+  .hero {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  /* Cinematic letterbox still placeholder */
+  .hero-still {
+    width: 100%;
+    aspect-ratio: 21 / 8;
+    background: var(--slab);
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-still::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(to right, rgba(0,229,255,0.04) 0%, transparent 40%),
+      linear-gradient(to bottom, transparent 60%, rgba(10,10,11,0.9) 100%);
+  }
+  /* Corner brackets */
+  .hero-still::after {
+    content: '';
+    position: absolute;
+    top: 1.5rem; left: 1.5rem;
+    width: 48px; height: 48px;
+    border-top: 1px solid var(--signal-dim);
+    border-left: 1px solid var(--signal-dim);
+  }
+  .still-placeholder-icon {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--mid);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 2;
+    position: relative; z-index: 1;
+  }
+  .still-placeholder-icon span {
+    display: block;
+    font-size: 1.8rem;
+    color: var(--rule);
+    margin-bottom: 0.3rem;
+    letter-spacing: 0;
+  }
+  .hero-title-block {
+    padding: 2.5rem 4rem 3rem;
+    position: relative;
+  }
+  .hero-title-block::before {
+    content: '';
+    position: absolute;
+    bottom: 2rem; right: 3rem;
+    width: 48px; height: 48px;
+    border-bottom: 1px solid var(--signal-dim);
+    border-right: 1px solid var(--signal-dim);
+  }
+  .hero-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    color: var(--signal);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .hero-tag::before { content: '▶'; font-size: 0.5rem; }
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 0.92;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+  .hero h1 .dim  { color: var(--mid); font-weight: 300; }
+  .hero h1 .accent { color: var(--signal); }
+  .hero-sub {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--muted);
+    margin-top: 1.1rem;
+    max-width: 520px;
+    letter-spacing: 0.02em;
+  }
+  .hero-bar {
+    width: 100%; height: 1px;
+    background: linear-gradient(90deg, var(--signal), var(--rule), transparent);
+    margin-top: 2rem;
+  }
+
+  /* ══ LAYOUT ══ */
+  .page-wrap {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 2.5rem 6rem;
+    position: relative; z-index: 1;
+  }
+
+  /* ══ SECTION HEADER ══ */
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 1.4rem;
+    margin-top: 3.5rem;
+  }
+  .section-id {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.58rem;
+    color: var(--signal);
+    letter-spacing: 0.15em;
+    white-space: nowrap;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid var(--signal-dim);
+    background: var(--signal-glow);
+    flex-shrink: 0;
+  }
+  h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1;
+  }
+  h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--signal);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.5rem;
+  }
+  p { margin-bottom: 1rem; color: var(--ash); }
+  p:last-child { margin-bottom: 0; }
+
+  /* ══ RULE ══ */
+  .rule {
+    height: 1px;
+    background: linear-gradient(90deg, var(--rule), transparent);
+    margin: 3rem 0;
+    position: relative;
+  }
+  .rule::before {
+    content: '//';
+    position: absolute;
+    left: 0; top: -10px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--mid);
+    letter-spacing: 0.1em;
+  }
+
+  /* ══ IMAGE PLACEHOLDER ══ */
+  .img-placeholder {
+    background: var(--slab);
+    border: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    position: relative;
+    overflow: hidden;
+    min-height: 160px;
+  }
+  .img-placeholder::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(0,229,255,0.03) 0%, transparent 60%);
+  }
+  .img-placeholder-text {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.58rem;
+    color: var(--mid);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.8;
+    position: relative; z-index: 1;
+    padding: 1rem;
+  }
+  .img-placeholder-text .film-title {
+    display: block;
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-bottom: 0.2rem;
+  }
+  .img-placeholder-text .film-year {
+    display: block;
+    color: var(--signal);
+    font-size: 0.65rem;
+  }
+  .img-caption {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.58rem;
+    color: var(--mid);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.5rem 0.75rem;
+    border-top: 1px solid var(--rule);
+    background: var(--concrete);
+    line-height: 1.5;
+  }
+
+  /* ══ FLOATED STILL (right) ══ */
+  .float-wrap {
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+  .float-still {
+    float: right;
+    width: 340px;
+    margin: 0 0 1.2rem 2rem;
+    flex-shrink: 0;
+  }
+  .float-still .img-placeholder { aspect-ratio: 16/10; }
+
+  /* ══ TWO-COLUMN: text + 2-still grid ══ */
+  .split-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 2rem;
+    align-items: start;
+    margin: 1.5rem 0;
+  }
+  .still-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  .still-stack .img-placeholder { aspect-ratio: 16/10; }
+
+  /* ══ WIDE ASYMMETRIC LAYOUT ══ */
+  .asymmetric {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 0;
+    border: 1px solid var(--rule);
+    margin: 2rem 0;
+    background: var(--concrete);
+  }
+  .asymmetric-img {
+    position: relative;
+  }
+  .asymmetric-img .img-placeholder {
+    height: 100%;
+    min-height: 240px;
+    border: none;
+    border-right: 1px solid var(--rule);
+  }
+  .asymmetric-text {
+    padding: 2rem;
+  }
+  .asymmetric-text h3 { margin-bottom: 0.7rem; }
+
+  /* ══ ERA BLOCK ══ */
+  .era-block {
+    margin: 2rem 0;
+  }
+
+  /* ══ PANEL ══ */
+  .panel {
+    background: var(--concrete);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--signal-dim);
+    padding: 1.5rem 1.8rem;
+    margin: 1.5rem 0;
+  }
+  .panel-amber {
+    border-left-color: var(--amber);
+    background: var(--concrete);
+  }
+  .panel-amber h3 { color: var(--amber); }
+
+  /* ══ TIMELINE ══ */
+  .timeline { margin: 1.5rem 0; }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 90px 56px 1fr;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+  .timeline-item:first-child { border-top: 1px solid var(--rule); }
+  .timeline-item:hover { background: var(--slab); }
+
+  .timeline-year {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--signal);
+    letter-spacing: 0.06em;
+    padding: 1.1rem 0.8rem 1.1rem 0;
+    border-right: 1px solid var(--rule);
+    display: flex;
+    align-items: flex-start;
+    padding-top: 1.2rem;
+  }
+  .timeline-thumb {
+    width: 56px;
+    border-right: 1px solid var(--rule);
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+  }
+  .timeline-thumb .img-placeholder {
+    width: 100%;
+    height: 100%;
+    min-height: unset;
+    border: none;
+    border-radius: 0;
+  }
+  .timeline-thumb .img-placeholder-text {
+    font-size: 0.4rem;
+    padding: 0.3rem;
+    gap: 0;
+  }
+  .timeline-thumb .img-placeholder-text .film-title { font-size: 0.4rem; margin-bottom: 0; }
+  .timeline-thumb .img-placeholder-text .film-year  { font-size: 0.38rem; }
+
+  .timeline-content {
+    padding: 1.1rem 0 1.1rem 1.4rem;
+  }
+  .timeline-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.1rem;
+  }
+  .timeline-title em { font-style: italic; color: var(--light); }
+  .timeline-dir {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.58rem;
+    color: var(--mid);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.35rem;
+  }
+  .timeline-content p {
+    font-size: 0.83rem;
+    color: var(--muted);
+    line-height: 1.55;
+    margin-bottom: 0;
+  }
+
+  /* ══ GENRE TAGS ══ */
+  .sig-tag {
+    display: inline-block;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.52rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.4rem;
+    margin-right: 0.35rem;
+    margin-bottom: 0.4rem;
+    border: 1px solid;
+  }
+  .sig-tag.tech    { color: #60a080; border-color: #60a080; }
+  .sig-tag.power   { color: #a06060; border-color: #a06060; }
+  .sig-tag.gender  { color: #a080a0; border-color: #a080a0; }
+  .sig-tag.climate { color: #8aaa60; border-color: #8aaa60; }
+  .sig-tag.bio     { color: #60a0a0; border-color: #60a0a0; }
+  .sig-tag.social  { color: #a09060; border-color: #a09060; }
+  .sig-tag.canon   { color: var(--signal-dim); border-color: var(--signal-dim); }
+  .sig-tag.stream  { color: var(--amber); border-color: var(--amber); opacity: 0.8; }
+
+  /* ══ KEY CONCEPT BOX ══ */
+  .concept-box {
+    border: 1px solid var(--warn-dim);
+    border-left: 3px solid var(--warn);
+    background: rgba(255,64,64,0.05);
+    padding: 1.2rem 1.5rem;
+    margin: 2rem 0;
+  }
+  .concept-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.58rem;
+    color: var(--warn);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .concept-label::before { content: '⚠'; }
+  .concept-box p { font-size: 0.88rem; margin-bottom: 0; }
+
+  /* ══ STREAMING GRID ══ */
+  .streaming-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin: 1.5rem 0;
+  }
+  .stream-card {
+    background: var(--concrete);
+    display: flex;
+    flex-direction: column;
+  }
+  .stream-card .img-placeholder {
+    aspect-ratio: 16/10;
+    border: none;
+    border-bottom: 1px solid var(--rule);
+  }
+  .stream-card-body {
+    padding: 1rem 1.1rem;
+    flex: 1;
+  }
+  .stream-card-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.15rem;
+  }
+  .stream-card-meta {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.55rem;
+    color: var(--amber);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .stream-card-body p {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.5;
+    margin-bottom: 0;
+  }
+
+  /* ══ RESPONSIVE ══ */
+  @media (max-width: 720px) {
+    .hero-title-block { padding: 2rem 1.5rem; }
+    .page-wrap { padding: 0 1.25rem 4rem; }
+    .float-still { float: none; width: 100%; margin: 0 0 1.5rem 0; }
+    .split-layout { grid-template-columns: 1fr; }
+    .still-stack { flex-direction: row; }
+    .asymmetric { grid-template-columns: 1fr; }
+    .asymmetric-img .img-placeholder { min-height: 200px; border-right: none; border-bottom: 1px solid var(--rule); }
+    .streaming-grid { grid-template-columns: 1fr; }
+    .timeline-item { grid-template-columns: 80px 1fr; }
+    .timeline-thumb { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<header class="hero">
+  <!-- Full-bleed cinematic letterbox placeholder -->
+  <div class="hero-still">
+    <div class="still-placeholder-icon">
+      <span>▭</span>
+      HERO STILL — WIDE LETTERBOX FORMAT (21:8)<br>
+      Suggested: iconic wide shot from a landmark dystopian film<br>
+      <em style="color:var(--signal-dim);">e.g. Metropolis city skyline · Children of Men long take · Blade Runner 2049 cityscape</em>
+    </div>
+  </div>
+  <div class="hero-title-block">
+    <p class="hero-tag">ENC 1102 &nbsp;·&nbsp; MODULE SEVEN &nbsp;·&nbsp; DYSTOPIAN LITERATURE &amp; FILM</p>
+    <h1>
+      <span class="dim">A History of</span><br>
+      Dystopian<br>
+      <span class="accent">Cinema</span>
+    </h1>
+    <p class="hero-sub">From the silent films of Fritz Lang to the streaming era — how dystopian fiction found its most powerful form on screen.</p>
+    <div class="hero-bar"></div>
+  </div>
+</header>
+
+<main class="page-wrap">
+
+  <!-- ══ INTRO ══ -->
+  <section class="era-block">
+    <div class="section-head">
+      <span class="section-id">SEC·01</span>
+      <h2>Cinema and the Dystopian Imagination</h2>
+    </div>
+    <p>Dystopian literature gave the genre its ideas. Cinema gave it a body. The visual medium could render surveillance, dehumanization, and environmental collapse in ways that prose could only approximate — not as concepts to be understood, but as sensory experiences to be <em>felt</em>. From the moment filmmakers discovered they could build worlds from light and shadow, they began building dark ones.</p>
+    <p>What follows is a history of how that tradition developed — from the silent era's first visions of mechanized oppression through to the prestige streaming films of the 2020s.</p>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ══ ERA 1: SILENT / EARLY ══ -->
+  <section class="era-block">
+    <div class="section-head">
+      <span class="section-id">ERA·01</span>
+      <h2>The Silent Era &amp; Early Sound (1920s–1940s)</h2>
+    </div>
+
+    <div class="float-wrap">
+      <div class="float-still">
+        <div class="img-placeholder">
+          <div class="img-placeholder-text">
+            <span class="film-title">Metropolis (1927)</span>
+            <span class="film-year">dir. Fritz Lang</span>
+            Suggested still: the worker city below / the Machine-Man
+          </div>
+        </div>
+        <div class="img-caption">Fritz Lang · Metropolis (1927) · UFA</div>
+      </div>
+
+      <p>The first great dystopian film was also one of the most ambitious films ever made. Fritz Lang's <em>Metropolis</em> (1927) established visual archetypes the genre still uses a century later: the gleaming city of the elite towering above the underground labor colony, the dehumanized workers moving in mechanical unison, the android built to look human. Made in Weimar Germany, it was a film shaped by industrialization, class anxiety, and the fragility of democracy — all of which would prove devastatingly prescient within a decade.</p>
+
+      <p>Charlie Chaplin's <em>Modern Times</em> (1936) worked the same anxieties through comedy. Chaplin's factory worker — literally swallowed by machinery — gave the era's mechanization fears their most iconic image. Not a dystopia in the totalitarian sense, but a film that asked the same question: what does a system built for efficiency do to the human beings inside it?</p>
+    </div>
+
+    <div class="panel">
+      <h3>Why This Era Matters</h3>
+      <p>Silent and early sound cinema developed dystopia's <strong>visual grammar</strong> — the images of crowds, machines, towers, and workers that later films would quote, subvert, and inherit. When you see a dystopian film today, you are often seeing Lang's shadow.</p>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ══ ERA 2: COLD WAR ══ -->
+  <section class="era-block">
+    <div class="section-head">
+      <span class="section-id">ERA·02</span>
+      <h2>Cold War Cinema (1950s–1960s)</h2>
+    </div>
+
+    <div class="split-layout">
+      <div>
+        <p>The nuclear age and the ideological standoff between the United States and Soviet Union gave dystopian cinema its defining subject matter: totalitarianism, conformity, and the terror of the state. Films of this era often coded their anxieties in genre clothing — science fiction, horror — because direct political commentary was dangerous in the McCarthy era and commercially risky everywhere else.</p>
+
+        <p>Don Siegel's <em>Invasion of the Body Snatchers</em> (1956) became one of the era's most debated films: was it an allegory about Communist infiltration, or about McCarthyist conformity demanding that everyone look the same, think the same, feel nothing? The fact that it worked as both readings simultaneously made it far more interesting than either.</p>
+
+        <p>Stanley Kubrick entered the conversation in 1964 with <em>Dr. Strangelove</em> — a jet-black comedy about nuclear annihilation driven by institutional stupidity, macho posturing, and bureaucratic momentum. Where earlier dystopias feared malevolent tyrants, Kubrick feared something worse: a system so complex and so thoroughly human that no one was in control of it at all.</p>
+      </div>
+
+      <div class="still-stack">
+        <div>
+          <div class="img-placeholder">
+            <div class="img-placeholder-text">
+              <span class="film-title">Invasion of the Body Snatchers</span>
+              <span class="film-year">1956 · dir. Don Siegel</span>
+              Suggested: pod-people scene / paranoia moment
+            </div>
+          </div>
+          <div class="img-caption">Body Snatchers · 1956</div>
+        </div>
+        <div>
+          <div class="img-placeholder">
+            <div class="img-placeholder-text">
+              <span class="film-title">Dr. Strangelove</span>
+              <span class="film-year">1964 · dir. Stanley Kubrick</span>
+              Suggested: War Room / Slim Pickens riding bomb
+            </div>
+          </div>
+          <div class="img-caption">Dr. Strangelove · 1964</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ══ ERA 3: NEW HOLLYWOOD ══ -->
+  <section class="era-block">
+    <div class="section-head">
+      <span class="section-id">ERA·03</span>
+      <h2>New Hollywood &amp; the Counterculture (1970s)</h2>
+    </div>
+
+    <div class="float-wrap">
+      <div class="float-still">
+        <div class="img-placeholder">
+          <div class="img-placeholder-text">
+            <span class="film-title">A Clockwork Orange (1971)</span>
+            <span class="film-year">dir. Stanley Kubrick</span>
+            Suggested: Ludovico technique / droogs
+          </div>
+        </div>
+        <div class="img-caption">A Clockwork Orange · Kubrick · 1971</div>
+      </div>
+
+      <p>The social upheaval of the late 1960s cracked the Hollywood consensus wide open, and dystopian cinema was one of the beneficiaries. With the Production Code abandoned and audiences hungry for confrontational filmmaking, directors pushed the genre into darker, more ambiguous territory.</p>
+
+      <p>Kubrick returned with <em>A Clockwork Orange</em> (1971), adapting Anthony Burgess's novel into a film so disturbing it was voluntarily withdrawn from British distribution for 27 years. Its central question — whether a state that removes free will in order to eliminate violence has committed a greater crime than the violence it prevents — remains one of the genre's sharpest provocations.</p>
+
+      <p><em>Soylent Green</em> (1973) brought environmental catastrophe and corporate food systems to the dystopian conversation decades before either would become mainstream political concerns. <em>Logan's Run</em> (1976) imagined a society that solved the problem of overpopulation by mandating death at thirty. Both films wore their low budgets visibly — but their ideas outlasted their production values.</p>
+    </div>
+
+    <div class="concept-box">
+      <p class="concept-label">Key Concept</p>
+      <p>1970s dystopian cinema shifted the genre's villain from the external totalitarian state to <strong>systems that people chose</strong> — pleasure economies, conformist utopias, institutional logic that no individual designed or controls. This shift from tyranny to complicity became one of the genre's most productive developments.</p>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ══ ERA 4: 1980s-90s ══ -->
+  <section class="era-block">
+    <div class="section-head">
+      <span class="section-id">ERA·04</span>
+      <h2>Cyberpunk &amp; the Corporate Future (1980s–1990s)</h2>
+    </div>
+
+    <!-- Asymmetric: large still left, text right -->
+    <div class="asymmetric">
+      <div class="asymmetric-img">
+        <div class="img-placeholder">
+          <div class="img-placeholder-text">
+            <span class="film-title">Blade Runner (1982)</span>
+            <span class="film-year">dir. Ridley Scott</span>
+            Suggested: neon-drenched cityscape /<br>Deckard and Roy Batty rooftop
+          </div>
+        </div>
+        <div class="img-caption" style="border-top:1px solid var(--rule); padding:0.5rem 0.75rem; font-family:'Share Tech Mono',monospace; font-size:0.58rem; color:var(--mid); letter-spacing:0.1em; text-transform:uppercase;">Blade Runner · Ridley Scott · 1982 · Warner Bros.</div>
+      </div>
+      <div class="asymmetric-text">
+        <h3>The Cyberpunk Inflection</h3>
+        <p>Ridley Scott's <em>Blade Runner</em> (1982) did for dystopian cinema what <em>Metropolis</em> had done sixty years earlier: it invented a visual language so complete and so influential that films are still borrowing from it. The rain-soaked megalopolis, the neon advertisements for corporations that have replaced governments, the replicants who are more human than the humans — Scott built a world from which the genre has never fully escaped.</p>
+        <p>James Cameron's <em>The Terminator</em> (1984) and Paul Verhoeven's <em>RoboCop</em> (1987) pushed the era's central anxieties — AI, corporate power, militarized police — into pulp genre form without losing their satirical edge. The Wachowskis' <em>The Matrix</em> (1999) closed the century by synthesizing the era's entire cyberpunk inheritance into a single question: what if the dystopia is the world you already live in, and you simply can't see it?</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ══ ERA 5: 2000s-2010s ══ -->
+  <section class="era-block">
+    <div class="section-head">
+      <span class="section-id">ERA·05</span>
+      <h2>Post-9/11 and the Prestige Era (2000s–2010s)</h2>
+    </div>
+
+    <div class="float-wrap">
+      <div class="float-still">
+        <div class="img-placeholder">
+          <div class="img-placeholder-text">
+            <span class="film-title">Children of Men (2006)</span>
+            <span class="film-year">dir. Alfonso Cuarón</span>
+            Suggested: Bexhill battle sequence /<br>refugee camp arrival
+          </div>
+        </div>
+        <div class="img-caption">Children of Men · Cuarón · 2006 · Universal</div>
+      </div>
+
+      <p>The attacks of September 11, 2001 and the subsequent "War on Terror" gave dystopian cinema a new set of urgent referents: surveillance states, indefinite detention, the erosion of civil liberties in the name of security. The genre responded with some of its most accomplished work.</p>
+
+      <p>Alfonso Cuarón's <em>Children of Men</em> (2006) — adapted from P.D. James's novel — depicted a near-future Britain under authoritarian collapse with a documentary realism that made it feel less like science fiction than journalism from five years in the future. Its extended single-take battle sequences remain among the most technically demanding and emotionally overwhelming in cinema history.</p>
+
+      <p>Cuarón followed it with <em>WALL·E</em> (2008) — yes, a Pixar film — whose first forty minutes offer one of cinema's bleakest visions of consumer capitalism and environmental collapse, rendered in a form that sold toys to children. The decade closed with <em>District 9</em> (2009), which used apartheid South Africa as the template for a film about alien refugees, forced relocation, and corporate exploitation.</p>
+    </div>
+
+    <div class="panel panel-amber">
+      <h3>The Young Adult Wave</h3>
+      <p>The 2010s saw dystopian fiction achieve mainstream blockbuster status through YA adaptations: <em>The Hunger Games</em> (2012–2015), <em>Divergent</em> (2014), <em>The Maze Runner</em> (2014). Whatever their artistic limitations, these films introduced dystopian thinking to an enormous audience and — particularly in <em>The Hunger Games</em> — engaged seriously with media manipulation, class warfare, and the aesthetics of political spectacle.</p>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ══ ERA 6: STREAMING ══ -->
+  <section class="era-block">
+    <div class="section-head">
+      <span class="section-id">ERA·06</span>
+      <h2>The Streaming Era (2020s)</h2>
+    </div>
+
+    <p>The collapse of the traditional theatrical distribution model — accelerated by the COVID-19 pandemic — coincided with a surge in dystopian content. Streaming platforms, freed from the commercial constraints of wide theatrical release, began funding more formally ambitious, tonally uncompromising dystopian work than Hollywood's risk-averse studio system typically permitted.</p>
+
+    <div class="streaming-grid">
+
+      <div class="stream-card">
+        <div class="img-placeholder">
+          <div class="img-placeholder-text">
+            <span class="film-title">Severance</span>
+            <span class="film-year">2022–present · Apple TV+</span>
+            Suggested: Lumon Industries office /<br>the severed floor
+          </div>
+        </div>
+        <div class="stream-card-body">
+          <div class="stream-card-title">Severance</div>
+          <div class="stream-card-meta">Apple TV+ · 2022–present</div>
+          <span class="sig-tag tech">Technology</span>
+          <span class="sig-tag stream">Streaming</span>
+          <p>A surgical procedure separates workers' work memories from their personal ones. The ultimate corporate control narrative — and a meditation on labor, identity, and what it means to consent to something you will not remember consenting to.</p>
+        </div>
+      </div>
+
+      <div class="stream-card">
+        <div class="img-placeholder">
+          <div class="img-placeholder-text">
+            <span class="film-title">Don't Look Up</span>
+            <span class="film-year">2021 · Netflix</span>
+            Suggested: press conference scene /<br>media circus moment
+          </div>
+        </div>
+        <div class="stream-card-body">
+          <div class="stream-card-title">Don't Look Up</div>
+          <div class="stream-card-meta">Netflix · 2021</div>
+          <span class="sig-tag social">Media / Politics</span>
+          <span class="sig-tag climate">Climate</span>
+          <span class="sig-tag stream">Streaming</span>
+          <p>Two astronomers attempt to warn humanity about a planet-killing comet and are met with distraction, denial, and political theater. A satirical dystopia set entirely in the present tense.</p>
+        </div>
+      </div>
+
+      <div class="stream-card">
+        <div class="img-placeholder">
+          <div class="img-placeholder-text">
+            <span class="film-title">Leave the World Behind</span>
+            <span class="film-year">2023 · Netflix</span>
+            Suggested: infrastructure collapse scene /<br>the two families
+          </div>
+        </div>
+        <div class="stream-card-body">
+          <div class="stream-card-title">Leave the World Behind</div>
+          <div class="stream-card-meta">Netflix · 2023</div>
+          <span class="sig-tag tech">Technology</span>
+          <span class="sig-tag social">Social</span>
+          <span class="sig-tag stream">Streaming</span>
+          <p>A family vacation is interrupted by a mysterious societal collapse. Adapted from Rumaan Alam's novel, the film focuses on how quickly social trust fractures when infrastructure fails — and what race and class have to do with who survives.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <p>Television has been equally fertile ground. <em>Black Mirror</em> (Netflix/Channel 4, 2011–present) operates as an anthology of near-future warnings, each episode targeting a different technology or social behavior. <em>The Handmaid's Tale</em> (Hulu, 2017–present), adapted from Atwood's novel, became one of the defining political texts of the Trump era. <em>Station Eleven</em> (HBO Max, 2021) used a post-pandemic world not for horror but for an exploration of why art and memory matter when civilization collapses.</p>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ══ LANDMARK TIMELINE ══ -->
+  <section class="era-block">
+    <div class="section-head">
+      <span class="section-id">SEC·07</span>
+      <h2>Landmark Films at a Glance</h2>
+    </div>
+    <p>The works below trace the genre's spine from its origins to the present. Each one responded to the specific anxieties of its moment — and each one changed what came after.</p>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-year">1927</div>
+        <div class="timeline-thumb">
+          <div class="img-placeholder">
+            <div class="img-placeholder-text"><span class="film-title">Metropolis</span></div>
+          </div>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-title"><em>Metropolis</em></div>
+          <div class="timeline-dir">dir. Fritz Lang</div>
+          <span class="sig-tag power">Class / Labor</span><span class="sig-tag canon">Canon</span>
+          <p>The genre's visual origin point. Lang's divided city — gleaming towers above, slave-labor tunnels below — established the spatial logic dystopian cinema has returned to ever since.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">1956</div>
+        <div class="timeline-thumb">
+          <div class="img-placeholder">
+            <div class="img-placeholder-text"><span class="film-title">Body Snatchers</span></div>
+          </div>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-title"><em>Invasion of the Body Snatchers</em></div>
+          <div class="timeline-dir">dir. Don Siegel</div>
+          <span class="sig-tag social">Conformity</span>
+          <p>Alien pod-people replace humans with emotionless doubles. The Cold War's ultimate conformity nightmare — readable as either Communist or McCarthyist allegory depending on the viewer's politics.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">1964</div>
+        <div class="timeline-thumb">
+          <div class="img-placeholder">
+            <div class="img-placeholder-text"><span class="film-title">Dr. Strangelove</span></div>
+          </div>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-title"><em>Dr. Strangelove</em></div>
+          <div class="timeline-dir">dir. Stanley Kubrick</div>
+          <span class="sig-tag power">Military / State</span><span class="sig-tag canon">Canon</span>
+          <p>Nuclear annihilation through institutional stupidity and masculine posturing. Kubrick's satirical masterpiece introduced a new dystopian fear: not a malevolent tyrant, but a system no one controls.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">1982</div>
+        <div class="timeline-thumb">
+          <div class="img-placeholder">
+            <div class="img-placeholder-text"><span class="film-title">Blade Runner</span></div>
+          </div>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-title"><em>Blade Runner</em></div>
+          <div class="timeline-dir">dir. Ridley Scott</div>
+          <span class="sig-tag tech">Technology / AI</span><span class="sig-tag canon">Canon</span>
+          <p>The definitive visual template for corporate dystopia. Asks whether beings manufactured to serve deserve the same rights as those who manufactured them — a question only growing more urgent.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">1999</div>
+        <div class="timeline-thumb">
+          <div class="img-placeholder">
+            <div class="img-placeholder-text"><span class="film-title">The Matrix</span></div>
+          </div>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-title"><em>The Matrix</em></div>
+          <div class="timeline-dir">dir. The Wachowskis</div>
+          <span class="sig-tag tech">Simulation / AI</span><span class="sig-tag canon">Canon</span>
+          <p>The century's closing statement: the dystopia is not a possible future — it is the present reality, hidden in plain sight. No film has done more to popularize the genre's most radical philosophical question.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">2006</div>
+        <div class="timeline-thumb">
+          <div class="img-placeholder">
+            <div class="img-placeholder-text"><span class="film-title">Children of Men</span></div>
+          </div>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-title"><em>Children of Men</em></div>
+          <div class="timeline-dir">dir. Alfonso Cuarón</div>
+          <span class="sig-tag climate">Collapse</span><span class="sig-tag power">State / Refugee</span>
+          <p>The gold standard of 21st-century dystopian realism. Shot with documentary immediacy, it depicts authoritarianism and refugee crisis in ways that have grown more relevant with every passing year.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">2017</div>
+        <div class="timeline-thumb">
+          <div class="img-placeholder">
+            <div class="img-placeholder-text"><span class="film-title">Blade Runner 2049</span></div>
+          </div>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-title"><em>Blade Runner 2049</em></div>
+          <div class="timeline-dir">dir. Denis Villeneuve</div>
+          <span class="sig-tag tech">Technology / AI</span><span class="sig-tag climate">Climate</span>
+          <p>A long-gestating sequel that surpassed expectations, expanding Scott's original into a meditation on memory, identity, and environmental collapse. Villeneuve's most visually ambitious film.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">2022</div>
+        <div class="timeline-thumb">
+          <div class="img-placeholder">
+            <div class="img-placeholder-text"><span class="film-title">Severance</span></div>
+          </div>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-title"><em>Severance</em> (Series)</div>
+          <div class="timeline-dir">dir. Ben Stiller, Aoife McArdle &nbsp;·&nbsp; Apple TV+</div>
+          <span class="sig-tag tech">Technology / Labor</span><span class="sig-tag stream">Streaming</span>
+          <p>The streaming era's most formally inventive dystopia. Uses the premise of surgical memory division to dissect corporate culture, consent, and identity with surgical precision of its own.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+</body>
+</html>

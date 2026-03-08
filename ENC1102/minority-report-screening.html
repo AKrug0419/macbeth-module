@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minority Report — During Screening | ENC 1102 Module Seven</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=Barlow:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --void:       #06080a;
+    --deep:       #0a0e12;
+    --slab:       #111620;
+    --panel:      #161c28;
+    --surface:    #1e2635;
+    --rule:       #2a3545;
+    --mid:        #445566;
+    --muted:      #6a7f96;
+    --ash:        #9ab0c4;
+    --light:      #c8d8e8;
+    --white:      #e4eef6;
+    --ice:        #a8d4f0;
+    --blue:       #1a8fff;
+    --blue-dim:   #0a4a88;
+    --blue-glow:  rgba(26,143,255,0.10);
+    --cyan:       #00e5ff;
+    --cyan-dim:   rgba(0,229,255,0.08);
+    --amber:      #ffaa00;
+    --amber-dim:  rgba(255,170,0,0.10);
+    --warn:       #ff4444;
+    --warn-dim:   rgba(255,68,68,0.10);
+    --green:      #00e676;
+    --green-dim:  rgba(0,230,118,0.10);
+    --purple:     #c080ff;
+    --purple-dim: rgba(192,128,255,0.10);
+    --grid:       rgba(26,143,255,0.04);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--void);
+    color: var(--ash);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300; font-size: 16px; line-height: 1.75;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 56px 56px;
+    pointer-events: none; z-index: 0;
+  }
+
+  /* ══ PAGE HEADER ══ */
+  .page-header {
+    position: relative; z-index: 1;
+    padding: 2.5rem 3rem 2rem;
+    border-bottom: 1px solid var(--rule);
+    background: var(--deep);
+    display: flex; align-items: center;
+    justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+  }
+  .page-header::before {
+    content: ''; position: absolute;
+    bottom: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, var(--blue), transparent);
+  }
+  .ph-left {}
+  .ph-eyebrow {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.58rem; letter-spacing: 0.2em;
+    color: var(--blue); text-transform: uppercase;
+    margin-bottom: 0.4rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .ph-eyebrow::before { content: '⏸'; font-size: 0.65rem; }
+  .ph-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.8rem; font-weight: 900;
+    color: var(--white); text-transform: uppercase;
+    letter-spacing: 0.02em; line-height: 1;
+  }
+  .ph-title span { color: var(--blue); }
+  .ph-right {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.58rem; color: var(--mid);
+    letter-spacing: 0.1em; text-transform: uppercase;
+    text-align: right; line-height: 2;
+  }
+
+  /* ══ LAYOUT ══ */
+  .page-wrap {
+    max-width: 1060px; margin: 0 auto;
+    padding: 0 3rem 6rem;
+    position: relative; z-index: 1;
+  }
+
+  /* ══ PAUSE BLOCK ══ */
+  .pause-block {
+    margin: 3.5rem 0;
+    border: 1px solid var(--rule);
+    background: var(--panel);
+    position: relative; overflow: hidden;
+  }
+
+  /* Accent bar color per pause */
+  .pause-block::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+  }
+  .p1::before { background: linear-gradient(90deg, var(--blue), transparent); }
+  .p2::before { background: linear-gradient(90deg, var(--cyan), transparent); }
+  .p3::before { background: linear-gradient(90deg, var(--warn), transparent); }
+  .p4::before { background: linear-gradient(90deg, var(--amber), transparent); }
+  .p5::before { background: linear-gradient(90deg, var(--purple), transparent); }
+  .p6::before { background: linear-gradient(90deg, var(--green), transparent); }
+
+  /* Pause header */
+  .pause-header {
+    display: grid;
+    grid-template-columns: 90px 1fr auto;
+    align-items: stretch;
+    border-bottom: 1px solid var(--rule);
+    background: var(--slab);
+  }
+  .pause-ts-block {
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 1rem 0.5rem;
+    border-right: 1px solid var(--rule);
+  }
+  .pause-ts-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.48rem; color: var(--mid);
+    letter-spacing: 0.18em; text-transform: uppercase;
+    margin-bottom: 0.2rem;
+  }
+  .pause-ts-val {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.1rem; line-height: 1; letter-spacing: 0.05em;
+  }
+  .p1 .pause-ts-val { color: var(--blue); }
+  .p2 .pause-ts-val { color: var(--cyan); }
+  .p3 .pause-ts-val { color: var(--warn); }
+  .p4 .pause-ts-val { color: var(--amber); }
+  .p5 .pause-ts-val { color: var(--purple); }
+  .p6 .pause-ts-val { color: var(--green); }
+
+  .pause-header-text { padding: 1rem 1.4rem; }
+  .pause-num {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.54rem; letter-spacing: 0.2em;
+    text-transform: uppercase; margin-bottom: 0.25rem;
+  }
+  .p1 .pause-num { color: var(--blue); }
+  .p2 .pause-num { color: var(--cyan); }
+  .p3 .pause-num { color: var(--warn); }
+  .p4 .pause-num { color: var(--amber); }
+  .p5 .pause-num { color: var(--purple); }
+  .p6 .pause-num { color: var(--green); }
+
+  .pause-scene-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.3rem; font-weight: 700;
+    color: var(--white); text-transform: uppercase;
+    letter-spacing: 0.04em; line-height: 1.1;
+  }
+  .pause-badge {
+    padding: 1rem 1.4rem;
+    display: flex; align-items: center;
+    border-left: 1px solid var(--rule);
+  }
+  .focus-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.52rem; letter-spacing: 0.15em;
+    text-transform: uppercase; padding: 0.2rem 0.55rem;
+    border: 1px solid; white-space: nowrap;
+  }
+  .p1 .focus-tag { color: var(--blue);   border-color: var(--blue-dim);   background: var(--blue-glow); }
+  .p2 .focus-tag { color: var(--cyan);   border-color: var(--cyan);       background: var(--cyan-dim); }
+  .p3 .focus-tag { color: var(--warn);   border-color: var(--warn);       background: var(--warn-dim); }
+  .p4 .focus-tag { color: var(--amber);  border-color: var(--amber);      background: var(--amber-dim); }
+  .p5 .focus-tag { color: var(--purple); border-color: var(--purple);     background: var(--purple-dim); }
+  .p6 .focus-tag { color: var(--green);  border-color: var(--green);      background: var(--green-dim); }
+
+  /* Pause body: still + content */
+  .pause-body {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 0;
+  }
+  .pause-body.img-right {
+    grid-template-columns: 1fr 340px;
+  }
+
+  /* Still column */
+  .pause-still {
+    border-right: 1px solid var(--rule);
+    display: flex; flex-direction: column;
+  }
+  .pause-body.img-right .pause-still {
+    border-right: none; border-left: 1px solid var(--rule);
+    order: 2;
+  }
+  .pause-still .img-ph {
+    flex: 1; border: none; min-height: 220px;
+  }
+  .img-ph {
+    background: var(--slab);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    position: relative; overflow: hidden; min-height: 140px;
+  }
+  .img-ph::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(26,143,255,0.04) 0%, transparent 60%);
+  }
+  .img-ph-text {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.54rem; color: var(--mid);
+    letter-spacing: 0.14em; text-transform: uppercase;
+    text-align: center; line-height: 2;
+    position: relative; z-index: 1; padding: 1rem;
+  }
+  .img-ph-text .ph-t { display: block; font-size: 0.66rem; color: var(--muted); margin-bottom: 0.15rem; }
+  .img-ph-text .ph-s { font-size: 0.58rem; }
+  .p1 .img-ph-text .ph-s { color: var(--blue); }
+  .p2 .img-ph-text .ph-s { color: var(--cyan); }
+  .p3 .img-ph-text .ph-s { color: var(--warn); }
+  .p4 .img-ph-text .ph-s { color: var(--amber); }
+  .p5 .img-ph-text .ph-s { color: var(--purple); }
+  .p6 .img-ph-text .ph-s { color: var(--green); }
+
+  .img-cap {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.52rem; color: var(--mid);
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.4rem 0.75rem;
+    border-top: 1px solid var(--rule);
+    background: var(--deep); line-height: 1.5;
+  }
+
+  /* Content column */
+  .pause-content { padding: 1.6rem 2rem; }
+  .scene-anchor {
+    font-size: 0.86rem; color: var(--muted);
+    margin-bottom: 1.2rem; line-height: 1.7;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .scene-anchor strong { color: var(--ash); font-weight: 400; }
+
+  /* ══ ACTIVITY ══ */
+  .activity-box {
+    background: var(--slab);
+    border: 1px solid var(--rule);
+    position: relative; overflow: hidden;
+  }
+  .activity-box::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; bottom: 0; width: 3px;
+  }
+  .p1 .activity-box::before { background: var(--blue); }
+  .p2 .activity-box::before { background: var(--cyan); }
+  .p3 .activity-box::before { background: var(--warn); }
+  .p4 .activity-box::before { background: var(--amber); }
+  .p5 .activity-box::before { background: var(--purple); }
+  .p6 .activity-box::before { background: var(--green); }
+
+  .act-header {
+    padding: 0.65rem 1rem 0.65rem 1.3rem;
+    border-bottom: 1px solid var(--rule);
+    background: var(--panel);
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .act-badge {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.5rem; letter-spacing: 0.2em;
+    text-transform: uppercase; padding: 0.15rem 0.45rem;
+    border: 1px solid var(--rule); color: var(--muted);
+  }
+  .act-title-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.9rem; font-weight: 600;
+    color: var(--white); text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .act-body { padding: 1.2rem 1.3rem; }
+  .act-prompt {
+    font-size: 0.88rem; color: var(--ash);
+    margin-bottom: 1rem; line-height: 1.7;
+  }
+
+  /* Options grid */
+  .options-grid {
+    display: grid; gap: 0.5rem;
+    margin-bottom: 0.8rem;
+  }
+  .options-grid.col2 { grid-template-columns: 1fr 1fr; }
+  .options-grid.col1 { grid-template-columns: 1fr; }
+
+  .opt-btn {
+    width: 100%; text-align: left;
+    background: var(--panel); border: 1px solid var(--rule);
+    color: var(--ash); cursor: pointer;
+    font-family: 'Barlow', sans-serif; font-size: 0.86rem;
+    font-weight: 300; line-height: 1.45;
+    padding: 0.7rem 1rem;
+    transition: background 0.12s, border-color 0.12s;
+    position: relative;
+  }
+  .opt-btn:hover { background: var(--surface); }
+  .opt-btn .opt-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.52rem; letter-spacing: 0.15em;
+    text-transform: uppercase; display: block;
+    margin-bottom: 0.2rem;
+  }
+  .p1 .opt-btn .opt-label { color: var(--blue); }
+  .p2 .opt-btn .opt-label { color: var(--cyan); }
+  .p3 .opt-btn .opt-label { color: var(--warn); }
+  .p4 .opt-btn .opt-label { color: var(--amber); }
+  .p5 .opt-btn .opt-label { color: var(--purple); }
+  .p6 .opt-btn .opt-label { color: var(--green); }
+
+  /* States */
+  .opt-btn.selected-correct {
+    background: var(--green-dim) !important;
+    border-color: var(--green) !important;
+    color: var(--white);
+  }
+  .opt-btn.selected-incorrect {
+    background: var(--warn-dim) !important;
+    border-color: var(--warn) !important;
+    color: var(--white);
+  }
+  .opt-btn.reveal-correct {
+    border-color: var(--green);
+    color: var(--ash);
+  }
+  .opt-btn:disabled { cursor: default; }
+
+  /* Feedback */
+  .act-feedback {
+    display: none;
+    font-size: 0.84rem; color: var(--ash); line-height: 1.7;
+    padding: 0.9rem 1rem;
+    border-top: 1px solid var(--rule);
+    font-family: 'Barlow', sans-serif;
+  }
+  .act-feedback.visible { display: block; }
+  .act-feedback.correct-fb  { background: var(--green-dim); }
+  .act-feedback.incorrect-fb { background: var(--warn-dim); }
+  .fb-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.54rem; letter-spacing: 0.15em;
+    text-transform: uppercase; display: block; margin-bottom: 0.4rem;
+  }
+  .correct-fb  .fb-label { color: var(--green); }
+  .incorrect-fb .fb-label { color: var(--warn); }
+
+  /* Reset */
+  .act-reset {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.56rem; color: var(--mid);
+    letter-spacing: 0.12em; text-transform: uppercase;
+    background: none; border: none; cursor: pointer;
+    text-decoration: underline; text-underline-offset: 3px;
+    margin-top: 0.6rem; display: none;
+    padding: 0;
+  }
+  .act-reset.visible { display: block; }
+  .act-reset:hover { color: var(--ash); }
+
+  p  { margin-bottom: 1rem; color: var(--ash); }
+  p:last-child { margin-bottom: 0; }
+  em { color: var(--light); font-style: italic; }
+  strong { color: var(--light); font-weight: 500; }
+  h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.8rem; font-weight: 700;
+    color: var(--white); text-transform: uppercase;
+    letter-spacing: 0.04em; line-height: 1;
+  }
+  .rule {
+    height: 1px;
+    background: linear-gradient(90deg, var(--rule), transparent);
+    margin: 1rem 0; position: relative;
+  }
+
+  /* ══ PROGRESS BAR ══ */
+  .progress-bar {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--deep);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.7rem 3rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .progress-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.54rem; color: var(--mid);
+    letter-spacing: 0.15em; text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .progress-dots {
+    display: flex; gap: 0.4rem; align-items: center;
+  }
+  .progress-dot {
+    width: 28px; height: 4px;
+    background: var(--rule); position: relative;
+    transition: background 0.3s;
+  }
+  .progress-dot.active { background: var(--blue); }
+  .progress-dot.done   { background: var(--green); }
+  .progress-dot-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.46rem; color: var(--mid);
+    letter-spacing: 0.1em; position: absolute;
+    top: 8px; left: 0; white-space: nowrap;
+  }
+
+  /* ══ NAV FOOTER ══ */
+  .nav-footer {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 4rem; padding-top: 2rem;
+    border-top: 1px solid var(--rule); flex-wrap: wrap; gap: 1rem;
+  }
+  .nav-btn {
+    display: inline-flex; align-items: center; gap: 0.75rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.85rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--void); background: var(--blue);
+    text-decoration: none; padding: 0.75rem 1.6rem; border: none; cursor: pointer;
+    transition: background 0.15s;
+  }
+  .nav-btn:hover { background: var(--cyan); }
+  .nav-btn.secondary {
+    background: none; color: var(--muted);
+    border: 1px solid var(--rule);
+  }
+  .nav-btn.secondary:hover { color: var(--ash); background: var(--slab); }
+  .nav-btn svg { width: 16px; height: 16px; }
+
+  @media (max-width: 760px) {
+    .page-header { padding: 1.5rem; }
+    .page-wrap { padding: 0 1.25rem 4rem; }
+    .progress-bar { padding: 0.7rem 1.25rem; }
+    .pause-body, .pause-body.img-right { grid-template-columns: 1fr; }
+    .pause-still { border-right: none !important; border-left: none !important; border-bottom: 1px solid var(--rule); order: 0 !important; }
+    .options-grid.col2 { grid-template-columns: 1fr; }
+    .pause-header { grid-template-columns: 70px 1fr; }
+    .pause-badge { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ PAGE HEADER ══ -->
+<div class="page-header">
+  <div class="ph-left">
+    <div class="ph-eyebrow">ENC 1102 · Module Seven · During Screening</div>
+    <div class="ph-title">Minority <span>Report</span> — Pause Points</div>
+  </div>
+  <div class="ph-right">
+    Six Analysis Stops<br>
+    Keep this page open during screening
+  </div>
+</div>
+
+<!-- ══ PROGRESS BAR ══ -->
+<div class="progress-bar">
+  <div class="progress-label">Progress</div>
+  <div class="progress-dots">
+    <div class="progress-dot active" id="dot1"><span class="progress-dot-label">0:08</span></div>
+    <div class="progress-dot"        id="dot2"><span class="progress-dot-label">0:32</span></div>
+    <div class="progress-dot"        id="dot3"><span class="progress-dot-label">0:58</span></div>
+    <div class="progress-dot"        id="dot4"><span class="progress-dot-label">1:18</span></div>
+    <div class="progress-dot"        id="dot5"><span class="progress-dot-label">1:35</span></div>
+    <div class="progress-dot"        id="dot6"><span class="progress-dot-label">1:52</span></div>
+  </div>
+</div>
+
+<main class="page-wrap">
+
+  <!-- ══════════════ PAUSE 1 ══════════════ -->
+  <div class="pause-block p1" id="pause1">
+    <div class="pause-header">
+      <div class="pause-ts-block">
+        <div class="pause-ts-label">Pause at</div>
+        <div class="pause-ts-val">0:08</div>
+      </div>
+      <div class="pause-header-text">
+        <div class="pause-num">Pause Point 01 of 06</div>
+        <div class="pause-scene-title">The Opening Arrest &amp; Agatha's Vision</div>
+      </div>
+      <div class="pause-badge">
+        <span class="focus-tag">Technological Control</span>
+      </div>
+    </div>
+
+    <div class="pause-body">
+      <div class="pause-still">
+        <div class="img-ph">
+          <div class="img-ph-text">
+            <span class="ph-t">Opening PreCrime Arrest Sequence</span>
+            <span class="ph-s">Suggested: Agatha in the tank / precog vision flash / arresting team</span>
+          </div>
+        </div>
+        <div class="img-cap">Scene still · Pause Point 01 · ~0:08</div>
+      </div>
+      <div class="pause-content">
+        <p class="scene-anchor">
+          <strong>What just happened:</strong> We have seen PreCrime in action for the first time. A man is about to murder his wife and her lover; Anderton's team reads the precogs' vision and arrests him before the act occurs. The man is confused, disoriented — he doesn't understand why he's been arrested, because from his perspective, he hasn't done anything. The precogs are shown briefly: three human beings floating in a tank, their neural activity harvested as raw data.
+        </p>
+        <div class="activity-box">
+          <div class="act-header">
+            <span class="act-badge">Pause Activity 01</span>
+            <span class="act-title-text">Identify the Characteristic</span>
+          </div>
+          <div class="act-body">
+            <p class="act-prompt">The PreCrime system we've just seen in action illustrates <strong>multiple</strong> characteristics of a dystopian society. Which characteristic is most directly and powerfully demonstrated by the <em>arrest itself</em> — not the technology, not the precogs, but the act of detaining someone for a crime they have not yet committed?</p>
+            <div class="options-grid col2" id="opts1">
+              <button class="opt-btn" onclick="checkAnswer(1, this, false)">
+                <span class="opt-label">Option A</span>
+                Citizens live under constant surveillance
+              </button>
+              <button class="opt-btn" onclick="checkAnswer(1, this, false)">
+                <span class="opt-label">Option B</span>
+                The natural world is banished or destroyed
+              </button>
+              <button class="opt-btn" onclick="checkAnswer(1, this, true)">
+                <span class="opt-label">Option C</span>
+                Information, independent thought, and freedom are restricted
+              </button>
+              <button class="opt-btn" onclick="checkAnswer(1, this, false)">
+                <span class="opt-label">Option D</span>
+                Citizens conform to uniform expectations; dissent is punished
+              </button>
+            </div>
+            <div class="act-feedback" id="fb1"></div>
+            <button class="act-reset" id="reset1" onclick="resetPause(1)">Try Again</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ PAUSE 2 ══════════════ -->
+  <div class="pause-block p2" id="pause2">
+    <div class="pause-header">
+      <div class="pause-ts-block">
+        <div class="pause-ts-label">Pause at</div>
+        <div class="pause-ts-val">0:32</div>
+      </div>
+      <div class="pause-header-text">
+        <div class="pause-num">Pause Point 02 of 06</div>
+        <div class="pause-scene-title">The Eye Wall &amp; Personalized Advertising</div>
+      </div>
+      <div class="pause-badge">
+        <span class="focus-tag">Corporate Control</span>
+      </div>
+    </div>
+
+    <div class="pause-body img-right">
+      <div class="pause-content">
+        <p class="scene-anchor">
+          <strong>What just happened:</strong> Anderton walks through a public mall. Retinal scanners on every surface identify him by eye and serve him personalized advertisements by name — for products tailored to his purchase history, emotional profile, and current location. The ads speak directly to him. No one around him finds this remarkable.
+        </p>
+        <div class="activity-box">
+          <div class="act-header">
+            <span class="act-badge">Pause Activity 02</span>
+            <span class="act-title-text">Identify the Control Type</span>
+          </div>
+          <div class="act-body">
+            <p class="act-prompt">The personalized advertising sequence combines two types of dystopian control working simultaneously. Which pairing best describes what we've just seen?</p>
+            <div class="options-grid col2" id="opts2">
+              <button class="opt-btn" onclick="checkAnswer(2, this, false)">
+                <span class="opt-label">Option A</span>
+                Bureaucratic + Philosophical
+              </button>
+              <button class="opt-btn" onclick="checkAnswer(2, this, true)">
+                <span class="opt-label">Option B</span>
+                Technological + Corporate
+              </button>
+              <button class="opt-btn" onclick="checkAnswer(2, this, false)">
+                <span class="opt-label">Option C</span>
+                Philosophical + Bureaucratic
+              </button>
+              <button class="opt-btn" onclick="checkAnswer(2, this, false)">
+                <span class="opt-label">Option D</span>
+                Technological + Philosophical
+              </button>
+            </div>
+            <div class="act-feedback" id="fb2"></div>
+            <button class="act-reset" id="reset2" onclick="resetPause(2)">Try Again</button>
+          </div>
+        </div>
+      </div>
+      <div class="pause-still">
+        <div class="img-ph">
+          <div class="img-ph-text">
+            <span class="ph-t">Mall Retinal Ad Sequence</span>
+            <span class="ph-s">Suggested: ads calling Anderton by name / eye scanner close-up</span>
+          </div>
+        </div>
+        <div class="img-cap">Scene still · Pause Point 02 · ~0:32</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ PAUSE 3 ══════════════ -->
+  <div class="pause-block p3" id="pause3">
+    <div class="pause-header">
+      <div class="pause-ts-block">
+        <div class="pause-ts-label">Pause at</div>
+        <div class="pause-ts-val">0:58</div>
+      </div>
+      <div class="pause-header-text">
+        <div class="pause-num">Pause Point 03 of 06</div>
+        <div class="pause-scene-title">The Hall of Souls</div>
+      </div>
+      <div class="pause-badge">
+        <span class="focus-tag">Dehumanization</span>
+      </div>
+    </div>
+
+    <div class="pause-body">
+      <div class="pause-still">
+        <div class="img-ph">
+          <div class="img-ph-text">
+            <span class="ph-t">The Containment Facility</span>
+            <span class="ph-s">Suggested: the suspended cocoon-prisoners / Anderton walking the rows</span>
+          </div>
+        </div>
+        <div class="img-cap">Scene still · Pause Point 03 · ~0:58</div>
+      </div>
+      <div class="pause-content">
+        <p class="scene-anchor">
+          <strong>What just happened:</strong> We've seen PreCrime's containment facility — called the "Hall of Souls" — where those convicted of pre-murder are stored indefinitely in suspended animation, sealed in individual cocoons, stacked in rows. They are not imprisoned in any conventional sense; they are warehoused. Alive, but not living. Convicted of nothing they actually did.
+        </p>
+        <div class="activity-box">
+          <div class="act-header">
+            <span class="act-badge">Pause Activity 03</span>
+            <span class="act-title-text">Identify the Characteristic</span>
+          </div>
+          <div class="act-body">
+            <p class="act-prompt">The Hall of Souls is one of the film's most disturbing images. Which characteristic of a dystopian society does it most directly illustrate?</p>
+            <div class="options-grid col2" id="opts3">
+              <button class="opt-btn" onclick="checkAnswer(3, this, false)">
+                <span class="opt-label">Option A</span>
+                The society is an illusion of a perfect utopia
+              </button>
+              <button class="opt-btn" onclick="checkAnswer(3, this, false)">
+                <span class="opt-label">Option B</span>
+                Propaganda is used to control the citizens
+              </button>
+              <button class="opt-btn" onclick="checkAnswer(3, this, true)">
+                <span class="opt-label">Option C</span>
+                Citizens live in a dehumanized state — the "loss of humanity"
+              </button>
+              <button class="opt-btn" onclick="checkAnswer(3, this, false)">
+                <span class="opt-label">Option D</span>
+                Citizens have a fear of the outside world
+              </button>
+            </div>
+            <div class="act-feedback" id="fb3"></div>
+            <button class="act-reset" id="reset3" onclick="resetPause(3)">Try Again</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ PAUSE 4 ══════════════ -->
+  <div class="pause-block p4" id="pause4">
+    <div class="pause-header">
+      <div class="pause-ts-block">
+        <div class="pause-ts-label">Pause at</div>
+        <div class="pause-ts-val">1:18</div>
+      </div>
+      <div class="pause-header-text">
+        <div class="pause-num">Pause Point 04 of 06</div>
+        <div class="pause-scene-title">Anderton's Own PreCrime Card</div>
+      </div>
+      <div class="pause-badge">
+        <span class="focus-tag">Protagonist Trait</span>
+      </div>
+    </div>
+
+    <div class="pause-body img-right">
+      <div class="pause-content">
+        <p class="scene-anchor">
+          <strong>What just happened:</strong> The precogs have just named Anderton himself as a future murderer. His own system — the one he built, the one he has defended and believed in — has turned on him. He is now the target of the machinery he designed. He has 36 hours before his own arrest team comes for him.
+        </p>
+        <div class="activity-box">
+          <div class="act-header">
+            <span class="act-badge">Pause Activity 04</span>
+            <span class="act-title-text">Identify the Protagonist Trait</span>
+          </div>
+          <div class="act-body">
+            <p class="act-prompt">This is the turning point for Anderton as the film's dystopian protagonist. Which of the four protagonist traits becomes undeniable the moment he sees his own name on that card?</p>
+            <div class="options-grid col1" id="opts4">
+              <button class="opt-btn" onclick="checkAnswer(4, this, true)">
+                <span class="opt-label">Option A</span>
+                TRAIT·01 — Often feels trapped and is struggling to escape
+              </button>
+              <button class="opt-btn" onclick="checkAnswer(4, this, false)">
+                <span class="opt-label">Option B</span>
+                TRAIT·02 — Questions the existing social and political system
+              </button>
+              <button class="opt-btn" onclick="checkAnswer(4, this, false)">
+                <span class="opt-label">Option C</span>
+                TRAIT·03 — Believes something is terribly wrong with the society
+              </button>
+              <button class="opt-btn" onclick="checkAnswer(4, this, false)">
+                <span class="opt-label">Option D</span>
+                TRAIT·04 — Helps the audience recognize the system's negative aspects
+              </button>
+            </div>
+            <div class="act-feedback" id="fb4"></div>
+            <button class="act-reset" id="reset4" onclick="resetPause(4)">Try Again</button>
+          </div>
+        </div>
+      </div>
+      <div class="pause-still">
+        <div class="img-ph">
+          <div class="img-ph-text">
+            <span class="ph-t">Anderton Sees His Own Card</span>
+            <span class="ph-s">Suggested: Anderton holding the red ball / his name on the precog display</span>
+          </div>
+        </div>
+        <div class="img-cap">Scene still · Pause Point 04 · ~1:18</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ PAUSE 5 ══════════════ -->
+  <div class="pause-block p5" id="pause5">
+    <div class="pause-header">
+      <div class="pause-ts-block">
+        <div class="pause-ts-label">Pause at</div>
+        <div class="pause-ts-val">1:35</div>
+      </div>
+      <div class="pause-header-text">
+        <div class="pause-num">Pause Point 05 of 06</div>
+        <div class="pause-scene-title">Eye Replacement &amp; The Spider-Bots</div>
+      </div>
+      <div class="pause-badge">
+        <span class="focus-tag">Surveillance</span>
+      </div>
+    </div>
+
+    <div class="pause-body">
+      <div class="pause-still">
+        <div class="img-ph">
+          <div class="img-ph-text">
+            <span class="ph-t">Spider-Bots Search Sequence</span>
+            <span class="ph-s">Suggested: spider-bots crawling the building / retinal scan close-up</span>
+          </div>
+        </div>
+        <div class="img-cap">Scene still · Pause Point 05 · ~1:35</div>
+      </div>
+      <div class="pause-content">
+        <p class="scene-anchor">
+          <strong>What just happened:</strong> To evade the retinal scanners used by every surface in the city, Anderton has undergone illegal eye-replacement surgery — replacing his own eyes to assume a new identity. Meanwhile, spider-bot drones have flooded his building, scanning every resident's retinas through doors, walls, and eyelids. The city is a total surveillance environment; the only way to escape it is to change who you biologically <em>are</em>.
+        </p>
+        <div class="activity-box">
+          <div class="act-header">
+            <span class="act-badge">Pause Activity 05</span>
+            <span class="act-title-text">Identify the Characteristic</span>
+          </div>
+          <div class="act-body">
+            <p class="act-prompt">Anderton's eye replacement and the spider-bot sequence together illustrate a characteristic taken to its absolute extreme. The surveillance system in this scene is so total that escape requires <em>changing your own body</em>. Which characteristic does this most powerfully illustrate?</p>
+            <div class="options-grid col2" id="opts5">
+              <button class="opt-btn" onclick="checkAnswer(5, this, false)">
+                <span class="opt-label">Option A</span>
+                Information and independent thought are suppressed
+              </button>
+              <button class="opt-btn" onclick="checkAnswer(5, this, false)">
+                <span class="opt-label">Option B</span>
+                A figurehead or concept is worshipped by citizens
+              </button>
+              <button class="opt-btn" onclick="checkAnswer(5, this, true)">
+                <span class="opt-label">Option C</span>
+                Citizens are perceived to be under constant surveillance
+              </button>
+              <button class="opt-btn" onclick="checkAnswer(5, this, false)">
+                <span class="opt-label">Option D</span>
+                The natural world is banished and destroyed
+              </button>
+            </div>
+            <div class="act-feedback" id="fb5"></div>
+            <button class="act-reset" id="reset5" onclick="resetPause(5)">Try Again</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ PAUSE 6 ══════════════ -->
+  <div class="pause-block p6" id="pause6">
+    <div class="pause-header">
+      <div class="pause-ts-block">
+        <div class="pause-ts-label">Pause at</div>
+        <div class="pause-ts-val">1:52</div>
+      </div>
+      <div class="pause-header-text">
+        <div class="pause-num">Pause Point 06 of 06</div>
+        <div class="pause-scene-title">Burgess Revealed &amp; The Ending</div>
+      </div>
+      <div class="pause-badge">
+        <span class="focus-tag">Illusion of Utopia</span>
+      </div>
+    </div>
+
+    <div class="pause-body img-right">
+      <div class="pause-content">
+        <p class="scene-anchor">
+          <strong>What just happened:</strong> Director Lamar Burgess — PreCrime's founder and Anderton's mentor — has been revealed as the system's original criminal. He committed a murder to protect PreCrime in its infancy, then suppressed the minority report that would have exposed it. The system built to prevent murder was founded on one. Faced with Anderton's trap, Burgess makes a choice — and PreCrime is shut down. The precogs are freed.
+        </p>
+        <div class="activity-box">
+          <div class="act-header">
+            <span class="act-badge">Pause Activity 06</span>
+            <span class="act-title-text">Identify the Characteristic</span>
+          </div>
+          <div class="act-body">
+            <p class="act-prompt">Burgess's revelation — that the man who built the perfect crime-prevention system committed the very crime it was designed to prevent — is the film's definitive dystopian statement. Which characteristic of a dystopian society does the <em>entire arc</em> of the film, culminating here, most powerfully illustrate?</p>
+            <div class="options-grid col2" id="opts6">
+              <button class="opt-btn" onclick="checkAnswer(6, this, false)">
+                <span class="opt-label">Option A</span>
+                Citizens live in a dehumanized state
+              </button>
+              <button class="opt-btn" onclick="checkAnswer(6, this, false)">
+                <span class="opt-label">Option B</span>
+                Citizens are perceived to be under constant surveillance
+              </button>
+              <button class="opt-btn" onclick="checkAnswer(6, this, false)">
+                <span class="opt-label">Option C</span>
+                Conformity is enforced; individuality and dissent are bad
+              </button>
+              <button class="opt-btn" onclick="checkAnswer(6, this, true)">
+                <span class="opt-label">Option D</span>
+                The society is an illusion of a perfect utopia
+              </button>
+            </div>
+            <div class="act-feedback" id="fb6"></div>
+            <button class="act-reset" id="reset6" onclick="resetPause(6)">Try Again</button>
+          </div>
+        </div>
+      </div>
+      <div class="pause-still">
+        <div class="img-ph">
+          <div class="img-ph-text">
+            <span class="ph-t">Burgess Confrontation / Ending</span>
+            <span class="ph-s">Suggested: Burgess facing Anderton / precogs being freed</span>
+          </div>
+        </div>
+        <div class="img-cap">Scene still · Pause Point 06 · ~1:52</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ NAV ══ -->
+  <nav class="nav-footer">
+    <a href="minority-report-installation.html" class="nav-btn secondary">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Back to Installation
+    </a>
+    <a href="minority-report-wrapup.html" class="nav-btn">
+      Wrap-Up Analysis
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </nav>
+
+</main>
+
+<script>
+  const feedback = {
+    1: {
+      correct: `Correct — Option C. The arrest of a man who has not yet acted is the most direct possible restriction of freedom: PreCrime removes the freedom to make choices before they are made. The system doesn't just watch thought — it preempts action. This connects to CHAR·02: information, independent thought, and freedom are suppressed. Crucially, freedom here includes the freedom to choose differently than predicted.`,
+      incorrect: `Not quite. Surveillance (Option A) and conformity (Option D) are both present in the scene, but the arrest itself — detaining someone for a crime not yet committed — is most fundamentally about the removal of freedom. The man hasn't done anything. His freedom to act — or not act — has been taken from him before he exercised it. → CHAR·02: Freedom is restricted.`
+    },
+    2: {
+      correct: `Correct — Option B. The retinal scanners are the technology; the corporations serving personalized ads are using that technology as a commercial instrument. Neither operates alone. This is one of the film's most prescient moments: it imagines 2002 what personalized digital advertising would look like at scale — and it's uncomfortably close to 2025 reality. The scene asks: if a corporation knows your name, your history, and your location, who exactly owns your attention?`,
+      incorrect: `Not quite. The key is identifying both systems at work simultaneously. The retinal scanners are clearly technological. The advertising being served — by brands, for profit, targeting individual consumers — is corporate. These two types of control are working together: technology as the instrument, corporate interest as the motive. → Technological + Corporate.`
+    },
+    3: {
+      correct: `Correct — Option C. The Hall of Souls is the film's most complete image of dehumanization: human beings reduced to warehoused units, alive but stripped of consciousness, identity, movement, and any life outside their function as punished bodies. They haven't committed crimes. They've been convicted of intentions. And they are stored — not imprisoned, not rehabilitated, not executed — simply removed from any form of human existence. CHAR·06 at its most literal.`,
+      incorrect: `Not quite. While the Hall of Souls does connect to the illusion of utopia (Option A) — it's a cost the system prefers to keep hidden — the image itself is most directly and viscerally about what happens to human beings inside this system. They are not citizens; they are storage. → CHAR·06: Citizens live in a dehumanized state.`
+    },
+    4: {
+      correct: `Correct — TRAIT·01. The moment Anderton sees his own name, the trap becomes absolute. He cannot clear his name through the system — because the system has already decided. He cannot appeal — because PreCrime has no appeals process. He cannot stay — because his own unit will arrest him in 36 hours. He is trapped inside the machinery he built, with no legitimate exit. This is TRAIT·01 made viscerally concrete: the protagonist cannot escape the system through any authorized means.`,
+      incorrect: `Not quite — though TRAIT·02 and TRAIT·03 will develop as a direct result of this moment. The immediate, undeniable thing that happens when Anderton sees his name is that he is trapped. His options collapse to one: run. The system he believed in has turned on him personally, and there is no door in the wall he helped build. → TRAIT·01: Trapped, struggling to escape.`
+    },
+    5: {
+      correct: `Correct — Option C, CHAR·04. The spider-bots are the film's most extreme surveillance image: autonomous drones that scan retinas through solid walls while residents sleep. The fact that Anderton can only evade this by replacing his own eyes is the scene's key point — surveillance has become so total that the only escape is to change your biological identity. The body itself is the site of state control.`,
+      incorrect: `Not quite. Think about what the spider-bots are specifically doing — they are scanning and identifying. The technology here is pure surveillance infrastructure. And the fact that escaping it requires new eyes tells us something precise: in this world, you cannot opt out of being watched. Your body is the tracking device. → CHAR·04: Citizens are under constant surveillance.`
+    },
+    6: {
+      correct: `Correct — Option D, CHAR·09. The film's entire argument crystallizes here. PreCrime presented itself as the perfect solution to murder — and it worked. Washington D.C. had gone years without a homicide. But the system was founded on a concealed murder committed by its own architect. The utopia was built on a crime it claimed to prevent. This is CHAR·09 in its most complete form: the perfect society as an illusion, maintained by the very violence it claims to have eliminated.`,
+      incorrect: `Not quite — though dehumanization and surveillance are both present throughout the film. The ending's definitive statement is about the gap between what PreCrime claimed to be and what it actually was. A utopia built on a hidden crime. The system's founding act of violence, suppressed for years, is precisely what makes it a dystopia in the classical sense. → CHAR·09: The society is an illusion of a perfect utopia.`
+    }
+  };
+
+  function checkAnswer(num, btn, isCorrect) {
+    const opts = document.getElementById('opts' + num);
+    const fb   = document.getElementById('fb' + num);
+    const rst  = document.getElementById('reset' + num);
+    const dot  = document.getElementById('dot' + num);
+
+    // Disable all buttons
+    opts.querySelectorAll('.opt-btn').forEach(b => b.disabled = true);
+
+    if (isCorrect) {
+      btn.classList.add('selected-correct');
+      fb.textContent   = '';
+      fb.innerHTML     = '<span class="fb-label">✓ Correct</span>' + feedback[num].correct;
+      fb.className     = 'act-feedback visible correct-fb';
+      dot.classList.add('done');
+      dot.classList.remove('active');
+      // Activate next dot
+      const nextDot = document.getElementById('dot' + (num + 1));
+      if (nextDot) nextDot.classList.add('active');
+    } else {
+      btn.classList.add('selected-incorrect');
+      // Reveal correct
+      opts.querySelectorAll('.opt-btn').forEach(b => {
+        if (b.onclick && b.onclick.toString().includes('true')) {
+          b.classList.add('reveal-correct');
+        }
+      });
+      fb.innerHTML = '<span class="fb-label">✗ Not quite</span>' + feedback[num].incorrect;
+      fb.className = 'act-feedback visible incorrect-fb';
+      rst.classList.add('visible');
+    }
+  }
+
+  function resetPause(num) {
+    const opts = document.getElementById('opts' + num);
+    const fb   = document.getElementById('fb' + num);
+    const rst  = document.getElementById('reset' + num);
+    opts.querySelectorAll('.opt-btn').forEach(b => {
+      b.disabled = false;
+      b.classList.remove('selected-correct','selected-incorrect','reveal-correct');
+    });
+    fb.className = 'act-feedback';
+    fb.innerHTML = '';
+    rst.classList.remove('visible');
+  }
+</script>
+</body>
+</html>

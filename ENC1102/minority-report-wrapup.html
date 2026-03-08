@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minority Report — Wrap-Up Analysis | ENC 1102 Module Seven</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=Barlow:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --void:       #06080a;
+    --deep:       #0a0e12;
+    --slab:       #111620;
+    --panel:      #161c28;
+    --surface:    #1e2635;
+    --rule:       #2a3545;
+    --mid:        #445566;
+    --muted:      #6a7f96;
+    --ash:        #9ab0c4;
+    --light:      #c8d8e8;
+    --white:      #e4eef6;
+    --blue:       #1a8fff;
+    --blue-dim:   #0a4a88;
+    --blue-glow:  rgba(26,143,255,0.10);
+    --cyan:       #00e5ff;
+    --cyan-dim:   rgba(0,229,255,0.08);
+    --amber:      #ffaa00;
+    --amber-dim:  rgba(255,170,0,0.10);
+    --warn:       #ff4444;
+    --warn-dim:   rgba(255,68,68,0.10);
+    --green:      #00e676;
+    --green-dim:  rgba(0,230,118,0.10);
+    --purple:     #c080ff;
+    --purple-dim: rgba(192,128,255,0.10);
+    --grid:       rgba(26,143,255,0.04);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--void); color: var(--ash);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300; font-size: 16px; line-height: 1.75;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 56px 56px;
+    pointer-events: none; z-index: 0;
+  }
+
+  /* ══ PAGE HEADER ══ */
+  .page-header {
+    position: relative; z-index: 1;
+    padding: 2.5rem 3rem 2rem;
+    border-bottom: 1px solid var(--rule);
+    background: var(--deep);
+    display: flex; align-items: center;
+    justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+  }
+  .page-header::before {
+    content: ''; position: absolute;
+    bottom: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, var(--green), transparent);
+  }
+  .ph-eyebrow {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.58rem; letter-spacing: 0.2em;
+    color: var(--green); text-transform: uppercase;
+    margin-bottom: 0.4rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .ph-eyebrow::before { content: '◼'; font-size: 0.4rem; }
+  .ph-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.8rem; font-weight: 900;
+    color: var(--white); text-transform: uppercase;
+    letter-spacing: 0.02em; line-height: 1;
+  }
+  .ph-title span { color: var(--green); }
+  .ph-right {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.58rem; color: var(--mid);
+    letter-spacing: 0.1em; text-transform: uppercase;
+    text-align: right; line-height: 2;
+  }
+
+  /* ══ LAYOUT ══ */
+  .page-wrap {
+    max-width: 1060px; margin: 0 auto;
+    padding: 0 3rem 6rem;
+    position: relative; z-index: 1;
+  }
+  .section-head {
+    display: flex; align-items: baseline; gap: 1.5rem;
+    margin-bottom: 1.4rem; margin-top: 3.5rem;
+  }
+  .section-id {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.56rem; color: var(--blue);
+    letter-spacing: 0.15em; white-space: nowrap;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid var(--blue-dim);
+    background: var(--blue-glow); flex-shrink: 0;
+  }
+  h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.8rem; font-weight: 700;
+    color: var(--white); text-transform: uppercase;
+    letter-spacing: 0.04em; line-height: 1;
+  }
+  h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem; font-weight: 600;
+    color: var(--blue); text-transform: uppercase;
+    letter-spacing: 0.12em; margin-bottom: 0.5rem;
+  }
+  p  { margin-bottom: 1rem; color: var(--ash); }
+  p:last-child { margin-bottom: 0; }
+  em { color: var(--light); font-style: italic; }
+  strong { color: var(--light); font-weight: 500; }
+
+  .rule {
+    height: 1px;
+    background: linear-gradient(90deg, var(--rule), transparent);
+    margin: 3rem 0; position: relative;
+  }
+  .rule::before {
+    content: '//'; position: absolute; left: 0; top: -10px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.6rem; color: var(--mid); letter-spacing: 0.1em;
+  }
+
+  /* ══ IMAGE PLACEHOLDER ══ */
+  .img-ph {
+    background: var(--slab); border: 1px solid var(--rule);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    position: relative; overflow: hidden; min-height: 140px;
+  }
+  .img-ph::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(26,143,255,0.04) 0%, transparent 60%);
+  }
+  .img-ph-text {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.56rem; color: var(--mid);
+    letter-spacing: 0.14em; text-transform: uppercase;
+    text-align: center; line-height: 2;
+    position: relative; z-index: 1; padding: 1rem;
+  }
+  .img-ph-text .ph-t { display: block; font-size: 0.68rem; color: var(--muted); margin-bottom: 0.15rem; }
+  .img-ph-text .ph-s { display: block; color: var(--blue); font-size: 0.6rem; }
+  .img-cap {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.54rem; color: var(--mid);
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.4rem 0.75rem; border-top: 1px solid var(--rule);
+    background: var(--deep); line-height: 1.5;
+  }
+
+  /* ══ RECAP GRID ══ */
+  .recap-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--rule);
+    border: 1px solid var(--rule); margin: 1.5rem 0;
+  }
+  .recap-card {
+    background: var(--panel); padding: 1.4rem 1.5rem;
+    position: relative;
+  }
+  .recap-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+  }
+  .rc1::before { background: var(--blue); }
+  .rc2::before { background: var(--amber); }
+  .rc3::before { background: var(--warn); }
+  .rc4::before { background: var(--cyan); }
+  .rc5::before { background: var(--purple); }
+  .rc6::before { background: var(--green); }
+  .recap-ts {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.6rem; letter-spacing: 0.15em;
+    text-transform: uppercase; margin-bottom: 0.3rem; display: block;
+  }
+  .rc1 .recap-ts { color: var(--blue); }
+  .rc2 .recap-ts { color: var(--amber); }
+  .rc3 .recap-ts { color: var(--warn); }
+  .rc4 .recap-ts { color: var(--cyan); }
+  .rc5 .recap-ts { color: var(--purple); }
+  .rc6 .recap-ts { color: var(--green); }
+  .recap-card-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.95rem; font-weight: 700;
+    color: var(--white); text-transform: uppercase;
+    letter-spacing: 0.05em; margin-bottom: 0.4rem; line-height: 1.1;
+  }
+  .recap-finding {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.62rem; letter-spacing: 0.08em;
+    padding: 0.25rem 0.5rem; display: inline-block;
+    border: 1px solid var(--rule); color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+  .recap-card p { font-size: 0.8rem; color: var(--muted); line-height: 1.5; margin-bottom: 0; }
+
+  /* ══ DEBATE ACTIVITY ══ */
+  .debate-section {
+    margin: 2rem 0;
+    border: 1px solid var(--rule);
+    background: var(--panel);
+    position: relative; overflow: hidden;
+  }
+  .debate-section::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--amber), var(--warn), transparent);
+  }
+  .debate-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--rule);
+    display: flex; align-items: center; gap: 1rem;
+    background: var(--slab);
+  }
+  .debate-badge {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.54rem; letter-spacing: 0.18em;
+    text-transform: uppercase; padding: 0.2rem 0.6rem;
+    border: 1px solid var(--amber); color: var(--amber);
+    background: var(--amber-dim); white-space: nowrap;
+  }
+  .debate-title-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem; font-weight: 600;
+    color: var(--white); text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .debate-body { padding: 1.8rem; }
+  .debate-question {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.6rem; font-weight: 700;
+    color: var(--white); line-height: 1.15;
+    margin-bottom: 1.4rem; letter-spacing: 0.01em;
+  }
+  .debate-question .q-accent { color: var(--amber); }
+  .debate-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: var(--rule);
+    border: 1px solid var(--rule); margin-bottom: 1.5rem;
+  }
+  .debate-side {
+    background: var(--slab); padding: 1.5rem 1.6rem;
+    position: relative;
+  }
+  .debate-side::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+  }
+  .side-yes::before { background: var(--green); }
+  .side-no::before  { background: var(--warn); }
+  .side-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.58rem; letter-spacing: 0.2em;
+    text-transform: uppercase; margin-bottom: 0.6rem; display: block;
+  }
+  .side-yes .side-label { color: var(--green); }
+  .side-no  .side-label { color: var(--warn); }
+  .side-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.1rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.04em;
+    margin-bottom: 0.8rem; line-height: 1;
+  }
+  .side-yes .side-title { color: var(--green); }
+  .side-no  .side-title { color: var(--warn); }
+  .argument-list { display: flex; flex-direction: column; gap: 0.5rem; }
+  .argument-item {
+    font-size: 0.86rem; color: var(--muted); line-height: 1.55;
+    padding-left: 1rem; position: relative;
+  }
+  .argument-item::before {
+    content: '—'; position: absolute;
+    left: 0; color: var(--mid);
+    font-family: 'Share Tech Mono', monospace; font-size: 0.7rem;
+  }
+
+  /* Vote buttons */
+  .vote-area {
+    margin-top: 1.4rem; padding-top: 1.4rem;
+    border-top: 1px solid var(--rule);
+  }
+  .vote-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.6rem; color: var(--muted);
+    letter-spacing: 0.15em; text-transform: uppercase;
+    margin-bottom: 0.8rem; display: block;
+  }
+  .vote-buttons { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+  .vote-btn {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.9rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    padding: 0.6rem 1.4rem; cursor: pointer;
+    border: 1px solid; background: none;
+    transition: background 0.15s, color 0.15s;
+  }
+  .vote-btn.yes-btn { color: var(--green); border-color: var(--green); }
+  .vote-btn.no-btn  { color: var(--warn);  border-color: var(--warn); }
+  .vote-btn.yes-btn:hover { background: var(--green-dim); }
+  .vote-btn.no-btn:hover  { background: var(--warn-dim); }
+  .vote-btn.yes-btn.voted { background: var(--green); color: var(--void); }
+  .vote-btn.no-btn.voted  { background: var(--warn);  color: var(--void); }
+  .vote-btn:disabled { opacity: 0.5; cursor: default; }
+  .vote-result {
+    margin-top: 1rem;
+    font-size: 0.88rem; color: var(--ash); line-height: 1.7;
+    display: none;
+  }
+  .vote-result.visible { display: block; }
+  .vote-result .vr-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.56rem; letter-spacing: 0.18em;
+    text-transform: uppercase; display: block; margin-bottom: 0.5rem;
+    color: var(--blue);
+  }
+
+  /* ══ MAPPING MATRIX ══ */
+  .matrix-wrap {
+    margin: 1.5rem 0;
+    border: 1px solid var(--rule); overflow-x: auto;
+  }
+  .matrix-table {
+    width: 100%; border-collapse: collapse; font-size: 0.84rem;
+  }
+  .matrix-table th {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.56rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--blue);
+    background: var(--slab); padding: 0.7rem 1rem;
+    border-bottom: 1px solid var(--rule); text-align: left; font-weight: 400;
+  }
+  .matrix-table th:not(:first-child) { border-left: 1px solid var(--rule); }
+  .matrix-table td {
+    padding: 0.75rem 1rem; color: var(--muted);
+    line-height: 1.5; vertical-align: top;
+    border-bottom: 1px solid var(--rule);
+  }
+  .matrix-table td:not(:first-child) { border-left: 1px solid var(--rule); }
+  .matrix-table tr:last-child td { border-bottom: none; }
+  .matrix-table tr:hover td { background: var(--slab); }
+  .matrix-scene {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.88rem; font-weight: 700;
+    color: var(--white); text-transform: uppercase;
+    letter-spacing: 0.04em; white-space: nowrap;
+  }
+  .matrix-tag {
+    display: inline-block;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.5rem; letter-spacing: 0.12em;
+    text-transform: uppercase; padding: 0.12rem 0.4rem;
+    border: 1px solid; margin: 0.1rem;
+  }
+  .tag-tech   { color: #60a080; border-color: #60a080; }
+  .tag-corp   { color: var(--warn); border-color: var(--warn); }
+  .tag-surv   { color: var(--blue); border-color: var(--blue-dim); }
+  .tag-dehu   { color: var(--purple); border-color: var(--purple); }
+  .tag-utop   { color: var(--amber); border-color: var(--amber); }
+  .tag-free   { color: var(--cyan); border-color: var(--cyan); }
+
+  /* ══ LOOKING AHEAD ══ */
+  .looking-ahead {
+    margin: 2rem 0;
+    border: 1px solid var(--rule);
+    background: var(--panel);
+    overflow: hidden;
+  }
+  .la-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--rule);
+    background: var(--slab);
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .la-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.54rem; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--blue);
+    border: 1px solid var(--blue-dim); padding: 0.15rem 0.5rem;
+    background: var(--blue-glow);
+  }
+  .la-title-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.95rem; font-weight: 600;
+    color: var(--white); text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .la-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: var(--rule);
+  }
+  .la-cell {
+    background: var(--panel); padding: 1.4rem 1.6rem;
+    position: relative;
+  }
+  .la-cell::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; bottom: 0; width: 2px;
+  }
+  .la-a::before { background: var(--blue); }
+  .la-b::before { background: var(--purple); }
+  .la-cell h3 { margin-bottom: 0.6rem; }
+  .la-a h3 { color: var(--blue); }
+  .la-b h3 { color: var(--purple); }
+  .la-cell p { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+
+  /* ══ NAV FOOTER ══ */
+  .nav-footer {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 4rem; padding-top: 2rem;
+    border-top: 1px solid var(--rule); flex-wrap: wrap; gap: 1rem;
+  }
+  .nav-btn {
+    display: inline-flex; align-items: center; gap: 0.75rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.85rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--void); background: var(--blue);
+    text-decoration: none; padding: 0.75rem 1.6rem; border: none; cursor: pointer;
+    transition: background 0.15s;
+  }
+  .nav-btn:hover { background: var(--cyan); }
+  .nav-btn.secondary {
+    background: none; color: var(--muted); border: 1px solid var(--rule);
+  }
+  .nav-btn.secondary:hover { color: var(--ash); background: var(--slab); }
+  .nav-btn svg { width: 16px; height: 16px; }
+
+  @media (max-width: 760px) {
+    .page-header { padding: 1.5rem; }
+    .page-wrap { padding: 0 1.25rem 4rem; }
+    .recap-grid { grid-template-columns: 1fr 1fr; }
+    .debate-grid { grid-template-columns: 1fr; }
+    .la-grid { grid-template-columns: 1fr; }
+    .vote-buttons { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ PAGE HEADER ══ -->
+<div class="page-header">
+  <div>
+    <div class="ph-eyebrow">ENC 1102 · Module Seven · Wrap-Up Analysis</div>
+    <div class="ph-title">Minority Report — <span>Synthesis</span></div>
+  </div>
+  <div class="ph-right">
+    Post-Screening Discussion<br>
+    All six pause points complete
+  </div>
+</div>
+
+<main class="page-wrap">
+
+  <!-- ══ RECAP ══ -->
+  <section>
+    <div class="section-head">
+      <span class="section-id">WRAP·01</span>
+      <h2>What We Found: Pause Point Recap</h2>
+    </div>
+    <p>Across six pause points, you identified six different dystopian concepts operating in <em>Minority Report</em>. Here's the complete map of what you found — and why each one matters to the film's larger argument.</p>
+
+    <div class="recap-grid">
+      <div class="recap-card rc1">
+        <span class="recap-ts">0:08 — Opening Arrest</span>
+        <div class="recap-card-title">Freedom Restricted</div>
+        <div class="recap-finding">CHAR·02</div>
+        <p>The arrest of a man who has not acted is the film's first and clearest statement: PreCrime restricts freedom at its most fundamental level — the freedom to choose, or not choose, to act.</p>
+      </div>
+      <div class="recap-card rc2">
+        <span class="recap-ts">0:32 — Personalized Ads</span>
+        <div class="recap-card-title">Tech + Corporate Control</div>
+        <div class="recap-finding">Types 01 + 03</div>
+        <p>Retinal commerce is not a government program — it's a corporate one using state surveillance infrastructure. The film blurs the line between public safety technology and private profit deliberately.</p>
+      </div>
+      <div class="recap-card rc3">
+        <span class="recap-ts">0:58 — Hall of Souls</span>
+        <div class="recap-card-title">Dehumanization</div>
+        <div class="recap-finding">CHAR·06</div>
+        <p>The containment facility is the system's hidden cost made visible. People stored, not imprisoned. Alive, but not living. The system's "clean" public face depends on this being unseen.</p>
+      </div>
+      <div class="recap-card rc4">
+        <span class="recap-ts">1:18 — Anderton's Card</span>
+        <div class="recap-card-title">Trapped Protagonist</div>
+        <div class="recap-finding">TRAIT·01</div>
+        <p>The machinery Anderton built has no appeals process, no internal correction mechanism. He is trapped not by a tyrant but by a system that has no provision for its own error.</p>
+      </div>
+      <div class="recap-card rc5">
+        <span class="recap-ts">1:35 — Spider-Bots</span>
+        <div class="recap-card-title">Total Surveillance</div>
+        <div class="recap-finding">CHAR·04</div>
+        <p>Surveillance so complete that the only escape is biological identity replacement. The body becomes the site of state control — you cannot opt out of being visible to the system.</p>
+      </div>
+      <div class="recap-card rc6">
+        <span class="recap-ts">1:52 — Burgess Revealed</span>
+        <div class="recap-card-title">Illusion of Utopia</div>
+        <div class="recap-finding">CHAR·09</div>
+        <p>The film's definitive statement: the perfect crime-prevention system was founded on the crime it claimed to prevent. The utopia was always an illusion — maintained by the very violence it promised to end.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ══ FULL-WIDTH STILL ══ -->
+  <div style="margin: 2rem 0;">
+    <div class="img-ph" style="aspect-ratio: 21/7;">
+      <div class="img-ph-text">
+        <span class="ph-t">Full-Width Cinematic Still — Synthesis Image</span>
+        <span class="ph-s">Suggested: the precogs being freed at the end / wide establishing shot of 2054 Washington D.C.</span>
+        This image should capture the film's resolution — either the release of the precogs or a final wide shot that puts the entire dystopian world in frame
+      </div>
+    </div>
+    <div class="img-cap">Minority Report · Final Act · Suggested synthesis still</div>
+  </div>
+
+  <div class="rule"></div>
+
+  <!-- ══ MAPPING MATRIX ══ -->
+  <section>
+    <div class="section-head">
+      <span class="section-id">WRAP·02</span>
+      <h2>Scene-to-Concept Mapping Matrix</h2>
+    </div>
+    <p>Most scenes in <em>Minority Report</em> operate on multiple dystopian registers simultaneously. The matrix below maps six key scenes to every concept they illustrate — showing how the film layers its argument rather than making it one point at a time.</p>
+
+    <div class="matrix-wrap">
+      <table class="matrix-table">
+        <thead>
+          <tr>
+            <th>Scene</th>
+            <th>Characteristics Present</th>
+            <th>Control Type(s)</th>
+            <th>Protagonist Trait</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="matrix-scene">PreCrime Arrest<br><span style="font-weight:300; font-size:0.75rem; color:var(--muted); text-transform:none; letter-spacing:0;">~0:08</span></span></td>
+            <td>
+              <span class="matrix-tag tag-free">Freedom Restricted</span>
+              <span class="matrix-tag tag-surv">Surveillance</span>
+            </td>
+            <td><span class="matrix-tag tag-tech">Technological</span><span class="matrix-tag tag-corp">Bureaucratic</span></td>
+            <td style="font-size:0.8rem; color:var(--muted);">TRAIT·04 — We see PreCrime through Anderton's believing eyes; his trust is our trust</td>
+          </tr>
+          <tr>
+            <td><span class="matrix-scene">Personalized Ads<br><span style="font-weight:300; font-size:0.75rem; color:var(--muted); text-transform:none; letter-spacing:0;">~0:32</span></span></td>
+            <td>
+              <span class="matrix-tag tag-surv">Surveillance</span>
+              <span class="matrix-tag tag-utop">Illusion of Utopia</span>
+            </td>
+            <td><span class="matrix-tag tag-tech">Technological</span><span class="matrix-tag tag-corp">Corporate</span></td>
+            <td style="font-size:0.8rem; color:var(--muted);">TRAIT·04 — Anderton doesn't react; normalization of surveillance shown through protagonist's indifference</td>
+          </tr>
+          <tr>
+            <td><span class="matrix-scene">Hall of Souls<br><span style="font-weight:300; font-size:0.75rem; color:var(--muted); text-transform:none; letter-spacing:0;">~0:58</span></span></td>
+            <td>
+              <span class="matrix-tag tag-dehu">Dehumanization</span>
+              <span class="matrix-tag tag-utop">Illusion of Utopia</span>
+            </td>
+            <td><span class="matrix-tag tag-tech">Technological</span><span class="matrix-tag tag-corp">Bureaucratic</span></td>
+            <td style="font-size:0.8rem; color:var(--muted);">TRAIT·03 — First scene where Anderton shows visible discomfort with the system</td>
+          </tr>
+          <tr>
+            <td><span class="matrix-scene">Anderton's Card<br><span style="font-weight:300; font-size:0.75rem; color:var(--muted); text-transform:none; letter-spacing:0;">~1:18</span></span></td>
+            <td>
+              <span class="matrix-tag tag-free">Freedom Restricted</span>
+              <span class="matrix-tag tag-utop">Illusion of Utopia</span>
+            </td>
+            <td><span class="matrix-tag tag-tech">Technological</span><span class="matrix-tag tag-corp">Bureaucratic</span></td>
+            <td style="font-size:0.8rem; color:var(--muted);">TRAIT·01 — Entrapment becomes concrete and personal; TRAIT·02 — first genuine system doubt</td>
+          </tr>
+          <tr>
+            <td><span class="matrix-scene">Spider-Bots<br><span style="font-weight:300; font-size:0.75rem; color:var(--muted); text-transform:none; letter-spacing:0;">~1:35</span></span></td>
+            <td>
+              <span class="matrix-tag tag-surv">Surveillance</span>
+              <span class="matrix-tag tag-dehu">Dehumanization</span>
+            </td>
+            <td><span class="matrix-tag tag-tech">Technological</span></td>
+            <td style="font-size:0.8rem; color:var(--muted);">TRAIT·01 — Anderton's body is the fugitive; surveillance makes identity itself a liability</td>
+          </tr>
+          <tr>
+            <td><span class="matrix-scene">Burgess Revealed<br><span style="font-weight:300; font-size:0.75rem; color:var(--muted); text-transform:none; letter-spacing:0;">~1:52</span></span></td>
+            <td>
+              <span class="matrix-tag tag-utop">Illusion of Utopia</span>
+              <span class="matrix-tag tag-free">Freedom Restricted</span>
+              <span class="matrix-tag tag-dehu">Dehumanization</span>
+            </td>
+            <td><span class="matrix-tag tag-tech">Technological</span><span class="matrix-tag tag-corp">Bureaucratic</span></td>
+            <td style="font-size:0.8rem; color:var(--muted);">TRAIT·02 + TRAIT·03 fully realized — Anderton sees the system clearly and the audience sees it through him</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ══ PRECRIME ON TRIAL — DEBATE ACTIVITY ══ -->
+  <div class="debate-section">
+    <div class="debate-header">
+      <span class="debate-badge">Class Activity</span>
+      <span class="debate-title-text">PreCrime on Trial — Whole-Class Discussion</span>
+    </div>
+    <div class="debate-body">
+      <div class="debate-question">
+        If PreCrime <span class="q-accent">actually worked</span> —<br>
+        if the predictions were always correct —<br>
+        would the system be <span class="q-accent">just</span>?
+      </div>
+
+      <p style="margin-bottom:1.4rem; font-size:0.9rem; color:var(--muted);">
+        The film doesn't ask whether PreCrime is flawed — it is, and the minority report proves it. The harder question is: <strong style="color:var(--ash);">what if it weren't?</strong> If you could guarantee the prediction was always accurate, does pre-emptive arrest become defensible? The arguments on both sides are serious. Which is stronger?
+      </p>
+
+      <div class="debate-grid">
+        <div class="debate-side side-yes">
+          <span class="side-label">Argument for PreCrime</span>
+          <div class="side-title">The System Is Just</div>
+          <div class="argument-list">
+            <div class="argument-item">The murder victim is a real person whose death is being prevented. Their rights matter too.</div>
+            <div class="argument-item">If the prediction is guaranteed accurate, the crime <em>will</em> happen — the future criminal is already, in some sense, a murderer.</div>
+            <div class="argument-item">Society has always punished preparation and intent: conspiracy, attempted murder, and planning are crimes before any act occurs.</div>
+            <div class="argument-item">The utilitarian calculus is clear: one person's liberty is outweighed by another's life.</div>
+          </div>
+        </div>
+        <div class="debate-side side-no">
+          <span class="side-label">Argument against PreCrime</span>
+          <div class="side-title">The System Is Unjust</div>
+          <div class="argument-list">
+            <div class="argument-item">Punishing someone for an act they have not yet committed violates the most fundamental principle of justice: you cannot be guilty of something you did not do.</div>
+            <div class="argument-item">Free will is non-negotiable: if a person can choose differently than predicted, the prediction is a probability, not a certainty — and probabilities cannot justify imprisonment.</div>
+            <div class="argument-item">Who controls the system determines what it sees. A "perfect" prediction engine is only as trustworthy as the people running it — as Burgess proves.</div>
+            <div class="argument-item">The cost falls on the precogs: three human beings permanently enslaved to make others safe. No utilitarian calculus makes this acceptable.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="vote-area">
+        <span class="vote-label">Class Vote — Where does the room stand?</span>
+        <div class="vote-buttons">
+          <button class="vote-btn yes-btn" id="voteYes" onclick="castVote('yes')">
+            PreCrime Would Be Just
+          </button>
+          <button class="vote-btn no-btn" id="voteNo" onclick="castVote('no')">
+            PreCrime Would Still Be Unjust
+          </button>
+        </div>
+        <div class="vote-result" id="voteResult"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+
+  <!-- ══ LOOKING AHEAD ══ -->
+  <section>
+    <div class="section-head">
+      <span class="section-id">WRAP·03</span>
+      <h2>Looking Ahead: Your Own Film</h2>
+    </div>
+    <p>The analytical work you've done with <em>Minority Report</em> is the template for the assignment ahead. For your own chosen film, you'll apply the same set of lenses — characteristics, control types, protagonist traits — to a work you select independently. Here's how today's work connects to that.</p>
+
+    <div class="looking-ahead">
+      <div class="la-header">
+        <span class="la-tag">From Today → Your Essay</span>
+        <span class="la-title-text">The Minority Report Lenses Applied to Your Film</span>
+      </div>
+      <div class="la-grid">
+        <div class="la-cell la-a">
+          <h3>What You Did Today</h3>
+          <p>You identified specific dystopian characteristics operating in specific scenes. You mapped control types to moments in the narrative. You tracked Anderton across the four protagonist traits. You considered the film's central ethical question as an argument — not just a plot point.</p>
+          <p>Each of these is an analytical move. Each one is transferable.</p>
+        </div>
+        <div class="la-cell la-b">
+          <h3>What You'll Do for Your Essay</h3>
+          <p>Select a dystopian film you want to analyze. Identify which characteristics, control types, and protagonist traits are most central to <em>its</em> argument. Find secondary sources — film criticism, dystopian theory — that give you scholarly language for what you're seeing. Make an argument about what the film is saying about the world it came from.</p>
+          <p>The lenses are the same. The film is yours to choose.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ NAV ══ -->
+  <nav class="nav-footer">
+    <a href="minority-report-screening.html" class="nav-btn secondary">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Back to Screening
+    </a>
+    <a href="minority-report-installation.html" class="nav-btn secondary">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Back to Installation
+    </a>
+  </nav>
+
+</main>
+
+<script>
+  let votes = { yes: 0, no: 0 };
+  let voted = false;
+
+  function castVote(side) {
+    if (voted) return;
+    voted = true;
+    votes[side]++;
+    document.getElementById('voteYes').disabled = true;
+    document.getElementById('voteNo').disabled  = true;
+    document.getElementById('voteYes').classList.toggle('voted', side === 'yes');
+    document.getElementById('voteNo').classList.toggle('voted',  side === 'no');
+
+    const result = document.getElementById('voteResult');
+    result.classList.add('visible');
+    result.innerHTML = `
+      <span class="vr-label">Class Position Recorded</span>
+      This is the question <em>Minority Report</em> is built to make unanswerable — and the fact that the room is divided (or unanimous) is itself worth discussing. The film's ending is deliberately unsatisfying: PreCrime is shut down, murders resume, and the precogs are hidden away on an island. Spielberg does not let us have the clean resolution. He leaves us with the question, not the answer.
+      <br><br>
+      <strong>For your essay:</strong> Whatever position you took just now — hold it. Then apply it to the film you've selected. Does <em>your</em> film present its dystopian system as something that could be reformed, or something that must be dismantled entirely? That's an argument worth making.
+    `;
+  }
+</script>
+</body>
+</html>

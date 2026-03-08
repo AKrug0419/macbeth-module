@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minority Report — The Installation | ENC 1102 Module Seven</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=Barlow:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --void:       #06080a;
+    --deep:       #0a0e12;
+    --slab:       #111620;
+    --panel:      #161c28;
+    --surface:    #1e2635;
+    --rule:       #2a3545;
+    --mid:        #445566;
+    --muted:      #6a7f96;
+    --ash:        #9ab0c4;
+    --light:      #c8d8e8;
+    --white:      #e4eef6;
+    --ice:        #a8d4f0;
+    --blue:       #1a8fff;
+    --blue-dim:   #0a4a88;
+    --blue-glow:  rgba(26,143,255,0.10);
+    --cyan:       #00e5ff;
+    --cyan-dim:   rgba(0,229,255,0.08);
+    --amber:      #ffaa00;
+    --amber-dim:  rgba(255,170,0,0.10);
+    --warn:       #ff4444;
+    --warn-dim:   rgba(255,68,68,0.10);
+    --grid:       rgba(26,143,255,0.04);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--void);
+    color: var(--ash);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  /* Holographic grid — blue tint for MR aesthetic */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 56px 56px;
+    pointer-events: none; z-index: 0;
+  }
+
+  /* ══ CINEMATIC HERO ══ */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  /* Full-bleed still placeholder — fills entire hero */
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: var(--deep);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-bg-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.6rem; color: var(--mid);
+    letter-spacing: 0.2em; text-transform: uppercase;
+    text-align: center; line-height: 2.2;
+  }
+  .hero-bg-label .ph-main  { display: block; font-size: 0.75rem; color: var(--muted); margin-bottom: 0.3rem; }
+  .hero-bg-label .ph-sub   { display: block; color: var(--blue); font-size: 0.65rem; }
+
+  /* Dramatic gradient overlay — fades still into content */
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(to bottom,
+        rgba(6,8,10,0.2) 0%,
+        rgba(6,8,10,0.1) 30%,
+        rgba(6,8,10,0.7) 65%,
+        rgba(6,8,10,1.0) 100%),
+      radial-gradient(ellipse at 30% 60%, rgba(26,143,255,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  /* Scanning light effect */
+  .hero-scan {
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, transparent 0%, var(--blue) 50%, transparent 100%);
+    animation: heroscan 6s ease-in-out infinite;
+    opacity: 0.3;
+  }
+  @keyframes heroscan {
+    0%   { top: 0%;   opacity: 0; }
+    5%   { opacity: 0.3; }
+    95%  { opacity: 0.3; }
+    100% { top: 100%; opacity: 0; }
+  }
+
+  /* Top-left PreCrime logo area */
+  .hero-badge {
+    position: absolute;
+    top: 2.5rem; left: 3rem;
+    z-index: 2;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .precrime-logo {
+    width: 48px; height: 48px;
+    border: 1px solid rgba(26,143,255,0.4);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .precrime-logo::before {
+    content: '';
+    position: absolute; inset: 4px;
+    border: 1px solid rgba(26,143,255,0.2);
+    border-radius: 50%;
+  }
+  .precrime-logo::after {
+    content: '⬡';
+    font-size: 1.1rem; color: rgba(26,143,255,0.5);
+  }
+  .hero-badge-text {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.58rem; color: var(--blue);
+    letter-spacing: 0.2em; text-transform: uppercase;
+    line-height: 1.8;
+  }
+  .hero-badge-text span { display: block; color: var(--mid); font-size: 0.52rem; }
+
+  /* Top-right classification stamp */
+  .hero-classified {
+    position: absolute;
+    top: 2.5rem; right: 3rem;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.55rem; color: rgba(255,68,68,0.5);
+    letter-spacing: 0.25em; text-transform: uppercase;
+    border: 1px solid rgba(255,68,68,0.25);
+    padding: 0.3rem 0.7rem;
+    transform: rotate(2deg);
+    z-index: 2;
+  }
+
+  /* Main title block */
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 0 4rem 5rem;
+  }
+  .hero-eyebrow {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.62rem; letter-spacing: 0.25em;
+    color: var(--blue); margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .hero-eyebrow::before { content: '▶'; font-size: 0.45rem; }
+
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(4rem, 12vw, 10rem);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 0.88;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    text-shadow: 0 0 80px rgba(26,143,255,0.3);
+  }
+  .hero h1 .dim    { color: var(--mid); font-weight: 300; display: block; font-size: 0.45em; letter-spacing: 0.05em; margin-bottom: 0.2em; }
+  .hero h1 .accent { color: var(--blue); }
+
+  .hero-meta {
+    display: flex; align-items: center; gap: 2rem;
+    margin-top: 1.8rem; flex-wrap: wrap;
+  }
+  .hero-meta-item {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.6rem; color: var(--muted);
+    letter-spacing: 0.15em; text-transform: uppercase;
+    line-height: 1.8;
+  }
+  .hero-meta-item strong { display: block; color: var(--ice); font-size: 0.72rem; font-weight: 400; }
+  .hero-meta-divider { width: 1px; height: 32px; background: var(--rule); }
+
+  .hero-bar {
+    width: 100%; height: 1px;
+    background: linear-gradient(90deg, var(--blue), var(--rule), transparent);
+    margin-top: 2rem;
+  }
+
+  /* ══ LAUNCH BUTTON ══ */
+  .launch-wrap {
+    margin-top: 2rem;
+    display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+  }
+  .launch-btn {
+    display: inline-flex; align-items: center; gap: 0.8rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--void); background: var(--blue);
+    text-decoration: none; padding: 0.9rem 2rem;
+    border: none; cursor: pointer;
+    transition: background 0.15s;
+    position: relative; overflow: hidden;
+  }
+  .launch-btn::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.4s;
+  }
+  .launch-btn:hover::before { transform: translateX(100%); }
+  .launch-btn:hover { background: var(--cyan); }
+  .launch-note {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.58rem; color: var(--mid);
+    letter-spacing: 0.12em; text-transform: uppercase;
+    line-height: 1.8;
+  }
+
+  /* ══ LAYOUT ══ */
+  .page-wrap {
+    max-width: 1060px; margin: 0 auto;
+    padding: 0 3rem 6rem;
+    position: relative; z-index: 1;
+  }
+
+  /* ══ SECTION HEADER ══ */
+  .section-head {
+    display: flex; align-items: baseline; gap: 1.5rem;
+    margin-bottom: 1.4rem; margin-top: 4rem;
+  }
+  .section-id {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.56rem; color: var(--blue);
+    letter-spacing: 0.15em; white-space: nowrap;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid var(--blue-dim);
+    background: var(--blue-glow); flex-shrink: 0;
+  }
+  h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.8rem; font-weight: 700;
+    color: var(--white); text-transform: uppercase;
+    letter-spacing: 0.04em; line-height: 1;
+  }
+  h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem; font-weight: 600;
+    color: var(--blue); text-transform: uppercase;
+    letter-spacing: 0.12em; margin-bottom: 0.5rem;
+  }
+  p  { margin-bottom: 1rem; color: var(--ash); }
+  p:last-child { margin-bottom: 0; }
+  em { color: var(--light); font-style: italic; }
+  strong { color: var(--light); font-weight: 500; }
+
+  /* ══ RULE ══ */
+  .rule {
+    height: 1px;
+    background: linear-gradient(90deg, var(--blue-dim), transparent);
+    margin: 3rem 0; position: relative;
+  }
+  .rule::before {
+    content: '//'; position: absolute; left: 0; top: -10px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.6rem; color: var(--mid); letter-spacing: 0.1em;
+  }
+
+  /* ══ IMAGE PLACEHOLDER ══ */
+  .img-ph {
+    background: var(--slab); border: 1px solid var(--rule);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    position: relative; overflow: hidden; min-height: 160px;
+  }
+  .img-ph::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(26,143,255,0.04) 0%, transparent 60%);
+  }
+  .img-ph-text {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.56rem; color: var(--mid);
+    letter-spacing: 0.14em; text-transform: uppercase;
+    text-align: center; line-height: 2;
+    position: relative; z-index: 1; padding: 1.2rem;
+  }
+  .img-ph-text .ph-t { display: block; font-size: 0.68rem; color: var(--muted); margin-bottom: 0.15rem; }
+  .img-ph-text .ph-s { display: block; color: var(--blue); font-size: 0.6rem; }
+  .img-cap {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.54rem; color: var(--mid);
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.4rem 0.75rem;
+    border-top: 1px solid var(--rule);
+    background: var(--deep); line-height: 1.5;
+  }
+
+  /* ══ SYNOPSIS LAYOUT ══ */
+  .synopsis-grid {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 2rem; align-items: start;
+    margin: 1.5rem 0;
+  }
+  .synopsis-still .img-ph { aspect-ratio: 2/3; } /* poster ratio */
+
+  /* ══ CONTEXT PANELS ══ */
+  .context-panels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px; background: var(--rule);
+    border: 1px solid var(--rule); margin: 1.5rem 0;
+  }
+  .ctx-panel {
+    background: var(--panel); padding: 1.6rem 1.8rem;
+    position: relative;
+  }
+  .ctx-panel::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+  }
+  .ctx-a::before { background: var(--blue); }
+  .ctx-b::before { background: var(--amber); }
+  .ctx-c::before { background: var(--warn); }
+  .ctx-d::before { background: var(--cyan); }
+  .ctx-panel h3 { margin-bottom: 0.6rem; }
+  .ctx-a h3 { color: var(--blue); }
+  .ctx-b h3 { color: var(--amber); }
+  .ctx-c h3 { color: var(--warn); }
+  .ctx-d h3 { color: var(--cyan); }
+  .ctx-panel p { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+
+  /* ══ WATCH FOR GRID ══ */
+  .watchfor-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--rule);
+    border: 1px solid var(--rule); margin: 1.5rem 0;
+  }
+  .wf-card {
+    background: var(--panel); padding: 1.4rem 1.5rem;
+    position: relative;
+  }
+  .wf-num {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.56rem; color: var(--blue);
+    letter-spacing: 0.18em; margin-bottom: 0.5rem; display: block;
+  }
+  .wf-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem; font-weight: 700;
+    color: var(--white); text-transform: uppercase;
+    letter-spacing: 0.05em; margin-bottom: 0.5rem; line-height: 1.1;
+  }
+  .wf-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.55; margin-bottom: 0; }
+
+  /* ══ PRECRIME DOSSIER — full-width cinematic strip ══ */
+  .dossier-strip {
+    margin: 2.5rem 0;
+    border: 1px solid var(--rule);
+    background: var(--panel);
+    position: relative; overflow: hidden;
+  }
+  .dossier-strip::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--blue), var(--cyan), transparent);
+  }
+  .dossier-header {
+    padding: 0.9rem 1.5rem;
+    border-bottom: 1px solid var(--rule);
+    display: flex; align-items: center; gap: 1rem;
+    background: var(--slab);
+  }
+  .dossier-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.54rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--blue);
+    border: 1px solid var(--blue-dim);
+    padding: 0.15rem 0.5rem; background: var(--blue-glow);
+  }
+  .dossier-title-text {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.95rem; font-weight: 600;
+    color: var(--white); text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .dossier-body {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--rule);
+  }
+  .dossier-cell {
+    background: var(--panel); padding: 0;
+    display: flex; flex-direction: column;
+  }
+  .dossier-cell .img-ph { aspect-ratio: 16/10; border: none; }
+  .dossier-cell-info {
+    padding: 0.9rem 1rem;
+    border-top: 1px solid var(--rule);
+  }
+  .dossier-char {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem; font-weight: 700;
+    color: var(--white); text-transform: uppercase;
+    letter-spacing: 0.06em; margin-bottom: 0.15rem;
+  }
+  .dossier-actor {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.56rem; color: var(--blue);
+    letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.4rem;
+  }
+  .dossier-cell-info p { font-size: 0.8rem; color: var(--muted); margin-bottom: 0; line-height: 1.5; }
+
+  /* ══ PAUSE POINTS PREVIEW ══ */
+  .pause-preview {
+    margin: 1.5rem 0;
+    border: 1px solid var(--rule);
+    overflow: hidden;
+  }
+  .pause-preview-header {
+    padding: 0.8rem 1.2rem;
+    background: var(--slab);
+    border-bottom: 1px solid var(--rule);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.58rem; color: var(--blue);
+    letter-spacing: 0.18em; text-transform: uppercase;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .pause-preview-header::before { content: '⏸'; font-size: 0.7rem; }
+  .pause-list {
+    display: flex; flex-direction: column;
+  }
+  .pause-item {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    border-bottom: 1px solid var(--rule);
+  }
+  .pause-item:last-child { border-bottom: none; }
+  .pause-ts {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.68rem; color: var(--cyan);
+    letter-spacing: 0.1em;
+    padding: 0.8rem 0.8rem 0.8rem 1.2rem;
+    border-right: 1px solid var(--rule);
+    display: flex; align-items: center;
+    background: var(--panel);
+  }
+  .pause-desc {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.84rem; color: var(--muted); line-height: 1.5;
+    display: flex; align-items: center;
+  }
+  .pause-desc strong { color: var(--ash); font-weight: 400; }
+
+  /* ══ NAV FOOTER ══ */
+  .nav-footer {
+    display: flex; justify-content: flex-end;
+    margin-top: 4rem; padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+  }
+  .nav-btn {
+    display: inline-flex; align-items: center; gap: 0.75rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.85rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--void); background: var(--blue);
+    text-decoration: none; padding: 0.75rem 1.6rem;
+    border: none; cursor: pointer;
+    transition: background 0.15s;
+  }
+  .nav-btn:hover { background: var(--cyan); }
+  .nav-btn svg { width: 16px; height: 16px; }
+
+  @media (max-width: 760px) {
+    .hero-content { padding: 0 1.5rem 3rem; }
+    .page-wrap { padding: 0 1.25rem 4rem; }
+    .synopsis-grid { grid-template-columns: 1fr; }
+    .context-panels { grid-template-columns: 1fr; }
+    .watchfor-grid { grid-template-columns: 1fr 1fr; }
+    .dossier-body { grid-template-columns: 1fr; }
+    .hero-badge, .hero-classified { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ CINEMATIC HERO ══ -->
+<header class="hero">
+  <div class="hero-bg">
+    <div class="hero-bg-label">
+      <span class="ph-main">Full-Bleed Hero Still — 100vh</span>
+      <span class="ph-sub">Suggested: Anderton at the holographic PreCrime display / gesture interface</span>
+      The blue-lit gesture sequence is the film's most iconic image — establishes technology + surveillance immediately
+    </div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-scan"></div>
+
+  <div class="hero-badge">
+    <div class="precrime-logo"></div>
+    <div class="hero-badge-text">
+      PreCrime Division
+      <span>Washington D.C. · 2054</span>
+    </div>
+  </div>
+
+  <div class="hero-classified">Classified // PreCrime</div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">ENC 1102 &nbsp;·&nbsp; Module Seven &nbsp;·&nbsp; Dystopian Cinema</p>
+    <h1>
+      <span class="dim">Steven Spielberg's</span>
+      Minority<br><span class="accent">Report</span>
+    </h1>
+    <div class="hero-meta">
+      <div class="hero-meta-item">Director<strong>Steven Spielberg</strong></div>
+      <div class="hero-meta-divider"></div>
+      <div class="hero-meta-item">Year<strong>2002</strong></div>
+      <div class="hero-meta-divider"></div>
+      <div class="hero-meta-item">Runtime<strong>145 min</strong></div>
+      <div class="hero-meta-divider"></div>
+      <div class="hero-meta-item">Source<strong>Philip K. Dick, 1956</strong></div>
+      <div class="hero-meta-divider"></div>
+      <div class="hero-meta-item">Control Type<strong>Technological + Bureaucratic</strong></div>
+    </div>
+    <div class="hero-bar"></div>
+    <div class="launch-wrap">
+      <a href="https://www.amazon.com/gp/video/detail/B001UV4YNA" target="_blank" class="launch-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        Launch Film on Prime Video
+      </a>
+      <div class="launch-note">
+        Opens Amazon Prime Video in a new tab<br>
+        Runtime: 145 min · Rated PG-13
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="page-wrap">
+
+  <!-- ══ SYNOPSIS ══ -->
+  <section>
+    <div class="section-head">
+      <span class="section-id">FILE·01</span>
+      <h2>Case File: Synopsis</h2>
+    </div>
+
+    <div class="synopsis-grid">
+      <div>
+        <p>Washington D.C., 2054. The PreCrime Division has eliminated murder in the capital — not by solving crimes after the fact, but by arresting killers before they act, using the visions of three psychic "precogs" who can see the future. Chief John Anderton is PreCrime's most dedicated officer, a true believer in the system he helped build.</p>
+        <p>Then the precogs see Anderton himself committing a murder — of a man he has never met — in 36 hours. Anderton runs. And in running, he begins to discover the system's hidden architecture: what it suppresses, what it conceals, and what it costs.</p>
+        <p>Based on Philip K. Dick's 1956 short story, Spielberg's film operates on two registers simultaneously: as a propulsive thriller and as a serious interrogation of pre-emptive justice, free will, and the ethics of surveillance. It is one of the most analytically rich dystopian films ever made — and one of the most visually inventive.</p>
+        <div style="margin-top:1.2rem; padding: 1rem 1.4rem; border-left: 3px solid var(--blue); background: var(--panel); font-size:0.88rem; color: var(--muted); line-height:1.65;">
+          <strong style="color:var(--blue); font-family:'Share Tech Mono',monospace; font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; display:block; margin-bottom:0.4rem;">The Central Question</strong>
+          Can a system built on predicting the future ever be just — if the future isn't fixed? And who controls what the system sees?
+        </div>
+      </div>
+      <div class="synopsis-still">
+        <div class="img-ph">
+          <div class="img-ph-text">
+            <span class="ph-t">Film Poster or Key Art</span>
+            <span class="ph-s">Minority Report · 2002 · DreamWorks</span>
+            Suggested: official poster or Anderton eye-scan image
+          </div>
+        </div>
+        <div class="img-cap">Minority Report · Spielberg · 2002</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ══ CONTEXT PANELS ══ -->
+  <section>
+    <div class="section-head">
+      <span class="section-id">FILE·02</span>
+      <h2>Context: Why This Film</h2>
+    </div>
+    <p>Before the film begins, four pieces of context will sharpen what you see on screen.</p>
+
+    <div class="context-panels">
+      <div class="ctx-panel ctx-a">
+        <h3>Philip K. Dick</h3>
+        <p>Dick's 1956 story asked a simple, devastating question: if a man is arrested for a murder he hasn't committed yet, is he a murderer? The story's answer — and Spielberg's — is that the question cannot be resolved without dismantling the system built around it. Dick spent his career writing fiction about the nature of reality and the reliability of perception; <em>Minority Report</em> is one of his most structurally precise thought experiments.</p>
+      </div>
+      <div class="ctx-panel ctx-b">
+        <h3>Post-9/11 America</h3>
+        <p>Released in June 2002 — nine months after the September 11 attacks — the film landed in a country actively debating pre-emptive military action, warrantless surveillance, and the ethics of detaining people based on predicted future behavior. Spielberg had been developing the film for years, but its timing made it feel like prophecy. The USA PATRIOT Act had been signed seven months earlier.</p>
+      </div>
+      <div class="ctx-panel ctx-c">
+        <h3>Precrime as a System</h3>
+        <p>The film's genius is that PreCrime is <em>not</em> a cynical operation — it genuinely works. Murder has been eliminated. The people running it believe in it. This is the hallmark of a well-constructed dystopia: the system presents itself as the solution to human suffering, and the solution is real enough that dismantling it carries a genuine cost. Anderton is not fighting a monster; he is fighting something he helped build and still partly believes in.</p>
+      </div>
+      <div class="ctx-panel ctx-d">
+        <h3>The Precogs</h3>
+        <p>Agatha, Arthur, and Dashiell are three human beings kept permanently sedated in a flotation tank, their visions harvested by the state as raw data. They are the system's most extreme dehumanization: people reduced entirely to function, stripped of identity, autonomy, and consciousness. The film asks whether any system that requires this kind of sacrifice can be called just — even if it works.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ══ WHAT TO WATCH FOR ══ -->
+  <section>
+    <div class="section-head">
+      <span class="section-id">FILE·03</span>
+      <h2>What to Watch For</h2>
+    </div>
+    <p>As you screen the film, keep these six analytical threads in mind. Each one will be the focus of a pause-point discussion.</p>
+
+    <div class="watchfor-grid">
+      <div class="wf-card">
+        <span class="wf-num">THREAD·01</span>
+        <p class="wf-title">Surveillance Everywhere</p>
+        <p>Count the eyes in this film. Retinal scanners, spider-bots, the precogs themselves — the film constructs a world in which every surface is a monitoring surface. Notice <em>who</em> controls the eyes and what they use them for.</p>
+      </div>
+      <div class="wf-card">
+        <span class="wf-num">THREAD·02</span>
+        <p class="wf-title">Personalized Advertising</p>
+        <p>The film's advertising sequence is one of cinema's most prescient moments — retinal scans that serve individualized ads as you walk through a mall. Watch it as a standalone dystopian image: what does it say about the relationship between surveillance and commerce?</p>
+      </div>
+      <div class="wf-card">
+        <span class="wf-num">THREAD·03</span>
+        <p class="wf-title">Anderton as Protagonist</p>
+        <p>Track the four dystopian protagonist traits as they apply to Anderton. When does he begin to feel trapped? When does he first genuinely question the system — rather than just trying to clear his name?</p>
+      </div>
+      <div class="wf-card">
+        <span class="wf-num">THREAD·04</span>
+        <p class="wf-title">Free Will vs. Determinism</p>
+        <p>The film's philosophical spine: if the future is predictable, can it be changed? Pay attention to every moment a character chooses differently than predicted — and what those moments cost.</p>
+      </div>
+      <div class="wf-card">
+        <span class="wf-num">THREAD·05</span>
+        <p class="wf-title">The Illusion of Utopia</p>
+        <p>PreCrime presents itself as a perfect solution — and is widely celebrated as one. Watch for the moments when the "perfect" surface cracks: the suppressed minority report, the Hall of Souls, the system's dependency on three people who had no choice.</p>
+      </div>
+      <div class="wf-card">
+        <span class="wf-num">THREAD·06</span>
+        <p class="wf-title">Who Pays the Cost</p>
+        <p>Identify the characters who bear the greatest cost of the PreCrime system. Are they the same people who benefit from it? This question — whose suffering is made invisible so others can feel safe — is the film's most persistent ethical provocation.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ══ CHARACTER DOSSIER ══ -->
+  <section>
+    <div class="section-head">
+      <span class="section-id">FILE·04</span>
+      <h2>Character Dossier</h2>
+    </div>
+
+    <div class="dossier-strip">
+      <div class="dossier-header">
+        <span class="dossier-tag">PreCrime // Personnel</span>
+        <span class="dossier-title-text">Key Figures — Minority Report (2002)</span>
+      </div>
+      <div class="dossier-body">
+
+        <div class="dossier-cell">
+          <div class="img-ph">
+            <div class="img-ph-text">
+              <span class="ph-t">John Anderton</span>
+              <span class="ph-s">Tom Cruise</span>
+              Suggested: Anderton at gesture interface
+            </div>
+          </div>
+          <div class="img-cap">John Anderton · Tom Cruise</div>
+          <div class="dossier-cell-info">
+            <div class="dossier-char">Chief John Anderton</div>
+            <div class="dossier-actor">Tom Cruise &nbsp;·&nbsp; PreCrime Chief</div>
+            <p>PreCrime's most decorated officer and its true believer. Grieving father, drug addict, and — according to the precogs — a murderer. The film's classic dystopian protagonist: a man whose trust in the system is dismantled by becoming its target.</p>
+          </div>
+        </div>
+
+        <div class="dossier-cell">
+          <div class="img-ph">
+            <div class="img-ph-text">
+              <span class="ph-t">Agatha</span>
+              <span class="ph-s">Samantha Morton</span>
+              Suggested: Agatha in the precog tank / wide-eyed vision
+            </div>
+          </div>
+          <div class="img-cap">Agatha · Samantha Morton</div>
+          <div class="dossier-cell-info">
+            <div class="dossier-char">Agatha</div>
+            <div class="dossier-actor">Samantha Morton &nbsp;·&nbsp; Lead Precog</div>
+            <p>The most powerful of the three precogs — and the one who holds the "minority report" that changes everything. She has seen the future so many times she cannot distinguish vision from memory. The system's most complete act of dehumanization.</p>
+          </div>
+        </div>
+
+        <div class="dossier-cell">
+          <div class="img-ph">
+            <div class="img-ph-text">
+              <span class="ph-t">Director Lamar Burgess</span>
+              <span class="ph-s">Max von Sydow</span>
+              Suggested: Burgess at press conference / with Anderton
+            </div>
+          </div>
+          <div class="img-cap">Lamar Burgess · Max von Sydow</div>
+          <div class="dossier-cell-info">
+            <div class="dossier-char">Director Lamar Burgess</div>
+            <div class="dossier-actor">Max von Sydow &nbsp;·&nbsp; PreCrime Director</div>
+            <p>PreCrime's architect and Anderton's mentor. A man who committed a crime to protect a system designed to prevent crime — and has spent years suppressing the evidence. His tragedy is that he genuinely believes in what he built.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ══ PAUSE POINTS PREVIEW ══ -->
+  <section>
+    <div class="section-head">
+      <span class="section-id">FILE·05</span>
+      <h2>Today's Pause Points</h2>
+    </div>
+    <p>The film will be paused six times for class analysis. Each pause corresponds to a key scene and a specific dystopian concept. Detailed activities are on the <strong style="color:var(--light);">During Screening</strong> page.</p>
+
+    <div class="pause-preview">
+      <div class="pause-preview-header">Scheduled Pause Points — Minority Report (2002)</div>
+      <div class="pause-list">
+        <div class="pause-item">
+          <div class="pause-ts">~0:08</div>
+          <div class="pause-desc"><strong>Opening Arrest &amp; Agatha's Vision</strong> — PreCrime in action; the precog system introduced</div>
+        </div>
+        <div class="pause-item">
+          <div class="pause-ts">~0:32</div>
+          <div class="pause-desc"><strong>The Eye Wall &amp; Personalized Ads</strong> — Surveillance commerce and the retinal economy</div>
+        </div>
+        <div class="pause-item">
+          <div class="pause-ts">~0:58</div>
+          <div class="pause-desc"><strong>The Hall of Souls</strong> — The containment facility; PreCrime's hidden cost</div>
+        </div>
+        <div class="pause-item">
+          <div class="pause-ts">~1:18</div>
+          <div class="pause-desc"><strong>Anderton's PreCrime Card</strong> — The system turns on its own architect</div>
+        </div>
+        <div class="pause-item">
+          <div class="pause-ts">~1:35</div>
+          <div class="pause-desc"><strong>Eye Replacement &amp; Spider-Bots</strong> — Bodily autonomy, identity, and surveillance technology</div>
+        </div>
+        <div class="pause-item">
+          <div class="pause-ts">~1:52</div>
+          <div class="pause-desc"><strong>Burgess Revealed &amp; The Ending</strong> — The system's founding crime; what justice looks like after PreCrime</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ NAV ══ -->
+  <nav class="nav-footer">
+    <a href="minority-report-screening.html" class="nav-btn">
+      Proceed to Screening
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </nav>
+
+</main>
+</body>
+</html>
