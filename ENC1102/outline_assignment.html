@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Literary Research Essay Outline Assignment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --sage:        #A8C5B0;
+    --sage-dark:   #2e4a35;
+    --sage-deep:   #1a3328;
+    --sage-light:  #eaf4eb;
+    --sage-mid:    #C8DFD0;
+    --slate:       #B8C8D0;
+    --slate-dark:  #2e3e4a;
+    --slate-light: #f0f6f9;
+    --plum:        #B8A8D0;
+    --plum-dark:   #3e2e5a;
+    --plum-light:  #f7f4fc;
+    --amber:       #E6C5B3;
+    --amber-dark:  #5a3e35;
+    --amber-light: #fff8f4;
+    --pink:        #D8B5C5;
+    --pink-dark:   #4a2e3e;
+    --pink-light:  #fdf2f6;
+    --warm:        #c8c4c0;
+    --warm-dark:   #3a3836;
+    --text:        #333;
+    --text-mid:    #555;
+    --text-light:  #777;
+    --border:      #e0e0e0;
+    --white:       #ffffff;
+    --radius:      10px;
+    --shadow-sm:   0 2px 8px rgba(0,0,0,0.06);
+    --shadow-md:   0 4px 20px rgba(0,0,0,0.10);
+    --transition:  0.22s ease;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #f7f8f6;
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  .page-wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 28px 60px;
+  }
+
+  /* ── HEADER ── */
+  .page-header {
+    background: linear-gradient(135deg, var(--sage) 0%, var(--sage-mid) 100%);
+    border-radius: var(--radius);
+    padding: 32px 40px;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-header::after {
+    content: '';
+    position: absolute;
+    right: -50px; top: -50px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.10);
+    pointer-events: none;
+  }
+  .page-header .eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--sage-dark);
+    margin-bottom: 10px;
+  }
+  .page-header h1 {
+    font-family: 'Lora', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--sage-deep);
+    margin-bottom: 8px;
+    line-height: 1.25;
+  }
+  .page-header .meta {
+    font-size: 14px;
+    color: var(--sage-dark);
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .meta-pill {
+    background: rgba(255,255,255,0.35);
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  /* ── SECTION CARDS ── */
+  .section-card {
+    background: var(--white);
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-sm);
+  }
+  .section-header {
+    padding: 13px 26px;
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .sh-green  { background: linear-gradient(135deg, var(--sage) 0%, var(--sage-mid) 100%);   color: var(--sage-deep); }
+  .sh-slate  { background: linear-gradient(135deg, var(--slate) 0%, #D0DFE8 100%);           color: var(--slate-dark); }
+  .sh-amber  { background: linear-gradient(135deg, var(--amber) 0%, #F0D7C8 100%);           color: var(--amber-dark); }
+  .sh-warm   { background: linear-gradient(135deg, var(--warm) 0%, #d8d4d0 100%);            color: var(--warm-dark); }
+  .sh-pink   { background: linear-gradient(135deg, var(--pink) 0%, #E8CED8 100%);            color: var(--pink-dark); }
+
+  .section-body { padding: 26px 32px; }
+
+  /* ── LEARNING OUTCOMES ── */
+  .outcomes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  @media (max-width: 680px) { .outcomes-grid { grid-template-columns: 1fr; } }
+  .outcome-item {
+    background: var(--sage-light);
+    border-left: 4px solid var(--sage);
+    border-radius: 0 6px 6px 0;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: #3a5e42;
+    line-height: 1.65;
+  }
+
+  /* ── STEP LIST ── */
+  .steps { display: flex; flex-direction: column; gap: 20px; }
+  .step  { display: flex; gap: 18px; align-items: flex-start; }
+  .step-badge {
+    background: linear-gradient(135deg, var(--sage) 0%, var(--sage-mid) 100%);
+    color: var(--sage-deep);
+    font-size: 14px;
+    font-weight: 600;
+    padding: 7px 16px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .step-content { flex: 1; }
+  .step-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  /* ── OUTLINE STRUCTURE BOX ── */
+  .outline-struct {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    background: var(--sage-light);
+    border: 2px solid var(--sage);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin-top: 12px;
+  }
+  @media (max-width: 620px) { .outline-struct { grid-template-columns: 1fr; } }
+  .struct-item { font-size: 12px; color: var(--sage-dark); line-height: 1.65; }
+  .struct-item strong { display: block; margin-bottom: 3px; font-size: 12px; }
+
+  /* ── SAMPLE OUTLINE CARD ── */
+  .sample-card {
+    background: var(--sage-light);
+    border: 2px solid var(--sage);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 12px;
+  }
+  .sample-card-header {
+    background: linear-gradient(135deg, var(--sage) 0%, var(--sage-mid) 100%);
+    padding: 10px 18px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--sage-deep);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .sample-card-body {
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .sample-card-body p { font-size: 13px; color: #3a5e42; line-height: 1.6; margin: 0; }
+  .sample-link {
+    display: inline-block;
+    background: var(--sage-dark);
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: background var(--transition);
+  }
+  .sample-link:hover { background: var(--sage-deep); }
+
+  /* ── CALLOUT ── */
+  .callout {
+    border-left: 4px solid var(--sage);
+    background: var(--sage-light);
+    border-radius: 0 6px 6px 0;
+    padding: 13px 18px;
+    margin-top: 14px;
+  }
+  .callout-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--sage-dark);
+    margin-bottom: 4px;
+  }
+  .callout p { font-size: 13px; color: #3a5e42; line-height: 1.7; margin: 0; }
+
+  .callout-amber {
+    border-left-color: var(--amber);
+    background: var(--amber-light);
+  }
+  .callout-amber .callout-label { color: var(--amber-dark); }
+  .callout-amber p { color: #7a5e55; }
+
+  /* ── EVALUATION ── */
+  .eval-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  @media (max-width: 580px) { .eval-grid { grid-template-columns: 1fr; } }
+  .eval-box {
+    border-radius: 8px;
+    padding: 16px 18px;
+  }
+  .eval-box .eval-label {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .eval-box p { font-size: 13px; line-height: 1.7; margin: 0; }
+
+  /* ── QUICK STATS ROW ── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  @media (max-width: 680px) { .stats-row { grid-template-columns: 1fr 1fr; } }
+  .stat-tile {
+    border-radius: 8px;
+    padding: 18px 16px;
+  }
+  .stat-tile .stat-icon { font-size: 22px; margin-bottom: 6px; }
+  .stat-tile .stat-label { font-size: 11px; font-weight: 600; margin-bottom: 4px; letter-spacing: 0.03em; }
+  .stat-tile .stat-value { font-size: 13px; line-height: 1.55; }
+  .st-green  { background: linear-gradient(135deg, var(--sage) 0%, var(--sage-mid) 100%);   color: var(--sage-deep); }
+  .st-slate  { background: linear-gradient(135deg, var(--slate) 0%, #D0DFE8 100%);           color: var(--slate-dark); }
+  .st-amber  { background: linear-gradient(135deg, var(--amber) 0%, #F0D7C8 100%);           color: var(--amber-dark); }
+  .st-pink   { background: linear-gradient(135deg, var(--pink) 0%, #E8CED8 100%);            color: var(--pink-dark); }
+
+  /* ── AI POLICY ── */
+  .ai-policy-wrap {
+    background: var(--amber-light);
+    border: 2px solid var(--amber);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 16px;
+  }
+  .ai-policy-header {
+    background: linear-gradient(135deg, var(--amber) 0%, #F0D7C8 100%);
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--amber-dark);
+  }
+  .ai-policy-body { padding: 16px 20px; }
+  .ai-policy-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  @media (max-width: 620px) { .ai-policy-grid { grid-template-columns: 1fr; } }
+  .ai-item {
+    background: #fff;
+    border-radius: 6px;
+    padding: 12px 14px;
+  }
+  .ai-item .ai-label {
+    font-size: 11px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--amber-dark);
+  }
+  .ai-item p { font-size: 12px; color: #7a5e55; line-height: 1.65; margin: 0; }
+  .ai-canvas {
+    background: #fff;
+    border-radius: 6px;
+    padding: 12px 16px;
+  }
+  .ai-canvas .ai-label { font-size: 11px; font-weight: 600; color: var(--amber-dark); margin-bottom: 4px; }
+  .ai-canvas p { font-size: 12px; color: #7a5e55; line-height: 1.65; margin: 0; }
+
+  /* ── INTEGRITY ── */
+  .integrity-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  @media (max-width: 580px) { .integrity-grid { grid-template-columns: 1fr; } }
+  .int-box {
+    background: #f5f5f4;
+    border-left: 4px solid var(--warm);
+    border-radius: 0 6px 6px 0;
+    padding: 14px 16px;
+  }
+  .int-box .int-label { font-size: 12px; font-weight: 600; color: var(--warm-dark); margin-bottom: 5px; }
+  .int-box p { font-size: 13px; color: var(--text-mid); line-height: 1.65; margin: 0; }
+
+  /* ── MLA VIDEO ── */
+  .video-wrap {
+    background: #f5f5f4;
+    border: 2px solid var(--warm);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .video-header {
+    background: linear-gradient(135deg, var(--warm) 0%, #d8d4d0 100%);
+    padding: 12px 22px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--warm-dark);
+  }
+  .video-body {
+    padding: 22px;
+    text-align: center;
+  }
+  .video-body p { font-size: 13px; color: var(--text-mid); margin-bottom: 16px; }
+  .video-body iframe { border-radius: 6px; border: none; max-width: 100%; }
+
+  /* ── RESOURCE TILES ── */
+  .resource-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  @media (max-width: 580px) { .resource-grid { grid-template-columns: 1fr 1fr; } }
+  .resource-tile {
+    border-radius: 8px;
+    padding: 18px 14px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    transition: box-shadow var(--transition), transform var(--transition);
+  }
+  .resource-tile:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+  .resource-tile .tile-icon  { font-size: 26px; margin-bottom: 8px; }
+  .resource-tile .tile-label { font-size: 12px; line-height: 1.5; font-weight: 500; }
+  .rt-green  { background: linear-gradient(135deg, var(--sage) 0%, var(--sage-mid) 100%);   color: var(--sage-deep); }
+  .rt-slate  { background: linear-gradient(135deg, var(--slate) 0%, #D0DFE8 100%);           color: var(--slate-dark); }
+  .rt-amber  { background: linear-gradient(135deg, var(--amber) 0%, #F0D7C8 100%);           color: var(--amber-dark); }
+
+  /* ── SUPPORT ROW ── */
+  .support-row {
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--text-mid);
+  }
+  .support-row a { color: var(--sage-dark); text-decoration: none; font-weight: 500; }
+  .support-row a:hover { text-decoration: underline; }
+  .support-sep { color: #ccc; margin: 0 8px; }
+
+  /* ── DIVIDER ── */
+  .divider { border: 0; border-top: 2px solid var(--border); margin: 28px 0; }
+
+  /* ── BODY TEXT ── */
+  p { font-size: 14px; color: #444; line-height: 1.8; }
+  p + p { margin-top: 10px; }
+  strong { color: var(--text); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in { animation: fadeUp 0.45s ease both; }
+  .fade-in:nth-child(1) { animation-delay: 0.04s; }
+  .fade-in:nth-child(2) { animation-delay: 0.10s; }
+  .fade-in:nth-child(3) { animation-delay: 0.16s; }
+  .fade-in:nth-child(4) { animation-delay: 0.22s; }
+  .fade-in:nth-child(5) { animation-delay: 0.28s; }
+  .fade-in:nth-child(6) { animation-delay: 0.34s; }
+  .fade-in:nth-child(7) { animation-delay: 0.40s; }
+  .fade-in:nth-child(8) { animation-delay: 0.46s; }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- HEADER -->
+  <div class="page-header fade-in">
+    <div class="eyebrow">Week 10 &bull; The Literary Research Essay</div>
+    <h1>Literary Research Essay Outline Assignment</h1>
+    <div class="meta">
+      <span class="meta-pill">📋 Assignment</span>
+      <span class="meta-pill">30 Points</span>
+      <span class="meta-pill">2-Day Grace Period</span>
+    </div>
+  </div>
+
+  <!-- QUICK STATS -->
+  <div class="stats-row fade-in">
+    <div class="stat-tile st-green">
+      <div class="stat-icon">✏️</div>
+      <div class="stat-label">What You'll Do</div>
+      <div class="stat-value">Create a paragraph-by-paragraph outline of your Literary Research Essay</div>
+    </div>
+    <div class="stat-tile st-slate">
+      <div class="stat-icon">📄</div>
+      <div class="stat-label">What You'll Submit</div>
+      <div class="stat-value">Word-processed outline in .docx or .doc format</div>
+    </div>
+    <div class="stat-tile st-amber">
+      <div class="stat-icon">🌟</div>
+      <div class="stat-label">Points</div>
+      <div class="stat-value">30 homework points &bull; Formative assessment</div>
+    </div>
+    <div class="stat-tile st-pink">
+      <div class="stat-icon">🕐</div>
+      <div class="stat-label">Grace Period</div>
+      <div class="stat-value">2 days after due date for full credit</div>
+    </div>
+  </div>
+
+  <!-- LEARNING OUTCOMES -->
+  <div class="section-card fade-in">
+    <div class="section-header sh-green">🎯 Learning Outcomes</div>
+    <div class="section-body">
+      <div class="outcomes-grid">
+        <div class="outcome-item">Apply a multi-stage writing process to produce an academic essay</div>
+        <div class="outcome-item">Plan and organize the body paragraphs of a research essay</div>
+        <div class="outcome-item">Develop topics for body paragraphs and align evidence to support a central argument</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ASSIGNMENT INSTRUCTIONS -->
+  <div class="section-card fade-in">
+    <div class="section-header sh-slate">📝 Assignment Instructions</div>
+    <div class="section-body">
+
+      <p style="margin-bottom:22px;">Create an outline that identifies which topic you're writing about and maps out the topic and major ideas of each body paragraph. If you skipped the previous page — the <a href="prewriting_planning.html" style="color:var(--sage-dark); font-weight:500;">Prewriting &amp; Planning page</a> — please stop now and review it first. All three essay topics, the sample outline, and additional instructional advice are located there.</p>
+
+      <div class="steps">
+
+        <!-- STEP 1 -->
+        <div class="step">
+          <div class="step-badge">Step 1</div>
+          <div class="step-content">
+            <div class="step-title">Choose your topic</div>
+            <p>Select <strong>one</strong> of the three available topics from the <a href="prewriting_planning.html" style="color:var(--sage-dark); font-weight:500;">Prewriting &amp; Planning page</a>. The topics are based on the three short stories you've analyzed this semester: Hurston's "Sweat," Carter's "The Company of Wolves," and Roth's "The Conversion of the Jews." Each topic focuses on a central theme and is organized around the same analytical moves you practiced in your study question assignments.</p>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="step">
+          <div class="step-badge">Step 2</div>
+          <div class="step-content">
+            <div class="step-title">Review the sample outline</div>
+            <p style="margin-bottom:10px;">Before writing your outline, review the sample research essay outline. It models the level of detail and structure expected in your submission — including how to break a thematic topic into distinct body paragraph arguments and how to plan your primary and secondary source evidence at each stage.</p>
+            <div class="sample-card">
+              <div class="sample-card-header">
+                <span>📄 Sample Research Essay Outline</span>
+                <span style="font-weight:400; font-size:11px;">Opens in a new tab</span>
+              </div>
+              <div class="sample-card-body">
+                <p>The Supernatural and the Limits of Knowledge in Vladimir Nabokov's "The Vane Sisters" — Three Body Paragraphs</p>
+                <a href="sample_outline_vane_sisters.html" target="_blank" class="sample-link">Open Sample ↗</a>
+              </div>
+            </div>
+            <div class="callout callout-amber" style="margin-top:12px;">
+              <div class="callout-label">⚠️ Important Note</div>
+              <p>The sample outline is based on a story and topic you are <strong>not</strong> writing about. Do not write about "The Vane Sisters" — use the sample only to understand the structure and level of detail expected in your own outline.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="step">
+          <div class="step-badge">Step 3</div>
+          <div class="step-content">
+            <div class="step-title">Write your outline</div>
+            <p style="margin-bottom:12px;">Create your own outline based on the topic and story you selected. Follow this structure:</p>
+            <div class="outline-struct">
+              <div class="struct-item">
+                <strong>I. Introduction Paragraph</strong>
+                Identify your topic — for example, <em>"The Theme of Domestic Violence and Symbolism in Hurston's 'Sweat.'"</em> You do not need to write the full introduction here.
+              </div>
+              <div class="struct-item">
+                <strong>II–IV. Body Paragraphs (3–4)</strong>
+                For each body paragraph, identify the paragraph's topic and one to two key ideas. Use sub-points (A., B.) and details (1., 2.) to show what each paragraph will cover, including planned evidence from the story and your scholarly sources.
+              </div>
+              <div class="struct-item">
+                <strong>V. Conclusion Paragraph</strong>
+                You can leave this <strong>blank</strong>, just as the sample outline does. Conclusions are easier to write once the body paragraphs are drafted.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end steps -->
+
+      <!-- SUPPORT RESOURCES -->
+      <div class="support-row" style="margin-top:22px; padding-top:18px; border-top:1px solid var(--border);">
+        <strong style="font-size:13px;">Support Resources:</strong>
+        <span class="support-sep">|</span>
+        <a href="https://valenciacollege.edu/students/learning-support/" target="_blank" rel="noopener">Learning Support</a>
+        <span class="support-sep">&bull;</span>
+        <a href="https://valenciacollege.edu/students/learning-support/writing-consultations.php" target="_blank" rel="noopener">Writing Centers</a>
+        <span class="support-sep">&bull;</span>
+        <a href="https://valenciacollege.edu/students/library/services/research-help-information.php" target="_blank" rel="noopener">Library</a>
+        <span class="support-sep">&bull;</span>
+        <a href="https://valenciacollege.edu/students/library/mla-apa-chicago-guides/" target="_blank" rel="noopener">MLA Documentation Help</a>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- EVALUATION -->
+  <div class="section-card fade-in">
+    <div class="section-header sh-green">📋 Evaluation</div>
+    <div class="section-body">
+      <div class="eval-grid">
+        <div class="eval-box" style="background:var(--sage-light); border:2px solid var(--sage);">
+          <div class="eval-label" style="color:var(--sage-deep);">📋 How This Is Graded</div>
+          <p style="color:#3a5e42;">There is no rubric for this assignment. Your outline will be reviewed to ensure that the paragraph topics and ideas are clear, narrow, and relevant to the overall essay topic you selected.</p>
+        </div>
+        <div class="eval-box" style="background:var(--slate-light); border:2px solid var(--slate);">
+          <div class="eval-label" style="color:var(--slate-dark);">💡 Formative Assessment</div>
+          <p style="color:#4e5e6a;">This is a formative assessment: as long as you complete the assignment, you'll receive full credit. If there are any concerns with your outline, feedback will be noted directly on your submission when it is assessed.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ACADEMIC INTEGRITY -->
+  <div class="section-card fade-in">
+    <div class="section-header sh-warm">⚖️ Academic Integrity</div>
+    <div class="section-body">
+      <p style="margin-bottom:16px;">Valencia College is dedicated to maintaining academic standards grounded in transparency, integrity, and creating the right conditions for learning. All work submitted must reflect your own original reading, thinking, and writing. <a href="https://valenciacollege.edu/about/general-counsel/policy/documents/volume8/8-11-academic-integrity.pdf" target="_blank" rel="noopener" style="color:var(--warm-dark); font-weight:500;">Valencia Policy 6Hx28:8-11: Academic Dishonesty ↗</a></p>
+
+      <div class="integrity-grid">
+        <div class="int-box">
+          <div class="int-label">Original Work</div>
+          <p>All submitted work must be your own. Your outline should reflect your own reading, thinking, and planning — not AI-generated content or another student's ideas.</p>
+        </div>
+        <div class="int-box">
+          <div class="int-label">Consequences</div>
+          <p>Violations may result in a zero for this assignment. Students have one week to respond to any allegation of academic dishonesty before a penalty is assigned.</p>
+        </div>
+      </div>
+
+      <!-- AI POLICY -->
+      <div class="ai-policy-wrap">
+        <div class="ai-policy-header">🤖 AI &amp; Technology Policy for This Assignment</div>
+        <div class="ai-policy-body">
+          <div class="ai-policy-grid">
+            <div class="ai-item">
+              <div class="ai-label">✅ Grammarly — Permitted (with limits)</div>
+              <p>You may use Grammarly to identify grammar, punctuation, and sentence errors only. Use the <strong>"Correction"</strong> option only. Do not use "Clarity," "Engagement," or "Delivery" — these rewrite your sentences and constitute a violation.</p>
+            </div>
+            <div class="ai-item">
+              <div class="ai-label">❌ AI Generators — Not Permitted</div>
+              <p>Do not use ChatGPT, Gemini, or similar tools to generate your outline or any part of it. This violates the academic integrity policy.</p>
+            </div>
+            <div class="ai-item">
+              <div class="ai-label">❌ Online Translators — Not Permitted</div>
+              <p>Do not use online translators to translate your outline into English. Translated text is no longer your own writing and constitutes a violation of academic integrity.</p>
+            </div>
+          </div>
+          <div class="ai-canvas">
+            <div class="ai-label">🔍 Canvas AI Report</div>
+            <p>Your instructor has access to Canvas's AI Report feature (separate from Turnitin). If your submission generates a flag, you will be asked to redo the assignment — in part or in whole — depending on what the report identifies.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- MLA FORMAT VIDEO -->
+  <div class="section-card fade-in">
+    <div class="video-wrap">
+      <div class="video-header">🎬 How to Set Up Your Document in MLA Format</div>
+      <div class="video-body">
+        <p>Use Microsoft Word Online (Office 365, available in the left navigation menu) to format your document correctly before submitting.</p>
+        <iframe title="How to Set Up Your Document in MLA Format"
+          src="https://www.youtube.com/embed/JnAmwR4Pb1M"
+          width="560" height="315"
+          loading="lazy"
+          allowfullscreen
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share">
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- RESOURCES -->
+  <div class="section-card fade-in">
+    <div class="section-header sh-green">🔗 Resources</div>
+    <div class="section-body">
+      <div class="resource-grid">
+        <a href="prewriting_planning.html" class="resource-tile rt-green">
+          <div class="tile-icon">✍️</div>
+          <div class="tile-label">Prewriting &amp; Planning Page</div>
+        </a>
+        <a href="sample_outline_vane_sisters.html" target="_blank" class="resource-tile rt-slate">
+          <div class="tile-icon">📄</div>
+          <div class="tile-label">Sample Research Outline</div>
+        </a>
+        <a href="mailto:cholliday@valenciacollege.edu" class="resource-tile rt-amber">
+          <div class="tile-icon">📞</div>
+          <div class="tile-label">Instructor Email</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end page-wrap -->
+</body>
+</html>
