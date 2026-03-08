@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --sage:#A8C5B0;--sage-dark:#2e4a35;--sage-deep:#1a3328;--sage-light:#eaf4eb;--sage-mid:#C8DFD0;
+  --slate:#B8C8D0;--slate-dark:#2e3e4a;--slate-mid:#D0DFE8;--slate-light:#f0f6f9;
+  --plum:#B8A8D0;--plum-dark:#3e2e5a;--plum-light:#f7f4fc;--plum-mid:#D0C5E0;
+  --amber:#E6C5B3;--amber-dark:#5a3e35;--amber-light:#fff8f4;--amber-mid:#F0D7C8;
+  --text:#333;--text-mid:#555;--border:#e0e0e0;--white:#fff;
+  --radius:10px;--shadow:0 2px 10px rgba(0,0,0,0.06);
+}
+body{font-family:"DM Sans",sans-serif;background:#f7f8f6;color:var(--text);line-height:1.7;overflow-x:hidden;}
+.wrap{max-width:1060px;margin:0 auto;padding:32px 16px 60px;}
+.page-header{border-radius:var(--radius);padding:28px 36px;margin-bottom:20px;position:relative;overflow:hidden;}
+.page-header::before{content:"";position:absolute;right:-50px;top:-50px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,0.1);}
+.eyebrow{font-size:11px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;}
+h1{font-family:"Lora",serif;font-size:clamp(18px,3.5vw,26px);font-weight:700;line-height:1.2;margin-bottom:6px;}
+.subtitle{font-size:14px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:12px;border:1px solid;padding:5px 12px;border-radius:20px;text-decoration:none;margin-bottom:20px;opacity:.8;transition:opacity .2s;}
+.back-link:hover{opacity:1;}
+.rule-block{border-radius:var(--radius);overflow:hidden;margin-bottom:16px;box-shadow:var(--shadow);}
+.rule-head{padding:12px 22px;font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px;}
+.rule-body{background:var(--white);border:2px solid;border-top:none;border-radius:0 0 var(--radius) var(--radius);padding:16px 22px 18px;}
+.rule-lede{font-size:14px;color:var(--text-mid);line-height:1.8;border-left:3px solid;padding-left:12px;margin-bottom:14px;}
+.fmt-box{border:1px solid;border-radius:6px;padding:10px 14px;margin-bottom:14px;}
+.fmt-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;}
+.fmt-code{font-size:13px;line-height:1.8;}
+.eg3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.eg2{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+@media(max-width:660px){.eg3,.eg2{grid-template-columns:1fr;}}
+.eg-card{border-radius:8px;overflow:hidden;}
+.eg-card-head{padding:9px 14px;font-size:11px;font-weight:600;}
+.eg-card-body{padding:12px 14px;}
+.eg-prose{font-size:13px;font-style:italic;line-height:1.75;color:#2a2a2a;margin:0 0 8px 0;}
+.eg-prose:last-child{margin:0;}
+.eg-note{font-size:11px;line-height:1.6;margin:0;}
+.eg-blue .eg-card-head{background:#c5dde8;color:#1d4e62;}
+.eg-blue .eg-card-body{background:#eef6f8;border:2px solid #8fc4d4;border-top:none;}
+.eg-blue .eg-note{color:#3a6070;}
+.eg-gold .eg-card-head{background:#e8d8a0;color:#5a4010;}
+.eg-gold .eg-card-body{background:#fdf8ee;border:2px solid #c8b87a;border-top:none;}
+.eg-gold .eg-note{color:#7a6530;}
+.eg-red .eg-card-head{background:#e8c8c8;color:#8a2020;}
+.eg-red .eg-card-body{background:#fdf0f0;border:2px solid #d4a0a0;border-top:none;}
+.eg-red .eg-note{color:#7a5050;}
+.pat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px;}
+@media(max-width:600px){.pat-grid{grid-template-columns:1fr 1fr;}}
+.pat-card{border:2px solid;border-radius:6px;padding:10px 12px;}
+.pat-title{font-size:11px;font-weight:700;margin-bottom:4px;}
+.pat-desc{font-size:11px;line-height:1.6;margin-bottom:7px;}
+.pat-code{font-family:monospace;font-size:11px;border-radius:4px;padding:5px 8px;display:block;}
+.step-list{display:flex;flex-direction:column;gap:10px;}
+.step-item{display:flex;gap:14px;align-items:flex-start;background:#f6f3fa;border-radius:6px;padding:12px 14px;}
+.step-num{flex-shrink:0;width:26px;height:26px;background:linear-gradient(135deg,#C8B8D0,#A89DCC);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff;font-weight:700;}
+.step-item h4{font-size:13px;color:#2e1e4a;margin-bottom:3px;}
+.step-item p{font-size:12px;color:#5a4a7a;line-height:1.7;margin:0;}
+.tri-block{border:2px solid;border-radius:8px;padding:18px 20px;margin-bottom:18px;}
+.tri-title{font-size:13px;font-weight:600;margin-bottom:12px;}
+.original-box{background:#f0f0f0;border:2px solid #b0b0b0;border-radius:6px;padding:12px 16px;margin-bottom:12px;}
+.original-label{font-size:11px;color:#444;margin-bottom:6px;font-weight:600;}
+.original-text{font-size:13px;color:#333;font-style:italic;line-height:1.8;margin:0;}
+.three-criteria{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px;}
+@media(max-width:580px){.three-criteria{grid-template-columns:1fr;}}
+.crit-item{background:var(--white);border-left:3px solid;border-radius:0 4px 4px 0;padding:10px 12px;}
+.crit-item h4{font-size:12px;margin-bottom:4px;}
+.crit-item p{font-size:11px;line-height:1.6;margin:0;}
+.qp-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+@media(max-width:540px){.qp-grid{grid-template-columns:1fr;}}
+.qp-box{border:2px solid;border-radius:8px;padding:14px 16px;}
+.qp-box h3{font-size:13px;font-weight:700;margin-bottom:8px;}
+.qp-box ul{padding-left:18px;font-size:12px;line-height:2.0;margin:0;}
+.qp-reminder{border:1px solid;border-radius:6px;padding:10px 14px;margin-top:10px;}
+.err-badge{font-size:11px;background:rgba(255,255,255,0.35);padding:2px 9px;border-radius:10px;margin-left:8px;}
+.sec-divider{display:flex;align-items:center;gap:14px;margin:32px 0 20px;}
+.sec-divider-line{flex:1;height:2px;border-radius:2px;}
+.sec-divider-label{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;padding:4px 14px;border-radius:20px;white-space:nowrap;}
+p{font-size:14px;color:#444;line-height:1.8;margin:0;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.fade{animation:fadeUp .4s ease both;}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="back-link" href="mla_documentation.html" style="color:var(--sage-dark);border-color:var(--sage);">← Back to MLA Documentation</a>
+<div class="page-header fade" style="background:linear-gradient(135deg,var(--sage),var(--sage-mid));">
+  <div class="eyebrow" style="color:var(--sage-dark);">Section 1 &bull; Week 11</div>
+  <h1 style="color:var(--sage-deep);">MLA Documentation: Quoting from Your Primary Source</h1>
+  <p class="subtitle" style="color:var(--sage-dark);">Signal phrases, parenthetical citations, page numbers, and common quoting errors &bull; Short stories in PDF format</p>
+</div>
+<p style="font-size:13px;color:#555;margin-bottom:18px;padding:0 4px;">Your three story PDFs have stable, fixed page numbers &mdash; include a page number in every parenthetical citation from the primary source. The rules and examples below apply to all three stories: Hurston&rsquo;s &ldquo;Sweat,&rdquo; Carter&rsquo;s &ldquo;The Company of Wolves,&rdquo; and Roth&rsquo;s &ldquo;The Conversion of the Jews.&rdquo;</p>
+<!-- SECTION 1: QUOTING FROM SHORT STORIES       -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="sec-divider">
+  <div class="sec-divider-line" style="background:var(--slate);"></div>
+  <div class="sec-divider-label" style="background:var(--slate-light);color:var(--slate-dark);border:2px solid var(--slate);">Section 1 &mdash; Quoting from Your Primary Source</div>
+  <div class="sec-divider-line" style="background:var(--slate);"></div>
+</div>
+<p style="font-size:13px;color:#555;margin-bottom:18px;padding:0 4px;">Your three story PDFs have stable, fixed page numbers — include a page number in every parenthetical citation from the primary source. The rules and examples below apply to all three stories: Hurston&rsquo;s &ldquo;Sweat,&rdquo; Carter&rsquo;s &ldquo;The Company of Wolves,&rdquo; and Roth&rsquo;s &ldquo;The Conversion of the Jews.&rdquo;</p>
+
+<!-- ── PART 1: CORE SKILLS label ── -->
+<div style="border-bottom:2px solid var(--slate);padding-bottom:6px;margin-bottom:16px;">
+  <div style="font-size:11px;color:#4a6070;font-weight:600;">Part One &mdash; Core Skills</div>
+</div>
+
+<!-- 1. SIGNAL PHRASES -->
+<div class="rule-block fade">
+  <div class="rule-head" style="background:linear-gradient(135deg,var(--slate),var(--slate-mid));color:var(--slate-dark);">
+    <span>1 &nbsp;&mdash;&nbsp; Signal Phrases</span>
+  </div>
+  <div class="rule-body" style="border-color:var(--slate);">
+    <p class="rule-lede" style="border-color:var(--slate);">A <strong>signal phrase</strong> introduces a quotation by naming the author or providing context. It typically includes a signal verb (such as <em>writes, describes, explains, observes, notes, argues, suggests, reveals,</em> or <em>states</em>) followed by the quotation. Avoid naming the author in every signal phrase; doing so becomes repetitive. Instead, alternate between signal phrases that include the author&rsquo;s name and those that do not, placing the author&rsquo;s last name inside the parenthetical citation when it is omitted from the signal phrase.</p>
+    <div class="fmt-box" style="background:#eaf2f6;border-color:var(--slate);">
+      <div class="fmt-label" style="color:var(--slate-dark);">Two Correct Patterns &mdash; Alternate Between Them</div>
+      <div class="fmt-code" style="color:var(--slate-dark);">With name in signal phrase: Hurston writes that &ldquo;&hellip;&rdquo; (page number). &nbsp;&nbsp;|&nbsp;&nbsp; Without name: The narrator observes that &ldquo;&hellip;&rdquo; (Hurston page number).</div>
+    </div>
+    <div class="eg3">
+      <div class="eg-card eg-blue">
+        <div class="eg-card-head">✓ &nbsp;Author Named in Signal Phrase</div>
+        <div class="eg-card-body">
+          <p class="eg-prose">Hurston establishes Delia&rsquo;s exhaustion and moral authority when she observes that the woman had &ldquo;built it for her old days, and planted one by one the trees and flowers there&rdquo; (4).</p>
+          <p class="eg-note">Author named in signal phrase &rarr; page number only in the citation.</p>
+        </div>
+      </div>
+      <div class="eg-card eg-blue">
+        <div class="eg-card-head">✓ &nbsp;Author Named in Citation Instead</div>
+        <div class="eg-card-body">
+          <p class="eg-prose">The girl&rsquo;s composure in the face of the werewolf reveals a confidence that runs entirely counter to the helplessness the tale&rsquo;s genre demands: she &ldquo;stands and looks at him with her great, dark eyes&rdquo; (Carter 9).</p>
+          <p class="eg-note">No author name in signal phrase &rarr; last name in the citation.</p>
+        </div>
+      </div>
+      <div class="eg-card eg-gold">
+        <div class="eg-card-head">✓ &nbsp;Signal Phrase Follows the Quote</div>
+        <div class="eg-card-body">
+          <p class="eg-prose">&ldquo;You can&rsquo;t talk to me like that&rdquo; (Roth 4), Ozzie shouts at Rabbi Binder, revealing that his questioning has tipped over from curiosity into open confrontation.</p>
+          <p class="eg-note">The signal phrase can follow the quote as well as precede it — though these constructions require care.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 2. QUOTATION MARKS -->
+<div class="rule-block fade">
+  <div class="rule-head" style="background:linear-gradient(135deg,var(--sage),var(--sage-mid));color:var(--sage-deep);">
+    <span>2 &nbsp;&mdash;&nbsp; Quotation Marks for Quotes</span>
+  </div>
+  <div class="rule-body" style="border-color:var(--sage);">
+    <p class="rule-lede" style="border-color:var(--sage);">Enclose all directly quoted words in double quotation marks (&ldquo; &rdquo;). Commas and periods <strong>always</strong> go <em>inside</em> the closing quotation mark in American English unless a parenthetical citation follows, in which case the period goes <em>after</em> the citation. Use single quotation marks only for a quote within a quote.</p>
+  </div>
+</div>
+
+<!-- 3. PARENTHETICAL CITATIONS -->
+<div class="rule-block fade">
+  <div class="rule-head" style="background:linear-gradient(135deg,#C8B8D8,#E0D0EC);color:#2e1e4a;">
+    <span>3 &nbsp;&mdash;&nbsp; Parenthetical Citations</span>
+  </div>
+  <div class="rule-body" style="border-color:#C8B8D8;">
+    <p class="rule-lede" style="border-color:#C8B8D8;">After a quotation, place the author&rsquo;s last name and page number (if available) in parentheses before the closing period. <strong>No comma</strong> separates the name from the number. The period ending your sentence falls <em>after</em> the closing parenthesis.</p>
+    <div class="fmt-box" style="background:#f6f3fa;border-color:#C8B8D8;">
+      <div class="fmt-label" style="color:#3a2a5a;">Format</div>
+      <div class="fmt-code" style="color:#3a2a5a;">&ldquo;quotation&rdquo; (LastName PageNumber). &nbsp;&nbsp;&rarr;&nbsp;&nbsp; e.g., (Hurston 2) or (Roth 6)</div>
+    </div>
+    <div class="eg3">
+      <div class="eg-card eg-red">
+        <div class="eg-card-head">✗ &nbsp;Comma Between Name and Page Number</div>
+        <div class="eg-card-body">
+          <p class="eg-prose">Delia&rsquo;s voice hardens as she tells Sykes that &ldquo;Ah hates you tuh de same degree dat Ah useter love yuh&rdquo; (Hurston, 4).</p>
+          <p class="eg-note">Never place a comma between the author&rsquo;s name and the page number.</p>
+        </div>
+      </div>
+      <div class="eg-card eg-blue">
+        <div class="eg-card-head">✓ &nbsp;Correct</div>
+        <div class="eg-card-body">
+          <p class="eg-prose">Delia&rsquo;s voice hardens as she tells Sykes that &ldquo;Ah hates you tuh de same degree dat Ah useter love yuh&rdquo; (Hurston 4).</p>
+        </div>
+      </div>
+      <div class="eg-card eg-gold">
+        <div class="eg-card-head">✓ &nbsp;Author Named in Signal Phrase</div>
+        <div class="eg-card-body">
+          <p class="eg-prose">Roth opens the story with an image that signals the essay&rsquo;s central conflict: &ldquo;It was the last day of November, and the beginning of what Ozzie Freedman was to call the finest year of his life&rdquo; (1).</p>
+          <p class="eg-note">Author named in signal phrase &rarr; page number only in citation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 4. PAGE NUMBERS PDF -->
+<div class="rule-block fade">
+  <div class="rule-head" style="background:linear-gradient(135deg,#D4C0D8,#E8D8EC);color:#3a1e3e;">
+    <span>4 &nbsp;&mdash;&nbsp; Using Page Numbers &mdash; Stories in PDF Format</span>
+  </div>
+  <div class="rule-body" style="border-color:#D4C0D8;">
+    <p class="rule-lede" style="border-color:#D4C0D8;">All three of your assigned stories were distributed as <strong>PDFs</strong> with fixed, stable page numbers. Include the page number in every parenthetical citation. Use only the number &mdash; not &ldquo;p.&rdquo; or &ldquo;pg.&rdquo; or &ldquo;page.&rdquo;</p>
+    <div class="fmt-box" style="background:#f6f0fa;border-color:#D4C0D8;">
+      <div class="fmt-label" style="color:#3a1e3e;">Format for PDF Sources</div>
+      <div class="fmt-code" style="color:#3a1e3e;">(LastName PageNumber) &nbsp;&nbsp;&rarr;&nbsp;&nbsp; e.g., (Hurston 3) or (Carter 7)</div>
+    </div>
+    <div class="eg3">
+      <div class="eg-card eg-red">
+        <div class="eg-card-head">✗ &nbsp;Unnecessary &ldquo;p.&rdquo; Before Page Number</div>
+        <div class="eg-card-body">
+          <p class="eg-prose">Sykes announces his contempt openly, telling Delia that &ldquo;Ah don&rsquo;t keer if you never git through&rdquo; (Hurston p. 2) with the wash.</p>
+          <p class="eg-note">Never add &ldquo;p.&rdquo; or any label before the page number.</p>
+        </div>
+      </div>
+      <div class="eg-card eg-blue">
+        <div class="eg-card-head">✓ &nbsp;Correct</div>
+        <div class="eg-card-body">
+          <p class="eg-prose">Sykes announces his contempt openly, telling Delia that &ldquo;Ah don&rsquo;t keer if you never git through&rdquo; (Hurston 2) with the wash.</p>
+        </div>
+      </div>
+      <div class="eg-card eg-gold">
+        <div class="eg-card-head">✓ &nbsp;Author Named in Signal Phrase</div>
+        <div class="eg-card-body">
+          <p class="eg-prose">Carter positions the girl&rsquo;s fearlessness as the story&rsquo;s central act of revision: &ldquo;She will lay his fearful head on her lap and she will pick out the lice from his pelt&rdquo; (10).</p>
+          <p class="eg-note">Author named in signal phrase &rarr; page number only in citation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 5. NO PAGE NUMBERS (kept but noted as not applicable here) -->
+<div class="rule-block fade">
+  <div class="rule-head" style="background:linear-gradient(135deg,#D8C8A8,#ECD8B8);color:#3e2e10;">
+    <span>5 &nbsp;&mdash;&nbsp; No Page Numbers &mdash; Stories in HTML Format</span>
+  </div>
+  <div class="rule-body" style="border-color:#D8C8A8;">
+    <p class="rule-lede" style="border-color:#D8C8A8;"><em>This section does not apply to the three stories assigned in this course</em>, all of which were provided as PDFs with page numbers. However, some stories in academic databases appear as HTML webpages with no stable page numbers. In that case, omit the page number from the parenthetical citation entirely &mdash; include only the author&rsquo;s last name, or omit the citation altogether if the author has already been named in the signal phrase.</p>
+    <div class="fmt-box" style="background:#f9f6f0;border-color:#D8C8A8;">
+      <div class="fmt-label" style="color:#3e2e10;">Format for HTML / Web Sources</div>
+      <div class="fmt-code" style="color:#3e2e10;">(LastName) &nbsp;&mdash;&nbsp; or omit the citation entirely if the author&rsquo;s name appears in the signal phrase.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 6. AUTHOR NAME ONCE -->
+<div class="rule-block fade">
+  <div class="rule-head" style="background:linear-gradient(135deg,#B8C8D8,#D0DDE8);color:#1e2e3e;">
+    <span>6 &nbsp;&mdash;&nbsp; Stating the Author&rsquo;s Name Only Once</span>
+  </div>
+  <div class="rule-body" style="border-color:#B8C8D8;">
+    <p class="rule-lede" style="border-color:#B8C8D8;">The author&rsquo;s last name should appear <strong>only once</strong> per cited sentence &mdash; either in the signal phrase <em>or</em> in the parenthetical citation, but <strong>never in both</strong>. If you name the author in your signal phrase, the parenthetical citation contains only the page number. This is one of the most common citation errors — and it applies equally to primary and secondary sources.</p>
+    <div class="eg3">
+      <div class="eg-card eg-red">
+        <div class="eg-card-head">✗ &nbsp;Author Named Twice</div>
+        <div class="eg-card-body">
+          <p class="eg-prose">Hurston shows that Delia has reached a breaking point, noting that &ldquo;she lay awake, gazing upon the debris that cluttered their matrimonial trail&rdquo; (Hurston 4).</p>
+          <p class="eg-note">&ldquo;Hurston&rdquo; already appears in the signal phrase &mdash; it must not be repeated in the citation.</p>
+        </div>
+      </div>
+      <div class="eg-card eg-blue">
+        <div class="eg-card-head">✓ &nbsp;Name in Signal Phrase Only</div>
+        <div class="eg-card-body">
+          <p class="eg-prose">Hurston shows that Delia has reached a breaking point, noting that &ldquo;she lay awake, gazing upon the debris that cluttered their matrimonial trail&rdquo; (4).</p>
+        </div>
+      </div>
+      <div class="eg-card eg-gold">
+        <div class="eg-card-head">✓ &nbsp;Name in Citation Only</div>
+        <div class="eg-card-body">
+          <p class="eg-prose">Ozzie&rsquo;s rooftop demand strips away the adults&rsquo; authority in a single moment: &ldquo;Tell me you believe me&rdquo; (Roth 9), he shouts down to the crowd gathered below.</p>
+          <p class="eg-note">No author name in signal phrase &rarr; last name belongs in the citation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PART 2 DIVIDER -->
+<div style="border-bottom:2px solid #c99aa0;padding-bottom:6px;margin:28px 0 16px;">
+  <div style="font-size:11px;color:#8a3040;font-weight:600;">Part Two &mdash; Common Quoting Errors</div>
+</div>
+
+<!-- 7. FLOATING QUOTES -->
+<div class="rule-block fade">
+  <div class="rule-head" style="background:linear-gradient(135deg,#D8B0B8,#ECC8D0);color:#4a1e28;">
+    <span>7 &nbsp;&mdash;&nbsp; Isolated / Floating Quotes <span class="err-badge" style="color:#4a1e28;">Common Error</span></span>
+  </div>
+  <div class="rule-body" style="border-color:#D8B0B8;">
+    <p class="rule-lede" style="border-color:#D8B0B8;">A <strong>floating quote</strong> (also called a dropped or isolated quote) is a quotation that stands alone as its own sentence, without being introduced by a signal phrase or integrated into your own sentence. Every quotation must be attached to your own words to provide context and connection to your argument.</p>
+    <div class="eg3">
+      <div class="eg-card eg-red">
+        <div class="eg-card-head">✗ &nbsp;Floating Quote</div>
+        <div class="eg-card-body">
+          <p class="eg-prose">Delia has lost all feeling for her husband. &ldquo;She knew that Sykes was planning a third wife&rdquo; (Hurston 5). This shows how bad their marriage is.</p>
+          <p class="eg-note">The quotation stands alone as its own sentence &mdash; neither introduced nor integrated.</p>
+        </div>
+      </div>
+      <div class="eg-card eg-blue">
+        <div class="eg-card-head">✓ &nbsp;Quote Integrated Into Student&rsquo;s Sentence</div>
+        <div class="eg-card-body">
+          <p class="eg-prose">By the story&rsquo;s midpoint, Delia&rsquo;s knowledge of Sykes&rsquo;s plans has hardened into a cold, detached clarity: she understands that &ldquo;Sykes was planning a third wife&rdquo; (Hurston 5) and has already made her peace with what that means.</p>
+        </div>
+      </div>
+      <div class="eg-card eg-gold">
+        <div class="eg-card-head">✓ &nbsp;Signal Phrase Introduces the Quote</div>
+        <div class="eg-card-body">
+          <p class="eg-prose">Carter signals the girl&rsquo;s transformation from victim to agent in the story&rsquo;s final lines: &ldquo;she is nobody&rsquo;s meat&rdquo; (10), a declaration that reframes the entire fairy-tale logic the story had appeared to be following.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 8. COMMA SPLICES -->
+<div class="rule-block fade">
+  <div class="rule-head" style="background:linear-gradient(135deg,#C8A870,#DCC090);color:#3e2800;">
+    <span>8 &nbsp;&mdash;&nbsp; Comma Splices Involving Quotes <span class="err-badge" style="color:#3e2800;">Common Error</span></span>
+  </div>
+  <div class="rule-body" style="border-color:#C8A870;">
+    <p class="rule-lede" style="border-color:#C8A870;">A common quoting error is using a comma to join your own independent clause to a quotation. If your lead-in is a complete sentence, use a <strong>colon</strong>, not a comma. Alternatively, restructure the lead-in so the quotation flows naturally from it without needing a colon at all.</p>
+    <div class="eg3">
+      <div class="eg-card eg-red">
+        <div class="eg-card-head">✗ &nbsp;Comma Between Complete Clause and Quote</div>
+        <div class="eg-card-body">
+          <p class="eg-prose">Roth emphasizes Ozzie&rsquo;s stubborn honesty, &ldquo;he did not think it was an honest question&rdquo; (2) when his mother asked if he was picking on the rabbi.</p>
+          <p class="eg-note">The lead-in is a complete sentence &mdash; a comma cannot join it to the quotation.</p>
+        </div>
+      </div>
+      <div class="eg-card eg-blue">
+        <div class="eg-card-head">✓ &nbsp;Colon After Complete Lead-In</div>
+        <div class="eg-card-body">
+          <p class="eg-prose">Roth emphasizes Ozzie&rsquo;s stubborn honesty: &ldquo;he did not think it was an honest question&rdquo; (2) when his mother asked if he was picking on the rabbi.</p>
+        </div>
+      </div>
+      <div class="eg-card eg-gold">
+        <div class="eg-card-head">✓ &nbsp;Restructure So Quote Flows From Incomplete Lead-In</div>
+        <div class="eg-card-body">
+          <p class="eg-prose">Roth suggests Ozzie&rsquo;s genuine confusion by noting that &ldquo;he did not think it was an honest question&rdquo; (2) when his mother asked if he was picking on the rabbi.</p>
+          <p class="eg-note">&ldquo;By noting that&rdquo; is incomplete &mdash; the quote flows naturally; no colon needed.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 9. COLON BEFORE QUOTE -->
+<div class="rule-block fade">
+  <div class="rule-head" style="background:linear-gradient(135deg,#8AAC8C,#A8C8AA);color:#1a3a1c;">
+    <span>9 &nbsp;&mdash;&nbsp; Colon Before a Quote &mdash; Signal Phrase Must Be a Complete Sentence <span class="err-badge" style="color:#1a3a1c;">Common Error</span></span>
+  </div>
+  <div class="rule-body" style="border-color:#8AAC8C;">
+    <p class="rule-lede" style="border-color:#8AAC8C;">A colon may introduce a quotation <strong>only when the signal phrase is a complete sentence</strong> &mdash; that is, it has both a subject and a predicate and could stand alone. If your lead-in is an incomplete construction (such as &ldquo;Hurston shows that&rdquo; or &ldquo;According to Carter&rdquo;), do not use a colon; let the quotation flow directly from your words.</p>
+    <div class="eg3">
+      <div class="eg-card eg-red">
+        <div class="eg-card-head">✗ &nbsp;Colon After Incomplete Lead-In</div>
+        <div class="eg-card-body">
+          <p class="eg-prose">Hurston shows that: &ldquo;de white folks had all but drowned her out&rdquo; (3) when it came to her cries for help.</p>
+          <p class="eg-note">&ldquo;Hurston shows that&rdquo; is not a complete sentence &mdash; a colon cannot follow it.</p>
+        </div>
+      </div>
+      <div class="eg-card eg-blue">
+        <div class="eg-card-head">✓ &nbsp;No Colon: Quote Flows From Incomplete Lead-In</div>
+        <div class="eg-card-body">
+          <p class="eg-prose">Hurston shows that &ldquo;de white folks had all but drowned her out&rdquo; (3) when it came to her cries for help.</p>
+        </div>
+      </div>
+      <div class="eg-card eg-gold">
+        <div class="eg-card-head">✓ &nbsp;Colon Correct After a Complete Sentence</div>
+        <div class="eg-card-body">
+          <p class="eg-prose">Carter&rsquo;s final image dismantles the genre&rsquo;s foundational premise: &ldquo;See! sweet and sound she sleeps in granny&rsquo;s bed, between the paws of the tender wolf&rdquo; (10).</p>
+          <p class="eg-note">That lead-in is a complete sentence &mdash; the colon is correct.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 10. PUNCTUATION INSIDE -->
+<div class="rule-block fade">
+  <div class="rule-head" style="background:linear-gradient(135deg,#A89DCC,#C4B8E0);color:#26204a;">
+    <span>10 &nbsp;&mdash;&nbsp; Punctuation Left Inside the Quotation Marks <span class="err-badge" style="color:#26204a;">Common Error</span></span>
+  </div>
+  <div class="rule-body" style="border-color:#A89DCC;">
+    <p class="rule-lede" style="border-color:#A89DCC;">When a quotation is followed by a parenthetical citation, do <strong>not</strong> leave the original text&rsquo;s ending punctuation inside the closing quotation mark. Periods, commas, semicolons, and colons from the original text should be dropped &mdash; the citation and your own closing punctuation handle the end of the sentence. The only exceptions are <strong>question marks</strong> and <strong>exclamation marks</strong> that belong to the quoted material itself; these stay inside.</p>
+    <div class="eg3">
+      <div class="eg-card eg-red">
+        <div class="eg-card-head">✗ &nbsp;Original Period Left Inside Quotation Marks</div>
+        <div class="eg-card-body">
+          <p class="eg-prose">Delia&rsquo;s defiance is finally audible when Hurston writes that &ldquo;Delia&rsquo;s habitual meekness seemed to slip from her shoulders like a blown scarf.&rdquo; (3).</p>
+          <p class="eg-note">The period from the original text should not appear here &mdash; this also creates double punctuation.</p>
+        </div>
+      </div>
+      <div class="eg-card eg-blue">
+        <div class="eg-card-head">✓ &nbsp;Original Period Removed</div>
+        <div class="eg-card-body">
+          <p class="eg-prose">Delia&rsquo;s defiance is finally audible when Hurston writes that &ldquo;Delia&rsquo;s habitual meekness seemed to slip from her shoulders like a blown scarf&rdquo; (3).</p>
+        </div>
+      </div>
+      <div class="eg-card eg-gold">
+        <div class="eg-card-head">✓ &nbsp;Exception: Question Marks &amp; Exclamation Marks Stay Inside</div>
+        <div class="eg-card-body">
+          <p class="eg-prose">Ozzie&rsquo;s theological confusion surfaces in the question he cannot stop asking: &ldquo;If he could make all that in six days, and He could pick the six days he wanted right out of nowhere, why couldn&rsquo;t He let a woman have a baby without having intercourse?&rdquo; (Roth 2).</p>
+          <p class="eg-note">Question marks from the original stay inside. The period after the citation still closes your sentence.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 11. MISSING END PUNCTUATION -->
+<div class="rule-block fade">
+  <div class="rule-head" style="background:linear-gradient(135deg,#7AAEC2,#9ACAD8);color:#0d3040;">
+    <span>11 &nbsp;&mdash;&nbsp; Missing End Punctuation After a Quote <span class="err-badge" style="color:#0d3040;">Common Error</span></span>
+  </div>
+  <div class="rule-body" style="border-color:#7AAEC2;">
+    <p class="rule-lede" style="border-color:#7AAEC2;">When a quotation ends your sentence, the sentence still needs its own closing punctuation &mdash; a <strong>period, semicolon, or colon</strong> &mdash; placed <em>after</em> the parenthetical citation. The period after the citation is not optional.</p>
+    <div class="eg3">
+      <div class="eg-card eg-red">
+        <div class="eg-card-head">✗ &nbsp;Missing Period After Citation</div>
+        <div class="eg-card-body">
+          <p class="eg-prose">The snake&rsquo;s arrival in the house signals the story&rsquo;s climax, as Hurston describes &ldquo;the huge snake&rdquo; lying &ldquo;in the lamp&rsquo;s circle of light&rdquo; (7)</p>
+          <p class="eg-note">The sentence ends after the closing parenthesis with no period.</p>
+        </div>
+      </div>
+      <div class="eg-card eg-blue">
+        <div class="eg-card-head">✓ &nbsp;Correct &mdash; Period After Citation</div>
+        <div class="eg-card-body">
+          <p class="eg-prose">The snake&rsquo;s arrival in the house signals the story&rsquo;s climax, as Hurston describes &ldquo;the huge snake&rdquo; lying &ldquo;in the lamp&rsquo;s circle of light&rdquo; (7).</p>
+        </div>
+      </div>
+      <div class="eg-card eg-gold">
+        <div class="eg-card-head">✓ &nbsp;Semicolon After Citation: Joining Two Clauses</div>
+        <div class="eg-card-body">
+          <p class="eg-prose">Carter notes that the wolf-groom &ldquo;would not hesitate to use his teeth&rdquo; (5); this reminder of the creature&rsquo;s danger frames the girl&rsquo;s decision to stay as a choice, not a submission.</p>
+          <p class="eg-note">A semicolon after the citation is correct when joining two independent clauses.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+</div>
+</body>
+</html>

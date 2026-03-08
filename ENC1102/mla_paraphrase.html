@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --sage:#A8C5B0;--sage-dark:#2e4a35;--sage-deep:#1a3328;--sage-light:#eaf4eb;--sage-mid:#C8DFD0;
+  --slate:#B8C8D0;--slate-dark:#2e3e4a;--slate-mid:#D0DFE8;--slate-light:#f0f6f9;
+  --plum:#B8A8D0;--plum-dark:#3e2e5a;--plum-light:#f7f4fc;--plum-mid:#D0C5E0;
+  --amber:#E6C5B3;--amber-dark:#5a3e35;--amber-light:#fff8f4;--amber-mid:#F0D7C8;
+  --text:#333;--text-mid:#555;--border:#e0e0e0;--white:#fff;
+  --radius:10px;--shadow:0 2px 10px rgba(0,0,0,0.06);
+}
+body{font-family:"DM Sans",sans-serif;background:#f7f8f6;color:var(--text);line-height:1.7;overflow-x:hidden;}
+.wrap{max-width:1060px;margin:0 auto;padding:32px 16px 60px;}
+.page-header{border-radius:var(--radius);padding:28px 36px;margin-bottom:20px;position:relative;overflow:hidden;}
+.page-header::before{content:"";position:absolute;right:-50px;top:-50px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,0.1);}
+.eyebrow{font-size:11px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;}
+h1{font-family:"Lora",serif;font-size:clamp(18px,3.5vw,26px);font-weight:700;line-height:1.2;margin-bottom:6px;}
+.subtitle{font-size:14px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:12px;border:1px solid;padding:5px 12px;border-radius:20px;text-decoration:none;margin-bottom:20px;opacity:.8;transition:opacity .2s;}
+.back-link:hover{opacity:1;}
+.rule-block{border-radius:var(--radius);overflow:hidden;margin-bottom:16px;box-shadow:var(--shadow);}
+.rule-head{padding:12px 22px;font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px;}
+.rule-body{background:var(--white);border:2px solid;border-top:none;border-radius:0 0 var(--radius) var(--radius);padding:16px 22px 18px;}
+.rule-lede{font-size:14px;color:var(--text-mid);line-height:1.8;border-left:3px solid;padding-left:12px;margin-bottom:14px;}
+.fmt-box{border:1px solid;border-radius:6px;padding:10px 14px;margin-bottom:14px;}
+.fmt-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;}
+.fmt-code{font-size:13px;line-height:1.8;}
+.eg3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.eg2{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+@media(max-width:660px){.eg3,.eg2{grid-template-columns:1fr;}}
+.eg-card{border-radius:8px;overflow:hidden;}
+.eg-card-head{padding:9px 14px;font-size:11px;font-weight:600;}
+.eg-card-body{padding:12px 14px;}
+.eg-prose{font-size:13px;font-style:italic;line-height:1.75;color:#2a2a2a;margin:0 0 8px 0;}
+.eg-prose:last-child{margin:0;}
+.eg-note{font-size:11px;line-height:1.6;margin:0;}
+.eg-blue .eg-card-head{background:#c5dde8;color:#1d4e62;}
+.eg-blue .eg-card-body{background:#eef6f8;border:2px solid #8fc4d4;border-top:none;}
+.eg-blue .eg-note{color:#3a6070;}
+.eg-gold .eg-card-head{background:#e8d8a0;color:#5a4010;}
+.eg-gold .eg-card-body{background:#fdf8ee;border:2px solid #c8b87a;border-top:none;}
+.eg-gold .eg-note{color:#7a6530;}
+.eg-red .eg-card-head{background:#e8c8c8;color:#8a2020;}
+.eg-red .eg-card-body{background:#fdf0f0;border:2px solid #d4a0a0;border-top:none;}
+.eg-red .eg-note{color:#7a5050;}
+.pat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px;}
+@media(max-width:600px){.pat-grid{grid-template-columns:1fr 1fr;}}
+.pat-card{border:2px solid;border-radius:6px;padding:10px 12px;}
+.pat-title{font-size:11px;font-weight:700;margin-bottom:4px;}
+.pat-desc{font-size:11px;line-height:1.6;margin-bottom:7px;}
+.pat-code{font-family:monospace;font-size:11px;border-radius:4px;padding:5px 8px;display:block;}
+.step-list{display:flex;flex-direction:column;gap:10px;}
+.step-item{display:flex;gap:14px;align-items:flex-start;background:#f6f3fa;border-radius:6px;padding:12px 14px;}
+.step-num{flex-shrink:0;width:26px;height:26px;background:linear-gradient(135deg,#C8B8D0,#A89DCC);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff;font-weight:700;}
+.step-item h4{font-size:13px;color:#2e1e4a;margin-bottom:3px;}
+.step-item p{font-size:12px;color:#5a4a7a;line-height:1.7;margin:0;}
+.tri-block{border:2px solid;border-radius:8px;padding:18px 20px;margin-bottom:18px;}
+.tri-title{font-size:13px;font-weight:600;margin-bottom:12px;}
+.original-box{background:#f0f0f0;border:2px solid #b0b0b0;border-radius:6px;padding:12px 16px;margin-bottom:12px;}
+.original-label{font-size:11px;color:#444;margin-bottom:6px;font-weight:600;}
+.original-text{font-size:13px;color:#333;font-style:italic;line-height:1.8;margin:0;}
+.three-criteria{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px;}
+@media(max-width:580px){.three-criteria{grid-template-columns:1fr;}}
+.crit-item{background:var(--white);border-left:3px solid;border-radius:0 4px 4px 0;padding:10px 12px;}
+.crit-item h4{font-size:12px;margin-bottom:4px;}
+.crit-item p{font-size:11px;line-height:1.6;margin:0;}
+.qp-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+@media(max-width:540px){.qp-grid{grid-template-columns:1fr;}}
+.qp-box{border:2px solid;border-radius:8px;padding:14px 16px;}
+.qp-box h3{font-size:13px;font-weight:700;margin-bottom:8px;}
+.qp-box ul{padding-left:18px;font-size:12px;line-height:2.0;margin:0;}
+.qp-reminder{border:1px solid;border-radius:6px;padding:10px 14px;margin-top:10px;}
+.err-badge{font-size:11px;background:rgba(255,255,255,0.35);padding:2px 9px;border-radius:10px;margin-left:8px;}
+.sec-divider{display:flex;align-items:center;gap:14px;margin:32px 0 20px;}
+.sec-divider-line{flex:1;height:2px;border-radius:2px;}
+.sec-divider-label{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;padding:4px 14px;border-radius:20px;white-space:nowrap;}
+p{font-size:14px;color:#444;line-height:1.8;margin:0;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.fade{animation:fadeUp .4s ease both;}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="back-link" href="mla_documentation.html" style="color:var(--slate-dark);border-color:var(--slate);">← Back to MLA Documentation</a>
+<div class="page-header fade" style="background:linear-gradient(135deg,var(--slate),var(--slate-mid));">
+  <div class="eyebrow" style="color:var(--slate-dark);">Section 3 &bull; Week 11</div>
+  <h1 style="color:var(--slate-dark);">MLA Documentation: How to Create a Paraphrase</h1>
+  <p class="subtitle" style="color:var(--slate-dark);">What paraphrasing means &bull; When to use it &bull; Step-by-step process &bull; Citation rules &bull; Common errors</p>
+</div>
+<!-- SECTION 3: HOW TO CREATE A PARAPHRASE       -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="sec-divider" style="margin-top:40px;">
+  <div class="sec-divider-line" style="background:var(--plum);"></div>
+  <div class="sec-divider-label" style="background:var(--plum-light);color:var(--plum-dark);border:2px solid var(--plum);">Section 3 &mdash; How to Create a Paraphrase</div>
+  <div class="sec-divider-line" style="background:var(--plum);"></div>
+</div>
+
+<div style="border-bottom:2px solid var(--plum);padding-bottom:6px;margin-bottom:16px;">
+  <div style="font-size:11px;color:#5e4e7a;font-weight:600;">Part One &mdash; Core Skills</div>
+</div>
+
+<!-- P-1. WHAT IS A PARAPHRASE -->
+<div class="rule-block fade">
+  <div class="rule-head" style="background:linear-gradient(135deg,var(--slate),var(--slate-mid));color:var(--slate-dark);">
+    <span>1 &nbsp;&mdash;&nbsp; What Is a Paraphrase?</span>
+  </div>
+  <div class="rule-body" style="border-color:var(--slate);">
+    <p class="rule-lede" style="border-color:var(--slate);">A <strong>paraphrase</strong> is when you take a scholar&rsquo;s idea or argument from a secondary source and restate it <em>completely in your own words</em>. You are not quoting the author directly &mdash; you are translating their point into your own prose while accurately representing their meaning. The scholar still receives full credit through a signal phrase, a parenthetical citation, and a Works Cited entry, just as they would for a direct quote.</p>
+    <p style="font-size:14px;color:var(--text-mid);line-height:1.8;margin:0 0 14px 0;">The key word in that definition is <em>completely</em>. A paraphrase is not a light editing job &mdash; it requires that you understand the scholar&rsquo;s point well enough to reconstruct it in an entirely new sentence, in your own voice.</p>
+    <div class="fmt-box" style="background:var(--slate-light);border-color:var(--slate);">
+      <div class="fmt-label" style="color:var(--slate-dark);">Three Things a Paraphrase Must Do</div>
+    </div>
+    <div class="three-criteria">
+      <div class="crit-item" style="border-color:var(--slate);">
+        <h4 style="color:var(--slate-dark);">1. Accurately represent the original</h4>
+        <p style="color:#4a6070;">The scholar&rsquo;s actual argument must come through. Distorting or oversimplifying what they said is just as problematic as copying their words.</p>
+      </div>
+      <div class="crit-item" style="border-color:var(--slate);">
+        <h4 style="color:var(--slate-dark);">2. Be written entirely in your words</h4>
+        <p style="color:#4a6070;">Every word, phrase, and sentence structure must be yours &mdash; except proper nouns (names, titles) and highly technical terms with no alternatives.</p>
+      </div>
+      <div class="crit-item" style="border-color:var(--slate);">
+        <h4 style="color:var(--slate-dark);">3. Acknowledge the source</h4>
+        <p style="color:#4a6070;">A paraphrase without a signal phrase or citation is plagiarism, even though you rewrote the language. The idea still belongs to the scholar.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- P-2. WHEN TO PARAPHRASE VS. QUOTE -->
+<div class="rule-block fade">
+  <div class="rule-head" style="background:linear-gradient(135deg,var(--sage),var(--sage-mid));color:var(--sage-deep);">
+    <span>2 &nbsp;&mdash;&nbsp; When to Paraphrase vs. Quote Directly</span>
+  </div>
+  <div class="rule-body" style="border-color:var(--sage);">
+    <p class="rule-lede" style="border-color:var(--sage);">Both direct quotes and paraphrases are legitimate ways to incorporate secondary source evidence, and your essay will use both. The choice depends on what you&rsquo;re trying to do with the scholar&rsquo;s material.</p>
+    <div class="qp-grid">
+      <div class="qp-box" style="background:var(--sage-light);border-color:var(--sage);">
+        <h3 style="color:var(--sage-deep);">✓ &nbsp;Use a Direct Quote When&hellip;</h3>
+        <ul style="color:#3a5e42;">
+          <li>The scholar&rsquo;s specific wording is particularly precise, striking, or memorable</li>
+          <li>The exact language is itself the subject of your analysis</li>
+          <li>Paraphrasing would require so much explanation that quoting directly is more efficient</li>
+          <li>The scholar coins or uses a specific term you want to introduce</li>
+        </ul>
+        <div style="margin-top:10px;font-size:12px;color:#5a8060;font-style:italic;border-top:1px solid #c0ddc8;padding-top:8px;">Example: Boyd&rsquo;s phrase &ldquo;form of self-authorship&rdquo; is worth quoting because it encapsulates her argument in particularly precise critical language.</div>
+      </div>
+      <div class="qp-box" style="background:var(--slate-light);border-color:var(--slate);">
+        <h3 style="color:var(--slate-dark);">✓ &nbsp;Use a Paraphrase When&hellip;</h3>
+        <ul style="color:#3a5060;">
+          <li>The scholar&rsquo;s idea matters more than their specific wording</li>
+          <li>The original passage is longer than what you need</li>
+          <li>The scholar&rsquo;s sentence is complex or technical and clearer in your own words</li>
+          <li>You want to vary your evidence use &mdash; not every secondary source moment needs to be a direct quote</li>
+        </ul>
+        <div style="margin-top:10px;font-size:12px;color:#3a6080;font-style:italic;border-top:1px solid #c0d4dc;padding-top:8px;">Example: A scholar&rsquo;s argument about the story&rsquo;s narrative structure is often best paraphrased because the point is what matters, not how they phrased it.</div>
+      </div>
+    </div>
+    <div class="qp-reminder" style="background:#fff8f4;border-color:var(--amber);">
+      <p style="font-size:13px;color:#7a5545;line-height:1.7;margin:0;">📌 <strong>Reminder:</strong> Your essay requires <strong>six secondary source uses total</strong> across body paragraphs. These can be a combination of direct quotes and paraphrases &mdash; the sample essay uses 4 direct quotes and 2 paraphrases. Both count equally toward your total.</p>
+    </div>
+  </div>
+</div>
+
+<!-- P-3. HOW TO BUILD A PARAPHRASE -->
+<div class="rule-block fade">
+  <div class="rule-head" style="background:linear-gradient(135deg,#C8B8D0,#E0D0EC);color:#2e1e4a;">
+    <span>3 &nbsp;&mdash;&nbsp; How to Build a Paraphrase: A Step-by-Step Process</span>
+  </div>
+  <div class="rule-body" style="border-color:#C8B8D0;">
+    <p class="rule-lede" style="border-color:#C8B8D8;">A reliable paraphrase does not happen by staring at the original sentence and changing words one at a time. That process almost always produces patchwriting (see Section 6). Instead, follow these steps.</p>
+    <div class="step-list">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div>
+          <h4>Read the passage carefully until you understand the scholar&rsquo;s point</h4>
+          <p>Do not begin writing until you can summarize the idea in your head without looking at the text. If you cannot do this, you do not yet understand the passage well enough to paraphrase it.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div>
+          <h4>Set the original aside &mdash; do not look at it while you write</h4>
+          <p>Scroll past it or cover it on the page. Writing from memory forces you to use your own language instead of the scholar&rsquo;s. This single step eliminates most patchwriting problems.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div>
+          <h4>Consider restructuring: start from a different point in the argument</h4>
+          <p>If the original sentence moves from A to B, try writing your paraphrase moving from B to A, or entering from a different angle entirely. This ensures your organization is yours, not the scholar&rsquo;s.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <div>
+          <h4>Keep it shorter than the original</h4>
+          <p>A paraphrase that is as long as the original passage is almost certainly still too close to it. Aim to distill the scholar&rsquo;s point into one well-constructed sentence of your own.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">5</div>
+        <div>
+          <h4>Re-read your paraphrase alongside the original and check for borrowed language</h4>
+          <p>Your brain naturally gravitates back toward the original phrasing. Re-reading with the source visible helps you catch any words or phrases that crept in without your noticing. Rewrite those parts &mdash; do not just swap individual words for synonyms.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">6</div>
+        <div>
+          <h4>Add your signal phrase and citation, then your own analytical sentence</h4>
+          <p>A paraphrase without a signal phrase is plagiarism, and a paraphrase without your own follow-up analysis is a wasted opportunity. The paraphrase delivers the scholar&rsquo;s point; your analysis connects that point to your argument.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- P-4. CITATION RULES FOR PARAPHRASES -->
+<div class="rule-block fade">
+  <div class="rule-head" style="background:linear-gradient(135deg,#D8C8A8,#ECD8B8);color:#3e2e10;">
+    <span>4 &nbsp;&mdash;&nbsp; Citation Rules for Paraphrases</span>
+  </div>
+  <div class="rule-body" style="border-color:#D8C8A8;">
+    <p class="rule-lede" style="border-color:#D8C8A8;">Paraphrases follow the <strong>same citation rules as direct quotes</strong>: the same four patterns based on source format (PDF vs. HTML) and where you place the author&rsquo;s name (signal phrase vs. parenthetical). The only difference between citing a quote and citing a paraphrase is that a paraphrase has no quotation marks.</p>
+    <div class="eg2" style="margin-bottom:10px;">
+      <div style="background:#f9f6f0;border:2px solid #D8C8A8;border-radius:8px;padding:13px 16px;">
+        <div style="font-size:12px;color:#3e2e10;font-weight:700;margin-bottom:7px;">PDF Source &mdash; Author in Signal Phrase</div>
+        <p class="eg-prose" style="margin:0 0 7px 0;">Literary critic Valerie Boyd argues that Delia&rsquo;s labor is less about earning money than about staking a claim to the house she built &mdash; a claim Sykes is bent on destroying (112).</p>
+        <p style="font-size:11px;color:#7a6530;margin:0;">Author named in signal phrase &rarr; page number only. No quotation marks.</p>
+      </div>
+      <div style="background:#f9f6f0;border:2px solid #D8C8A8;border-radius:8px;padding:13px 16px;">
+        <div style="font-size:12px;color:#3e2e10;font-weight:700;margin-bottom:7px;">PDF Source &mdash; Author in Parenthetical</div>
+        <p class="eg-prose" style="margin:0 0 7px 0;">One critic has argued that Delia&rsquo;s labor is less about earning money than about staking a claim to the house she built &mdash; a claim Sykes is bent on destroying (Boyd 112).</p>
+        <p style="font-size:11px;color:#7a6530;margin:0;">Author not named in signal phrase &rarr; last name + page number in citation.</p>
+      </div>
+    </div>
+    <div class="eg2">
+      <div style="background:#f9f6f0;border:2px solid #D8C8A8;border-radius:8px;padding:13px 16px;">
+        <div style="font-size:12px;color:#3e2e10;font-weight:700;margin-bottom:7px;">HTML Source &mdash; Author in Signal Phrase</div>
+        <p class="eg-prose" style="margin:0 0 7px 0;">Carter scholar Merja Makinen has observed that the girl&rsquo;s decision to stay with the wolf constitutes an act of desire rather than surrender, recasting the traditional ending entirely.</p>
+        <p style="font-size:11px;color:#7a6530;margin:0;">HTML source + author in signal phrase = no parenthetical citation needed.</p>
+      </div>
+      <div style="background:#f9f6f0;border:2px solid #D8C8A8;border-radius:8px;padding:13px 16px;">
+        <div style="font-size:12px;color:#3e2e10;font-weight:700;margin-bottom:7px;">HTML Source &mdash; Author in Parenthetical</div>
+        <p class="eg-prose" style="margin:0 0 7px 0;">One scholar has observed that the girl&rsquo;s decision to stay with the wolf constitutes an act of desire rather than surrender, recasting the traditional ending entirely (Makinen).</p>
+        <p style="font-size:11px;color:#7a6530;margin:0;">HTML source + author not in signal phrase = last name only in parenthetical.</p>
+      </div>
+    </div>
+    <div style="background:#fffbf0;border:1px solid #c8b87a;border-radius:6px;padding:10px 14px;margin-top:12px;">
+      <p style="font-size:13px;color:#7a6530;line-height:1.7;margin:0;">⚠️ <strong>The most common citation error with paraphrases</strong> is omitting the citation entirely &mdash; students sometimes feel that because they rewrote the language, no citation is needed. This is incorrect. The scholar&rsquo;s <em>idea</em> belongs to them, not just their words. A paraphrase without a citation is plagiarism. See Section 8 below.</p>
+    </div>
+  </div>
+</div>
+
+<!-- P-5. COMPLETE PARAPHRASE EXAMPLES -->
+<div class="rule-block fade">
+  <div class="rule-head" style="background:linear-gradient(135deg,var(--amber),var(--amber-mid));color:#3a1e10;">
+    <span>5 &nbsp;&mdash;&nbsp; Complete Paraphrase Examples: Original &rarr; Bad &rarr; Good</span>
+  </div>
+  <div class="rule-body" style="border-color:var(--amber);">
+    <p class="rule-lede" style="border-color:var(--amber);">Each example below shows an original passage from a secondary source, followed by a bad paraphrase and an explanation of why it fails, then a good paraphrase with an explanation of what makes it work. Understanding why the bad version fails is as instructive as seeing the good one.</p>
+
+    <!-- Example 1: Boyd on Hurston (PDF) -->
+    <div class="tri-block" style="background:#f9f5ff;border-color:#C8B8D0;">
+      <div class="tri-title" style="color:#3e2e5a;">Example 1 &mdash; Boyd on Delia&rsquo;s Labor in &ldquo;Sweat&rdquo; (PDF source)</div>
+      <div class="original-box">
+        <div class="original-label">📄 ORIGINAL TEXT (Boyd, p. 112 &mdash; PDF article)</div>
+        <p class="original-text">&ldquo;Delia&rsquo;s labor is not merely economic survival but a form of self-authorship that Sykes systematically attempts to erase. Her insistence on continuing to wash clothes &mdash; despite his contempt, his violence, and his threats &mdash; is itself a refusal to be written out of the story of her own life.&rdquo;</p>
+      </div>
+      <div class="eg2">
+        <div class="eg-card eg-red">
+          <div class="eg-card-head">✗ &nbsp;BAD PARAPHRASE</div>
+          <div class="eg-card-body">
+            <p class="eg-prose">Delia&rsquo;s labor is not just economic survival but a form of self-authorship that Sykes tries to erase. Her continuing to wash clothes despite his contempt and violence is a refusal to be written out of her own story (Boyd 112).</p>
+            <div style="border-top:1px solid #d4a0a0;padding-top:9px;margin-top:9px;">
+              <div style="font-size:11px;color:#8a2020;margin-bottom:5px;font-weight:700;">Why it fails:</div>
+              <ul style="margin:0;padding-left:15px;font-size:12px;color:#7a4040;line-height:1.8;">
+                <li><strong>Patchwriting:</strong> &ldquo;self-authorship,&rdquo; &ldquo;economic survival,&rdquo; and &ldquo;written out of her own story&rdquo; are all borrowed directly from Boyd.</li>
+                <li><strong>Word substitution only:</strong> &ldquo;systematically attempts to erase&rdquo; &rarr; &ldquo;tries to erase&rdquo; is a minimal synonym swap, not a genuine rewrite.</li>
+                <li><strong>Too long:</strong> The paraphrase is nearly as long as the original.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="eg-card eg-blue">
+          <div class="eg-card-head">✓ &nbsp;GOOD PARAPHRASE</div>
+          <div class="eg-card-body">
+            <p class="eg-prose">Literary critic Valerie Boyd argues that Delia&rsquo;s labor is less about earning money than about staking a claim to the house she built &mdash; a claim Sykes is bent on destroying, and which Delia asserts simply by continuing to show up and work (112).</p>
+            <div style="border-top:1px solid #8fc4d4;padding-top:9px;margin-top:9px;">
+              <div style="font-size:11px;color:#1d4e62;margin-bottom:5px;font-weight:700;">Why it works:</div>
+              <ul style="margin:0;padding-left:15px;font-size:12px;color:#2a5060;line-height:1.8;">
+                <li><strong>New language:</strong> None of Boyd&rsquo;s specific phrasing survives.</li>
+                <li><strong>Restructured:</strong> Combines both sentences into one from a different angle.</li>
+                <li><strong>Shorter:</strong> Two sentences condensed to one without losing the core argument.</li>
+                <li><strong>Properly cited:</strong> Author named in signal phrase; page number in parenthetical.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Example 2: Day on Carter (HTML) -->
+    <div class="tri-block" style="background:#f0f7f2;border-color:var(--sage);">
+      <div class="tri-title" style="color:var(--sage-deep);">Example 2 &mdash; Day on the Ending of &ldquo;The Company of Wolves&rdquo; (HTML source)</div>
+      <div class="original-box">
+        <div class="original-label">📄 ORIGINAL TEXT (Day &mdash; HTML article, no page number)</div>
+        <p class="original-text">&ldquo;The wolf-bridegroom is not defeated but domesticated, and domestication in Carter is always a mutual transformation. The girl who lies down beside him is not the same girl who entered the forest; but neither is the wolf who receives her the same beast who threatened her grandmother.&rdquo;</p>
+      </div>
+      <div class="eg2">
+        <div class="eg-card eg-red">
+          <div class="eg-card-head">✗ &nbsp;BAD PARAPHRASE</div>
+          <div class="eg-card-body">
+            <p class="eg-prose">According to Day, the wolf-bridegroom is not defeated but made domestic, and in Carter domestication is always mutual transformation. The girl who lies down with him is not the same as the one who came into the forest, and the wolf is not the same beast who threatened her grandmother (Day).</p>
+            <div style="border-top:1px solid #d4a0a0;padding-top:9px;margin-top:9px;">
+              <div style="font-size:11px;color:#8a2020;margin-bottom:5px;font-weight:700;">Why it fails:</div>
+              <ul style="margin:0;padding-left:15px;font-size:12px;color:#7a4040;line-height:1.8;">
+                <li><strong>Patchwriting:</strong> &ldquo;defeated,&rdquo; &ldquo;mutual transformation,&rdquo; and the two-sentence structure are borrowed directly.</li>
+                <li><strong>Redundant citation:</strong> &ldquo;According to Day&rdquo; is a signal phrase &mdash; &ldquo;(Day)&rdquo; is therefore redundant.</li>
+                <li><strong>Identical length:</strong> The paraphrase matches the original almost sentence for sentence.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="eg-card eg-blue">
+          <div class="eg-card-head">✓ &nbsp;GOOD PARAPHRASE</div>
+          <div class="eg-card-body">
+            <p class="eg-prose">Carter scholar Patricia Day has observed that the story&rsquo;s ending resists simple resolution: rather than showing a victor and a vanquished, Carter insists that both the girl and the wolf are changed by their encounter &mdash; each having crossed into territory that was not theirs before.</p>
+            <div style="border-top:1px solid #8fc4d4;padding-top:9px;margin-top:9px;">
+              <div style="font-size:11px;color:#1d4e62;margin-bottom:5px;font-weight:700;">Why it works:</div>
+              <ul style="margin:0;padding-left:15px;font-size:12px;color:#2a5060;line-height:1.8;">
+                <li><strong>New language:</strong> &ldquo;Crossed into territory that was not theirs&rdquo; captures the mutual transformation in entirely fresh phrasing.</li>
+                <li><strong>Shorter:</strong> Two original sentences condensed to one.</li>
+                <li><strong>HTML + author in signal phrase:</strong> No parenthetical citation needed. Period ends the sentence.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Example 3: Pinsker on Roth (HTML) -->
+    <div class="tri-block" style="background:#faf6ee;border-color:#D8C8A8;">
+      <div class="tri-title" style="color:#3e2e10;">Example 3 &mdash; Pinsker on the Rooftop Scene in &ldquo;The Conversion of the Jews&rdquo; (HTML source)</div>
+      <div class="original-box">
+        <div class="original-label">📄 ORIGINAL TEXT (Pinsker &mdash; HTML article, no page number)</div>
+        <p class="original-text">&ldquo;Ozzie&rsquo;s ascent to the roof is not an act of defiance for its own sake but a demand for coherence &mdash; a refusal to accept a world in which adults claim authority without being accountable for the things they say. The rooftop stand converts a child&rsquo;s question into a moral ultimatum.&rdquo;</p>
+      </div>
+      <div class="eg2">
+        <div class="eg-card eg-red">
+          <div class="eg-card-head">✗ &nbsp;BAD PARAPHRASE</div>
+          <div class="eg-card-body">
+            <p class="eg-prose">Pinsker argues that Ozzie&rsquo;s going up to the roof is not an act of defiance for its own sake but a demand for coherence &mdash; a refusal to accept adults who claim authority without accountability. The rooftop stand turns a child&rsquo;s question into a moral ultimatum (Pinsker).</p>
+            <div style="border-top:1px solid #d4a0a0;padding-top:9px;margin-top:9px;">
+              <div style="font-size:11px;color:#8a2020;margin-bottom:5px;font-weight:700;">Why it fails:</div>
+              <ul style="margin:0;padding-left:15px;font-size:12px;color:#7a4040;line-height:1.8;">
+                <li><strong>Patchwriting:</strong> &ldquo;demand for coherence,&rdquo; &ldquo;moral ultimatum,&rdquo; and the two-part sentence structure are lifted from Pinsker.</li>
+                <li><strong>Redundant citation:</strong> Author named in signal phrase &rarr; &ldquo;(Pinsker)&rdquo; is redundant.</li>
+                <li><strong>Identical structure:</strong> Two sentences matching the original exactly.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="eg-card eg-blue">
+          <div class="eg-card-head">✓ &nbsp;GOOD PARAPHRASE</div>
+          <div class="eg-card-body">
+            <p class="eg-prose">Roth scholar Sanford Pinsker has argued that what looks like a childish stunt is really something more serious: Ozzie is not simply running away from the rabbi but forcing the adults below to answer for the gap between the authority they claim and the logic they cannot provide.</p>
+            <div style="border-top:1px solid #8fc4d4;padding-top:9px;margin-top:9px;">
+              <div style="font-size:11px;color:#1d4e62;margin-bottom:5px;font-weight:700;">Why it works:</div>
+              <ul style="margin:0;padding-left:15px;font-size:12px;color:#2a5060;line-height:1.8;">
+                <li><strong>New language:</strong> None of Pinsker&rsquo;s phrasing survives &mdash; the idea is reconstructed entirely.</li>
+                <li><strong>Restructured:</strong> Enters the argument from a different angle.</li>
+                <li><strong>HTML + author in signal phrase:</strong> No parenthetical citation needed.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PART 2: COMMON ERRORS (PARAPHRASE) -->
+<div style="border-bottom:2px solid #c99aa0;padding-bottom:6px;margin:28px 0 16px;">
+  <div style="font-size:11px;color:#8a3040;font-weight:600;">Part Two &mdash; Common Errors</div>
+</div>
+
+<!-- P-6. PATCHWRITING -->
+<div class="rule-block fade">
+  <div class="rule-head" style="background:linear-gradient(135deg,#D8B0B8,#ECC8D0);color:#4a1e28;">
+    <span>6 &nbsp;&mdash;&nbsp; Patchwriting <span class="err-badge" style="color:#4a1e28;">Common Error &mdash; Most Serious</span></span>
+  </div>
+  <div class="rule-body" style="border-color:#D8B0B8;">
+    <p class="rule-lede" style="border-color:#D8B0B8;"><strong>Patchwriting</strong> is the term for a paraphrase that still closely mirrors the original text &mdash; using the same sentence structure, the same key phrases, and only substituting individual words for synonyms. It is the most common paraphrasing error, and it is treated as a form of plagiarism even when not intentional, because the writing still fundamentally belongs to the original author. The only real fix for patchwriting is to rewrite from scratch using the step-by-step process in Section 3.</p>
+    <div style="background:#fff0f2;border:1px solid #d8b0b8;border-radius:6px;padding:10px 14px;margin-bottom:14px;">
+      <p style="font-size:13px;color:#7a3040;line-height:1.7;margin:0;"><strong>The test:</strong> If you place your paraphrase next to the original and can draw a line connecting most of your words to matching words in the original, it is patchwriting. A genuine paraphrase should look structurally and lexically different in every meaningful way &mdash; even if the idea is the same.</p>
+    </div>
+    <div class="eg3">
+      <div class="eg-card" style="border-radius:8px;overflow:hidden;">
+        <div class="eg-card-head" style="background:#d0d0d0;color:#333;">📄 &nbsp;Original (Boyd, p. 112)</div>
+        <div class="eg-card-body" style="background:#f0f0f0;border:2px solid #b0b0b0;border-top:none;">
+          <p class="eg-prose" style="color:#333;">&ldquo;Delia&rsquo;s labor is not merely economic survival but a form of self-authorship that Sykes systematically attempts to erase. Her insistence on continuing to wash clothes &mdash; despite his contempt, his violence, and his threats &mdash; is itself a refusal to be written out of the story of her own life.&rdquo;</p>
+        </div>
+      </div>
+      <div class="eg-card eg-red">
+        <div class="eg-card-head">✗ &nbsp;Patchwriting</div>
+        <div class="eg-card-body">
+          <p class="eg-prose">Delia&rsquo;s labor is not just about economic survival but is a form of self-expression that Sykes systematically tries to destroy. Her continuing to wash clothes despite his contempt and violence is a refusal to be removed from the story of her own existence (Boyd 112).</p>
+          <p class="eg-note">Every key phrase &mdash; &ldquo;economic survival,&rdquo; &ldquo;systematically,&rdquo; the sentence structure &mdash; is borrowed from Boyd. Only minor substitutions were made.</p>
+        </div>
+      </div>
+      <div class="eg-card eg-blue">
+        <div class="eg-card-head">✓ &nbsp;Genuine Paraphrase</div>
+        <div class="eg-card-body">
+          <p class="eg-prose">Literary critic Valerie Boyd argues that Delia&rsquo;s labor is less about earning money than about staking a claim to the house she built &mdash; a claim Sykes is bent on destroying, and which Delia asserts simply by continuing to show up and work (112).</p>
+          <p class="eg-note">The sentence is entirely restructured; no phrases from Boyd survive. The idea is preserved.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- P-7. PARAPHRASE TOO LONG -->
+<div class="rule-block fade">
+  <div class="rule-head" style="background:linear-gradient(135deg,#C8A870,#DCC090);color:#3e2800;">
+    <span>7 &nbsp;&mdash;&nbsp; Paraphrase Too Long <span class="err-badge" style="color:#3e2800;">Common Error</span></span>
+  </div>
+  <div class="rule-body" style="border-color:#C8A870;">
+    <p class="rule-lede" style="border-color:#C8A870;">One of the chief advantages of paraphrasing over quoting is efficiency: a paraphrase lets you incorporate a scholar&rsquo;s multi-sentence argument into a single well-placed sentence. If your paraphrase is as long as the original, you have defeated its purpose &mdash; and likely been going sentence-by-sentence through the original, which almost always produces patchwriting as a side effect. A well-executed paraphrase should typically be <strong>shorter than the original passage</strong>.</p>
+    <div class="eg2">
+      <div class="eg-card eg-red">
+        <div class="eg-card-head">✗ &nbsp;Paraphrase as Long as the Original</div>
+        <div class="eg-card-body">
+          <p class="eg-prose" style="font-size:11px;color:#888;margin-bottom:7px;">Original: &ldquo;Delia&rsquo;s labor is not merely economic survival but a form of self-authorship that Sykes systematically attempts to erase. Her insistence on continuing to wash clothes &mdash; despite his contempt, his violence, and his threats &mdash; is itself a refusal to be written out of the story of her own life.&rdquo;</p>
+          <p class="eg-prose">Boyd argues that Delia&rsquo;s labor operates as something beyond economic necessity &mdash; it is a form of self-expression that Sykes is always trying to eliminate. On top of this, her insistence on continuing to do the laundry in spite of his contempt, violence, and threats is in itself a kind of refusal to be pushed out of the narrative of her own existence (112).</p>
+          <p class="eg-note">This paraphrase is as long as the original and still borrows key phrases. Longer than necessary.</p>
+        </div>
+      </div>
+      <div class="eg-card eg-blue">
+        <div class="eg-card-head">✓ &nbsp;Concise Paraphrase &mdash; One Sentence</div>
+        <div class="eg-card-body">
+          <p class="eg-prose">Literary critic Valerie Boyd argues that Delia&rsquo;s labor is less about earning money than about staking a claim to the house she built &mdash; a claim Sykes is bent on destroying, and which Delia asserts simply by continuing to show up and work (112).</p>
+          <p class="eg-note">Two original sentences condensed into one. The core insight is preserved; the length is not.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- P-8. MISSING CITATION -->
+<div class="rule-block fade">
+  <div class="rule-head" style="background:linear-gradient(135deg,#8AAC8C,#A8C8AA);color:#1a3a1c;">
+    <span>8 &nbsp;&mdash;&nbsp; Missing Citation on a Paraphrase <span class="err-badge" style="color:#1a3a1c;">Common Error</span></span>
+  </div>
+  <div class="rule-body" style="border-color:#8AAC8C;">
+    <p class="rule-lede" style="border-color:#8AAC8C;">The most common paraphrasing error: students rewrite the language and then, feeling as though the idea is now &ldquo;theirs,&rdquo; leave out the signal phrase or the citation. A paraphrase without attribution is plagiarism. The words are yours; the <em>idea</em> belongs to the scholar, and the scholar must be credited.</p>
+    <div class="eg3">
+      <div class="eg-card eg-red">
+        <div class="eg-card-head">✗ &nbsp;No Attribution at All</div>
+        <div class="eg-card-body">
+          <p class="eg-prose">Delia&rsquo;s labor is less about earning money than about staking a claim to the house she built &mdash; a claim Sykes is bent on destroying.</p>
+          <p class="eg-note">No signal phrase, no citation. This passes Boyd&rsquo;s argument off as the student&rsquo;s own idea &mdash; plagiarism.</p>
+        </div>
+      </div>
+      <div class="eg-card eg-red">
+        <div class="eg-card-head">✗ &nbsp;Signal Phrase But No Page Number (PDF Source)</div>
+        <div class="eg-card-body">
+          <p class="eg-prose">Boyd argues that Delia&rsquo;s labor is less about earning money than about staking a claim to the house she built.</p>
+          <p class="eg-note">Author named, but this is a PDF source &mdash; the page number (112) must appear in a parenthetical citation.</p>
+        </div>
+      </div>
+      <div class="eg-card eg-blue">
+        <div class="eg-card-head">✓ &nbsp;Fully Attributed (PDF Source)</div>
+        <div class="eg-card-body">
+          <p class="eg-prose">Literary critic Valerie Boyd argues that Delia&rsquo;s labor is less about earning money than about staking a claim to the house she built &mdash; a claim Sykes is bent on destroying (112).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- P-9. INACCURATE PARAPHRASE -->
+<div class="rule-block fade">
+  <div class="rule-head" style="background:linear-gradient(135deg,#A89DCC,#C4B8E0);color:#26204a;">
+    <span>9 &nbsp;&mdash;&nbsp; Inaccurate Paraphrase <span class="err-badge" style="color:#26204a;">Common Error</span></span>
+  </div>
+  <div class="rule-body" style="border-color:#A89DCC;">
+    <p class="rule-lede" style="border-color:#A89DCC;">A paraphrase that distorts or oversimplifies the scholar&rsquo;s argument is not just a writing error &mdash; it misrepresents the source and undermines your essay&rsquo;s credibility. Re-read the original after writing your paraphrase and ask: &ldquo;Would the scholar recognize this as their argument?&rdquo;</p>
+    <div class="eg2">
+      <div class="eg-card eg-red">
+        <div class="eg-card-head">✗ &nbsp;Inaccurate &mdash; Meaning Distorted</div>
+        <div class="eg-card-body">
+          <p style="font-size:11px;color:#888;margin-bottom:6px;font-style:italic;">Original: Boyd argues that Delia&rsquo;s labor is a form of self-authorship and that Sykes&rsquo;s attempts to erase it constitute a deliberate campaign against her identity.</p>
+          <p class="eg-prose">Boyd argues that Delia works hard because she needs the money, and Sykes is mean to her because he doesn&rsquo;t respect her job (Boyd 112).</p>
+          <p class="eg-note">This loses Boyd&rsquo;s key analytical point entirely &mdash; that labor functions as identity and self-authorship. The paraphrase reduces a critical argument to a plot summary.</p>
+        </div>
+      </div>
+      <div class="eg-card eg-blue">
+        <div class="eg-card-head">✓ &nbsp;Accurate &mdash; Nuance Preserved</div>
+        <div class="eg-card-body">
+          <p style="font-size:11px;color:#888;margin-bottom:6px;font-style:italic;">Same original passage.</p>
+          <p class="eg-prose">Literary critic Valerie Boyd argues that Delia&rsquo;s labor is less about earning money than about staking a claim to the house she built &mdash; a claim Sykes is bent on destroying, and which Delia asserts simply by continuing to show up and work (112).</p>
+          <p class="eg-note">The essential argument &mdash; that labor is identity and Sykes is attacking that identity &mdash; is preserved.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- P-10. NO ANALYSIS AFTER PARAPHRASE -->
+<div class="rule-block fade">
+  <div class="rule-head" style="background:linear-gradient(135deg,#7AAEC2,#9ACAD8);color:#0d3040;">
+    <span>10 &nbsp;&mdash;&nbsp; Paraphrase With No Follow-Up Analysis <span class="err-badge" style="color:#0d3040;">Common Error</span></span>
+  </div>
+  <div class="rule-body" style="border-color:#7AAEC2;">
+    <p class="rule-lede" style="border-color:#7AAEC2;">A paraphrase that is dropped into a paragraph without any follow-up analysis is as incomplete as a floating quote. The paraphrase delivers the scholar&rsquo;s point; your job in the sentence or two that follow is to explain what that point contributes to <em>your</em> argument. The same signal-evidence-analysis structure that applies to direct quotes applies to paraphrases equally.</p>
+    <div class="eg2">
+      <div class="eg-card eg-red">
+        <div class="eg-card-head">✗ &nbsp;Paraphrase Without Analysis</div>
+        <div class="eg-card-body">
+          <p class="eg-prose">Literary critic Valerie Boyd argues that Delia&rsquo;s labor is less about earning money than about staking a claim to the house she built &mdash; a claim Sykes is bent on destroying (112). This helps explain the conflict in the story.</p>
+          <p class="eg-note">The final sentence adds nothing. &ldquo;This helps explain the conflict&rdquo; tells the reader nothing about what the scholar&rsquo;s point contributes to your argument.</p>
+        </div>
+      </div>
+      <div class="eg-card eg-blue">
+        <div class="eg-card-head">✓ &nbsp;Paraphrase Followed by Genuine Analysis</div>
+        <div class="eg-card-body">
+          <p class="eg-prose">Literary critic Valerie Boyd argues that Delia&rsquo;s labor is less about earning money than about staking a claim to the house she built &mdash; a claim Sykes is bent on destroying (112). Boyd&rsquo;s reading clarifies what the washtub passages are really doing: every time Sykes kicks the clothes basket or threatens to burn the laundry, he is not attacking her work &mdash; he is attacking her right to exist in that house on her own terms.</p>
+          <p class="eg-note">The analysis explains specifically what Boyd&rsquo;s point adds and connects it to the essay&rsquo;s argument about the washtub as a symbol of Delia&rsquo;s autonomy.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>
