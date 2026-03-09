@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poetic Imagery — Guided Practice | ENC 1102 Module Six</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper:        #f4ede0;
+    --vellum:       #ede3cf;
+    --aged:         #e4d8be;
+    --worn:         #d8c9a8;
+    --ink:          #1e160a;
+    --ink-warm:     #2c1f0e;
+    --ink-mid:      #4a3520;
+    --quill:        #6b4e2e;
+    --faded:        #7d6041;
+    --moss:         #4a6040;
+    --moss-mid-aa:  #5a734e;
+    --moss-light:   #7a9468;
+    --moss-pale:    #c8d8bc;
+    --moss-wash:    rgba(90,120,72,0.09);
+    --umber:        #7a4e28;
+    --umber-mid:    #9a6438;
+    --umber-pale:   #dfc8a8;
+    --umber-wash:   rgba(122,78,40,0.08);
+    --indigo:       #3a4868;
+    --indigo-mid:   #4e608a;
+    --indigo-pale:  #c0cce0;
+    --indigo-wash:  rgba(58,72,104,0.09);
+    --rose:         #7a3a50;
+    --rose-mid:     #9a5268;
+    --rose-pale:    #e0c8d0;
+    --rose-wash:    rgba(122,58,80,0.09);
+
+    --sense-sight:        rgba(184,142,60,0.28);
+    --sense-sight-border: #8a6a20;
+    --sense-sound:        rgba(80,110,160,0.22);
+    --sense-sound-border: #3a5888;
+    --sense-touch:        rgba(160,80,100,0.22);
+    --sense-touch-border: #8a3850;
+    --sense-taste:        rgba(160,110,60,0.22);
+    --sense-taste-border: #8a5828;
+
+    --rule:       rgba(74,53,32,0.18);
+    --rule-light: rgba(74,53,32,0.10);
+
+    --step1: #4a6040;
+    --step2: #3a4868;
+    --step3: #7a4e28;
+    --step4: #6a3a50;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; }
+
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.75;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background-color: var(--ink-warm);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-texture {
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(255,255,255,0.02) 28px, rgba(255,255,255,0.02) 29px);
+    pointer-events: none;
+  }
+  .hero-inner {
+    position: relative;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 52px 48px 48px;
+  }
+  .hero-tag {
+    font-family: 'Lora', serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--moss-pale);
+    opacity: 0.85;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .hero-tag::before {
+    content: '';
+    display: inline-block;
+    width: 28px; height: 1px;
+    background: var(--moss-pale);
+    opacity: 0.5;
+  }
+  .hero-title {
+    font-family: 'Lora', serif;
+    font-size: clamp(32px, 4.5vw, 48px);
+    font-weight: 700;
+    color: var(--paper);
+    line-height: 1.1;
+    margin-bottom: 14px;
+  }
+  .hero-title em { color: var(--moss-pale); font-style: italic; }
+  .hero-sub {
+    font-family: 'Crimson Pro', serif;
+    font-size: 17px;
+    font-style: italic;
+    color: var(--umber-pale);
+    opacity: 0.88;
+    max-width: 580px;
+    line-height: 1.6;
+    margin-bottom: 28px;
+  }
+  .hero-how {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .hero-pill {
+    font-family: 'Lora', serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 6px 16px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(244,237,224,0.80);
+  }
+  .hero-pill.p1 { background: rgba(74,96,64,0.35); }
+  .hero-pill.p2 { background: rgba(58,72,104,0.35); }
+  .hero-pill.p3 { background: rgba(122,78,40,0.35); }
+  .hero-pill.p4 { background: rgba(106,58,80,0.35); }
+
+  /* ── LAYOUT ── */
+  .page-body {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 52px 48px 80px;
+  }
+
+  /* ── HOW TO USE ── */
+  .how-box {
+    background: var(--vellum);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin-bottom: 52px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+  .how-icon {
+    font-size: 28px;
+    margin-top: 2px;
+  }
+  .how-title {
+    font-family: 'Lora', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink-warm);
+    margin-bottom: 8px;
+  }
+  .how-text {
+    font-family: 'Crimson Pro', serif;
+    font-size: 15px;
+    color: var(--ink-mid);
+    line-height: 1.7;
+  }
+
+  /* ── SENSE LEGEND ── */
+  .sense-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 0 0 36px;
+    padding: 16px 20px;
+    background: var(--vellum);
+    border-radius: 8px;
+    border: 1px solid var(--rule-light);
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-family: 'Crimson Pro', serif;
+    font-size: 14px;
+    color: var(--ink-mid);
+  }
+  .legend-swatch {
+    width: 20px; height: 11px;
+    border-radius: 3px;
+    border: 1px solid transparent;
+  }
+  .legend-swatch.sight { background: var(--sense-sight); border-color: var(--sense-sight-border); }
+  .legend-swatch.sound { background: var(--sense-sound); border-color: var(--sense-sound-border); }
+  .legend-swatch.touch { background: var(--sense-touch); border-color: var(--sense-touch-border); }
+  .legend-swatch.taste { background: var(--sense-taste); border-color: var(--sense-taste-border); }
+
+  /* ── POEM SECTION HEADER ── */
+  .poem-section-header {
+    background: var(--aged);
+    border: 1px solid var(--rule);
+    border-radius: 10px 10px 0 0;
+    padding: 0;
+    overflow: hidden;
+    margin-top: 56px;
+  }
+  .poem-section-hero {
+    background: var(--ink-warm);
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .poem-section-meta {
+    flex: 1;
+  }
+  .poem-section-eyebrow {
+    font-family: 'Lora', serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--moss-pale);
+    margin-bottom: 5px;
+    opacity: 0.85;
+  }
+  .poem-section-title {
+    font-family: 'Lora', serif;
+    font-size: clamp(17px, 2.2vw, 22px);
+    font-weight: 700;
+    color: var(--paper);
+    line-height: 1.25;
+    margin-bottom: 6px;
+  }
+  .poem-section-title em { font-style: italic; color: var(--moss-pale); }
+  .poem-section-bio {
+    font-family: 'Crimson Pro', serif;
+    font-size: 14px;
+    font-style: italic;
+    color: var(--umber-pale);
+    opacity: 0.82;
+    line-height: 1.55;
+    max-width: 520px;
+  }
+  .poet-portrait {
+    flex-shrink: 0;
+    width: 90px;
+    text-align: center;
+  }
+  .poet-portrait img {
+    width: 90px;
+    height: 108px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 4px;
+    border: 2px solid rgba(255,255,255,0.15);
+    filter: sepia(0.2) contrast(1.05);
+    display: block;
+  }
+  .poet-portrait figcaption {
+    font-family: 'Lora', serif;
+    font-size: 10px;
+    font-style: italic;
+    color: var(--umber-pale);
+    opacity: 0.7;
+    margin-top: 5px;
+  }
+  .poem-section-body {
+    background: var(--vellum);
+    border: 1px solid var(--rule);
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  /* ── STEP ACCORDION ── */
+  .step-block {
+    border-bottom: 1px solid var(--rule-light);
+  }
+  .step-block:last-child { border-bottom: none; }
+
+  .step-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 28px;
+    background: rgba(255,255,255,0.18);
+    cursor: default;
+  }
+  .step-header.locked {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+  .step-num-badge {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Lora', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--paper);
+    flex-shrink: 0;
+  }
+  .s1 .step-num-badge { background: var(--step1); }
+  .s2 .step-num-badge { background: var(--step2); }
+  .s3 .step-num-badge { background: var(--step3); }
+  .s4 .step-num-badge { background: var(--step4); }
+
+  .step-header-text {}
+  .step-header-name {
+    font-family: 'Lora', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink-warm);
+    line-height: 1.3;
+  }
+  .step-header-desc {
+    font-family: 'Crimson Pro', serif;
+    font-size: 14px;
+    font-style: italic;
+    color: var(--faded);
+    margin-top: 2px;
+  }
+  .step-lock-icon {
+    margin-left: auto;
+    font-size: 16px;
+    color: var(--faded);
+    opacity: 0.6;
+  }
+
+  .step-content {
+    padding: 28px 32px 32px;
+    background: var(--paper);
+    border-top: 1px solid var(--rule-light);
+  }
+  .step-content.hidden { display: none; }
+
+  /* ── INSTRUCTION LABEL ── */
+  .instruction {
+    font-family: 'Lora', serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--moss-mid-aa);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .instruction::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--rule), transparent);
+    max-width: 80px;
+  }
+
+  /* ── PROSE ── */
+  .prose {
+    font-family: 'Crimson Pro', serif;
+    font-size: 16px;
+    color: var(--ink-mid);
+    line-height: 1.8;
+    max-width: 700px;
+    margin-bottom: 20px;
+  }
+  .prose strong { color: var(--ink); font-weight: 600; }
+  .prose em { font-style: italic; }
+
+  /* ── PAIRED POEM ── */
+  .paired-poem {
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 20px 0;
+    background: var(--vellum);
+  }
+  .paired-poem-header {
+    background: var(--ink-mid);
+    padding: 11px 20px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .pph-title {
+    font-family: 'Lora', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--paper);
+  }
+  .pph-author {
+    font-family: 'Crimson Pro', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--umber-pale);
+    opacity: 0.8;
+  }
+  .paired-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--rule-light);
+    align-items: start;
+  }
+  .paired-row:last-child { border-bottom: none; }
+  .paired-lines {
+    padding: 16px 20px;
+    border-right: 1px solid var(--rule-light);
+    font-family: 'Libre Baskerville', serif;
+    font-size: 14px;
+    line-height: 1.9;
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+  }
+  .paired-lines .line { display: block; }
+  .paired-note {
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(255,255,255,0.28);
+  }
+  .paired-note-empty {
+    background: transparent;
+    padding: 16px 18px;
+  }
+  .paired-note-aside {
+    font-family: 'Crimson Pro', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--faded);
+    line-height: 1.55;
+  }
+  .ann-item {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .ann-bar {
+    width: 4px;
+    border-radius: 2px;
+    flex-shrink: 0;
+    align-self: stretch;
+    min-height: 18px;
+  }
+  .ann-bar.sight { background: var(--sense-sight-border); }
+  .ann-bar.sound { background: var(--sense-sound-border); }
+  .ann-bar.touch { background: var(--sense-touch-border); }
+  .ann-bar.taste { background: var(--sense-taste-border); }
+  .ann-content {}
+  .ann-term {
+    font-family: 'Lora', serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--ink-mid);
+    margin-bottom: 1px;
+  }
+  .ann-text {
+    font-family: 'Crimson Pro', serif;
+    font-size: 13.5px;
+    font-style: italic;
+    color: var(--quill);
+    line-height: 1.5;
+  }
+
+  mark { border-radius: 2px; padding: 0 2px; }
+  mark.sight { background: var(--sense-sight); }
+  mark.sound { background: var(--sense-sound); }
+  mark.touch { background: var(--sense-touch); }
+  mark.taste { background: var(--sense-taste); }
+
+  /* ── REVEAL BUTTON ── */
+  .reveal-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Lora', serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 9px 20px;
+    border-radius: 20px;
+    border: 1.5px solid;
+    cursor: pointer;
+    transition: background 0.18s ease, color 0.18s ease;
+    margin-top: 6px;
+    background: transparent;
+  }
+  .reveal-btn.s1 { border-color: var(--step1); color: var(--step1); }
+  .reveal-btn.s1:hover { background: var(--step1); color: var(--paper); }
+  .reveal-btn.s2 { border-color: var(--step2); color: var(--step2); }
+  .reveal-btn.s2:hover { background: var(--step2); color: var(--paper); }
+  .reveal-btn.s3 { border-color: var(--step3); color: var(--step3); }
+  .reveal-btn.s3:hover { background: var(--step3); color: var(--paper); }
+  .reveal-btn.s4 { border-color: var(--step4); color: var(--step4); }
+  .reveal-btn.s4:hover { background: var(--step4); color: var(--paper); }
+
+  .next-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Lora', serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 9px 22px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+    margin-top: 16px;
+    color: var(--paper);
+  }
+  .next-btn:hover { opacity: 0.88; transform: translateX(2px); }
+  .next-btn.s1 { background: var(--step1); }
+  .next-btn.s2 { background: var(--step2); }
+  .next-btn.s3 { background: var(--step3); }
+  .next-btn.s4 { background: var(--step4); }
+
+  /* ── ANSWER BLOCK ── */
+  .answer-block {
+    background: var(--vellum);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-top: 16px;
+  }
+  .answer-block.hidden { display: none; }
+  .answer-label {
+    font-family: 'Lora', serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--moss);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .answer-label::before {
+    content: '✓';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    background: var(--moss);
+    color: var(--paper);
+    font-size: 11px;
+    flex-shrink: 0;
+  }
+
+  /* ── CONNOTATION CARDS ── */
+  .connot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 16px 0;
+  }
+  .connot-card {
+    background: rgba(255,255,255,0.5);
+    border: 1px solid var(--rule-light);
+    border-radius: 8px;
+    padding: 14px 16px;
+    border-top: 3px solid transparent;
+  }
+  .connot-card.sight { border-top-color: var(--sense-sight-border); }
+  .connot-card.sound { border-top-color: var(--sense-sound-border); }
+  .connot-card.touch { border-top-color: var(--sense-touch-border); }
+  .connot-card.taste { border-top-color: var(--sense-taste-border); }
+  .connot-image {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink-mid);
+    margin-bottom: 4px;
+  }
+  .connot-sense-tag {
+    display: inline-block;
+    font-family: 'Lora', serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-bottom: 6px;
+  }
+  .connot-sense-tag.sight { background: var(--sense-sight); color: #4a3010; }
+  .connot-sense-tag.sound { background: var(--sense-sound); color: #1a2848; }
+  .connot-sense-tag.touch { background: var(--sense-touch); color: #4a1828; }
+  .connot-sense-tag.taste { background: var(--sense-taste); color: #4a2810; }
+  .connot-think {
+    font-family: 'Crimson Pro', serif;
+    font-size: 13.5px;
+    font-style: italic;
+    color: var(--faded);
+    line-height: 1.55;
+    margin-bottom: 6px;
+  }
+  .connot-answer {
+    font-family: 'Crimson Pro', serif;
+    font-size: 13.5px;
+    color: var(--ink-mid);
+    line-height: 1.6;
+    padding-top: 8px;
+    border-top: 1px dashed var(--rule-light);
+    margin-top: 4px;
+  }
+  .connot-answer.hidden { display: none; }
+
+  /* ── PATTERN SECTION ── */
+  .pattern-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 16px 0;
+  }
+  .pattern-box {
+    border-radius: 8px;
+    padding: 16px 18px;
+    border: 1px solid transparent;
+  }
+  .pattern-box.moss { background: var(--moss-wash); border-color: rgba(74,96,64,0.2); }
+  .pattern-box.indigo { background: var(--indigo-wash); border-color: rgba(58,72,104,0.2); }
+  .pattern-box.umber { background: var(--umber-wash); border-color: rgba(122,78,40,0.2); }
+  .pattern-box-label {
+    font-family: 'Lora', serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .pattern-box.moss .pattern-box-label { color: var(--moss); }
+  .pattern-box.indigo .pattern-box-label { color: var(--indigo); }
+  .pattern-box.umber .pattern-box-label { color: var(--umber); }
+  .pattern-box p {
+    font-family: 'Crimson Pro', serif;
+    font-size: 14.5px;
+    color: var(--ink-mid);
+    line-height: 1.65;
+  }
+
+  /* ── INTERPRETATION BOX ── */
+  .interp-box {
+    background: var(--ink-warm);
+    border-radius: 10px;
+    padding: 26px 30px;
+    border: 2px dashed var(--umber-pale);
+    position: relative;
+  }
+  .interp-box::before {
+    content: '"';
+    font-family: 'Lora', serif;
+    font-size: 72px;
+    color: var(--moss-light);
+    opacity: 0.2;
+    position: absolute;
+    top: 8px; left: 14px;
+    line-height: 1;
+  }
+  .interp-label {
+    font-family: 'Lora', serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--umber-pale);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .interp-box p {
+    font-family: 'Crimson Pro', serif;
+    font-size: 15.5px;
+    color: rgba(244,237,224,0.90);
+    line-height: 1.8;
+    position: relative;
+  }
+
+  /* ── CALLOUT ── */
+  .callout {
+    border-left: 3px solid var(--moss-mid-aa);
+    background: var(--moss-wash);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 20px;
+    margin: 16px 0;
+  }
+  .callout p {
+    font-family: 'Crimson Pro', serif;
+    font-size: 15.5px;
+    color: var(--ink-mid);
+    line-height: 1.7;
+    margin: 0;
+  }
+  .callout-label {
+    font-family: 'Lora', serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--moss);
+    margin-bottom: 6px;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 52px 0;
+    text-align: center;
+    position: relative;
+  }
+  .divider span {
+    position: relative;
+    top: -10px;
+    background: var(--paper);
+    padding: 0 12px;
+    font-family: 'Crimson Pro', serif;
+    font-size: 18px;
+    color: var(--faded);
+  }
+
+  /* ── PROGRESS ── */
+  .progress-bar-wrap {
+    height: 3px;
+    background: rgba(74,53,32,0.1);
+    border-radius: 2px;
+    margin: 20px 0 0;
+    overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    background: var(--moss-light);
+    transition: width 0.4s ease;
+  }
+
+  @media (max-width: 700px) {
+    .page-body { padding: 32px 18px 60px; }
+    .hero-inner { padding: 36px 20px 32px; }
+    .paired-row { grid-template-columns: 1fr; }
+    .paired-lines { border-right: none; border-bottom: 1px solid var(--rule-light); }
+    .connot-grid { grid-template-columns: 1fr; }
+    .pattern-split { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-texture"></div>
+  <div class="hero-inner">
+    <div class="hero-tag">Module Six &nbsp;·&nbsp; Poetry &amp; Literary Elements</div>
+    <h1 class="hero-title">Poetic Imagery —<br><em>Guided Practice</em></h1>
+    <p class="hero-sub">Work through two poems step by step. Read each prompt, think it through, then reveal the model answer and continue.</p>
+    <div class="hero-how">
+      <span class="hero-pill p1">Step 1 — Identify Images</span>
+      <span class="hero-pill p2">Step 2 — Connotations</span>
+      <span class="hero-pill p3">Step 3 — Patterns</span>
+      <span class="hero-pill p4">Step 4 — Interpretation</span>
+    </div>
+  </div>
+</header>
+
+<main class="page-body">
+
+  <!-- HOW TO USE -->
+  <div class="how-box" role="note">
+    <div class="how-icon" aria-hidden="true">📖</div>
+    <div>
+      <div class="how-title">How to Use This Page</div>
+      <p class="how-text">Each poem is broken into four steps. <strong>Read the prompt for each step carefully, think through your own response first, then click "Reveal Answer"</strong> to see a model. Steps unlock in sequence — complete Step 1 before moving to Step 2. Work through Poem 1 before beginning Poem 2. There are no wrong answers in poetry analysis, but the models will show you one strong way to read each image.</p>
+    </div>
+  </div>
+
+  <!-- SENSE LEGEND -->
+  <div class="sense-legend" role="list" aria-label="Highlight color key">
+    <strong style="font-family:'Lora',serif; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-mid); margin-right:4px;">Color Key:</strong>
+    <div class="legend-item" role="listitem"><div class="legend-swatch sight"></div> Sight</div>
+    <div class="legend-item" role="listitem"><div class="legend-swatch sound"></div> Sound</div>
+    <div class="legend-item" role="listitem"><div class="legend-swatch touch"></div> Touch</div>
+    <div class="legend-item" role="listitem"><div class="legend-swatch taste"></div> Taste</div>
+  </div>
+
+  <!-- ════════════════════════════════════
+       POEM 1: ADA LIMÓN
+  ════════════════════════════════════ -->
+  <section aria-label="Poem 1: Ada Limón">
+    <div class="poem-section-header">
+      <div class="poem-section-hero">
+        <div class="poem-section-meta">
+          <div class="poem-section-eyebrow">Poem One</div>
+          <div class="poem-section-title">Ada Limón — <em>"Instructions on Not Giving Up"</em></div>
+          <p class="poem-section-bio">Ada Limón (b. 1976) is the 24th Poet Laureate of the United States. Known for her attention to the natural world and the resilience of ordinary life, her poetry is celebrated for its clarity and emotional directness.</p>
+        </div>
+        <figure class="poet-portrait" aria-label="Portrait of Ada Limón">
+          <img src="data:image/png;base64,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" alt="Ada Limón smiling outdoors, black-and-white photograph">
+          <figcaption>Ada Limón</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="poem-section-body" id="limon-poem">
+
+      <!-- STEP 1 -->
+      <div class="step-block s1" id="limon-s1">
+        <div class="step-header s1" id="limon-s1-header">
+          <div class="step-num-badge">1</div>
+          <div class="step-header-text">
+            <div class="step-header-name">Step 1 — Identify the Key Images</div>
+            <div class="step-header-desc">Read the poem and notice the language that paints pictures or activates the senses</div>
+          </div>
+        </div>
+        <div class="step-content" id="limon-s1-content">
+          <div class="instruction">Your task</div>
+          <p class="prose">Read "Instructions on Not Giving Up" below. As you read, ask yourself: <strong>which words or phrases create vivid sensory pictures?</strong> Which ones appeal to sight, sound, touch, or taste? Think through your answers, then click "Reveal Images" to see the model.</p>
+
+          <!-- Plain poem for reading first -->
+          <div class="paired-poem" style="margin-bottom:20px;" aria-label="Instructions on Not Giving Up — plain text for reading">
+            <div class="paired-poem-header">
+              <span class="pph-title">Instructions on Not Giving Up</span>
+              <span class="pph-author">— Ada Limón</span>
+            </div>
+            <div style="padding:22px 24px;">
+              <div style="font-family:'Libre Baskerville',serif; font-size:14.5px; line-height:2.0; color:var(--ink);">
+                More than the fuchsia funnels breaking out<br>
+                of the crabapple tree, more than the neighbor's<br>
+                almost obscene display of cherry limbs shoving<br>
+                their cotton candy-colored blossoms to the slate<br>
+                sky of Spring rains, it's the greening of the trees<br>
+                that really gets to me. When all the shock of white<br>
+                and taffy, the world's baubles and trinkets, leave<br>
+                the pavement strewn with the confetti of aftermath,<br>
+                the leaves come. Patient, plodding, a green skin<br>
+                growing over whatever winter did to us, a return<br>
+                to the strange idea of continuous living despite<br>
+                the mess of us, the hurt, the empty. Fine then,<br>
+                I'll take it, the tree seems to say, a new slick leaf<br>
+                unfurling like a fist to an open palm, I'll take it all.
+              </div>
+              <p style="font-family:'Crimson Pro',serif; font-size:12px; font-style:italic; color:var(--faded); margin-top:14px;">Source: Poets.org</p>
+            </div>
+          </div>
+
+          <button class="reveal-btn s1" onclick="revealLimonS1()" id="limon-s1-btn">
+            ◆ Reveal Images
+          </button>
+
+          <div class="answer-block hidden" id="limon-s1-answer">
+            <div class="answer-label">Model Answer — Key Images Identified</div>
+            <p class="prose" style="font-size:15px; margin-bottom:16px;">Below, the poem's key images are highlighted by sense type. Notice how the poem is dominated by <strong>sight images</strong>, especially color. Taste and touch appear more subtly.</p>
+
+            <div class="paired-poem" aria-label="Instructions on Not Giving Up with images highlighted">
+              <div class="paired-poem-header">
+                <span class="pph-title">Instructions on Not Giving Up</span>
+                <span class="pph-author">— Ada Limón</span>
+              </div>
+              <div class="paired-row">
+                <div class="paired-lines">
+                  <span class="line">More than <mark class="sight">the fuchsia funnels</mark> breaking out</span>
+                  <span class="line">of the crabapple tree, more than the neighbor's</span>
+                  <span class="line">almost obscene display of <mark class="sight">cherry limbs</mark> shoving</span>
+                  <span class="line">their <mark class="taste">cotton candy</mark>-colored blossoms to <mark class="sight">the slate</mark></span>
+                  <span class="line"><mark class="sight">sky</mark> of Spring rains,</span>
+                </div>
+                <div class="paired-note">
+                  <div class="ann-item">
+                    <div class="ann-bar sight"></div>
+                    <div class="ann-content">
+                      <div class="ann-term">"fuchsia funnels"</div>
+                      <div class="ann-text">Sight — vivid color + shape. Blossoms as bright pink trumpets.</div>
+                    </div>
+                  </div>
+                  <div class="ann-item">
+                    <div class="ann-bar sight"></div>
+                    <div class="ann-content">
+                      <div class="ann-term">"cherry limbs" / "slate sky"</div>
+                      <div class="ann-text">Sight — rich red-pink against cold grey. Color contrast.</div>
+                    </div>
+                  </div>
+                  <div class="ann-item">
+                    <div class="ann-bar taste"></div>
+                    <div class="ann-content">
+                      <div class="ann-term">"cotton candy-colored"</div>
+                      <div class="ann-text">Taste crossover — sweet, soft, carnival. The comparison makes the blossoms feel indulgent.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="paired-row">
+                <div class="paired-lines">
+                  <span class="line">it's <mark class="sight">the greening of the trees</mark></span>
+                  <span class="line">that really gets to me. When all <mark class="sight">the shock of white</mark></span>
+                  <span class="line">and <mark class="taste">taffy</mark>, the world's baubles and trinkets, leave</span>
+                  <span class="line">the pavement strewn with <mark class="sight">the confetti of aftermath</mark>,</span>
+                </div>
+                <div class="paired-note">
+                  <div class="ann-item">
+                    <div class="ann-bar sight"></div>
+                    <div class="ann-content">
+                      <div class="ann-term">"the greening of the trees"</div>
+                      <div class="ann-text">Sight — the quiet arrival of plain green. The poem's central image.</div>
+                    </div>
+                  </div>
+                  <div class="ann-item">
+                    <div class="ann-bar taste"></div>
+                    <div class="ann-content">
+                      <div class="ann-term">"taffy"</div>
+                      <div class="ann-text">Taste — sticky-sweet. The showy blossoms as candy: pretty but insubstantial.</div>
+                    </div>
+                  </div>
+                  <div class="ann-item">
+                    <div class="ann-bar sight"></div>
+                    <div class="ann-content">
+                      <div class="ann-term">"confetti of aftermath"</div>
+                      <div class="ann-text">Sight — fallen petals on pavement. Celebration over; the mess remains.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="paired-row">
+                <div class="paired-lines">
+                  <span class="line">the leaves come. Patient, plodding, <mark class="touch">a green skin</mark></span>
+                  <span class="line"><mark class="touch">growing over</mark> whatever winter did to us, a return</span>
+                  <span class="line">to the strange idea of continuous living despite</span>
+                  <span class="line">the mess of us, the hurt, the empty. Fine then,</span>
+                  <span class="line">I'll take it, the tree seems to say, <mark class="touch">a new slick leaf</mark></span>
+                  <span class="line"><mark class="touch">unfurling like a fist to an open palm</mark>, I'll take it all.</span>
+                </div>
+                <div class="paired-note">
+                  <div class="ann-item">
+                    <div class="ann-bar touch"></div>
+                    <div class="ann-content">
+                      <div class="ann-term">"a green skin growing over"</div>
+                      <div class="ann-text">Touch — organic, healing. Like skin over a wound. Resilience as a physical process.</div>
+                    </div>
+                  </div>
+                  <div class="ann-item">
+                    <div class="ann-bar touch"></div>
+                    <div class="ann-content">
+                      <div class="ann-term">"a new slick leaf / unfurling like a fist to an open palm"</div>
+                      <div class="ann-text">Touch + sight — texture (slick), then gesture (opening hand). Acceptance, surrender, willingness.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <button class="next-btn s1" onclick="unlockLimon(2)">
+              Continue to Step 2 →
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="step-block s2" id="limon-s2">
+        <div class="step-header s2 locked" id="limon-s2-header">
+          <div class="step-num-badge">2</div>
+          <div class="step-header-text">
+            <div class="step-header-name">Step 2 — Connotations</div>
+            <div class="step-header-desc">What does each image make you think of? What feelings or ideas does it suggest?</div>
+          </div>
+          <span class="step-lock-icon" aria-hidden="true">🔒</span>
+        </div>
+        <div class="step-content hidden" id="limon-s2-content">
+          <div class="instruction">Your task</div>
+          <p class="prose">For each key image below, ask: <strong><em>What does this image make me think of? What feelings, memories, or ideas does it bring up?</em></strong> Jot down your thoughts, then reveal the model connotations.</p>
+
+          <div class="connot-grid">
+            <div class="connot-card sight">
+              <div class="connot-image">"fuchsia funnels breaking out"</div>
+              <span class="connot-sense-tag sight">Sight</span>
+              <div class="connot-think">What does this image suggest to you? What does the word "breaking" add?</div>
+              <button class="reveal-btn s2" style="font-size:12px; padding:6px 14px;" onclick="this.nextElementSibling.classList.remove('hidden'); this.style.display='none';">Reveal</button>
+              <div class="connot-answer hidden">Fuchsia = vivid, almost aggressive color — bold, not subtle. "Funnels" = directed, purposeful shape. "Breaking out" = forceful, like an escape or an eruption. The blossoms aren't gentle; they burst out. Spring as an act of defiance against winter.</div>
+            </div>
+            <div class="connot-card taste">
+              <div class="connot-image">"cotton candy-colored" / "taffy"</div>
+              <span class="connot-sense-tag taste">Taste</span>
+              <div class="connot-think">Both are sweet foods. Why does Limón use food comparisons for spring blossoms?</div>
+              <button class="reveal-btn s2" style="font-size:12px; padding:6px 14px;" onclick="this.nextElementSibling.classList.remove('hidden'); this.style.display='none';">Reveal</button>
+              <div class="connot-answer hidden">Cotton candy and taffy = fun, carnival, childhood treats. Sweet but insubstantial — you eat them and they're gone. By comparing the blossoms to junk food, Limón gently dismisses them: pretty, but not the real thing. The showy flowers are the world's "baubles and trinkets" — entertainment, not sustenance.</div>
+            </div>
+            <div class="connot-card sight">
+              <div class="connot-image">"confetti of aftermath"</div>
+              <span class="connot-sense-tag sight">Sight</span>
+              <div class="connot-think">Confetti usually signals celebration. What does "aftermath" add to that meaning?</div>
+              <button class="reveal-btn s2" style="font-size:12px; padding:6px 14px;" onclick="this.nextElementSibling.classList.remove('hidden'); this.style.display='none';">Reveal</button>
+              <div class="connot-answer hidden">Confetti = parties, celebrations, something festive and brief. But "aftermath" = what's left after something intense — a storm, a battle, a catastrophe. The petals on the pavement are both beautiful and a kind of wreckage. The party is over. This prepares us for the poem's turn toward something quieter and more serious.</div>
+            </div>
+            <div class="connot-card touch">
+              <div class="connot-image">"a green skin growing over"</div>
+              <span class="connot-sense-tag touch">Touch</span>
+              <div class="connot-think">Skin usually refers to the human body. What does it mean to describe leaves as "skin"?</div>
+              <button class="reveal-btn s2" style="font-size:12px; padding:6px 14px;" onclick="this.nextElementSibling.classList.remove('hidden'); this.style.display='none';">Reveal</button>
+              <div class="connot-answer hidden">Skin = the body's protective layer. It heals over wounds; it keeps the inside safe. By calling new leaves a "green skin growing over," Limón gives the tree a body — and suggests that the leaves are a form of healing. "Whatever winter did to us" is the wound; the leaves are the scar tissue forming. Recovery as a natural, bodily process.</div>
+            </div>
+            <div class="connot-card touch">
+              <div class="connot-image">"unfurling like a fist to an open palm"</div>
+              <span class="connot-sense-tag touch">Touch</span>
+              <div class="connot-think">A fist is closed, guarded, tense. An open palm is the opposite. What does this movement suggest?</div>
+              <button class="reveal-btn s2" style="font-size:12px; padding:6px 14px;" onclick="this.nextElementSibling.classList.remove('hidden'); this.style.display='none';">Reveal</button>
+              <div class="connot-answer hidden">A fist = protection, anger, resistance, self-defense. An open palm = acceptance, surrender, readiness to receive. The leaf unfurling performs the poem's entire emotional argument in a single gesture: moving from closed and guarded (winter, grief, hurt) to open and willing. "I'll take it all" — not resigned, but genuinely ready. The leaf doesn't explain or negotiate. It just opens.</div>
+            </div>
+          </div>
+
+          <button class="next-btn s2" onclick="unlockLimon(3)" style="margin-top:8px;">
+            Continue to Step 3 →
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="step-block s3" id="limon-s3">
+        <div class="step-header s3 locked" id="limon-s3-header">
+          <div class="step-num-badge">3</div>
+          <div class="step-header-text">
+            <div class="step-header-name">Step 3 — Connections &amp; Patterns</div>
+            <div class="step-header-desc">What do the images have in common? What larger idea connects them?</div>
+          </div>
+          <span class="step-lock-icon" aria-hidden="true">🔒</span>
+        </div>
+        <div class="step-content hidden" id="limon-s3-content">
+          <div class="instruction">Your task</div>
+          <p class="prose">Look back across all the images you've analyzed. <strong>What patterns do you notice?</strong> Are there repeated ideas, contrasting groups, or a progression? Think it through, then reveal the model.</p>
+
+          <button class="reveal-btn s3" onclick="revealAnswer('limon-s3-answer', this)">◆ Reveal Patterns</button>
+
+          <div class="answer-block hidden" id="limon-s3-answer">
+            <div class="answer-label">Model Answer — Patterns &amp; Connections</div>
+            <div class="pattern-split">
+              <div class="pattern-box moss">
+                <div class="pattern-box-label">The Showy vs. The Quiet</div>
+                <p>The poem's images split into two groups. First: the loud, colorful blossoms — fuchsia, cherry, cotton candy, taffy. These are the world's "baubles and trinkets": beautiful but temporary. Second: the plain green leaves — patient, plodding, a skin growing over damage. The poem dismisses the first group and argues for the second.</p>
+              </div>
+              <div class="pattern-box indigo">
+                <div class="pattern-box-label">A Progression: Spectacle → Ruin → Return</div>
+                <p>The images follow a seasonal and emotional arc: spring's showy blossoms → their fall (confetti, aftermath) → the quiet arrival of leaves. This mirrors a human experience: the initial burst of feeling, its collapse, and the slow return to living. "Whatever winter did to us" confirms the images carry emotional weight beyond just weather.</p>
+              </div>
+            </div>
+            <div class="callout" style="margin-top:4px;">
+              <div class="callout-label">The Key Pattern</div>
+              <p>The taste images (cotton candy, taffy) and the touch images (skin, fist/palm) are doing different work. The taste images <em>dismiss</em> the showy flowers as insubstantial. The touch images <em>locate</em> resilience in the body — healing, opening, accepting. The poem moves from looking at spring to <em>feeling</em> it.</p>
+            </div>
+            <button class="next-btn s3" onclick="unlockLimon(4)">Continue to Step 4 →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 4 -->
+      <div class="step-block s4" id="limon-s4">
+        <div class="step-header s4 locked" id="limon-s4-header">
+          <div class="step-num-badge">4</div>
+          <div class="step-header-text">
+            <div class="step-header-name">Step 4 — Interpretation</div>
+            <div class="step-header-desc">What is the poem saying? Use the images as your evidence.</div>
+          </div>
+          <span class="step-lock-icon" aria-hidden="true">🔒</span>
+        </div>
+        <div class="step-content hidden" id="limon-s4-content">
+          <div class="instruction">Your task</div>
+          <p class="prose">Using everything you've noticed about the images, their connotations, and the patterns between them, <strong>articulate what you think this poem is saying</strong>. What is Limón arguing, and how do the images make that argument? Draft a few sentences in your head, then reveal the model interpretation.</p>
+
+          <button class="reveal-btn s4" onclick="revealAnswer('limon-s4-answer', this)">◆ Reveal Interpretation</button>
+
+          <div class="answer-block hidden" id="limon-s4-answer">
+            <div class="answer-label">Model Interpretation</div>
+            <div class="interp-box">
+              <div class="interp-label">One Strong Reading</div>
+              <p>In "Instructions on Not Giving Up," Ada Limón uses a progression of spring imagery to make an argument about quiet, unglamorous resilience. The poem opens with the season's showiest moments — fuchsia blossoms, cotton candy-colored flowers, cherry limbs — but deliberately dismisses them as "baubles and trinkets," as insubstantial as carnival candy. The real argument arrives with the plain green leaves, which the poem describes through touch images: a skin growing over a wound, a fist slowly opening into an open palm. These images locate resilience not in dramatic gesture but in the body's patient, ordinary capacity to heal and receive. The closing image — a leaf unfurling from fist to open palm — performs the poem's emotional instruction in a single gesture: stop protecting yourself from life. Take it. Take it all. Limón's poem suggests that surviving hardship isn't about triumph. It's about the decision, made quietly and repeatedly, to keep growing anyway.</p>
+            </div>
+            <div class="callout" style="margin-top:16px; background:rgba(74,96,64,0.06);">
+              <div class="callout-label">A Note on Interpretation</div>
+              <p>This is <em>one</em> strong reading — not the only one. Your connotations may have led you somewhere different, and that's entirely valid. What matters is that your interpretation is <strong>grounded in specific images</strong> from the poem and explains <strong>how</strong> those images make meaning.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /limon poem body -->
+  </section>
+
+  <div class="divider"><span>✦</span></div>
+
+  <!-- ════════════════════════════════════
+       POEM 2: TERRANCE HAYES
+  ════════════════════════════════════ -->
+  <section aria-label="Poem 2: Terrance Hayes">
+    <div class="poem-section-header">
+      <div class="poem-section-hero">
+        <div class="poem-section-meta">
+          <div class="poem-section-eyebrow">Poem Two</div>
+          <div class="poem-section-title">Terrance Hayes — <em>"American Sonnet for My Past and Future Assassin"</em></div>
+          <p class="poem-section-bio">Terrance Hayes (b. 1971) is a MacArthur Fellow and National Book Award winner. His "American Sonnets" series explores race, identity, and violence in contemporary America through formally inventive, politically charged verse.</p>
+        </div>
+        <figure class="poet-portrait" aria-label="Portrait of Terrance Hayes">
+          <img src="data:image/png;base64,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" alt="Terrance Hayes, black-and-white portrait photograph, wearing glasses">
+          <figcaption>Terrance Hayes</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="poem-section-body" id="hayes-poem">
+
+      <!-- STEP 1 -->
+      <div class="step-block s1" id="hayes-s1">
+        <div class="step-header s1" id="hayes-s1-header">
+          <div class="step-num-badge">1</div>
+          <div class="step-header-text">
+            <div class="step-header-name">Step 1 — Identify the Key Images</div>
+            <div class="step-header-desc">Read the poem carefully — it's denser than Poem 1. Identify what you can see, hear, or feel.</div>
+          </div>
+        </div>
+        <div class="step-content" id="hayes-s1-content">
+          <div class="instruction">A note before you read</div>
+          <p class="prose"><strong>This poem is more challenging.</strong> Hayes uses street slang, proper names, and a rapid-fire associative style. Don't worry if it feels dense on first read — that's intentional. Read it twice: once straight through, once looking specifically for images. What can you picture? What can you hear?</p>
+          <p class="prose">You may also notice that many of the poem's images are <em>digital</em> (pixels, data, photos, clicking) rather than physical. This tension between the digital and the physical is central to the poem's meaning.</p>
+
+          <div class="paired-poem" style="margin-bottom:20px;" aria-label="American Sonnet — plain text for reading">
+            <div class="paired-poem-header">
+              <span class="pph-title">American Sonnet for My Past and Future Assassin</span>
+              <span class="pph-author">— Terrance Hayes</span>
+            </div>
+            <div style="padding:22px 24px;">
+              <div style="font-family:'Libre Baskerville',serif; font-size:14.5px; line-height:2.0; color:var(--ink);">
+                Any day now you will have the ability to feed the name<br>
+                Of anyone into an engine &amp; your long lost half brother<br>
+                As well as whoever else possesses a version of his name<br>
+                Will appear before your face in <mark class="sight" style="background:transparent; padding:0;">bits of pixels &amp; data</mark><br>
+                Displaying his monikers (like Gitmo for trapping, Bang<br>
+                Bang for banging, Dopamine for dope or brains),<br>
+                The country he would most like to visit (Heaven),<br>
+                His nine &amp; middle finger pointing towards the arms<br>
+                Of the last trill trees of Bluff Estates &amp; the arms<br>
+                Of the slim fly girls the color of trees cut down &amp; shaped<br>
+                Into something a nail penetrates. I admit, right now<br>
+                Technology is insufficient, but you will find them<br>
+                Flashing grins &amp; money in the photos they took<br>
+                Before they were ghosts when you click here tomorrow.
+              </div>
+              <p style="font-family:'Crimson Pro',serif; font-size:12px; font-style:italic; color:var(--faded); margin-top:14px;">Source: Poets.org</p>
+            </div>
+          </div>
+
+          <button class="reveal-btn s1" onclick="revealHayesS1()" id="hayes-s1-btn">
+            ◆ Reveal Images
+          </button>
+
+          <div class="answer-block hidden" id="hayes-s1-answer">
+            <div class="answer-label">Model Answer — Key Images Identified</div>
+            <p class="prose" style="font-size:15px; margin-bottom:16px;">This poem mixes <strong>digital images</strong> (fragmented, abstract, screen-based) with <strong>physical images</strong> (bodies, trees, hands, nails). That contrast is the poem's central design. Notice also how the word <strong>"arms"</strong> appears twice — and means something different each time.</p>
+
+            <div class="paired-poem" aria-label="American Sonnet with images highlighted">
+              <div class="paired-poem-header">
+                <span class="pph-title">American Sonnet for My Past and Future Assassin</span>
+                <span class="pph-author">— Terrance Hayes</span>
+              </div>
+              <div class="paired-row">
+                <div class="paired-lines">
+                  <span class="line">Any day now you will have the ability to feed the name</span>
+                  <span class="line">Of anyone into an engine &amp; your long lost half brother</span>
+                  <span class="line">As well as whoever else possesses a version of his name</span>
+                  <span class="line">Will appear before your face in <mark class="sight">bits of pixels &amp; data</mark></span>
+                </div>
+                <div class="paired-note">
+                  <div class="ann-item">
+                    <div class="ann-bar sight"></div>
+                    <div class="ann-content">
+                      <div class="ann-term">"bits of pixels &amp; data"</div>
+                      <div class="ann-text">Sight — a person reduced to a digital image. Fragmented, flickering, not whole.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="paired-row">
+                <div class="paired-lines">
+                  <span class="line">Displaying his monikers (like <mark class="sound">Gitmo</mark> for trapping, <mark class="sound">Bang</mark></span>
+                  <span class="line"><mark class="sound">Bang</mark> for banging, <mark class="sound">Dopamine</mark> for dope or brains),</span>
+                  <span class="line">The country he would most like to visit (<mark class="sight">Heaven</mark>),</span>
+                </div>
+                <div class="paired-note">
+                  <div class="ann-item">
+                    <div class="ann-bar sound"></div>
+                    <div class="ann-content">
+                      <div class="ann-term">"Bang Bang" / "Gitmo" / "Dopamine"</div>
+                      <div class="ann-text">Sound — these are street names (monikers). "Bang Bang" sounds like gunshots. "Gitmo" = Guantánamo, a name associated with imprisonment. Each nickname is a compressed story.</div>
+                    </div>
+                  </div>
+                  <div class="ann-item">
+                    <div class="ann-bar sight"></div>
+                    <div class="ann-content">
+                      <div class="ann-term">"Heaven"</div>
+                      <div class="ann-text">Sight/concept — the place he most wants to visit. Aspiration or, given the poem's ending, destination.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="paired-row">
+                <div class="paired-lines">
+                  <span class="line">His <mark class="sight">nine &amp; middle finger pointing</mark> towards <mark class="sight">the arms</mark></span>
+                  <span class="line">Of <mark class="sight">the last trill trees of Bluff Estates</mark> &amp; the arms</span>
+                  <span class="line">Of <mark class="sight">the slim fly girls the color of trees</mark> cut down &amp; shaped</span>
+                  <span class="line">Into something <mark class="touch">a nail penetrates</mark>.</span>
+                </div>
+                <div class="paired-note">
+                  <div class="ann-item">
+                    <div class="ann-bar sight"></div>
+                    <div class="ann-content">
+                      <div class="ann-term">"nine &amp; middle finger pointing"</div>
+                      <div class="ann-text">Sight — gesture. "Nine" = a gun (slang). Middle finger = defiance. Both fingers point. The image holds violence and resistance at once.</div>
+                    </div>
+                  </div>
+                  <div class="ann-item">
+                    <div class="ann-bar sight"></div>
+                    <div class="ann-content">
+                      <div class="ann-term">"arms" (twice) — "last trill trees" — "the color of trees"</div>
+                      <div class="ann-text">Sight — "arms" = tree branches AND human arms AND firearms (a pun that holds the poem's whole argument). "Last trill trees" = trees disappearing, a neighborhood changed. Girls described as the color of trees — Black skin as natural, organic, alive.</div>
+                    </div>
+                  </div>
+                  <div class="ann-item">
+                    <div class="ann-bar touch"></div>
+                    <div class="ann-content">
+                      <div class="ann-term">"something a nail penetrates"</div>
+                      <div class="ann-text">Touch — violent, piercing. Wood shaped for construction... or crucifixion. The trees (and by connection, the bodies) cut down and made into something violence enters.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="paired-row">
+                <div class="paired-lines">
+                  <span class="line">Technology is insufficient, but you will find them</span>
+                  <span class="line"><mark class="sight">Flashing grins &amp; money in the photos</mark> they took</span>
+                  <span class="line">Before they were <mark class="sight">ghosts</mark> when you click here tomorrow.</span>
+                </div>
+                <div class="paired-note">
+                  <div class="ann-item">
+                    <div class="ann-bar sight"></div>
+                    <div class="ann-content">
+                      <div class="ann-term">"Flashing grins &amp; money in the photos"</div>
+                      <div class="ann-text">Sight — social media photos. The image of life at its most alive: smiling, celebrating.</div>
+                    </div>
+                  </div>
+                  <div class="ann-item">
+                    <div class="ann-bar sight"></div>
+                    <div class="ann-content">
+                      <div class="ann-term">"ghosts"</div>
+                      <div class="ann-text">Sight — the dead. The word lands at the end of the poem's search-engine journey. What the algorithm finds: photos of people who are no longer alive.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <button class="next-btn s1" onclick="unlockHayes(2)">
+              Continue to Step 2 →
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="step-block s2" id="hayes-s2">
+        <div class="step-header s2 locked" id="hayes-s2-header">
+          <div class="step-num-badge">2</div>
+          <div class="step-header-text">
+            <div class="step-header-name">Step 2 — Connotations</div>
+            <div class="step-header-desc">What does each image make you think of? Pay special attention to the double meanings.</div>
+          </div>
+          <span class="step-lock-icon" aria-hidden="true">🔒</span>
+        </div>
+        <div class="step-content hidden" id="hayes-s2-content">
+          <div class="instruction">Your task</div>
+          <p class="prose">Hayes is a poet of <strong>double meanings</strong>. Many of his images carry more than one connotation at once — and those layers are where the poem's argument lives. For each image, push past the surface meaning to what it suggests underneath.</p>
+
+          <div class="connot-grid">
+            <div class="connot-card sight">
+              <div class="connot-image">"bits of pixels &amp; data"</div>
+              <span class="connot-sense-tag sight">Sight</span>
+              <div class="connot-think">A person appears on a screen as pixels and data. What is lost in this kind of representation?</div>
+              <button class="reveal-btn s2" style="font-size:12px; padding:6px 14px;" onclick="this.nextElementSibling.classList.remove('hidden'); this.style.display='none';">Reveal</button>
+              <div class="connot-answer hidden">Pixels = tiny fragments. Data = cold, numeric. A person reduced to their digital profile loses everything that makes them human: their voice, their weight, their warmth, their history. The image suggests that technology flattens people. It promises to "find" someone, but what it finds is a representation, not a person.</div>
+            </div>
+            <div class="connot-card sound">
+              <div class="connot-image">"Bang Bang" as a street name</div>
+              <span class="connot-sense-tag sound">Sound</span>
+              <div class="connot-think">Street names often tell a story. What might "Bang Bang" say about the person who earned it — and the world that named him that?</div>
+              <button class="reveal-btn s2" style="font-size:12px; padding:6px 14px;" onclick="this.nextElementSibling.classList.remove('hidden'); this.style.display='none';">Reveal</button>
+              <div class="connot-answer hidden">Bang Bang = gunshots, explosions, violence. A street name earned in a world where guns are present. But it also sounds like a child's word for a toy gun — a reminder that this person was once a kid. The name encodes a life story in two words. Hayes gives us the moniker without judgment, asking us to hear what it contains rather than dismiss it.</div>
+            </div>
+            <div class="connot-card sight">
+              <div class="connot-image">"the last trill trees of Bluff Estates"</div>
+              <span class="connot-sense-tag sight">Sight</span>
+              <div class="connot-think">Why are these "the last" trees? What does "trill" (authentic/real in slang) add to the image of trees in a neighborhood?</div>
+              <button class="reveal-btn s2" style="font-size:12px; padding:6px 14px;" onclick="this.nextElementSibling.classList.remove('hidden'); this.style.display='none';">Reveal</button>
+              <div class="connot-answer hidden">"Last" = these trees are disappearing — the neighborhood is being changed, perhaps by gentrification or development. "Trill" = real, authentic (AAVE slang) — these are the genuinely rooted trees, the ones that belong. Bluff Estates = a specific neighborhood. The image captures a place under erasure. The trees are witnesses to what's been lost.</div>
+            </div>
+            <div class="connot-card touch">
+              <div class="connot-image">"trees cut down &amp; shaped / Into something a nail penetrates"</div>
+              <span class="connot-sense-tag touch">Touch</span>
+              <div class="connot-think">Trees become lumber. Lumber becomes something a nail goes into. What might that "something" be — and why is the phrase left vague?</div>
+              <button class="reveal-btn s2" style="font-size:12px; padding:6px 14px;" onclick="this.nextElementSibling.classList.remove('hidden'); this.style.display='none';">Reveal</button>
+              <div class="connot-answer hidden">Lumber becomes houses, furniture, coffins, crosses. "Something a nail penetrates" is deliberately vague — it could be a house being built (construction) or a coffin being sealed (death) or a cross (crucifixion, sacrifice). The vagueness is the point: violence enters. The trees (already connected to the Black women described as "the color of trees") are cut down and shaped into objects violence can enter. The image holds beauty and brutality in the same breath.</div>
+            </div>
+            <div class="connot-card sight">
+              <div class="connot-image">"ghosts" (final word)</div>
+              <span class="connot-sense-tag sight">Sight</span>
+              <div class="connot-think">The poem ends with this word. How does arriving at "ghosts" after a search-engine journey change the meaning of everything before it?</div>
+              <button class="reveal-btn s2" style="font-size:12px; padding:6px 14px;" onclick="this.nextElementSibling.classList.remove('hidden'); this.style.display='none';">Reveal</button>
+              <div class="connot-answer hidden">Ghosts = the dead, the absent, those who haunt. The search engine promised to find these people — "any day now." It does find them: in old photos, smiling, alive. But "before they were ghosts" transforms the whole poem into an elegy. The technology works. It finds them. And what it finds is proof of who they were before they died. The algorithm cannot restore a life. It can only document its absence.</div>
+            </div>
+          </div>
+
+          <button class="next-btn s2" onclick="unlockHayes(3)" style="margin-top:8px;">
+            Continue to Step 3 →
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="step-block s3" id="hayes-s3">
+        <div class="step-header s3 locked" id="hayes-s3-header">
+          <div class="step-num-badge">3</div>
+          <div class="step-header-text">
+            <div class="step-header-name">Step 3 — Connections &amp; Patterns</div>
+            <div class="step-header-desc">What connects the digital images to the physical ones? Find the poem's central tension.</div>
+          </div>
+          <span class="step-lock-icon" aria-hidden="true">🔒</span>
+        </div>
+        <div class="step-content hidden" id="hayes-s3-content">
+          <div class="instruction">Your task</div>
+          <p class="prose">This poem has two distinct worlds of imagery: <strong>digital/abstract</strong> and <strong>physical/embodied</strong>. Look back at the images and think about how these two worlds relate to each other. What pattern do you see? Then reveal the model.</p>
+
+          <button class="reveal-btn s3" onclick="revealAnswer('hayes-s3-answer', this)">◆ Reveal Patterns</button>
+
+          <div class="answer-block hidden" id="hayes-s3-answer">
+            <div class="answer-label">Model Answer — Patterns &amp; Connections</div>
+            <div class="pattern-split">
+              <div class="pattern-box indigo">
+                <div class="pattern-box-label">Digital Images — Abstract, Fragmented</div>
+                <p>"Bits of pixels &amp; data" — "feed the name into an engine" — "photos they took" — "when you click here tomorrow." These images suggest a technological world that promises access but delivers only surfaces: screen fragments, profile data, social media photos. The digital world can find you. It cannot know you.</p>
+              </div>
+              <div class="pattern-box umber">
+                <div class="pattern-box-label">Physical Images — Embodied, Vulnerable</div>
+                <p>"Fingers pointing" — "trees cut down" — "the color of trees" — "something a nail penetrates" — "ghosts." These images locate real human bodies in a real landscape. They suggest vitality (alive, rooted, present) and vulnerability (cut down, penetrated, erased). The physical world is where people actually live — and die.</p>
+              </div>
+            </div>
+            <div class="callout" style="margin-top:4px;">
+              <div class="callout-label">The Central Pattern: "Arms"</div>
+              <p>The word "arms" is the poem's hinge. It appears twice, referring to tree branches, human arms, and — by sound — firearms. Bodies and trees are connected through this pun: both are things that grow, both are things that get cut down, both are things that can be destroyed. The poem asks: what does a search engine find when it searches for a Black man? His digital profile — and behind it, evidence of a life ended by violence.</p>
+            </div>
+            <button class="next-btn s3" onclick="unlockHayes(4)">Continue to Step 4 →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 4 -->
+      <div class="step-block s4" id="hayes-s4">
+        <div class="step-header s4 locked" id="hayes-s4-header">
+          <div class="step-num-badge">4</div>
+          <div class="step-header-text">
+            <div class="step-header-name">Step 4 — Interpretation</div>
+            <div class="step-header-desc">What is Hayes saying? What does the poem argue through its imagery?</div>
+          </div>
+          <span class="step-lock-icon" aria-hidden="true">🔒</span>
+        </div>
+        <div class="step-content hidden" id="hayes-s4-content">
+          <div class="instruction">Your task</div>
+          <p class="prose">You've worked through the poem's images, their connotations, and their patterns. Now <strong>put it all together</strong>: what is this poem doing? What argument does Hayes make through the imagery he chooses? Formulate your interpretation, then reveal the model.</p>
+
+          <button class="reveal-btn s4" onclick="revealAnswer('hayes-s4-answer', this)">◆ Reveal Interpretation</button>
+
+          <div class="answer-block hidden" id="hayes-s4-answer">
+            <div class="answer-label">Model Interpretation</div>
+            <div class="interp-box">
+              <div class="interp-label">One Strong Reading</div>
+              <p>In this "American Sonnet," Terrance Hayes uses a collision of digital and physical imagery to interrogate what technology can and cannot recover about Black lives. The poem is addressed to "you" — a reader who will use a search engine to find someone, perhaps a lost relative. The technology seems powerful: "any day now," it will deliver a person in "bits of pixels &amp; data." But the poem's physical images — trees being cut down, bodies described as the color of wood, fingers pointing toward violence, something a nail penetrates — tell a different story. These bodies exist in a world where they are vulnerable to the same violence that fells trees. The word "arms" holds the poem's argument in a single image: tree branches, human arms, and firearms, all named the same thing, all implicated in the same cycle. The search engine finds what it finds: old photos, "grins &amp; money," evidence of joy. But the last word — "ghosts" — transforms the poem into an elegy. Technology can document a life. It cannot explain, prevent, or restore one.</p>
+            </div>
+            <div class="callout" style="margin-top:16px; background:rgba(74,96,64,0.06);">
+              <div class="callout-label">A Note on Interpretation</div>
+              <p>Hayes's poem is deliberately challenging and resists any single reading. If your interpretation moved in a different direction — focusing on family, surveillance, identity, or grief — that's equally valid, as long as you can point to specific images as evidence. The goal of poetry analysis is not to find <em>the</em> meaning, but to make a <em>defensible</em> one.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /hayes poem body -->
+  </section>
+
+</main>
+
+<script>
+  // ── LIMON unlock sequence ──
+  function revealLimonS1() {
+    document.getElementById('limon-s1-answer').classList.remove('hidden');
+    document.getElementById('limon-s1-btn').style.display = 'none';
+  }
+
+  function unlockLimon(step) {
+    const stepId = 'limon-s' + step;
+    const header = document.getElementById(stepId + '-header');
+    const content = document.getElementById(stepId + '-content');
+    if (header && content) {
+      header.classList.remove('locked');
+      const lockIcon = header.querySelector('.step-lock-icon');
+      if (lockIcon) lockIcon.remove();
+      content.classList.remove('hidden');
+      setTimeout(() => {
+        header.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    }
+  }
+
+  // ── HAYES unlock sequence ──
+  function revealHayesS1() {
+    document.getElementById('hayes-s1-answer').classList.remove('hidden');
+    document.getElementById('hayes-s1-btn').style.display = 'none';
+  }
+
+  function unlockHayes(step) {
+    const stepId = 'hayes-s' + step;
+    const header = document.getElementById(stepId + '-header');
+    const content = document.getElementById(stepId + '-content');
+    if (header && content) {
+      header.classList.remove('locked');
+      const lockIcon = header.querySelector('.step-lock-icon');
+      if (lockIcon) lockIcon.remove();
+      content.classList.remove('hidden');
+      setTimeout(() => {
+        header.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    }
+  }
+
+  // ── Generic reveal (for steps 3 & 4) ──
+  function revealAnswer(id, btn) {
+    document.getElementById(id).classList.remove('hidden');
+    btn.style.display = 'none';
+  }
+</script>
+</body>
+</html>
