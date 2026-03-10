@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eatonville, Florida — A Town of Their Own | ENC 1102</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+
+  /* ══════════════════════════════════════
+     TOKENS — Sun-Bleached Documentary
+     Florida scrubland · Indigo & Red Clay
+  ══════════════════════════════════════ */
+  :root {
+    /* Ground — bleached linen / washed sky */
+    --sun:          #f2ede2;
+    --linen:        #ede5d0;
+    --muslin:       #e4d9be;
+    --canvas:       #d8cba8;
+    --shadow:       #c4b48a;
+
+    /* Ink tones */
+    --ink:          #1c1508;
+    --ink-mid:      #2e2410;
+    --ink-warm:     #3d3018;
+    --quill:        #5a4828;
+    --faded:        #7a6540;
+    --dust:         #a08858;
+
+    /* Primary — Indigo */
+    --indigo:       #1e2d5a;
+    --indigo-mid:   #2a3d7a;
+    --indigo-light: #3a5098;
+    --indigo-pale:  rgba(30,45,90,0.08);
+    --indigo-wash:  rgba(30,45,90,0.05);
+
+    /* Secondary — Red Clay / Ochre */
+    --clay:         #8b3a1a;
+    --clay-mid:     #a84820;
+    --clay-light:   #c85e30;
+    --clay-pale:    rgba(139,58,26,0.10);
+
+    /* Tertiary — Swamp Green */
+    --swamp:        #2a3d28;
+    --swamp-mid:    #3a5235;
+    --swamp-pale:   rgba(42,61,40,0.10);
+
+    /* Accent — Florida sky */
+    --sky:          #7a9ab8;
+    --sky-pale:     rgba(122,154,184,0.12);
+
+    /* Rules */
+    --rule-warm:    rgba(90,72,40,0.20);
+    --rule-indigo:  rgba(30,45,90,0.15);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--sun);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.85;
+    overflow-x: hidden;
+  }
+
+  /* ── HALFTONE NEWSPRINT GRAIN ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      radial-gradient(circle, rgba(30,21,8,0.18) 1px, transparent 1px);
+    background-size: 4px 4px;
+    pointer-events: none;
+    opacity: 0.18;
+    z-index: 0;
+  }
+
+  /* Warm vignette at edges */
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    background:
+      radial-gradient(ellipse at center, transparent 60%, rgba(164,138,88,0.08) 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ══ MASTHEAD BAND ══ */
+  .masthead {
+    position: relative; z-index: 1;
+    background: var(--indigo);
+    padding: 0.6rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 3px solid var(--clay);
+  }
+  .masthead-left {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(242,237,226,0.55);
+  }
+  .masthead-center {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 0.72rem;
+    font-weight: 400;
+    color: rgba(242,237,226,0.7);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .masthead-right {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    color: rgba(242,237,226,0.45);
+    text-align: right;
+  }
+
+  /* ══ HERO ══ */
+  .hero {
+    position: relative;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .hero-still {
+    position: absolute; inset: 0;
+    background: var(--muslin);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-still-label {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.6rem;
+    color: var(--dust);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 2.5;
+    padding: 2rem;
+  }
+  .hero-still-label .ph-main { display: block; font-size: 0.72rem; color: var(--quill); margin-bottom: 0.3rem; }
+  .hero-still-label .ph-sub  { display: block; color: var(--clay); font-size: 0.62rem; }
+
+  /* Vignette fade — bleaches into linen at bottom */
+  .hero-veil {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(to bottom,
+        rgba(242,237,226,0.0) 0%,
+        rgba(242,237,226,0.25) 40%,
+        rgba(242,237,226,0.85) 72%,
+        var(--sun) 100%),
+      linear-gradient(to right,
+        rgba(30,45,90,0.08) 0%,
+        transparent 40%);
+    pointer-events: none;
+  }
+
+  /* Top rule — newspaper column rule weight */
+  .hero-rule-top {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    display: flex; flex-direction: column; gap: 3px;
+  }
+  .hero-rule-top span {
+    display: block; height: 1px;
+    background: var(--indigo);
+    opacity: 0.5;
+  }
+  .hero-rule-top span:first-child { height: 4px; opacity: 0.8; }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 0 3rem 3.5rem;
+  }
+
+  .hero-dateline {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .hero-dateline::before {
+    content: '';
+    display: inline-block;
+    width: 24px; height: 2px;
+    background: var(--clay);
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 900;
+    font-size: clamp(2.8rem, 7vw, 6rem);
+    color: var(--ink);
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    max-width: 700px;
+  }
+  .hero h1 .title-indent {
+    display: block;
+    padding-left: 2rem;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 0.52em;
+    color: var(--quill);
+    margin-top: 0.5rem;
+    letter-spacing: 0.01em;
+    padding-left: 0;
+  }
+
+  /* Column rule divider under title */
+  .hero-column-rule {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin: 1.4rem 0 1.6rem;
+    width: 100%;
+    max-width: 700px;
+  }
+  .hcr-thick { flex: 2; height: 3px; background: var(--ink); }
+  .hcr-gap   { width: 3px; }
+  .hcr-thin  { flex: 3; height: 1px; background: var(--ink-warm); opacity: 0.5; }
+
+  .hero-deck {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--ink-warm);
+    line-height: 1.6;
+    max-width: 600px;
+    margin-bottom: 1.4rem;
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border-top: 1px solid var(--rule-warm);
+    border-bottom: 1px solid var(--rule-warm);
+    padding: 0.5rem 0;
+    width: fit-content;
+  }
+  .hero-meta-item {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--faded);
+    padding: 0 1.2rem;
+    border-right: 1px solid var(--rule-warm);
+    line-height: 1.9;
+  }
+  .hero-meta-item:first-child { padding-left: 0; }
+  .hero-meta-item:last-child  { border-right: none; }
+  .hero-meta-item strong {
+    display: block;
+    color: var(--indigo);
+    font-size: 0.65rem;
+    font-weight: 400;
+  }
+
+  /* ══ COLUMN RULES — editorial divider ══ */
+  .col-rule {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin: 3rem 0;
+  }
+  .col-rule span {
+    display: block;
+    background: var(--rule-warm);
+  }
+  .col-rule span:nth-child(1) { height: 2px; }
+  .col-rule span:nth-child(2) { height: 1px; margin-top: 2px; }
+
+  /* ══ LAYOUT ══ */
+  .page-wrap {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 3rem 6rem;
+    position: relative; z-index: 1;
+  }
+
+  /* ══ SECTION LABEL ══ */
+  .section-label {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 0.4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1; height: 1px;
+    background: linear-gradient(to right, var(--clay), transparent);
+    opacity: 0.3;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    font-size: 1.9rem;
+    color: var(--ink);
+    margin-bottom: 1.1rem;
+    line-height: 1.15;
+  }
+  h2 em { font-style: italic; font-weight: 400; color: var(--ink-warm); }
+
+  h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--indigo);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.02em;
+  }
+
+  p { margin-bottom: 1rem; color: var(--ink-warm); }
+  p:last-child { margin-bottom: 0; }
+  em { color: var(--ink); font-style: italic; }
+  strong { color: var(--ink); font-weight: 600; }
+
+  /* ══ DROP CAP ══ */
+  .drop-cap::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 4.5rem;
+    float: left;
+    line-height: 0.75;
+    margin: 0.1rem 0.12rem 0 0;
+    color: var(--indigo);
+    padding-right: 0.04em;
+  }
+
+  /* ══ IMAGE PLACEHOLDER ══ */
+  .img-ph {
+    background: var(--muslin);
+    border: 1px solid var(--canvas);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    min-height: 140px;
+  }
+  /* Period photograph vignette edge */
+  .img-ph::before {
+    content: '';
+    position: absolute; inset: 0;
+    box-shadow: inset 0 0 30px rgba(30,21,8,0.15);
+    pointer-events: none;
+    z-index: 1;
+  }
+  /* Halftone overlay on images */
+  .img-ph::after {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(30,21,8,0.12) 1px, transparent 1px);
+    background-size: 3px 3px;
+    pointer-events: none;
+    opacity: 0.4;
+    z-index: 1;
+  }
+  .img-ph-text {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.56rem;
+    color: var(--dust);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 2.2;
+    position: relative;
+    z-index: 2;
+    padding: 1.2rem;
+  }
+  .img-ph-text .ph-t { display: block; font-size: 0.7rem; color: var(--quill); margin-bottom: 0.2rem; }
+  .img-ph-text .ph-s { display: block; color: var(--clay); font-size: 0.6rem; }
+
+  /* Period photograph caption — typed label */
+  .img-cap {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.54rem;
+    color: var(--faded);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.45rem 0.8rem;
+    border-top: 1px solid var(--canvas);
+    background: var(--linen);
+    line-height: 1.7;
+  }
+
+  /* ══ INDIGO PANEL ══ */
+  .indigo-panel {
+    background: var(--indigo);
+    padding: 2rem 2.4rem;
+    margin: 1.5rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .indigo-panel::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(242,237,226,0.06) 1px, transparent 1px);
+    background-size: 4px 4px;
+    opacity: 0.6;
+  }
+  .indigo-panel::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--clay), var(--clay-light), transparent);
+  }
+  .indigo-panel h3 { color: var(--linen); margin-bottom: 0.6rem; }
+  .indigo-panel p  { color: rgba(228,217,190,0.82); font-size: 0.92rem; line-height: 1.75; }
+  .indigo-panel p:last-child { margin-bottom: 0; }
+  .indigo-panel em { color: var(--sun); }
+  .indigo-panel strong { color: var(--sun); font-weight: 500; }
+
+  /* ══ PULL QUOTE ══ */
+  .pull-quote {
+    margin: 2.5rem 0;
+    padding: 1.8rem 0;
+    border-top: 3px solid var(--indigo);
+    border-bottom: 1px solid var(--rule-warm);
+    position: relative;
+  }
+  .pq-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--ink);
+    line-height: 1.6;
+    padding-left: 2rem;
+    border-left: 3px solid var(--clay);
+  }
+  .pq-source {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--faded);
+    margin-top: 0.8rem;
+    padding-left: 2rem;
+    display: block;
+  }
+
+  /* ══ FLOAT LAYOUTS ══ */
+  .float-wrap { overflow: hidden; }
+  .float-right {
+    float: right;
+    width: 320px;
+    margin: 0.2rem 0 1.5rem 2.2rem;
+  }
+  .float-left {
+    float: left;
+    width: 300px;
+    margin: 0.2rem 2.2rem 1.5rem 0;
+  }
+  .float-right .img-ph { aspect-ratio: 4/5; }
+  .float-left  .img-ph { aspect-ratio: 4/5; }
+
+  /* ══ WIDE PHOTOGRAPH STRIP ══ */
+  .wide-strip { margin: 2rem 0; }
+  .wide-strip .img-ph { aspect-ratio: 21/7; }
+
+  /* ══ PHOTOGRAPH GRID — 3 col ══ */
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+    background: var(--canvas);
+    margin: 1.5rem 0;
+  }
+  .photo-cell {
+    background: var(--sun);
+    display: flex; flex-direction: column;
+  }
+  .photo-cell .img-ph { aspect-ratio: 4/3; border: none; }
+
+  /* ══ ASYMMETRIC TWO-COL FEATURE ══ */
+  .feature-split {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 2.5rem;
+    align-items: start;
+    margin: 1.5rem 0;
+  }
+  .feature-split.flip { grid-template-columns: 260px 1fr; }
+  .feature-split .img-ph { aspect-ratio: 3/4; }
+
+  /* ══ TIMELINE ══ */
+  .timeline { margin: 1.5rem 0; }
+  .tl-item {
+    display: grid;
+    grid-template-columns: 100px 16px 1fr;
+    gap: 0;
+    margin-bottom: 0;
+  }
+  .tl-year {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.7rem;
+    color: var(--indigo);
+    letter-spacing: 0.08em;
+    text-align: right;
+    padding: 0.9rem 1rem 0.9rem 0;
+    line-height: 1.4;
+    border-right: 2px solid var(--indigo-mid);
+  }
+  .tl-dot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1.2rem;
+    position: relative;
+  }
+  .tl-dot::before {
+    content: '';
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--clay);
+    border: 2px solid var(--sun);
+    outline: 2px solid var(--indigo);
+    flex-shrink: 0;
+    z-index: 1;
+  }
+  .tl-content {
+    padding: 0.8rem 0 0.8rem 1.2rem;
+    border-bottom: 1px dashed rgba(90,72,40,0.18);
+  }
+  .tl-item:last-child .tl-content { border-bottom: none; }
+  .tl-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: var(--ink);
+    margin-bottom: 0.15rem;
+    line-height: 1.2;
+  }
+  .tl-content p {
+    font-size: 0.86rem;
+    color: var(--faded);
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+  .tl-tag {
+    display: inline-block;
+    font-family: 'Special Elite', monospace;
+    font-size: 0.5rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.08rem 0.4rem;
+    border: 1px solid;
+    margin-bottom: 0.3rem;
+    margin-right: 0.3rem;
+  }
+  .tl-tag.town-tag    { color: var(--indigo-mid);  border-color: rgba(30,45,90,0.25); }
+  .tl-tag.hurston-tag { color: var(--clay);        border-color: rgba(139,58,26,0.25); }
+  .tl-tag.florida-tag { color: var(--swamp-mid);   border-color: rgba(42,61,40,0.25); }
+
+  /* ══ FACT GRID ══ */
+  .fact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--canvas);
+    border: 1px solid var(--canvas);
+    margin: 1.5rem 0;
+  }
+  .fact-card {
+    background: var(--linen);
+    padding: 1.4rem 1.5rem;
+    position: relative;
+  }
+  .fact-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .fc-indigo::before { background: var(--indigo); }
+  .fc-clay::before   { background: var(--clay); }
+  .fc-swamp::before  { background: var(--swamp); }
+  .fc-sky::before    { background: var(--sky); }
+  .fact-num {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 2.4rem;
+    line-height: 1;
+    margin-bottom: 0.1rem;
+    color: rgba(30,21,8,0.08);
+    user-select: none;
+  }
+  .fact-card h3 { margin-bottom: 0.4rem; font-size: 0.88rem; }
+  .fc-indigo h3 { color: var(--indigo); }
+  .fc-clay h3   { color: var(--clay); }
+  .fc-swamp h3  { color: var(--swamp-mid); }
+  .fc-sky h3    { color: var(--sky); }
+  .fact-card p  { font-size: 0.84rem; color: var(--faded); line-height: 1.6; margin-bottom: 0; }
+
+  /* ══ TWO PANEL ══ */
+  .two-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--canvas);
+    border: 1px solid var(--canvas);
+    margin: 1.5rem 0;
+  }
+  .panel {
+    background: var(--linen);
+    padding: 1.6rem 1.8rem;
+  }
+  .panel h3 { margin-bottom: 0.6rem; }
+  .panel p  { font-size: 0.9rem; color: var(--faded); line-height: 1.65; }
+
+  /* ══ PORCH SECTION — swamp green band ══ */
+  .porch-band {
+    background: var(--swamp);
+    margin: 2rem 0;
+    padding: 2rem 2.4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .porch-band::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(242,237,226,0.05) 1px, transparent 1px);
+    background-size: 5px 5px;
+    opacity: 0.5;
+  }
+  .porch-band::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--clay), transparent);
+    opacity: 0.4;
+  }
+  .porch-band .section-label { color: rgba(228,217,190,0.6); }
+  .porch-band .section-label::after { background: linear-gradient(to right, rgba(228,217,190,0.3), transparent); }
+  .porch-band h2 { color: var(--sun); }
+  .porch-band p  { color: rgba(228,217,190,0.78); font-size: 0.92rem; line-height: 1.75; }
+  .porch-band h3 { color: var(--canvas); }
+  .porch-band em { color: var(--sun); }
+  .porch-band strong { color: var(--sun); font-weight: 500; }
+
+  /* ══ DOCUMENTARY CLIP EMBED ══ */
+  .doc-embed {
+    margin: 1.5rem 0;
+    border: 1px solid var(--canvas);
+    background: var(--linen);
+    overflow: hidden;
+  }
+  .doc-header {
+    background: var(--indigo);
+    padding: 0.7rem 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    border-bottom: 2px solid var(--clay);
+  }
+  .doc-badge {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.52rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--clay-light);
+    border: 1px solid var(--clay);
+    padding: 0.12rem 0.45rem;
+  }
+  .doc-title-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    color: var(--sun);
+    letter-spacing: 0.02em;
+  }
+  .doc-body {
+    padding: 1.4rem;
+    background: var(--ink);
+    min-height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .doc-body::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(242,237,226,0.06) 1px, transparent 1px);
+    background-size: 4px 4px;
+  }
+  .doc-placeholder {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.6rem;
+    color: rgba(242,237,226,0.35);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 2.2;
+    position: relative; z-index: 1;
+  }
+  .doc-placeholder .dp-t { display: block; font-size: 0.75rem; color: rgba(242,237,226,0.5); margin-bottom: 0.3rem; }
+  .doc-caption {
+    padding: 0.6rem 1.2rem;
+    font-family: 'Special Elite', monospace;
+    font-size: 0.54rem;
+    color: var(--faded);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-top: 1px solid var(--canvas);
+  }
+
+  /* ══ SWEAT CONNECTION PANEL ══ */
+  .sweat-connection {
+    background: var(--linen);
+    border: 1px solid var(--canvas);
+    border-left: 4px solid var(--clay);
+    padding: 1.8rem 2rem;
+    margin: 1.5rem 0;
+    position: relative;
+  }
+  .sweat-connection::before {
+    content: '"Sweat"';
+    position: absolute;
+    top: -0.7rem; left: 1.5rem;
+    background: var(--sun);
+    padding: 0 0.5rem;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 0.72rem;
+    color: var(--clay);
+  }
+
+  /* ══ CLOSING BAND ══ */
+  .closing-band {
+    background: var(--indigo);
+    padding: 3rem;
+    margin-top: 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .closing-band::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(242,237,226,0.05) 1px, transparent 1px);
+    background-size: 5px 5px;
+  }
+  .closing-band::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--clay), var(--clay-light), var(--clay), transparent);
+    opacity: 0.7;
+  }
+  .closing-quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.4rem;
+    color: var(--sun);
+    line-height: 1.65;
+    max-width: 620px;
+    margin: 0 auto 1rem;
+    position: relative; z-index: 1;
+  }
+  .closing-attr {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(228,217,190,0.5);
+    position: relative; z-index: 1;
+  }
+
+  @media (max-width: 700px) {
+    .hero-content    { padding: 0 1.5rem 3rem; }
+    .page-wrap       { padding: 0 1.25rem 4rem; }
+    .masthead        { padding: 0.6rem 1.25rem; }
+    .masthead-left, .masthead-right { display: none; }
+    .feature-split,
+    .feature-split.flip { grid-template-columns: 1fr; }
+    .fact-grid       { grid-template-columns: 1fr 1fr; }
+    .two-panel       { grid-template-columns: 1fr; }
+    .photo-grid      { grid-template-columns: 1fr 1fr; }
+    .float-right,
+    .float-left      { float: none; width: 100%; margin: 0 0 1.5rem; }
+    .tl-item         { grid-template-columns: 70px 16px 1fr; }
+    .hero-meta       { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ MASTHEAD ══ -->
+<div class="masthead">
+  <div class="masthead-left">ENC 1102 &nbsp;·&nbsp; Short Fiction Module</div>
+  <div class="masthead-center">Zora Neale Hurston &nbsp;·&nbsp; "Sweat"</div>
+  <div class="masthead-right">Valencia College &nbsp;·&nbsp; East Campus</div>
+</div>
+
+<!-- ══ HERO ══ -->
+<header class="hero">
+  <div class="hero-still">
+    <div class="hero-still-label">
+      <span class="ph-main">Full-Bleed Hero Photograph — min-height 600px</span>
+      <span class="ph-sub">Suggested: Eatonville main street c. 1900–1920 · or aerial / wide view of central Florida scrubland</span>
+      Sandy road · clapboard buildings · palmetto scrub · flat white Florida sky · period documentary photograph
+    </div>
+  </div>
+  <div class="hero-veil"></div>
+  <div class="hero-rule-top">
+    <span></span><span></span>
+  </div>
+
+  <div class="hero-content">
+    <p class="hero-dateline">Eatonville, Orange County, Florida &nbsp;·&nbsp; Est. 1887</p>
+    <h1>
+      A Town of<br>Their Own
+      <span class="title-indent">The World of Eatonville, Florida &amp; the Life of Zora Neale Hurston</span>
+    </h1>
+    <div class="hero-column-rule">
+      <div class="hcr-thick"></div>
+      <div class="hcr-gap"></div>
+      <div class="hcr-thin"></div>
+    </div>
+    <p class="hero-deck">
+      Six miles north of Orlando, a town built by Black Americans for Black Americans
+      became the wellspring of one of the most important voices in American literature.
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        Incorporated
+        <strong>August 15, 1887</strong>
+      </div>
+      <div class="hero-meta-item">
+        Distinction
+        <strong>First Black-Incorporated U.S. Town</strong>
+      </div>
+      <div class="hero-meta-item">
+        County
+        <strong>Orange County, Florida</strong>
+      </div>
+      <div class="hero-meta-item">
+        Distance from Valencia East
+        <strong>~6 Miles</strong>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="page-wrap">
+
+  <!-- ══ THE TOWN ══ -->
+  <section>
+    <div class="section-label">The Place</div>
+    <h2>Eatonville: Before the Story</h2>
+
+    <div class="feature-split">
+      <div>
+        <p class="drop-cap">On August 15, 1887, a group of Black men met in Orange County, Florida, and voted to incorporate the town of Eatonville — making it the first incorporated all-Black municipality in the United States. This was not a small act. It was twenty-two years after the end of the Civil War, in a state where Reconstruction had collapsed and Jim Crow was tightening its grip. To build and legally own a town — to write its own laws, elect its own mayor, run its own post office — was a radical act of self-determination in the most literal possible sense.</p>
+
+        <p>The town was named for Captain Josiah Eaton, a white landowner who had sold parcels to Black settlers at affordable prices. Its early leaders included Joe Clarke — a man who would become famous, years later, as a character in the fiction of a girl who grew up watching him hold court on his store porch. That girl was Zora Neale Hurston.</p>
+
+        <p>Eatonville sat in the flat scrubland of central Florida, surrounded by phosphate country and citrus groves, six miles from the small city of Orlando. It was not wealthy, and it was not large. What it was — and what made it unlike almost any other place a Black child could grow up in the American South in the 1890s and 1900s — was <strong>free</strong>. Free in the specific sense that its children did not grow up watching their parents submit to white authority in the daily, grinding way that defined Black life almost everywhere else in the South. In Eatonville, the mayor was Black, the marshal was Black, the storekeeper was Black, the preacher was Black, and the men on the porch told their own stories in their own voices on their own terms.</p>
+      </div>
+      <div>
+        <div class="img-ph">
+          <div class="img-ph-text">
+            <span class="ph-t">Eatonville, Florida — Early View</span>
+            <span class="ph-s">Suggested: period photograph of Eatonville's main street or town center, c. 1900–1920</span>
+          </div>
+        </div>
+        <div class="img-cap">Eatonville, Florida · c. early 20th century</div>
+      </div>
+    </div>
+
+    <div class="indigo-panel">
+      <h3>Why Eatonville Matters — Right Now, Near Here</h3>
+      <p>Eatonville is not history. It is a living town six miles from this campus. The <em>Association to Preserve the Eatonville Community</em> continues to maintain and celebrate the town's heritage. The annual <strong>Zora! Festival</strong> — held every January in Eatonville — draws scholars, artists, and visitors from around the world to celebrate Hurston's life and work in the town where she grew up. When you read "Sweat," you are reading about a place you can drive to.</p>
+    </div>
+  </section>
+
+  <div class="col-rule"><span></span><span></span></div>
+
+  <!-- ══ GEOGRAPHY ══ -->
+  <section>
+    <div class="section-label">Geography & Place</div>
+    <h2>The Florida That Shaped the Story</h2>
+
+    <div class="float-wrap">
+      <div class="float-right">
+        <div class="img-ph">
+          <div class="img-ph-text">
+            <span class="ph-t">Central Florida Scrubland</span>
+            <span class="ph-s">Suggested: palmetto scrub / Florida flatwoods / sandy road through pines near Eatonville</span>
+          </div>
+        </div>
+        <div class="img-cap">Central Florida scrubland · Orange County</div>
+      </div>
+
+      <p>The landscape of central Florida in Hurston's time was not the theme-park corridor it would become. It was flat, relentlessly hot, and thickly vegetated with palmetto scrub, slash pine, and live oak draped in Spanish moss. The soil was sandy and pale — not the red clay of Georgia or the black soil of the Mississippi Delta, but a bleached, almost white sand that reflected heat upward as well as the sun pressed it down. Summer in this landscape was a physical force.</p>
+
+      <p>The heat is not incidental to "Sweat." Delia Jones washes clothes in the brutal July sun of central Florida, carrying water from a pump, bending over washboards, wringing out garments she has labored over all week. The story's central image — sweat as labor, as life, as the physical mark of a woman's survival — is impossible to separate from this specific geography. This is a heat that makes you understand, in your body, what it costs to work in it.</p>
+
+      <p>The town itself sat near Lake Belle, close to the railroad line that connected central Florida to the coast. The railroad was important: it brought citrus workers, it brought phosphate laborers, and it brought the particular transience of a South in motion. Sykes Jones, Delia's husband in "Sweat," has the idle restlessness of a man in a town where other men work the land or the railroad and where sitting on Joe Clarke's porch is both a social institution and an indictment.</p>
+    </div>
+
+    <div class="wide-strip">
+      <div class="img-ph">
+        <div class="img-ph-text">
+          <span class="ph-t">Wide View — Eatonville Area, Central Florida</span>
+          <span class="ph-s">Suggested: period aerial or wide landscape view / orange grove or scrub pine · flat Florida horizon</span>
+          The geography of "Sweat" — heat, flatness, the weight of the sky
+        </div>
+      </div>
+      <div class="img-cap">Central Florida · Orange County · Eatonville area · c. early 20th century</div>
+    </div>
+  </section>
+
+  <div class="col-rule"><span></span><span></span></div>
+
+  <!-- ══ THE PORCH ══ -->
+  <div class="porch-band">
+    <div class="section-label">The Social World</div>
+    <h2>Joe Clarke's Store Porch</h2>
+
+    <p>In Eatonville, the social center of town was not the church — though the church mattered enormously. It was the porch of Joe Clarke's general store, where men gathered in the evenings and on Sundays to talk, to argue, to tell stories, and to pass judgment on the affairs of the community. This porch was the town's public square, its court of opinion, its theater.</p>
+
+    <p>Hurston grew up watching that porch. She listened to the men tell stories — the tall tales, the lies, the folk wisdom, the signifying. She absorbed the rhythms of spoken Black vernacular English that would later become the foundation of her literary voice and her anthropological work. The porch of Joe Clarke's store was, in a real sense, where Zora Neale Hurston's education as a writer began.</p>
+
+    <p>In "Sweat," the porch appears directly — the men of Eatonville sit and watch Delia's situation with Sykes, discussing it, analyzing it, rendering their verdict. They are observers, not interveners. Their presence on the porch is the community's conscience made visible, passing judgment in the grammar of folk speech that Hurston renders with absolute fidelity. <em>The porch watches. The porch knows. The porch does not act.</em> That tension is one of the story's central moral questions.</p>
+
+    <div class="two-panel" style="margin-top:1.5rem; background:rgba(42,61,40,0.3);">
+      <div class="panel" style="background:rgba(42,61,40,0.25);">
+        <h3 style="color:var(--canvas);">The Men on the Porch</h3>
+        <p style="color:rgba(228,217,190,0.7);">The porch community in "Sweat" represents Eatonville's collective voice — the community's moral intelligence expressed through vernacular speech. They see everything about Delia and Sykes's marriage. Their commentary is sharp, sorrowful, and ultimately passive. Hurston gives them the story's clearest moral vision and the story's least consequential role.</p>
+      </div>
+      <div class="panel" style="background:rgba(42,61,40,0.25);">
+        <h3 style="color:var(--canvas);">The Grammar of the Porch</h3>
+        <p style="color:rgba(228,217,190,0.7);">Hurston renders the porch dialogue in Eatonville vernacular — the authentic spoken language she grew up hearing, which she would later collect and study as an anthropologist. This was a radical choice in 1926, when Black dialect in fiction was typically either mocked or sanitized. Hurston used it as the vehicle for moral authority and communal wisdom.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ DOCUMENTARY CLIPS ══ -->
+  <section style="margin-top:2.5rem;">
+    <div class="section-label">Documentary Record</div>
+    <h2>Eatonville on Film</h2>
+    <p>Valencia College's media database includes two documentary films with footage and photographs of Eatonville during and after Hurston's lifetime. These clips give you visual access to the world "Sweat" is set in.</p>
+
+    <div class="doc-embed">
+      <div class="doc-header">
+        <span class="doc-badge">Documentary Clip 01</span>
+        <span class="doc-title-text">Embed Documentary One Here</span>
+      </div>
+      <div class="doc-body">
+        <div class="doc-placeholder">
+          <span class="dp-t">Video Embed — Valencia College Database</span>
+          Replace this block with your iframe or video embed code<br>
+          Documentary One · Eatonville footage &amp; photographs
+        </div>
+      </div>
+      <div class="doc-caption">Documentary Film 01 · Valencia College Media Database · Eatonville, Florida</div>
+    </div>
+
+    <div class="doc-embed" style="margin-top:1.5rem;">
+      <div class="doc-header">
+        <span class="doc-badge">Documentary Clip 02</span>
+        <span class="doc-title-text">Embed Documentary Two Here</span>
+      </div>
+      <div class="doc-body">
+        <div class="doc-placeholder">
+          <span class="dp-t">Video Embed — Valencia College Database</span>
+          Replace this block with your iframe or video embed code<br>
+          Documentary Two · Eatonville footage &amp; photographs
+        </div>
+      </div>
+      <div class="doc-caption">Documentary Film 02 · Valencia College Media Database · Eatonville, Florida</div>
+    </div>
+  </section>
+
+  <div class="col-rule"><span></span><span></span></div>
+
+  <!-- ══ TIMELINE ══ -->
+  <section>
+    <div class="section-label">History</div>
+    <h2>Eatonville &amp; Hurston: A Timeline</h2>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-year">1865</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-title">End of the Civil War</div>
+          <span class="tl-tag florida-tag">Context</span>
+          <p>The Thirteenth Amendment abolishes slavery. Florida rejoins the Union in 1868. Reconstruction begins — and will be violently undone within a decade, leaving Black Floridians without the federal protections promised during the war.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1887</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-title">Eatonville Incorporated</div>
+          <span class="tl-tag town-tag">Eatonville</span>
+          <p>On August 15, Eatonville becomes the first incorporated all-Black municipality in the United States. Joe Clarke — the man who will later appear in Hurston's fiction — becomes one of its founding leaders and first mayors. The town establishes its own government, marshal, and post office.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">c. 1891</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-title">Zora Neale Hurston Born</div>
+          <span class="tl-tag hurston-tag">Hurston</span>
+          <p>Hurston's birth year is disputed — she gave different dates at different times in her life, a practice not uncommon for Black Southerners in an era of careless record-keeping. Most scholars settle on 1891, in Notasulga, Alabama. Her family moved to Eatonville when she was a toddler, and she considered it her true home.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1904</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-title">Death of Lucy Hurston</div>
+          <span class="tl-tag hurston-tag">Hurston</span>
+          <p>Zora's mother Lucy dies when Zora is approximately thirteen. Hurston later described her mother's death as the rupture that ended her childhood in Eatonville — her father remarried quickly, her stepmother resented the children, and Zora began a decade of displacement, working as a domestic servant and maid to survive.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1917–1924</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-title">Hurston's Education</div>
+          <span class="tl-tag hurston-tag">Hurston</span>
+          <p>Hurston enrolls in Morgan Academy in Baltimore, then Howard University in Washington D.C. She begins publishing short fiction and joins the literary circles that are coalescing into what will become the Harlem Renaissance. She is already in her late twenties — she tells people she is younger.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1925</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-title">Hurston Arrives in Harlem</div>
+          <span class="tl-tag hurston-tag">Hurston</span>
+          <p>Hurston moves to New York City and enters the heart of the Harlem Renaissance, winning prizes at the Opportunity magazine literary contest and meeting Langston Hughes, Alain Locke, and the figures who will define the movement. She enrolls at Barnard College, where she studies under the anthropologist Franz Boas.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1926</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-title">"Sweat" Published</div>
+          <span class="tl-tag hurston-tag">Hurston</span>
+          <p>"Sweat" is published in <em>Fire!!</em>, a short-lived but historically important literary magazine co-founded by Hurston, Langston Hughes, and Wallace Thurman. The magazine was conceived as a vehicle for younger Black artists to break from the more conservative aesthetic values of the Harlem Renaissance's older leadership. It lasted one issue.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1927–1932</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-title">Hurston's Fieldwork in the South</div>
+          <span class="tl-tag hurston-tag">Hurston</span>
+          <p>Funded by her patron Charlotte Osgood Mason, Hurston returns to Florida, Louisiana, and the Caribbean to collect Black folklore, music, and oral tradition. This work will become <em>Mules and Men</em> (1935) and later <em>Tell My Horse</em> (1938). Eatonville is one of her primary field sites — she returns to the porch where her education began.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1937</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-title"><em>Their Eyes Were Watching God</em> Published</div>
+          <span class="tl-tag hurston-tag">Hurston</span>
+          <p>Hurston's masterpiece is published — set largely in Eatonville, written in seven weeks in Haiti. The novel is initially received with ambivalence by some Harlem Renaissance figures but becomes, after its rediscovery in the 1970s and 1980s, one of the most widely read novels in American literature. Eatonville is its beating heart.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1960</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <div class="tl-title">Hurston Dies in Fort Pierce, Florida</div>
+          <span class="tl-tag hurston-tag">Hurston</span>
+          <p>Hurston dies in a county welfare home in Fort Pierce, Florida, largely forgotten, her books out of print. She is buried in an unmarked grave in Fort Pierce. In 1973, the writer Alice Walker travels to Florida, locates the grave, and places a marker. Walker's 1975 <em>Ms.</em> magazine essay "In Search of Zora Neale Hurston" begins the revival that brings Hurston's work back into print and into the American literary canon.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="col-rule"><span></span><span></span></div>
+
+  <!-- ══ PHOTOGRAPHS ══ -->
+  <section>
+    <div class="section-label">The Documentary Record</div>
+    <h2>Eatonville in Photographs</h2>
+    <p>The photographs below represent the visual world Hurston grew up in and returned to. Place your documentary images from the college database here — they will be treated as period documents, not illustrations.</p>
+
+    <div class="photo-grid">
+      <div class="photo-cell">
+        <div class="img-ph">
+          <div class="img-ph-text">
+            <span class="ph-t">Eatonville Photograph 01</span>
+            <span class="ph-s">Period documentary image</span>
+          </div>
+        </div>
+        <div class="img-cap">Caption for photograph one</div>
+      </div>
+      <div class="photo-cell">
+        <div class="img-ph">
+          <div class="img-ph-text">
+            <span class="ph-t">Eatonville Photograph 02</span>
+            <span class="ph-s">Period documentary image</span>
+          </div>
+        </div>
+        <div class="img-cap">Caption for photograph two</div>
+      </div>
+      <div class="photo-cell">
+        <div class="img-ph">
+          <div class="img-ph-text">
+            <span class="ph-t">Eatonville Photograph 03</span>
+            <span class="ph-s">Period documentary image</span>
+          </div>
+        </div>
+        <div class="img-cap">Caption for photograph three</div>
+      </div>
+      <div class="photo-cell">
+        <div class="img-ph">
+          <div class="img-ph-text">
+            <span class="ph-t">Eatonville Photograph 04</span>
+            <span class="ph-s">Period documentary image</span>
+          </div>
+        </div>
+        <div class="img-cap">Caption for photograph four</div>
+      </div>
+      <div class="photo-cell">
+        <div class="img-ph">
+          <div class="img-ph-text">
+            <span class="ph-t">Eatonville Photograph 05</span>
+            <span class="ph-s">Period documentary image</span>
+          </div>
+        </div>
+        <div class="img-cap">Caption for photograph five</div>
+      </div>
+      <div class="photo-cell">
+        <div class="img-ph">
+          <div class="img-ph-text">
+            <span class="ph-t">Eatonville Photograph 06</span>
+            <span class="ph-s">Period documentary image</span>
+          </div>
+        </div>
+        <div class="img-cap">Caption for photograph six</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="col-rule"><span></span><span></span></div>
+
+  <!-- ══ CONNECTION TO SWEAT ══ -->
+  <section>
+    <div class="section-label">From Town to Story</div>
+    <h2>What Eatonville Gave "Sweat"</h2>
+
+    <div class="feature-split flip">
+      <div>
+        <div class="img-ph">
+          <div class="img-ph-text">
+            <span class="ph-t">Hurston in Florida</span>
+            <span class="ph-s">Suggested: Hurston in Eatonville during fieldwork, c. 1927–1935</span>
+          </div>
+        </div>
+        <div class="img-cap">Zora Neale Hurston · Eatonville · c. 1920s–30s</div>
+      </div>
+      <div>
+        <p>"Sweat" is set in Eatonville. Not a fictional town that resembles Eatonville, not an unnamed Florida community — Eatonville, named, with Joe Clarke's store at its center. Hurston was writing about the world she knew with an intimacy that only comes from having grown up in it, watched it, listened to it, and left it and missed it.</p>
+
+        <p>The story's geography is exact: the sandy roads Delia walks with her wash, the heat that makes the work a physical ordeal, the store porch where the men gather, the small wooden house where the marriage has become a war. These are not literary devices. They are the architecture of a real place, rendered with the fidelity of someone who walked those roads as a child.</p>
+
+        <div class="sweat-connection">
+          <h3>Three Things Eatonville Gave the Story</h3>
+          <p><strong>The language.</strong> The vernacular speech of the porch men — their rhythms, their idioms, their folk proverbs — is the language Hurston heard growing up. Rendering it faithfully was both an artistic choice and an act of cultural preservation.</p>
+          <p style="margin-top:0.6rem;"><strong>The social geography.</strong> The specific spatial relationship between Delia's domestic labor, Sykes's idleness, and the porch community's witness maps directly onto the social structure of Eatonville life as Hurston knew it.</p>
+          <p style="margin-top:0.6rem;"><strong>The moral framework.</strong> Eatonville's self-governing, self-defining community created a moral world that was not mediated by white authority. The judgment on Sykes in "Sweat" is rendered entirely within a Black community, by Black voices, on Black terms — which was, in 1926, a radical literary act.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CLOSING ══ -->
+  <div class="closing-band">
+    <div class="closing-quote">
+      "I was born in a Negro town. I do not mean by that the Black back-side of an average town.
+      Eatonville, Florida, is, and was at the time of my birth, a pure Negro town — charter,
+      mayor, council, town marshal and all."
+    </div>
+    <div class="closing-attr">Zora Neale Hurston &nbsp;·&nbsp; Dust Tracks on a Road &nbsp;·&nbsp; 1942</div>
+  </div>
+
+</main>
+</body>
+</html>
