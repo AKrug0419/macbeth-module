@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hamlet's World — Historical & Geographical Context | ENC 1102</title>
+<link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Spectral+SC:wght@400;600&display=swap" rel="stylesheet">
+<style>
+
+  /* ══════════════════════════════════════
+     TOKENS — Cold Stone & Iron Palette
+  ══════════════════════════════════════ */
+  :root {
+    --night:       #080a0c;
+    --stone-deep:  #0e1115;
+    --stone:       #161b21;
+    --stone-mid:   #1f262e;
+    --stone-light: #2c3540;
+    --fissure:     #3d4a58;
+    --pewter:      #5a6a78;
+    --slate:       #8a9aaa;
+    --bone:        #b8c4cc;
+    --frost:       #d4dde4;
+    --white:       #eaf0f4;
+
+    --bronze:      #c8820a;       /* primary accent — aged bronze / firelight */
+    --bronze-dim:  #6b450a;
+    --bronze-glow: rgba(200,130,10,0.10);
+    --iron:        #7a8898;       /* secondary accent — iron grey */
+    --blood-dark:  #5a1a1a;       /* deep, unsaturated — used sparingly */
+    --blood:       #8b2a2a;
+    --ice:         #a8c4d4;       /* cold blue-white — northern light */
+    --ice-dim:     rgba(168,196,212,0.08);
+
+    /* Stone texture noise overlay — CSS only */
+    --noise-opacity: 0.035;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--night);
+    color: var(--bone);
+    font-family: 'Spectral', Georgia, serif;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  /* ── STONE TEXTURE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: var(--noise-opacity);
+    z-index: 0;
+  }
+
+  /* Subtle horizontal stone-crack lines across body */
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.006) 1px, transparent 1px);
+    background-size: 100% 120px, 200px 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ══ HERO ══ */
+  .hero {
+    position: relative;
+    min-height: 520px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  /* Full-bleed still behind hero */
+  .hero-still {
+    position: absolute; inset: 0;
+    background: var(--stone-deep);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-still-label {
+    font-family: 'Spectral SC', serif;
+    font-size: 0.65rem; color: var(--fissure);
+    letter-spacing: 0.25em; text-transform: uppercase;
+    text-align: center; line-height: 2.2; padding: 2rem;
+  }
+  .hero-still-label .ph-main { display: block; color: var(--pewter); font-size: 0.75rem; margin-bottom: 0.3rem; }
+  .hero-still-label .ph-sub  { display: block; color: var(--bronze); font-size: 0.65rem; }
+
+  /* Gradient: dramatic fade from still into content */
+  .hero-veil {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(to bottom,
+        rgba(8,10,12,0.15) 0%,
+        rgba(8,10,12,0.45) 45%,
+        rgba(8,10,12,0.92) 78%,
+        var(--night) 100%),
+      radial-gradient(ellipse at 25% 70%, rgba(200,130,10,0.06) 0%, transparent 55%);
+    pointer-events: none;
+  }
+
+  /* Top border: carved stone band */
+  .hero-capstone {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      var(--bronze-dim) 20%,
+      var(--bronze) 50%,
+      var(--bronze-dim) 80%,
+      transparent 100%
+    );
+    opacity: 0.7;
+  }
+
+  /* Corner rune marks */
+  .rune-corner {
+    position: absolute;
+    font-family: 'Uncial Antiqua', serif;
+    font-size: 2.5rem;
+    color: rgba(200,130,10,0.07);
+    user-select: none; pointer-events: none;
+    line-height: 1;
+  }
+  .rune-tl { top: 1.5rem; left: 2rem; }
+  .rune-tr { top: 1.5rem; right: 2rem; }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 0 4.5rem 4rem;
+  }
+
+  .hero-kicker {
+    font-family: 'Spectral SC', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .hero-kicker::before {
+    content: '';
+    display: inline-block;
+    width: 28px; height: 1px;
+    background: var(--bronze);
+    opacity: 0.6;
+  }
+
+  .hero h1 {
+    font-family: 'Uncial Antiqua', serif;
+    font-size: clamp(3rem, 7.5vw, 6.5rem);
+    color: var(--white);
+    line-height: 1.0;
+    letter-spacing: 0.01em;
+    text-shadow:
+      0 2px 60px rgba(200,130,10,0.15),
+      0 1px 0 rgba(0,0,0,0.8);
+  }
+
+  .hero h1 .sub-title {
+    display: block;
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 0.38em;
+    color: var(--slate);
+    letter-spacing: 0.04em;
+    margin-top: 0.6rem;
+  }
+
+  .hero-meta-strip {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-top: 2.2rem;
+    border: 1px solid var(--stone-light);
+    border-left: 3px solid var(--bronze-dim);
+    background: rgba(14,17,21,0.7);
+    width: fit-content;
+  }
+  .hero-meta-item {
+    padding: 0.6rem 1.4rem;
+    border-right: 1px solid var(--stone-light);
+    font-family: 'Spectral SC', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--pewter);
+    line-height: 1.9;
+  }
+  .hero-meta-item:last-child { border-right: none; }
+  .hero-meta-item strong {
+    display: block;
+    color: var(--bone);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+  }
+
+  /* ══ CARVED DIVIDER ══ */
+  .carved-rule {
+    position: relative;
+    height: 24px;
+    margin: 3rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .carved-rule::before,
+  .carved-rule::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--fissure));
+  }
+  .carved-rule::after {
+    background: linear-gradient(to left, transparent, var(--fissure));
+  }
+  .carved-rule-glyph {
+    font-family: 'Uncial Antiqua', serif;
+    font-size: 1rem;
+    color: var(--bronze);
+    opacity: 0.5;
+    letter-spacing: 0.3em;
+    flex-shrink: 0;
+  }
+
+  /* ══ LAYOUT ══ */
+  .page-wrap {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 0 2.5rem 6rem;
+    position: relative; z-index: 1;
+  }
+
+  /* ══ SECTION LABELS ══ */
+  .section-label {
+    font-family: 'Spectral SC', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1; height: 1px;
+    background: linear-gradient(to right, var(--bronze-dim), transparent);
+    opacity: 0.5;
+  }
+
+  h2 {
+    font-family: 'Uncial Antiqua', serif;
+    font-size: 1.7rem;
+    color: var(--frost);
+    margin-bottom: 1.2rem;
+    letter-spacing: 0.01em;
+    line-height: 1.15;
+  }
+
+  h3 {
+    font-family: 'Spectral SC', serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--bronze);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+
+  p { margin-bottom: 1.1rem; color: var(--bone); }
+  p:last-child { margin-bottom: 0; }
+  em { color: var(--frost); font-style: italic; }
+  strong { color: var(--frost); font-weight: 500; }
+
+  /* ══ IMAGE PLACEHOLDER ══ */
+  .img-ph {
+    background: var(--stone);
+    border: 1px solid var(--stone-light);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    min-height: 160px;
+  }
+  .img-ph::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(200,130,10,0.04) 0%, transparent 60%);
+  }
+  /* Corner notch — carved stone feel */
+  .img-ph::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 0; height: 0;
+    border-style: solid;
+    border-width: 0 18px 18px 0;
+    border-color: transparent var(--stone-deep) transparent transparent;
+  }
+  .img-ph-text {
+    font-family: 'Spectral SC', serif;
+    font-size: 0.58rem; color: var(--pewter);
+    letter-spacing: 0.18em; text-transform: uppercase;
+    text-align: center; line-height: 2;
+    position: relative; z-index: 1; padding: 1.2rem;
+  }
+  .img-ph-text .ph-t { display: block; font-size: 0.7rem; color: var(--slate); margin-bottom: 0.2rem; }
+  .img-ph-text .ph-s { display: block; color: var(--bronze); font-size: 0.6rem; }
+  .img-cap {
+    font-family: 'Spectral SC', serif;
+    font-size: 0.55rem; color: var(--pewter);
+    letter-spacing: 0.15em; text-transform: uppercase;
+    padding: 0.45rem 0.8rem;
+    border-top: 1px solid var(--stone-light);
+    background: var(--stone-deep); line-height: 1.6;
+  }
+
+  /* ══ STONE PANEL ══ */
+  .stone-panel {
+    background: var(--stone);
+    border: 1px solid var(--stone-light);
+    border-left: 3px solid var(--bronze-dim);
+    padding: 1.6rem 2rem;
+    margin: 1.5rem 0;
+    position: relative;
+  }
+  /* Top-right corner notch */
+  .stone-panel::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 0; height: 0;
+    border-style: solid;
+    border-width: 0 14px 14px 0;
+    border-color: transparent var(--night) transparent transparent;
+  }
+
+  /* ══ RUNE INSCRIPTION QUOTE ══ */
+  .rune-inscription {
+    margin: 2.5rem 0;
+    padding: 2rem 2.5rem;
+    border-top: 1px solid var(--fissure);
+    border-bottom: 1px solid var(--fissure);
+    position: relative;
+    text-align: center;
+    background: linear-gradient(to bottom, transparent, rgba(200,130,10,0.03), transparent);
+  }
+  .rune-inscription::before {
+    content: '✦';
+    position: absolute;
+    top: -0.7rem; left: 50%;
+    transform: translateX(-50%);
+    background: var(--night);
+    padding: 0 0.8rem;
+    font-size: 0.7rem;
+    color: var(--bronze);
+    opacity: 0.6;
+  }
+  .inscription-text {
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--frost);
+    line-height: 1.7;
+    letter-spacing: 0.01em;
+  }
+  .inscription-source {
+    font-family: 'Spectral SC', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    color: var(--pewter);
+    text-transform: uppercase;
+    margin-top: 0.9rem;
+    display: block;
+  }
+
+  /* ══ GEOGRAPHY SPLIT ══ */
+  .geo-split {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 2rem;
+    align-items: start;
+    margin: 1.5rem 0;
+  }
+  .geo-split .img-ph { aspect-ratio: 4/5; } /* map proportion */
+
+  /* ══ FLOAT RIGHT ══ */
+  .float-wrap { overflow: hidden; }
+  .float-right {
+    float: right;
+    width: 300px;
+    margin: 0.2rem 0 1.5rem 2.2rem;
+  }
+  .float-right .img-ph { aspect-ratio: 4/3; }
+
+  /* ══ TIMELINE ══ */
+  .timeline { margin: 1.5rem 0; }
+  .tl-item {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    border-bottom: 1px solid var(--stone-light);
+    position: relative;
+    transition: background 0.15s;
+  }
+  .tl-item:first-child { border-top: 1px solid var(--stone-light); }
+  .tl-item:hover { background: var(--stone-mid); }
+  .tl-year {
+    font-family: 'Spectral SC', serif;
+    font-size: 0.72rem;
+    color: var(--bronze);
+    letter-spacing: 0.1em;
+    padding: 1.1rem 0.8rem 1.1rem 0;
+    border-right: 1px solid var(--stone-light);
+    display: flex; align-items: flex-start;
+    padding-top: 1.2rem;
+    line-height: 1.4;
+  }
+  .tl-content {
+    padding: 1.1rem 0 1.1rem 1.6rem;
+  }
+  .tl-title {
+    font-family: 'Spectral SC', serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--frost);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.2rem;
+  }
+  .tl-content p {
+    font-size: 0.86rem;
+    color: var(--slate);
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+  .tl-tag {
+    display: inline-block;
+    font-family: 'Spectral SC', serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.12rem 0.45rem;
+    border: 1px solid var(--fissure);
+    color: var(--pewter);
+    margin-bottom: 0.35rem;
+    margin-right: 0.3rem;
+  }
+  .tl-tag.source-tag { color: var(--bronze); border-color: var(--bronze-dim); }
+  .tl-tag.hist-tag   { color: var(--ice);    border-color: rgba(168,196,212,0.3); }
+  .tl-tag.shake-tag  { color: var(--slate);  border-color: var(--fissure); }
+
+  /* ══ THREE-COLUMN WORLD GRID ══ */
+  .world-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--stone-light);
+    border: 1px solid var(--stone-light);
+    margin: 1.5rem 0;
+  }
+  .world-card {
+    background: var(--stone);
+    padding: 1.5rem 1.6rem;
+    position: relative;
+  }
+  .world-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--bronze-dim), transparent);
+  }
+  .world-num {
+    font-family: 'Uncial Antiqua', serif;
+    font-size: 1.8rem;
+    color: rgba(200,130,10,0.12);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+    user-select: none;
+  }
+  .world-card h3 { margin-bottom: 0.5rem; }
+  .world-card p {
+    font-size: 0.84rem;
+    color: var(--slate);
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  /* ══ TWO-COLUMN PANELS ══ */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--stone-light);
+    border: 1px solid var(--stone-light);
+    margin: 1.5rem 0;
+  }
+  .col-panel {
+    background: var(--stone);
+    padding: 1.6rem 1.8rem;
+    position: relative;
+  }
+  .col-panel::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 2px;
+    background: var(--stone-light);
+  }
+  .col-panel:first-child::before { display: none; }
+  .col-panel h3 { margin-bottom: 0.7rem; }
+  .col-panel p { font-size: 0.88rem; color: var(--slate); line-height: 1.65; }
+
+  /* ══ WIDE IMAGE STRIP ══ */
+  .wide-strip {
+    margin: 2rem 0;
+  }
+  .wide-strip .img-ph { aspect-ratio: 21/6; }
+
+  /* ══ ARTIFACT ROW ══ */
+  .artifact-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--stone-light);
+    border: 1px solid var(--stone-light);
+    margin: 1.5rem 0;
+  }
+  .artifact-cell {
+    background: var(--stone);
+    display: flex; flex-direction: column;
+  }
+  .artifact-cell .img-ph {
+    aspect-ratio: 1/1;
+    border: none;
+  }
+  .artifact-label {
+    padding: 0.7rem 0.9rem;
+    border-top: 1px solid var(--stone-light);
+    font-family: 'Spectral SC', serif;
+    font-size: 0.56rem;
+    color: var(--pewter);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    line-height: 1.6;
+  }
+  .artifact-label strong {
+    display: block;
+    color: var(--slate);
+    margin-bottom: 0.1rem;
+    font-weight: 600;
+  }
+
+  /* ══ SAXO BLOCK ══ */
+  .saxo-block {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 0;
+    border: 1px solid var(--stone-light);
+    margin: 2rem 0;
+    background: var(--stone);
+    position: relative;
+    overflow: hidden;
+  }
+  .saxo-block::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--bronze), transparent);
+  }
+  .saxo-img {
+    border-right: 1px solid var(--stone-light);
+    display: flex; flex-direction: column;
+  }
+  .saxo-img .img-ph {
+    flex: 1; border: none; min-height: 200px;
+  }
+  .saxo-text {
+    padding: 1.8rem 2rem;
+  }
+
+  /* ══ AMLETH COMPARISON ══ */
+  .comparison {
+    margin: 1.5rem 0;
+    border: 1px solid var(--stone-light);
+    overflow: hidden;
+  }
+  .comparison-header {
+    background: var(--stone-mid);
+    padding: 0.7rem 1.2rem;
+    border-bottom: 1px solid var(--stone-light);
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .comparison-tag {
+    font-family: 'Spectral SC', serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--bronze);
+    border: 1px solid var(--bronze-dim);
+    padding: 0.15rem 0.5rem;
+    background: var(--bronze-glow);
+  }
+  .comparison-title-text {
+    font-family: 'Spectral SC', serif;
+    font-size: 0.82rem;
+    color: var(--frost);
+    letter-spacing: 0.1em;
+    font-weight: 600;
+  }
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--stone-light);
+  }
+  .cmp-col {
+    background: var(--stone);
+    padding: 1.4rem 1.6rem;
+    position: relative;
+  }
+  .cmp-col::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+  }
+  .cmp-amleth::before { background: var(--bronze); }
+  .cmp-hamlet::before { background: var(--ice); }
+  .cmp-label {
+    font-family: 'Spectral SC', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+    display: block;
+  }
+  .cmp-amleth .cmp-label { color: var(--bronze); }
+  .cmp-hamlet .cmp-label { color: var(--ice); }
+  .cmp-name {
+    font-family: 'Uncial Antiqua', serif;
+    font-size: 1.4rem;
+    line-height: 1;
+    margin-bottom: 0.8rem;
+  }
+  .cmp-amleth .cmp-name { color: var(--bone); }
+  .cmp-hamlet .cmp-name { color: rgba(168,196,212,0.8); }
+  .cmp-rows { display: flex; flex-direction: column; gap: 0.4rem; }
+  .cmp-row {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    border-bottom: 1px solid var(--stone-light);
+    padding-bottom: 0.4rem;
+  }
+  .cmp-row:last-child { border-bottom: none; padding-bottom: 0; }
+  .cmp-key {
+    font-family: 'Spectral SC', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--pewter);
+    padding-top: 0.1rem;
+  }
+  .cmp-val { color: var(--slate); line-height: 1.5; }
+  .cmp-amleth .cmp-val { color: var(--bone); }
+
+  @media (max-width: 700px) {
+    .hero-content { padding: 0 1.5rem 3rem; }
+    .page-wrap    { padding: 0 1.25rem 4rem; }
+    .geo-split    { grid-template-columns: 1fr; }
+    .world-grid   { grid-template-columns: 1fr 1fr; }
+    .two-col      { grid-template-columns: 1fr; }
+    .artifact-row { grid-template-columns: 1fr 1fr; }
+    .saxo-block   { grid-template-columns: 1fr; }
+    .comparison-grid { grid-template-columns: 1fr; }
+    .float-right  { float: none; width: 100%; margin: 0 0 1.5rem; }
+    .tl-item      { grid-template-columns: 80px 1fr; }
+    .hero-meta-strip { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<header class="hero">
+  <div class="hero-still">
+    <div class="hero-still-label">
+      <span class="ph-main">Full-Bleed Hero Still — min-height 520px</span>
+      <span class="ph-sub">Suggested: Kronborg Castle (Helsingør) from the sea · Danish coast at dawn · North Sea in winter fog</span>
+      Wide landscape — cold light, stone, water. Geography as atmosphere.
+    </div>
+  </div>
+  <div class="hero-veil"></div>
+  <div class="hero-capstone"></div>
+
+  <div class="rune-corner rune-tl">ᚺ</div>
+  <div class="rune-corner rune-tr">ᛞ</div>
+
+  <div class="hero-content">
+    <p class="hero-kicker">ENC 1102 &nbsp;·&nbsp; Module Eight &nbsp;·&nbsp; Hamlet</p>
+    <h1>
+      Hamlet's World
+      <span class="sub-title">Historical &amp; Geographical Context — Denmark, c. 10th Century</span>
+    </h1>
+    <div class="hero-meta-strip">
+      <div class="hero-meta-item">
+        Setting
+        <strong>Elsinore, Denmark</strong>
+      </div>
+      <div class="hero-meta-item">
+        Historical Period
+        <strong>c. 900–1100 CE</strong>
+      </div>
+      <div class="hero-meta-item">
+        Primary Source
+        <strong>Saxo Grammaticus, c. 1200</strong>
+      </div>
+      <div class="hero-meta-item">
+        Shakespeare's Play
+        <strong>c. 1600–1601</strong>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="page-wrap">
+
+  <!-- ══ INTRO ══ -->
+  <section>
+    <div class="section-label">Orientation</div>
+    <h2>Before the Play: A World of Stone and Iron</h2>
+
+    <p>When Shakespeare wrote <em>Hamlet</em> around 1600, he set it in a Denmark that bore no resemblance to the England of Elizabeth I — and he knew it. The world of the play reaches back six centuries before Shakespeare's own time, to a Scandinavian culture of longhouses and longships, of blood feuds and dynastic murder, of a Christianity still new enough to sit uneasily beside older ways of reckoning with death and revenge.</p>
+
+    <p>Understanding <em>Hamlet's</em> world — not Shakespeare's London, but Amleth's Denmark — changes how you read the play. The ghost does not walk the battlements of a Renaissance palace. He walks the ramparts of a Norse stronghold on a headland above the Øresund strait, in a world where the demand for revenge was not merely emotional but <strong>legal, social, and sacred</strong>.</p>
+
+    <div class="stone-panel">
+      <h3>A Note on Names</h3>
+      <p>The historical figure behind Shakespeare's Hamlet is <em>Amleth</em> — a prince of the Danes whose story was recorded by the Danish chronicler Saxo Grammaticus in his <em>Gesta Danorum</em> (c. 1200 CE). Shakespeare transformed Amleth into Hamlet, Denmark into a Renaissance court, and a saga of brutal political survival into one of the most psychologically complex works in Western literature. This page is about Amleth's world. The differences between that world and Shakespeare's are where the most interesting questions live.</p>
+    </div>
+  </section>
+
+  <div class="carved-rule"><span class="carved-rule-glyph">᛭ ᛭ ᛭</span></div>
+
+  <!-- ══ GEOGRAPHY ══ -->
+  <section>
+    <div class="section-label">Geography</div>
+    <h2>The World of the Danes</h2>
+
+    <div class="geo-split">
+      <div>
+        <p>The Denmark of Hamlet's world was not the tidy modern nation-state of today. It was the dominant power of the North Sea world — a seafaring kingdom whose territory included the Jutland peninsula, the Danish islands, the southern tip of the Scandinavian peninsula (modern southern Sweden), and sphere of influence extending from England to the Baltic.</p>
+
+        <p>The castle of <em>Elsinore</em> — in Danish, <em>Helsingør</em> — sits at the narrowest point of the Øresund strait, the passage between the North Sea and the Baltic. This location was not incidental. Whoever held Helsingør controlled the movement of every ship between the two seas, and could levy tolls on all of northern European trade. The castle was a strategic instrument of enormous economic and political power.</p>
+
+        <p>Shakespeare inherited this geography from his sources and preserved it. But the Elsinore of the historical Amleth was not the Renaissance castle Spielberg would imagine — it was a fortified headland, timber and stone, exposed to North Sea weather, at the edge of a world that was only beginning to call itself Christian.</p>
+
+        <div class="stone-panel" style="margin-top:1.2rem;">
+          <h3>The Øresund Strait</h3>
+          <p>At its narrowest point, the strait between Denmark and Sweden is just 4 kilometers wide. On clear days, Helsingør and Helsingborg — on opposite shores — are plainly visible to one another. The ghost's world is a world of maritime watchfulness: a fortress overlooking a passage that the whole of northern trade depends on.</p>
+        </div>
+      </div>
+
+      <div>
+        <div class="img-ph">
+          <div class="img-ph-text">
+            <span class="ph-t">Map of Denmark & the Øresund</span>
+            <span class="ph-s">Suggested: historical or period-style map of Jutland, Danish islands, Helsingør location</span>
+            Annotate: Elsinore / Helsingør · Øresund strait · Sweden opposite · North Sea / Baltic access
+          </div>
+        </div>
+        <div class="img-cap">Denmark & the Øresund Strait · Historical Geography</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wide coastal strip -->
+  <div class="wide-strip">
+    <div class="img-ph">
+      <div class="img-ph-text">
+        <span class="ph-t">Wide Landscape — Danish Coast or Kronborg Castle</span>
+        <span class="ph-s">Suggested: Kronborg from the sea / Øresund at dusk / North Sea coastal headland in winter</span>
+        This image should establish the cold, exposed geography of the setting — water, stone, grey sky
+      </div>
+    </div>
+    <div class="img-cap">Helsingør (Elsinore) — the Øresund strait · Denmark</div>
+  </div>
+
+  <div class="carved-rule"><span class="carved-rule-glyph">᛭ ᛭ ᛭</span></div>
+
+  <!-- ══ THE NORSE WORLD ══ -->
+  <section>
+    <div class="section-label">Historical Context</div>
+    <h2>The Norse World of Amleth</h2>
+
+    <div class="float-wrap">
+      <div class="float-right">
+        <div class="img-ph">
+          <div class="img-ph-text">
+            <span class="ph-t">Viking Age Denmark</span>
+            <span class="ph-s">Suggested: Jelling runestones / Trelleborg ring fortress / Norse longhouse reconstruction</span>
+          </div>
+        </div>
+        <div class="img-cap">Viking Age Denmark · 10th century</div>
+      </div>
+
+      <p>The historical Amleth belongs to the Viking Age — a period roughly spanning 793 to 1066 CE — when Scandinavian culture was defined by maritime expansion, dynastic violence, a complex polytheistic religion, and a social code in which honor, revenge, and kinship obligation were not personal preferences but binding law.</p>
+
+      <p>This is a world governed by the <em>thing</em> — the public assembly where disputes were settled, laws declared, and kings confirmed. It is a world in which murder within a family created a crisis not just for the family but for the entire political order, because the killing of a king ruptured the covenant between the ruler, his people, and the forces — divine or otherwise — that guaranteed the harvest, the weather, and the outcome of battles.</p>
+
+      <p>The demand for revenge in this world was not the hot, personal emotion we might imagine. It was a <strong>legal and cosmic obligation</strong>. To fail to avenge a murdered father was not weakness — it was a breach of the fundamental order of things. This is the world in which Amleth's hesitation would have been not philosophically interesting but socially catastrophic.</p>
+    </div>
+
+    <div class="world-grid">
+      <div class="world-card">
+        <div class="world-num">I</div>
+        <h3>Kinship & Blood Obligation</h3>
+        <p>In Norse society, the family group — the <em>ætt</em> — was the primary unit of social and legal existence. Crimes against one member were crimes against the whole. The obligation to avenge a murdered kinsman was not optional; it was the defining test of a family's honor and its continued standing in the world.</p>
+      </div>
+      <div class="world-card">
+        <div class="world-num">II</div>
+        <h3>The Hall &amp; Feasting Culture</h3>
+        <p>Political life centered on the mead-hall — the great timber longhouse where lord and retainers ate, drank, made oaths, heard poets, and demonstrated loyalty. The hall was the physical site of power. Control of the hall meant control of the kingdom. Claudius's court, with its elaborate feasts and toasts, inherits this tradition directly.</p>
+      </div>
+      <div class="world-card">
+        <div class="world-num">III</div>
+        <h3>The Transition to Christianity</h3>
+        <p>By the 10th–11th century, Denmark was in the process of Christianization — King Harald Bluetooth's famous runestone at Jelling (c. 965 CE) records that he "made the Danes Christian." But conversion was uneven, contested, and incomplete. Old Norse beliefs — about the dead, about fate, about the obligations of the living to the slain — persisted beneath the new theology. Hamlet's ghost exists in exactly this fault line.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="carved-rule"><span class="carved-rule-glyph">᛭ ᛭ ᛭</span></div>
+
+  <!-- ══ ARTIFACTS ══ -->
+  <section>
+    <div class="section-label">Material Culture</div>
+    <h2>Objects of the World</h2>
+    <p>The material culture of Viking Age Denmark gives texture to the world Amleth inhabited. These artifacts — some directly relevant to the play, others simply atmospheric — help establish what this world looked, felt, and sounded like.</p>
+
+    <div class="artifact-row">
+      <div class="artifact-cell">
+        <div class="img-ph">
+          <div class="img-ph-text">
+            <span class="ph-t">Jelling Runestone</span>
+            <span class="ph-s">c. 965 CE · Harald Bluetooth</span>
+          </div>
+        </div>
+        <div class="artifact-label">
+          <strong>Jelling Runestone</strong>
+          Harald Bluetooth · c. 965 CE · Records the Christianization of Denmark
+        </div>
+      </div>
+      <div class="artifact-cell">
+        <div class="img-ph">
+          <div class="img-ph-text">
+            <span class="ph-t">Oseberg Ship Prow</span>
+            <span class="ph-s">c. 820 CE · Oslo, Norway</span>
+          </div>
+        </div>
+        <div class="artifact-label">
+          <strong>Oseberg Ship Prow</strong>
+          c. 820 CE · The longship as political and military instrument
+        </div>
+      </div>
+      <div class="artifact-cell">
+        <div class="img-ph">
+          <div class="img-ph-text">
+            <span class="ph-t">Trelleborg Fortress</span>
+            <span class="ph-s">c. 980 CE · Denmark</span>
+          </div>
+        </div>
+        <div class="artifact-label">
+          <strong>Trelleborg Ring Fortress</strong>
+          c. 980 CE · Danish military engineering at its peak
+        </div>
+      </div>
+      <div class="artifact-cell">
+        <div class="img-ph">
+          <div class="img-ph-text">
+            <span class="ph-t">Viking Age Mead-Hall</span>
+            <span class="ph-s">Reconstruction · Lejre, Denmark</span>
+          </div>
+        </div>
+        <div class="artifact-label">
+          <strong>Reconstructed Mead-Hall</strong>
+          Lejre, Denmark · The political architecture of the Norse world
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="carved-rule"><span class="carved-rule-glyph">᛭ ᛭ ᛭</span></div>
+
+  <!-- ══ SAXO GRAMMATICUS ══ -->
+  <section>
+    <div class="section-label">Primary Source</div>
+    <h2>Saxo Grammaticus &amp; the Gesta Danorum</h2>
+
+    <div class="saxo-block">
+      <div class="saxo-img">
+        <div class="img-ph">
+          <div class="img-ph-text">
+            <span class="ph-t">Gesta Danorum</span>
+            <span class="ph-s">Saxo Grammaticus · c. 1200 · Manuscript page</span>
+            Suggested: medieval manuscript page / Saxo's original Latin text
+          </div>
+        </div>
+        <div class="img-cap">Gesta Danorum · c. 1200 CE</div>
+      </div>
+      <div class="saxo-text">
+        <h3>The History of the Danes</h3>
+        <p>Around 1200 CE — roughly 300 years after the events it describes, and 400 years before Shakespeare — a Danish cleric named Saxo Grammaticus compiled the <em>Gesta Danorum</em> (History of the Danes), a vast Latin chronicle of Danish kings and legendary heroes. Books III and IV contain the story of <em>Amleth</em>, prince of Jutland.</p>
+        <p>Saxo's Amleth is a figure of ruthless political calculation, not philosophical paralysis. He feigns madness to survive — not as a symptom of existential crisis, but as a deliberate, cold strategy to stay alive long enough to take revenge. His uncle Feng has murdered his father and married his mother. Amleth bides his time. When he acts, he acts decisively and with considerable violence.</p>
+        <p>Shakespeare read Saxo's story (most likely through a 1570 French adaptation by François de Belleforest) and transformed it into something Saxo would barely recognize. The plot of survival and revenge remains. Everything else — the interiority, the doubt, the philosophy — Shakespeare invented.</p>
+      </div>
+    </div>
+
+    <div class="rune-inscription">
+      <div class="inscription-text">
+        "Amleth, when he was come to man's estate, showed plainly that the veil of dullness had covered a most penetrating mind."
+      </div>
+      <span class="inscription-source">Saxo Grammaticus · Gesta Danorum · c. 1200 CE · trans. Oliver Elton</span>
+    </div>
+  </section>
+
+  <div class="carved-rule"><span class="carved-rule-glyph">᛭ ᛭ ᛭</span></div>
+
+  <!-- ══ TIMELINE ══ -->
+  <section>
+    <div class="section-label">Historical Timeline</div>
+    <h2>From Amleth to Hamlet</h2>
+    <p>The story we call <em>Hamlet</em> passed through five centuries and at least three major retellings before it reached Shakespeare's stage. Each transformation reflected the world in which it was told.</p>
+
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-year">c. 900–1000</div>
+        <div class="tl-content">
+          <div class="tl-title">The Historical Amleth</div>
+          <span class="tl-tag hist-tag">Historical</span>
+          <p>The probable historical events underlying the legend: a dynastic struggle among Norse lords in Jutland. The broad outlines — fratricide, usurped throne, feigned madness, delayed revenge — suggest a real political crisis, though no contemporary records survive. The story entered oral tradition as a saga of survival and blood justice.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-year">c. 965</div>
+        <div class="tl-content">
+          <div class="tl-title">Harald Bluetooth Christianizes Denmark</div>
+          <span class="tl-tag hist-tag">Historical</span>
+          <p>The Jelling runestone — erected by King Harald Bluetooth — records the formal Christianization of Denmark. The old Norse religion begins its long retreat. The theological framework that will make the ghost's demand for revenge morally complicated does not yet exist — but it is beginning to be built.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-year">c. 1185–1208</div>
+        <div class="tl-content">
+          <div class="tl-title">Saxo Grammaticus — Gesta Danorum</div>
+          <span class="tl-tag source-tag">Primary Source</span>
+          <p>A Danish cleric compiles the History of the Danes in Latin. Books III–IV contain the Amleth legend in its first written form. Saxo's Amleth is strategic, ruthless, and ultimately successful. He burns his enemies alive in the feasting hall, kills his uncle, and becomes king. Shakespeare does not give Hamlet this ending.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-year">1570</div>
+        <div class="tl-content">
+          <div class="tl-title">Belleforest — Histoires Tragiques</div>
+          <span class="tl-tag source-tag">Source</span>
+          <p>French writer François de Belleforest adapts Saxo's Amleth story into a moral tale in his collection of tragic histories. Belleforest amplifies Amleth's interiority slightly and adds a stronger moral framework — the story is now about virtue tested, not merely survival. This is almost certainly the version Shakespeare knew.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-year">c. 1589</div>
+        <div class="tl-content">
+          <div class="tl-title">The Ur-Hamlet</div>
+          <span class="tl-tag shake-tag">Pre-Shakespeare</span>
+          <p>References in contemporary documents suggest an earlier English play about Hamlet — possibly by Thomas Kyd — existed before Shakespeare's version. It is now lost. Shakespeare may have been revising an existing theatrical property, not working entirely from scratch.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-year">c. 1600–1601</div>
+        <div class="tl-content">
+          <div class="tl-title">Shakespeare — The Tragedy of Hamlet, Prince of Denmark</div>
+          <span class="tl-tag shake-tag">Shakespeare</span>
+          <p>Shakespeare sets his version in a court that looks and sounds Elizabethan despite its Danish name — and transforms the saga's ruthless survivor into a figure of radical psychological complexity. The Norse world of blood obligation and dynastic violence is still present in the plot's skeleton. But Shakespeare drapes it in Renaissance philosophy, Protestant theology, and a language of interiority that had no equivalent in Saxo's world.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="carved-rule"><span class="carved-rule-glyph">᛭ ᛭ ᛭</span></div>
+
+  <!-- ══ AMLETH vs HAMLET ══ -->
+  <section>
+    <div class="section-label">Then &amp; Now</div>
+    <h2>Amleth &amp; Hamlet: Two Worlds</h2>
+    <p>The gap between Saxo's Amleth and Shakespeare's Hamlet is not just a gap between characters — it is a gap between entire worldviews. The comparison below maps the most significant differences.</p>
+
+    <div class="comparison">
+      <div class="comparison-header">
+        <span class="comparison-tag">Comparative Reading</span>
+        <span class="comparison-title-text">Amleth (Saxo, c. 1200) vs. Hamlet (Shakespeare, c. 1601)</span>
+      </div>
+      <div class="comparison-grid">
+        <div class="cmp-col cmp-amleth">
+          <span class="cmp-label">Saxo's Version · c. 1200</span>
+          <div class="cmp-name">Amleth</div>
+          <div class="cmp-rows">
+            <div class="cmp-row">
+              <span class="cmp-key">World</span>
+              <span class="cmp-val">Norse Denmark · blood obligation · feasting hall · saga logic</span>
+            </div>
+            <div class="cmp-row">
+              <span class="cmp-key">Madness</span>
+              <span class="cmp-val">Deliberate, cold strategy — a calculated survival technique</span>
+            </div>
+            <div class="cmp-row">
+              <span class="cmp-key">Hesitation</span>
+              <span class="cmp-val">None — Amleth bides his time strategically, then acts decisively</span>
+            </div>
+            <div class="cmp-row">
+              <span class="cmp-key">The Ghost</span>
+              <span class="cmp-val">No ghost — Amleth knows what happened; no supernatural intermediary</span>
+            </div>
+            <div class="cmp-row">
+              <span class="cmp-key">Revenge</span>
+              <span class="cmp-val">Legal and social obligation — unambiguous, executed successfully</span>
+            </div>
+            <div class="cmp-row">
+              <span class="cmp-key">Outcome</span>
+              <span class="cmp-val">Amleth kills his uncle, burns the hall, and becomes king</span>
+            </div>
+          </div>
+        </div>
+        <div class="cmp-col cmp-hamlet">
+          <span class="cmp-label">Shakespeare's Version · c. 1601</span>
+          <div class="cmp-name">Hamlet</div>
+          <div class="cmp-rows">
+            <div class="cmp-row">
+              <span class="cmp-key">World</span>
+              <span class="cmp-val">Renaissance court — Protestant theology, humanist philosophy, psychological interiority</span>
+            </div>
+            <div class="cmp-row">
+              <span class="cmp-key">Madness</span>
+              <span class="cmp-val">Partly strategic, partly real — the line is never clear, to Hamlet or the audience</span>
+            </div>
+            <div class="cmp-row">
+              <span class="cmp-key">Hesitation</span>
+              <span class="cmp-val">Central and unresolved — the engine of the entire play's dramatic tension</span>
+            </div>
+            <div class="cmp-row">
+              <span class="cmp-key">The Ghost</span>
+              <span class="cmp-val">Central — but theologically ambiguous: is it a soul in purgatory, or a devil?</span>
+            </div>
+            <div class="cmp-row">
+              <span class="cmp-key">Revenge</span>
+              <span class="cmp-val">Morally fraught — the obligation to revenge conflicts with Christian ethics</span>
+            </div>
+            <div class="cmp-row">
+              <span class="cmp-key">Outcome</span>
+              <span class="cmp-val">Hamlet, Claudius, Gertrude, Laertes, and Ophelia all die. Fortinbras inherits.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-top:1.5rem;">
+      <div class="col-panel">
+        <h3>Why the Ghost Changes Everything</h3>
+        <p>Saxo's Amleth does not need a ghost because he already knows his father was murdered. The information is not hidden. The question is not "what happened?" but "when and how do I act?"</p>
+        <p>Shakespeare's ghost introduces a theological crisis that Saxo's world could not have imagined. In Protestant England (where purgatory had been abolished), a ghost claiming to be the spirit of a dead man was automatically suspect — it might be a devil in disguise, luring Hamlet toward damnation. Hamlet's hesitation is not weakness. It is, among other things, <em>good theology</em>.</p>
+      </div>
+      <div class="col-panel">
+        <h3>What Denmark Still Means</h3>
+        <p>Shakespeare chose to keep the Danish setting even as he transformed everything else about the story. Denmark remained — for Elizabethan audiences — a place of darkness, cold, and moral ambiguity. It was recent enough in memory as a Viking world that the setting carried associations of violence, political ruthlessness, and a different relationship to death.</p>
+        <p>The world you are about to read is layered: Saxo's Norse saga underneath, Shakespeare's Renaissance court on the surface, and the gap between them where the play's most interesting questions live.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="carved-rule"><span class="carved-rule-glyph">᛭ ᛭ ᛭</span></div>
+
+  <!-- ══ CLOSING INSCRIPTION ══ -->
+  <div class="rune-inscription">
+    <div class="inscription-text">
+      "Something is rotten in the state of Denmark."
+    </div>
+    <span class="inscription-source">William Shakespeare · Hamlet · Act I, Scene IV · c. 1601</span>
+  </div>
+  <p style="text-align:center; font-size:0.88rem; color:var(--pewter); font-style:italic; margin-top:0.5rem;">
+    With this world in mind, you are ready to enter the play.
+  </p>
+
+</main>
+</body>
+</html>

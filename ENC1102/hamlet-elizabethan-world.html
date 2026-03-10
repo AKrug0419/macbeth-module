@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shakespeare's World — Elizabethan England & the Globe | ENC 1102</title>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cormorant+SC:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+  /* ══════════════════════════════════════
+     TOKENS — Warm Gold & Elizabethan Crimson
+  ══════════════════════════════════════ */
+  :root {
+    --parchment:    #f5eed8;
+    --vellum:       #efe5c4;
+    --aged:         #e6d9ae;
+    --shadow-warm:  #d4c38a;
+    --ink-light:    #c8b878;
+    --ink-mid:      #8a7a50;
+    --ink-deep:     #5a4e30;
+    --ink-dark:     #2e2818;
+    --void-warm:    #1a1408;
+
+    --gold:         #c8920a;       /* primary — aged gold leaf */
+    --gold-bright:  #e8ac20;
+    --gold-dim:     #7a5808;
+    --gold-glow:    rgba(200,146,10,0.12);
+    --gold-wash:    rgba(200,146,10,0.06);
+
+    --crimson:      #8b1a1a;       /* secondary — Elizabethan vermillion */
+    --crimson-dim:  rgba(139,26,26,0.12);
+    --crimson-mid:  #6b1414;
+    --scarlet:      #b02020;
+
+    --forest:       #2a4a2a;       /* tertiary — dark Tudor green */
+    --forest-dim:   rgba(42,74,42,0.15);
+
+    --ink:          #1e1a10;       /* body text */
+    --quill:        #3a3220;       /* secondary text */
+    --faded:        #6a5e40;       /* muted text */
+    --rule-warm:    rgba(139,26,26,0.20);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--parchment);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.85;
+    overflow-x: hidden;
+  }
+
+  /* ── PARCHMENT TEXTURE — warm noise ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.5;
+    z-index: 0;
+    mix-blend-mode: multiply;
+  }
+
+  /* Subtle vellum grain pattern */
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      radial-gradient(ellipse at 20% 20%, rgba(200,146,10,0.04) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, rgba(139,26,26,0.03) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ══ ORNAMENTAL BORDER — runs entire page ══ */
+  .page-border {
+    position: fixed; inset: 10px;
+    border: 1px solid rgba(200,146,10,0.20);
+    pointer-events: none;
+    z-index: 100;
+  }
+  .page-border::before {
+    content: '';
+    position: absolute; inset: 4px;
+    border: 1px solid rgba(200,146,10,0.10);
+  }
+  /* Corner ornaments */
+  .page-border::after {
+    content: '✦';
+    position: absolute;
+    top: -0.6rem; left: 50%;
+    transform: translateX(-50%);
+    background: var(--parchment);
+    padding: 0 0.6rem;
+    font-size: 0.7rem;
+    color: var(--gold);
+    opacity: 0.5;
+  }
+  .corner {
+    position: fixed;
+    font-size: 1rem;
+    color: rgba(200,146,10,0.25);
+    z-index: 101;
+    pointer-events: none;
+    line-height: 1;
+  }
+  .corner-tl { top: 6px;  left: 6px; }
+  .corner-tr { top: 6px;  right: 6px; transform: scaleX(-1); }
+  .corner-bl { bottom: 6px; left: 6px; transform: scaleY(-1); }
+  .corner-br { bottom: 6px; right: 6px; transform: scale(-1); }
+
+  /* ══ HERO ══ */
+  .hero {
+    position: relative;
+    min-height: 580px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .hero-still {
+    position: absolute; inset: 0;
+    background: var(--vellum);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-still-label {
+    font-family: 'Cormorant SC', serif;
+    font-size: 0.65rem; color: var(--ink-mid);
+    letter-spacing: 0.25em; text-transform: uppercase;
+    text-align: center; line-height: 2.5; padding: 2rem;
+  }
+  .hero-still-label .ph-main { display: block; color: var(--quill); font-size: 0.78rem; margin-bottom: 0.3rem; }
+  .hero-still-label .ph-sub  { display: block; color: var(--gold); font-size: 0.65rem; }
+
+  /* Warm vignette — fades into parchment at bottom */
+  .hero-veil {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(to bottom,
+        rgba(245,238,216,0.05) 0%,
+        rgba(245,238,216,0.30) 45%,
+        rgba(245,238,216,0.88) 75%,
+        var(--parchment) 100%),
+      radial-gradient(ellipse at 60% 40%, rgba(200,146,10,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  /* Top ornamental band */
+  .hero-crown {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      var(--gold-dim) 15%,
+      var(--gold) 35%,
+      var(--crimson) 50%,
+      var(--gold) 65%,
+      var(--gold-dim) 85%,
+      transparent 100%
+    );
+    opacity: 0.6;
+  }
+
+  /* Decorative top-center medallion */
+  .hero-medallion {
+    position: absolute;
+    top: 2rem; left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 2;
+  }
+  .medallion-text {
+    font-family: 'Cormorant SC', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.6;
+    display: block;
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 0 5rem 4.5rem;
+  }
+
+  .hero-kicker {
+    font-family: 'Cormorant SC', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--crimson);
+    margin-bottom: 1rem;
+    opacity: 0.8;
+  }
+
+  .hero h1 {
+    font-family: 'IM Fell English', Georgia, serif;
+    font-size: clamp(2.8rem, 6.5vw, 5.5rem);
+    color: var(--ink-dark);
+    line-height: 1.05;
+    letter-spacing: 0.01em;
+  }
+  .hero h1 .title-main { display: block; }
+  .hero h1 .title-sub {
+    display: block;
+    font-style: italic;
+    font-size: 0.48em;
+    color: var(--quill);
+    margin-top: 0.4rem;
+    letter-spacing: 0.02em;
+  }
+
+  /* Ornamental rule under title */
+  .hero-rule {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.5rem 0 1.8rem;
+    width: fit-content;
+  }
+  .hero-rule::before,
+  .hero-rule::after {
+    content: '';
+    width: 60px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold));
+  }
+  .hero-rule::after {
+    background: linear-gradient(to left, transparent, var(--gold));
+  }
+  .hero-rule-glyph {
+    font-size: 0.75rem;
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    opacity: 0.7;
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    width: fit-content;
+    border: 1px solid rgba(200,146,10,0.25);
+    background: rgba(245,238,216,0.85);
+  }
+  .hero-meta-item {
+    padding: 0.55rem 1.4rem;
+    border-right: 1px solid rgba(200,146,10,0.2);
+    font-family: 'Cormorant SC', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--faded);
+    line-height: 1.9;
+  }
+  .hero-meta-item:last-child { border-right: none; }
+  .hero-meta-item strong {
+    display: block;
+    color: var(--ink-deep);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+  }
+
+  /* ══ ORNAMENTAL DIVIDER ══ */
+  .ornament-rule {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin: 3.5rem 0;
+    position: relative;
+  }
+  .ornament-rule::before,
+  .ornament-rule::after {
+    content: '';
+    flex: 1; height: 1px;
+    background: linear-gradient(to right, transparent, var(--rule-warm));
+  }
+  .ornament-rule::after {
+    background: linear-gradient(to left, transparent, var(--rule-warm));
+  }
+  .ornament-glyph {
+    font-family: 'IM Fell English', serif;
+    font-size: 1rem;
+    color: var(--crimson);
+    opacity: 0.45;
+    letter-spacing: 0.4em;
+    flex-shrink: 0;
+  }
+
+  /* ══ LAYOUT ══ */
+  .page-wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 3rem 7rem;
+    position: relative; z-index: 1;
+  }
+
+  /* ══ SECTION LABELS ══ */
+  .section-label {
+    font-family: 'Cormorant SC', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: var(--crimson);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    opacity: 0.8;
+  }
+  .section-label::before {
+    content: '';
+    width: 20px; height: 1px;
+    background: var(--crimson);
+    opacity: 0.4;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1; height: 1px;
+    background: linear-gradient(to right, var(--crimson), transparent);
+    opacity: 0.15;
+  }
+
+  h2 {
+    font-family: 'IM Fell English', Georgia, serif;
+    font-size: 2rem;
+    color: var(--ink-dark);
+    margin-bottom: 1.2rem;
+    line-height: 1.2;
+  }
+
+  h3 {
+    font-family: 'Cormorant SC', serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--crimson);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+
+  p { margin-bottom: 1.1rem; color: var(--quill); }
+  p:last-child { margin-bottom: 0; }
+  em { color: var(--ink-dark); font-style: italic; }
+  strong { color: var(--ink-dark); font-weight: 500; }
+
+  /* ══ DROP CAP — first paragraph of each major section ══ */
+  .drop-cap::first-letter {
+    font-family: 'IM Fell English', serif;
+    font-size: 4.2rem;
+    float: left;
+    line-height: 0.78;
+    margin: 0.12rem 0.12rem 0 0;
+    color: var(--crimson);
+    padding-right: 0.05em;
+  }
+
+  /* ══ IMAGE PLACEHOLDER ══ */
+  .img-ph {
+    background: var(--vellum);
+    border: 1px solid var(--shadow-warm);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    min-height: 160px;
+  }
+  /* Warm inner glow */
+  .img-ph::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, rgba(200,146,10,0.06) 0%, transparent 70%);
+  }
+  /* Bottom-left corner ornament */
+  .img-ph::after {
+    content: '✦';
+    position: absolute;
+    bottom: 0.4rem; right: 0.6rem;
+    font-size: 0.55rem;
+    color: rgba(200,146,10,0.25);
+  }
+  .img-ph-text {
+    font-family: 'Cormorant SC', serif;
+    font-size: 0.58rem; color: var(--ink-mid);
+    letter-spacing: 0.18em; text-transform: uppercase;
+    text-align: center; line-height: 2.2;
+    position: relative; z-index: 1; padding: 1.2rem;
+  }
+  .img-ph-text .ph-t { display: block; font-size: 0.72rem; color: var(--faded); margin-bottom: 0.2rem; }
+  .img-ph-text .ph-s { display: block; color: var(--gold); font-size: 0.6rem; }
+  .img-cap {
+    font-family: 'Cormorant SC', serif;
+    font-size: 0.54rem; color: var(--ink-mid);
+    letter-spacing: 0.15em; text-transform: uppercase;
+    padding: 0.45rem 0.8rem;
+    border-top: 1px solid var(--shadow-warm);
+    background: var(--aged); line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* ══ WARM PANEL ══ */
+  .warm-panel {
+    background: var(--vellum);
+    border: 1px solid var(--shadow-warm);
+    border-left: 3px solid var(--gold-dim);
+    padding: 1.6rem 2rem;
+    margin: 1.5rem 0;
+    position: relative;
+  }
+  .warm-panel::before {
+    content: '✦';
+    position: absolute;
+    top: -0.5rem; left: 1.5rem;
+    background: var(--parchment);
+    padding: 0 0.4rem;
+    font-size: 0.6rem;
+    color: var(--gold);
+    opacity: 0.5;
+  }
+
+  /* ══ QUOTATION — illuminated manuscript style ══ */
+  .illuminated-quote {
+    margin: 2.5rem 0;
+    padding: 2rem 3rem;
+    background: var(--vellum);
+    border-top: 2px solid var(--gold-dim);
+    border-bottom: 2px solid var(--gold-dim);
+    position: relative;
+    text-align: center;
+  }
+  .illuminated-quote::before,
+  .illuminated-quote::after {
+    content: '❧';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    color: var(--gold);
+    opacity: 0.3;
+  }
+  .illuminated-quote::before { left: 0.8rem; }
+  .illuminated-quote::after  { right: 0.8rem; transform: translateY(-50%) scaleX(-1); }
+  .quote-text {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--ink-dark);
+    line-height: 1.7;
+  }
+  .quote-source {
+    font-family: 'Cormorant SC', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--faded);
+    margin-top: 0.9rem;
+    display: block;
+  }
+
+  /* ══ WORLD GRID — 3 column ══ */
+  .world-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--shadow-warm);
+    border: 1px solid var(--shadow-warm);
+    margin: 1.5rem 0;
+  }
+  .world-card {
+    background: var(--vellum);
+    padding: 1.6rem 1.7rem;
+    position: relative;
+  }
+  .world-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold-dim), transparent);
+  }
+  /* Alternating crimson top on even cards */
+  .world-card:nth-child(even)::before {
+    background: linear-gradient(90deg, var(--crimson-mid), transparent);
+    opacity: 0.5;
+  }
+  .world-card-num {
+    font-family: 'IM Fell English', serif;
+    font-size: 2rem;
+    color: rgba(200,146,10,0.10);
+    line-height: 1;
+    margin-bottom: 0.2rem;
+    user-select: none;
+  }
+  .world-card h3 { margin-bottom: 0.5rem; }
+  .world-card p { font-size: 0.88rem; color: var(--faded); line-height: 1.65; margin-bottom: 0; }
+
+  /* ══ FLOAT LAYOUTS ══ */
+  .float-wrap { overflow: hidden; }
+  .float-right {
+    float: right;
+    width: 310px;
+    margin: 0.2rem 0 1.5rem 2.2rem;
+  }
+  .float-left {
+    float: left;
+    width: 310px;
+    margin: 0.2rem 2.2rem 1.5rem 0;
+  }
+  .float-right .img-ph,
+  .float-left  .img-ph { aspect-ratio: 3/4; }
+
+  /* ══ WIDE STRIP ══ */
+  .wide-strip { margin: 2rem 0; }
+  .wide-strip .img-ph { aspect-ratio: 21/7; }
+
+  /* ══ TWO-COL ══ */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--shadow-warm);
+    border: 1px solid var(--shadow-warm);
+    margin: 1.5rem 0;
+  }
+  .col-panel {
+    background: var(--vellum);
+    padding: 1.6rem 1.8rem;
+  }
+  .col-panel h3 { margin-bottom: 0.7rem; }
+  .col-panel p  { font-size: 0.88rem; color: var(--faded); line-height: 1.65; }
+
+  /* ══ THEATER SECTION ══ */
+  .theater-feature {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 2rem;
+    align-items: start;
+    margin: 1.5rem 0;
+  }
+  .theater-feature .img-ph { aspect-ratio: 1/1; }
+
+  /* ══ TIMELINE ══ */
+  .timeline { margin: 1.5rem 0; }
+  .tl-item {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    border-bottom: 1px solid rgba(200,146,10,0.15);
+    transition: background 0.15s;
+  }
+  .tl-item:first-child { border-top: 1px solid rgba(200,146,10,0.15); }
+  .tl-item:hover { background: var(--vellum); }
+  .tl-year {
+    font-family: 'Cormorant SC', serif;
+    font-size: 0.72rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    padding: 1.1rem 1rem 1.1rem 0;
+    border-right: 1px solid rgba(200,146,10,0.15);
+    display: flex; align-items: flex-start;
+    padding-top: 1.2rem;
+    line-height: 1.4;
+  }
+  .tl-content { padding: 1.1rem 0 1.1rem 1.6rem; }
+  .tl-title {
+    font-family: 'Cormorant SC', serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--ink-dark);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.2rem;
+  }
+  .tl-content p {
+    font-size: 0.88rem;
+    color: var(--faded);
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+  .tl-tag {
+    display: inline-block;
+    font-family: 'Cormorant SC', serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.1rem 0.4rem;
+    border: 1px solid;
+    margin-bottom: 0.35rem;
+    margin-right: 0.3rem;
+  }
+  .tl-tag.life-tag    { color: var(--gold);    border-color: rgba(200,146,10,0.3); }
+  .tl-tag.context-tag { color: var(--crimson); border-color: rgba(139,26,26,0.25); }
+  .tl-tag.hamlet-tag  { color: var(--forest);  border-color: rgba(42,74,42,0.3); }
+
+  /* ══ QUARTO SECTION ══ */
+  .quarto-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--shadow-warm);
+    border: 1px solid var(--shadow-warm);
+    margin: 1.5rem 0;
+  }
+  .quarto-card {
+    background: var(--vellum);
+    display: flex; flex-direction: column;
+  }
+  .quarto-card .img-ph {
+    aspect-ratio: 3/4;
+    border: none;
+  }
+  .quarto-info {
+    padding: 1rem 1.2rem;
+    border-top: 1px solid var(--shadow-warm);
+    flex: 1;
+  }
+  .quarto-name {
+    font-family: 'IM Fell English', serif;
+    font-size: 1.05rem;
+    color: var(--ink-dark);
+    margin-bottom: 0.2rem;
+    line-height: 1.2;
+  }
+  .quarto-date {
+    font-family: 'Cormorant SC', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  .quarto-info p {
+    font-size: 0.84rem;
+    color: var(--faded);
+    line-height: 1.55;
+    margin-bottom: 0;
+  }
+
+  /* ══ ARTIFACT ROW ══ */
+  .artifact-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--shadow-warm);
+    border: 1px solid var(--shadow-warm);
+    margin: 1.5rem 0;
+  }
+  .artifact-cell { background: var(--vellum); display: flex; flex-direction: column; }
+  .artifact-cell .img-ph { aspect-ratio: 1/1; border: none; }
+  .artifact-label {
+    padding: 0.7rem 0.9rem;
+    border-top: 1px solid var(--shadow-warm);
+    font-family: 'Cormorant SC', serif;
+    font-size: 0.55rem;
+    color: var(--faded);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    line-height: 1.7;
+    font-style: italic;
+  }
+  .artifact-label strong { display: block; color: var(--quill); font-style: normal; margin-bottom: 0.1rem; font-weight: 600; }
+
+  /* ══ CLOSING FLOURISH ══ */
+  .closing-flourish {
+    text-align: center;
+    margin: 3rem 0 1rem;
+    position: relative;
+  }
+  .flourish-glyph {
+    font-family: 'IM Fell English', serif;
+    font-size: 2rem;
+    color: var(--gold);
+    opacity: 0.25;
+    letter-spacing: 0.5em;
+    display: block;
+    margin-bottom: 1rem;
+  }
+  .closing-text {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--faded);
+    line-height: 1.7;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+  .closing-note {
+    font-family: 'Cormorant SC', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(139,26,26,0.45);
+    margin-top: 1.2rem;
+    display: block;
+  }
+
+  @media (max-width: 700px) {
+    .hero-content    { padding: 0 1.5rem 3rem; }
+    .page-wrap       { padding: 0 1.25rem 5rem; }
+    .world-grid      { grid-template-columns: 1fr 1fr; }
+    .two-col         { grid-template-columns: 1fr; }
+    .theater-feature { grid-template-columns: 1fr; }
+    .quarto-grid     { grid-template-columns: 1fr; }
+    .artifact-row    { grid-template-columns: 1fr 1fr; }
+    .float-right,
+    .float-left      { float: none; width: 100%; margin: 0 0 1.5rem; }
+    .tl-item         { grid-template-columns: 80px 1fr; }
+    .hero-meta       { flex-wrap: wrap; }
+    .page-border     { display: none; }
+    .corner          { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Page border ornament -->
+<div class="page-border"></div>
+<div class="corner corner-tl">❧</div>
+<div class="corner corner-tr">❧</div>
+<div class="corner corner-bl">❧</div>
+<div class="corner corner-br">❧</div>
+
+<!-- ══ HERO ══ -->
+<header class="hero">
+  <div class="hero-still">
+    <div class="hero-still-label">
+      <span class="ph-main">Full-Bleed Hero Still — min-height 580px</span>
+      <span class="ph-sub">Suggested: Interior of the reconstructed Globe Theatre, London — warm wood, afternoon light through the open roof, the yard below</span>
+      Wide landscape orientation · warm golden light · theatrical architecture · the human scale of the playing space
+    </div>
+  </div>
+  <div class="hero-veil"></div>
+  <div class="hero-crown"></div>
+
+  <div class="hero-medallion">
+    <span class="medallion-text">ENC 1102 &nbsp;·&nbsp; Module Eight &nbsp;·&nbsp; Hamlet</span>
+  </div>
+
+  <div class="hero-content">
+    <p class="hero-kicker">The World That Made the Play</p>
+    <h1>
+      <span class="title-main">Shakespeare's England</span>
+      <span class="title-sub">Elizabethan London, the Globe Theatre &amp; the Composition of Hamlet</span>
+    </h1>
+    <div class="hero-rule">
+      <span class="hero-rule-glyph">✦ ✦ ✦</span>
+    </div>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        Period
+        <strong>1558 – 1603</strong>
+      </div>
+      <div class="hero-meta-item">
+        Monarch
+        <strong>Elizabeth I</strong>
+      </div>
+      <div class="hero-meta-item">
+        The Globe Built
+        <strong>1599</strong>
+      </div>
+      <div class="hero-meta-item">
+        Hamlet Written
+        <strong>c. 1600 – 1601</strong>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="page-wrap">
+
+  <!-- ══ INTRO ══ -->
+  <section>
+    <div class="section-label">The Age</div>
+    <h2>A World of Extraordinary Confidence</h2>
+
+    <p class="drop-cap">Elizabeth I ascended the English throne in 1558 and ruled for forty-four years — long enough to give her name to an entire culture. The Elizabethan age was a period of imperial expansion, Protestant consolidation, devastating plague, brilliant artistic production, and extraordinary political instability, all compressed into a single reign held together by the sheer force of one woman's personality and the machinery of a court that never stopped performing.</p>
+
+    <p>It was also a world in profound anxiety about its own future. Elizabeth refused to name a successor. Every year she aged without an heir was a year England teetered on the edge of the succession crisis that had torn it apart before. The Elizabethan obsession with mortality, legitimacy, and the fragility of power was not philosophical — it was daily political reality. Shakespeare did not need to invent Hamlet's world. He was living in it.</p>
+
+    <div class="wide-strip">
+      <div class="img-ph">
+        <div class="img-ph-text">
+          <span class="ph-t">Elizabethan London from the Thames</span>
+          <span class="ph-s">Suggested: Visscher's 1616 panorama of London / contemporary engraving of the South Bank</span>
+          The Globe visible on the South Bank · the Thames as the city's central artery · London Bridge in the distance
+        </div>
+      </div>
+      <div class="img-cap">London from the Thames · c. 1616 · After Visscher's panorama</div>
+    </div>
+  </section>
+
+  <div class="ornament-rule"><span class="ornament-glyph">❧ ✦ ❧</span></div>
+
+  <!-- ══ THE ELIZABETHAN WORLD ══ -->
+  <section>
+    <div class="section-label">Context</div>
+    <h2>Six Pillars of the Elizabethan World</h2>
+    <p>To understand what Shakespeare's audiences brought to the theater, you need to understand the intellectual and political furniture of their world. Six ideas shaped how an Elizabethan Londoner made sense of everything they saw on stage.</p>
+
+    <div class="world-grid">
+      <div class="world-card">
+        <div class="world-card-num">I</div>
+        <h3>The Great Chain of Being</h3>
+        <p>The Elizabethan cosmos was hierarchical and ordained — God at the apex, then angels, then monarchs, then nobles, then commoners, then animals, then plants, then stones. Every creature had its proper place. To violate that order — to kill a king, to marry above your station, to usurp a throne — was not merely a crime. It was a rupture in the fabric of creation itself.</p>
+      </div>
+      <div class="world-card">
+        <div class="world-card-num">II</div>
+        <h3>Protestant England</h3>
+        <p>Henry VIII's break with Rome had made England officially Protestant, but the Reformation was still raw, contested, and violent. Catholics were executed. Theological questions — about purgatory, about the nature of the soul, about what happened to the dead — were not academic. They were matters of state, identity, and survival. Hamlet's ghost exists in this charged theological atmosphere.</p>
+      </div>
+      <div class="world-card">
+        <div class="world-card-num">III</div>
+        <h3>Humanism &amp; the New Learning</h3>
+        <p>The Renaissance had arrived in England via Italy and the Low Countries, bringing with it a new confidence in human reason, classical learning, and the individual mind's capacity to understand the world. Hamlet's education at Wittenberg — the university of Luther — marks him as a product of this new intellectual culture, in violent collision with the feudal blood-obligation world he has inherited.</p>
+      </div>
+      <div class="world-card">
+        <div class="world-card-num">IV</div>
+        <h3>Plague &amp; Mortality</h3>
+        <p>Bubonic plague killed tens of thousands of Londoners during Elizabeth's reign, closing the theaters repeatedly. Death was not an abstraction in this world — it was a neighbor. The Elizabethan preoccupation with mortality, corruption, and the skull beneath the skin was not morbid posturing. It was an honest reckoning with lived experience. Hamlet's graveyard scene was not shocking. It was familiar.</p>
+      </div>
+      <div class="world-card">
+        <div class="world-card-num">V</div>
+        <h3>Succession &amp; Political Anxiety</h3>
+        <p>Elizabeth's refusal to name an heir created a permanent low-grade political crisis. What happens when the monarch dies without succession? Who has the legitimate claim? How is power transferred — and at what cost? These were not hypothetical questions. They were the urgent political concerns of every educated Elizabethan. They are also, precisely, the questions <em>Hamlet</em> is built around.</p>
+      </div>
+      <div class="world-card">
+        <div class="world-card-num">VI</div>
+        <h3>Theater as Public Life</h3>
+        <p>The theater in Elizabethan London was not a high-culture institution for educated elites. It was a popular entertainment attended by everyone — apprentices, merchants, courtiers, prostitutes, lawyers, servants — standing together in the yard or seated in the galleries. Shakespeare wrote for all of them simultaneously, which is why <em>Hamlet</em> operates as both a revenge thriller and a philosophical meditation, often in the same speech.</p>
+      </div>
+    </div>
+
+    <!-- Artifact row -->
+    <div class="artifact-row">
+      <div class="artifact-cell">
+        <div class="img-ph">
+          <div class="img-ph-text">
+            <span class="ph-t">Elizabeth I — Armada Portrait</span>
+            <span class="ph-s">c. 1588 · George Gower (attr.)</span>
+          </div>
+        </div>
+        <div class="artifact-label">
+          <strong>Elizabeth I — Armada Portrait</strong>
+          c. 1588 · The Queen as imperial icon
+        </div>
+      </div>
+      <div class="artifact-cell">
+        <div class="img-ph">
+          <div class="img-ph-text">
+            <span class="ph-t">The Danse Macabre</span>
+            <span class="ph-s">Woodcut tradition · Death as equalizer</span>
+          </div>
+        </div>
+        <div class="artifact-label">
+          <strong>Danse Macabre Woodcut</strong>
+          Medieval–Renaissance tradition · Plague mortality culture
+        </div>
+      </div>
+      <div class="artifact-cell">
+        <div class="img-ph">
+          <div class="img-ph-text">
+            <span class="ph-t">Elizabethan Cosmological Diagram</span>
+            <span class="ph-s">The Great Chain of Being · c. 1579</span>
+          </div>
+        </div>
+        <div class="artifact-label">
+          <strong>The Great Chain of Being</strong>
+          From Didacus Valades · Rhetorica Christiana · 1579
+        </div>
+      </div>
+      <div class="artifact-cell">
+        <div class="img-ph">
+          <div class="img-ph-text">
+            <span class="ph-t">Wittenberg University — Period View</span>
+            <span class="ph-s">Saxony · founded 1502</span>
+          </div>
+        </div>
+        <div class="artifact-label">
+          <strong>Wittenberg University</strong>
+          Founded 1502 · Hamlet's university · Luther's city
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ornament-rule"><span class="ornament-glyph">❧ ✦ ❧</span></div>
+
+  <!-- ══ THE GLOBE ══ -->
+  <section>
+    <div class="section-label">The Theatre</div>
+    <h2>The Globe &amp; the World It Made</h2>
+
+    <div class="theater-feature">
+      <div>
+        <p class="drop-cap">The Globe Theatre was built in 1599 on the South Bank of the Thames — outside the jurisdiction of the City of London, which regarded theatrical performances with deep suspicion. It was constructed partly from the timber of an earlier playhouse, The Theatre, which Shakespeare's company had dismantled and carried across the river. The Globe was, from its first stone, an act of defiance and ambition.</p>
+
+        <p>It held approximately three thousand people. The yard — standing room, open to the sky — cost a penny. The galleries, covered and seated, cost more. Rain fell on the groundlings; the stage thrust into the yard so that the actors performed surrounded on three sides by the audience. There was no artificial lighting: performances happened in the afternoon, in full daylight, and the audience could see one another as clearly as they could see the stage.</p>
+
+        <p>This architecture shaped everything Shakespeare wrote. Characters spoke directly to the audience — not "to themselves" in a theatrical convention, but <em>to the three thousand people standing in the yard</em>. Hamlet's soliloquies were not private. They were public confessions made to a crowd. This changes what they mean.</p>
+
+        <div class="warm-panel">
+          <h3>The South Bank</h3>
+          <p>The Globe shared its neighborhood with bear-baiting arenas, brothels, and taverns. The South Bank was London's entertainment district precisely because it was beyond the city's moral jurisdiction. Theater and transgression were neighbors by design. The plays performed at the Globe existed in this context — popular, commercial, slightly illicit, and absolutely central to the culture.</p>
+        </div>
+      </div>
+      <div>
+        <div class="img-ph">
+          <div class="img-ph-text">
+            <span class="ph-t">The Globe Theatre — Interior</span>
+            <span class="ph-s">Suggested: reconstructed Globe interior / de Witt's 1596 Swan Theatre sketch</span>
+            The yard · the galleries · the thrust stage · the heavens
+          </div>
+        </div>
+        <div class="img-cap">The Globe Theatre · Bankside, London · built 1599</div>
+      </div>
+    </div>
+
+    <div class="illuminated-quote">
+      <div class="quote-text">
+        "All the world's a stage, and all the men and women merely players;<br>
+        They have their exits and their entrances."
+      </div>
+      <span class="quote-source">William Shakespeare · As You Like It · c. 1599 — the year the Globe opened</span>
+    </div>
+
+    <div class="two-col">
+      <div class="col-panel">
+        <h3>The Lord Chamberlain's Men</h3>
+        <p>Shakespeare's company — the Lord Chamberlain's Men, renamed the King's Men after James I took the throne in 1603 — was the preeminent theatrical company in London. Shakespeare was not merely an employee; he was a shareholder. His financial stake in the company meant he had direct incentive to write plays that filled the Globe's yard three thousand people at a time. <em>Hamlet</em> was a commercial product as well as a work of art.</p>
+        <p>The company's leading tragedian was Richard Burbage — the first actor to play Hamlet, and the man for whose specific physical and vocal presence Shakespeare wrote the role.</p>
+      </div>
+      <div class="col-panel">
+        <h3>Performance &amp; the Living Text</h3>
+        <p>Elizabethan theatrical performance was not the reverent encounter with a fixed, sacred text that modern productions sometimes suggest. Plays were cut, adapted, performed differently for different audiences (the Globe's yard versus a private court performance), and revised continuously. The text of <em>Hamlet</em> that has come down to us exists in three different versions — none of them definitive, all of them evidence of a living performance tradition.</p>
+        <p>Shakespeare wrote for actors he knew, in a building he co-owned, for audiences he could see from the stage.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="ornament-rule"><span class="ornament-glyph">❧ ✦ ❧</span></div>
+
+  <!-- ══ SHAKESPEARE ══ -->
+  <section>
+    <div class="section-label">The Man</div>
+    <h2>Shakespeare in His World</h2>
+
+    <div class="float-wrap">
+      <div class="float-left">
+        <div class="img-ph">
+          <div class="img-ph-text">
+            <span class="ph-t">The Chandos Portrait</span>
+            <span class="ph-s">Attributed to John Taylor · c. 1600–1610</span>
+            The most likely contemporary portrait of Shakespeare
+          </div>
+        </div>
+        <div class="img-cap">The Chandos Portrait · attr. John Taylor · c. 1600</div>
+      </div>
+
+      <p>William Shakespeare was born in Stratford-upon-Avon in 1564, the son of a glover and alderman. He received a grammar school education — Latin, rhetoric, classical literature — that was standard for the son of a respectable tradesman. He did not attend university. He married at eighteen, had three children, and then — in the early 1590s — appeared in London as an actor and playwright with no clear account of how he got there. The "lost years" between Stratford and London have generated more scholarly speculation than almost any other biographical mystery in English literature.</p>
+
+      <p>By the mid-1590s he was established enough to be both praised and resented by his contemporaries. He was a shareholder in the Globe, a gentleman (he purchased a coat of arms in 1596), and by any measure a successful commercial writer. He was not, in his own lifetime, the transcendent cultural monument he would become. He was a working playwright in a competitive industry, writing approximately two plays a year for a company that needed product.</p>
+
+      <p>He retired to Stratford around 1613 and died in 1616. His plays were not collected and published until 1623 — seven years after his death — when his fellow actors Heminges and Condell assembled the First Folio, almost certainly to preserve plays they feared would otherwise be lost. We owe the existence of roughly half of Shakespeare's plays to that act of preservation.</p>
+    </div>
+
+    <div class="two-col">
+      <div class="col-panel">
+        <h3>What He Read</h3>
+        <p>Shakespeare was not an original in the modern sense — he almost never invented plots. He borrowed from Holinshed's <em>Chronicles</em> (the histories and Macbeth), from Plutarch (the Roman plays), from Italian novelle (the comedies), and from earlier plays and chronicles (Hamlet). His genius was transformative, not generative: he took existing stories and remade them into something that asked different — and more difficult — questions than the originals had thought to ask.</p>
+      </div>
+      <div class="col-panel">
+        <h3>The 1601 Context</h3>
+        <p>Shakespeare wrote Hamlet in the shadow of a specific political event: the Essex Rebellion of February 1601, in which the Earl of Essex — Elizabeth's former favorite — attempted a coup and was executed. Shakespeare's company had been paid to perform <em>Richard II</em> (a play about the deposition of a king) the night before the rebellion. The connection between theatrical representation and political action had never felt more immediate or more dangerous.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="ornament-rule"><span class="ornament-glyph">❧ ✦ ❧</span></div>
+
+  <!-- ══ COMPOSITION OF HAMLET ══ -->
+  <section>
+    <div class="section-label">The Text</div>
+    <h2>The Composition of Hamlet</h2>
+
+    <div class="float-wrap">
+      <p class="drop-cap">No one knows exactly when Shakespeare wrote <em>Hamlet</em>. The best evidence — a reference to the play in a 1601 document, and the absence of any reference before 1598 — suggests composition between 1599 and 1601. The timing places it at the opening of the Globe, in the middle of Shakespeare's greatest creative decade, and in the immediate shadow of the Essex crisis.</p>
+
+      <p>What makes the textual history of <em>Hamlet</em> unusual is that it survives in three substantially different versions — and none of them is simply "right." Each version offers something the others lack, and each reflects a different moment in the play's performance history. Editors have been arguing about which version represents Shakespeare's "real" intentions for four hundred years, with no resolution in sight.</p>
+    </div>
+
+    <div class="quarto-grid">
+      <div class="quarto-card">
+        <div class="img-ph">
+          <div class="img-ph-text">
+            <span class="ph-t">First Quarto — Q1</span>
+            <span class="ph-s">Title page · 1603 · British Library</span>
+          </div>
+        </div>
+        <div class="quarto-info">
+          <div class="quarto-name">The First Quarto</div>
+          <span class="quarto-date">1603 · "The Bad Quarto"</span>
+          <p>Roughly half the length of the other versions, with different wording, different scene order, and a famous variant: "To be, or not to be, I there's the point." Long thought to be a pirated text reconstructed from memory by actors. Now understood as possibly a legitimate early version or touring text. Scholars no longer dismiss it as simply corrupt.</p>
+        </div>
+      </div>
+      <div class="quarto-card">
+        <div class="img-ph">
+          <div class="img-ph-text">
+            <span class="ph-t">Second Quarto — Q2</span>
+            <span class="ph-s">Title page · 1604/5 · British Library</span>
+          </div>
+        </div>
+        <div class="quarto-info">
+          <div class="quarto-name">The Second Quarto</div>
+          <span class="quarto-date">1604 / 1605 · "The Good Quarto"</span>
+          <p>Nearly twice as long as Q1, and widely considered the most authoritative version of Shakespeare's own text — possibly set from his manuscript. Contains passages not in the Folio. The longest of the three versions. A full performance of Q2 would run approximately four hours.</p>
+        </div>
+      </div>
+      <div class="quarto-card">
+        <div class="img-ph">
+          <div class="img-ph-text">
+            <span class="ph-t">First Folio — F1</span>
+            <span class="ph-s">Title page · 1623 · Folger Shakespeare Library</span>
+          </div>
+        </div>
+        <div class="quarto-info">
+          <div class="quarto-name">The First Folio</div>
+          <span class="quarto-date">1623 · Posthumous Collection</span>
+          <p>Published seven years after Shakespeare's death by his colleagues Heminges and Condell. The Folio Hamlet differs from Q2 in hundreds of small ways and lacks some passages Q2 contains while adding others. It likely reflects a later performance version, revised for the stage. Most modern editions are conflations of Q2 and F1.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="warm-panel">
+      <h3>What This Means for Reading the Play</h3>
+      <p>The text you read in your edition of <em>Hamlet</em> is an editorial construction — a modern scholar's decision about which version to follow at each point where they diverge. There is no single, authoritative, Shakespeare-approved text. This is not a problem to be solved; it is a condition of the play's existence, and it tells us something important: <em>Hamlet</em> was always a living, changing thing, performed differently in different contexts, never finished. The instability of the text is part of what the play is.</p>
+    </div>
+
+    <!-- Composition timeline -->
+    <div class="timeline" style="margin-top:2rem;">
+      <div class="tl-item">
+        <div class="tl-year">c. 1589</div>
+        <div class="tl-content">
+          <div class="tl-title">The Ur-Hamlet</div>
+          <span class="tl-tag context-tag">Pre-Shakespeare</span>
+          <p>A play about Hamlet — possibly by Thomas Kyd — is referenced by contemporary writers. It featured a ghost crying "Hamlet, revenge." This play is now lost. Shakespeare may have been revising an existing theatrical property rather than working from scratch.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1598–1599</div>
+        <div class="tl-content">
+          <div class="tl-title">The Globe Opens; Shakespeare at his Peak</div>
+          <span class="tl-tag life-tag">The Globe</span>
+          <p>The Globe Theatre is built on Bankside. Shakespeare writes <em>Julius Caesar</em>, <em>As You Like It</em>, and — almost certainly — begins work on Hamlet. He is thirty-five years old and at the height of his powers.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Feb. 1601</div>
+        <div class="tl-content">
+          <div class="tl-title">The Essex Rebellion</div>
+          <span class="tl-tag context-tag">Political Crisis</span>
+          <p>The Earl of Essex attempts a coup against Elizabeth I and is executed. Shakespeare's company performs <em>Richard II</em> — a play about deposing a king — the night before. The connections between theater, politics, and royal succession have never felt more dangerous.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">July 1602</div>
+        <div class="tl-content">
+          <div class="tl-title">First Recorded Reference to Hamlet</div>
+          <span class="tl-tag hamlet-tag">Hamlet</span>
+          <p>The stationer James Roberts enters "A booke called the Revenge of Hamlett Prince Denmarke" in the Stationers' Register — the first definitive record of the play's existence. This establishes that the play was complete and in performance by mid-1602 at the latest.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1603</div>
+        <div class="tl-content">
+          <div class="tl-title">First Quarto Published</div>
+          <span class="tl-tag hamlet-tag">Q1</span>
+          <p>The first printed version of Hamlet appears — the short, variant text now called Q1 or the "Bad Quarto." Its title page claims it has been performed "in the City of London: and also in the two Universities of Cambridge and Oxford." Hamlet was already traveling.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1604–1605</div>
+        <div class="tl-content">
+          <div class="tl-title">Second Quarto Published</div>
+          <span class="tl-tag hamlet-tag">Q2</span>
+          <p>The longer, authoritative Q2 is published, claiming to be "Newly imprinted and enlarged to almost as much againe as it was, according to the true and perfect Coppie." This is the version most closely associated with Shakespeare's own manuscript.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">1623</div>
+        <div class="tl-content">
+          <div class="tl-title">First Folio — Shakespeare Collected</div>
+          <span class="tl-tag hamlet-tag">First Folio</span>
+          <p>Seven years after Shakespeare's death, his colleagues Heminges and Condell publish the First Folio — thirty-six plays, including a version of Hamlet that differs from Q2 in hundreds of details. Without this collection, roughly half of Shakespeare's works would have been lost entirely.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ornament-rule"><span class="ornament-glyph">❧ ✦ ❧</span></div>
+
+  <!-- ══ CLOSING ══ -->
+  <div class="closing-flourish">
+    <span class="flourish-glyph">❧ &nbsp; ❧ &nbsp; ❧</span>
+    <p class="closing-text">
+      This is the world in which Hamlet was written — warm, crowded, ambitious, morally urgent,
+      and deeply anxious about what comes next. The play you are about to read was made here,
+      for these people, in this light.
+    </p>
+    <span class="closing-note">What follows is a different world entirely.</span>
+  </div>
+
+</main>
+</body>
+</html>
