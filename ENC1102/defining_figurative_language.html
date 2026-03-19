@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Defining Figurative Language | ENC 1102 — Module Six</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+
+  /* ══════════════════════════════════════════
+     TOKENS — Naturalist's Field Journal
+  ══════════════════════════════════════════ */
+  :root {
+    --paper:         #f4ede0;
+    --vellum:        #ede3cf;
+    --aged:          #e4d8be;
+    --worn:          #d8c9a8;
+    --shadow:        #c4b48e;
+    --ink:           #1e160a;
+    --ink-warm:      #2c1f0e;
+    --ink-mid:       #4a3520;
+    --quill:         #6b4e2e;
+    --faded:         #7d6041;
+    --dust:          #7f6748;
+    --moss:          #4a6040;
+    --moss-mid:      #5e7852;
+    --moss-light:    #7a9468;
+    --moss-pale:     #c8d8bc;
+    --moss-wash:     rgba(90,120,72,0.08);
+    --moss-glow:     rgba(90,120,72,0.14);
+    --moss-mid-aa:   #5a734e;
+    --umber:         #7a4e28;
+    --umber-mid:     #9a6438;
+    --umber-pale:    #dfc8a8;
+    --umber-wash:    rgba(122,78,40,0.08);
+    --indigo:        #3a4868;
+    --indigo-mid:    #4e608a;
+    --indigo-pale:   #c0cce0;
+    --indigo-wash:   rgba(58,72,104,0.08);
+    --plum:          #6a3a50;
+    --plum-mid:      #8a4e6a;
+    --plum-pale:     #d4b8c8;
+    --plum-wash:     rgba(106,58,80,0.10);
+    --rule:          rgba(74,53,32,0.18);
+    --rule-light:    rgba(74,53,32,0.10);
+
+    /* Figurative language highlight colors */
+    --hl-metaphor:        rgba(160,100,40,0.22);
+    --hl-metaphor-border: #a06428;
+    --hl-simile:          rgba(58,72,104,0.20);
+    --hl-simile-border:   #4e608a;
+    --hl-person:          rgba(106,58,80,0.22);
+    --hl-person-border:   #8a4e6a;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; }
+
+  body {
+    text-align: left;
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.75;
+    min-height: 100vh;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    background-color: var(--ink-warm);
+    padding: 0; overflow: hidden;
+  }
+  .hero-texture {
+    position: absolute; inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(255,255,255,0.025) 28px, rgba(255,255,255,0.025) 29px),
+      repeating-linear-gradient(90deg, transparent, transparent 28px, rgba(255,255,255,0.015) 28px, rgba(255,255,255,0.015) 29px);
+    pointer-events: none;
+  }
+  .hero-ornament {
+    position: absolute; top: 0; right: 0;
+    width: 340px; height: 340px;
+    opacity: 0.07; pointer-events: none;
+  }
+  .hero-inner {
+    position: relative;
+    max-width: 960px; margin: 0 auto;
+    padding: 56px 48px 52px;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .hero-module-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'Lora', serif; font-size: 12px; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--moss-pale); opacity: 0.8;
+  }
+  .hero-module-tag::before {
+    content: ''; display: inline-block;
+    width: 28px; height: 1px;
+    background: var(--moss-pale); opacity: 0.6;
+  }
+  .hero-title {
+    font-family: 'Lora', serif;
+    font-size: clamp(36px, 5vw, 54px);
+    font-weight: 700; color: var(--paper);
+    line-height: 1.1; letter-spacing: -0.01em;
+  }
+  .hero-title em { font-style: italic; color: var(--moss-pale); }
+  .hero-subtitle {
+    font-family: 'Crimson Pro', serif;
+    font-size: 18px; font-weight: 400; font-style: italic;
+    color: var(--umber-pale); line-height: 1.5;
+    max-width: 560px; opacity: 0.9;
+  }
+  .hero-rule {
+    width: 60px; height: 2px;
+    background: linear-gradient(90deg, var(--moss-light), transparent);
+    margin: 4px 0;
+  }
+
+  /* ── MAIN CONTENT ── */
+  .page-body {
+    max-width: 960px; margin: 0 auto;
+    padding: 56px 48px 80px;
+  }
+
+  /* ── SECTION STRUCTURE ── */
+  .section { margin-bottom: 64px; }
+  .section-label {
+    font-family: 'Lora', serif; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--moss-mid-aa); margin-bottom: 10px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(90deg, var(--rule), transparent);
+    max-width: 120px;
+  }
+  .section-title {
+    font-family: 'Lora', serif;
+    font-size: clamp(22px, 3vw, 28px); font-weight: 700;
+    color: var(--ink-warm); line-height: 1.2; margin-bottom: 20px;
+  }
+  .section-title em { font-style: italic; color: var(--moss); }
+  .prose {
+    font-family: 'Crimson Pro', serif;
+    font-size: 17px; line-height: 1.8;
+    color: var(--ink-mid); max-width: 720px; text-align: left;
+  }
+  .prose + .prose { margin-top: 16px; }
+  .prose strong { color: var(--ink); font-weight: 600; }
+
+  /* ── CALLOUT BOXES ── */
+  .callout {
+    border-left: 3px solid var(--moss-mid);
+    background: var(--moss-wash);
+    border-radius: 0 8px 8px 0;
+    padding: 16px 22px; margin: 24px 0;
+  }
+  .callout-label {
+    font-family: 'Lora', serif; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--moss); margin-bottom: 6px;
+  }
+  .callout p {
+    font-family: 'Crimson Pro', serif; font-size: 16px;
+    color: var(--ink-mid); line-height: 1.7; margin: 0; text-align: left;
+  }
+  .callout.umber { border-color: var(--umber-mid); background: var(--umber-wash); }
+  .callout.umber .callout-label { color: var(--umber); }
+  .callout.indigo { border-color: var(--indigo-mid); background: var(--indigo-wash); }
+  .callout.indigo .callout-label { color: var(--indigo); }
+  .callout.plum { border-color: var(--plum-mid); background: var(--plum-wash); }
+  .callout.plum .callout-label { color: var(--plum); }
+
+  /* ── HORIZONTAL RULE ── */
+  .divider { border: none; border-top: 1px solid var(--rule); margin: 56px 0; }
+  .divider-ornament { text-align: center; margin: -10px 0 0; position: relative; }
+  .divider-ornament::before, .divider-ornament::after {
+    content: ''; display: inline-block;
+    width: 48px; height: 1px; background: var(--rule);
+    vertical-align: middle; margin: 0 12px;
+  }
+  .divider-ornament span {
+    font-family: 'Crimson Pro', serif; font-size: 18px;
+    color: var(--dust); vertical-align: middle;
+  }
+
+  /* ── TECHNIQUE TAG (section type identifier) ── */
+  .technique-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'Lora', serif; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 5px 14px; border-radius: 20px; margin-bottom: 18px;
+  }
+  .technique-tag.metaphor {
+    background: var(--umber-wash); color: var(--umber);
+    border: 1px solid rgba(122,78,40,0.25);
+  }
+  .technique-tag.simile {
+    background: var(--indigo-wash); color: var(--indigo);
+    border: 1px solid rgba(58,72,104,0.25);
+  }
+  .technique-tag.personification {
+    background: var(--plum-wash); color: var(--plum);
+    border: 1px solid rgba(106,58,80,0.25);
+  }
+
+  /* ── VIDEO CONTAINER ── */
+  .video-wrap {
+    background: var(--ink-warm);
+    border-radius: 10px; overflow: hidden;
+    margin: 24px 0;
+  }
+  .video-label {
+    padding: 10px 18px;
+    font-family: 'Lora', serif; font-size: 12px; font-weight: 600;
+    letter-spacing: 0.10em; text-transform: uppercase;
+    color: var(--moss-pale); opacity: 0.85;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .video-label::before { content: '▶'; font-size: 10px; }
+  .video-container {
+    position: relative; padding-bottom: 56.25%;
+    height: 0; overflow: hidden;
+  }
+  .video-container iframe {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%; border: none;
+  }
+
+  /* ── FORMATIVE QUIZ ── */
+  .quiz-block {
+    background: var(--vellum);
+    border: 1px solid var(--rule);
+    border-radius: 10px; overflow: hidden;
+    margin: 28px 0;
+  }
+  .quiz-header {
+    background: rgba(74,53,32,0.10);
+    border-bottom: 1px solid var(--rule);
+    padding: 12px 22px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .quiz-header-icon { font-size: 16px; }
+  .quiz-header-text {
+    font-family: 'Lora', serif; font-size: 13px; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--ink-mid);
+  }
+  .quiz-items { padding: 20px 22px; display: flex; flex-direction: column; gap: 20px; }
+  .quiz-item {
+    border-bottom: 1px solid var(--rule-light);
+    padding-bottom: 20px;
+  }
+  .quiz-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .quiz-q {
+    font-family: 'Crimson Pro', serif; font-size: 16.5px; font-weight: 600;
+    color: var(--ink); line-height: 1.6; margin-bottom: 12px;
+    text-align: left;
+  }
+  .quiz-q-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 22px; height: 22px; border-radius: 50%;
+    background: var(--moss-mid); color: white;
+    font-family: 'Lora', serif; font-size: 11px; font-weight: 700;
+    margin-right: 8px; flex-shrink: 0; vertical-align: middle;
+  }
+  .quiz-reveal-btn {
+    font-family: 'Lora', serif; font-size: 12px; font-weight: 600;
+    letter-spacing: 0.10em; text-transform: uppercase;
+    color: var(--moss); background: none;
+    border: 1px solid rgba(74,96,64,0.35);
+    border-radius: 4px; padding: 7px 16px;
+    cursor: pointer; transition: background 0.15s, color 0.15s;
+  }
+  .quiz-reveal-btn:hover { background: var(--moss-wash); }
+  .quiz-reveal-btn:disabled {
+    color: var(--faded); border-color: var(--rule);
+    cursor: default; background: none;
+  }
+  .quiz-answer {
+    margin-top: 14px;
+    background: rgba(255,255,255,0.50);
+    border-left: 3px solid var(--moss-mid);
+    border-radius: 0 6px 6px 0;
+    padding: 12px 18px;
+  }
+  .quiz-answer.hidden { display: none; }
+  .quiz-answer-label {
+    font-family: 'Lora', serif; font-size: 10px; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--moss); margin-bottom: 6px;
+  }
+  .quiz-answer p {
+    font-family: 'Crimson Pro', serif; font-size: 15.5px;
+    color: var(--ink-mid); line-height: 1.7; margin: 0; text-align: left;
+  }
+
+  /* ── TECHNIQUE COMPARISON TABLE ── */
+  .technique-table {
+    width: 100%; border-collapse: collapse;
+    margin: 24px 0; font-family: 'Crimson Pro', serif;
+    border-radius: 10px; overflow: hidden;
+    border: 1px solid var(--rule);
+  }
+  .technique-table thead tr {
+    background: var(--ink-warm);
+  }
+  .technique-table thead th {
+    padding: 12px 18px; text-align: left;
+    font-family: 'Lora', serif; font-size: 12px; font-weight: 600;
+    letter-spacing: 0.10em; text-transform: uppercase;
+    color: var(--paper);
+  }
+  .technique-table tbody tr { background: var(--vellum); }
+  .technique-table tbody tr:nth-child(even) { background: var(--aged); }
+  .technique-table tbody td {
+    padding: 12px 18px; font-size: 15.5px;
+    color: var(--ink-mid); line-height: 1.6;
+    border-top: 1px solid var(--rule-light);
+    text-align: left;
+  }
+  .technique-table tbody td:first-child {
+    font-family: 'Lora', serif; font-weight: 600; color: var(--ink);
+  }
+  .tag-cell { white-space: nowrap; }
+  .tag-inline {
+    display: inline-block; padding: 2px 10px; border-radius: 10px;
+    font-family: 'Lora', serif; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .tag-inline.m { background: var(--umber-wash); color: var(--umber); border: 1px solid rgba(122,78,40,0.25); }
+  .tag-inline.s { background: var(--indigo-wash); color: var(--indigo); border: 1px solid rgba(58,72,104,0.25); }
+  .tag-inline.p { background: var(--plum-wash); color: var(--plum); border: 1px solid rgba(106,58,80,0.25); }
+
+  /* ── FIGURATIVE LANGUAGE LEGEND ── */
+  .fl-legend {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    margin: 20px 0 28px;
+  }
+  .legend-item {
+    display: flex; align-items: center; gap: 7px;
+    font-family: 'Crimson Pro', serif; font-size: 14px;
+    color: var(--ink-mid);
+  }
+  .legend-swatch {
+    width: 18px; height: 10px;
+    border-radius: 3px; border: 1px solid transparent;
+  }
+  .legend-swatch.metaphor { background: var(--hl-metaphor); border-color: var(--hl-metaphor-border); }
+  .legend-swatch.simile   { background: var(--hl-simile);   border-color: var(--hl-simile-border);   }
+  .legend-swatch.person   { background: var(--hl-person);   border-color: var(--hl-person-border);   }
+
+  /* ── HIGHLIGHT MARKS ── */
+  mark { border-radius: 2px; padding: 0 2px; font-style: inherit; }
+  mark.metaphor { background: var(--hl-metaphor); }
+  mark.simile   { background: var(--hl-simile); }
+  mark.person   { background: var(--hl-person); }
+
+  /* ── ANNOTATED POEM LAYOUT ── */
+  .annotated-poem {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0; background: var(--vellum);
+    border: 1px solid var(--rule);
+    border-radius: 10px; overflow: hidden; margin: 28px 0;
+  }
+  .annotated-poem-header {
+    grid-column: 1 / -1;
+    background: var(--ink-warm);
+    padding: 14px 24px;
+    display: flex; align-items: baseline; gap: 12px;
+  }
+  .poem-header-title {
+    font-family: 'Lora', serif; font-size: 16px; font-weight: 600;
+    color: var(--paper);
+  }
+  .poem-header-author {
+    font-family: 'Crimson Pro', serif; font-size: 14px;
+    font-style: italic; color: var(--umber-pale); opacity: 0.8;
+  }
+  /* Paired stanza / annotation rows — aligns each annotation with its poem lines */
+  .poem-stanza-row {
+    padding: 14px 28px;
+    border-right: 1px solid var(--rule-light);
+  }
+  .annotation-slot {
+    padding: 14px 24px;
+    background: rgba(255,255,255,0.25);
+    display: flex; flex-direction: column;
+    justify-content: center; gap: 16px;
+  }
+  /* Poem text */
+  .poem-lines {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 15px; line-height: 2.1; color: var(--ink);
+    white-space: pre-wrap;
+  }
+  .poem-lines .stanza { margin-bottom: 0; }
+  .poem-lines .line { display: block; }
+  .poem-source {
+    font-family: 'Crimson Pro', serif; font-size: 12px;
+    font-style: italic; color: var(--faded); margin-top: 14px;
+  }
+
+  /* ── ANNOTATION NOTES ── */
+  .annotation-note {
+    display: flex; gap: 10px;
+    margin-bottom: 16px; align-items: flex-start;
+  }
+  .annotation-swatch {
+    width: 10px; flex-shrink: 0; margin-top: 4px;
+    border-radius: 2px; align-self: stretch; min-height: 36px;
+  }
+  .annotation-swatch.metaphor { background: var(--hl-metaphor); border: 1px solid var(--hl-metaphor-border); }
+  .annotation-swatch.simile   { background: var(--hl-simile);   border: 1px solid var(--hl-simile-border);   }
+  .annotation-swatch.person   { background: var(--hl-person);   border: 1px solid var(--hl-person-border);   }
+  .annotation-body { flex: 1; }
+  .annotation-term {
+    font-family: 'Libre Baskerville', Georgia, serif;
+    font-size: 13px; font-style: italic; color: var(--ink);
+    margin-bottom: 3px; text-align: left;
+  }
+  .annotation-type {
+    font-family: 'Lora', serif; font-size: 10px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .annotation-type.metaphor { color: var(--umber); }
+  .annotation-type.simile   { color: var(--indigo); }
+  .annotation-type.person   { color: var(--plum); }
+  .annotation-text {
+    font-family: 'Crimson Pro', serif; font-size: 14px;
+    color: var(--faded); line-height: 1.55; text-align: left;
+  }
+
+  /* ── STEP PROCESS BLOCKS ── */
+  .step-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 14px; margin: 20px 0;
+  }
+  .step-item {
+    background: var(--vellum); border: 1px solid var(--rule);
+    border-radius: 8px; padding: 16px 18px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .step-badge {
+    width: 30px; height: 30px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Lora', serif; font-size: 13px; font-weight: 700;
+    color: white; flex-shrink: 0;
+  }
+  .step-badge.s1 { background: #4a6040; }
+  .step-badge.s2 { background: #3a4868; }
+  .step-badge.s3 { background: #7a4e28; }
+  .step-badge.s4 { background: #6a3a50; }
+  .step-text {
+    font-family: 'Crimson Pro', serif; font-size: 15.5px;
+    color: var(--ink-mid); line-height: 1.55; text-align: left;
+  }
+  .step-text strong { color: var(--ink); }
+
+  /* ── QUICK REF BOX ── */
+  .quick-ref {
+    background: var(--vellum); border: 1px solid var(--rule);
+    border-radius: 10px; padding: 26px 30px; margin-top: 48px;
+  }
+  .quick-ref-title {
+    font-family: 'Lora', serif; font-size: 16px; font-weight: 700;
+    color: var(--ink); margin-bottom: 6px;
+  }
+  .quick-ref-sub {
+    font-family: 'Crimson Pro', serif; font-size: 15px;
+    color: var(--faded); margin-bottom: 18px; text-align: left;
+  }
+  .quick-ref-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+  }
+  .quick-ref-item {
+    display: flex; gap: 10px; align-items: center;
+  }
+  .quick-ref-num {
+    width: 28px; height: 28px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Lora', serif; font-size: 12px; font-weight: 700;
+    color: white; flex-shrink: 0;
+  }
+  .quick-ref-num.n1 { background: var(--umber); }
+  .quick-ref-num.n2 { background: var(--indigo); }
+  .quick-ref-num.n3 { background: var(--plum); }
+  .quick-ref-text {
+    font-family: 'Crimson Pro', serif; font-size: 15px;
+    color: var(--ink-mid); text-align: left;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 720px) {
+    .hero-inner { padding: 40px 24px 36px; }
+    .page-body { padding: 40px 24px 60px; }
+    .annotated-poem { grid-template-columns: 1fr; }
+    .poem-stanza-row { border-right: none; }
+    .annotation-slot { border-top: 1px solid var(--rule-light); }
+    .step-grid { grid-template-columns: 1fr; }
+    .quick-ref-grid { grid-template-columns: 1fr; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-texture"></div>
+  <svg class="hero-ornament" viewBox="0 0 340 340" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <ellipse cx="240" cy="100" rx="90" ry="30" transform="rotate(-35 240 100)" fill="white"/>
+    <ellipse cx="280" cy="60" rx="70" ry="22" transform="rotate(-55 280 60)" fill="white"/>
+    <ellipse cx="200" cy="140" rx="80" ry="25" transform="rotate(-20 200 140)" fill="white"/>
+    <line x1="240" y1="100" x2="300" y2="20" stroke="white" stroke-width="2"/>
+    <line x1="220" y1="120" x2="260" y2="30" stroke="white" stroke-width="1.5"/>
+    <ellipse cx="310" cy="30" rx="28" ry="10" transform="rotate(-60 310 30)" fill="white"/>
+  </svg>
+  <div class="hero-inner">
+    <div class="hero-module-tag">Module Six &nbsp;·&nbsp; Poetry &amp; Literary Elements</div>
+    <div class="hero-rule"></div>
+    <h1 class="hero-title">Defining <em>Figurative</em><br>Language</h1>
+    <p class="hero-subtitle">Metaphor &nbsp;·&nbsp; Simile &nbsp;·&nbsp; Personification</p>
+  </div>
+</header>
+
+<main class="page-body">
+
+  <!-- ORIENTATION -->
+  <section class="section" aria-labelledby="orientation-heading">
+    <div class="section-label">Orientation</div>
+    <h2 class="section-title" id="orientation-heading">Building on <em>Poetic Imagery</em></h2>
+    <p class="prose">In the previous lesson, you learned to identify the concrete images that make a poem vivid — the sensory details that paint pictures and activate the senses. Figurative language builds directly on that foundation. It incorporates everything you already know about imagery, but adds a single, transformative element: <strong>comparison</strong>.</p>
+    <p class="prose" style="margin-top:16px;">When a poet compares one thing to another — especially two things that seem to have nothing in common — something surprising happens. The comparison doesn't just describe; it reveals. It allows a poet to communicate a precise, personal perspective on any idea, emotion, or experience that plain language simply can't achieve.</p>
+    <div class="callout indigo">
+      <div class="callout-label">Three Types, One Core Idea</div>
+      <p>All three types of figurative language we'll study — <strong>metaphor</strong>, <strong>simile</strong>, and <strong>personification</strong> — involve comparison. They differ only in <em>how</em> that comparison is made: implied, explicit with signal words, or directed specifically at human qualities.</p>
+    </div>
+
+    <table class="technique-table" aria-label="Figurative language techniques overview">
+      <thead>
+        <tr>
+          <th>Technique</th>
+          <th>Definition</th>
+          <th>Signal</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="tag-inline m">Metaphor</span></td>
+          <td>An implied comparison between two unlike things — one is said to <em>be</em> the other</td>
+          <td class="tag-cell">No signal words — the comparison is embedded</td>
+          <td><em>"His voice was a well of dark water"</em></td>
+        </tr>
+        <tr>
+          <td><span class="tag-inline s">Simile</span></td>
+          <td>An explicit comparison between two unlike things using "like" or "as"</td>
+          <td class="tag-cell"><strong>like</strong> &nbsp;or&nbsp; <strong>as</strong></td>
+          <td><em>"Her voice rose like a balloon"</em></td>
+        </tr>
+        <tr>
+          <td><span class="tag-inline p">Personification</span></td>
+          <td>A metaphor in which a non-human thing is given human qualities or actions</td>
+          <td class="tag-cell">Unexpected human verbs or attributes on non-human subjects</td>
+          <td><em>"The wind whispered its secret through the pines"</em></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <hr class="divider"><div class="divider-ornament"><span>✦</span></div>
+
+  <!-- ═══════════════════════════════════
+       SECTION ONE: FIGURATIVE LANGUAGE
+  ═══════════════════════════════════ -->
+  <section class="section" aria-labelledby="fl-heading">
+    <div class="section-label">Technique Overview</div>
+    <h2 class="section-title" id="fl-heading">What Is <em>Figurative Language</em>?</h2>
+
+    <div class="video-wrap" aria-label="Oregon State University — Figurative Language overview video">
+      <div class="video-label">Oregon State University — Figurative Language</div>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/c2CRxHOgxBM?si=w7ERorDIj6Zi5ipN" title="Oregon State University: Figurative Language" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- QUIZ 1 -->
+    <div class="quiz-block" aria-label="Formative check: Figurative Language">
+      <div class="quiz-header">
+        <div class="quiz-header-icon">✎</div>
+        <div class="quiz-header-text">Formative Check — Think First, Then Reveal</div>
+      </div>
+      <div class="quiz-items">
+
+        <div class="quiz-item">
+          <div class="quiz-q"><span class="quiz-q-num">1</span>What is figurative language, and how does it differ from literal language?</div>
+          <button class="quiz-reveal-btn" onclick="revealAnswer(this)">◆ Reveal Answer</button>
+          <div class="quiz-answer hidden">
+            <div class="quiz-answer-label">Answer</div>
+            <p>Figurative language uses words beyond their literal meanings to create comparisons, associations, and vivid images. Literal language says exactly what it means — "the room was cold" is literal. Figurative language creates meaning indirectly: "the room breathed ice" uses comparison and personification to communicate not just temperature but feeling. Poets rely on figurative language because it can carry more emotional and intellectual weight than direct statement.</p>
+          </div>
+        </div>
+
+        <div class="quiz-item">
+          <div class="quiz-q"><span class="quiz-q-num">2</span>Why do poets rely on figurative language rather than simply stating their ideas directly?</div>
+          <button class="quiz-reveal-btn" onclick="revealAnswer(this)">◆ Reveal Answer</button>
+          <div class="quiz-answer hidden">
+            <div class="quiz-answer-label">Answer</div>
+            <p>Because comparison is uniquely precise. When a poet says a father's voice is "a well of dark water," the image carries connotations — depth, coolness, something to draw from, something you can't see the bottom of — that no single adjective can replicate. Figurative language communicates a poet's specific <em>perspective</em> on an experience, not just a description of it.</p>
+          </div>
+        </div>
+
+        <div class="quiz-item">
+          <div class="quiz-q"><span class="quiz-q-num">3</span>What three types of figurative language will this unit focus on, and what do they have in common?</div>
+          <button class="quiz-reveal-btn" onclick="revealAnswer(this)">◆ Reveal Answer</button>
+          <div class="quiz-answer hidden">
+            <div class="quiz-answer-label">Answer</div>
+            <p>Metaphor, simile, and personification. All three are fundamentally about <strong>comparison</strong> — connecting two unlike things to generate new meaning. They differ in method: similes signal their comparison with "like" or "as"; metaphors keep the comparison implicit; and personification specifically compares a non-human thing to a person or human experience.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <p class="prose">Every act of figurative language asks the reader to hold two things in mind at once — the thing being described (what literary critics call the <strong>tenor</strong>) and the thing it's being compared to (the <strong>vehicle</strong>). The power of the comparison comes from the gap between them: the more unlike the two things are, the more the comparison can surprise, illuminate, and reframe.</p>
+    <div class="callout umber" style="margin-top:20px;">
+      <div class="callout-label">A Note on Connotation</div>
+      <p>When you encounter a figurative comparison in a poem, your analysis task is the same as it was with plain images: ask what each element <em>connotes</em>. Both the tenor and the vehicle bring their own associations into the comparison. Your job is to figure out which connotations are being activated and why.</p>
+    </div>
+  </section>
+
+  <hr class="divider"><div class="divider-ornament"><span>✦</span></div>
+
+  <!-- ═══════════════════════════════════
+       SECTION TWO: METAPHOR
+  ═══════════════════════════════════ -->
+  <section class="section" aria-labelledby="metaphor-heading">
+    <div class="section-label">Technique Two</div>
+    <div class="technique-tag metaphor">Metaphor</div>
+    <h2 class="section-title" id="metaphor-heading">The <em>Implied</em> Comparison</h2>
+
+    <div class="video-wrap" aria-label="Oregon State University — Metaphors video">
+      <div class="video-label">Oregon State University — Metaphors</div>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/5mPSFQ1eFUU?si=kHtJ7-NJGv3eOR7U" title="Oregon State University: Metaphors" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- QUIZ 2 -->
+    <div class="quiz-block" aria-label="Formative check: Metaphor">
+      <div class="quiz-header">
+        <div class="quiz-header-icon">✎</div>
+        <div class="quiz-header-text">Formative Check — Think First, Then Reveal</div>
+      </div>
+      <div class="quiz-items">
+
+        <div class="quiz-item">
+          <div class="quiz-q"><span class="quiz-q-num">1</span>What is a metaphor, and what makes it different from a simile?</div>
+          <button class="quiz-reveal-btn" onclick="revealAnswer(this)">◆ Reveal Answer</button>
+          <div class="quiz-answer hidden">
+            <div class="quiz-answer-label">Answer</div>
+            <p>A metaphor is a direct but implied comparison between two unlike things — it states or implies that one thing <em>is</em> another, without using "like" or "as." A simile announces its comparison explicitly with those signal words. Metaphors feel more seamless and embedded in the poem's language, which is part of why poets frequently prefer them to similes.</p>
+          </div>
+        </div>
+
+        <div class="quiz-item">
+          <div class="quiz-q"><span class="quiz-q-num">2</span>The video suggests that unexpected verbs are often a clue to finding metaphors. Why?</div>
+          <button class="quiz-reveal-btn" onclick="revealAnswer(this)">◆ Reveal Answer</button>
+          <div class="quiz-answer hidden">
+            <div class="quiz-answer-label">Answer</div>
+            <p>When a verb doesn't literally apply to its subject — when "breath <em>flickers</em>" or "nakedness <em>shadows</em>" — it signals a hidden comparison. The subject is being implicitly compared to something that <em>does</em> perform that action. An unexpected verb is often the seam where two unlike things are stitched together in a metaphor. It's a practical thing to look for when reading unfamiliar poems.</p>
+          </div>
+        </div>
+
+        <div class="quiz-item">
+          <div class="quiz-q"><span class="quiz-q-num">3</span>What is personification, and how does it relate to metaphor?</div>
+          <button class="quiz-reveal-btn" onclick="revealAnswer(this)">◆ Reveal Answer</button>
+          <div class="quiz-answer hidden">
+            <div class="quiz-answer-label">Answer</div>
+            <p>Personification is a special kind of metaphor in which a non-human thing — an object, animal, force of nature, or abstraction — is given specifically <em>human</em> qualities or behaviors. Every personification is a metaphor, but not every metaphor is personification. The comparison in personification is always between the non-human subject and a person or human experience.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <p class="prose">A regular metaphor works by <strong>identification</strong>: it declares or implies that X is Y, and the reader's task is to figure out what qualities of Y the poet wants us to transfer onto X. The comparison is never random — it's calibrated to illuminate something specific about the tenor.</p>
+    <p class="prose" style="margin-top:16px;">Personification is the most emotionally charged variety. By giving a non-human thing human will, voice, or agency, a poet makes it capable of intention — which makes it capable of being frightening, comforting, or meaningful in ways that inert objects simply cannot be.</p>
+    <div class="callout plum" style="margin-top:20px;">
+      <div class="callout-label">The Verb as Clue</div>
+      <p>When you can't find a metaphor on the first read, look for verbs that seem off — actions a thing doesn't normally perform. Ask: what kind of thing <em>does</em> do that? The answer is the implied comparison. This is one of the most reliable practical skills for identifying metaphors in unfamiliar poems.</p>
+    </div>
+  </section>
+
+  <hr class="divider"><div class="divider-ornament"><span>✦</span></div>
+
+  <!-- ═══════════════════════════════════
+       SECTION THREE: SIMILE
+  ═══════════════════════════════════ -->
+  <section class="section" aria-labelledby="simile-heading">
+    <div class="section-label">Technique Three</div>
+    <div class="technique-tag simile">Simile</div>
+    <h2 class="section-title" id="simile-heading">The <em>Explicit</em> Comparison</h2>
+
+    <div class="video-wrap" aria-label="Oregon State University — Similes video">
+      <div class="video-label">Oregon State University — Similes</div>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/YqJrZ6OoqjU?si=eH4VKHezlsPJ3iJA" title="Oregon State University: Similes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- QUIZ 3 -->
+    <div class="quiz-block" aria-label="Formative check: Simile">
+      <div class="quiz-header">
+        <div class="quiz-header-icon">✎</div>
+        <div class="quiz-header-text">Formative Check — Think First, Then Reveal</div>
+      </div>
+      <div class="quiz-items">
+
+        <div class="quiz-item">
+          <div class="quiz-q"><span class="quiz-q-num">1</span>What are the two signal words that identify a simile, and why do they matter?</div>
+          <button class="quiz-reveal-btn" onclick="revealAnswer(this)">◆ Reveal Answer</button>
+          <div class="quiz-answer hidden">
+            <div class="quiz-answer-label">Answer</div>
+            <p><strong>"Like"</strong> and <strong>"as."</strong> These words signal that a comparison is being made between two unlike things. They're important because they make the simile explicit — the poet is openly inviting you to see the connection. When you spot either word, your job is to identify the two things being compared and ask what the comparison reveals.</p>
+          </div>
+        </div>
+
+        <div class="quiz-item">
+          <div class="quiz-q"><span class="quiz-q-num">2</span>A simile creates two images in a single line. What challenge does this create for the reader?</div>
+          <button class="quiz-reveal-btn" onclick="revealAnswer(this)">◆ Reveal Answer</button>
+          <div class="quiz-answer hidden">
+            <div class="quiz-answer-label">Answer</div>
+            <p>The reader must engage with <em>both</em> images — not just the thing being described, but also what it's being compared to — and figure out what qualities are being transferred from one to the other. Each half of the simile carries its own connotations. This is double the analytical work of a plain image, but also double the potential for meaning.</p>
+          </div>
+        </div>
+
+        <div class="quiz-item">
+          <div class="quiz-q"><span class="quiz-q-num">3</span>If similes are easier to identify than metaphors, why might a poet sometimes prefer a regular metaphor instead?</div>
+          <button class="quiz-reveal-btn" onclick="revealAnswer(this)">◆ Reveal Answer</button>
+          <div class="quiz-answer hidden">
+            <div class="quiz-answer-label">Answer</div>
+            <p>Metaphors integrate more smoothly into a poem's language — they don't pause the line to announce themselves the way "like" or "as" does. Overusing similes can make writing feel labored or tentative, as if the poet isn't quite committing to the comparison. A metaphor that simply <em>declares</em> one thing to be another often feels bolder, more intimate, and more certain.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <p class="prose">Because similes announce themselves, they're the most accessible entry point into figurative language — and an excellent place to start when analyzing an unfamiliar poem. Once you've located the similes, you've identified at least some of the poem's key comparisons, which gives you a foundation for the harder work of finding the implied metaphors.</p>
+    <div class="callout" style="margin-top:20px;">
+      <div class="callout-label">Engaging Both Images</div>
+      <p>Never stop at the simile's first image. If Plath writes that her baby's cry is like "a handful of notes" and then "clear vowels rise like balloons," you must ask what <em>balloons</em> connote — lightness, rising, celebration, childhood — and how those connotations transfer to the baby's voice. Both halves of every simile are doing work.</p>
+    </div>
+  </section>
+
+  <hr class="divider"><div class="divider-ornament"><span>✦</span></div>
+
+  <!-- ═══════════════════════════════════
+       SECTION FOUR: PERSONIFICATION
+  ═══════════════════════════════════ -->
+  <section class="section" aria-labelledby="person-heading">
+    <div class="section-label">Technique Four</div>
+    <div class="technique-tag personification">Personification</div>
+    <h2 class="section-title" id="person-heading">The Human <em>Projected</em> onto the World</h2>
+
+    <div class="video-wrap" aria-label="Oregon State University — Personification video">
+      <div class="video-label">Oregon State University — Personification</div>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/5GOfjV6u0Co?si=1r24gZAcBDXXDhnI" title="Oregon State University: Personification" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- QUIZ 4 -->
+    <div class="quiz-block" aria-label="Formative check: Personification">
+      <div class="quiz-header">
+        <div class="quiz-header-icon">✎</div>
+        <div class="quiz-header-text">Formative Check — Think First, Then Reveal</div>
+      </div>
+      <div class="quiz-items">
+
+        <div class="quiz-item">
+          <div class="quiz-q"><span class="quiz-q-num">1</span>What is personification, and how does it relate to metaphor?</div>
+          <button class="quiz-reveal-btn" onclick="revealAnswer(this)">◆ Reveal Answer</button>
+          <div class="quiz-answer hidden">
+            <div class="quiz-answer-label">Answer</div>
+            <p>Personification is a figure of speech in which a non-human thing — an object, animal, abstract concept, or force of nature — is given specifically <strong>human</strong> qualities, behaviors, or emotions. It is a subtype of metaphor: every personification is an implied comparison between a non-human subject and a person or human experience. All personifications are metaphors, but not all metaphors are personifications — the distinction is the specific target of comparison: <em>humanity</em>.</p>
+          </div>
+        </div>
+
+        <div class="quiz-item">
+          <div class="quiz-q"><span class="quiz-q-num">2</span>Why do poets use personification — what does it allow them to express that plain description cannot?</div>
+          <button class="quiz-reveal-btn" onclick="revealAnswer(this)">◆ Reveal Answer</button>
+          <div class="quiz-answer hidden">
+            <div class="quiz-answer-label">Answer</div>
+            <p>Personification makes the non-human world capable of <em>intention</em> — and intention creates meaning. A wind that simply blows is a weather event. A wind that <em>whispers</em>, or <em>mourns</em>, or <em>threatens</em>, is suddenly capable of relationship with a human speaker. Personification allows poets to project emotion onto the outer world, suggesting that nature, objects, or abstract forces are somehow aligned with — or indifferent to — human experience. It collapses the boundary between the inner world and the outer one.</p>
+          </div>
+        </div>
+
+        <div class="quiz-item">
+          <div class="quiz-q"><span class="quiz-q-num">3</span>How can you recognize personification when reading an unfamiliar poem?</div>
+          <button class="quiz-reveal-btn" onclick="revealAnswer(this)">◆ Reveal Answer</button>
+          <div class="quiz-answer hidden">
+            <div class="quiz-answer-label">Answer</div>
+            <p>Look for non-human subjects performing characteristically human actions: objects that <em>whisper</em>, <em>remember</em>, <em>wait</em>, or <em>decide</em>; natural forces that <em>grieve</em> or <em>threaten</em>; abstractions that <em>visit</em>, <em>speak</em>, or <em>abandon</em>. When you find one, ask: what specific human quality has been assigned, and why <em>that</em> quality? The particular human behavior the poet chooses is always purposeful — it tells you exactly what relationship the poem is proposing between the human speaker and the non-human world.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <p class="prose">Personification is the most emotionally charged variety of figurative language precisely because it makes the non-human world seem to have skin in the game. By giving an object or abstraction human will, voice, or feeling, the poet suggests that the outer world and the inner world are in some way continuous — that grief, for instance, isn't merely inside us but radiates outward, shapes the landscape, inhabits the weather.</p>
+    <div class="callout plum" style="margin-top:20px;">
+      <div class="callout-label">What Does It Make the Non-Human Do?</div>
+      <p>When you identify a personification, don't stop at naming it. Ask what <em>specific</em> human quality has been assigned — and why that quality rather than another. A pool that "waits" is very different from a pool that "mourns" or "watches." The specific human behavior the poet assigns is always meaningful: it tells you something precise about the poem's emotional and thematic stakes.</p>
+    </div>
+  </section>
+
+  <hr class="divider"><div class="divider-ornament"><span>✦</span></div>
+
+  <!-- ═══════════════════════════════════
+       WORKED EXAMPLES
+  ═══════════════════════════════════ -->
+  <section class="section" aria-labelledby="examples-heading">
+    <div class="section-label">Application</div>
+    <h2 class="section-title" id="examples-heading">Figurative Language in <em>Two Poems</em></h2>
+    <p class="prose">Now let's see all three techniques at work in actual poems. As you read each annotated example, notice how the figurative language doesn't merely decorate the poem — it does the essential work of communicating the poet's meaning.</p>
+
+    <div class="fl-legend" role="list" aria-label="Highlight color key">
+      <strong style="font-family:'Lora',serif; font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-mid); margin-right:4px;">Color Key:</strong>
+      <div class="legend-item" role="listitem"><div class="legend-swatch metaphor"></div> Metaphor</div>
+      <div class="legend-item" role="listitem"><div class="legend-swatch simile"></div> Simile</div>
+      <div class="legend-item" role="listitem"><div class="legend-swatch person"></div> Personification</div>
+    </div>
+  </section>
+
+  <!-- ─────────────────────────────
+       EXAMPLE 1: LI-YOUNG LEE
+  ───────────────────────────── -->
+  <section aria-label="Example One: Li-Young Lee — The Gift">
+    <div class="section-label">Example One</div>
+    <h3 style="font-family:'Lora',serif; font-size:clamp(20px,2.5vw,24px); font-weight:700; color:var(--ink-warm); margin-bottom:6px;">Li-Young Lee — <em style="color:var(--moss);">"The Gift"</em></h3>
+    <p class="prose" style="margin-bottom:20px;">Li-Young Lee (b. 1957) is known for poetry that transforms intimate family moments into meditations on love, memory, and inherited tenderness. "The Gift" recounts a father removing a metal splinter from his son's palm — and layers that small act with an extraordinary density of figurative language. Notice how Lee uses <strong>all three techniques</strong>, often within a few lines of each other.</p>
+
+    <div class="annotated-poem">
+      <div class="annotated-poem-header">
+        <span class="poem-header-title">The Gift</span>
+        <span class="poem-header-author">— Li-Young Lee</span>
+      </div>
+
+      <!-- Row 1: Stanza 1 — no annotation -->
+      <div class="poem-stanza-row" style="padding-top:28px;">
+        <div class="poem-lines">
+<div class="stanza">
+<span class="line">To pull the metal splinter from my palm</span>
+<span class="line">my father recited a story in a low voice.</span>
+<span class="line">I watched his lovely face and not the blade.</span>
+<span class="line">Before the story ended, he'd removed</span>
+<span class="line">the iron sliver I thought I'd die from.</span>
+</div>
+        </div>
+      </div>
+      <div class="annotation-slot" style="padding-top:28px;"></div>
+
+      <!-- Row 2: Stanza 2 — two metaphor annotations -->
+      <div class="poem-stanza-row">
+        <div class="poem-lines">
+<div class="stanza">
+<span class="line">I can't remember the tale,</span>
+<span class="line">but hear his voice still, <mark class="metaphor">a well</mark></span>
+<span class="line"><mark class="metaphor">of dark water, a prayer</mark>.</span>
+<span class="line">And I recall his hands,</span>
+<span class="line"><mark class="metaphor">two measures of tenderness</mark></span>
+<span class="line">he laid against my face,</span>
+<span class="line"><mark class="metaphor">the flames of discipline</mark></span>
+<span class="line">he raised above my head.</span>
+</div>
+        </div>
+      </div>
+      <div class="annotation-slot">
+        <div class="annotation-note">
+          <div class="annotation-swatch metaphor"></div>
+          <div class="annotation-body">
+            <div class="annotation-type metaphor">Metaphor</div>
+            <div class="annotation-term">"a well of dark water, a prayer"</div>
+            <div class="annotation-text">Three metaphors for the father's voice in rapid succession. A well suggests depth, something to draw from, something cool and ancient. "Dark water" adds mystery — you can't see the bottom. "A prayer" adds reverence. Together, they make the voice feel nourishing and sacred, not just soothing.</div>
+          </div>
+        </div>
+        <div class="annotation-note">
+          <div class="annotation-swatch metaphor"></div>
+          <div class="annotation-body">
+            <div class="annotation-type metaphor">Metaphor</div>
+            <div class="annotation-term">"two measures of tenderness" / "the flames of discipline"</div>
+            <div class="annotation-text">The father's hands carry two metaphors — one for love, one for authority. "Measures" suggests precision, care, something carefully apportioned. "Flames" suggests intensity and heat, but also transformation. The paradox is the point: the same hands that discipline are the hands that heal.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 3: Stanza 3 — metaphor for the splinter -->
+      <div class="poem-stanza-row">
+        <div class="poem-lines">
+<div class="stanza">
+<span class="line">Had you entered that afternoon</span>
+<span class="line">you would have thought you saw a man</span>
+<span class="line">planting something in a boy's palm,</span>
+<span class="line"><mark class="metaphor">a silver tear, a tiny flame</mark>.</span>
+</div>
+        </div>
+      </div>
+      <div class="annotation-slot">
+        <div class="annotation-note">
+          <div class="annotation-swatch metaphor"></div>
+          <div class="annotation-body">
+            <div class="annotation-type metaphor">Metaphor</div>
+            <div class="annotation-term">"a silver tear, a tiny flame"</div>
+            <div class="annotation-text">The splinter — a mundane piece of metal — is transformed into two charged images. A tear suggests pain and grief; a flame suggests danger but also illumination. Both metaphors anticipate the personification to come: the splinter is already being given emotional and violent significance before the speaker imagines it as a conscious killer.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 4: Stanza 4 — simile linking past and present -->
+      <div class="poem-stanza-row">
+        <div class="poem-lines">
+<div class="stanza">
+<span class="line">Had you followed that boy</span>
+<span class="line">you would have arrived here,</span>
+<span class="line">where I bend over my wife's right hand.</span>
+<span class="line">Look how I shave her thumbnail down</span>
+<span class="line">so carefully she feels no pain.</span>
+<span class="line">Watch as I lift the splinter out.</span>
+<span class="line">I was seven when my father</span>
+<span class="line"><mark class="simile">took my hand like this</mark>,</span>
+</div>
+        </div>
+      </div>
+      <div class="annotation-slot">
+        <div class="annotation-note">
+          <div class="annotation-swatch simile"></div>
+          <div class="annotation-body">
+            <div class="annotation-type simile">Simile</div>
+            <div class="annotation-term">"took my hand like this"</div>
+            <div class="annotation-text">A quiet, powerful simile connecting past and present. The comparison is between two moments across time — the father's gesture then and the speaker's gesture now. "Like this" collapses the distance between them, suggesting that love and care are passed down through imitation as much as through memory. The simile is the hinge the entire poem turns on.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 5: Stanza 5 — personification of the splinter -->
+      <div class="poem-stanza-row">
+        <div class="poem-lines">
+<div class="stanza">
+<span class="line">and I did not hold that shard</span>
+<span class="line">between my fingers and think,</span>
+<span class="line"><mark class="person">Metal that will bury me</mark>,</span>
+<span class="line">christen it <mark class="person">Little Assassin</mark>,</span>
+<span class="line"><mark class="person">Ore Going Deep for My Heart</mark>.</span>
+<span class="line">And I did not lift up my wound and cry,</span>
+<span class="line">Death visited here!</span>
+</div>
+        </div>
+      </div>
+      <div class="annotation-slot">
+        <div class="annotation-note">
+          <div class="annotation-swatch person"></div>
+          <div class="annotation-body">
+            <div class="annotation-type personification">Personification</div>
+            <div class="annotation-term">"Metal that will bury me" / "Little Assassin" / "Ore Going Deep for My Heart"</div>
+            <div class="annotation-text">The speaker imagines — and explicitly rejects — a series of personifications in which the splinter becomes a murderous agent with will, intention, and lethal purpose. By refusing these personifications, the poem argues that the same object can be a gift or a weapon depending on how it's received. His father taught him to receive pain as tenderness.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 6: Stanza 6 — no annotation -->
+      <div class="poem-stanza-row" style="padding-bottom:28px;">
+        <div class="poem-lines">
+<div class="stanza">
+<span class="line">I did what a child does</span>
+<span class="line">when he's given something to keep.</span>
+<span class="line">I kissed my father.</span>
+</div>
+        </div>
+        <p class="poem-source">Copyright Credit: Li-Young Lee, "The Gift" from <em>Rose</em>. Copyright &copy;1986 by Li-Young Lee. Reprinted with the permission of BOA Editions Ltd., <a href="https://www.boaeditions.org" target="_blank" rel="noopener" style="color:var(--faded);">www.boaeditions.org</a>.<br>Source: <em>Rose</em> (BOA Editions Ltd., 1986). <a href="https://www.poetryfoundation.org/poems/43010/the-gift-56d221adc12b8" target="_blank" rel="noopener" style="color:var(--faded);">View at Poetry Foundation</a></p>
+      </div>
+      <div class="annotation-slot" style="padding-bottom:28px;"></div>
+
+    </div>
+  </section>
+
+  <hr class="divider"><div class="divider-ornament"><span>✦</span></div>
+
+  <!-- ─────────────────────────────
+       EXAMPLE 2: JORIE GRAHAM
+  ───────────────────────────── -->
+  <section aria-label="Example Two: Jorie Graham — Salmon">
+    <div class="section-label">Example Two</div>
+    <h3 style="font-family:'Lora',serif; font-size:clamp(20px,2.5vw,24px); font-weight:700; color:var(--ink-warm); margin-bottom:6px;">Jorie Graham — <em style="color:var(--moss);">"Salmon"</em></h3>
+    <p class="prose" style="margin-bottom:20px;">Jorie Graham (b. 1950) is one of the most celebrated American poets writing today, known for dense, philosophically rich work that pushes language to its limits. "Salmon" (<em>Erosion</em>, 1983) opens with a memory of watching salmon on television — and transforms that banal image into an extended meditation on drive, desire, and what compels living things to move. Where Lee's poem is intimate and familial, Graham's is expansive and philosophical. Notice how her metaphors for the salmon gradually come to describe human sexuality itself, revealing that the poem was never simply about fish. Note also that this poem leans heavily on <strong>metaphor and personification</strong> — a useful reminder that not every poem deploys all three techniques equally.</p>
+
+    <div class="annotated-poem">
+      <div class="annotated-poem-header">
+        <span class="poem-header-title">Salmon</span>
+        <span class="poem-header-author">— Jorie Graham</span>
+      </div>
+
+      <!-- Row 1: Opening scene through "in opposite directions" — gold river metaphor -->
+      <div class="poem-stanza-row" style="padding-top:28px;">
+        <div class="poem-lines">
+<div class="stanza">
+<span class="line">I watched them once, at dusk, on television, run,</span>
+<span class="line">in our motel room half-way through</span>
+<span class="line">Nebraska, quick, glittering, past beauty, past</span>
+<span class="line">the importance of beauty,</span>
+<span class="line">archaic,</span>
+<span class="line">not even hungry, not even endangered, driving deeper and deeper</span>
+<span class="line">into less. They leapt up falls, ladders,</span>
+<span class="line">and rock, tearing and leaping, <mark class="metaphor">a gold river,</mark></span>
+<span class="line"><mark class="metaphor">and a blue river traveling</mark></span>
+<span class="line"><mark class="metaphor">in opposite directions</mark>.</span>
+</div>
+        </div>
+      </div>
+      <div class="annotation-slot" style="padding-top:28px;">
+        <div class="annotation-note">
+          <div class="annotation-swatch metaphor"></div>
+          <div class="annotation-body">
+            <div class="annotation-type metaphor">Metaphor</div>
+            <div class="annotation-term">"a gold river, / and a blue river traveling / in opposite directions"</div>
+            <div class="annotation-text">The salmon are not described as being <em>like</em> rivers — they <em>are</em> rivers. Rivers are massive, unstoppable, ancient; they move as a collective body rather than as individuals. By declaring the salmon to be rivers, Graham transforms a TV image of fish into something geological and elemental. Notice the colors: "gold" and "blue" — not salmon-pink, but metal and sky. The colors carry connotations of value and depth rather than biology. These color-metaphors will return late in the poem.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2: "They would not stop" through "gold blade of their hurry" — personification + metaphor -->
+      <div class="poem-stanza-row">
+        <div class="poem-lines">
+<div class="stanza">
+<span class="line"><mark class="person">They would not stop</mark>, <mark class="person">resolution of will</mark></span>
+<span class="line"><mark class="person">and helplessness</mark>, as the eye</span>
+<span class="line">is helpless</span>
+<span class="line">when the image forms itself, upside-down, backward,</span>
+<span class="line">driving up into</span>
+<span class="line">the mind, and <mark class="person">the world</mark></span>
+<span class="line"><mark class="person">unfastens itself</mark></span>
+<span class="line">from the deep ocean of the given. . . . Justice, aspen</span>
+<span class="line">leaves, mother attempting</span>
+<span class="line">suicide, the white night-flying moth</span>
+<span class="line">the ants dismantled bit by bit and carried in</span>
+<span class="line">right through the crack</span>
+<span class="line">in my wall. . . . How helpless</span>
+<span class="line">the still pool is,</span>
+<span class="line">upstream,</span>
+<span class="line">awaiting <mark class="metaphor">the gold blade</mark></span>
+<span class="line"><mark class="metaphor">of their hurry</mark>.</span>
+</div>
+        </div>
+      </div>
+      <div class="annotation-slot">
+        <div class="annotation-note">
+          <div class="annotation-swatch person"></div>
+          <div class="annotation-body">
+            <div class="annotation-type personification">Personification</div>
+            <div class="annotation-term">"resolution of will / and helplessness" / "the world / unfastens itself"</div>
+            <div class="annotation-text">Will and helplessness are purely human psychological states — fish don't consciously "resolve" or experience helplessness as an internal condition. By assigning these states to the salmon, Graham makes them into agents of desire: things that <em>want</em> and are also <em>compelled</em>. This tension between will and helplessness is the poem's central philosophical subject: the overlap between intention and biological drive. Two lines later, the world itself is personified — given the agency to "unfasten itself" — as if watching the salmon destabilizes ordinary reality.</div>
+          </div>
+        </div>
+        <div class="annotation-note">
+          <div class="annotation-swatch metaphor"></div>
+          <div class="annotation-body">
+            <div class="annotation-type metaphor">Metaphor</div>
+            <div class="annotation-term">"awaiting the gold blade / of their hurry"</div>
+            <div class="annotation-text">Two figures fused in two lines. The pool "awaiting" is personification — still water doesn't wait or anticipate. By giving the pool expectation, Graham creates a landscape that is breathlessly watching the salmon. The salmon's motion, meanwhile, becomes "the gold blade of their hurry" — a metaphor capturing both their speed (a blade cuts) and their collective glow (gold, echoing the river metaphor). The blade is precise, dangerous, and beautiful all at once.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 3: Indoor scene through end — gold currents metaphor -->
+      <div class="poem-stanza-row" style="padding-bottom:28px;">
+        <div class="poem-lines">
+<div class="stanza">
+<span class="line">Once, indoors, a child,</span>
+<span class="line">I watched, at noon, through slatted wooden blinds,</span>
+<span class="line">a man and woman, naked, eyes closed,</span>
+<span class="line">climb onto each other,</span>
+<span class="line">on the terrace floor,</span>
+<span class="line">and ride&#8212;<mark class="metaphor">two gold currents</mark></span>
+<span class="line"><mark class="metaphor">wrapping round and round each other</mark>, fastening,</span>
+<span class="line">unfastening. I hardly knew</span>
+<span class="line">what I saw. Whatever shadow there was in that world</span>
+<span class="line">it was the one each cast</span>
+<span class="line">onto the other,</span>
+<span class="line">the thin black seam</span>
+<span class="line">they seemed to be trying to work away</span>
+<span class="line">between them. I held my breath.</span>
+<span class="line">As far as I could tell, the work they did</span>
+<span class="line">with sweat and light</span>
+<span class="line">was good. I&#8217;d say</span>
+<span class="line">they traveled far in opposite</span>
+<span class="line">directions. What is the light</span>
+<span class="line">at the end of the day, deep, reddish-gold, bathing the walls,</span>
+<span class="line">the corridors, light that is no longer light, no longer clarifies,</span>
+<span class="line">illuminates, antique, freed from the body of</span>
+<span class="line">the air that carries it. What is it</span>
+<span class="line">for the space of time</span>
+<span class="line">where it is useless, merely</span>
+<span class="line">beautiful? When they were done, they made a distance</span>
+<span class="line">one from the other</span>
+<span class="line">and slept, outstretched,</span>
+<span class="line">on the warm tile</span>
+<span class="line">of the terrace floor,</span>
+<span class="line">smiling, faces pressed against the stone.</span>
+</div>
+        </div>
+        <p class="poem-source">Reproduced by Poetry Daily with permission. <a href="https://poems.com/poem/salmon/" target="_blank" rel="noopener" style="color:var(--faded);">View at Poetry Daily</a></p>
+      </div>
+      <div class="annotation-slot" style="padding-bottom:28px;">
+        <div class="annotation-note">
+          <div class="annotation-swatch metaphor"></div>
+          <div class="annotation-body">
+            <div class="annotation-type metaphor">Metaphor</div>
+            <div class="annotation-term">"two gold currents / wrapping round and round each other"</div>
+            <div class="annotation-text">This is the poem's structural keystone. Graham has spent the first half comparing salmon to gold rivers; now she describes two humans as "gold currents" doing exactly what the salmon were doing — traveling, wrapping, fastening and unfastening, moving in opposite directions. The metaphor functions as a bridge: the salmon and the humans are revealed to be versions of the same thing — organisms driven by the same fundamental compulsion. What we call "desire" in humans and what we call "instinct" in fish are, Graham suggests, one force. Her figurative language has been building this argument from the first line.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="divider"><div class="divider-ornament"><span>✦</span></div>
+
+  <!-- QUICK REFERENCE -->
+  <div class="quick-ref" role="complementary" aria-label="Quick reference: figurative language types">
+    <div class="quick-ref-title">Figurative Language — Quick Reference</div>
+    <p class="quick-ref-sub">Keep these definitions in mind when analyzing any poem in this course.</p>
+    <div class="quick-ref-grid">
+      <div class="quick-ref-item">
+        <div class="quick-ref-num n1">M</div>
+        <div class="quick-ref-text"><strong>Metaphor</strong> — implied comparison; one thing declared to be another</div>
+      </div>
+      <div class="quick-ref-item">
+        <div class="quick-ref-num n2">S</div>
+        <div class="quick-ref-text"><strong>Simile</strong> — explicit comparison using <em>like</em> or <em>as</em></div>
+      </div>
+      <div class="quick-ref-item">
+        <div class="quick-ref-num n3">P</div>
+        <div class="quick-ref-text"><strong>Personification</strong> — a metaphor giving human qualities to non-human things</div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script>
+  function revealAnswer(btn) {
+    btn.nextElementSibling.classList.remove('hidden');
+    btn.disabled = true;
+    btn.textContent = '✓ Answer Revealed';
+  }
+</script>
+
+</body>
+</html>
