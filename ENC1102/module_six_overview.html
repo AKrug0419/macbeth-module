@@ -3,326 +3,500 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Module Six Overview — The Literary Research Essay — ENC1102</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Module Six Overview | ENC 1102 — Poetry & Literary Elements</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-:root{
-  --sage:#A8C5B0;--sage-dark:#2e4a35;--sage-deep:#1a3328;--sage-light:#eaf4eb;--sage-mid:#C8DFD0;
-  --slate:#B8C8D0;--slate-dark:#2e3e4a;--slate-light:#f0f6f9;--slate-mid:#D0DFE8;
-  --plum:#B8A8D0;--plum-dark:#3e2e5a;--plum-light:#f7f4fc;--plum-mid:#D0C5E0;
-  --amber:#E6C5B3;--amber-dark:#5a3e35;--amber-light:#fff8f4;--amber-mid:#F0D7C8;
-  --pink:#D8B5C5;--pink-dark:#4a2e3e;--pink-light:#fdf2f6;--pink-mid:#E8CED8;
-  --warm:#c8c4c0;--warm-dark:#3a3836;--warm-light:#f5f5f4;--warm-mid:#d8d4d0;
-  --text:#333;--border:#e0e0e0;--white:#fff;
-  --radius:10px;--shadow:0 2px 10px rgba(0,0,0,0.06);
-}
-body{font-family:'DM Sans',sans-serif;background:#f7f8f6;color:var(--text);line-height:1.7;overflow-x:hidden;}
-.wrap{max-width:1060px;margin:0 auto;padding:32px 16px 60px;}
 
-/* HEADER */
-.page-header{background:linear-gradient(135deg,var(--sage) 0%,var(--sage-mid) 100%);border-radius:var(--radius);padding:30px 36px;margin-bottom:28px;position:relative;overflow:hidden;}
-.page-header::before{content:'';position:absolute;right:-50px;top:-50px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,0.1);}
-.eyebrow{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--sage-dark);margin-bottom:6px;}
-h1{font-family:'Lora',serif;font-size:clamp(20px,4vw,28px);color:var(--sage-deep);font-weight:700;line-height:1.2;margin-bottom:6px;}
-.subtitle{font-size:14px;color:var(--sage-dark);}
+  /* ══════════════════════════════════════════
+     TOKENS — Naturalist's Field Journal
+  ══════════════════════════════════════════ */
+  :root {
+    --paper:         #f4ede0;
+    --vellum:        #ede3cf;
+    --aged:          #e4d8be;
+    --worn:          #d8c9a8;
+    --shadow:        #c4b48e;
+    --ink:           #1e160a;
+    --ink-warm:      #2c1f0e;
+    --ink-mid:       #4a3520;
+    --quill:         #6b4e2e;
+    --faded:         #7d6041;
+    --dust:          #7f6748;
+    --moss:          #4a6040;
+    --moss-mid:      #5e7852;
+    --moss-light:    #7a9468;
+    --moss-pale:     #c8d8bc;
+    --moss-wash:     rgba(90,120,72,0.08);
+    --moss-glow:     rgba(90,120,72,0.14);
+    --moss-mid-aa:   #5a734e;
+    --umber:         #7a4e28;
+    --umber-mid:     #9a6438;
+    --umber-pale:    #dfc8a8;
+    --umber-wash:    rgba(122,78,40,0.08);
+    --indigo:        #3a4868;
+    --indigo-mid:    #4e608a;
+    --indigo-pale:   #c0cce0;
+    --indigo-wash:   rgba(58,72,104,0.08);
+    --rule:          rgba(74,53,32,0.18);
+    --rule-light:    rgba(74,53,32,0.10);
+  }
 
-/* ABOUT BOX */
-.about-box{background:var(--white);border:2px solid var(--border);border-radius:var(--radius);padding:24px 30px;margin-bottom:22px;box-shadow:var(--shadow);}
-.about-box p{font-size:14px;color:#444;line-height:1.85;margin:0;}
-.about-box p+p{margin-top:10px;}
-.clo-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;}
-@media(max-width:580px){.clo-grid{grid-template-columns:1fr;}}
-.clo-box{background:var(--sage-light);border-left:4px solid var(--sage);border-radius:0 6px 6px 0;padding:13px 16px;}
-.clo-label{font-size:12px;font-weight:600;color:var(--sage-dark);margin-bottom:7px;}
-.clo-box ul{margin:0;padding-left:16px;font-size:13px;color:#3a5e42;line-height:1.9;}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; }
 
-/* WEEK CARDS */
-.week-section{margin-bottom:28px;}
-.week-header{border-radius:var(--radius) var(--radius) 0 0;padding:14px 24px;display:flex;align-items:center;gap:12px;}
-.week-num{font-size:12px;font-weight:700;padding:3px 10px;border-radius:20px;flex-shrink:0;}
-.week-title{font-family:'Lora',serif;font-size:17px;font-weight:700;}
-.week-body{background:var(--white);border:2px solid var(--border);border-top:0;border-radius:0 0 var(--radius) var(--radius);padding:20px 24px;box-shadow:var(--shadow);}
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.75;
+    min-height: 100vh;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  }
 
-/* READING LIST */
-.reading-list{display:flex;flex-direction:column;gap:8px;margin-top:12px;}
-.reading-item{display:flex;align-items:flex-start;gap:12px;padding:10px 14px;border-radius:7px;}
-.ri-num{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:1px;}
-.ri-content{flex:1;}
-.ri-title{font-size:13px;font-weight:600;margin-bottom:2px;}
-.ri-desc{font-size:12px;color:#666;line-height:1.6;}
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    background-color: var(--ink-warm);
+    padding: 0;
+    overflow: hidden;
+  }
+  .hero-texture {
+    position: absolute; inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(255,255,255,0.025) 28px, rgba(255,255,255,0.025) 29px),
+      repeating-linear-gradient(90deg, transparent, transparent 28px, rgba(255,255,255,0.015) 28px, rgba(255,255,255,0.015) 29px);
+    pointer-events: none;
+  }
+  .hero-ornament {
+    position: absolute; top: 0; right: 0;
+    width: 320px; height: 320px;
+    opacity: 0.06; pointer-events: none;
+  }
+  .hero-inner {
+    position: relative;
+    max-width: 960px; margin: 0 auto;
+    padding: 52px 48px 48px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .hero-module-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'Lora', serif; font-size: 12px; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--moss-pale); opacity: 0.8;
+  }
+  .hero-module-tag::before {
+    content: ''; display: inline-block;
+    width: 28px; height: 1px;
+    background: var(--moss-pale); opacity: 0.6;
+  }
+  .hero-title {
+    font-family: 'Lora', serif;
+    font-size: clamp(34px, 5vw, 52px);
+    font-weight: 700; color: var(--paper);
+    line-height: 1.1; letter-spacing: -0.01em;
+  }
+  .hero-title em { font-style: italic; color: var(--moss-pale); }
+  .hero-subtitle {
+    font-family: 'Crimson Pro', serif;
+    font-size: 18px; font-weight: 400; font-style: italic;
+    color: var(--umber-pale); line-height: 1.5;
+    max-width: 540px; opacity: 0.9;
+  }
+  .hero-rule {
+    width: 60px; height: 2px;
+    background: linear-gradient(90deg, var(--moss-light), transparent);
+    margin: 4px 0;
+  }
 
-/* ASSIGNMENT CARDS */
-.assign-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;}
-@media(max-width:520px){.assign-grid{grid-template-columns:1fr;}}
-.assign-card{border-radius:8px;padding:14px 16px;}
-.ac-meta{font-size:11px;font-weight:700;margin-bottom:5px;}
-.ac-title{font-size:14px;font-weight:600;margin-bottom:5px;}
-.ac-desc{font-size:12px;line-height:1.65;}
+  /* ── PAGE BODY ── */
+  .page-body {
+    max-width: 960px; margin: 0 auto;
+    padding: 56px 48px 80px;
+  }
 
-/* SPRING BREAK BANNER */
-.break-banner{background:linear-gradient(135deg,var(--amber),var(--amber-mid));border-radius:var(--radius);padding:22px 30px;text-align:center;margin-bottom:28px;}
-.bb-week{font-size:12px;font-weight:700;color:var(--amber-dark);margin-bottom:6px;}
-.bb-title{font-family:'Lora',serif;font-size:22px;font-weight:700;color:var(--amber-dark);margin-bottom:6px;}
-.bb-note{font-size:13px;color:#7a5545;}
+  /* ── SECTION ── */
+  .section { margin-bottom: 60px; }
+  .section-label {
+    font-family: 'Lora', serif; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--moss-mid-aa); margin-bottom: 10px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(90deg, var(--rule), transparent);
+    max-width: 120px;
+  }
+  .section-title {
+    font-family: 'Lora', serif;
+    font-size: clamp(22px, 3vw, 28px); font-weight: 700;
+    color: var(--ink-warm); line-height: 1.2; margin-bottom: 20px;
+  }
+  .section-title em { font-style: italic; color: var(--moss); }
+  .prose {
+    font-family: 'Crimson Pro', serif;
+    font-size: 17px; line-height: 1.8;
+    color: var(--ink-mid); max-width: 720px;
+  }
+  .prose + .prose { margin-top: 14px; }
+  .prose strong { color: var(--ink); font-weight: 600; }
 
-/* RESOURCES TILES */
-.res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:6px;}
-@media(max-width:580px){.res-grid{grid-template-columns:1fr 1fr;}}
-@media(max-width:380px){.res-grid{grid-template-columns:1fr;}}
-.res-tile{border-radius:8px;padding:16px 14px;text-align:center;cursor:pointer;}
-.res-icon{font-size:26px;margin-bottom:8px;}
-.res-label{font-size:12px;line-height:1.5;}
+  /* ── CALLOUT BOXES ── */
+  .callout {
+    border-left: 3px solid var(--moss-mid);
+    background: var(--moss-wash);
+    border-radius: 0 8px 8px 0;
+    padding: 16px 22px; margin: 24px 0;
+  }
+  .callout-label {
+    font-family: 'Lora', serif; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--moss); margin-bottom: 6px;
+  }
+  .callout p {
+    font-family: 'Crimson Pro', serif;
+    font-size: 16px; color: var(--ink-mid); line-height: 1.7; margin: 0;
+  }
+  .callout.umber { border-color: var(--umber-mid); background: var(--umber-wash); }
+  .callout.umber .callout-label { color: var(--umber); }
+  .callout.indigo { border-color: var(--indigo-mid); background: var(--indigo-wash); }
+  .callout.indigo .callout-label { color: var(--indigo); }
 
-hr{border:0;border-top:2px solid var(--border);margin:28px 0;}
+  /* ── DIVIDER ── */
+  .divider { border: none; border-top: 1px solid var(--rule); margin: 52px 0; }
+  .divider-ornament { text-align: center; margin: -10px 0 0; position: relative; }
+  .divider-ornament::before, .divider-ornament::after {
+    content: ''; display: inline-block;
+    width: 48px; height: 1px; background: var(--rule);
+    vertical-align: middle; margin: 0 12px;
+  }
+  .divider-ornament span {
+    font-family: 'Crimson Pro', serif; font-size: 18px;
+    color: var(--dust); vertical-align: middle;
+  }
 
-@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-.fade{animation:fadeUp .45s ease both;}
-.fade:nth-child(1){animation-delay:.04s}.fade:nth-child(2){animation-delay:.10s}
-.fade:nth-child(3){animation-delay:.16s}.fade:nth-child(4){animation-delay:.22s}
-.fade:nth-child(5){animation-delay:.28s}
+  /* ── TWO-COLUMN OUTCOMES GRID ── */
+  .outcomes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 8px;
+  }
+  .outcomes-card {
+    background: var(--vellum);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 26px 28px;
+  }
+  .outcomes-card-label {
+    font-family: 'Lora', serif; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--moss-mid-aa); margin-bottom: 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .outcomes-card-label::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(90deg, var(--rule), transparent);
+  }
+  .outcomes-list {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .outcomes-list li {
+    display: flex; gap: 10px; align-items: flex-start;
+    font-family: 'Crimson Pro', serif; font-size: 16px;
+    line-height: 1.65; color: var(--ink-mid);
+  }
+  .outcomes-list li::before {
+    content: '◆';
+    color: var(--moss-mid);
+    font-size: 9px; margin-top: 6px;
+    flex-shrink: 0;
+  }
+
+  /* ── LEARNING ACTIVITIES ── */
+  .activities-block {
+    background: var(--vellum);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 8px;
+  }
+  .activities-header {
+    background: var(--ink-warm);
+    padding: 14px 24px;
+    font-family: 'Lora', serif; font-size: 14px; font-weight: 600;
+    color: var(--paper); letter-spacing: 0.04em;
+  }
+  .activities-body {
+    padding: 20px 28px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .activity-item {
+    display: flex; gap: 14px; align-items: flex-start;
+  }
+  .activity-icon {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--moss-wash);
+    border: 1px solid rgba(90,120,72,0.25);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0; margin-top: 2px;
+  }
+  .activity-text { flex: 1; }
+  .activity-title {
+    font-family: 'Lora', serif; font-size: 15px; font-weight: 600;
+    color: var(--ink); margin-bottom: 3px;
+  }
+  .activity-desc {
+    font-family: 'Crimson Pro', serif; font-size: 15px;
+    color: var(--faded); line-height: 1.6;
+  }
+
+  /* ── ASSIGNMENT CARDS ── */
+  .week-label {
+    font-family: 'Lora', serif; font-size: 13px; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--umber); margin-bottom: 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .week-label::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(90deg, var(--umber-mid), transparent);
+    opacity: 0.4; max-width: 200px;
+  }
+  .assignments-stack {
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .assignment-card {
+    background: var(--vellum);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 20px 24px;
+    display: flex; gap: 20px; align-items: flex-start;
+    position: relative;
+    border-left: 4px solid var(--moss-mid);
+  }
+  .assignment-card.indigo-accent { border-left-color: var(--indigo-mid); }
+  .assignment-num {
+    font-family: 'Lora', serif; font-size: 28px; font-weight: 700;
+    color: var(--moss-mid); line-height: 1; flex-shrink: 0;
+    min-width: 24px; margin-top: 2px;
+  }
+  .assignment-card.indigo-accent .assignment-num { color: var(--indigo-mid); }
+  .assignment-body { flex: 1; }
+  .assignment-title {
+    font-family: 'Lora', serif; font-size: 17px; font-weight: 600;
+    color: var(--ink); margin-bottom: 5px; line-height: 1.3;
+  }
+  .assignment-due {
+    font-family: 'Crimson Pro', serif; font-size: 15px;
+    color: var(--faded); font-style: italic;
+  }
+  .assignment-due strong { color: var(--umber); font-style: normal; font-weight: 600; }
+
+  /* ── RESOURCES LIST ── */
+  .resources-list {
+    list-style: none; padding: 0; margin: 12px 0 0;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .resources-list li {
+    display: flex; gap: 10px; align-items: center;
+  }
+  .resource-link {
+    font-family: 'Crimson Pro', serif; font-size: 17px;
+    color: var(--moss); text-decoration: none;
+    border-bottom: 1px solid rgba(74,96,64,0.3);
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .resource-link:hover { color: var(--moss-mid); border-color: var(--moss-mid); }
+  .resource-arrow {
+    font-size: 12px; color: var(--moss-mid); opacity: 0.6; flex-shrink: 0;
+  }
+
+  /* ── CONTACT BOX ── */
+  .contact-box {
+    background: var(--vellum);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 24px 28px;
+    display: flex; gap: 20px; align-items: flex-start;
+    margin-top: 8px;
+  }
+  .contact-icon {
+    font-size: 28px; flex-shrink: 0; margin-top: 2px;
+  }
+  .contact-body { flex: 1; }
+  .contact-title {
+    font-family: 'Lora', serif; font-size: 17px; font-weight: 600;
+    color: var(--ink); margin-bottom: 6px;
+  }
+  .contact-text {
+    font-family: 'Crimson Pro', serif; font-size: 16px;
+    color: var(--faded); line-height: 1.65;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 680px) {
+    .hero-inner { padding: 40px 24px 36px; }
+    .page-body { padding: 40px 24px 60px; }
+    .outcomes-grid { grid-template-columns: 1fr; }
+    .assignment-card { flex-direction: column; gap: 8px; }
+  }
+
 </style>
 </head>
 <body>
-<div class="wrap">
 
-<!-- HEADER -->
-<div class="page-header fade">
-  <div class="eyebrow">Weeks 9–11 &bull; Module Six</div>
-  <h1>The Literary Research Essay</h1>
-  <p class="subtitle">Module overview — learning activities, assignments, and resources for all three weeks</p>
-</div>
-
-<!-- ABOUT -->
-<div class="about-box fade">
-  <p>In this module, you'll write a <strong>literary research essay</strong> — an academic essay that combines your own close reading of a short story with evidence drawn from published scholarly sources. This is the major essay of the semester, worth 25% of your course grade.</p>
-  <p>You've already done close literary analysis this semester. What makes a research essay different is the addition of <strong>secondary sources</strong>: peer-reviewed scholarly articles that you'll locate using the college's academic databases, then integrate into your essay as expert evidence alongside your primary source (the short story). The core skill — building an argument about a piece of literature using specific textual evidence — is the same one you practiced in your first essay. You're expanding it here.</p>
-  <div class="clo-grid">
-    <div class="clo-box">
-      <div class="clo-label">Course Learning Outcomes</div>
-      <ul>
-        <li>Apply conventions aligned to varied writing situations</li>
-        <li>Apply critical reading and writing skills</li>
-        <li>Locate and integrate research sources appropriately</li>
-      </ul>
-    </div>
-    <div class="clo-box">
-      <div class="clo-label">By the End of This Module, You'll Be Able To…</div>
-      <ul>
-        <li>Use academic databases to locate relevant scholarly articles</li>
-        <li>Integrate primary and secondary sources using MLA documentation</li>
-        <li>Write a full academic research essay with a Works Cited page</li>
-      </ul>
-    </div>
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-texture"></div>
+  <!-- Botanical corner ornament -->
+  <svg class="hero-ornament" viewBox="0 0 340 340" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <ellipse cx="240" cy="100" rx="90" ry="30" transform="rotate(-35 240 100)" fill="white"/>
+    <ellipse cx="280" cy="60" rx="70" ry="22" transform="rotate(-55 280 60)" fill="white"/>
+    <ellipse cx="200" cy="140" rx="80" ry="25" transform="rotate(-20 200 140)" fill="white"/>
+    <line x1="240" y1="100" x2="300" y2="20" stroke="white" stroke-width="2"/>
+    <line x1="220" y1="120" x2="260" y2="30" stroke="white" stroke-width="1.5"/>
+    <ellipse cx="310" cy="30" rx="28" ry="10" transform="rotate(-60 310 30)" fill="white"/>
+  </svg>
+  <div class="hero-inner">
+    <div class="hero-module-tag">Module Six &nbsp;·&nbsp; ENC 1102</div>
+    <div class="hero-rule"></div>
+    <h1 class="hero-title">Poetry &amp; <em>Literary Elements</em></h1>
+    <p class="hero-subtitle">Imagery · Figurative Language · Close Reading</p>
   </div>
-</div>
+</header>
 
-<hr>
+<main class="page-body">
 
-<!-- WEEK 9 -->
-<div class="week-section fade">
-  <div class="week-header" style="background:linear-gradient(135deg,var(--sage) 0%,var(--sage-mid) 100%);">
-    <span class="week-num" style="background:rgba(255,255,255,0.3);color:var(--sage-deep);">Week 9</span>
-    <span class="week-title" style="color:var(--sage-deep);">Mar. 9–15 &mdash; Getting Started: Research &amp; Planning</span>
-  </div>
-  <div class="week-body">
-    <p style="font-size:14px;color:#444;line-height:1.8;">This week introduces the research essay. Monday's class focuses on planning and organizing the essay — how to move from a topic to a thesis to a working outline. Wednesday's class demonstrates how to use the college's academic databases to find the scholarly articles you'll need. Complete the steps below in order as you navigate through the module.</p>
+  <!-- MODULE OVERVIEW -->
+  <section class="section" aria-labelledby="overview-heading">
+    <div class="section-label">Module Overview</div>
+    <h2 class="section-title" id="overview-heading">What We're <em>Studying</em> This Module</h2>
+    <p class="prose">In this module, we'll be studying the literary genre known as <strong>poetry</strong>. In addition, we'll be focusing on two central literary elements that poets rely on to create meaning: <strong>imagery</strong> and <strong>figurative language</strong>.</p>
+    <div class="callout indigo" style="margin-top:24px;">
+      <div class="callout-label">Keep in Mind</div>
+      <p>Poetry works differently from other kinds of writing. Rather than stating ideas directly, poets render them in concrete images and figurative comparisons — and trust readers to interpret what those images suggest. The skills you develop in this module will help you read any poem more carefully and confidently.</p>
+    </div>
+  </section>
 
-    <p style="font-size:13px;font-weight:600;color:var(--text);margin:18px 0 8px;">📚 Required Reading — Complete in Order</p>
-    <div class="reading-list">
+  <hr class="divider"><div class="divider-ornament"><span>✦</span></div>
 
-      <!-- Step 1: Prewriting & Planning (reading) -->
-      <div class="reading-item" style="background:var(--sage-light);">
-        <div class="ri-num" style="background:linear-gradient(135deg,var(--sage),var(--sage-mid));color:var(--sage-deep);">1</div>
-        <div class="ri-content">
-          <div class="ri-title" style="color:var(--sage-deep);">Read: Prewriting &amp; Planning</div>
-          <div class="ri-desc">Covers how to move from your story selection to a workable thesis, how to develop body paragraph topics, and how to use the outline template to organize your research essay before you begin drafting. Prepares you for the Outline Assignment that follows.</div>
+  <!-- LEARNING OUTCOMES & OBJECTIVES -->
+  <section class="section" aria-labelledby="outcomes-heading">
+    <div class="section-label">Goals</div>
+    <h2 class="section-title" id="outcomes-heading">Course Learning Outcomes &amp; <em>Module Objectives</em></h2>
+    <p class="prose" style="margin-bottom:24px;">This module addresses the following course-level learning outcomes, and by the end you'll be able to meet the specific objectives listed below.</p>
+    <div class="outcomes-grid">
+      <div class="outcomes-card">
+        <div class="outcomes-card-label">Course Learning Outcomes</div>
+        <ul class="outcomes-list">
+          <li>Apply conventions aligned to varied writing situations.</li>
+          <li>Apply critical reading skills.</li>
+        </ul>
+      </div>
+      <div class="outcomes-card">
+        <div class="outcomes-card-label">By the End of This Module</div>
+        <ul class="outcomes-list">
+          <li>Identify, analyze, and interpret poetic <strong>imagery</strong> in a poem.</li>
+          <li>Identify, analyze, and interpret <strong>figurative language</strong> in a poem.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider"><div class="divider-ornament"><span>✦</span></div>
+
+  <!-- LEARNING ACTIVITIES -->
+  <section class="section" aria-labelledby="activities-heading">
+    <div class="section-label">What You'll Do</div>
+    <h2 class="section-title" id="activities-heading"><em>Learning</em> Activities</h2>
+    <div class="activities-block">
+      <div class="activities-header">Critical Reading</div>
+      <div class="activities-body">
+        <div class="activity-item">
+          <div class="activity-icon">📖</div>
+          <div class="activity-text">
+            <div class="activity-title">Poems</div>
+            <div class="activity-desc">Various poems illustrating poetic imagery and figurative language, selected to demonstrate a range of techniques and voices.</div>
+          </div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-icon">🌿</div>
+          <div class="activity-text">
+            <div class="activity-title">Learning Materials</div>
+            <div class="activity-desc">Instructional pages on defining and analyzing both literary elements, including worked examples and guided practice with model analyses.</div>
+          </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- Step 2: Outline Assignment (assignment) -->
-      <div class="reading-item" style="background:var(--amber-light);border-left:4px solid var(--amber);">
-        <div class="ri-num" style="background:linear-gradient(135deg,var(--amber),var(--amber-mid));color:var(--amber-dark);">2</div>
-        <div class="ri-content">
-          <div class="ri-title" style="color:var(--amber-dark);">✏️ Complete: Literary Research Essay Outline Assignment</div>
-          <div class="ri-desc" style="color:#7a5545;">Due Thursday, March 12 at 11:59 PM &bull; 2-Day Grace Period &mdash; A working outline for your research essay: thesis, three body paragraph topics, and a preliminary list of your three secondary sources. Use the outline template provided. See the <em>Outline Assignment</em> page for full details.</div>
+  <hr class="divider"><div class="divider-ornament"><span>✦</span></div>
+
+  <!-- ASSIGNMENTS -->
+  <section class="section" aria-labelledby="assignments-heading">
+    <div class="section-label">Assignments</div>
+    <h2 class="section-title" id="assignments-heading">What's <em>Due</em> This Module</h2>
+    <p class="prose" style="margin-bottom:24px;">There are two discussion post assignments this module, spaced across the week.</p>
+    <div class="week-label">Week 13</div>
+    <div class="assignments-stack">
+      <div class="assignment-card">
+        <div class="assignment-num">1</div>
+        <div class="assignment-body">
+          <div class="assignment-title">Poetic Imagery Analysis Discussion Post</div>
+          <div class="assignment-due">Due <strong>Thursday, April 9th</strong> at 11:59 pm</div>
         </div>
       </div>
-
-      <!-- Step 3: Primary & Secondary Sources (reading) -->
-      <div class="reading-item" style="background:var(--slate-light);">
-        <div class="ri-num" style="background:linear-gradient(135deg,var(--slate),var(--slate-mid));color:var(--slate-dark);">3</div>
-        <div class="ri-content">
-          <div class="ri-title" style="color:var(--slate-dark);">Read: Primary and Secondary Sources: What's the Difference?</div>
-          <div class="ri-desc">Explains the difference between your primary source (the short story) and secondary sources (scholarly articles), what each is doing in your essay, and how to tell a reliable secondary source from one that won't work.</div>
+      <div class="assignment-card indigo-accent">
+        <div class="assignment-num">2</div>
+        <div class="assignment-body">
+          <div class="assignment-title">Figurative Language Analysis Discussion Post</div>
+          <div class="assignment-due">Due <strong>Sunday, April 12th</strong> at 11:59 pm</div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- Step 4: Using Academic Databases (reading) -->
-      <div class="reading-item" style="background:var(--plum-light);">
-        <div class="ri-num" style="background:linear-gradient(135deg,var(--plum),var(--plum-mid));color:var(--plum-dark);">4</div>
-        <div class="ri-content">
-          <div class="ri-title" style="color:var(--plum-dark);">Read: Using Academic Databases</div>
-          <div class="ri-desc">A step-by-step walkthrough of how to use Valencia's databases to find peer-reviewed scholarly articles about your story. Includes tips for refining search terms and evaluating what you find. Read before Wednesday's class demonstration.</div>
-        </div>
+  <hr class="divider"><div class="divider-ornament"><span>✦</span></div>
+
+  <!-- RESOURCES -->
+  <section class="section" aria-labelledby="resources-heading">
+    <div class="section-label">Resources</div>
+    <h2 class="section-title" id="resources-heading">Module <em>Resources</em></h2>
+    <p class="prose" style="margin-bottom:4px;">All learning materials for this module are linked below. Work through them in the order listed.</p>
+    <ul class="resources-list" role="list">
+      <li>
+        <span class="resource-arrow">◆</span>
+        <a class="resource-link" href="#">Defining Poetic Imagery</a>
+      </li>
+      <li>
+        <span class="resource-arrow">◆</span>
+        <a class="resource-link" href="#">Defining Figurative Language</a>
+      </li>
+      <li>
+        <span class="resource-arrow">◆</span>
+        <a class="resource-link" href="#">Figurative Language Sample Analysis</a>
+      </li>
+    </ul>
+  </section>
+
+  <hr class="divider"><div class="divider-ornament"><span>✦</span></div>
+
+  <!-- INSTRUCTOR CONTACT -->
+  <section class="section" aria-labelledby="contact-heading">
+    <div class="section-label">Questions?</div>
+    <h2 class="section-title" id="contact-heading"><em>Instructor</em> Contact Information</h2>
+    <div class="contact-box">
+      <div class="contact-icon">✉</div>
+      <div class="contact-body">
+        <div class="contact-title">Reach Out Anytime</div>
+        <p class="contact-text">If you have questions about the readings, assignments, or anything else in this module, please don't hesitate to contact your instructor through the Canvas Inbox or during office hours.</p>
       </div>
-
-      <!-- Step 5: Research Assignment (assignment) -->
-      <div class="reading-item" style="background:var(--pink-light);border-left:4px solid var(--pink);">
-        <div class="ri-num" style="background:linear-gradient(135deg,var(--pink),var(--pink-mid));color:var(--pink-dark);">5</div>
-        <div class="ri-content">
-          <div class="ri-title" style="color:var(--pink-dark);">✏️ Complete: Literary Research Essay Research Assignment</div>
-          <div class="ri-desc" style="color:#6a3e52;">Due Sunday, March 15 at 11:59 PM &bull; 2-Day Grace Period &mdash; Locate and document your three secondary sources using the college's databases. Record the bibliographic information and Citation Tool MLA entry for each. See the <em>Research Assignment</em> page for full details.</div>
-        </div>
-      </div>
-
     </div>
-  </div>
-</div>
+  </section>
 
-<!-- WEEK 10: SPRING BREAK -->
-<div class="break-banner fade">
-  <div class="bb-week">Week 10 &bull; Mar. 16–22</div>
-  <div class="bb-title">🌴 Spring Break — No Class, No Assignments</div>
-  <div class="bb-note">Enjoy your break. The module continues the following week.</div>
-</div>
-
-<!-- WEEK 11 -->
-<div class="week-section fade">
-  <div class="week-header" style="background:linear-gradient(135deg,var(--plum) 0%,var(--plum-mid) 100%);">
-    <span class="week-num" style="background:rgba(255,255,255,0.3);color:var(--plum-dark);">Week 11</span>
-    <span class="week-title" style="color:var(--plum-dark);">Mar. 23–29 &mdash; Drafting, Documenting &amp; Submitting</span>
-  </div>
-  <div class="week-body">
-    <p style="font-size:14px;color:#444;line-height:1.8;">This week covers everything you need to complete and submit the essay. Begin with the Academic Integrity page before taking the Plagiarism Quiz. The subsequent readings walk you through how to use your sources inside body paragraphs, how to document them correctly using MLA format, and how to build your Works Cited page. Then move through the drafting and revision stage before your final submission. Complete all steps in order.</p>
-
-    <p style="font-size:13px;font-weight:600;color:var(--text);margin:18px 0 8px;">📚 Required Reading — Complete in Order</p>
-    <div class="reading-list">
-
-      <!-- Step 6: Academic Integrity (reading) -->
-      <div class="reading-item" style="background:var(--pink-light);">
-        <div class="ri-num" style="background:linear-gradient(135deg,var(--pink),var(--pink-mid));color:var(--pink-dark);">6</div>
-        <div class="ri-content">
-          <div class="ri-title" style="color:var(--pink-dark);">Read: Academic Integrity: Plagiarism and Its Consequences</div>
-          <div class="ri-desc">Covers the six types of academic plagiarism (with a video), Valencia's Academic Integrity Policy, the two levels of bureaucracy involved in plagiarism allegations (Institutional and Instructional), and the three possible consequence options (Academic Sanction, Disciplinary Sanction, or both). Read this before taking the quiz — you may keep this page open during it.</div>
-        </div>
-      </div>
-
-      <!-- Step 7: Plagiarism Quiz (assignment) -->
-      <div class="reading-item" style="background:var(--plum-light);border-left:4px solid var(--plum);">
-        <div class="ri-num" style="background:linear-gradient(135deg,var(--plum),var(--plum-mid));color:var(--plum-dark);">7</div>
-        <div class="ri-content">
-          <div class="ri-title" style="color:var(--plum-dark);">✏️ Complete: Academic Integrity: Plagiarism and Its Consequences Quiz</div>
-          <div class="ri-desc" style="color:#5e4e7a;">Due Wednesday, March 25 at 11:59 PM &bull; 2-Day Grace Period &mdash; A quiz covering the six types of plagiarism, Institutional vs. Instructional bureaucracy, the course's academic integrity policy, and the difference between Academic and Disciplinary sanctions. You may keep the <em>Academic Integrity</em> page open during the quiz.</div>
-        </div>
-      </div>
-
-      <!-- Step 8: Three MLA readings (reading) -->
-      <div class="reading-item" style="background:var(--sage-light);">
-        <div class="ri-num" style="background:linear-gradient(135deg,var(--sage),var(--sage-mid));color:var(--sage-deep);">8</div>
-        <div class="ri-content">
-          <div class="ri-title" style="color:var(--sage-deep);">Read: What Am I Doing with These Sources? &bull; MLA Documentation: Quoting &amp; Paraphrasing &bull; MLA Documentation: The Works Cited</div>
-          <div class="ri-desc">These three pages explain how sources function inside body paragraphs, walk through the 10-step anatomy of a research essay body paragraph, cover quoting and paraphrasing conventions for both primary and secondary sources (including signal phrases, the four MLA scenarios, and true paraphrase vs. find-and-replace plagiarism), and address the six most common Works Cited formatting problems, with a final pre-submission checklist.</div>
-        </div>
-      </div>
-
-      <!-- Step 9: Drafting and Revising (reading — coming soon) -->
-      <div class="reading-item" style="background:var(--slate-light);opacity:0.78;">
-        <div class="ri-num" style="background:linear-gradient(135deg,var(--slate),var(--slate-mid));color:var(--slate-dark);">9</div>
-        <div class="ri-content">
-          <div class="ri-title" style="color:var(--slate-dark);">Read: Drafting and Revising <span style="font-size:11px;font-weight:400;color:#888;margin-left:6px;">(page coming soon)</span></div>
-          <div class="ri-desc">Guidance on moving from your completed outline and sources into a full working draft — structuring your introduction and thesis, integrating sources within body paragraphs, and revising for argument strength and coherence.</div>
-        </div>
-      </div>
-
-      <!-- Step 10: Begin Drafting and Revising (activity) -->
-      <div class="reading-item" style="background:var(--amber-light);border-left:4px solid var(--amber);">
-        <div class="ri-num" style="background:linear-gradient(135deg,var(--amber),var(--amber-mid));color:var(--amber-dark);">10</div>
-        <div class="ri-content">
-          <div class="ri-title" style="color:var(--amber-dark);">🖊️ Begin: Drafting and Revising Stage</div>
-          <div class="ri-desc" style="color:#7a5545;">Write and revise your research essay using your completed outline, located sources, and the MLA documentation guidance from Step 8. This is the active drafting stage — no separate submission required here.</div>
-        </div>
-      </div>
-
-      <!-- Step 11: Editing and Proofreading (reading — coming soon) -->
-      <div class="reading-item" style="background:var(--warm-light);opacity:0.78;">
-        <div class="ri-num" style="background:linear-gradient(135deg,var(--warm),var(--warm-mid));color:var(--warm-dark);">11</div>
-        <div class="ri-content">
-          <div class="ri-title" style="color:var(--warm-dark);">Read: Editing and Proofreading <span style="font-size:11px;font-weight:400;color:#888;margin-left:6px;">(page coming soon)</span></div>
-          <div class="ri-desc">Covers how to move from a revised draft to a polished, submission-ready essay — checking for sentence-level errors, MLA formatting compliance, Works Cited accuracy, and the pre-submission checklist.</div>
-        </div>
-      </div>
-
-      <!-- Step 12: Final Draft (assignment) -->
-      <div class="reading-item" style="background:var(--sage-light);border-left:4px solid var(--sage);">
-        <div class="ri-num" style="background:linear-gradient(135deg,var(--sage),var(--sage-mid));color:var(--sage-deep);">12</div>
-        <div class="ri-content">
-          <div class="ri-title" style="color:var(--sage-deep);">✏️ Complete: Literary Research Essay — Final Draft</div>
-          <div class="ri-desc" style="color:#3a5e42;">Due Sunday, March 29 at 11:59 PM &bull; 4-Day Grace Period &mdash; 1,200–1,500 words, MLA format, three secondary sources, six total secondary source quotes (four direct + two paraphrases), Works Cited with four entries. Worth 25% of your course grade. See the Final Draft Assignment page for full instructions and your three topic options.</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<hr>
-
-<!-- RESOURCES -->
-<div class="fade">
-  <h2 style="font-family:'Lora',serif;font-size:18px;color:var(--sage-deep);text-align:center;margin-bottom:6px;">🔗 Resources</h2>
-  <p style="font-size:13px;color:#888;text-align:center;margin-bottom:14px;">All pages and files available for this module</p>
-  <div class="res-grid">
-    <div class="res-tile" style="background:var(--sage-light);border:2px solid var(--sage);">
-      <div class="res-icon">📊</div>
-      <div class="res-label" style="color:var(--sage-dark);">Prewriting &amp; Planning</div>
-    </div>
-    <div class="res-tile" style="background:var(--amber-light);border:2px solid var(--amber);">
-      <div class="res-icon">🗂️</div>
-      <div class="res-label" style="color:var(--amber-dark);">Outline Assignment</div>
-    </div>
-    <div class="res-tile" style="background:var(--slate-light);border:2px solid var(--slate);">
-      <div class="res-icon">🔍</div>
-      <div class="res-label" style="color:var(--slate-dark);">Research Assignment</div>
-    </div>
-    <div class="res-tile" style="background:var(--pink-light);border:2px solid var(--pink);">
-      <div class="res-icon">📚</div>
-      <div class="res-label" style="color:var(--pink-dark);">Primary &amp; Secondary Sources</div>
-    </div>
-    <div class="res-tile" style="background:var(--sage-light);border:2px solid var(--sage);">
-      <div class="res-icon">🗄️</div>
-      <div class="res-label" style="color:var(--sage-dark);">Using Academic Databases</div>
-    </div>
-    <div class="res-tile" style="background:var(--plum-light);border:2px solid var(--plum);">
-      <div class="res-icon">📄</div>
-      <div class="res-label" style="color:var(--plum-dark);">What Am I Doing with These Sources?</div>
-    </div>
-    <div class="res-tile" style="background:var(--slate-light);border:2px solid var(--slate);">
-      <div class="res-icon">✏️</div>
-      <div class="res-label" style="color:var(--slate-dark);">MLA: Quoting &amp; Paraphrasing</div>
-    </div>
-    <div class="res-tile" style="background:var(--warm-light);border:2px solid var(--warm);">
-      <div class="res-icon">📋</div>
-      <div class="res-label" style="color:var(--warm-dark);">MLA: The Works Cited</div>
-    </div>
-    <div class="res-tile" style="background:var(--amber-light);border:2px solid var(--amber);">
-      <div class="res-icon">⚖️</div>
-      <div class="res-label" style="color:var(--amber-dark);">Academic Integrity</div>
-    </div>
-    <div class="res-tile" style="background:var(--slate-light);border:2px dashed var(--slate);opacity:0.72;">
-      <div class="res-icon">🖊️</div>
-      <div class="res-label" style="color:var(--slate-dark);">Drafting &amp; Revising <span style="display:block;font-size:11px;color:#999;margin-top:3px;">Coming soon</span></div>
-    </div>
-    <div class="res-tile" style="background:var(--warm-light);border:2px dashed var(--warm);opacity:0.72;">
-      <div class="res-icon">🔎</div>
-      <div class="res-label" style="color:var(--warm-dark);">Editing &amp; Proofreading <span style="display:block;font-size:11px;color:#999;margin-top:3px;">Coming soon</span></div>
-    </div>
-    <div class="res-tile" style="background:var(--sage-light);border:2px solid var(--sage);">
-      <div class="res-icon">📝</div>
-      <div class="res-label" style="color:var(--sage-dark);">Sample Research Essay</div>
-    </div>
-    <div class="res-tile" style="background:var(--pink-light);border:2px solid var(--pink);">
-      <div class="res-icon">📞</div>
-      <div class="res-label" style="color:var(--pink-dark);"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="adcec5c2c1c1c4
+</main>
+</body>
+</html>
