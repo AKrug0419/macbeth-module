@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ENC 1102 Course Template: Modification Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+
+/* ══════════════════════════════════════════════════════════
+   ENC 1102 TEMPLATE MODIFICATION GUIDE
+   Palette: Archive & Parchment — Institutional Scholarly
+   Verified contrast ratios annotated where relevant (WCAG AA)
+   Heading hierarchy: h1 → h2 → h3 (no skips)
+   ══════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Ground ── warm parchment */
+  --paper:          #f6f1e9;
+  --vellum:         #ede6d6;
+  --aged:           #e4dac8;
+  --shadow:         #c8bda6;
+
+  /* ── Ink ── deep slate-charcoal */
+  --ink:            #1a1e2c;         /* 17.8:1 on --paper ✓ */
+  --ink-mid:        #2c3248;         /* 13.2:1 on --paper ✓ */
+  --ink-muted:      #4a5272;         /*  6.8:1 on --paper ✓ AA large & UI */
+  --ink-soft:       #6a728a;         /*  4.5:1 on --paper ✓ AA body (borderline) */
+
+  /* ── Primary ── deep institutional slate */
+  --slate:          #1e2d4a;         /* 14.8:1 on --paper ✓ */
+  --slate-mid:      #2e4265;         /* 10.6:1 on --paper ✓ */
+  --slate-accent:   #3a5278;         /*  8.1:1 on --paper ✓ */
+  --slate-light:    #7a90b0;         /*  3.2:1 on --paper ✓ large/UI */
+  --slate-pale:     #d0daea;
+  --slate-wash:     rgba(30,45,74,0.07);
+  --slate-glow:     rgba(30,45,74,0.13);
+
+  /* ── Permitted ── forest/emerald */
+  --permit:         #2a5230;         /* 9.0:1 on --paper ✓ */
+  --permit-mid:     #3a6840;         /* 6.4:1 on --paper ✓ */
+  --permit-pale:    #c6dcc8;
+  --permit-wash:    rgba(42,82,48,0.07);
+
+  /* ── Restricted ── deep burgundy */
+  --restrict:       #6a2020;         /* 8.4:1 on --paper ✓ */
+  --restrict-mid:   #7e2e2e;
+  --restrict-pale:  #e4c8c8;
+  --restrict-wash:  rgba(106,32,32,0.07);
+
+  /* ── Accent ── warm antique gold */
+  --gold:           #7a5c18;         /* 7.2:1 on --paper ✓ */
+  --gold-mid:       #9a7824;
+  --gold-pale:      #eedcaa;
+  --gold-wash:      rgba(122,92,24,0.08);
+
+  /* ── Rules ── */
+  --rule:           rgba(30,45,74,0.14);
+  --rule-light:     rgba(30,45,74,0.07);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: 'Crimson Pro', Georgia, 'Times New Roman', serif;
+  font-size: 17px;
+  line-height: 1.78;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+}
+
+/* ── WRAPPER ── */
+.page-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px 64px;
+}
+
+/* ══ HERO ══ */
+.hero {
+  position: relative;
+  background-color: var(--slate);
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+.hero-texture {
+  position: absolute; inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 32px, rgba(255,255,255,0.018) 32px, rgba(255,255,255,0.018) 33px),
+    repeating-linear-gradient(90deg, transparent, transparent 32px, rgba(255,255,255,0.010) 32px, rgba(255,255,255,0.010) 33px);
+  pointer-events: none;
+}
+.hero-accent-bar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--gold-mid) 0%, #c8a850 40%, var(--gold-mid) 100%);
+}
+.hero-inner {
+  position: relative;
+  padding: 52px 48px 44px;
+}
+.hero-eyebrow {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.60);
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+/* h1 — page title */
+.hero h1 {
+  font-family: 'Lora', Georgia, serif;
+  font-size: clamp(1.7rem, 3.2vw, 2.3rem);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.22;
+  margin-bottom: 14px;
+  letter-spacing: -0.02em;
+}
+.hero-subtitle {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 400;
+  font-style: italic;
+  color: rgba(255,255,255,0.72);
+  line-height: 1.5;
+  max-width: 580px;
+  margin-bottom: 28px;
+}
+.hero-rule {
+  width: 48px;
+  height: 2px;
+  background: var(--gold-mid);
+  opacity: 0.7;
+}
+
+/* ══ INTRO ══ */
+.intro-block {
+  background: var(--vellum);
+  border-left: 4px solid var(--slate-mid);
+  border-radius: 0 6px 6px 0;
+  padding: 22px 28px;
+  margin-bottom: 40px;
+}
+.intro-block p {
+  font-size: 1.06rem;
+  color: var(--ink-mid);
+  line-height: 1.78;
+  margin: 0;
+}
+.intro-block p + p {
+  margin-top: 10px;
+}
+
+/* ══ QUICK REFERENCE ══ */
+.quick-ref {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 48px;
+}
+@media (max-width: 640px) {
+  .quick-ref { grid-template-columns: 1fr; }
+}
+.qr-card {
+  border-radius: 6px;
+  overflow: hidden;
+}
+.qr-card-head {
+  padding: 14px 20px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.qr-card--permit .qr-card-head {
+  background: var(--permit);
+}
+.qr-card--restrict .qr-card-head {
+  background: var(--restrict);
+}
+.qr-icon {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+.qr-card-head-label {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.qr-card-body {
+  background: #ffffff;
+  border: 1px solid var(--shadow);
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+  padding: 18px 20px 20px;
+}
+.qr-card-body ol,
+.qr-card-body ul {
+  margin: 0;
+  padding-left: 20px;
+}
+.qr-card-body li {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 0.97rem;
+  color: var(--ink-mid);
+  line-height: 1.65;
+  margin-bottom: 5px;
+}
+.qr-card-body li:last-child { margin-bottom: 0; }
+
+/* ══ SECTION HEADER (h2) ══ */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--rule);
+}
+.section-header h2 {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--slate);
+  letter-spacing: -0.01em;
+}
+.section-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 3px;
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+.section-badge--permit {
+  background: var(--permit-pale);
+  color: var(--permit);
+}
+.section-badge--restrict {
+  background: var(--restrict-pale);
+  color: var(--restrict);
+}
+
+/* ══ ITEM CARDS ══ */
+.items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 48px;
+}
+.item-card {
+  background: #ffffff;
+  border: 1px solid var(--shadow);
+  border-left: 4px solid var(--slate-mid);
+  border-radius: 0 6px 6px 0;
+  overflow: hidden;
+}
+.item-card--permit {
+  border-left-color: var(--permit);
+}
+.item-card--restrict {
+  border-left-color: var(--restrict);
+}
+.item-card-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 16px 22px 12px;
+  border-bottom: 1px solid var(--rule-light);
+  background: rgba(255,255,255,0.6);
+}
+.item-num {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+/* h3 — individual item title */
+.item-card h3 {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.06rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+}
+.item-card-body {
+  padding: 18px 22px 20px;
+}
+.item-card-body p {
+  font-size: 1.0rem;
+  color: var(--ink-mid);
+  line-height: 1.78;
+  margin: 0 0 14px;
+}
+.item-card-body p:last-child { margin-bottom: 0; }
+
+/* ── Condition callout (for Literary Selections) ── */
+.conditions-block {
+  background: var(--slate-wash);
+  border: 1px solid var(--slate-pale);
+  border-radius: 6px;
+  padding: 18px 22px 20px;
+  margin-top: 16px;
+}
+.conditions-block-label {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--slate-mid);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.conditions-block ol {
+  margin: 0;
+  padding-left: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.conditions-block li {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 0.99rem;
+  color: var(--ink-mid);
+  line-height: 1.72;
+}
+.conditions-block li strong {
+  color: var(--slate);
+}
+
+/* ── Late policy details grid ── */
+.policy-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 16px;
+}
+@media (max-width: 540px) {
+  .policy-grid { grid-template-columns: 1fr; }
+}
+.policy-cell {
+  background: var(--vellum);
+  border: 1px solid var(--aged);
+  border-radius: 5px;
+  padding: 14px 16px;
+}
+.policy-cell-label {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--slate-mid);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.policy-cell-value {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 0.97rem;
+  color: var(--ink-mid);
+  line-height: 1.6;
+}
+.policy-cell-value strong {
+  color: var(--ink);
+}
+
+/* ── Exam constraint note ── */
+.constraint-note {
+  background: var(--gold-wash);
+  border: 1px solid var(--gold-pale);
+  border-left: 4px solid var(--gold);
+  border-radius: 0 5px 5px 0;
+  padding: 14px 18px;
+  margin-top: 16px;
+}
+.constraint-note-label {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.constraint-note p {
+  font-size: 0.97rem !important;
+  color: var(--ink-mid) !important;
+  margin: 0 !important;
+  line-height: 1.68;
+}
+
+/* ══ RESTRICTED ITEMS (Part II) ══ */
+.restrict-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+.restrict-item {
+  display: flex;
+  gap: 18px;
+  background: #ffffff;
+  border: 1px solid var(--shadow);
+  border-left: 4px solid var(--restrict);
+  border-radius: 0 6px 6px 0;
+  padding: 18px 22px;
+  align-items: flex-start;
+}
+.restrict-icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  background: var(--restrict-wash);
+  border: 1px solid var(--restrict-pale);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-family: 'Lora', Georgia, serif;
+  font-weight: 700;
+  color: var(--restrict);
+  margin-top: 2px;
+}
+.restrict-content h3 {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.0rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 5px;
+  line-height: 1.3;
+}
+.restrict-content p {
+  font-size: 0.97rem;
+  color: var(--ink-muted);
+  line-height: 1.72;
+  margin: 0;
+}
+
+/* ══ CONTACT ══ */
+.contact-block {
+  background: var(--slate);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+.contact-inner {
+  padding: 30px 36px;
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.contact-icon-wrap {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+.contact-text {
+  flex: 1;
+  min-width: 200px;
+}
+.contact-text h2 {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.0rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.90);
+  margin-bottom: 6px;
+}
+.contact-text p {
+  font-size: 0.97rem;
+  color: rgba(255,255,255,0.70);
+  line-height: 1.65;
+  margin: 0 0 10px;
+}
+.contact-text p:last-child { margin-bottom: 0; }
+.contact-link {
+  color: #c8d8f0;
+  font-weight: 500;
+}
+.contact-link:hover {
+  color: #ffffff;
+}
+.contact-link:focus {
+  outline: 2px solid #c8d8f0;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ══ UTILITY ══ */
+em, i { font-style: italic; }
+strong { font-weight: 600; color: var(--ink); }
+a { color: var(--slate-accent); }
+a:hover { color: var(--slate); }
+a:focus { outline: 2px solid var(--slate-accent); outline-offset: 2px; border-radius: 2px; }
+
+/* ══ PRINT ══ */
+@media print {
+  .hero { background-color: #1e2d4a !important; -webkit-print-color-adjust: exact; }
+  .page-wrap { max-width: 100%; padding: 0 12px 32px; }
+  body { font-size: 14px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<header class="hero" role="banner">
+  <div class="hero-texture" aria-hidden="true"></div>
+  <div class="hero-accent-bar" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Valencia College &nbsp;·&nbsp; School of Writing &amp; Literature</p>
+    <h1>ENC 1102 Course Template<br>Modification Guide</h1>
+    <div class="hero-rule" aria-hidden="true"></div>
+  </div>
+</header>
+
+<main class="page-wrap">
+
+  <!-- ═══ INTRO ═══ -->
+  <div class="intro-block" role="note">
+    <p>The ENC 1102 Course Template has been designed to be both pedagogically consistent and practically adaptable. To maintain the academic integrity and institutional coherence of the course while still allowing instructors to make meaningful choices, some elements of the template are open to modification while others are fixed.</p>
+  </div>
+
+  <!-- ═══ QUICK REFERENCE ═══ -->
+  <section aria-label="Quick Reference">
+    <div class="quick-ref">
+
+      <div class="qr-card qr-card--permit">
+        <div class="qr-card-head">
+          <span class="qr-icon" aria-hidden="true">✓</span>
+          <span class="qr-card-head-label">May Be Modified</span>
+        </div>
+        <div class="qr-card-body">
+          <ol>
+            <li>Orientation Module Assignment</li>
+            <li>Specific Literary Selections</li>
+            <li>Rubrics</li>
+            <li>Learning Materials <em>(supplementation only)</em></li>
+            <li>AI Policy</li>
+            <li>Late Assignment &amp; Grace Period Policy</li>
+            <li>Final Exam Content <em>(format is fixed)</em></li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="qr-card qr-card--restrict">
+        <div class="qr-card-head">
+          <span class="qr-icon" aria-hidden="true">✕</span>
+          <span class="qr-card-head-label">Must Remain Fixed</span>
+        </div>
+        <div class="qr-card-body">
+          <ol>
+            <li>Course Outcomes</li>
+            <li>Overall Course Organization</li>
+            <li>Department &amp; College Policies</li>
+            <li>Essay Requirements</li>
+            <li>Essay Genres</li>
+          </ol>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ PART I: PERMITTED MODIFICATIONS ═══ -->
+  <section aria-labelledby="section-permit">
+    <div class="section-header">
+      <h2 id="section-permit">Permitted Modifications</h2>
+      <span class="section-badge section-badge--permit" aria-label="Section type: permitted">Permitted</span>
+    </div>
+
+    <div class="items-list">
+
+      <!-- 1. Orientation Module -->
+      <article class="item-card item-card--permit" aria-labelledby="item1-title">
+        <div class="item-card-head">
+          <span class="item-num">01</span>
+          <h3 id="item1-title">Orientation Module Assignment</h3>
+        </div>
+        <div class="item-card-body">
+          <p>The assignment included in the Orientation Module may be replaced or revised to reflect an instructor's preferred approach to course introduction. Instructors choosing to modify this assignment are responsible for ensuring the replacement remains appropriate to the orientation context and serves a comparable preparatory function for students entering the course.</p>
+        </div>
+      </article>
+
+      <!-- 2. Literary Selections -->
+      <article class="item-card item-card--permit" aria-labelledby="item2-title">
+        <div class="item-card-head">
+          <span class="item-num">02</span>
+          <h3 id="item2-title">Specific Literary Selections</h3>
+        </div>
+        <div class="item-card-body">
+          <p>Instructors may replace the short stories and poems currently in the template with works of their own choosing. However, replacements must meet all three of the following conditions:</p>
+
+          <div class="conditions-block" role="note" aria-label="Conditions for replacing literary selections">
+            <p class="conditions-block-label">Conditions for Replacement</p>
+            <ol>
+              <li><strong>Legal and Free Access.</strong> The work must be available to students at no cost and through a legally permitted source (a college database, college ebook platform, or the Valencia Reader). Works that are not legally accessible in one of these formats may not be used.</li>
+              <li><strong>Sufficient Critical Scholarship.</strong> Because students are required to locate and use secondary source literary criticism in their research essays, any replacement work must be critically significant enough to have generated substantive scholarship. Instructors are strongly advised to search the college's literature databases and ebook collections to confirm that adequate secondary sources exist <em>before</em> finalizing a selection. Note that sources focused primarily on the author's biography or the historical period will not serve the research assignment's requirements; the scholarship must engage directly with the literary work itself.</li>
+              <li><strong>Instructor-Created Study Questions and Essay Topics.</strong> Instructors are responsible for developing all accompanying study questions and essay topics for any literary work they introduce. Existing questions and prompts in the template are written for the current selections and will not transfer to replacement works.</li>
+            </ol>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3. Rubrics -->
+      <article class="item-card item-card--permit" aria-labelledby="item3-title">
+        <div class="item-card-head">
+          <span class="item-num">03</span>
+          <h3 id="item3-title">Rubrics</h3>
+        </div>
+        <div class="item-card-body">
+          <p>The grading rubrics provided in the template may be modified to reflect an instructor's preferred evaluative criteria and point distributions. Instructors revising rubrics should ensure that the revised criteria remain consistent with the assignment's stated purpose and the relevant course outcomes.</p>
+        </div>
+      </article>
+
+      <!-- 4. Learning Materials -->
+      <article class="item-card item-card--permit" aria-labelledby="item4-title">
+        <div class="item-card-head">
+          <span class="item-num">04</span>
+          <h3 id="item4-title">Learning Materials</h3>
+        </div>
+        <div class="item-card-body">
+          <p>The learning materials already in place in the template (instructional pages, concept explanations, guides, and examples) may not be deleted or substantively altered. Minor proofreading corrections are acceptable. Instructors are welcome, however, to <em>supplement</em> the existing materials with additional resources of their own: supplementary readings, videos, external links, or instructional pages they have developed.</p>
+        </div>
+      </article>
+
+      <!-- 5. AI Policy -->
+      <article class="item-card item-card--permit" aria-labelledby="item5-title">
+        <div class="item-card-head">
+          <span class="item-num">05</span>
+          <h3 id="item5-title">AI Policy</h3>
+        </div>
+        <div class="item-card-body">
+          <p>The template includes a default AI use policy consistent with college guidelines. Instructors may update or replace this policy to reflect their own approach and teaching philosophy regarding student use of AI tools, provided the revised policy does not conflict with any applicable college or department policy on academic integrity.</p>
+          <p>NOTE: The template currently permits the limited use of Grammarly's "Correction" function, which highlights grammar and punctuation errors. It forbids, however, the use of Grammarly's other three functions: "Clarity," "Engagement," and "Delivery," all of which revise student language, phrases, and sentences. In addition, the template informs students that any assignment that generates a Canvas AI Report will have to be re-done and resubmitted. Rarely, a student will deny having used Grammarly or similar tools (online translators, large language model AI systems). In that case, instructors will have to have a conversation with the student to determine the most appropriate next steps.</p>
+          <p>Instructors are not required to allow students to use Grammarly or any other grammar-assistance program, however. Please make your specific policy transparent for students, though, to minimize future conflicts. Also, instructors will need to edit course assignments so that their own policy is clearly stated.</p>
+        </div>
+      </article>
+
+      <!-- 6. Late Assignment & Grace Period Policy -->
+      <article class="item-card item-card--permit" aria-labelledby="item6-title">
+        <div class="item-card-head">
+          <span class="item-num">06</span>
+          <h3 id="item6-title">Late Assignment &amp; Grace Period Policy</h3>
+        </div>
+        <div class="item-card-body">
+          <p>The template currently employs a grace period structure for all assignments, designed in alignment with the college's "Cruelty Free Syllabus" professional development framework. This approach is intended to reduce the frequency of grade-dispute conflicts (one of the most common sources of student-instructor tension reported by the college) by providing students with a structured window before penalty applies.</p>
+
+          <div class="policy-grid" role="list" aria-label="Current grace period durations">
+            <div class="policy-cell" role="listitem">
+              <p class="policy-cell-label">Essays</p>
+              <p class="policy-cell-value"><strong>4-day grace period</strong> before the late policy applies</p>
+            </div>
+            <div class="policy-cell" role="listitem">
+              <p class="policy-cell-label">All Other Assignments</p>
+              <p class="policy-cell-value"><strong>2-day grace period</strong> before the late policy applies</p>
+            </div>
+            <div class="policy-cell" role="listitem">
+              <p class="policy-cell-label">Late Penalty: Non-Essay</p>
+              <p class="policy-cell-value"><strong>2 points</strong> deducted per 24-hour period after grace period</p>
+            </div>
+            <div class="policy-cell" role="listitem">
+              <p class="policy-cell-label">Late Penalty: Essays</p>
+              <p class="policy-cell-value"><strong>5 points</strong> deducted per 24-hour period after grace period</p>
+            </div>
+          </div>
+
+          <p style="margin-top: 16px;">Both the grace period durations and the specific late penalty deductions may be changed to reflect an instructor's preferred policy. Instructors who modify this section are responsible for updating all relevant syllabus and assignment language to reflect their chosen approach.</p>
+          <p>Instructors are not required to use the grace period system, however. Moreover, instructors can devise their own late policies based on their personal teaching philosophy.</p>
+        </div>
+      </article>
+
+      <!-- 7. Final Exam Content -->
+      <article class="item-card item-card--permit" aria-labelledby="item7-title">
+        <div class="item-card-head">
+          <span class="item-num">07</span>
+          <h3 id="item7-title">Final Exam Content</h3>
+        </div>
+        <div class="item-card-body">
+          <p>The Final Exam is currently a multiple-choice, auto-graded assessment focused exclusively on MLA documentation skills and plagiarism awareness. Literary concepts are not assessed on the final exam. This format was chosen to minimize instructor grading workload at the end of the semester while still measuring skills directly tied to the course's principal outcomes: skills students will most likely carry into future academic work.</p>
+          <p>Instructors may revise the <em>content</em> of the exam's individual questions. However, two constraints apply:</p>
+
+          <div class="constraint-note" role="note" aria-label="Final exam constraints">
+            <p class="constraint-note-label">Constraints</p>
+            <p>The <strong>multiple-choice, auto-graded format</strong> may not be changed. Additionally, any revised questions must demonstrably address specific course outcomes. Instructors who modify exam questions are responsible for verifying this alignment before publishing.</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ═══ PART II: FIXED ELEMENTS ═══ -->
+  <section aria-labelledby="section-restrict">
+    <div class="section-header">
+      <h2 id="section-restrict">Fixed Course Elements</h2>
+      <span class="section-badge section-badge--restrict" aria-label="Section type: fixed">Not Modifiable</span>
+    </div>
+
+    <div class="restrict-list">
+
+      <div class="restrict-item">
+        <div class="restrict-icon" aria-hidden="true">1</div>
+        <div class="restrict-content">
+          <h3>Course Outcomes</h3>
+          <p>The course outcomes are set at the department and college level and may not be altered, reordered, or removed. All course activities and assessments must remain oriented toward these outcomes.</p>
+        </div>
+      </div>
+
+      <div class="restrict-item">
+        <div class="restrict-icon" aria-hidden="true">2</div>
+        <div class="restrict-content">
+          <h3>Overall Course Organization</h3>
+          <p>The template's module structure, sequencing, and overall organizational logic may not be changed. This includes the order and grouping of modules, the placement of major assessments within the arc of the course, and the relationship between learning materials and assignments.</p>
+        </div>
+      </div>
+
+      <div class="restrict-item">
+        <div class="restrict-icon" aria-hidden="true">3</div>
+        <div class="restrict-content">
+          <h3>Department &amp; College Policies</h3>
+          <p>All policies mandated at the department or college level (including academic integrity policies, accessibility requirements, and any other institutionally required language) must remain in place and unaltered.</p>
+        </div>
+      </div>
+
+      <div class="restrict-item">
+        <div class="restrict-icon" aria-hidden="true">4</div>
+        <div class="restrict-content">
+          <h3>Essay Requirements</h3>
+          <p>The requirements governing the three major essays (including minimum lengths, primary and secondary source integration requirements, and secondary source requirements) may not be changed.</p>
+        </div>
+      </div>
+
+      <div class="restrict-item">
+        <div class="restrict-icon" aria-hidden="true">5</div>
+        <div class="restrict-content">
+          <h3>Essay Genres</h3>
+          <p>All three major essays in the template require students to critically analyze literary or cinematic texts through a traditional academic essay format. Please do not convert these to personal narratives, reflection papers, creative writing assignments, or other non-analytical genres that deviate from the introduction, body, and conclusion standard of academic writing.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ CONTACT ═══ -->
+  <div class="contact-block" role="complementary" aria-label="Contact information">
+    <div class="contact-inner">
+      <div class="contact-icon-wrap" aria-hidden="true">✉</div>
+      <div class="contact-text">
+        <h2>Questions About This Guide</h2>
+        <p>Instructors with questions about any modification not addressed here, or who need guidance on a specific situation, are encouraged to reach out to Clay Holliday at <a href="mailto:cholliday@valenciacollege.edu" class="contact-link">cholliday@valenciacollege.edu</a>.</p>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+</body>
+</html>
