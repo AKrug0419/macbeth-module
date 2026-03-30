@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Dystopian Protagonist | ENC 1102 — Module Seven</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=Barlow:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --void:        #0a0a0b;
+    --concrete:    #111114;
+    --slab:        #1a1a1e;
+    --panel-bg:    #222228;
+    --surface:     #2c2c34;
+    --rule:        #3a3a44;
+    --mid:         #555560;
+    --muted:       #7a7a88;
+    --ash:         #a8a8b8;
+    --light:       #d0d0dc;
+    --white:       #e8e8f0;
+    --signal:      #00e5ff;
+    --signal-dim:  #007a8a;
+    --signal-glow: rgba(0,229,255,0.10);
+    --warn:        #ff4040;
+    --warn-dim:    rgba(255,64,64,0.10);
+    --amber:       #ffaa00;
+    --amber-dim:   rgba(255,170,0,0.10);
+    --green:       #00e676;
+    --green-dim:   rgba(0,230,118,0.10);
+    --purple:      #c080ff;
+    --purple-dim:  rgba(192,128,255,0.10);
+    --grid-line:   rgba(255,255,255,0.03);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--void);
+    color: var(--ash);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none; z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 2px,
+      rgba(0,0,0,0.06) 2px, rgba(0,0,0,0.06) 4px
+    );
+    pointer-events: none; z-index: 0;
+  }
+
+  /* ══ HERO ══ */
+  .hero {
+    position: relative; z-index: 1;
+    overflow: hidden;
+  }
+  .hero-still {
+    width: 100%;
+    aspect-ratio: 21/7;
+    background: var(--slab);
+    border-bottom: 1px solid var(--rule);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .hero-still::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(to right, rgba(0,229,255,0.04) 0%, transparent 50%),
+      linear-gradient(to bottom, transparent 50%, rgba(10,10,11,0.85) 100%);
+  }
+  /* top-left bracket */
+  .hero-still::after {
+    content: '';
+    position: absolute;
+    top: 1.2rem; left: 1.2rem;
+    width: 44px; height: 44px;
+    border-top: 1px solid var(--signal-dim);
+    border-left: 1px solid var(--signal-dim);
+  }
+  /* crosshair reticle — centered */
+  .hero-reticle {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px; height: 60px;
+    border: 1px solid rgba(0,229,255,0.15);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .hero-reticle::before,
+  .hero-reticle::after {
+    content: '';
+    position: absolute;
+    background: rgba(0,229,255,0.18);
+  }
+  .hero-reticle::before { top: 50%; left: -14px; right: -14px; height: 1px; transform: translateY(-50%); }
+  .hero-reticle::after  { left: 50%; top: -14px; bottom: -14px; width: 1px; transform: translateX(-50%); }
+  .hero-still-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem; color: var(--muted);
+    letter-spacing: 0.18em; text-transform: uppercase;
+    text-align: center; line-height: 2;
+    position: relative; z-index: 1; padding: 1rem;
+  }
+  .hero-still-label .ph-title { display: block; font-size: 0.75rem; color: var(--muted); margin-bottom: 0.2rem; }
+  .hero-still-label .ph-sub   { display: block; color: var(--signal); font-size: 0.72rem; }
+
+  .hero-title-block {
+    padding: 2.5rem 4rem 3rem;
+    position: relative;
+  }
+  .hero-title-block::after {
+    content: '';
+    position: absolute;
+    bottom: 1.8rem; right: 3rem;
+    width: 44px; height: 44px;
+    border-bottom: 1px solid var(--signal-dim);
+    border-right: 1px solid var(--signal-dim);
+  }
+  .hero-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.2em;
+    color: var(--signal); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .hero-tag::before { content: '▶'; font-size: 0.5rem; }
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(2.8rem, 7vw, 5.8rem);
+    font-weight: 900; color: var(--white);
+    line-height: 0.92; text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+  .hero h1 .dim    { color: var(--muted); font-weight: 300; }
+  .hero h1 .accent { color: var(--signal); }
+  .hero-sub {
+    font-size: 1rem; font-weight: 300;
+    color: var(--muted); margin-top: 1.1rem;
+    max-width: 540px; letter-spacing: 0.02em;
+  }
+  .hero-bar {
+    width: 100%; height: 1px;
+    background: linear-gradient(90deg, var(--signal), var(--rule), transparent);
+    margin-top: 2rem;
+  }
+
+  /* ══ LAYOUT ══ */
+  .page-wrap {
+    max-width: 960px; margin: 0 auto;
+    padding: 0 2.5rem 6rem;
+    position: relative; z-index: 1;
+  }
+
+  /* ══ SECTION HEADER ══ */
+  .section-head {
+    display: flex; align-items: baseline; gap: 1.5rem;
+    margin-bottom: 1.4rem; margin-top: 3.5rem;
+  }
+  .section-id {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem; color: var(--signal);
+    letter-spacing: 0.15em; white-space: nowrap;
+    padding: 0.2rem 0.5rem;
+    border: 1px solid var(--signal-dim);
+    background: var(--signal-glow); flex-shrink: 0;
+  }
+  h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.8rem; font-weight: 700;
+    color: var(--white); text-transform: uppercase;
+    letter-spacing: 0.04em; line-height: 1;
+  }
+  h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem; font-weight: 600;
+    color: var(--signal); text-transform: uppercase;
+    letter-spacing: 0.12em; margin-bottom: 0.5rem;
+  }
+  p { margin-bottom: 1rem; color: var(--ash); }
+  p:last-child { margin-bottom: 0; }
+  em { color: var(--light); font-style: italic; }
+  strong { color: var(--light); font-weight: 500; }
+
+  /* ══ RULE ══ */
+  .rule {
+    height: 1px;
+    background: linear-gradient(90deg, var(--rule), transparent);
+    margin: 3rem 0; position: relative;
+  }
+  .rule::before {
+    content: '//'; position: absolute;
+    left: 0; top: -10px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.6rem; color: var(--muted); letter-spacing: 0.1em;
+  }
+
+  /* ══ IMAGE PLACEHOLDER ══ */
+  .img-placeholder {
+    background: var(--slab); border: 1px solid var(--rule);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    min-height: 140px;
+  }
+  .img-placeholder::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(0,229,255,0.03) 0%, transparent 60%);
+  }
+  .img-ph-text {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem; color: var(--muted);
+    letter-spacing: 0.14em; text-transform: uppercase;
+    text-align: center; line-height: 1.9;
+    position: relative; z-index: 1; padding: 1rem;
+  }
+  .img-ph-text .ph-title { display: block; font-size: 0.75rem; color: var(--muted); margin-bottom: 0.15rem; }
+  .img-ph-text .ph-year  { display: block; color: var(--signal); font-size: 0.72rem; }
+  .img-caption {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem; color: var(--muted);
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.45rem 0.75rem;
+    border-top: 1px solid var(--rule);
+    background: var(--concrete); line-height: 1.5;
+  }
+
+  /* ══ FLOAT STILL ══ */
+  .float-wrap { overflow: hidden; }
+  .float-still-left {
+    float: left; width: 300px;
+    margin: 0.2rem 2rem 1.2rem 0;
+  }
+  .float-still-left .img-placeholder { aspect-ratio: 16/10; }
+  .float-still-right {
+    float: right; width: 300px;
+    margin: 0.2rem 0 1.2rem 2rem;
+  }
+  .float-still-right .img-placeholder { aspect-ratio: 16/10; }
+
+  /* ══ TRAIT LAYOUT ══ */
+  /* Each trait: full-width header bar + body with optional image */
+  .trait-block {
+    margin: 2.2rem 0;
+    border: 1px solid var(--rule);
+    background: var(--concrete);
+    position: relative;
+    overflow: hidden;
+  }
+  .trait-block::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+  }
+  .trait-01::before { background: var(--signal); }
+  .trait-02::before { background: var(--amber); }
+  .trait-03::before { background: var(--warn); }
+  .trait-04::before { background: var(--purple); }
+
+  .trait-header {
+    display: flex; align-items: center; gap: 1.2rem;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--rule);
+    background: var(--slab);
+  }
+  .trait-num {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.2em;
+    text-transform: uppercase; white-space: nowrap;
+    padding: 0.18rem 0.5rem;
+    border: 1px solid;
+  }
+  .trait-01 .trait-num { color: var(--signal); border-color: var(--signal-dim); background: var(--signal-glow); }
+  .trait-02 .trait-num { color: var(--amber);  border-color: var(--amber);      background: var(--amber-dim); }
+  .trait-03 .trait-num { color: var(--warn);   border-color: var(--warn);       background: var(--warn-dim); }
+  .trait-04 .trait-num { color: var(--purple); border-color: var(--purple);     background: var(--purple-dim); }
+
+  .trait-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.15rem; font-weight: 700;
+    color: var(--white); text-transform: uppercase;
+    letter-spacing: 0.05em; line-height: 1.1;
+  }
+
+  /* Body: text column + image column */
+  .trait-body {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 0;
+  }
+  .trait-body.image-left {
+    grid-template-columns: 280px 1fr;
+  }
+  .trait-text {
+    padding: 1.5rem 1.8rem;
+  }
+  .trait-text p { font-size: 0.9rem; line-height: 1.7; }
+  .trait-image {
+    border-left: 1px solid var(--rule);
+    display: flex; flex-direction: column;
+  }
+  .trait-body.image-left .trait-image {
+    border-left: none;
+    border-right: 1px solid var(--rule);
+    order: -1;
+  }
+  .trait-image .img-placeholder {
+    flex: 1; border: none; min-height: 180px;
+  }
+
+  /* ══ FILM EXAMPLES ROW ══ */
+  .film-examples {
+    display: flex; flex-direction: column; gap: 0.4rem;
+    margin-top: 0.9rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid var(--rule);
+  }
+  .film-ex {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.75rem; color: var(--muted);
+    letter-spacing: 0.08em; line-height: 1.6;
+  }
+  .film-ex strong { font-weight: 400; }
+  .trait-01 .film-ex strong { color: var(--signal); }
+  .trait-02 .film-ex strong { color: var(--amber); }
+  .trait-03 .film-ex strong { color: var(--warn); }
+  .trait-04 .film-ex strong { color: var(--purple); }
+
+  /* ══ COMPARISON TABLE ══ */
+  .comparison-wrap {
+    margin: 2rem 0;
+    border: 1px solid var(--rule);
+    overflow-x: auto;
+  }
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.84rem;
+  }
+  .comparison-table th {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--signal);
+    background: var(--slab);
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid var(--rule);
+    text-align: left; font-weight: 400;
+    white-space: nowrap;
+  }
+  .comparison-table th:not(:first-child) { border-left: 1px solid var(--rule); }
+  .comparison-table td {
+    padding: 0.8rem 1rem;
+    color: var(--muted); line-height: 1.5;
+    vertical-align: top;
+    border-bottom: 1px solid var(--rule);
+  }
+  .comparison-table td:not(:first-child) { border-left: 1px solid var(--rule); }
+  .comparison-table tr:last-child td { border-bottom: none; }
+  .comparison-table tr:hover td { background: var(--slab); }
+  .comparison-table .char-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.88rem; font-weight: 700;
+    color: var(--white); text-transform: uppercase;
+    letter-spacing: 0.05em; white-space: nowrap;
+  }
+  .comparison-table em { color: var(--amber); font-style: normal;
+    font-family: 'Share Tech Mono', monospace; font-size: 0.78rem; }
+
+  /* ══ PANEL ══ */
+  .panel {
+    background: var(--concrete);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--signal-dim);
+    padding: 1.4rem 1.8rem; margin: 1.5rem 0;
+  }
+  .panel-warn { border-left-color: var(--warn); }
+  .panel-warn h3 { color: var(--warn); }
+
+  /* ══ ACTIVITY WRAPPER ══ */
+  .activity-section {
+    margin: 3rem 0;
+    border: 1px solid var(--rule);
+    background: var(--concrete);
+    position: relative; overflow: hidden;
+  }
+  .activity-section::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--purple), transparent);
+  }
+  .activity-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--rule);
+    display: flex; align-items: center; gap: 1rem;
+    background: var(--slab);
+  }
+  .activity-badge {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.18em;
+    text-transform: uppercase; padding: 0.2rem 0.6rem;
+    border: 1px solid var(--purple);
+    color: var(--purple); background: var(--purple-dim);
+    white-space: nowrap;
+  }
+  .activity-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem; font-weight: 600;
+    color: var(--white); text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .activity-body { padding: 1.8rem; }
+  .activity-prompt {
+    font-size: 0.9rem; color: var(--ash);
+    margin-bottom: 1.8rem; line-height: 1.7;
+  }
+
+  /* ══ EVALUATOR CARDS ══ */
+  .eval-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-bottom: 1.5rem;
+  }
+  .eval-card {
+    background: var(--slab);
+    display: flex; flex-direction: column;
+    transition: background 0.15s;
+  }
+  .eval-card-header {
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid var(--rule);
+    background: var(--concrete);
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .eval-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .eval-source {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem; color: var(--signal);
+    letter-spacing: 0.1em; text-transform: uppercase;
+    margin-left: auto; white-space: nowrap;
+  }
+  .eval-card .img-placeholder {
+    aspect-ratio: 16/9; border: none;
+    border-bottom: 1px solid var(--rule);
+  }
+  .eval-card-body {
+    padding: 1rem 1.1rem;
+    flex: 1;
+  }
+  .eval-char-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem; font-weight: 700;
+    color: var(--white); text-transform: uppercase;
+    letter-spacing: 0.06em; margin-bottom: 0.5rem;
+  }
+  .eval-card-body p {
+    font-size: 0.82rem; color: var(--muted);
+    line-height: 1.55; margin-bottom: 0;
+  }
+
+  /* Q row */
+  .eval-q {
+    padding: 0.9rem 1.1rem;
+    border-top: 1px solid var(--rule);
+    background: var(--concrete);
+  }
+  .eval-q-label {
+    font-size: 0.78rem; color: var(--ash);
+    margin-bottom: 0.6rem; line-height: 1.5;
+  }
+
+  /* Radio buttons */
+  .radio-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 0.6rem; }
+  .radio-option {
+    display: flex; align-items: flex-start; gap: 0.5rem;
+    cursor: pointer;
+  }
+  .radio-option input[type="radio"] { display: none; }
+  .radio-custom {
+    width: 12px; height: 12px; min-width: 12px;
+    border: 1px solid var(--rule);
+    background: var(--panel-bg);
+    margin-top: 3px;
+    position: relative;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .radio-option input:checked ~ .radio-custom {
+    border-color: var(--purple);
+    background: var(--purple-dim);
+  }
+  .radio-option input:checked ~ .radio-custom::after {
+    content: '';
+    position: absolute; inset: 2px;
+    background: var(--purple);
+  }
+  .radio-option-text {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.75rem; color: var(--muted);
+    letter-spacing: 0.08em; line-height: 1.5;
+    cursor: pointer;
+  }
+  .radio-option:hover .radio-option-text { color: var(--ash); }
+
+  /* Trait select */
+  .trait-select {
+    width: 100%;
+    background: var(--panel-bg);
+    border: 1px solid var(--rule); color: var(--ash);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.75rem; letter-spacing: 0.06em;
+    padding: 0.5rem 0.6rem;
+    appearance: none; cursor: pointer; outline: none;
+    transition: border-color 0.2s; margin-top: 0.4rem;
+    display: none;
+  }
+  .trait-select.visible { display: block; }
+  .trait-select:focus { border-color: var(--signal); }
+  .trait-select option { background: var(--slab); }
+  .trait-select-label {
+    font-size: 0.78rem; color: var(--muted);
+    margin-bottom: 0.3rem; display: none;
+  }
+  .trait-select-label.visible { display: block; }
+
+  /* Feedback per card */
+  .eval-feedback {
+    display: none;
+    padding: 0.7rem 1.1rem;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.75rem; letter-spacing: 0.07em;
+    border-top: 1px solid var(--rule); line-height: 1.7;
+  }
+  .eval-card.correct   .eval-feedback { display: block; color: var(--green);  background: var(--green-dim); }
+  .eval-card.incorrect .eval-feedback { display: block; color: var(--warn);   background: var(--warn-dim); }
+  .eval-card.partial   .eval-feedback { display: block; color: var(--amber);  background: var(--amber-dim); }
+
+  /* ══ SUBMIT / SCORE ══ */
+  .activity-footer {
+    padding: 0 1.8rem 1.8rem;
+    display: flex; align-items: center; gap: 1.2rem;
+  }
+  .submit-btn {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.85rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--void); background: var(--purple);
+    border: none; padding: 0.7rem 1.8rem;
+    cursor: pointer; transition: background 0.15s;
+  }
+  .submit-btn:hover { background: var(--white); }
+  .score-display {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem; color: var(--muted);
+    letter-spacing: 0.1em; display: none;
+  }
+  .score-display.visible { display: block; }
+  .score-display .score-val { color: var(--purple); font-size: 1rem; }
+  .reset-btn {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem; color: var(--muted);
+    letter-spacing: 0.12em; text-transform: uppercase;
+    background: none; border: none; cursor: pointer;
+    text-decoration: underline; text-underline-offset: 3px;
+  }
+  .reset-btn:hover { color: var(--ash); }
+
+  /* ══ RESPONSIVE ══ */
+  @media (max-width: 760px) {
+    .hero-title-block { padding: 2rem 1.5rem; }
+    .page-wrap { padding: 0 1.25rem 4rem; }
+    .trait-body, .trait-body.image-left { grid-template-columns: 1fr; }
+    .trait-image { border-left: none !important; border-right: none !important; border-top: 1px solid var(--rule); order: 1 !important; }
+    .eval-grid { grid-template-columns: 1fr; }
+    .float-still-left, .float-still-right { float: none; width: 100%; margin: 0 0 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <!-- Letterbox hero still -->
+  <div class="hero-still" style="background-image:url('BRDystopiaPNG.png');background-size:cover;background-position:center 60%;"></div>
+  <div class="hero-title-block">
+    <p class="hero-tag">ENC 1102 &nbsp;·&nbsp; MODULE SEVEN &nbsp;·&nbsp; DYSTOPIAN LITERATURE &amp; FILM</p>
+    <h1>
+      <span class="dim">The</span><br>
+      Dystopian<br>
+      <span class="accent">Protagonist</span>
+    </h1>
+    <p class="hero-sub">The figure who sees what the system has trained everyone else not to notice — and what it costs them to look.</p>
+    <div class="hero-bar"></div>
+  </div>
+</header>
+
+<main class="page-wrap">
+
+  <!-- ══ SEC 01: INTRO ══ -->
+  <section>
+    <div class="section-head">
+      <span class="section-id">SEC·01</span>
+      <h2>Who Is the Dystopian Protagonist?</h2>
+    </div>
+
+    <div class="float-wrap">
+      <div class="float-still-right">
+        <div class="img-placeholder">
+          <div class="img-ph-text">
+            <span class="ph-title">Winston Smith — Nineteen Eighty-Four</span>
+            <span class="ph-year">1984 film adaptation or stage production</span>
+            Suggested: Winston alone, writing in diary / at telescreen
+          </div>
+        </div>
+        <div class="img-caption">Winston Smith · 1984 adaptation · Suggested still</div>
+      </div>
+
+      <p>Every dystopian narrative needs someone through whose eyes we can see the system clearly. That is the primary function of the dystopian protagonist — not to be heroic in a conventional sense, but to be <em>awake</em> in a world that has organized itself around sleep.</p>
+
+      <p>This character type recurs across the genre with remarkable consistency, from Zamyatin's D-503 in <em>We</em> (1924) to Mark Scout in <em>Severance</em> (2022). The details change — gender, class, era, medium — but the essential situation is the same: a person who begins to perceive the gap between what the society claims to be and what it actually is, and who cannot un-see it once they do.</p>
+
+      <p>Understanding this character type matters for your analysis because the protagonist is typically the lens through which the film or novel makes its argument. What they notice — and what they fail to notice — is where the thematic work happens.</p>
+    </div>
+
+    <div class="panel panel-warn">
+      <h3>A Note on "Hero"</h3>
+      <p>The dystopian protagonist is often described as a hero, but this can be misleading. Many do not succeed, do not survive, and do not change their world. Winston Smith is broken. Offred's fate is deliberately left ambiguous. K in <em>Blade Runner 2049</em> dies having accomplished something — but the film is careful about what. The genre is not interested in triumphant heroes. It is interested in the cost of clear-sightedness in a society built on illusion.</p>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ══ SEC 02: FOUR TRAITS ══ -->
+  <section>
+    <div class="section-head">
+      <span class="section-id">SEC·02</span>
+      <h2>Four Defining Traits</h2>
+    </div>
+    <p>The dystopian protagonist is defined by four recurring characteristics. They do not need to exhibit all four simultaneously — and the most interesting protagonists complicate or partially resist them. But taken together, these traits form the template against which every new example can be measured.</p>
+
+    <!-- TRAIT 01 -->
+    <div class="trait-block trait-01">
+      <div class="trait-header">
+        <span class="trait-num">TRAIT·01</span>
+        <span class="trait-title">Often Feels Trapped and Is Struggling to Escape</span>
+      </div>
+      <div class="trait-body">
+        <div class="trait-text">
+          <p>The dystopian protagonist exists within a system they cannot simply leave. The walls may be physical — a sealed city, a walled compound, a building they cannot exit — or psychological: conditioning, debt, surveillance, and social pressure that make escape feel impossible or unthinkable.</p>
+          <p>What distinguishes this character is that they feel the trap. Most citizens in a dystopian world do not — they have been conditioned, drugged, or simply distracted into contentment. The protagonist's awareness of confinement is itself a form of deviance.</p>
+          <div class="film-examples">
+            <div class="film-ex"><strong>Blade Runner 2049 (2017)</strong> — K's replicant status legally constrains his existence; he is property of the LAPD, unable to refuse orders or leave his assignment.</div>
+            <div class="film-ex"><strong>The Handmaid's Tale (Hulu, 2017–)</strong> — Offred is confined to a household, to a prescribed route, to a body that the state has claimed as a resource. Every attempted escape reshapes the walls rather than breaking them.</div>
+            <div class="film-ex"><strong>Never Let Me Go (2010)</strong> — Kathy, Ruth, and Tommy never attempt escape in any conventional sense. The film's devastating question is why — and what that passivity reveals about how thoroughly dehumanization can be internalized.</div>
+          </div>
+        </div>
+        <div class="trait-image">
+          <div class="img-placeholder">
+            <div class="img-ph-text">
+              <span class="ph-title">Blade Runner 2049 (2017)</span>
+              <span class="ph-year">dir. Denis Villeneuve</span>
+              Suggested: K in his apartment / receiving orders
+            </div>
+          </div>
+          <div class="img-caption">K trapped within system · Blade Runner 2049</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRAIT 02 -->
+    <div class="trait-block trait-02">
+      <div class="trait-header">
+        <span class="trait-num">TRAIT·02</span>
+        <span class="trait-title">Questions the Existing Social and Political System</span>
+      </div>
+      <div class="trait-body image-left">
+        <div class="trait-text">
+          <p>At some point — sometimes early, sometimes only after a triggering event — the protagonist begins to ask questions the system has designed to be unaskable. Why is this the rule? Who decided? What is on the other side of that wall? What happened before the current order?</p>
+          <p>This questioning is almost always presented as dangerous. In most dystopian narratives, curiosity itself is criminalized or pathologized — framed as mental illness, disloyalty, or evidence of corruption. The protagonist's willingness to keep asking is what separates them from the compliant population around them.</p>
+          <div class="film-examples">
+            <div class="film-ex"><strong>Severance (Apple TV+, 2022–)</strong> — Mark Scout begins the series as a model severed employee. His questioning is triggered by an anomaly — and once started, cannot be stopped even when the personal cost becomes clear.</div>
+            <div class="film-ex"><strong>The Matrix (1999)</strong> — Neo's questioning precedes the film's opening; he has already sensed that something is wrong with the world before Morpheus offers him the choice between the red and blue pill.</div>
+            <div class="film-ex"><strong>Nineteen Eighty-Four (1984 film)</strong> — Winston's diary is the first act of questioning: writing "DOWN WITH BIG BROTHER" is, in Oceania, already a capital crime.</div>
+          </div>
+        </div>
+        <div class="trait-image">
+          <div class="img-placeholder">
+            <div class="img-ph-text">
+              <span class="ph-title">Severance — Mark Scout</span>
+              <span class="ph-year">Apple TV+ · 2022</span>
+              Suggested: Mark at the severed floor threshold / discovery moment
+            </div>
+          </div>
+          <div class="img-caption">Mark Scout beginning to question · Severance</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRAIT 03 -->
+    <div class="trait-block trait-03">
+      <div class="trait-header">
+        <span class="trait-num">TRAIT·03</span>
+        <span class="trait-title">Believes Something Is Terribly Wrong with the Society</span>
+      </div>
+      <div class="trait-body">
+        <div class="trait-text">
+          <p>Questioning the system is one thing. Arriving at a moral conviction that it is fundamentally wrong is another — and this is the step that transforms a curious outsider into a true dystopian protagonist. They do not simply notice the gap between the society's claims and its reality; they feel it as a moral wound.</p>
+          <p>This conviction is what the antagonist forces of the dystopia will work hardest to destroy. Room 101 in <em>Nineteen Eighty-Four</em> is designed not to punish Winston but to make him believe, genuinely and permanently, that the Party is right. The final horror is not death but the erasure of the moral sense that made him dangerous.</p>
+          <div class="film-examples">
+            <div class="film-ex"><strong>Children of Men (2006)</strong> — Theo's moral reawakening is the film's narrative engine. He begins the story as a man who has given up on the world; the discovery of Kee forces him to rediscover the conviction that something worth protecting still exists.</div>
+            <div class="film-ex"><strong>The Hunger Games (2012)</strong> — Katniss's moral conviction is visible from the first scene: she volunteers to protect her sister from a system she knows is obscene, long before she becomes its symbolic resistance.</div>
+            <div class="film-ex"><strong>Sorry to Bother You (2018)</strong> — Cassius "Cash" Green's dawning horror at what WorryFree's labor system actually produces is the film's tonal pivot — from satirical comedy to genuine moral outrage.</div>
+          </div>
+        </div>
+        <div class="trait-image">
+          <div class="img-placeholder">
+            <div class="img-ph-text">
+              <span class="ph-title">Children of Men (2006)</span>
+              <span class="ph-year">dir. Alfonso Cuarón</span>
+              Suggested: Theo with Kee / the ceasefire scene
+            </div>
+          </div>
+          <div class="img-caption">Theo's moral reawakening · Children of Men</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRAIT 04 -->
+    <div class="trait-block trait-04">
+      <div class="trait-header">
+        <span class="trait-num">TRAIT·04</span>
+        <span class="trait-title">Helps the Audience Recognize the System's Negative Aspects</span>
+      </div>
+      <div class="trait-body image-left">
+        <div class="trait-text">
+          <p>This is the protagonist's most important structural function. Dystopian fiction makes its argument not through authorial commentary but through a character whose perception the audience is invited to share. We see the society as they see it — which means the audience's horror is calibrated to the protagonist's growing awareness.</p>
+          <p>This is why the dystopian protagonist so often begins as a partial insider: someone who has benefited from the system, accepted it, or simply never questioned it. Their journey from compliance to recognition mirrors the journey the author wants to take the reader or viewer on. We learn to see through their eyes — and through seeing, to judge.</p>
+          <div class="film-examples">
+            <div class="film-ex"><strong>Don't Look Up (2021)</strong> — Kate Dibiasky and Randall Mindy function as audience surrogates: initially rational voices, then increasingly unhinged ones, as the world's refusal to respond to evidence becomes more surreal than any science fiction premise.</div>
+            <div class="film-ex"><strong>Parasite (2019)</strong> — Though not a traditional dystopia, the Kim family's perspective on the Park household exposes the social order's hidden architecture in ways that work by exactly this mechanism: we see wealth through the eyes of those who exist to serve it.</div>
+            <div class="film-ex"><strong>Brave New World (Peacock, 2020)</strong> — Bernard Marx and Lenina Crowne function as contrasting audience surrogates: one who sees the World State's horror from the start, one who comes to it painfully and late, allowing the audience to track both responses simultaneously.</div>
+          </div>
+        </div>
+        <div class="trait-image">
+          <div class="img-placeholder">
+            <div class="img-ph-text">
+              <span class="ph-title">Don't Look Up (2021)</span>
+              <span class="ph-year">dir. Adam McKay · Netflix</span>
+              Suggested: Kate or Randall reacting to media dismissal
+            </div>
+          </div>
+          <div class="img-caption">Audience surrogate function · Don't Look Up</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ══ SEC 03: COMPARISON TABLE ══ -->
+  <section>
+    <div class="section-head">
+      <span class="section-id">SEC·03</span>
+      <h2>Protagonists at a Glance</h2>
+    </div>
+    <p>The table below maps six dystopian protagonists across the four traits. Notice how different protagonists weight the traits differently — and how some complicate or subvert them entirely.</p>
+
+    <div class="comparison-wrap">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Character / Work</th>
+            <th>Trapped?</th>
+            <th>Questions the System?</th>
+            <th>Moral Conviction?</th>
+            <th>Audience Lens?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="char-name">Winston Smith</span><br><em>1984 · Orwell / film 1984</em></td>
+            <td>Absolutely — Oceania has no exit</td>
+            <td>From page one; the diary is criminal thought</td>
+            <td>Yes — until Room 101 destroys it</td>
+            <td>Central — we see Oceania entirely through his decline</td>
+          </tr>
+          <tr>
+            <td><span class="char-name">Offred</span><br><em>Handmaid's Tale · Atwood / Hulu</em></td>
+            <td>Yes — body, movement, speech all controlled</td>
+            <td>Internally, constantly; externally, at great risk</td>
+            <td>Yes — preserved through memory and narration</td>
+            <td>Central — her unreliable narration makes the audience complicit in her survival strategies</td>
+          </tr>
+          <tr>
+            <td><span class="char-name">K (Joe)</span><br><em>Blade Runner 2049 · Villeneuve</em></td>
+            <td>Yes — legally property; replicant status defines his limits</td>
+            <td>Gradually — triggered by a buried memory that may not be his</td>
+            <td>Ambiguous — the film asks whether a replicant can have genuine moral conviction</td>
+            <td>Yes — but the film withholds his interiority, making the audience work for it</td>
+          </tr>
+          <tr>
+            <td><span class="char-name">Katniss Everdeen</span><br><em>The Hunger Games · Collins / films</em></td>
+            <td>Yes — district poverty, the reaping, the Games</td>
+            <td>Yes — but reluctantly; she resists the role of symbol</td>
+            <td>Intensely — though focused on individuals rather than systems</td>
+            <td>Yes — but the films complicate this by making her also a media spectacle</td>
+          </tr>
+          <tr>
+            <td><span class="char-name">Mark Scout</span><br><em>Severance · Apple TV+</em></td>
+            <td>Yes — architecturally and psychologically; "innie" cannot leave the building</td>
+            <td>Slowly — the severance makes even the impulse to question hard to access</td>
+            <td>Emerges across the season as layers of conditioning are stripped away</td>
+            <td>Yes — but the split-self premise means we also get the "outie" perspective, creating dramatic irony</td>
+          </tr>
+          <tr>
+            <td><span class="char-name">Kathy H.</span><br><em>Never Let Me Go · Ishiguro / film</em></td>
+            <td>Yes — but she never fully acknowledges it</td>
+            <td>Barely — and this is the point; her passivity is the film's central horror</td>
+            <td>Flickers — never fully ignites</td>
+            <td>Yes — her narration normalizes atrocity, making the audience's discomfort the film's argument</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="panel">
+      <h3>What the Table Reveals</h3>
+      <p>Kathy H. and Winston Smith represent two poles of the protagonist spectrum: one whose moral conviction is systematically destroyed, one who never fully develops it. Both are dystopian protagonists — but they produce opposite emotional effects. Kathy's passivity implicates the reader; Winston's defeat devastates them. When you analyze the film you've selected, consider where its protagonist falls on this spectrum — and what that placement implies about the film's argument.</p>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ══ ACTIVITY 3: PROTAGONIST EVALUATOR ══ -->
+  <div class="activity-section" id="activity3">
+    <div class="activity-header">
+      <span class="activity-badge">Activity 03</span>
+      <span class="activity-title">Is This a Dystopian Protagonist?</span>
+    </div>
+    <div class="activity-body">
+      <p class="activity-prompt">
+        Below are three characters from three different films. One is a clear example of the dystopian protagonist type as defined on this page. One is a <strong>partial match</strong> — they share some traits but are missing a defining one. One is <strong>not a dystopian protagonist</strong> — despite appearing in a dark or oppressive world.<br><br>
+        For each character: (1) decide whether they are a dystopian protagonist, and (2) if yes, identify which of the four traits is most clearly illustrated by their situation. Submit to see the full explanations.
+      </p>
+
+      <div class="eval-grid">
+
+        <!-- CARD A -->
+        <div class="eval-card" id="ec-a">
+          <div class="eval-card-header">
+            <span class="eval-label">Character A</span>
+            <span class="eval-source">The Dark Knight (2008)</span>
+          </div>
+          <div class="img-placeholder" style="aspect-ratio:16/9; border:none; border-bottom:1px solid var(--rule);">
+            <div class="img-ph-text">
+              <span class="ph-title">The Dark Knight (2008)</span>
+              <span class="ph-year">dir. Christopher Nolan · Warner Bros.</span>
+              Suggested: Batman surveilling Gotham / sonar sequence
+            </div>
+          </div>
+          <div class="eval-card-body">
+            <div class="eval-char-name">Batman / Bruce Wayne</div>
+            <p>Bruce Wayne lives in a corrupt city he is determined to save. He believes something is deeply wrong with Gotham's social order, operates outside the law to correct it, and places himself in mortal danger to protect others. He is surveilled by his enemies, constrained by his moral code, and ultimately alienated from the society he protects — forced to become a fugitive by the end of the film.</p>
+          </div>
+          <div class="eval-q">
+            <p class="eval-q-label">Is Bruce Wayne a dystopian protagonist?</p>
+            <div class="radio-group">
+              <label class="radio-option">
+                <input type="radio" name="ec-a" value="yes" onchange="showTraitSelect('a', this.value)">
+                <span class="radio-custom"></span>
+                <span class="radio-option-text">Yes — he fits the type</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="ec-a" value="partial" onchange="showTraitSelect('a', this.value)">
+                <span class="radio-custom"></span>
+                <span class="radio-option-text">Partial match — some traits, not all</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="ec-a" value="no" onchange="showTraitSelect('a', this.value)">
+                <span class="radio-custom"></span>
+                <span class="radio-option-text">No — not a dystopian protagonist</span>
+              </label>
+            </div>
+            <p class="trait-select-label" id="tsl-a">If yes — which trait is most clearly illustrated?</p>
+            <select class="trait-select" id="ts-a">
+              <option value="">— Select a trait —</option>
+              <option value="t1">TRAIT·01 — Trapped, struggling to escape</option>
+              <option value="t2">TRAIT·02 — Questions the social/political system</option>
+              <option value="t3">TRAIT·03 — Believes something is terribly wrong</option>
+              <option value="t4">TRAIT·04 — Helps audience recognize the system's flaws</option>
+            </select>
+          </div>
+          <div class="eval-feedback" id="ef-a"></div>
+        </div>
+
+        <!-- CARD B -->
+        <div class="eval-card" id="ec-b">
+          <div class="eval-card-header">
+            <span class="eval-label">Character B</span>
+            <span class="eval-source">WALL·E (2008)</span>
+          </div>
+          <div class="img-placeholder" style="aspect-ratio:16/9; border:none; border-bottom:1px solid var(--rule);">
+            <div class="img-ph-text">
+              <span class="ph-title">WALL·E (2008)</span>
+              <span class="ph-year">dir. Andrew Stanton · Pixar / Disney</span>
+              Suggested: WALL·E alone on Earth / humans on the Axiom
+            </div>
+          </div>
+          <div class="eval-card-body">
+            <div class="eval-char-name">WALL·E</div>
+            <p>WALL·E is a trash-compacting robot left alone on a ruined, uninhabitable Earth while humanity lives in passive consumption aboard a corporate space cruiser. He has developed curiosity, memory, and what appears to be emotional longing — traits not in his programming. When he follows EVE to the Axiom, his very presence — and his attachment to a living plant — disrupts the ship's system of managed contentment and ultimately triggers humanity's return to Earth.</p>
+          </div>
+          <div class="eval-q">
+            <p class="eval-q-label">Is WALL·E a dystopian protagonist?</p>
+            <div class="radio-group">
+              <label class="radio-option">
+                <input type="radio" name="ec-b" value="yes" onchange="showTraitSelect('b', this.value)">
+                <span class="radio-custom"></span>
+                <span class="radio-option-text">Yes — he fits the type</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="ec-b" value="partial" onchange="showTraitSelect('b', this.value)">
+                <span class="radio-custom"></span>
+                <span class="radio-option-text">Partial match — some traits, not all</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="ec-b" value="no" onchange="showTraitSelect('b', this.value)">
+                <span class="radio-custom"></span>
+                <span class="radio-option-text">No — not a dystopian protagonist</span>
+              </label>
+            </div>
+            <p class="trait-select-label" id="tsl-b">If yes — which trait is most clearly illustrated?</p>
+            <select class="trait-select" id="ts-b">
+              <option value="">— Select a trait —</option>
+              <option value="t1">TRAIT·01 — Trapped, struggling to escape</option>
+              <option value="t2">TRAIT·02 — Questions the social/political system</option>
+              <option value="t3">TRAIT·03 — Believes something is terribly wrong</option>
+              <option value="t4">TRAIT·04 — Helps audience recognize the system's flaws</option>
+            </select>
+          </div>
+          <div class="eval-feedback" id="ef-b"></div>
+        </div>
+
+        <!-- CARD C -->
+        <div class="eval-card" id="ec-c">
+          <div class="eval-card-header">
+            <span class="eval-label">Character C</span>
+            <span class="eval-source">Mad Max: Fury Road (2015)</span>
+          </div>
+          <div class="img-placeholder" style="aspect-ratio:16/9; border:none; border-bottom:1px solid var(--rule);">
+            <div class="img-ph-text">
+              <span class="ph-title">Mad Max: Fury Road (2015)</span>
+              <span class="ph-year">dir. George Miller · Warner Bros.</span>
+              Suggested: Max restrained on the War Rig / desert chase
+            </div>
+          </div>
+          <div class="eval-card-body">
+            <div class="eval-char-name">Max Rockatansky</div>
+            <p>Max exists in a post-apocalyptic wasteland controlled by Immortan Joe, a warlord who monopolizes water and breeds warriors. Max is initially captured, used as a living blood bag, and escapes by attaching himself to Furiosa's mission to free Immortan Joe's enslaved wives. He fights effectively throughout the film but articulates no ideology, delivers almost no dialogue, and shows little interest in the political dimensions of what he is doing. He survives. He moves on.</p>
+          </div>
+          <div class="eval-q">
+            <p class="eval-q-label">Is Max a dystopian protagonist?</p>
+            <div class="radio-group">
+              <label class="radio-option">
+                <input type="radio" name="ec-c" value="yes" onchange="showTraitSelect('c', this.value)">
+                <span class="radio-custom"></span>
+                <span class="radio-option-text">Yes — he fits the type</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="ec-c" value="partial" onchange="showTraitSelect('c', this.value)">
+                <span class="radio-custom"></span>
+                <span class="radio-option-text">Partial match — some traits, not all</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="ec-c" value="no" onchange="showTraitSelect('c', this.value)">
+                <span class="radio-custom"></span>
+                <span class="radio-option-text">No — not a dystopian protagonist</span>
+              </label>
+            </div>
+            <p class="trait-select-label" id="tsl-c">If yes — which trait is most clearly illustrated?</p>
+            <select class="trait-select" id="ts-c">
+              <option value="">— Select a trait —</option>
+              <option value="t1">TRAIT·01 — Trapped, struggling to escape</option>
+              <option value="t2">TRAIT·02 — Questions the social/political system</option>
+              <option value="t3">TRAIT·03 — Believes something is terribly wrong</option>
+              <option value="t4">TRAIT·04 — Helps audience recognize the system's flaws</option>
+            </select>
+          </div>
+          <div class="eval-feedback" id="ef-c"></div>
+        </div>
+
+      </div>
+    </div>
+    <div class="activity-footer">
+      <button class="submit-btn" onclick="submitActivity3()">Check Answers</button>
+      <div class="score-display" id="score3"></div>
+      <button class="reset-btn" onclick="resetActivity3()">Reset</button>
+    </div>
+  </div>
+
+</main>
+
+<script>
+  /* ══ SHOW/HIDE TRAIT SELECT ══ */
+  function showTraitSelect(id, value) {
+    const sel   = document.getElementById('ts-' + id);
+    const label = document.getElementById('tsl-' + id);
+    if (value === 'yes') {
+      sel.classList.add('visible');
+      label.classList.add('visible');
+    } else {
+      sel.classList.remove('visible');
+      label.classList.remove('visible');
+      sel.value = '';
+    }
+  }
+
+  /* ══ ANSWER KEY & EXPLANATIONS ══ */
+  const answers = {
+    a: {
+      correct: 'partial',
+      trait: null, // not applicable for partial
+      explanation: {
+        correct: `PARTIAL MATCH — correct. Batman fits TRAIT·03 (moral conviction) strongly, and arguably TRAIT·01 (constrained by his code and circumstances). But he is missing the two most critical traits: he does not use the social/political system as his lens (TRAIT·02), and he does not function as the audience's guide to recognizing the system's flaws (TRAIT·04). He is the solution to the problem, not the consciousness through which the problem is revealed. Gotham is corrupt, but Batman is not the character who helps us understand that corruption — he's the one trying to punch it. Compare him to K in Blade Runner 2049 or Mark Scout in Severance, whose perceptions are the films' primary analytical instruments.`,
+        incorrect_yes: `Not quite. Batman has moral conviction and faces constraints — but the dystopian protagonist's most essential function is to serve as the audience's lens into the system's hidden logic (TRAIT·04). Batman doesn't reveal the system to us; he fights it. He is a hero in a corrupt world, not a consciousness through which we learn to see that world differently. → Partial match.`,
+        incorrect_no: `Not quite either. Batman does share some traits — he operates in a society he believes is wrong, and he is constrained in meaningful ways. The answer is more nuanced than a flat "no." → Partial match.`
+      }
+    },
+    b: {
+      correct: 'yes',
+      trait: 't4',
+      explanation: {
+        correct_trait: `Correct on both counts. WALL·E is a genuine dystopian protagonist, and TRAIT·04 is his most essential function. He doesn't articulate his critique verbally — he can barely speak — but his presence on the Axiom, his curiosity, and his attachment to a living plant expose the managed passivity of the humans around him with devastating clarity. The audience sees the dystopia through what WALL·E finds beautiful and strange: his delight in an old film, his preservation of a single green shoot, his bewilderment at humans who have forgotten how to look up. This is TRAIT·04 operating at its purest — critique through perspective rather than through speech.`,
+        correct_wrong_trait: `WALL·E is correctly identified as a dystopian protagonist — but reconsider the trait. His most powerful function is not being trapped (TRAIT·01) or questioning the system in any conventional sense (TRAIT·02). His moral conviction (TRAIT·03) is real but implicit. What makes him work as a protagonist is that his alien perspective — curious, tender, confused by human passivity — is precisely how the audience sees the Axiom's horror. → TRAIT·04 is the primary one here.`,
+        incorrect: `WALL·E is actually a strong example of the type — specifically TRAIT·04. He can't articulate a political critique, but his perspective is the film's entire argument. His wonder at small things — a plant, a film clip, another robot's hand — reveals by contrast how completely the humans aboard the Axiom have surrendered curiosity, embodiment, and will. The audience sees the dystopia through his eyes. → Yes, with TRAIT·04 as the dominant characteristic.`
+      }
+    },
+    c: {
+      correct: 'partial',
+      trait: null,
+      explanation: {
+        correct: `PARTIAL MATCH — correct, and this is the activity's trickiest case. Max fits TRAIT·01 unmistakably — he is captured, enslaved as a blood bag, and escapes only by latching onto someone else's mission. He is trapped in a brutalizing world. But he lacks TRAIT·02 (he never questions the system; he simply endures it), TRAIT·03 (he expresses no moral conviction about Immortan Joe's regime — survival is his only stated interest), and arguably TRAIT·04 (Furiosa, not Max, is the film's true analytical lens on the dystopian order). This is actually why many critics argue Furiosa is the film's real protagonist, even though Max's name is in the title.`,
+        incorrect_yes: `Not quite. Max is physically trapped (TRAIT·01), yes — but consider TRAIT·02 through TRAIT·04. Does Max ever question the system? Does he articulate any conviction that it's wrong? Does the film use his perspective to reveal the dystopia's hidden logic? Largely, the answer is no. He survives; he fights; he moves on. Compare him to Furiosa, who has all four traits. → Partial match.`,
+        incorrect_no: `Not entirely — Max does fit TRAIT·01 quite clearly. He's captured, used as a blood bag, and escapes only by attaching himself to someone else's mission. The world constrains him physically and psychologically. But the other three traits are largely absent. → Partial match is the most precise answer.`
+      }
+    }
+  };
+
+  /* ══ SUBMIT ══ */
+  function submitActivity3() {
+    let scored = 0;
+    const ids = ['a','b','c'];
+
+    ids.forEach(id => {
+      const radios = document.querySelectorAll(`input[name="ec-${id}"]`);
+      let selected = '';
+      radios.forEach(r => { if (r.checked) selected = r.value; });
+      if (!selected) return;
+
+      const card = document.getElementById('ec-' + id);
+      const fb   = document.getElementById('ef-' + id);
+      const ans  = answers[id];
+      const traitSel = document.getElementById('ts-' + id).value;
+
+      card.classList.remove('correct','incorrect','partial');
+      fb.textContent = '';
+
+      if (id === 'b') {
+        // needs both correct answer AND correct trait
+        if (selected === 'yes' && traitSel === ans.trait) {
+          card.classList.add('correct');
+          fb.textContent = '✓ ' + ans.explanation.correct_trait;
+          scored++;
+        } else if (selected === 'yes' && traitSel && traitSel !== ans.trait) {
+          card.classList.add('partial');
+          fb.textContent = '◑ ' + ans.explanation.correct_wrong_trait;
+        } else if (selected !== 'yes') {
+          card.classList.add('incorrect');
+          fb.textContent = '✗ ' + ans.explanation.incorrect;
+        }
+      } else {
+        // a and c: just need the right category
+        if (selected === ans.correct) {
+          card.classList.add('correct');
+          scored++;
+          fb.textContent = '✓ ' + ans.explanation.correct;
+        } else if (selected === 'yes') {
+          card.classList.add('incorrect');
+          fb.textContent = '✗ ' + ans.explanation.incorrect_yes;
+        } else {
+          card.classList.add('incorrect');
+          fb.textContent = '✗ ' + ans.explanation.incorrect_no;
+        }
+      }
+    });
+
+    const display = document.getElementById('score3');
+    display.classList.add('visible');
+    const msg = scored === 3 ? ' — all correct'
+              : scored === 2 ? ' — nearly there; read the explanations carefully'
+              : ' — review the four traits above and try again';
+    display.innerHTML = `<span class="score-val">${scored}/3</span>${msg}`;
+  }
+
+  /* ══ RESET ══ */
+  function resetActivity3() {
+    ['a','b','c'].forEach(id => {
+      document.querySelectorAll(`input[name="ec-${id}"]`).forEach(r => r.checked = false);
+      document.getElementById('ec-' + id).classList.remove('correct','incorrect','partial');
+      document.getElementById('ef-' + id).textContent = '';
+      document.getElementById('ts-' + id).value = '';
+      document.getElementById('ts-' + id).classList.remove('visible');
+      document.getElementById('tsl-' + id).classList.remove('visible');
+    });
+    const d = document.getElementById('score3');
+    d.classList.remove('visible');
+    d.innerHTML = '';
+  }
+</script>
+</body>
+</html>
