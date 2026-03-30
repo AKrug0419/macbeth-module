@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module Seven Overview — Dystopian Literature &amp; Film | ENC 1102</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=Barlow:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+  /* ── TOKENS ── */
+  :root {
+    --void:        #0a0a0b;
+    --concrete:    #111114;
+    --slab:        #1a1a1e;
+    --panel:       #222228;
+    --surface:     #2c2c34;
+    --rule:        #3a3a44;
+    --mid:         #555560;
+    --muted:       #7a7a88;
+    --ash:         #a8a8b8;
+    --light:       #d0d0dc;
+    --white:       #e8e8f0;
+    --signal:      #00e5ff;
+    --signal-dim:  #007a8a;
+    --signal-glow: rgba(0,229,255,0.12);
+    --warn:        #ff4040;
+    --warn-dim:    rgba(255,64,64,0.12);
+    --amber:       #ffaa00;
+    --amber-dim:   rgba(255,170,0,0.10);
+    --green:       #00e676;
+    --green-dim:   rgba(0,230,118,0.10);
+    --grid-line:   rgba(255,255,255,0.03);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--void);
+    color: var(--ash);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  /* ── BACKGROUND GRID ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none; z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.07) 2px, rgba(0,0,0,0.07) 4px);
+    pointer-events: none; z-index: 0;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 520px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 4rem 4rem 3.5rem;
+    overflow: hidden;
+    background:
+      linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(10,10,11,0.93) 62%, var(--void) 100%),
+      url('BRDystopiaPNG.png') center 40% / cover no-repeat;
+    z-index: 1;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: 2rem; left: 2rem;
+    width: 60px; height: 60px;
+    border-top: 2px solid var(--signal);
+    border-left: 2px solid var(--signal);
+    opacity: 0.6;
+  }
+  .hero-scan {
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--signal), transparent);
+    animation: scan 4s ease-in-out infinite;
+    opacity: 0.5;
+  }
+  @keyframes scan {
+    0%   { top: 0%; opacity: 0; }
+    10%  { opacity: 0.5; }
+    90%  { opacity: 0.5; }
+    100% { top: 100%; opacity: 0; }
+  }
+  .hero-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.2em;
+    color: var(--signal); margin-bottom: 1.2rem;
+    position: relative; z-index: 1;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .hero-tag::before { content: '▶'; font-size: 0.5rem; }
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-weight: 900; color: var(--white);
+    line-height: 0.92; letter-spacing: -0.01em;
+    text-transform: uppercase; position: relative; z-index: 1;
+  }
+  .hero h1 .dim { color: var(--muted); font-weight: 300; }
+  .hero h1 .accent { color: var(--signal); }
+  .hero-sub {
+    font-family: 'Barlow', sans-serif; font-weight: 300; font-size: 1rem;
+    color: var(--muted); margin-top: 1.2rem; max-width: 560px;
+    position: relative; z-index: 1; letter-spacing: 0.02em;
+  }
+  .hero-credit {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem; color: var(--mid);
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-top: 0.6rem; position: relative; z-index: 1;
+  }
+  .hero-bar {
+    width: 100%; height: 1px;
+    background: linear-gradient(90deg, var(--signal), var(--rule), transparent);
+    margin-top: 2rem; position: relative; z-index: 1;
+  }
+
+  /* ── LAYOUT ── */
+  .page-wrap {
+    max-width: 900px; margin: 0 auto;
+    padding: 0 2rem 6rem; position: relative; z-index: 1;
+  }
+  .section-head {
+    display: flex; align-items: baseline; gap: 1.5rem;
+    margin-bottom: 1.4rem; margin-top: 3.5rem;
+  }
+  .section-id {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem; color: var(--signal); letter-spacing: 0.15em;
+    white-space: nowrap; padding: 0.2rem 0.5rem;
+    border: 1px solid var(--signal-dim); background: var(--signal-glow);
+    flex-shrink: 0;
+  }
+  h2 {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 1.8rem; font-weight: 700;
+    color: var(--white); text-transform: uppercase; letter-spacing: 0.04em; line-height: 1;
+  }
+  h3 {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 600;
+    color: var(--signal); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.5rem;
+  }
+  p { margin-bottom: 1rem; color: var(--ash); }
+  p:last-child { margin-bottom: 0; }
+  em { color: var(--light); font-style: italic; }
+  strong { color: var(--light); font-weight: 500; }
+
+  /* ── RULE ── */
+  .rule {
+    height: 1px; background: linear-gradient(90deg, var(--rule), transparent);
+    margin: 3rem 0; position: relative;
+  }
+  .rule::before {
+    content: '//'; position: absolute; left: 0; top: -10px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem; color: var(--muted); letter-spacing: 0.1em;
+  }
+
+  /* ── PANEL ── */
+  .panel {
+    background: var(--concrete); border: 1px solid var(--rule);
+    border-left: 3px solid var(--signal-dim); padding: 1.5rem 1.8rem; margin: 1.5rem 0;
+  }
+
+  /* ── OUTCOME LIST ── */
+  .outcome-list {
+    margin: 1.2rem 0; display: flex; flex-direction: column; gap: 1px;
+    border: 1px solid var(--rule); background: var(--rule);
+  }
+  .outcome-item {
+    display: flex; align-items: flex-start; gap: 1rem;
+    padding: 0.85rem 1.2rem; background: var(--concrete);
+  }
+  .outcome-bullet {
+    font-family: 'Share Tech Mono', monospace; font-size: 0.72rem;
+    color: var(--signal); letter-spacing: 0.1em; white-space: nowrap;
+    margin-top: 0.2rem; flex-shrink: 0;
+  }
+  .outcome-text { font-size: 0.93rem; color: var(--ash); line-height: 1.6; }
+
+  /* ── ACTIVITY GRID ── */
+  .activity-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 1.5rem 0;
+  }
+  .activity-cell {
+    background: var(--concrete); padding: 1.5rem 1.8rem; position: relative;
+  }
+  .activity-cell::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  }
+  .activity-read::before  { background: var(--signal); }
+  .activity-view::before  { background: var(--amber); }
+  .activity-label {
+    font-family: 'Share Tech Mono', monospace; font-size: 0.72rem;
+    letter-spacing: 0.18em; text-transform: uppercase; display: block; margin-bottom: 0.9rem;
+  }
+  .activity-read .activity-label { color: var(--signal); }
+  .activity-view .activity-label { color: var(--amber); }
+  .activity-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .activity-list li {
+    font-size: 0.88rem; color: var(--muted);
+    padding-left: 1rem; position: relative; line-height: 1.55;
+  }
+  .activity-list li::before {
+    content: '—'; position: absolute; left: 0;
+    font-family: 'Share Tech Mono', monospace; color: var(--mid); font-size: 0.72rem;
+  }
+  .activity-list li em { color: var(--light); }
+
+  /* ── WEEK BADGE ── */
+  .week-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-family: 'Share Tech Mono', monospace; font-size: 0.72rem;
+    color: var(--amber); letter-spacing: 0.12em; text-transform: uppercase;
+    border: 1px solid rgba(255,170,0,0.3); background: var(--amber-dim);
+    padding: 0.2rem 0.6rem; margin-bottom: 1rem;
+  }
+
+  /* ── ASSIGNMENT CARDS ── */
+  .assignment-list {
+    display: flex; flex-direction: column; gap: 1px;
+    background: var(--rule); border: 1px solid var(--rule); margin: 1.5rem 0;
+  }
+  .assignment-card {
+    background: var(--concrete); padding: 1.2rem 1.5rem;
+    display: flex; align-items: flex-start; gap: 1.4rem;
+  }
+  .assignment-num {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 2.2rem; font-weight: 900;
+    color: var(--signal-dim); line-height: 1; flex-shrink: 0; padding-top: 0.05rem;
+  }
+  .assignment-title {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700;
+    color: var(--white); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.3rem;
+  }
+  .assignment-title em { color: var(--light); font-style: italic; text-transform: none; }
+  .assignment-detail { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+
+  /* ── RESOURCE LIST ── */
+  .resource-list {
+    display: flex; flex-direction: column; gap: 1px;
+    background: var(--rule); border: 1px solid var(--rule); margin: 1.5rem 0;
+  }
+  a.resource-link {
+    background: var(--concrete); padding: 1rem 1.4rem;
+    display: flex; align-items: center; justify-content: space-between;
+    text-decoration: none; color: var(--ash);
+    transition: background 0.15s, color 0.15s;
+  }
+  a.resource-link:hover { background: var(--slab); color: var(--light); }
+  .resource-link-left { display: flex; align-items: center; gap: 1rem; }
+  .resource-tag {
+    font-family: 'Share Tech Mono', monospace; font-size: 0.72rem;
+    color: var(--signal); letter-spacing: 0.1em; white-space: nowrap; flex-shrink: 0;
+  }
+  .resource-name {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 0.95rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .resource-arrow {
+    font-family: 'Share Tech Mono', monospace; font-size: 0.8rem;
+    color: var(--muted); flex-shrink: 0; transition: color 0.15s;
+  }
+  a.resource-link:hover .resource-arrow { color: var(--signal); }
+  .resource-contact {
+    background: var(--concrete); padding: 1rem 1.4rem;
+    display: flex; align-items: center; gap: 0.8rem;
+    border-top: 1px solid var(--rule);
+  }
+  .contact-label {
+    font-family: 'Share Tech Mono', monospace; font-size: 0.72rem;
+    color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .resource-contact a {
+    color: var(--signal); text-decoration: none; font-size: 0.9rem;
+  }
+  .resource-contact a:hover { text-decoration: underline; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .hero { padding: 2rem 1.5rem 2.5rem; min-height: 420px; }
+    .page-wrap { padding: 0 1.25rem 4rem; }
+    .activity-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<header class="hero">
+  <div class="hero-scan" aria-hidden="true"></div>
+  <p class="hero-tag">ENC 1102 &nbsp;·&nbsp; MODULE SEVEN &nbsp;·&nbsp; OVERVIEW</p>
+  <h1>
+    <span class="dim">Module Seven:</span><br>
+    Dystopian<br>
+    <span class="accent">Literature</span> &amp; Film
+  </h1>
+  <p class="hero-sub">Exploring how dystopian narratives imagine oppression, resistance, and the cost of a perfect society — in literature and on screen.</p>
+  <p class="hero-credit">Blade Runner 2049 (Alcon Entertainment)</p>
+  <div class="hero-bar" aria-hidden="true"></div>
+</header>
+
+<main class="page-wrap">
+
+  <!-- ══ ABOUT ══ -->
+  <section aria-labelledby="about-heading">
+    <div class="section-head">
+      <span class="section-id" aria-hidden="true">MOV·01</span>
+      <h2 id="about-heading">About This Module</h2>
+    </div>
+    <p>This module is devoted to studying a classic literary genre: <strong>dystopian literature</strong>. We'll explore this popular style of narrative by viewing and then analyzing a film — either <em>The Matrix</em>, available via one of the college's databases, or a movie or TV show of your own choosing.</p>
+    <div class="panel">
+      <h3>What Is Dystopian Literature?</h3>
+      <p>Dystopian narratives imagine societies that have gone wrong — often catastrophically so. Where <em>utopian</em> fiction dreams of a perfect world, dystopian fiction exposes how easily the pursuit of perfection produces oppression. Citizens are controlled, individuality is suppressed, and the truth is hidden. The genre has been one of the most powerful vehicles for social criticism in the history of both literature and film.</p>
+    </div>
+  </section>
+
+  <div class="rule" aria-hidden="true"></div>
+
+  <!-- ══ COURSE LEARNING OUTCOMES ══ -->
+  <section aria-labelledby="clo-heading">
+    <div class="section-head">
+      <span class="section-id" aria-hidden="true">MOV·02</span>
+      <h2 id="clo-heading">Course Learning Outcomes</h2>
+    </div>
+    <p>This module addresses the following course-level learning outcomes for ENC 1102:</p>
+    <div class="outcome-list">
+      <div class="outcome-item">
+        <span class="outcome-bullet" aria-hidden="true">CLO·01</span>
+        <span class="outcome-text">Apply conventions aligned to varied writing situations</span>
+      </div>
+      <div class="outcome-item">
+        <span class="outcome-bullet" aria-hidden="true">CLO·02</span>
+        <span class="outcome-text">Apply critical reading skills</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule" aria-hidden="true"></div>
+
+  <!-- ══ MODULE OBJECTIVES ══ -->
+  <section aria-labelledby="obj-heading">
+    <div class="section-head">
+      <span class="section-id" aria-hidden="true">MOV·03</span>
+      <h2 id="obj-heading">Module Objectives</h2>
+    </div>
+    <p>By the end of this module, you will be able to do the following:</p>
+    <div class="outcome-list">
+      <div class="outcome-item">
+        <span class="outcome-bullet" aria-hidden="true">OBJ·01</span>
+        <span class="outcome-text">Identify characteristics of dystopian societies in a film</span>
+      </div>
+      <div class="outcome-item">
+        <span class="outcome-bullet" aria-hidden="true">OBJ·02</span>
+        <span class="outcome-text">Identify characteristics of dystopian protagonists in a film</span>
+      </div>
+      <div class="outcome-item">
+        <span class="outcome-bullet" aria-hidden="true">OBJ·03</span>
+        <span class="outcome-text">Explain how dystopian characteristics function within a film narrative</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule" aria-hidden="true"></div>
+
+  <!-- ══ LEARNING ACTIVITIES ══ -->
+  <section aria-labelledby="activities-heading">
+    <div class="section-head">
+      <span class="section-id" aria-hidden="true">MOV·04</span>
+      <h2 id="activities-heading">Learning Activities</h2>
+    </div>
+    <p>This module includes two types of learning activities. Complete both before working on the assignment.</p>
+    <div class="activity-grid">
+      <div class="activity-cell activity-read">
+        <span class="activity-label">Critical Reading</span>
+        <ul class="activity-list">
+          <li>Key characteristics of dystopian narratives, dystopian methods of control, and dystopian protagonists</li>
+        </ul>
+      </div>
+      <div class="activity-cell activity-view">
+        <span class="activity-label">Critical Viewing</span>
+        <ul class="activity-list">
+          <li>TedEd video — origins and characteristics of dystopian literature</li>
+          <li><em>Minority Report</em> — in-class screening with pause-point activities</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule" aria-hidden="true"></div>
+
+  <!-- ══ ASSIGNMENTS ══ -->
+  <section aria-labelledby="assignments-heading">
+    <div class="section-head">
+      <span class="section-id" aria-hidden="true">MOV·05</span>
+      <h2 id="assignments-heading">Assignments</h2>
+    </div>
+    <p class="week-badge">⏱ Week 12</p>
+    <p>This module covers Week 12. There are two assignments:</p>
+    <div class="assignment-list">
+      <div class="assignment-card">
+        <div class="assignment-num" aria-hidden="true">01</div>
+        <div>
+          <div class="assignment-title">In-Class Assignments: <em>Minority Report</em></div>
+          <div class="assignment-detail">Pause-point analysis activities completed during in-class screening</div>
+        </div>
+      </div>
+      <div class="assignment-card">
+        <div class="assignment-num" aria-hidden="true">02</div>
+        <div>
+          <div class="assignment-title">The Dystopian Literature &amp; Cinema Assignment</div>
+          <div class="assignment-detail">Three-paragraph written analysis of dystopian characteristics in a film of your choice — 350–400 words total</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule" aria-hidden="true"></div>
+
+  <!-- ══ RESOURCES ══ -->
+  <section aria-labelledby="resources-heading">
+    <div class="section-head">
+      <span class="section-id" aria-hidden="true">MOV·06</span>
+      <h2 id="resources-heading">Resources</h2>
+    </div>
+    <p>All module resources are listed below. Review each before starting the assignment.</p>
+    <nav aria-label="Module resources">
+      <div class="resource-list">
+        <a class="resource-link" href="dystopia-characteristics.html">
+          <div class="resource-link-left">
+            <span class="resource-tag">READING·01</span>
+            <span class="resource-name">Characteristics of Dystopian Societies</span>
+          </div>
+          <span class="resource-arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="resource-link" href="dystopia-protagonist.html">
+          <div class="resource-link-left">
+            <span class="resource-tag">READING·02</span>
+            <span class="resource-name">Characteristics of Dystopian Protagonists</span>
+          </div>
+          <span class="resource-arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="resource-link" href="dystopia-cinema.html">
+          <div class="resource-link-left">
+            <span class="resource-tag">READING·03</span>
+            <span class="resource-name">A History of Dystopian Cinema</span>
+          </div>
+          <span class="resource-arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="resource-link" href="dystopia-history.html">
+          <div class="resource-link-left">
+            <span class="resource-tag">READING·04</span>
+            <span class="resource-name">A History of Dystopian Literature</span>
+          </div>
+          <span class="resource-arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="resource-link" href="minority-report-installation.html">
+          <div class="resource-link-left">
+            <span class="resource-tag">ACTIVITY·01</span>
+            <span class="resource-name">Minority Report — In-Class Activities</span>
+          </div>
+          <span class="resource-arrow" aria-hidden="true">→</span>
+        </a>
+        <div class="resource-contact">
+          <span class="contact-label">Instructor ·</span>
+          <a href="mailto:cholliday@mail.valenciacollege.edu">cholliday@mail.valenciacollege.edu</a>
+        </div>
+      </div>
+    </nav>
+  </section>
+
+</main>
+</body>
+</html>

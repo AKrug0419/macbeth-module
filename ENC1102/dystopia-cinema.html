@@ -101,8 +101,8 @@
   }
   .still-placeholder-icon {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 0.6rem;
-    color: var(--mid);
+    font-size: 0.72rem;
+    color: var(--muted);
     letter-spacing: 0.2em;
     text-transform: uppercase;
     text-align: center;
@@ -130,7 +130,7 @@
   }
   .hero-tag {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 0.62rem;
+    font-size: 0.72rem;
     letter-spacing: 0.2em;
     color: var(--signal);
     margin-bottom: 1rem;
@@ -148,7 +148,7 @@
     text-transform: uppercase;
     letter-spacing: -0.01em;
   }
-  .hero h1 .dim  { color: var(--mid); font-weight: 300; }
+  .hero h1 .dim  { color: var(--muted); font-weight: 300; }
   .hero h1 .accent { color: var(--signal); }
   .hero-sub {
     font-size: 1rem;
@@ -182,7 +182,7 @@
   }
   .section-id {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 0.58rem;
+    font-size: 0.72rem;
     color: var(--signal);
     letter-spacing: 0.15em;
     white-space: nowrap;
@@ -225,7 +225,7 @@
     left: 0; top: -10px;
     font-family: 'Share Tech Mono', monospace;
     font-size: 0.6rem;
-    color: var(--mid);
+    color: var(--muted);
     letter-spacing: 0.1em;
   }
 
@@ -249,8 +249,8 @@
   }
   .img-placeholder-text {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 0.58rem;
-    color: var(--mid);
+    font-size: 0.72rem;
+    color: var(--muted);
     letter-spacing: 0.18em;
     text-transform: uppercase;
     text-align: center;
@@ -260,19 +260,19 @@
   }
   .img-placeholder-text .film-title {
     display: block;
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     color: var(--muted);
     margin-bottom: 0.2rem;
   }
   .img-placeholder-text .film-year {
     display: block;
     color: var(--signal);
-    font-size: 0.65rem;
+    font-size: 0.72rem;
   }
   .img-caption {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 0.58rem;
-    color: var(--mid);
+    font-size: 0.72rem;
+    color: var(--muted);
     letter-spacing: 0.1em;
     text-transform: uppercase;
     padding: 0.5rem 0.75rem;
@@ -410,8 +410,8 @@
   .timeline-title em { font-style: italic; color: var(--light); }
   .timeline-dir {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 0.58rem;
-    color: var(--mid);
+    font-size: 0.75rem;
+    color: var(--muted);
     letter-spacing: 0.1em;
     text-transform: uppercase;
     margin-bottom: 0.35rem;
@@ -427,7 +427,7 @@
   .sig-tag {
     display: inline-block;
     font-family: 'Share Tech Mono', monospace;
-    font-size: 0.52rem;
+    font-size: 0.72rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     padding: 0.15rem 0.4rem;
@@ -436,7 +436,7 @@
     border: 1px solid;
   }
   .sig-tag.tech    { color: #60a080; border-color: #60a080; }
-  .sig-tag.power   { color: #a06060; border-color: #a06060; }
+  .sig-tag.power   { color: #c07070; border-color: #c07070; }
   .sig-tag.gender  { color: #a080a0; border-color: #a080a0; }
   .sig-tag.climate { color: #8aaa60; border-color: #8aaa60; }
   .sig-tag.bio     { color: #60a0a0; border-color: #60a0a0; }
@@ -454,7 +454,7 @@
   }
   .concept-label {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 0.58rem;
+    font-size: 0.72rem;
     color: var(--warn);
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -500,7 +500,7 @@
   }
   .stream-card-meta {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 0.55rem;
+    font-size: 0.72rem;
     color: var(--amber);
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -533,14 +533,7 @@
 <!-- ══ HERO ══ -->
 <header class="hero">
   <!-- Full-bleed cinematic letterbox placeholder -->
-  <div class="hero-still">
-    <div class="still-placeholder-icon">
-      <span>▭</span>
-      HERO STILL — WIDE LETTERBOX FORMAT (21:8)<br>
-      Suggested: iconic wide shot from a landmark dystopian film<br>
-      <em style="color:var(--signal-dim);">e.g. Metropolis city skyline · Children of Men long take · Blade Runner 2049 cityscape</em>
-    </div>
-  </div>
+  <div class="hero-still" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/2/2f/Metropolis_%281927%29_-_US_Lobby_Card.jpg');background-size:cover;background-position:center;"></div>
   <div class="hero-title-block">
     <p class="hero-tag">ENC 1102 &nbsp;·&nbsp; MODULE SEVEN &nbsp;·&nbsp; DYSTOPIAN LITERATURE &amp; FILM</p>
     <h1>
@@ -576,13 +569,7 @@
 
     <div class="float-wrap">
       <div class="float-still">
-        <div class="img-placeholder">
-          <div class="img-placeholder-text">
-            <span class="film-title">Metropolis (1927)</span>
-            <span class="film-year">dir. Fritz Lang</span>
-            Suggested still: the worker city below / the Machine-Man
-          </div>
-        </div>
+        <div class="img-placeholder" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/9/97/Metropolis_%28German_three-sheet_poster%29.jpg');background-size:cover;background-position:center top;"></div>
         <div class="img-caption">Fritz Lang · Metropolis (1927) · UFA</div>
       </div>
 
@@ -617,23 +604,11 @@
 
       <div class="still-stack">
         <div>
-          <div class="img-placeholder">
-            <div class="img-placeholder-text">
-              <span class="film-title">Invasion of the Body Snatchers</span>
-              <span class="film-year">1956 · dir. Don Siegel</span>
-              Suggested: pod-people scene / paranoia moment
-            </div>
-          </div>
+          <div class="img-placeholder" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/1/18/Invasion_of_the_Body_Snatchers_%281956_poster%29.jpg');background-size:cover;background-position:center top;"></div>
           <div class="img-caption">Body Snatchers · 1956</div>
         </div>
         <div>
-          <div class="img-placeholder">
-            <div class="img-placeholder-text">
-              <span class="film-title">Dr. Strangelove</span>
-              <span class="film-year">1964 · dir. Stanley Kubrick</span>
-              Suggested: War Room / Slim Pickens riding bomb
-            </div>
-          </div>
+          <div class="img-placeholder" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/e/e6/Dr._Strangelove_poster.jpg');background-size:cover;background-position:center top;"></div>
           <div class="img-caption">Dr. Strangelove · 1964</div>
         </div>
       </div>
@@ -651,13 +626,7 @@
 
     <div class="float-wrap">
       <div class="float-still">
-        <div class="img-placeholder">
-          <div class="img-placeholder-text">
-            <span class="film-title">A Clockwork Orange (1971)</span>
-            <span class="film-year">dir. Stanley Kubrick</span>
-            Suggested: Ludovico technique / droogs
-          </div>
-        </div>
+        <div class="img-placeholder" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/7/73/A_Clockwork_Orange_%281971%29.png');background-size:cover;background-position:center top;"></div>
         <div class="img-caption">A Clockwork Orange · Kubrick · 1971</div>
       </div>
 
@@ -686,14 +655,8 @@
     <!-- Asymmetric: large still left, text right -->
     <div class="asymmetric">
       <div class="asymmetric-img">
-        <div class="img-placeholder">
-          <div class="img-placeholder-text">
-            <span class="film-title">Blade Runner (1982)</span>
-            <span class="film-year">dir. Ridley Scott</span>
-            Suggested: neon-drenched cityscape /<br>Deckard and Roy Batty rooftop
-          </div>
-        </div>
-        <div class="img-caption" style="border-top:1px solid var(--rule); padding:0.5rem 0.75rem; font-family:'Share Tech Mono',monospace; font-size:0.58rem; color:var(--mid); letter-spacing:0.1em; text-transform:uppercase;">Blade Runner · Ridley Scott · 1982 · Warner Bros.</div>
+        <div class="img-placeholder" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/9/9f/Blade_Runner_%281982_poster%29.png');background-size:cover;background-position:center top;"></div>
+        <div class="img-caption" style="border-top:1px solid var(--rule); padding:0.5rem 0.75rem; font-family:'Share Tech Mono',monospace; font-size:0.72rem; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase;">Blade Runner · Ridley Scott · 1982 · Warner Bros.</div>
       </div>
       <div class="asymmetric-text">
         <h3>The Cyberpunk Inflection</h3>
@@ -714,13 +677,7 @@
 
     <div class="float-wrap">
       <div class="float-still">
-        <div class="img-placeholder">
-          <div class="img-placeholder-text">
-            <span class="film-title">Children of Men (2006)</span>
-            <span class="film-year">dir. Alfonso Cuarón</span>
-            Suggested: Bexhill battle sequence /<br>refugee camp arrival
-          </div>
-        </div>
+        <div class="img-placeholder" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/f/fc/Children_of_men_ver4.jpg');background-size:cover;background-position:center top;"></div>
         <div class="img-caption">Children of Men · Cuarón · 2006 · Universal</div>
       </div>
 
@@ -751,13 +708,7 @@
     <div class="streaming-grid">
 
       <div class="stream-card">
-        <div class="img-placeholder">
-          <div class="img-placeholder-text">
-            <span class="film-title">Severance</span>
-            <span class="film-year">2022–present · Apple TV+</span>
-            Suggested: Lumon Industries office /<br>the severed floor
-          </div>
-        </div>
+        <div class="img-placeholder" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/AdamScott.jpg/600px-AdamScott.jpg');background-size:cover;background-position:center 40%;"></div>
         <div class="stream-card-body">
           <div class="stream-card-title">Severance</div>
           <div class="stream-card-meta">Apple TV+ · 2022–present</div>
@@ -768,13 +719,7 @@
       </div>
 
       <div class="stream-card">
-        <div class="img-placeholder">
-          <div class="img-placeholder-text">
-            <span class="film-title">Don't Look Up</span>
-            <span class="film-year">2021 · Netflix</span>
-            Suggested: press conference scene /<br>media circus moment
-          </div>
-        </div>
+        <div class="img-placeholder" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/5/5c/Don%27t_Look_Up_2021_film.jpg');background-size:cover;background-position:center top;"></div>
         <div class="stream-card-body">
           <div class="stream-card-title">Don't Look Up</div>
           <div class="stream-card-meta">Netflix · 2021</div>
@@ -786,13 +731,7 @@
       </div>
 
       <div class="stream-card">
-        <div class="img-placeholder">
-          <div class="img-placeholder-text">
-            <span class="film-title">Leave the World Behind</span>
-            <span class="film-year">2023 · Netflix</span>
-            Suggested: infrastructure collapse scene /<br>the two families
-          </div>
-        </div>
+        <div class="img-placeholder" style="background-image:url('https://upload.wikimedia.org/wikipedia/en/2/2d/Leave_the_World_Behind_film_poster.png');background-size:cover;background-position:center top;"></div>
         <div class="stream-card-body">
           <div class="stream-card-title">Leave the World Behind</div>
           <div class="stream-card-meta">Netflix · 2023</div>

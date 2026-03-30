@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dystopian Literature &amp; Cinema Assignment | ENC 1102 — Module Seven</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=Barlow:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+  /* ── TOKENS ── */
+  :root {
+    --void:        #0a0a0b;
+    --concrete:    #111114;
+    --slab:        #1a1a1e;
+    --panel:       #222228;
+    --surface:     #2c2c34;
+    --rule:        #3a3a44;
+    --mid:         #555560;
+    --muted:       #7a7a88;
+    --ash:         #a8a8b8;
+    --light:       #d0d0dc;
+    --white:       #e8e8f0;
+    --signal:      #00e5ff;
+    --signal-dim:  #007a8a;
+    --signal-glow: rgba(0,229,255,0.12);
+    --warn:        #ff4040;
+    --warn-dim:    rgba(255,64,64,0.12);
+    --amber:       #ffaa00;
+    --amber-dim:   rgba(255,170,0,0.10);
+    --green:       #00e676;
+    --green-dim:   rgba(0,230,118,0.10);
+    --grid-line:   rgba(255,255,255,0.03);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--void);
+    color: var(--ash);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  /* ── BACKGROUND GRID ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none; z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.07) 2px, rgba(0,0,0,0.07) 4px);
+    pointer-events: none; z-index: 0;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 440px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 4rem 4rem 3.5rem;
+    overflow: hidden;
+    background:
+      linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(10,10,11,0.94) 65%, var(--void) 100%),
+      url('BRDystopiaPNG.png') center 55% / cover no-repeat;
+    z-index: 1;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: 2rem; left: 2rem;
+    width: 60px; height: 60px;
+    border-top: 2px solid var(--signal);
+    border-left: 2px solid var(--signal);
+    opacity: 0.6;
+  }
+  .hero-scan {
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--signal), transparent);
+    animation: scan 4s ease-in-out infinite;
+    opacity: 0.5;
+  }
+  @keyframes scan {
+    0%   { top: 0%; opacity: 0; }
+    10%  { opacity: 0.5; }
+    90%  { opacity: 0.5; }
+    100% { top: 100%; opacity: 0; }
+  }
+  .hero-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.2em;
+    color: var(--signal); margin-bottom: 1.2rem;
+    position: relative; z-index: 1;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .hero-tag::before { content: '▶'; font-size: 0.5rem; }
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-weight: 900; color: var(--white);
+    line-height: 0.92; letter-spacing: -0.01em;
+    text-transform: uppercase; position: relative; z-index: 1;
+  }
+  .hero h1 .dim { color: var(--muted); font-weight: 300; }
+  .hero h1 .accent { color: var(--signal); }
+  .hero-sub {
+    font-family: 'Barlow', sans-serif; font-weight: 300; font-size: 1rem;
+    color: var(--muted); margin-top: 1.2rem; max-width: 560px;
+    position: relative; z-index: 1; letter-spacing: 0.02em;
+  }
+  .hero-credit {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem; color: var(--mid);
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-top: 0.6rem; position: relative; z-index: 1;
+  }
+  .hero-bar {
+    width: 100%; height: 1px;
+    background: linear-gradient(90deg, var(--signal), var(--rule), transparent);
+    margin-top: 2rem; position: relative; z-index: 1;
+  }
+
+  /* ── LAYOUT ── */
+  .page-wrap {
+    max-width: 900px; margin: 0 auto;
+    padding: 0 2rem 6rem; position: relative; z-index: 1;
+  }
+  .section-head {
+    display: flex; align-items: baseline; gap: 1.5rem;
+    margin-bottom: 1.4rem; margin-top: 3.5rem;
+  }
+  .section-id {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem; color: var(--signal); letter-spacing: 0.15em;
+    white-space: nowrap; padding: 0.2rem 0.5rem;
+    border: 1px solid var(--signal-dim); background: var(--signal-glow);
+    flex-shrink: 0;
+  }
+  h2 {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 1.8rem; font-weight: 700;
+    color: var(--white); text-transform: uppercase; letter-spacing: 0.04em; line-height: 1;
+  }
+  h3 {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 600;
+    color: var(--signal); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.5rem;
+  }
+  p { margin-bottom: 1rem; color: var(--ash); }
+  p:last-child { margin-bottom: 0; }
+  em { color: var(--light); font-style: italic; }
+  strong { color: var(--light); font-weight: 500; }
+
+  /* ── RULE ── */
+  .rule {
+    height: 1px; background: linear-gradient(90deg, var(--rule), transparent);
+    margin: 3rem 0; position: relative;
+  }
+  .rule::before {
+    content: '//'; position: absolute; left: 0; top: -10px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem; color: var(--muted); letter-spacing: 0.1em;
+  }
+
+  /* ── OUTCOME LIST ── */
+  .outcome-list {
+    margin: 1.2rem 0; display: flex; flex-direction: column; gap: 1px;
+    border: 1px solid var(--rule); background: var(--rule);
+  }
+  .outcome-item {
+    display: flex; align-items: flex-start; gap: 1rem;
+    padding: 0.85rem 1.2rem; background: var(--concrete);
+  }
+  .outcome-bullet {
+    font-family: 'Share Tech Mono', monospace; font-size: 0.72rem;
+    color: var(--signal); letter-spacing: 0.1em; white-space: nowrap;
+    margin-top: 0.2rem; flex-shrink: 0;
+  }
+  .outcome-text { font-size: 0.93rem; color: var(--ash); line-height: 1.6; }
+
+  /* ── CHARACTERISTIC PANELS ── */
+  .char-section {
+    background: var(--concrete); border: 1px solid var(--rule);
+    margin: 1.2rem 0; overflow: hidden;
+  }
+  .char-header {
+    padding: 0.85rem 1.4rem; background: var(--slab);
+    border-bottom: 1px solid var(--rule);
+    display: flex; align-items: center; gap: 1rem;
+    position: relative;
+  }
+  .char-header::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  }
+  .char-soc  .char-header::before { background: var(--signal); }
+  .char-ctrl .char-header::before { background: var(--amber); }
+  .char-prot .char-header::before { background: var(--warn); }
+  .char-tag {
+    font-family: 'Share Tech Mono', monospace; font-size: 0.72rem;
+    letter-spacing: 0.15em; text-transform: uppercase; padding: 0.15rem 0.5rem;
+    border: 1px solid; white-space: nowrap;
+  }
+  .char-soc  .char-tag { color: var(--signal); border-color: var(--signal-dim); background: var(--signal-glow); }
+  .char-ctrl .char-tag { color: var(--amber);  border-color: rgba(255,170,0,0.3); background: var(--amber-dim); }
+  .char-prot .char-tag { color: var(--warn);   border-color: rgba(255,64,64,0.3);  background: var(--warn-dim); }
+  .char-title {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700;
+    color: var(--white); text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .char-items { padding: 0.5rem 0; }
+  .char-item {
+    padding: 0.55rem 1.4rem; display: flex; align-items: flex-start; gap: 0.75rem;
+    border-bottom: 1px solid var(--rule); font-size: 0.88rem; color: var(--muted); line-height: 1.55;
+  }
+  .char-item:last-child { border-bottom: none; }
+  .char-dot {
+    font-family: 'Share Tech Mono', monospace; font-size: 0.6rem;
+    flex-shrink: 0; margin-top: 0.4rem;
+  }
+  .char-soc  .char-dot { color: var(--signal); }
+  .char-ctrl .char-dot { color: var(--amber); }
+  .char-prot .char-dot { color: var(--warn); }
+  .char-item strong { color: var(--light); font-weight: 500; }
+
+  /* ── STEP BLOCKS ── */
+  .step-block {
+    background: var(--concrete); border: 1px solid var(--rule);
+    margin: 1.2rem 0; position: relative; overflow: hidden;
+  }
+  .step-block::before {
+    content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px;
+    background: var(--signal);
+  }
+  .step-head {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 0.85rem 1.4rem 0.85rem 1.6rem;
+    border-bottom: 1px solid var(--rule); background: var(--slab);
+  }
+  .step-badge {
+    font-family: 'Share Tech Mono', monospace; font-size: 0.72rem;
+    color: var(--signal); letter-spacing: 0.15em; text-transform: uppercase;
+    border: 1px solid var(--signal-dim); background: var(--signal-glow);
+    padding: 0.2rem 0.6rem; white-space: nowrap;
+  }
+  .step-title {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700;
+    color: var(--white); text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .step-body { padding: 1.2rem 1.6rem; }
+  .step-body p { font-size: 0.93rem; color: var(--ash); line-height: 1.7; }
+  .key { color: var(--signal); font-weight: 500; }
+  .key-amber { color: var(--amber); font-weight: 500; }
+
+  /* ── LENGTH CALLOUT ── */
+  .length-note {
+    display: flex; align-items: center; gap: 1rem;
+    background: var(--slab); border: 1px solid var(--rule);
+    border-left: 3px solid var(--amber);
+    padding: 0.8rem 1.2rem; margin-top: 1.2rem;
+  }
+  .length-label {
+    font-family: 'Share Tech Mono', monospace; font-size: 0.72rem;
+    color: var(--amber); letter-spacing: 0.12em; text-transform: uppercase; white-space: nowrap;
+  }
+  .length-value { font-size: 0.93rem; color: var(--light); font-weight: 500; }
+
+  /* ── SAMPLE CALLOUT ── */
+  .sample-callout {
+    background: var(--concrete); border: 1px solid var(--rule);
+    border-left: 3px solid var(--signal-dim);
+    padding: 1.2rem 1.6rem; margin: 1.5rem 0;
+    display: flex; align-items: center; gap: 1.2rem;
+  }
+  .sample-icon {
+    font-family: 'Share Tech Mono', monospace; font-size: 0.72rem;
+    color: var(--signal); border: 1px solid var(--signal-dim);
+    background: var(--signal-glow); padding: 0.3rem 0.6rem; white-space: nowrap; flex-shrink: 0;
+  }
+  .sample-text { font-size: 0.9rem; color: var(--ash); line-height: 1.6; }
+  .sample-text strong { color: var(--light); }
+
+  /* ── DETAIL GRID ── */
+  .detail-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 1.5rem 0;
+  }
+  .detail-card {
+    background: var(--concrete); padding: 1.4rem 1.6rem; position: relative;
+  }
+  .detail-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  }
+  .dc-points::before  { background: var(--signal); }
+  .dc-submit::before  { background: var(--green); }
+  .dc-eval::before    { background: var(--amber); }
+  .dc-grace::before   { background: var(--muted); }
+  .detail-label {
+    font-family: 'Share Tech Mono', monospace; font-size: 0.72rem;
+    letter-spacing: 0.15em; text-transform: uppercase; display: block; margin-bottom: 0.5rem;
+  }
+  .dc-points .detail-label  { color: var(--signal); }
+  .dc-submit .detail-label  { color: var(--green); }
+  .dc-eval   .detail-label  { color: var(--amber); }
+  .dc-grace  .detail-label  { color: var(--muted); }
+  .detail-value {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 700;
+    color: var(--white); text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 0.4rem; line-height: 1.1;
+  }
+  .detail-card p {
+    font-size: 0.84rem; color: var(--muted); margin-bottom: 0; line-height: 1.55;
+  }
+
+  /* ── VIDEO BLOCK ── */
+  .video-block {
+    margin: 2rem 0; border: 1px solid var(--rule);
+    background: var(--concrete); position: relative;
+  }
+  .video-block::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--signal), transparent);
+  }
+  .video-label {
+    padding: 0.7rem 1.2rem;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.75rem; color: var(--muted);
+    letter-spacing: 0.12em; text-transform: uppercase;
+    border-bottom: 1px solid var(--rule);
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .video-label::before { content: '⏵'; color: var(--signal); font-size: 0.8rem; }
+  .video-responsive {
+    position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;
+  }
+  .video-responsive iframe {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;
+  }
+  .video-caption {
+    padding: 0.8rem 1.2rem; font-size: 0.8rem; color: var(--muted);
+    font-family: 'Share Tech Mono', monospace; letter-spacing: 0.05em;
+    border-top: 1px solid var(--rule);
+  }
+
+  /* ── RESOURCE LIST ── */
+  .resource-list {
+    display: flex; flex-direction: column; gap: 1px;
+    background: var(--rule); border: 1px solid var(--rule); margin: 1.5rem 0;
+  }
+  a.resource-link {
+    background: var(--concrete); padding: 1rem 1.4rem;
+    display: flex; align-items: center; justify-content: space-between;
+    text-decoration: none; color: var(--ash);
+    transition: background 0.15s, color 0.15s;
+  }
+  a.resource-link:hover { background: var(--slab); color: var(--light); }
+  .resource-link-left { display: flex; align-items: center; gap: 1rem; }
+  .resource-tag {
+    font-family: 'Share Tech Mono', monospace; font-size: 0.72rem;
+    color: var(--signal); letter-spacing: 0.1em; white-space: nowrap; flex-shrink: 0;
+  }
+  .resource-name {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 0.95rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .resource-arrow {
+    font-family: 'Share Tech Mono', monospace; font-size: 0.8rem;
+    color: var(--muted); flex-shrink: 0; transition: color 0.15s;
+  }
+  a.resource-link:hover .resource-arrow { color: var(--signal); }
+  .resource-contact {
+    background: var(--concrete); padding: 1rem 1.4rem;
+    display: flex; align-items: center; gap: 0.8rem;
+    border-top: 1px solid var(--rule);
+  }
+  .contact-label {
+    font-family: 'Share Tech Mono', monospace; font-size: 0.72rem;
+    color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .resource-contact a { color: var(--signal); text-decoration: none; font-size: 0.9rem; }
+  .resource-contact a:hover { text-decoration: underline; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .hero { padding: 2rem 1.5rem 2.5rem; min-height: 360px; }
+    .page-wrap { padding: 0 1.25rem 4rem; }
+    .detail-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<header class="hero">
+  <div class="hero-scan" aria-hidden="true"></div>
+  <p class="hero-tag">ENC 1102 &nbsp;·&nbsp; MODULE SEVEN &nbsp;·&nbsp; WRITING ASSIGNMENT</p>
+  <h1>
+    <span class="dim">Dystopian</span><br>
+    Literature<br>
+    <span class="accent">&amp; Cinema</span>
+  </h1>
+  <p class="hero-sub">A three-paragraph written analysis of dystopian characteristics in a film of your choosing.</p>
+  <p class="hero-credit">Blade Runner 2049 (Alcon Entertainment)</p>
+  <div class="hero-bar" aria-hidden="true"></div>
+</header>
+
+<main class="page-wrap">
+
+  <!-- ══ COURSE LEARNING OUTCOMES ══ -->
+  <section aria-labelledby="clo-heading">
+    <div class="section-head">
+      <span class="section-id" aria-hidden="true">ASN·01</span>
+      <h2 id="clo-heading">Course Learning Outcomes</h2>
+    </div>
+    <p>This assignment addresses the following course-level learning outcomes for ENC 1102:</p>
+    <div class="outcome-list">
+      <div class="outcome-item">
+        <span class="outcome-bullet" aria-hidden="true">CLO·01</span>
+        <span class="outcome-text">Use conventions of standard American English</span>
+      </div>
+      <div class="outcome-item">
+        <span class="outcome-bullet" aria-hidden="true">CLO·02</span>
+        <span class="outcome-text">Demonstrate competence in critical reading skills</span>
+      </div>
+      <div class="outcome-item">
+        <span class="outcome-bullet" aria-hidden="true">CLO·03</span>
+        <span class="outcome-text">Apply conventions aligned to varied writing situations</span>
+      </div>
+    </div>
+
+    <div class="section-head" style="margin-top:2rem;">
+      <h3 id="obj-subheading">Assignment Objectives</h3>
+    </div>
+    <p>By the end of this assignment, you will be able to do the following:</p>
+    <div class="outcome-list">
+      <div class="outcome-item">
+        <span class="outcome-bullet" aria-hidden="true">OBJ·01</span>
+        <span class="outcome-text">Identify characteristics of dystopian narratives in a film</span>
+      </div>
+      <div class="outcome-item">
+        <span class="outcome-bullet" aria-hidden="true">OBJ·02</span>
+        <span class="outcome-text">Explain how dystopian characteristics function within a film narrative</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule" aria-hidden="true"></div>
+
+  <!-- ══ REFERENCE LISTS ══ -->
+  <section aria-labelledby="ref-heading">
+    <div class="section-head">
+      <span class="section-id" aria-hidden="true">ASN·02</span>
+      <h2 id="ref-heading">Reference Lists</h2>
+    </div>
+    <p>Use the three lists below to select the dystopian characteristics you will analyze in your essay. You will choose a total of three items from across all three lists.</p>
+
+    <!-- Characteristics of a Dystopian Society -->
+    <div class="char-section char-soc">
+      <div class="char-header">
+        <span class="char-tag">List A</span>
+        <span class="char-title">Characteristics of a Dystopian Society</span>
+      </div>
+      <ul class="char-items" aria-label="Characteristics of a Dystopian Society">
+        <li class="char-item"><span class="char-dot" aria-hidden="true">◆</span>Propaganda is used to control the citizens of society.</li>
+        <li class="char-item"><span class="char-dot" aria-hidden="true">◆</span>Information, independent thought, and freedom are restricted.</li>
+        <li class="char-item"><span class="char-dot" aria-hidden="true">◆</span>A figurehead or concept is worshipped by the citizens of the society.</li>
+        <li class="char-item"><span class="char-dot" aria-hidden="true">◆</span>Citizens are perceived to be under constant surveillance.</li>
+        <li class="char-item"><span class="char-dot" aria-hidden="true">◆</span>Citizens have a fear of the outside world.</li>
+        <li class="char-item"><span class="char-dot" aria-hidden="true">◆</span>Citizens live in a dehumanized state — the "loss of humanity."</li>
+        <li class="char-item"><span class="char-dot" aria-hidden="true">◆</span>The natural world is banished and distrusted.</li>
+        <li class="char-item"><span class="char-dot" aria-hidden="true">◆</span>Citizens conform to uniform expectations. Individuality and dissent are discouraged.</li>
+        <li class="char-item"><span class="char-dot" aria-hidden="true">◆</span>The society is an illusion of a perfect utopian world.</li>
+      </ul>
+    </div>
+
+    <!-- Types of Dystopian Controls -->
+    <div class="char-section char-ctrl">
+      <div class="char-header">
+        <span class="char-tag">List B</span>
+        <span class="char-title">Types of Dystopian Controls</span>
+      </div>
+      <p style="padding: 0.8rem 1.4rem 0.6rem; font-size:0.88rem; color:var(--muted); border-bottom:1px solid var(--rule);">Most dystopian works present a world in which oppressive societal control is maintained through one or more of the following:</p>
+      <ul class="char-items" aria-label="Types of Dystopian Controls">
+        <li class="char-item"><span class="char-dot" aria-hidden="true">◆</span><strong>Corporate control</strong> — One or more large corporations control society through products, advertising, and/or the media.</li>
+        <li class="char-item"><span class="char-dot" aria-hidden="true">◆</span><strong>Bureaucratic control</strong> — Society is controlled by a mindless bureaucracy through red tape, relentless regulations, and incompetent government.</li>
+        <li class="char-item"><span class="char-dot" aria-hidden="true">◆</span><strong>Technological control</strong> — Society is controlled by technology — through computers, robots, and/or scientific means.</li>
+        <li class="char-item"><span class="char-dot" aria-hidden="true">◆</span><strong>Philosophical/religious control</strong> — Society is controlled by philosophical or religious ideology, often enforced through a dictatorship or theocracy.</li>
+      </ul>
+    </div>
+
+    <!-- The Dystopian Protagonist -->
+    <div class="char-section char-prot">
+      <div class="char-header">
+        <span class="char-tag">List C</span>
+        <span class="char-title">The Dystopian Protagonist</span>
+      </div>
+      <ul class="char-items" aria-label="Characteristics of the Dystopian Protagonist">
+        <li class="char-item"><span class="char-dot" aria-hidden="true">◆</span>Often feels trapped and is struggling to escape.</li>
+        <li class="char-item"><span class="char-dot" aria-hidden="true">◆</span>Questions the existing social and political order.</li>
+        <li class="char-item"><span class="char-dot" aria-hidden="true">◆</span>Believes or feels that something is terribly wrong with the society in which he or she lives.</li>
+        <li class="char-item"><span class="char-dot" aria-hidden="true">◆</span>Helps the audience recognize the negative aspects of the dystopian world through his or her perspective.</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="rule" aria-hidden="true"></div>
+
+  <!-- ══ ASSIGNMENT INSTRUCTIONS ══ -->
+  <section aria-labelledby="instructions-heading">
+    <div class="section-head">
+      <span class="section-id" aria-hidden="true">ASN·03</span>
+      <h2 id="instructions-heading">Assignment Instructions</h2>
+    </div>
+    <p>Instead of specific questions as in previous assignments, you're being asked to do something requiring a slightly higher level of critical thinking. Follow the three steps below.</p>
+
+    <!-- Step 1 -->
+    <div class="step-block">
+      <div class="step-head">
+        <span class="step-badge">Step One</span>
+        <span class="step-title">Select Your Three Items</span>
+      </div>
+      <div class="step-body">
+        <p>Select a <span class="key">total of three items</span> from the lists above — <span class="key-amber">List A: Characteristics of a Dystopian Society</span>, <span class="key-amber">List B: Types of Dystopian Controls</span>, and <span class="key-amber">List C: The Dystopian Protagonist</span> — that you feel are relevant to the film you chose to watch.</p>
+        <p>The three items you select can all come from the same list, or you can select one from each list, or two from one list and one from another — <strong>it doesn't matter</strong>. Focus on selecting items you believe are present and relevant to your film.</p>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="step-block">
+      <div class="step-head">
+        <span class="step-badge">Step Two</span>
+        <span class="step-title">Write Your Three Paragraphs</span>
+      </div>
+      <div class="step-body">
+        <p>Write <span class="key">three total paragraphs</span> discussing how the <span class="key">three dystopian characteristics</span> you selected are present in your film. Write <span class="key">one paragraph for each</span> of the three characteristics you chose.</p>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step-block">
+      <div class="step-head">
+        <span class="step-badge">Step Three</span>
+        <span class="step-title">Submit Your Work</span>
+      </div>
+      <div class="step-body">
+        <p>When done, upload your paragraphs just as you did for all previous study questions this semester.</p>
+      </div>
+    </div>
+
+    <div class="length-note">
+      <span class="length-label">Length</span>
+      <span class="length-value">350–400 words total (all three paragraphs combined)</span>
+    </div>
+  </section>
+
+  <div class="rule" aria-hidden="true"></div>
+
+  <!-- ══ SAMPLE PARAGRAPH ══ -->
+  <section aria-labelledby="sample-heading">
+    <div class="section-head">
+      <span class="section-id" aria-hidden="true">ASN·04</span>
+      <h2 id="sample-heading">Sample Paragraph</h2>
+    </div>
+    <p>A sample dystopian analysis paragraph is available in Canvas to help you understand the expected level of analysis and writing.</p>
+    <div class="sample-callout">
+      <span class="sample-icon">PDF</span>
+      <p class="sample-text"><strong>Sample Dystopian Literature Analysis Paragraph</strong> — Available in Canvas under Module Seven resources. Review it before drafting your own paragraphs.</p>
+    </div>
+  </section>
+
+  <div class="rule" aria-hidden="true"></div>
+
+  <!-- ══ ASSIGNMENT DETAILS ══ -->
+  <section aria-labelledby="details-heading">
+    <div class="section-head">
+      <span class="section-id" aria-hidden="true">ASN·05</span>
+      <h2 id="details-heading">Assignment Details</h2>
+    </div>
+    <div class="detail-grid">
+      <div class="detail-card dc-points">
+        <span class="detail-label">Points</span>
+        <div class="detail-value">50 Points</div>
+        <p>Homework assignment — see the Study Questions Grading Rubric for full breakdown. Content and organization are weighted most heavily.</p>
+      </div>
+      <div class="detail-card dc-eval">
+        <span class="detail-label">Evaluation</span>
+        <div class="detail-value">Study Questions Rubric</div>
+        <p>Content and organization are the most important criteria. Be mindful of the other elements on the rubric as well.</p>
+      </div>
+      <div class="detail-card dc-submit">
+        <span class="detail-label">Submission</span>
+        <div class="detail-value">.docx or .doc</div>
+        <p>Word process your answers and upload in .doc or .docx format. Both are available in Office 365, Google Docs, and Apple Pages.</p>
+      </div>
+      <div class="detail-card dc-grace">
+        <span class="detail-label">Grace Period</span>
+        <div class="detail-value">+2 Days</div>
+        <p>You have two days after the due date to submit for full credit. See the Late Policy on the course syllabus for full details.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule" aria-hidden="true"></div>
+
+  <!-- ══ FORMAT VIDEO ══ -->
+  <section aria-labelledby="format-heading">
+    <div class="section-head">
+      <span class="section-id" aria-hidden="true">ASN·06</span>
+      <h2 id="format-heading">Document Format</h2>
+    </div>
+    <p>Use MLA format for your document. The video below demonstrates how to set up your document using Microsoft Word Online (Office 365), available in the left navigation menu of Canvas.</p>
+    <div class="video-block">
+      <div class="video-label">How to Set Up Your Document in MLA Format</div>
+      <div class="video-responsive">
+        <iframe
+          title="How to Set Up Your Document in MLA Format"
+          src="https://www.youtube.com/embed/JnAmwR4Pb1M"
+          loading="lazy"
+          allowfullscreen
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share">
+        </iframe>
+      </div>
+      <div class="video-caption">Microsoft Word Online — Office 365 MLA Setup Tutorial</div>
+    </div>
+  </section>
+
+  <div class="rule" aria-hidden="true"></div>
+
+  <!-- ══ RESOURCES ══ -->
+  <section aria-labelledby="resources-heading">
+    <div class="section-head">
+      <span class="section-id" aria-hidden="true">ASN·07</span>
+      <h2 id="resources-heading">Resources</h2>
+    </div>
+    <p>Review all module resources before starting this assignment.</p>
+    <nav aria-label="Module resources">
+      <div class="resource-list">
+        <a class="resource-link" href="dystopia-characteristics.html">
+          <div class="resource-link-left">
+            <span class="resource-tag">READING·01</span>
+            <span class="resource-name">Characteristics of Dystopian Societies</span>
+          </div>
+          <span class="resource-arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="resource-link" href="dystopia-protagonist.html">
+          <div class="resource-link-left">
+            <span class="resource-tag">READING·02</span>
+            <span class="resource-name">Characteristics of Dystopian Protagonists</span>
+          </div>
+          <span class="resource-arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="resource-link" href="dystopia-cinema.html">
+          <div class="resource-link-left">
+            <span class="resource-tag">READING·03</span>
+            <span class="resource-name">A History of Dystopian Cinema</span>
+          </div>
+          <span class="resource-arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="resource-link" href="dystopia-history.html">
+          <div class="resource-link-left">
+            <span class="resource-tag">READING·04</span>
+            <span class="resource-name">A History of Dystopian Literature</span>
+          </div>
+          <span class="resource-arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="resource-link" href="minority-report-installation.html">
+          <div class="resource-link-left">
+            <span class="resource-tag">ACTIVITY·01</span>
+            <span class="resource-name">Minority Report — In-Class Activities</span>
+          </div>
+          <span class="resource-arrow" aria-hidden="true">→</span>
+        </a>
+        <div class="resource-contact">
+          <span class="contact-label">Instructor ·</span>
+          <a href="mailto:cholliday@mail.valenciacollege.edu">cholliday@mail.valenciacollege.edu</a>
+        </div>
+      </div>
+    </nav>
+  </section>
+
+</main>
+</body>
+</html>
