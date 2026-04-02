@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module Six Overview | ENC 1102 — Poetry & Literary Elements</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+
+  /* ══════════════════════════════════════════
+     TOKENS — Naturalist's Field Journal
+  ══════════════════════════════════════════ */
+  :root {
+    --paper:         #f4ede0;
+    --vellum:        #ede3cf;
+    --aged:          #e4d8be;
+    --worn:          #d8c9a8;
+    --shadow:        #c4b48e;
+    --ink:           #1e160a;
+    --ink-warm:      #2c1f0e;
+    --ink-mid:       #4a3520;
+    --quill:         #6b4e2e;
+    --faded:         #7d6041;
+    --dust:          #7f6748;
+    --moss:          #4a6040;
+    --moss-mid:      #5e7852;
+    --moss-light:    #7a9468;
+    --moss-pale:     #c8d8bc;
+    --moss-wash:     rgba(90,120,72,0.08);
+    --moss-glow:     rgba(90,120,72,0.14);
+    --moss-mid-aa:   #5a734e;
+    --umber:         #7a4e28;
+    --umber-mid:     #9a6438;
+    --umber-pale:    #dfc8a8;
+    --umber-wash:    rgba(122,78,40,0.08);
+    --indigo:        #3a4868;
+    --indigo-mid:    #4e608a;
+    --indigo-pale:   #c0cce0;
+    --indigo-wash:   rgba(58,72,104,0.08);
+    --rule:          rgba(74,53,32,0.18);
+    --rule-light:    rgba(74,53,32,0.10);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; }
+
+  body {
+    text-align: left;
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.75;
+    min-height: 100vh;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    background-color: var(--ink-warm);
+    padding: 0;
+    overflow: hidden;
+  }
+  .hero-texture {
+    position: absolute; inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(255,255,255,0.025) 28px, rgba(255,255,255,0.025) 29px),
+      repeating-linear-gradient(90deg, transparent, transparent 28px, rgba(255,255,255,0.015) 28px, rgba(255,255,255,0.015) 29px);
+    pointer-events: none;
+  }
+  .hero-ornament {
+    position: absolute; top: 0; right: 0;
+    width: 320px; height: 320px;
+    opacity: 0.06; pointer-events: none;
+  }
+  .hero-inner {
+    position: relative;
+    max-width: 960px; margin: 0 auto;
+    padding: 52px 48px 48px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .hero-module-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'Lora', serif; font-size: 12px; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--moss-pale); opacity: 0.8;
+  }
+  .hero-module-tag::before {
+    content: ''; display: inline-block;
+    width: 28px; height: 1px;
+    background: var(--moss-pale); opacity: 0.6;
+  }
+  .hero-title {
+    font-family: 'Lora', serif;
+    font-size: clamp(34px, 5vw, 52px);
+    font-weight: 700; color: var(--paper);
+    line-height: 1.1; letter-spacing: -0.01em;
+  }
+  .hero-title em { font-style: italic; color: var(--moss-pale); }
+  .hero-subtitle {
+    font-family: 'Crimson Pro', serif;
+    font-size: 18px; font-weight: 400; font-style: italic;
+    color: var(--umber-pale); line-height: 1.5;
+    max-width: 540px; opacity: 0.9;
+  }
+  .hero-rule {
+    width: 60px; height: 2px;
+    background: linear-gradient(90deg, var(--moss-light), transparent);
+    margin: 4px 0;
+  }
+
+  /* ── PAGE BODY ── */
+  .page-body {
+    max-width: 960px; margin: 0 auto;
+    padding: 56px 48px 80px;
+  }
+
+  /* ── SECTION ── */
+  .section { margin-bottom: 60px; }
+  .section-label {
+    font-family: 'Lora', serif; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--moss-mid-aa); margin-bottom: 10px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(90deg, var(--rule), transparent);
+    max-width: 120px;
+  }
+  .section-title {
+    font-family: 'Lora', serif;
+    font-size: clamp(22px, 3vw, 28px); font-weight: 700;
+    color: var(--ink-warm); line-height: 1.2; margin-bottom: 20px;
+  }
+  .section-title em { font-style: italic; color: var(--moss); }
+  .prose {
+    font-family: 'Crimson Pro', serif;
+    font-size: 17px; line-height: 1.8;
+    color: var(--ink-mid); max-width: 720px;
+  }
+  .prose + .prose { margin-top: 14px; }
+  .prose strong { color: var(--ink); font-weight: 600; }
+
+  /* ── CALLOUT BOXES ── */
+  .callout {
+    border-left: 3px solid var(--moss-mid);
+    background: var(--moss-wash);
+    border-radius: 0 8px 8px 0;
+    padding: 16px 22px; margin: 24px 0;
+  }
+  .callout-label {
+    font-family: 'Lora', serif; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--moss); margin-bottom: 6px;
+  }
+  .callout p {
+    font-family: 'Crimson Pro', serif;
+    font-size: 16px; color: var(--ink-mid); line-height: 1.7; margin: 0;
+  }
+  .callout.umber { border-color: var(--umber-mid); background: var(--umber-wash); }
+  .callout.umber .callout-label { color: var(--umber); }
+  .callout.indigo { border-color: var(--indigo-mid); background: var(--indigo-wash); }
+  .callout.indigo .callout-label { color: var(--indigo); }
+
+  /* ── DIVIDER ── */
+  .divider { border: none; border-top: 1px solid var(--rule); margin: 52px 0; }
+  .divider-ornament { text-align: center; margin: -10px 0 0; position: relative; }
+  .divider-ornament::before, .divider-ornament::after {
+    content: ''; display: inline-block;
+    width: 48px; height: 1px; background: var(--rule);
+    vertical-align: middle; margin: 0 12px;
+  }
+  .divider-ornament span {
+    font-family: 'Crimson Pro', serif; font-size: 18px;
+    color: var(--dust); vertical-align: middle;
+  }
+
+  /* ── TWO-COLUMN OUTCOMES GRID ── */
+  .outcomes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 8px;
+  }
+  .outcomes-card {
+    background: var(--vellum);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 26px 28px;
+  }
+  .outcomes-card-label {
+    font-family: 'Lora', serif; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--moss-mid-aa); margin-bottom: 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .outcomes-card-label::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(90deg, var(--rule), transparent);
+  }
+  .outcomes-list {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .outcomes-list li {
+    position: relative; padding-left: 18px;
+    font-family: 'Crimson Pro', serif; font-size: 16px;
+    line-height: 1.65; color: var(--ink-mid); text-align: left;
+  }
+  .outcomes-list li::before {
+    content: '◆'; color: var(--moss-mid);
+    font-size: 9px; position: absolute; left: 0; top: 6px;
+  }
+
+  /* ── LEARNING ACTIVITIES ── */
+  .activities-block {
+    background: var(--vellum);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 8px;
+  }
+  .activities-header {
+    background: var(--ink-warm);
+    padding: 14px 24px;
+    font-family: 'Lora', serif; font-size: 14px; font-weight: 600;
+    color: var(--paper); letter-spacing: 0.04em;
+  }
+  .activities-body {
+    padding: 20px 28px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .activity-item {
+    display: flex; gap: 14px; align-items: flex-start;
+  }
+  .activity-icon {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--moss-wash);
+    border: 1px solid rgba(90,120,72,0.25);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0; margin-top: 2px;
+  }
+  .activity-text { flex: 1; }
+  .activity-title {
+    font-family: 'Lora', serif; font-size: 15px; font-weight: 600;
+    color: var(--ink); margin-bottom: 3px;
+  }
+  .activity-desc {
+    font-family: 'Crimson Pro', serif; font-size: 15px;
+    color: var(--faded); line-height: 1.6;
+  }
+
+  /* ── ASSIGNMENT CARDS ── */
+  .week-label {
+    font-family: 'Lora', serif; font-size: 13px; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--umber); margin-bottom: 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .week-label::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(90deg, var(--umber-mid), transparent);
+    opacity: 0.4; max-width: 200px;
+  }
+  .assignments-stack {
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .assignment-card {
+    background: var(--vellum);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 20px 24px;
+    display: flex; gap: 20px; align-items: flex-start;
+    position: relative;
+    border-left: 4px solid var(--moss-mid);
+  }
+  .assignment-card.indigo-accent { border-left-color: var(--indigo-mid); }
+  .assignment-num {
+    font-family: 'Lora', serif; font-size: 28px; font-weight: 700;
+    color: var(--moss-mid); line-height: 1; flex-shrink: 0;
+    min-width: 24px; margin-top: 2px;
+  }
+  .assignment-card.indigo-accent .assignment-num { color: var(--indigo-mid); }
+  .assignment-body { flex: 1; }
+  .assignment-title {
+    font-family: 'Lora', serif; font-size: 17px; font-weight: 600;
+    color: var(--ink); margin-bottom: 5px; line-height: 1.3;
+  }
+  .assignment-due {
+    font-family: 'Crimson Pro', serif; font-size: 15px;
+    color: var(--faded); font-style: italic;
+  }
+  .assignment-due strong { color: var(--umber); font-style: normal; font-weight: 600; }
+
+  /* ── RESOURCES LIST ── */
+  .resources-list {
+    list-style: none; padding: 0; margin: 12px 0 0;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .resources-list li {
+    display: flex; gap: 10px; align-items: center;
+  }
+  .resource-link {
+    font-family: 'Crimson Pro', serif; font-size: 17px;
+    color: var(--moss); text-decoration: none;
+    border-bottom: 1px solid rgba(74,96,64,0.3);
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .resource-link:hover { color: var(--moss-mid); border-color: var(--moss-mid); }
+  .resource-arrow {
+    font-size: 12px; color: var(--moss-mid); opacity: 0.6; flex-shrink: 0;
+  }
+
+  /* ── CONTACT BOX ── */
+  .contact-box {
+    background: var(--vellum);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 24px 28px;
+    display: flex; gap: 20px; align-items: flex-start;
+    margin-top: 8px;
+  }
+  .contact-icon {
+    font-size: 28px; flex-shrink: 0; margin-top: 2px;
+  }
+  .contact-body { flex: 1; }
+  .contact-title {
+    font-family: 'Lora', serif; font-size: 17px; font-weight: 600;
+    color: var(--ink); margin-bottom: 6px;
+  }
+  .contact-text {
+    font-family: 'Crimson Pro', serif; font-size: 16px;
+    color: var(--faded); line-height: 1.65;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 680px) {
+    .hero-inner { padding: 40px 24px 36px; }
+    .page-body { padding: 40px 24px 60px; }
+    .outcomes-grid { grid-template-columns: 1fr; }
+    .assignment-card { flex-direction: column; gap: 8px; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-texture"></div>
+  <!-- Botanical corner ornament -->
+  <svg class="hero-ornament" viewBox="0 0 340 340" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <ellipse cx="240" cy="100" rx="90" ry="30" transform="rotate(-35 240 100)" fill="white"/>
+    <ellipse cx="280" cy="60" rx="70" ry="22" transform="rotate(-55 280 60)" fill="white"/>
+    <ellipse cx="200" cy="140" rx="80" ry="25" transform="rotate(-20 200 140)" fill="white"/>
+    <line x1="240" y1="100" x2="300" y2="20" stroke="white" stroke-width="2"/>
+    <line x1="220" y1="120" x2="260" y2="30" stroke="white" stroke-width="1.5"/>
+    <ellipse cx="310" cy="30" rx="28" ry="10" transform="rotate(-60 310 30)" fill="white"/>
+  </svg>
+  <div class="hero-inner">
+    <div class="hero-module-tag">Module Six &nbsp;·&nbsp; ENC 1102</div>
+    <div class="hero-rule"></div>
+    <h1 class="hero-title">Poetry &amp; <em>Literary Elements</em></h1>
+    <p class="hero-subtitle">Imagery · Figurative Language · Close Reading</p>
+  </div>
+</header>
+
+<main class="page-body">
+
+  <!-- MODULE OVERVIEW -->
+  <section class="section" aria-labelledby="overview-heading">
+    <div class="section-label">Module Overview</div>
+    <h2 class="section-title" id="overview-heading">What We're <em>Studying</em> This Module</h2>
+    <p class="prose">In this module, we'll be studying the literary genre known as <strong>poetry</strong>. In addition, we'll be focusing on two central literary elements that poets rely on to create meaning: <strong>imagery</strong> and <strong>figurative language</strong>.</p>
+    <div class="callout indigo" style="margin-top:24px;">
+      <div class="callout-label">Keep in Mind</div>
+      <p>Poetry works differently from other kinds of writing. Rather than stating ideas directly, poets render them in concrete images and figurative comparisons — and trust readers to interpret what those images suggest. The skills you develop in this module will help you read any poem more carefully and confidently.</p>
+    </div>
+  </section>
+
+  <hr class="divider"><div class="divider-ornament"><span>✦</span></div>
+
+  <!-- LEARNING OUTCOMES & OBJECTIVES -->
+  <section class="section" aria-labelledby="outcomes-heading">
+    <div class="section-label">Goals</div>
+    <h2 class="section-title" id="outcomes-heading">Course Learning Outcomes &amp; <em>Module Objectives</em></h2>
+    <p class="prose" style="margin-bottom:24px;">This module addresses the following course-level learning outcomes, and by the end you'll be able to meet the specific objectives listed below.</p>
+    <div class="outcomes-grid">
+      <div class="outcomes-card">
+        <div class="outcomes-card-label">Course Learning Outcomes</div>
+        <ul class="outcomes-list">
+          <li>Apply conventions aligned to varied writing situations.</li>
+          <li>Apply critical reading skills.</li>
+        </ul>
+      </div>
+      <div class="outcomes-card">
+        <div class="outcomes-card-label">By the End of This Module</div>
+        <ul class="outcomes-list">
+          <li>Identify, analyze, and interpret poetic <strong>imagery</strong> in a poem.</li>
+          <li>Identify, analyze, and interpret <strong>figurative language</strong> in a poem.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider"><div class="divider-ornament"><span>✦</span></div>
+
+  <!-- LEARNING ACTIVITIES -->
+  <section class="section" aria-labelledby="activities-heading">
+    <div class="section-label">What You'll Do</div>
+    <h2 class="section-title" id="activities-heading"><em>Learning</em> Activities</h2>
+    <div class="activities-block">
+      <div class="activities-header">Critical Reading</div>
+      <div class="activities-body">
+        <div class="activity-item">
+          <div class="activity-icon">📖</div>
+          <div class="activity-text">
+            <div class="activity-title">Poems</div>
+            <div class="activity-desc">Various poems illustrating poetic imagery and figurative language, selected to demonstrate a range of techniques and voices.</div>
+          </div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-icon">🌿</div>
+          <div class="activity-text">
+            <div class="activity-title">Learning Materials</div>
+            <div class="activity-desc">Instructional pages on defining and analyzing both literary elements, including worked examples and guided practice with model analyses.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider"><div class="divider-ornament"><span>✦</span></div>
+
+  <!-- ASSIGNMENTS -->
+  <section class="section" aria-labelledby="assignments-heading">
+    <div class="section-label">Assignments</div>
+    <h2 class="section-title" id="assignments-heading">What's <em>Due</em> This Module</h2>
+    <p class="prose" style="margin-bottom:24px;">There are two discussion post assignments this module, spaced across the week.</p>
+    <div class="week-label">Week 13</div>
+    <div class="assignments-stack">
+      <div class="assignment-card">
+        <div class="assignment-num">1</div>
+        <div class="assignment-body">
+          <div class="assignment-title">Poetic Imagery Analysis Discussion Post</div>
+          <div class="assignment-due">Initial Post due <strong>Thursday, April 9th</strong> at 11:59 pm &nbsp;·&nbsp; Reply to classmate within 48 hours</div>
+        </div>
+      </div>
+      <div class="assignment-card indigo-accent">
+        <div class="assignment-num">2</div>
+        <div class="assignment-body">
+          <div class="assignment-title">Figurative Language Analysis Discussion Post</div>
+          <div class="assignment-due">Initial Post due <strong>Sunday, April 12th</strong> at 11:59 pm &nbsp;·&nbsp; Reply to classmate within 48 hours</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider"><div class="divider-ornament"><span>✦</span></div>
+
+  <!-- RESOURCES -->
+  <section class="section" aria-labelledby="resources-heading">
+    <div class="section-label">Resources</div>
+    <h2 class="section-title" id="resources-heading">Module <em>Resources</em></h2>
+    <p class="prose" style="margin-bottom:4px;">All learning materials for this module are linked below. Work through them in the order listed.</p>
+    <ul class="resources-list" role="list">
+      <li>
+        <span class="resource-arrow">◆</span>
+        <a class="resource-link" href="#">Defining Poetic Imagery</a>
+      </li>
+      <li>
+        <span class="resource-arrow">◆</span>
+        <a class="resource-link" href="#">Defining Figurative Language</a>
+      </li>
+      <li>
+        <span class="resource-arrow">◆</span>
+        <a class="resource-link" href="#">Figurative Language Sample Analysis</a>
+      </li>
+    </ul>
+  </section>
+
+  <hr class="divider"><div class="divider-ornament"><span>✦</span></div>
+
+  <!-- INSTRUCTOR CONTACT -->
+  <section class="section" aria-labelledby="contact-heading">
+    <div class="section-label">Questions?</div>
+    <h2 class="section-title" id="contact-heading"><em>My</em> Contact Information</h2>
+    <div class="contact-box">
+      <div class="contact-icon">✉</div>
+      <div class="contact-body">
+        <div class="contact-title">Reach Out Anytime</div>
+        <p class="contact-text">If you have questions about the readings, assignments, or anything else in this module, please don't hesitate to contact me through the Canvas Inbox or during office hours.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>

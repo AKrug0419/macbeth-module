@@ -1,0 +1,2373 @@
+/* ══════════════════════════════════════════════════════════════
+   FIELD JOURNAL — Shared Design System
+   ENC 1102 · Module Six · Poetry & Literary Elements
+   Naturalist's Field Journal aesthetic
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── DESIGN TOKENS ── */
+:root {
+  /* Ground — worn paper, aged vellum */
+  --paper:         #f4ede0;
+  --vellum:        #ede3cf;
+  --aged:          #e4d8be;
+  --worn:          #d8c9a8;
+  --shadow:        #c4b48e;
+
+  /* Ink — warm sepia spectrum */
+  --ink:           #1e160a;
+  --ink-warm:      #2c1f0e;
+  --ink-mid:       #4a3520;
+  --quill:         #6b4e2e;
+  --faded:         #7d6041;
+  --dust:          #7f6748;
+
+  /* Primary — field moss / sage */
+  --moss:          #4a6040;
+  --moss-mid:      #5e7852;
+  --moss-mid-aa:   #5a734e;
+  --moss-light:    #7a9468;
+  --moss-pale:     #c8d8bc;
+  --moss-wash:     rgba(90,120,72,0.08);
+  --moss-glow:     rgba(90,120,72,0.14);
+
+  /* Secondary — umber / raw earth */
+  --umber:         #7a4e28;
+  --umber-mid:     #9a6438;
+  --umber-pale:    #dfc8a8;
+  --umber-wash:    rgba(122,78,40,0.08);
+
+  /* Accent — indigo faded */
+  --indigo:        #3a4868;
+  --indigo-mid:    #4e608a;
+  --indigo-pale:   #c0cce0;
+  --indigo-wash:   rgba(58,72,104,0.08);
+
+  /* Accent — plum (used in figurative language pages) */
+  --plum:          #6a3a50;
+  --plum-mid:      #8a4e6a;
+  --plum-pale:     #d4b8c8;
+  --plum-wash:     rgba(106,58,80,0.10);
+
+  /* Accent — rose (used in practice pages) */
+  --rose:          #7a3a50;
+  --rose-mid:      #9a5268;
+  --rose-pale:     #e0c8d0;
+  --rose-wash:     rgba(122,58,80,0.09);
+
+  /* Sense highlight colors — muted naturalistic */
+  --sense-sight:         rgba(184,142,60,0.28);
+  --sense-sight-border:  #8a6a20;
+  --sense-sound:         rgba(80,110,160,0.22);
+  --sense-sound-border:  #3a5888;
+  --sense-touch:         rgba(160,80,100,0.22);
+  --sense-touch-border:  #8a3850;
+  --sense-smell:         rgba(80,130,90,0.22);
+  --sense-smell-border:  #507a5a;
+  --sense-taste:         rgba(160,110,60,0.22);
+  --sense-taste-border:  #8a5828;
+
+  /* Rule & structure */
+  --rule:          rgba(74,53,32,0.18);
+  --rule-light:    rgba(74,53,32,0.10);
+
+  /* Step colors (4-step method) */
+  --step1:         #4a6040;
+  --step2:         #3a4868;
+  --step3:         #7a4e28;
+  --step4:         #6a3a50;
+}
+
+
+/* ── RESET & BASE ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.75;
+  min-height: 100vh;
+  text-align: left;
+  /* Subtle paper texture via CSS noise */
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+/* Focus styles for keyboard nav */
+:focus-visible {
+  outline: 2px solid var(--moss-mid);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+
+/* ══════════════════════════════════════════
+   HERO HEADER
+   ══════════════════════════════════════════ */
+.hero {
+  position: relative;
+  background-color: var(--ink-warm);
+  padding: 0;
+  overflow: hidden;
+}
+
+.hero-texture {
+  position: absolute; inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      0deg, transparent, transparent 28px,
+      rgba(255,255,255,0.025) 28px, rgba(255,255,255,0.025) 29px
+    ),
+    repeating-linear-gradient(
+      90deg, transparent, transparent 28px,
+      rgba(255,255,255,0.015) 28px, rgba(255,255,255,0.015) 29px
+    );
+  pointer-events: none;
+}
+
+.hero-ornament {
+  position: absolute;
+  top: 0; right: 0;
+  width: 340px; height: 340px;
+  opacity: 0.07;
+  pointer-events: none;
+}
+
+.hero-inner {
+  position: relative;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 56px 48px 52px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hero-module-tag,
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Lora', serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--moss-pale);
+  opacity: 0.8;
+}
+
+.hero-module-tag::before,
+.hero-tag::before {
+  content: '';
+  display: inline-block;
+  width: 28px; height: 1px;
+  background: var(--moss-pale);
+  opacity: 0.6;
+}
+
+.hero-title {
+  font-family: 'Lora', serif;
+  font-size: clamp(36px, 5vw, 54px);
+  font-weight: 700;
+  color: var(--paper);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+.hero-title em { font-style: italic; color: var(--moss-pale); }
+
+.hero-subtitle,
+.hero-sub {
+  font-family: 'Crimson Pro', serif;
+  font-size: 18px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--umber-pale);
+  line-height: 1.5;
+  max-width: 560px;
+  opacity: 0.9;
+}
+
+.hero-rule {
+  width: 60px; height: 2px;
+  background: linear-gradient(90deg, var(--moss-light), transparent);
+  margin: 4px 0;
+}
+
+/* Hero pills (practice page) */
+.hero-how {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.hero-pill {
+  font-family: 'Lora', serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(244,237,224,0.80);
+}
+.hero-pill.p1 { background: rgba(74,96,64,0.35); }
+.hero-pill.p2 { background: rgba(58,72,104,0.35); }
+.hero-pill.p3 { background: rgba(122,78,40,0.35); }
+.hero-pill.p4 { background: rgba(106,58,80,0.35); }
+
+
+/* ══════════════════════════════════════════
+   PAGE BODY / LAYOUT
+   ══════════════════════════════════════════ */
+.page-body {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 56px 48px 80px;
+}
+
+
+/* ══════════════════════════════════════════
+   SECTION STRUCTURE
+   ══════════════════════════════════════════ */
+.section { margin-bottom: 64px; }
+
+.section-label {
+  font-family: 'Lora', serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--moss-mid-aa);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-label::after {
+  content: '';
+  flex: 1; height: 1px;
+  background: linear-gradient(90deg, var(--rule), transparent);
+  max-width: 120px;
+}
+
+.section-title {
+  font-family: 'Lora', serif;
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 700;
+  color: var(--ink-warm);
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+.section-title em { font-style: italic; color: var(--moss); }
+
+
+/* ══════════════════════════════════════════
+   PROSE
+   ══════════════════════════════════════════ */
+.prose {
+  font-family: 'Crimson Pro', serif;
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--ink-mid);
+  max-width: 720px;
+  text-align: left;
+}
+.prose + .prose { margin-top: 16px; }
+.prose strong { color: var(--ink); font-weight: 600; }
+
+
+/* ══════════════════════════════════════════
+   CALLOUT BOXES
+   ══════════════════════════════════════════ */
+.callout {
+  border-left: 3px solid var(--moss-mid);
+  background: var(--moss-wash);
+  border-radius: 0 8px 8px 0;
+  padding: 16px 22px;
+  margin: 24px 0;
+}
+.callout-label {
+  font-family: 'Lora', serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--moss);
+  margin-bottom: 6px;
+}
+.callout p {
+  font-family: 'Crimson Pro', serif;
+  font-size: 16px;
+  color: var(--ink-mid);
+  line-height: 1.7;
+  margin: 0;
+  text-align: left;
+}
+
+.callout.umber  { border-color: var(--umber-mid); background: var(--umber-wash); }
+.callout.umber .callout-label { color: var(--umber); }
+.callout.indigo { border-color: var(--indigo-mid); background: var(--indigo-wash); }
+.callout.indigo .callout-label { color: var(--indigo); }
+.callout.plum   { border-color: var(--plum-mid); background: var(--plum-wash); }
+.callout.plum .callout-label { color: var(--plum); }
+
+
+/* ══════════════════════════════════════════
+   HORIZONTAL RULES & DIVIDERS
+   ══════════════════════════════════════════ */
+.divider {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 56px 0;
+}
+.divider-ornament {
+  text-align: center;
+  margin: -10px 0 0;
+  position: relative;
+}
+.divider-ornament::before,
+.divider-ornament::after {
+  content: '';
+  display: inline-block;
+  width: 48px; height: 1px;
+  background: var(--rule);
+  vertical-align: middle;
+  margin: 0 12px;
+}
+.divider-ornament span {
+  font-family: 'Crimson Pro', serif;
+  font-size: 18px;
+  color: var(--dust);
+  vertical-align: middle;
+}
+
+/* Simple divider for practice pages */
+hr.divider {
+  text-align: center;
+  position: relative;
+}
+hr.divider span {
+  position: relative;
+  top: -10px;
+  background: var(--paper);
+  padding: 0 12px;
+  font-family: 'Crimson Pro', serif;
+  font-size: 18px;
+  color: var(--faded);
+}
+
+hr.step-divider {
+  border: none;
+  border-top: 1px dashed var(--rule);
+  margin: 36px 0;
+}
+
+
+/* ══════════════════════════════════════════
+   SENSES GRID (Five Senses overview)
+   ══════════════════════════════════════════ */
+.senses-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  margin: 28px 0;
+}
+
+.sense-card {
+  border-radius: 8px;
+  padding: 18px 14px;
+  text-align: center;
+  border: 1px solid transparent;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.sense-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(30,22,10,0.10);
+}
+.sense-card.sight { background: rgba(184,142,60,0.12); border-color: rgba(184,142,60,0.30); }
+.sense-card.sound { background: rgba(80,110,160,0.10); border-color: rgba(80,110,160,0.28); }
+.sense-card.touch { background: rgba(160,90,90,0.10);  border-color: rgba(160,90,90,0.28); }
+.sense-card.smell { background: rgba(80,130,90,0.10);  border-color: rgba(80,130,90,0.28); }
+.sense-card.taste { background: rgba(160,110,60,0.10); border-color: rgba(160,110,60,0.28); }
+
+.sense-icon { font-size: 28px; margin-bottom: 8px; display: block; }
+.sense-name {
+  font-family: 'Lora', serif;
+  font-size: 13px; font-weight: 700;
+  color: var(--ink-mid);
+  margin-bottom: 4px;
+}
+.sense-desc {
+  font-family: 'Crimson Pro', serif;
+  font-size: 13px;
+  color: var(--faded);
+  line-height: 1.4;
+}
+
+
+/* ══════════════════════════════════════════
+   SENSE LEGEND & FILTER TOGGLES
+   ══════════════════════════════════════════ */
+.sense-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0 0 36px;
+  padding: 16px 20px;
+  background: var(--vellum);
+  border-radius: 8px;
+  border: 1px solid var(--rule-light);
+  align-items: center;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'Crimson Pro', serif;
+  font-size: 14px;
+  color: var(--ink-mid);
+}
+
+.legend-swatch {
+  width: 20px; height: 11px;
+  border-radius: 3px;
+  border: 1px solid transparent;
+}
+.legend-swatch.sight { background: var(--sense-sight); border-color: var(--sense-sight-border); }
+.legend-swatch.sound { background: var(--sense-sound); border-color: var(--sense-sound-border); }
+.legend-swatch.touch { background: var(--sense-touch); border-color: var(--sense-touch-border); }
+.legend-swatch.smell { background: var(--sense-smell); border-color: var(--sense-smell-border); }
+.legend-swatch.taste { background: var(--sense-taste); border-color: var(--sense-taste-border); }
+
+/* Filter toggle bar */
+.sense-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0 16px;
+}
+
+/* Filter toggle buttons */
+.sense-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Lora', serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 5px 14px;
+  border-radius: 16px;
+  border: 1.5px solid;
+  cursor: pointer;
+  transition: opacity 0.2s ease, background 0.2s ease;
+  background: transparent;
+}
+.sense-filter-btn[aria-pressed="true"] { opacity: 1; }
+.sense-filter-btn[aria-pressed="false"] { opacity: 0.4; }
+.sense-filter-btn.sight { border-color: var(--sense-sight-border); color: #5a4010; }
+.sense-filter-btn.sight[aria-pressed="true"] { background: var(--sense-sight); }
+.sense-filter-btn.sound { border-color: var(--sense-sound-border); color: #1a2848; }
+.sense-filter-btn.sound[aria-pressed="true"] { background: var(--sense-sound); }
+.sense-filter-btn.touch { border-color: var(--sense-touch-border); color: #4a1828; }
+.sense-filter-btn.touch[aria-pressed="true"] { background: var(--sense-touch); }
+.sense-filter-btn.smell { border-color: var(--sense-smell-border); color: #1a3828; }
+.sense-filter-btn.smell[aria-pressed="true"] { background: var(--sense-smell); }
+.sense-filter-btn.taste { border-color: var(--sense-taste-border); color: #4a2810; }
+.sense-filter-btn.taste[aria-pressed="true"] { background: var(--sense-taste); }
+
+/* When a sense is filtered out, dim its highlights */
+mark.sight.dimmed,
+mark.sound.dimmed,
+mark.touch.dimmed,
+mark.smell.dimmed,
+mark.taste.dimmed {
+  background: transparent !important;
+  color: inherit;
+  transition: background 0.3s ease;
+}
+
+
+/* ══════════════════════════════════════════
+   FOUR-STEP OVERVIEW CARDS
+   ══════════════════════════════════════════ */
+.steps-intro {
+  text-align: center;
+  margin-bottom: 36px;
+}
+.steps-intro h2 {
+  font-family: 'Lora', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--ink-warm);
+  margin-bottom: 8px;
+}
+.steps-intro p {
+  font-family: 'Crimson Pro', serif;
+  font-size: 16px;
+  color: var(--faded);
+  font-style: italic;
+}
+
+.steps-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 28px 0 48px;
+}
+.step-card {
+  border-radius: 8px;
+  padding: 20px 18px;
+  position: relative;
+  border: 1px solid transparent;
+}
+.step-card.s1 { background: rgba(74,96,64,0.10);  border-color: rgba(74,96,64,0.25); }
+.step-card.s2 { background: rgba(58,72,104,0.10); border-color: rgba(58,72,104,0.25); }
+.step-card.s3 { background: rgba(122,78,40,0.10); border-color: rgba(122,78,40,0.25); }
+.step-card.s4 { background: rgba(106,58,80,0.10); border-color: rgba(106,58,80,0.25); }
+
+.step-number {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Lora', serif;
+  font-size: 16px; font-weight: 700;
+  color: var(--paper);
+  margin-bottom: 12px;
+}
+.step-card.s1 .step-number { background: var(--step1); }
+.step-card.s2 .step-number { background: var(--step2); }
+.step-card.s3 .step-number { background: var(--step3); }
+.step-card.s4 .step-number { background: var(--step4); }
+
+.step-name {
+  font-family: 'Lora', serif;
+  font-size: 13px; font-weight: 700;
+  color: var(--ink-mid);
+  line-height: 1.4;
+}
+
+
+/* ══════════════════════════════════════════
+   POEM DISPLAY — Paired Layout
+   (poem lines left, annotations right)
+   ══════════════════════════════════════════ */
+.paired-poem {
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 28px 0;
+  background: var(--vellum);
+}
+.paired-poem-header {
+  background: var(--ink-warm);
+  padding: 14px 24px;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.poem-header-title,
+.pph-title {
+  font-family: 'Lora', serif;
+  font-size: 14px; font-weight: 600;
+  color: var(--paper);
+}
+.poem-header-author,
+.pph-author {
+  font-family: 'Crimson Pro', serif;
+  font-size: 13px; font-style: italic;
+  color: var(--umber-pale);
+  opacity: 0.8;
+}
+
+.paired-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-bottom: 1px solid var(--rule-light);
+  align-items: start;
+}
+.paired-row:last-child { border-bottom: none; }
+
+.paired-lines {
+  padding: 18px 24px;
+  border-right: 1px solid var(--rule-light);
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 14.5px;
+  line-height: 1.9;
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  /* CSS line numbering */
+  counter-reset: poem-line;
+}
+.paired-lines .line {
+  display: block;
+  counter-increment: poem-line;
+  padding-left: 3em;
+  text-indent: -3em;
+}
+.paired-lines .line::before {
+  content: counter(poem-line);
+  display: inline-block;
+  width: 2.2em;
+  font-family: 'Crimson Pro', serif;
+  font-size: 11px;
+  color: var(--dust);
+  opacity: 0.45;
+  text-align: right;
+  padding-right: 0.8em;
+  user-select: none;
+}
+
+/* Annotation column */
+.paired-note {
+  padding: 18px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 0 8px;
+  background: rgba(255,255,255,0.28);
+}
+.paired-note--empty {
+  background: transparent;
+}
+.paired-note--empty .paired-note-aside,
+.paired-note-aside {
+  font-family: 'Crimson Pro', serif;
+  font-size: 13px; font-style: italic;
+  color: var(--faded);
+  line-height: 1.55;
+  padding-top: 2px;
+}
+
+.paired-note .annotation-swatch,
+.ann-bar {
+  flex-shrink: 0;
+  width: 4px;
+  border-radius: 2px;
+  min-height: 16px;
+  align-self: stretch;
+  margin-top: 2px;
+}
+.annotation-swatch.sight, .ann-bar.sight { background: var(--sense-sight-border); }
+.annotation-swatch.sound, .ann-bar.sound { background: var(--sense-sound-border); }
+.annotation-swatch.touch, .ann-bar.touch { background: var(--sense-touch-border); }
+.annotation-swatch.smell, .ann-bar.smell { background: var(--sense-smell-border); }
+.annotation-swatch.taste, .ann-bar.taste { background: var(--sense-taste-border); }
+
+.paired-note .annotation-content,
+.ann-content {
+  flex: 1; min-width: 0;
+  margin-bottom: 2px;
+}
+.paired-note .annotation-term,
+.ann-term {
+  font-family: 'Lora', serif;
+  font-size: 12.5px; font-weight: 700;
+  color: var(--ink-mid);
+  margin-bottom: 2px;
+}
+.paired-note .annotation-text,
+.ann-text {
+  font-family: 'Crimson Pro', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--quill);
+  line-height: 1.5;
+}
+
+.ann-item {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+/* Highlight marks in poem text */
+mark {
+  border-radius: 2px;
+  padding: 0 2px;
+  transition: background 0.3s ease;
+}
+mark.sight { background: var(--sense-sight); }
+mark.sound { background: var(--sense-sound); }
+mark.touch { background: var(--sense-touch); }
+mark.smell { background: var(--sense-smell); }
+mark.taste { background: var(--sense-taste); }
+
+
+/* ══════════════════════════════════════════
+   EXAMPLE SECTION HEADERS (with portraits)
+   ══════════════════════════════════════════ */
+.example-header {
+  background: var(--aged);
+  border: 1px solid var(--rule);
+  border-radius: 10px 10px 0 0;
+  padding: 18px 28px;
+  margin-top: 48px;
+}
+.example-header--portrait {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.example-header-text { flex: 1; }
+.example-header-eyebrow {
+  font-family: 'Lora', serif;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--moss);
+  margin-bottom: 4px;
+}
+.example-header-title {
+  font-family: 'Lora', serif;
+  font-size: 22px; font-weight: 700;
+  color: var(--ink-warm);
+}
+.example-header-title em { font-style: italic; color: var(--moss); }
+.example-header-bio {
+  font-family: 'Crimson Pro', serif;
+  font-size: 14px; font-style: italic;
+  color: var(--faded);
+  line-height: 1.65;
+  margin-top: 8px;
+  max-width: 560px;
+}
+
+.example-portrait {
+  flex-shrink: 0;
+  width: 110px;
+  margin: 0;
+  text-align: center;
+}
+.portrait-img {
+  width: 110px; height: 130px;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 4px;
+  border: 2px solid var(--rule);
+  filter: sepia(0.25) contrast(1.05);
+  display: block;
+}
+.portrait-caption {
+  font-family: 'Lora', serif;
+  font-size: 11px;
+  color: var(--faded);
+  font-style: italic;
+  margin-top: 6px;
+  display: block;
+  text-align: center;
+  letter-spacing: 0.03em;
+}
+
+.example-body {
+  background: var(--vellum);
+  border: 1px solid var(--rule);
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  padding: 36px 36px;
+}
+
+
+/* ══════════════════════════════════════════
+   WORKED EXAMPLE STEPS (defining page)
+   ══════════════════════════════════════════ */
+.example-step {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 24px;
+  margin-bottom: 48px;
+  align-items: start;
+}
+
+.example-step-badge {
+  border-radius: 8px;
+  padding: 14px 12px;
+  text-align: center;
+  flex-shrink: 0;
+}
+.example-step-badge .step-num {
+  font-family: 'Lora', serif;
+  font-size: 30px; font-weight: 700;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.example-step-badge .step-lbl {
+  font-family: 'Lora', serif;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+.example-step-badge.s1 { background: rgba(74,96,64,0.12);  color: var(--step1); border: 1px solid rgba(74,96,64,0.25); }
+.example-step-badge.s2 { background: rgba(58,72,104,0.12); color: var(--step2); border: 1px solid rgba(58,72,104,0.25); }
+.example-step-badge.s3 { background: rgba(122,78,40,0.12); color: var(--step3); border: 1px solid rgba(122,78,40,0.25); }
+.example-step-badge.s4 { background: rgba(106,58,80,0.12); color: var(--step4); border: 1px solid rgba(106,58,80,0.25); }
+
+.example-step-title {
+  font-family: 'Lora', serif;
+  font-size: 18px; font-weight: 700;
+  color: var(--ink-warm);
+  margin-bottom: 10px;
+}
+.example-step-body .prose { font-size: 16px; }
+
+
+/* ══════════════════════════════════════════
+   CONNOTATION NOTE CARDS
+   ══════════════════════════════════════════ */
+.connotation-note {
+  background: rgba(255,255,255,0.55);
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin-bottom: 10px;
+  border: 1px solid var(--rule-light);
+}
+.connotation-image {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 14px; font-weight: 700;
+  color: var(--ink-mid);
+  margin-bottom: 4px;
+}
+.connotation-sense {
+  display: inline-block;
+  font-family: 'Lora', serif;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-bottom: 6px;
+}
+.connotation-sense.sight { background: var(--sense-sight); color: #5a4010; }
+.connotation-sense.sound { background: var(--sense-sound); color: #1a2848; }
+.connotation-sense.touch { background: var(--sense-touch); color: #4a1818; }
+.connotation-sense.smell { background: var(--sense-smell); color: #1a3828; }
+.connotation-sense.taste { background: var(--sense-taste); color: #4a2810; }
+
+.connotation-thoughts {
+  font-family: 'Crimson Pro', serif;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--quill);
+  line-height: 1.6;
+}
+
+/* Connotation grid (practice page) */
+.connot-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0;
+}
+.connot-card {
+  background: rgba(255,255,255,0.5);
+  border: 1px solid var(--rule-light);
+  border-radius: 8px;
+  padding: 14px 16px;
+  border-top: 3px solid transparent;
+}
+.connot-card.sight { border-top-color: var(--sense-sight-border); }
+.connot-card.sound { border-top-color: var(--sense-sound-border); }
+.connot-card.touch { border-top-color: var(--sense-touch-border); }
+.connot-card.taste { border-top-color: var(--sense-taste-border); }
+.connot-image {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 13px; font-weight: 700;
+  color: var(--ink-mid);
+  margin-bottom: 4px;
+}
+.connot-sense-tag {
+  display: inline-block;
+  font-family: 'Lora', serif;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-bottom: 6px;
+}
+.connot-sense-tag.sight { background: var(--sense-sight); color: #4a3010; }
+.connot-sense-tag.sound { background: var(--sense-sound); color: #1a2848; }
+.connot-sense-tag.touch { background: var(--sense-touch); color: #4a1828; }
+.connot-sense-tag.taste { background: var(--sense-taste); color: #4a2810; }
+.connot-think {
+  font-family: 'Crimson Pro', serif;
+  font-size: 13.5px; font-style: italic;
+  color: var(--faded);
+  line-height: 1.55;
+  margin-bottom: 6px;
+}
+
+
+/* ══════════════════════════════════════════
+   PATTERN TAGS
+   ══════════════════════════════════════════ */
+.pattern-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0;
+}
+.pattern-tag {
+  font-family: 'Lora', serif;
+  font-size: 12px; font-weight: 600;
+  padding: 4px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--rule);
+  color: var(--ink-mid);
+  background: rgba(255,255,255,0.5);
+}
+.pattern-tag.moss   { border-color: var(--moss-mid); color: var(--moss); background: var(--moss-wash); }
+.pattern-tag.umber  { border-color: var(--umber-mid); color: var(--umber); background: var(--umber-wash); }
+.pattern-tag.indigo { border-color: var(--indigo-mid); color: var(--indigo); background: var(--indigo-wash); }
+
+/* Pattern split (practice page) */
+.pattern-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0;
+}
+.pattern-box {
+  border-radius: 8px;
+  padding: 16px 18px;
+  border: 1px solid transparent;
+}
+.pattern-box.moss   { background: var(--moss-wash);   border-color: rgba(74,96,64,0.2); }
+.pattern-box.indigo { background: var(--indigo-wash);  border-color: rgba(58,72,104,0.2); }
+.pattern-box.umber  { background: var(--umber-wash);   border-color: rgba(122,78,40,0.2); }
+.pattern-box-label {
+  font-family: 'Lora', serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.pattern-box.moss .pattern-box-label   { color: var(--moss); }
+.pattern-box.indigo .pattern-box-label { color: var(--indigo); }
+.pattern-box.umber .pattern-box-label  { color: var(--umber); }
+.pattern-box p {
+  font-family: 'Crimson Pro', serif;
+  font-size: 14.5px;
+  color: var(--ink-mid);
+  line-height: 1.65;
+}
+
+
+/* ══════════════════════════════════════════
+   INTERPRETATION BOX
+   ══════════════════════════════════════════ */
+.interpretation-box,
+.interp-box {
+  background: var(--ink-warm);
+  border-radius: 10px;
+  padding: 26px 30px;
+  border: 2px dashed var(--umber-pale);
+  position: relative;
+}
+.interpretation-box::before,
+.interp-box::before {
+  content: '\201C';
+  font-family: 'Lora', serif;
+  font-size: 72px;
+  color: var(--moss-light);
+  opacity: 0.2;
+  position: absolute;
+  top: 8px; left: 14px;
+  line-height: 1;
+}
+.interpretation-label,
+.interp-label {
+  font-family: 'Lora', serif;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--umber-pale);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.interpretation-box p,
+.interp-box p {
+  font-family: 'Crimson Pro', serif;
+  font-size: 16px;
+  color: rgba(244,237,224,0.90);
+  line-height: 1.8;
+  position: relative;
+}
+
+
+/* ══════════════════════════════════════════
+   DEFINITION CARD
+   ══════════════════════════════════════════ */
+.definition-card {
+  background: var(--aged);
+  border-radius: 10px;
+  padding: 26px 30px;
+  border: 1px solid var(--rule);
+  margin: 24px 0;
+}
+.definition-term {
+  font-family: 'Lora', serif;
+  font-size: 22px; font-weight: 700;
+  font-style: italic;
+  color: var(--moss);
+  margin-bottom: 10px;
+}
+.definition-text {
+  font-family: 'Crimson Pro', serif;
+  font-size: 17px;
+  color: var(--ink-mid);
+  line-height: 1.75;
+}
+
+
+/* ══════════════════════════════════════════
+   CONNOTATION EXPLAINER CARD
+   ══════════════════════════════════════════ */
+.connotation-card {
+  background: var(--vellum);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 26px 30px;
+  margin: 24px 0;
+}
+.connotation-card .term {
+  font-family: 'Lora', serif;
+  font-size: 13px; font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--indigo);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.connotation-card .term::before {
+  content: '';
+  display: inline-block;
+  width: 20px; height: 2px;
+  background: var(--indigo-mid);
+}
+.connotation-card p {
+  font-family: 'Crimson Pro', serif;
+  font-size: 16px;
+  color: var(--ink-mid);
+  line-height: 1.75;
+}
+
+
+/* ══════════════════════════════════════════
+   HOOK PANEL (split layout, defining page)
+   ══════════════════════════════════════════ */
+.hook-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 28px 0;
+}
+.hook-text {
+  padding: 28px;
+  background: var(--vellum);
+}
+.hook-poem-preview {
+  background: var(--ink-warm);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.hook-poem-caption {
+  font-family: 'Crimson Pro', serif;
+  font-size: 13px; font-style: italic;
+  color: var(--umber-pale);
+  opacity: 0.7;
+  margin-top: 14px;
+}
+
+
+/* ══════════════════════════════════════════
+   QUICK REFERENCE FOOTER
+   ══════════════════════════════════════════ */
+.quick-ref {
+  background: var(--ink-warm);
+  border-radius: 10px;
+  padding: 32px 36px;
+  margin-top: 56px;
+}
+.quick-ref-title {
+  font-family: 'Lora', serif;
+  font-size: 18px; font-weight: 700;
+  color: var(--paper);
+  margin-bottom: 6px;
+  text-align: center;
+}
+.quick-ref-sub {
+  font-family: 'Crimson Pro', serif;
+  font-size: 15px; font-style: italic;
+  color: var(--umber-pale);
+  opacity: 0.8;
+  text-align: center;
+  margin-bottom: 24px;
+}
+.quick-ref-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.quick-ref-item {
+  background: rgba(255,255,255,0.06);
+  border-radius: 8px;
+  padding: 16px 14px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.10);
+}
+.quick-ref-num {
+  font-family: 'Lora', serif;
+  font-size: 28px; font-weight: 700;
+  margin-bottom: 6px;
+}
+.quick-ref-item:nth-child(1) .quick-ref-num { color: var(--moss-pale); }
+.quick-ref-item:nth-child(2) .quick-ref-num { color: var(--indigo-pale); }
+.quick-ref-item:nth-child(3) .quick-ref-num { color: var(--umber-pale); }
+.quick-ref-item:nth-child(4) .quick-ref-num { color: #d8b5c5; }
+.quick-ref-text {
+  font-family: 'Crimson Pro', serif;
+  font-size: 14px;
+  color: rgba(244,237,224,0.75);
+  line-height: 1.5;
+}
+
+
+/* ══════════════════════════════════════════
+   STEP ACCORDION (practice page)
+   ══════════════════════════════════════════ */
+.step-block {
+  border-bottom: 1px solid var(--rule-light);
+}
+.step-block:last-child { border-bottom: none; }
+
+.step-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 28px;
+  background: rgba(255,255,255,0.18);
+  cursor: pointer;
+  transition: background 0.15s ease;
+  user-select: none;
+}
+.step-header:hover { background: rgba(255,255,255,0.28); }
+.step-header.locked {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.step-header.locked:hover { background: rgba(255,255,255,0.18); }
+
+.step-num-badge {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Lora', serif;
+  font-size: 15px; font-weight: 700;
+  color: var(--paper);
+  flex-shrink: 0;
+}
+.s1 .step-num-badge { background: var(--step1); }
+.s2 .step-num-badge { background: var(--step2); }
+.s3 .step-num-badge { background: var(--step3); }
+.s4 .step-num-badge { background: var(--step4); }
+
+.step-header-name {
+  font-family: 'Lora', serif;
+  font-size: 15px; font-weight: 700;
+  color: var(--ink-warm);
+  line-height: 1.3;
+}
+.step-header-desc {
+  font-family: 'Crimson Pro', serif;
+  font-size: 14px; font-style: italic;
+  color: var(--faded);
+  margin-top: 2px;
+}
+.step-lock-icon {
+  margin-left: auto;
+  font-size: 16px;
+  color: var(--faded);
+  opacity: 0.6;
+}
+.step-chevron {
+  margin-left: auto;
+  font-size: 14px;
+  color: var(--faded);
+  transition: transform 0.2s ease;
+}
+.step-header[aria-expanded="true"] .step-chevron {
+  transform: rotate(180deg);
+}
+
+.step-content {
+  padding: 28px 32px 32px;
+  background: var(--paper);
+  border-top: 1px solid var(--rule-light);
+}
+.step-content.hidden { display: none; }
+
+.instruction {
+  font-family: 'Lora', serif;
+  font-size: 13px; font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--moss-mid-aa);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.instruction::after {
+  content: '';
+  flex: 1; height: 1px;
+  background: linear-gradient(90deg, var(--rule), transparent);
+  max-width: 80px;
+}
+
+
+/* ══════════════════════════════════════════
+   REVEAL & NEXT BUTTONS
+   ══════════════════════════════════════════ */
+.reveal-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Lora', serif;
+  font-size: 13px; font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 9px 20px;
+  border-radius: 20px;
+  border: 1.5px solid;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease;
+  margin-top: 6px;
+  background: transparent;
+}
+.reveal-btn.s1 { border-color: var(--step1); color: var(--step1); }
+.reveal-btn.s1:hover { background: var(--step1); color: var(--paper); }
+.reveal-btn.s2 { border-color: var(--step2); color: var(--step2); }
+.reveal-btn.s2:hover { background: var(--step2); color: var(--paper); }
+.reveal-btn.s3 { border-color: var(--step3); color: var(--step3); }
+.reveal-btn.s3:hover { background: var(--step3); color: var(--paper); }
+.reveal-btn.s4 { border-color: var(--step4); color: var(--step4); }
+.reveal-btn.s4:hover { background: var(--step4); color: var(--paper); }
+
+.next-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Lora', serif;
+  font-size: 13px; font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 9px 22px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  margin-top: 16px;
+  color: var(--paper);
+}
+.next-btn:hover { opacity: 0.88; transform: translateX(2px); }
+.next-btn.s1 { background: var(--step1); }
+.next-btn.s2 { background: var(--step2); }
+.next-btn.s3 { background: var(--step3); }
+.next-btn.s4 { background: var(--step4); }
+
+.answer-block {
+  background: var(--vellum);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin-top: 16px;
+}
+.answer-block.hidden { display: none; }
+.answer-label {
+  font-family: 'Lora', serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--moss);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.answer-label::before {
+  content: '\2713';
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--moss);
+  color: var(--paper);
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+
+/* ══════════════════════════════════════════
+   STUDENT INPUT TEXTAREA (practice page)
+   ══════════════════════════════════════════ */
+.student-input {
+  width: 100%;
+  min-height: 80px;
+  padding: 14px 18px;
+  font-family: 'Crimson Pro', serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink);
+  background: rgba(255,255,255,0.6);
+  border: 1.5px solid var(--rule);
+  border-radius: 8px;
+  resize: vertical;
+  margin: 12px 0 8px;
+  transition: border-color 0.2s ease;
+}
+.student-input:focus {
+  outline: none;
+  border-color: var(--moss-mid);
+  box-shadow: 0 0 0 3px var(--moss-wash);
+}
+.student-input::placeholder {
+  color: var(--faded);
+  font-style: italic;
+  opacity: 0.6;
+}
+.student-input-label {
+  font-family: 'Lora', serif;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--faded);
+  margin-bottom: 4px;
+}
+
+
+/* ══════════════════════════════════════════
+   HOW-TO BOX (practice page)
+   ══════════════════════════════════════════ */
+.how-box {
+  background: var(--vellum);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 24px 28px;
+  margin-bottom: 52px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 20px;
+  align-items: start;
+}
+.how-icon { font-size: 28px; margin-top: 2px; }
+.how-title {
+  font-family: 'Lora', serif;
+  font-size: 15px; font-weight: 700;
+  color: var(--ink-warm);
+  margin-bottom: 8px;
+}
+.how-text {
+  font-family: 'Crimson Pro', serif;
+  font-size: 15px;
+  color: var(--ink-mid);
+  line-height: 1.7;
+}
+
+
+/* ══════════════════════════════════════════
+   POEM SECTION HEADER (practice page)
+   ══════════════════════════════════════════ */
+.poem-section-header {
+  background: var(--aged);
+  border: 1px solid var(--rule);
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
+  margin-top: 56px;
+}
+.poem-section-hero {
+  background: var(--ink-warm);
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.poem-section-eyebrow {
+  font-family: 'Lora', serif;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--moss-pale);
+  margin-bottom: 5px;
+  opacity: 0.85;
+}
+.poem-section-title {
+  font-family: 'Lora', serif;
+  font-size: clamp(17px, 2.2vw, 22px);
+  font-weight: 700;
+  color: var(--paper);
+  line-height: 1.25;
+  margin-bottom: 6px;
+}
+.poem-section-title em { font-style: italic; color: var(--moss-pale); }
+.poem-section-bio,
+.poet-bio {
+  font-family: 'Crimson Pro', serif;
+  font-size: 14px; font-style: italic;
+  color: var(--umber-pale);
+  opacity: 0.82;
+  line-height: 1.55;
+  max-width: 520px;
+}
+.poet-portrait {
+  flex-shrink: 0;
+  width: 90px;
+  text-align: center;
+}
+.poet-portrait img {
+  width: 90px; height: 108px;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 4px;
+  border: 2px solid rgba(255,255,255,0.15);
+  filter: sepia(0.2) contrast(1.05);
+  display: block;
+}
+.poet-portrait figcaption {
+  font-family: 'Lora', serif;
+  font-size: 10px; font-style: italic;
+  color: var(--umber-pale);
+  opacity: 0.7;
+  margin-top: 5px;
+}
+.poem-section-body {
+  background: var(--vellum);
+  border: 1px solid var(--rule);
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  overflow: hidden;
+}
+
+
+/* ══════════════════════════════════════════
+   PROGRESS BAR (practice page)
+   ══════════════════════════════════════════ */
+.progress-bar-wrap {
+  height: 3px;
+  background: rgba(74,53,32,0.1);
+  border-radius: 2px;
+  margin: 20px 0 0;
+  overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: var(--moss-light);
+  transition: width 0.4s ease;
+}
+
+
+/* ══════════════════════════════════════════
+   FADE-IN ANIMATION
+   ══════════════════════════════════════════ */
+.fade-in {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: fadeUp 0.6s ease forwards;
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in:nth-child(1) { animation-delay: 0.05s; }
+.fade-in:nth-child(2) { animation-delay: 0.15s; }
+.fade-in:nth-child(3) { animation-delay: 0.25s; }
+.fade-in:nth-child(4) { animation-delay: 0.35s; }
+.fade-in:nth-child(5) { animation-delay: 0.45s; }
+
+
+/* ══════════════════════════════════════════
+   SKIP LINK (accessibility)
+   ══════════════════════════════════════════ */
+.skip-link {
+  position: absolute;
+  top: -40px; left: 0;
+  background: var(--moss);
+  color: var(--paper);
+  padding: 8px 16px;
+  font-family: 'Lora', serif;
+  font-size: 13px;
+  z-index: 100;
+  transition: top 0.2s ease;
+  text-decoration: none;
+  border-radius: 0 0 4px 0;
+}
+.skip-link:focus { top: 0; }
+
+
+/* ══════════════════════════════════════════
+   MODULE MAP (hero progress timeline)
+   ══════════════════════════════════════════ */
+.module-map {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+}
+
+.module-map-title {
+  font-family: 'Lora', serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+.module-map-hint {
+  font-family: 'Crimson Pro', serif;
+  font-size: 12px;
+  font-style: italic;
+  color: rgba(255,255,255,0.28);
+  text-align: center;
+  margin-top: 2px;
+  margin-bottom: 14px;
+}
+
+.module-map-track {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+  position: relative;
+}
+
+.module-map-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 0;
+  position: relative;
+  text-decoration: none;
+  max-width: 120px;
+}
+
+/* Connecting line between icons */
+.module-map-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 18px;
+  left: calc(50% + 16px);
+  right: calc(-50% + 16px);
+  width: calc(100% - 32px);
+  height: 1.5px;
+  background: rgba(255,255,255,0.18);
+  z-index: 0;
+}
+.module-map-step:not(:last-child).is-done::after {
+  background: rgba(200,216,188,0.45);
+}
+
+/* Icon bubble */
+.map-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.07);
+  border: 1.5px solid rgba(255,255,255,0.18);
+  position: relative;
+  z-index: 1;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  flex-shrink: 0;
+}
+.map-icon svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: rgba(255,255,255,0.5);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Current page highlight */
+.module-map-step.is-current .map-icon {
+  width: 42px;
+  height: 42px;
+  background: rgba(200,216,188,0.18);
+  border-color: var(--moss-pale);
+  box-shadow: 0 0 12px rgba(200,216,188,0.25);
+  transform: translateY(-3px);
+}
+.module-map-step.is-current .map-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--moss-pale);
+  stroke-width: 1.8;
+}
+.module-map-step.is-current::after {
+  background: rgba(200,216,188,0.45);
+}
+
+/* Done pages (before current) */
+.module-map-step.is-done .map-icon {
+  background: rgba(200,216,188,0.12);
+  border-color: rgba(200,216,188,0.35);
+}
+.module-map-step.is-done .map-icon svg {
+  stroke: rgba(200,216,188,0.7);
+}
+
+/* Hover on linked steps */
+.module-map-step:hover .map-icon {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.35);
+}
+.module-map-step.is-current:hover .map-icon {
+  background: rgba(200,216,188,0.24);
+}
+
+/* Label under icon */
+.map-label {
+  font-family: 'Crimson Pro', serif;
+  font-size: 10.5px;
+  color: rgba(255,255,255,0.4);
+  text-align: center;
+  margin-top: 7px;
+  line-height: 1.3;
+  max-width: 80px;
+}
+.module-map-step.is-current .map-label {
+  color: var(--moss-pale);
+  font-weight: 500;
+}
+.module-map-step.is-done .map-label {
+  color: rgba(200,216,188,0.6);
+}
+
+
+/* ══════════════════════════════════════════
+   "BEFORE YOU BEGIN" GATE
+   Trail-marker checkpoint for assignment pages
+   ══════════════════════════════════════════ */
+.before-you-begin {
+  border-left: 3px solid var(--moss-mid);
+  background: rgba(200,216,188,0.06);
+  border-radius: 0 10px 10px 0;
+  padding: 28px 32px 24px;
+  margin: 8px 0 48px;
+  position: relative;
+}
+
+.byb-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.byb-icon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+.byb-icon svg {
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: var(--moss);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.byb-title {
+  font-family: 'Lora', serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--moss);
+}
+
+.byb-description {
+  font-family: 'Crimson Pro', serif;
+  font-size: 16px;
+  font-style: italic;
+  color: var(--faded);
+  line-height: 1.65;
+  margin-bottom: 20px;
+  max-width: 640px;
+}
+
+.byb-track {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.byb-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  flex: 1 1 0;
+  min-width: 100px;
+  max-width: 180px;
+  padding: 14px 10px 12px;
+  border-radius: 8px;
+  background: var(--vellum);
+  border: 1px solid var(--rule-light);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  position: relative;
+}
+.byb-step:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(30,22,10,0.10);
+  border-color: var(--moss-mid);
+}
+
+.byb-step-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--moss-wash);
+  border: 1.5px solid rgba(90,120,72,0.25);
+  margin-bottom: 8px;
+  flex-shrink: 0;
+}
+.byb-step-icon svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: var(--moss);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.byb-step-label {
+  font-family: 'Crimson Pro', serif;
+  font-size: 13.5px;
+  color: var(--ink-mid);
+  text-align: center;
+  line-height: 1.35;
+  font-weight: 500;
+}
+.byb-step:hover .byb-step-label {
+  color: var(--moss);
+}
+
+/* Connecting dots between steps */
+.byb-track .byb-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 26px;
+  right: -12px;
+  width: 8px;
+  height: 1.5px;
+  background: var(--rule);
+}
+
+/* Dismiss toggle */
+.byb-dismiss {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.byb-dismiss input[type="checkbox"] {
+  accent-color: var(--moss);
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+.byb-dismiss-label {
+  font-family: 'Crimson Pro', serif;
+  font-size: 13px;
+  color: var(--dust);
+  font-style: italic;
+}
+
+/* Collapsed state */
+.before-you-begin.is-collapsed .byb-description,
+.before-you-begin.is-collapsed .byb-track,
+.before-you-begin.is-collapsed .byb-dismiss {
+  display: none;
+}
+.before-you-begin.is-collapsed {
+  padding: 14px 24px;
+}
+.before-you-begin.is-collapsed .byb-header {
+  margin-bottom: 0;
+}
+.before-you-begin.is-collapsed .byb-title::after {
+  content: ' (click to expand)';
+  font-family: 'Crimson Pro', serif;
+  font-size: 12px;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--dust);
+  margin-left: 8px;
+}
+
+/* Poet card grid (for discussion assignment pages) */
+.poet-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin: 24px 0 16px;
+}
+.poet-card {
+  background: var(--vellum);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.poet-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(30,22,10,0.12);
+}
+.poet-card-option {
+  background: var(--ink-warm);
+  padding: 8px 14px;
+  font-family: 'Lora', serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--moss-pale);
+}
+.poet-card-img-wrap {
+  position: relative;
+  overflow: hidden;
+  height: 160px;
+}
+.poet-card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+.poet-card:hover .poet-card-img-wrap img {
+  transform: scale(1.04);
+}
+.poet-card-body {
+  padding: 14px 16px 18px;
+  flex: 1;
+}
+.poet-card-name {
+  font-family: 'Lora', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+.poet-card-poem {
+  font-family: 'Crimson Pro', serif;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--faded);
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+.poet-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Lora', serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--moss);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(74,96,64,0.3);
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.poet-card-link:hover {
+  color: var(--moss-mid);
+  border-color: var(--moss-mid);
+}
+.poet-card-links {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.poet-card-caption {
+  padding: 10px 16px;
+  background: rgba(0,0,0,0.04);
+  border-top: 1px solid var(--rule-light);
+  font-family: 'Crimson Pro', serif;
+  font-size: 12px;
+  font-style: italic;
+  color: var(--faded);
+  text-align: center;
+}
+
+/* Step reference grid (for assignment pages) */
+.step-ref-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin: 20px 0;
+}
+.step-ref-card {
+  border-radius: 8px;
+  padding: 16px 18px;
+  border-left: 3px solid;
+}
+.step-ref-card.s1 { border-color: var(--step1); background: rgba(74,96,64,0.06); }
+.step-ref-card.s2 { border-color: var(--step2); background: rgba(58,72,104,0.06); }
+.step-ref-card.s3 { border-color: var(--step3); background: rgba(122,78,40,0.06); }
+.step-ref-card.s4 { border-color: var(--step4); background: rgba(106,58,80,0.06); }
+.step-ref-label {
+  font-family: 'Lora', serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.step-ref-card.s1 .step-ref-label { color: var(--step1); }
+.step-ref-card.s2 .step-ref-label { color: var(--step2); }
+.step-ref-card.s3 .step-ref-label { color: var(--step3); }
+.step-ref-card.s4 .step-ref-label { color: var(--step4); }
+.step-ref-desc {
+  font-family: 'Crimson Pro', serif;
+  font-size: 15px;
+  color: var(--ink-mid);
+  line-height: 1.55;
+}
+
+/* Info grid (points, format, etc.) */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin: 24px 0;
+}
+.info-card {
+  border-radius: 8px;
+  border: 1px solid var(--rule-light);
+  background: var(--vellum);
+  padding: 20px 22px;
+}
+.info-card-title {
+  font-family: 'Lora', serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  margin-bottom: 10px;
+}
+.info-card ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.info-card li {
+  font-family: 'Crimson Pro', serif;
+  font-size: 15px;
+  color: var(--ink-mid);
+  line-height: 1.55;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+.info-card li::before {
+  content: '\25C6';
+  color: var(--moss-mid);
+  font-size: 7px;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+/* Due dates block */
+.due-dates {
+  border-radius: 8px;
+  border: 1px solid var(--rule-light);
+  overflow: hidden;
+  margin: 24px 0;
+}
+.due-dates-header {
+  background: var(--ink-warm);
+  padding: 10px 22px;
+  font-family: 'Lora', serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--paper);
+}
+.due-dates-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 22px;
+  border-bottom: 1px solid var(--rule-light);
+  font-family: 'Crimson Pro', serif;
+  font-size: 15px;
+  color: var(--ink-mid);
+}
+.due-dates-row:last-child { border-bottom: none; }
+.due-dates-label { font-weight: 500; color: var(--ink); }
+.due-dates-value { text-align: right; }
+.due-dates-grace {
+  padding: 10px 22px;
+  background: var(--moss-wash);
+  font-family: 'Crimson Pro', serif;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--faded);
+}
+
+/* Sample response block */
+.sample-response {
+  border-radius: 10px;
+  border: 1px solid var(--rule);
+  overflow: hidden;
+  margin: 24px 0;
+}
+.sample-response-header {
+  background: var(--aged);
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--rule-light);
+}
+.sample-response-title {
+  font-family: 'Lora', serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  margin-bottom: 2px;
+}
+.sample-response-poem {
+  font-family: 'Crimson Pro', serif;
+  font-size: 15px;
+  font-style: italic;
+  color: var(--faded);
+}
+.sample-response-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.sample-section-label {
+  font-family: 'Lora', serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--umber);
+  margin-bottom: 6px;
+}
+.sample-section-text {
+  font-family: 'Crimson Pro', serif;
+  font-size: 15.5px;
+  color: var(--ink-mid);
+  line-height: 1.75;
+}
+.sample-section-text.interpretation {
+  background: var(--vellum);
+  border-radius: 6px;
+  padding: 18px 22px;
+  border-left: 3px solid var(--umber-mid);
+}
+
+/* Resources list (footer) */
+.resources-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.resources-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.resources-list a {
+  font-family: 'Crimson Pro', serif;
+  font-size: 16px;
+  color: var(--moss);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s ease;
+}
+.resources-list a:hover {
+  border-bottom-color: var(--moss);
+}
+.resources-list svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: var(--moss-mid);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+
+/* ══════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+   ══════════════════════════════════════════ */
+@media (max-width: 700px) {
+  .page-body { padding: 32px 20px 60px; }
+  .hero-inner { padding: 40px 24px 36px; }
+  .module-map { margin-top: 20px; padding-top: 14px; }
+  .map-label { font-size: 9px; max-width: 60px; }
+  .map-icon { width: 28px; height: 28px; }
+  .map-icon svg { width: 14px; height: 14px; }
+  .module-map-step.is-current .map-icon { width: 34px; height: 34px; }
+  .module-map-step.is-current .map-icon svg { width: 16px; height: 16px; }
+  .module-map-step:not(:last-child)::after { top: 14px; left: calc(50% + 12px); width: calc(100% - 24px); }
+  .senses-grid { grid-template-columns: repeat(3, 1fr); }
+  .steps-row { grid-template-columns: repeat(2, 1fr); }
+  .paired-row { grid-template-columns: 1fr; }
+  .paired-lines { border-right: none; border-bottom: 1px solid var(--rule-light); }
+  .example-step { grid-template-columns: 1fr; }
+  .hook-panel { grid-template-columns: 1fr; }
+  .quick-ref-grid { grid-template-columns: repeat(2, 1fr); }
+  .connot-grid { grid-template-columns: 1fr; }
+  .pattern-split { grid-template-columns: 1fr; }
+  .example-header--portrait {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
+  .example-portrait { width: 80px; }
+  .portrait-img { width: 80px; height: 95px; }
+  .poet-grid { grid-template-columns: 1fr; }
+  .step-ref-grid { grid-template-columns: 1fr; }
+  .info-grid { grid-template-columns: 1fr; }
+  .byb-track { flex-direction: column; align-items: stretch; }
+  .byb-step { max-width: none; flex-direction: row; gap: 12px; }
+  .byb-step-icon { margin-bottom: 0; }
+  .byb-track .byb-step:not(:last-child)::after { display: none; }
+  .before-you-begin { padding: 20px 18px 18px; }
+}
+
+
+/* ══════════════════════════════════════════
+   REDUCED MOTION
+   ══════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+  .sense-card { transition: none; }
+  .step-chevron { transition: none; }
+  .reveal-btn, .next-btn { transition: none; }
+  .progress-bar-fill { transition: none; }
+  .student-input { transition: none; }
+  mark { transition: none; }
+}
+
+
+/* ══════════════════════════════════════════
+   DARK MODE
+   ══════════════════════════════════════════ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper:     #1a1610;
+    --vellum:    #211c14;
+    --aged:      #2a231a;
+    --worn:      #3a3024;
+    --shadow:    #4a3e30;
+
+    --ink:       #e8e0d4;
+    --ink-warm:  #141008;
+    --ink-mid:   #c8b8a4;
+    --quill:     #b8a488;
+    --faded:     #9a8a70;
+    --dust:      #8a7a60;
+
+    --rule:      rgba(200,180,140,0.18);
+    --rule-light: rgba(200,180,140,0.10);
+  }
+
+  body {
+    background-image: none;
+  }
+
+  .portrait-img {
+    filter: sepia(0.15) contrast(0.95) brightness(0.85);
+  }
+
+  .student-input {
+    background: rgba(0,0,0,0.25);
+    color: var(--ink);
+  }
+
+  .interpretation-box p,
+  .interp-box p {
+    color: rgba(232,224,212,0.88);
+  }
+
+  .before-you-begin {
+    background: rgba(90,120,72,0.06);
+    border-color: rgba(90,120,72,0.35);
+  }
+  .byb-step {
+    background: rgba(0,0,0,0.2);
+    border-color: rgba(200,180,140,0.15);
+  }
+  .poet-card,
+  .info-card {
+    background: rgba(0,0,0,0.2);
+    border-color: rgba(200,180,140,0.15);
+  }
+  .poet-card-img-wrap img {
+    filter: sepia(0.15) contrast(0.95) brightness(0.85);
+  }
+  .poet-card-option {
+    background: rgba(0,0,0,0.4);
+  }
+  .poet-card-caption {
+    background: rgba(0,0,0,0.15);
+  }
+  .sample-response-header {
+    background: rgba(0,0,0,0.3);
+  }
+  .sample-section-text.interpretation {
+    background: rgba(0,0,0,0.2);
+  }
+  .due-dates-header {
+    background: rgba(0,0,0,0.4);
+  }
+}
+
+
+/* ══════════════════════════════════════════
+   PRINT STYLESHEET
+   ══════════════════════════════════════════ */
+@media print {
+  body {
+    background: white;
+    background-image: none;
+    color: black;
+    font-size: 12pt;
+  }
+
+  .hero {
+    background: none;
+    color: black;
+    padding: 0;
+    break-after: avoid;
+  }
+  .hero-texture,
+  .hero-ornament { display: none; }
+  .hero-inner { padding: 0 0 16pt; }
+  .hero-title { color: black; font-size: 24pt; }
+  .hero-title em { color: #333; }
+  .hero-module-tag,
+  .hero-tag { color: #666; opacity: 1; }
+  .hero-module-tag::before,
+  .hero-tag::before { display: none; }
+  .hero-subtitle,
+  .hero-sub { color: #444; opacity: 1; }
+  .hero-rule { display: none; }
+  .hero-how { display: none; }
+  .module-map { display: none; }
+
+  .page-body { padding: 0; max-width: 100%; }
+
+  .section { break-inside: avoid; }
+
+  .paired-poem {
+    break-inside: avoid;
+    border: 1pt solid #ccc;
+  }
+  .paired-poem-header {
+    background: #333;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .interpretation-box,
+  .interp-box {
+    background: #f0f0f0;
+    border: 1pt solid #999;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .interpretation-box p,
+  .interp-box p { color: #222; }
+
+  .quick-ref {
+    background: #333;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .reveal-btn,
+  .next-btn,
+  .sense-filter-btn,
+  .student-input { display: none; }
+
+  .answer-block.hidden,
+  .step-content.hidden { display: block !important; }
+
+  .fade-in { opacity: 1; transform: none; animation: none; }
+
+  .skip-link { display: none; }
+
+  .before-you-begin {
+    border-left: 2pt solid #666;
+    background: #f5f5f5;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    break-inside: avoid;
+  }
+  .byb-step { border: 1pt solid #ccc; }
+  .poet-card { border: 1pt solid #ccc; break-inside: avoid; }
+  .poet-card-img-wrap img { filter: none; }
+  .sample-response { break-inside: avoid; border: 1pt solid #999; }
+  .due-dates { border: 1pt solid #999; }
+  .due-dates-header {
+    background: #333; color: white;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
