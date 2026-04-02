@@ -1524,6 +1524,255 @@ mark.taste { background: var(--sense-taste); }
 
 
 /* ══════════════════════════════════════════
+   OVERVIEW PAGE — Outcomes Grid
+   ══════════════════════════════════════════ */
+.outcomes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 8px;
+}
+.outcomes-card {
+  background: var(--vellum);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 26px 28px;
+}
+.outcomes-card-label {
+  font-family: 'Lora', serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--moss-mid-aa);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.outcomes-card-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--rule), transparent);
+}
+.outcomes-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.outcomes-list li {
+  position: relative;
+  padding-left: 18px;
+  font-family: 'Crimson Pro', serif;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ink-mid);
+  text-align: left;
+}
+.outcomes-list li::before {
+  content: '\25C6';
+  color: var(--moss-mid);
+  font-size: 9px;
+  position: absolute;
+  left: 0;
+  top: 6px;
+}
+
+
+/* ══════════════════════════════════════════
+   OVERVIEW PAGE — Learning Activities
+   ══════════════════════════════════════════ */
+.activities-block {
+  background: var(--vellum);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+.activities-header {
+  background: var(--ink-warm);
+  padding: 14px 24px;
+  font-family: 'Lora', serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--paper);
+  letter-spacing: 0.04em;
+}
+.activities-body {
+  padding: 20px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.activity-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.activity-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--moss-wash);
+  border: 1px solid rgba(90,120,72,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.activity-text { flex: 1; }
+.activity-title {
+  font-family: 'Lora', serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 3px;
+}
+.activity-desc {
+  font-family: 'Crimson Pro', serif;
+  font-size: 15px;
+  color: var(--faded);
+  line-height: 1.6;
+}
+
+
+/* ══════════════════════════════════════════
+   OVERVIEW PAGE — Assignment Cards
+   ══════════════════════════════════════════ */
+.week-label {
+  font-family: 'Lora', serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--umber);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.week-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--umber-mid), transparent);
+  opacity: 0.4;
+  max-width: 200px;
+}
+.assignments-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.assignment-card {
+  background: var(--vellum);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 20px 24px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  position: relative;
+  border-left: 4px solid var(--moss-mid);
+}
+.assignment-card.indigo-accent { border-left-color: var(--indigo-mid); }
+.assignment-num {
+  font-family: 'Lora', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--moss-mid);
+  line-height: 1;
+  flex-shrink: 0;
+  min-width: 24px;
+  margin-top: 2px;
+}
+.assignment-card.indigo-accent .assignment-num { color: var(--indigo-mid); }
+.assignment-body { flex: 1; }
+.assignment-title {
+  font-family: 'Lora', serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 5px;
+  line-height: 1.3;
+}
+.assignment-due {
+  font-family: 'Crimson Pro', serif;
+  font-size: 15px;
+  color: var(--faded);
+  font-style: italic;
+}
+.assignment-due strong {
+  color: var(--umber);
+  font-style: normal;
+  font-weight: 600;
+}
+
+
+/* ══════════════════════════════════════════
+   OVERVIEW PAGE — Resource Links
+   ══════════════════════════════════════════ */
+.resource-link {
+  font-family: 'Crimson Pro', serif;
+  font-size: 17px;
+  color: var(--moss);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(74,96,64,0.3);
+  transition: color 0.15s, border-color 0.15s;
+}
+.resource-link:hover {
+  color: var(--moss-mid);
+  border-color: var(--moss-mid);
+}
+.resource-arrow {
+  font-size: 12px;
+  color: var(--moss-mid);
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+
+/* ══════════════════════════════════════════
+   OVERVIEW PAGE — Contact Box
+   ══════════════════════════════════════════ */
+.contact-box {
+  background: var(--vellum);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 24px 28px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-top: 8px;
+}
+.contact-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.contact-body { flex: 1; }
+.contact-title {
+  font-family: 'Lora', serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.contact-text {
+  font-family: 'Crimson Pro', serif;
+  font-size: 16px;
+  color: var(--faded);
+  line-height: 1.65;
+}
+
+
+/* ══════════════════════════════════════════
    MODULE MAP (hero progress timeline)
    ══════════════════════════════════════════ */
 .module-map {
@@ -2177,6 +2426,8 @@ mark.taste { background: var(--sense-taste); }
   }
   .example-portrait { width: 80px; }
   .portrait-img { width: 80px; height: 95px; }
+  .outcomes-grid { grid-template-columns: 1fr; }
+  .assignment-card { flex-direction: column; gap: 8px; }
   .poet-grid { grid-template-columns: 1fr; }
   .step-ref-grid { grid-template-columns: 1fr; }
   .info-grid { grid-template-columns: 1fr; }
