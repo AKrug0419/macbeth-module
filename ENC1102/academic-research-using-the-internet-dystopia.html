@@ -1,0 +1,1614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="identifier" content="dystopian-internet-research"/>
+<meta name="editing_roles" content="teachers"/>
+<meta name="workflow_state" content="active"/>
+<title>Academic Research: Using the Internet | ENC 1102 — Dystopian Research Essay</title>
+<style>
+
+  /* ═══════════════════════════════════════════════
+     DESIGN TOKENS — Dystopian Research Essay Module
+     ═══════════════════════════════════════════════ */
+
+  @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap');
+
+  :root {
+    --bg-deep:       #565e6e;
+    --bg-surface:    #3e4555;
+    --bg-elevated:   #353c4b;
+    --border-subtle: #4a5264;
+    --border-mid:    #5c6478;
+
+    --accent:        #e8a832;
+    --accent-soft:   #e8a83228;
+    --accent-mid:    #e8a83258;
+    --accent-text:   #f5c865;
+
+    --teal:          #5ba8a0;
+    --teal-soft:     #5ba8a028;
+    --teal-mid:      #5ba8a058;
+    --teal-text:     #90d8d0;
+
+    --lavender:      #9a9cc0;
+    --lavender-soft: #9a9cc028;
+    --lavender-mid:  #9a9cc058;
+    --lavender-text: #d0d2f0;
+
+    --warn:          #f47878;
+    --warn-soft:     #f4787822;
+
+    --text-primary:  #f0f2f5;
+    --text-secondary:#cdd3dc;
+    --text-muted:    #9aa2b2;
+
+    --font-display:  'Libre Baskerville', 'Georgia', serif;
+    --font-body:     'Source Sans Pro', 'Segoe UI', sans-serif;
+    --font-mono:     'IBM Plex Mono', 'Consolas', monospace;
+
+    /* SIFT step accent colors (dark theme adapted) */
+    --sift-s:        #f0b0c5;
+    --sift-s-bg:     #c26a8a;
+    --sift-s-soft:   rgba(194,106,138,0.15);
+    --sift-i:        #b0cce8;
+    --sift-i-bg:     #5a80b8;
+    --sift-i-soft:   rgba(122,156,208,0.15);
+    --sift-f:        #90d8d0;
+    --sift-f-bg:     #5ba8a0;
+    --sift-f-soft:   rgba(91,168,160,0.15);
+    --sift-t:        #f5c865;
+    --sift-t-bg:     #e8a832;
+    --sift-t-soft:   rgba(232,168,50,0.15);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg-deep);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--accent-text); text-decoration: underline; }
+  a:hover { color: #fff; }
+  strong, b { color: var(--text-primary); }
+  em, i { color: var(--text-secondary); }
+
+  .page-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 28px;
+  }
+
+  /* ═══ ANIMATIONS ═══ */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in { animation: fadeUp 0.5s ease both; }
+  .fade-d1 { animation-delay: 0.08s; }
+  .fade-d2 { animation-delay: 0.16s; }
+  .fade-d3 { animation-delay: 0.24s; }
+  .fade-d4 { animation-delay: 0.32s; }
+
+  /* ═══ HERO ═══ */
+  .hero {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-left: 4px solid var(--accent);
+    border-radius: 6px;
+    padding: 40px 44px 36px;
+    margin-bottom: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent-text);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 12px;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: 32px;
+    color: #fff;
+    line-height: 1.25;
+    margin-bottom: 10px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--accent-text);
+  }
+
+  .hero-subtitle {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 640px;
+  }
+
+  /* ═══ SECTION HEADERS ═══ */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+    margin-top: 48px;
+  }
+
+  .section-badge {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--accent-text);
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-mid);
+    border-radius: 4px;
+    padding: 3px 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+
+  .section-badge.teal {
+    color: var(--teal-text);
+    background: var(--teal-soft);
+    border-color: var(--teal-mid);
+  }
+
+  .section-badge.lavender {
+    color: var(--lavender-text);
+    background: var(--lavender-soft);
+    border-color: var(--lavender-mid);
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    color: #fff;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--accent-text);
+  }
+
+  .section-rule {
+    border: 0;
+    border-top: 1px solid var(--border-subtle);
+    margin: 48px 0 0 0;
+  }
+
+  /* ═══ PROSE ═══ */
+  .prose {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    max-width: 720px;
+  }
+
+  .prose + .prose { margin-top: 14px; }
+  .prose strong { color: var(--text-primary); }
+
+  /* ═══ CALLOUT BOXES ═══ */
+  .callout {
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    border-left: 3px solid;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .callout::after {
+    content: '';
+    position: absolute;
+    right: -30px; top: -30px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    pointer-events: none;
+  }
+
+  .callout.amber {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+  }
+
+  .callout.teal {
+    background: var(--teal-soft);
+    border-color: var(--teal);
+  }
+
+  .callout.lavender {
+    background: var(--lavender-soft);
+    border-color: var(--lavender);
+  }
+
+  .callout.warn {
+    background: var(--warn-soft);
+    border-color: var(--warn);
+  }
+
+  .callout-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+
+  .callout.amber .callout-label    { color: var(--accent-text); }
+  .callout.teal .callout-label     { color: var(--teal-text); }
+  .callout.lavender .callout-label { color: var(--lavender-text); }
+  .callout.warn .callout-label     { color: var(--warn); }
+
+  .callout p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .callout p + p { margin-top: 10px; }
+
+  /* ═══ CARDS ═══ */
+  .card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .card-grid.three-col {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .card::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; right: -40px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+    pointer-events: none;
+  }
+
+  .card-header {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .card-header.amber  { background: var(--accent-soft); }
+  .card-header.teal   { background: var(--teal-soft); }
+  .card-header.lav    { background: var(--lavender-soft); }
+
+  .card-header-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .card-header.amber .card-header-label  { color: var(--accent-text); }
+  .card-header.teal .card-header-label   { color: var(--teal-text); }
+  .card-header.lav .card-header-label    { color: var(--lavender-text); }
+
+  .card-body {
+    padding: 20px;
+  }
+
+  .card-body p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    margin-bottom: 12px;
+  }
+
+  .card-body p:last-child { margin-bottom: 0; }
+
+  .card-body ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .card-body ul li {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    padding-left: 18px;
+    position: relative;
+  }
+
+  .card-body ul li::before {
+    content: '\203A';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .card-body ul.teal-list li::before { color: var(--teal); }
+  .card-body ul.lav-list li::before  { color: var(--lavender); }
+
+  /* ═══ TOOL TABLE ═══ */
+  .tool-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+  }
+
+  .tool-table thead tr {
+    background: var(--bg-elevated);
+  }
+
+  .tool-table thead th {
+    padding: 13px 18px;
+    text-align: left;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-text);
+  }
+
+  .tool-table tbody tr {
+    background: var(--bg-surface);
+  }
+
+  .tool-table tbody tr:nth-child(even) {
+    background: rgba(53, 60, 75, 0.7);
+  }
+
+  .tool-table tbody td {
+    padding: 14px 18px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    border-top: 1px solid var(--border-subtle);
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .tool-table tbody td:first-child {
+    font-weight: 600;
+    color: var(--text-primary);
+    white-space: nowrap;
+  }
+
+  .tool-badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 10px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .tool-badge.best    { background: var(--teal-soft); color: var(--teal-text); border: 1px solid var(--teal-mid); }
+  .tool-badge.okay    { background: var(--accent-soft); color: var(--accent-text); border: 1px solid var(--accent-mid); }
+  .tool-badge.caution { background: var(--warn-soft); color: var(--warn); border: 1px solid rgba(244,120,120,0.3); }
+
+  /* ═══ BOOLEAN OPERATOR CARDS ═══ */
+  .bool-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 24px 0;
+  }
+
+  .bool-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    padding: 20px 18px 18px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bool-card::after {
+    content: '';
+    position: absolute;
+    top: -30px; left: -30px;
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+    pointer-events: none;
+  }
+
+  .bool-operator {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent-text);
+    letter-spacing: 0.06em;
+    margin-bottom: 6px;
+  }
+
+  .bool-name {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--teal-text);
+    margin-bottom: 10px;
+  }
+
+  .bool-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  .bool-example {
+    margin-top: 12px;
+    padding: 10px 12px;
+    background: var(--bg-elevated);
+    border-radius: 5px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--lavender-text);
+    line-height: 1.5;
+    border: 1px solid var(--border-subtle);
+  }
+
+  /* ═══ SEARCH EXAMPLE BLOCK ═══ */
+  .search-demo {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 24px 0;
+    position: relative;
+  }
+
+  .search-demo::after {
+    content: '';
+    position: absolute;
+    bottom: -50px; left: -50px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.02);
+    pointer-events: none;
+  }
+
+  .search-demo-header {
+    background: var(--bg-elevated);
+    padding: 12px 20px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--teal-text);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .search-demo-body { padding: 20px 24px; position: relative; }
+
+  .search-query {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text-primary);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: 5px;
+    padding: 10px 16px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .search-query-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    flex-shrink: 0;
+  }
+
+  .search-query-text {
+    font-style: italic;
+    color: var(--lavender-text);
+  }
+
+  .search-results {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .search-result {
+    padding: 12px 16px;
+    border-radius: 5px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .search-result-url {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--teal-text);
+    margin-bottom: 3px;
+    letter-spacing: 0.02em;
+  }
+
+  .search-result-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+    line-height: 1.4;
+  }
+
+  .search-result-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .search-result-badge {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .search-result-badge.usable { background: var(--teal-soft); color: var(--teal-text); border: 1px solid var(--teal-mid); }
+  .search-result-badge.verify { background: var(--accent-soft); color: var(--accent-text); border: 1px solid var(--accent-mid); }
+  .search-result-badge.skip   { background: var(--warn-soft); color: var(--warn); border: 1px solid rgba(244,120,120,0.3); }
+
+  /* ═══ SIFT STEP CARDS ═══ */
+  .sift-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 28px 0;
+  }
+
+  .sift-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .sift-card::after {
+    content: '';
+    position: absolute;
+    bottom: -30px; right: -30px;
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+    pointer-events: none;
+  }
+
+  .sift-card-header {
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .sift-letter {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    width: 52px; height: 52px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  .sift-card.s .sift-letter { background: var(--sift-s-bg); }
+  .sift-card.i .sift-letter { background: var(--sift-i-bg); }
+  .sift-card.f .sift-letter { background: var(--sift-f-bg); }
+  .sift-card.t .sift-letter { background: var(--sift-t-bg); }
+
+  .sift-card-move {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+
+  .sift-card.s .sift-card-move { color: var(--sift-s); }
+  .sift-card.i .sift-card-move { color: var(--sift-i); }
+  .sift-card.f .sift-card-move { color: var(--sift-f); }
+  .sift-card.t .sift-card-move { color: var(--sift-t); }
+
+  .sift-card-title {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .sift-card-body {
+    padding: 0 20px 18px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    position: relative;
+  }
+
+  .sift-card-tip {
+    margin-top: 10px;
+    padding: 10px 14px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  .sift-card.s .sift-card-tip { background: var(--sift-s-soft); color: var(--sift-s); }
+  .sift-card.i .sift-card-tip { background: var(--sift-i-soft); color: var(--sift-i); }
+  .sift-card.f .sift-card-tip { background: var(--sift-f-soft); color: var(--sift-f); }
+  .sift-card.t .sift-card-tip { background: var(--sift-t-soft); color: var(--sift-t); }
+
+  /* ═══ LATERAL READING DEMO ═══ */
+  .lateral-demo {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 28px 0;
+  }
+
+  .lateral-demo-header {
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 16px 24px;
+  }
+
+  .lateral-demo-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal-text);
+    margin-bottom: 4px;
+  }
+
+  .lateral-demo-title {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .lateral-steps {
+    padding: 24px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .lateral-step {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 16px;
+    padding-bottom: 24px;
+    position: relative;
+  }
+
+  .lateral-step:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 21px;
+    top: 44px;
+    width: 2px;
+    bottom: 0;
+    background: var(--border-subtle);
+  }
+
+  .lateral-step-num {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .lateral-step:nth-child(1) .lateral-step-num { background: var(--sift-s-bg); }
+  .lateral-step:nth-child(2) .lateral-step-num { background: var(--sift-i-bg); }
+  .lateral-step:nth-child(3) .lateral-step-num { background: var(--sift-f-bg); }
+  .lateral-step:nth-child(4) .lateral-step-num { background: var(--sift-t-bg); }
+  .lateral-step:nth-child(5) .lateral-step-num { background: var(--teal); }
+
+  .lateral-step-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+
+  .lateral-step-title {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+
+  .lateral-step-body .prose {
+    font-size: 14px;
+    max-width: none;
+  }
+
+  .lateral-result {
+    margin-top: 10px;
+    padding: 12px 16px;
+    border-radius: 5px;
+    border: 1px solid var(--border-subtle);
+    background: var(--bg-elevated);
+    font-size: 13px;
+    font-style: italic;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .lateral-result strong {
+    color: var(--accent-text);
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  /* ═══ FORMATIVE QUIZ ═══ */
+  .quiz-block {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 28px 0;
+  }
+
+  .quiz-header {
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 12px 22px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .quiz-header-icon {
+    font-size: 16px;
+    color: var(--accent-text);
+  }
+
+  .quiz-header-text {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-text);
+  }
+
+  .quiz-items {
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .quiz-item {
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 20px;
+  }
+
+  .quiz-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .quiz-q {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.65;
+    margin-bottom: 12px;
+    text-align: left;
+  }
+
+  .quiz-q-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--teal);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    margin-right: 8px;
+    flex-shrink: 0;
+    vertical-align: middle;
+  }
+
+  .quiz-reveal-btn {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--teal-text);
+    background: none;
+    border: 1px solid var(--teal-mid);
+    border-radius: 4px;
+    padding: 7px 16px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .quiz-reveal-btn:hover { background: var(--teal-soft); }
+
+  .quiz-reveal-btn:disabled {
+    color: var(--text-muted);
+    border-color: var(--border-subtle);
+    cursor: default;
+    background: none;
+  }
+
+  .quiz-answer {
+    margin-top: 14px;
+    background: var(--bg-elevated);
+    border-left: 3px solid var(--teal);
+    border-radius: 0 6px 6px 0;
+    padding: 12px 18px;
+  }
+
+  .quiz-answer.hidden { display: none; }
+
+  .quiz-answer-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--teal-text);
+    margin-bottom: 6px;
+  }
+
+  .quiz-answer p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+    text-align: left;
+  }
+
+  .quiz-answer p + p { margin-top: 8px; }
+
+  /* ═══ CREDIBILITY GRID ═══ */
+  .cred-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin: 24px 0;
+  }
+
+  .cred-item {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    padding: 18px 20px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cred-item::after {
+    content: '';
+    position: absolute;
+    top: -20px; right: -20px;
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.025);
+    pointer-events: none;
+  }
+
+  .cred-icon {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .cred-icon.pass { background: var(--teal-soft); color: var(--teal-text); border: 1px solid var(--teal-mid); }
+  .cred-icon.fail { background: var(--warn-soft); color: var(--warn); border: 1px solid rgba(244,120,120,0.3); }
+
+  .cred-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+
+  .cred-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* ═══ CONTACT BOX ═══ */
+  .contact-box {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    padding: 24px 28px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    margin-top: 8px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-box::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; right: -40px;
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+    pointer-events: none;
+  }
+
+  .contact-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .contact-title {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+
+  .contact-text {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  /* ═══ RESPONSIVE ═══ */
+  @media (max-width: 700px) {
+    .page-wrap { padding: 28px 16px; }
+    .hero { padding: 28px 24px 24px; }
+    .sift-grid, .cred-grid, .bool-grid { grid-template-columns: 1fr; }
+    .card-grid, .card-grid.three-col { grid-template-columns: 1fr; }
+    .lateral-step { grid-template-columns: 36px 1fr; gap: 12px; }
+  }
+
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+<!-- ═══ HERO ═══ -->
+<header class="hero fade-in" role="banner">
+  <div class="hero-label">Dystopian Research Essay &middot; ENC 1102</div>
+  <h1 class="hero-title">Academic Research: <em>Using the Internet</em></h1>
+  <p class="hero-subtitle">Search Strategy &middot; Source Evaluation &middot; The SIFT Method</p>
+</header>
+
+<!-- ═══════════════════════════════════
+     SECTION ONE: ORIENTATION
+═══════════════════════════════════ -->
+<section aria-labelledby="orientation-heading" class="fade-in fade-d1">
+  <div class="section-header">
+    <span class="section-badge">SEC &middot; 01</span>
+    <h2 class="section-title" id="orientation-heading">You Already Know How to Use the Internet. <em>This Is Different.</em></h2>
+  </div>
+
+  <p class="prose">You have been navigating the internet your entire life. You know how to find things. So the honest question is: why does a college course need to teach you how to do something you already do every day?</p>
+  <p class="prose">Here is the answer. The internet you use daily was designed to serve your personal needs: finding directions, watching videos, connecting with friends, making purchases. None of those tasks require you to care whether the source is authoritative, accurate, or current. The algorithm rewards content that gets <em>clicks</em>, not content that is <em>true</em>.</p>
+  <p class="prose">Academic research requires something different: <strong>verifiability</strong>. You need sources whose claims can be traced back to evidence, whose authors have relevant expertise, and whose purpose is to inform rather than to persuade, entertain, or sell. The skills for finding and evaluating those sources do not come automatically from years of casual internet use, because casual internet use never required them.</p>
+
+  <div class="callout lavender" style="margin-top:24px;">
+    <div class="callout-label">The Credibility Problem</div>
+    <p>On the modern web, credible and non-credible sources are <strong>visually identical</strong>. A well-designed website for a conspiracy theory looks exactly like a well-designed website for a peer-reviewed journal. A fake "analysis" of <em>Children of Men</em>, written by AI and posted on an anonymous blog, is indistinguishable in appearance from a real critical essay published by a university press. Appearance alone tells you nothing. You need strategies that go deeper.</p>
+  </div>
+
+  <div class="callout teal" style="margin-top: 16px;">
+    <div class="callout-label">A Word About Confirmation Bias</div>
+    <p>Research consistently shows that people are significantly more likely to accept a source as credible when it confirms what they already believe, and more likely to question it when it contradicts their existing views. This means your gut reaction to a source ("this feels right" or "this seems off") is an <em>unreliable</em> guide to its actual credibility. The evaluation strategies in this unit are designed to replace gut reaction with a systematic process.</p>
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<!-- ═══════════════════════════════════
+     SECTION TWO: THREE TOOLS
+═══════════════════════════════════ -->
+<section aria-labelledby="tools-heading" class="fade-in fade-d2">
+  <div class="section-header">
+    <span class="section-badge teal">SEC &middot; 02</span>
+    <h2 class="section-title" id="tools-heading">Three Tools, <em>Three Different Purposes</em></h2>
+  </div>
+
+  <p class="prose">For this essay, you will be conducting research using both an academic database and the internet. Before we discuss search strategy and source evaluation, it is important to understand what each of your available tools is actually good for, because they are genuinely different, and using the wrong tool for a given task costs you time and leads to worse results.</p>
+
+  <table class="tool-table" role="table" aria-label="Research tool comparison">
+    <thead>
+      <tr>
+        <th scope="col">Tool</th>
+        <th scope="col">What It Searches</th>
+        <th scope="col">Quality Control</th>
+        <th scope="col">Best For</th>
+        <th scope="col">Limitation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Library Database<br><span style="font-size:12px;color:var(--text-muted);">e.g., Academic Search Complete, JSTOR, Film &amp; Television Literature Index</span></td>
+        <td>Curated collections of peer-reviewed journals, scholarly books, and academic publications</td>
+        <td><span class="tool-badge best">High</span><br>All content is vetted by subject librarians; peer-reviewed filter available</td>
+        <td>Finding film criticism, cultural theory, and scholarly analysis of dystopian themes: your <strong>most reliable source</strong> for secondary sources</td>
+        <td>Does not index the open web; will not find director interviews or recent blog-based criticism</td>
+      </tr>
+      <tr>
+        <td>Google Scholar<br><span style="font-size:12px;color:var(--text-muted);">scholar.google.com</span></td>
+        <td>A very large index of academic and quasi-academic content across the open web</td>
+        <td><span class="tool-badge okay">Moderate</span><br>Skews academic but includes non-peer-reviewed content; no subject-librarian curation</td>
+        <td>Identifying keywords, authors, and article titles to then search for in a library database; finding freely available full-text versions of articles</td>
+        <td>Results include non-credible material; no easy peer-reviewed filter; citation counts can be misleading</td>
+      </tr>
+      <tr>
+        <td>Google (regular)<br><span style="font-size:12px;color:var(--text-muted);">google.com</span></td>
+        <td>The entire indexed web</td>
+        <td><span class="tool-badge caution">Low</span><br>No quality filtering; results ranked by engagement, not credibility</td>
+        <td>Finding <strong>interviews with directors</strong>; locating established film organizations (BFI, Criterion, AFI); general background on film production</td>
+        <td>Returns enormous amounts of low-quality content; requires rigorous evaluation of every result</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout amber" style="margin-top: 4px;">
+    <div class="callout-label">The Recommended Workflow</div>
+    <p>For <strong>film criticism and cultural analysis</strong>: Start with your library database. If you are struggling to find sources, try Google Scholar to identify relevant authors and article titles, then search for those in the database. Do not rely on Google Scholar as your final source.</p>
+    <p>For <strong>interviews with directors or production context</strong>: Regular Google is your best tool here, because library databases do not typically index interview content. The most useful interviews are often hosted by established film publications (Sight &amp; Sound, IndieWire, The Guardian Film), university press sites, and organizations like the Criterion Collection. But you will need to evaluate carefully (more on this shortly).</p>
+  </div>
+
+  <!-- FORMATIVE CHECK 1 -->
+  <div class="quiz-block" aria-label="Formative check: Three tools">
+    <div class="quiz-header">
+      <div class="quiz-header-icon">&#9998;</div>
+      <div class="quiz-header-text">Formative Check: Think First, Then Reveal</div>
+    </div>
+    <div class="quiz-items">
+
+      <div class="quiz-item">
+        <div class="quiz-q"><span class="quiz-q-num">1</span>You want to find peer-reviewed cultural criticism about the surveillance themes in <em>Children of Men</em>. Which tool should you start with, and why?</div>
+        <button class="quiz-reveal-btn" onclick="revealAnswer(this)">&#9670; Reveal Answer</button>
+        <div class="quiz-answer hidden">
+          <div class="quiz-answer-label">Answer</div>
+          <p>Start with a <strong>library database</strong>, specifically Academic Search Complete, JSTOR, or the Film &amp; Television Literature Index. These databases are curated for academic content and allow you to filter for peer-reviewed sources. Library databases give you the highest quality results with the least need for additional evaluation. Google Scholar is a reasonable backup if the database returns few results, but it should be a stepping stone to the database, not a replacement for it.</p>
+        </div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-q"><span class="quiz-q-num">2</span>A classmate tells you that Google Scholar is basically the same as a library database: it is all academic, so it is all credible. What is wrong with this claim?</div>
+        <button class="quiz-reveal-btn" onclick="revealAnswer(this)">&#9670; Reveal Answer</button>
+        <div class="quiz-answer hidden">
+          <div class="quiz-answer-label">Answer</div>
+          <p>Google Scholar's index is <strong>much broader</strong> than a library database and includes content that is not peer-reviewed: predatory journals, vanity publications, conference papers of varying quality, and in some cases, non-academic websites that contain academic-sounding language. Library databases are <em>curated</em> by subject librarians specifically to exclude low-quality material. Google Scholar is a useful tool for exploring and identifying keywords, but treating every result as equally credible is a mistake.</p>
+        </div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-q"><span class="quiz-q-num">3</span>You are researching <em>The Matrix</em> and want to find an interview where the Wachowskis discuss the film's philosophical influences. Which tool is most appropriate, and what should you type?</div>
+        <button class="quiz-reveal-btn" onclick="revealAnswer(this)">&#9670; Reveal Answer</button>
+        <div class="quiz-answer hidden">
+          <div class="quiz-answer-label">Answer</div>
+          <p>Use <strong>regular Google</strong>, because library databases do not typically index interview content. Search for: <em>Wachowski interview "The Matrix" philosophy</em>. You can also add refinements like <em>Wachowski interview Baudrillard "The Matrix"</em> or <em>Wachowski interview Sight and Sound</em> to narrow toward interviews published by reputable film outlets. Look for results from established publications (Sight &amp; Sound, The Guardian, IndieWire, Criterion) rather than anonymous blog posts or general content sites.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<!-- ═══════════════════════════════════
+     SECTION THREE: SEARCH STRATEGY
+═══════════════════════════════════ -->
+<section aria-labelledby="search-heading" class="fade-in fade-d3">
+  <div class="section-header">
+    <span class="section-badge lavender">SEC &middot; 03</span>
+    <h2 class="section-title" id="search-heading">Searching <em>Smarter</em>, Not Harder</h2>
+  </div>
+
+  <p class="prose">Most people type a natural-language question into a search bar and accept whatever the algorithm surfaces first. This works fine for finding a restaurant or a news story. For academic research, it produces inconsistent results because search engines are not interpreting your question; they are matching your <em>words</em>. Understanding how to structure those words gives you far more control over what you find.</p>
+
+  <!-- Boolean Operators -->
+  <h3 id="boolean-heading" style="font-family:var(--font-display); font-size:18px; font-weight:700; color:#fff; margin: 28px 0 10px;">Boolean Operators</h3>
+  <p class="prose" style="margin-bottom:16px;">Boolean operators are words that tell a search engine how to relate your search terms to each other. They work in Google, Google Scholar, and most library databases.</p>
+
+  <div class="bool-grid">
+    <div class="bool-card fade-in">
+      <div class="bool-operator">AND</div>
+      <div class="bool-name">Narrow Your Search</div>
+      <div class="bool-desc">Requires <em>both</em> terms to appear. Use AND to make results more specific and relevant.</div>
+      <div class="bool-example">"Children of Men" AND surveillance AND dystopia</div>
+    </div>
+    <div class="bool-card fade-in fade-d1">
+      <div class="bool-operator">OR</div>
+      <div class="bool-name">Broaden Your Search</div>
+      <div class="bool-desc">Allows <em>either</em> term. Use OR to include related concepts or alternate terminology.</div>
+      <div class="bool-example">totalitarianism OR authoritarianism AND "Pan's Labyrinth"</div>
+    </div>
+    <div class="bool-card fade-in fade-d2">
+      <div class="bool-operator">NOT</div>
+      <div class="bool-name">Exclude Results</div>
+      <div class="bool-desc">Excludes pages containing a term. Use NOT to filter out irrelevant meanings.</div>
+      <div class="bool-example">"The Matrix" AND dystopia NOT video game</div>
+    </div>
+  </div>
+
+  <!-- Phrase Searching -->
+  <h3 id="phrase-heading" style="font-family:var(--font-display); font-size:18px; font-weight:700; color:#fff; margin: 32px 0 10px;">Phrase Searching with Quotation Marks</h3>
+  <p class="prose">Putting a phrase inside <strong>quotation marks</strong> tells the search engine to look for those exact words in that exact order, not scattered across the page separately. This is one of the most useful techniques you can learn.</p>
+
+  <div class="callout amber" style="margin-top:16px; margin-bottom:24px;">
+    <div class="callout-label">Example</div>
+    <p>Searching <em>Matrix dystopia technology film analysis</em> without quotes will return pages containing those words anywhere on the page, which might include pages about technology that never mention <em>The Matrix</em> specifically, or pages about other dystopian films entirely. Searching <em>"The Matrix" AND dystopia AND "technological control"</em> tells the engine you specifically need those terms together, producing much tighter results.</p>
+  </div>
+
+  <!-- Sample searches -->
+  <h3 id="sample-heading" style="font-family:var(--font-display); font-size:18px; font-weight:700; color:#fff; margin: 32px 0 16px;">Sample Searches for Your Essay Topics</h3>
+
+  <div class="search-demo">
+    <div class="search-demo-header">Google Scholar: Film Criticism Search</div>
+    <div class="search-demo-body">
+
+      <div style="margin-bottom:28px;">
+        <div class="search-query">
+          <span class="search-query-label">Query</span>
+          <span class="search-query-text">"Children of Men" AND surveillance AND "dystopian society"</span>
+        </div>
+        <div class="search-results">
+          <div class="search-result">
+            <div class="search-result-url">scholar.google.com &rsaquo; citations</div>
+            <div class="search-result-title">Reproductive Futures and the Politics of Hope in Alfonso Cuar&oacute;n's <em>Children of Men</em></div>
+            <div class="search-result-desc"><em>Science Fiction Film and Television</em>, 2012 &middot; M. Parham &middot; Cited by 41. Examines how the film uses infertility and state control as intersecting dystopian mechanisms. Full text via JSTOR.</div>
+            <span class="search-result-badge usable">Likely Usable: Check via Database</span>
+          </div>
+          <div class="search-result">
+            <div class="search-result-url">screenrant.com &rsaquo; children-of-men-explained</div>
+            <div class="search-result-title">Children of Men Ending Explained: What It All Means</div>
+            <div class="search-result-desc">A pop culture listicle that summarizes the plot and offers fan theories about the ending.</div>
+            <span class="search-result-badge skip">Skip: Entertainment Site, Not Scholarship</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:28px;">
+        <div class="search-query">
+          <span class="search-query-label">Query</span>
+          <span class="search-query-text">"Pan's Labyrinth" AND fascism AND "fantasy" AND resistance</span>
+        </div>
+        <div class="search-results">
+          <div class="search-result">
+            <div class="search-result-url">scholar.google.com &rsaquo; article</div>
+            <div class="search-result-title">The Child, the Labyrinth, and the Resistance: Guillermo del Toro's Gothic Vision</div>
+            <div class="search-result-desc"><em>Journal of Film and Video</em>, 2010 &middot; A. Kotecki &middot; Cited by 28. Close reading of how the fairy-tale structure operates as political allegory under Franco-era fascism. Full text available through Academic Search Complete.</div>
+            <span class="search-result-badge usable">Likely Usable: Check via Database</span>
+          </div>
+          <div class="search-result">
+            <div class="search-result-url">sparknotes.com &rsaquo; film &rsaquo; pans-labyrinth</div>
+            <div class="search-result-title">Pan's Labyrinth Summary &amp; Analysis</div>
+            <div class="search-result-desc">A summary and study guide aimed at students. Covers plot, themes, and "important quotes."</div>
+            <span class="search-result-badge skip">Skip: Study Guide, Not Scholarship</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="search-query">
+          <span class="search-query-label">Query</span>
+          <span class="search-query-text">"The Matrix" AND "simulated reality" AND Baudrillard AND control</span>
+        </div>
+        <div class="search-results">
+          <div class="search-result">
+            <div class="search-result-url">scholar.google.com &rsaquo; article</div>
+            <div class="search-result-title">Simulacra, Simulation, and the Matrix: Baudrillard's Influence on Contemporary Dystopian Cinema</div>
+            <div class="search-result-desc"><em>Film-Philosophy</em>, 2005 &middot; C. Constable &middot; Cited by 56. Investigates how <em>The Matrix</em> dramatizes Baudrillard's theory of hyperreality as a mechanism of societal control. Full text available through Project MUSE.</div>
+            <span class="search-result-badge usable">Likely Usable: Check via Database</span>
+          </div>
+          <div class="search-result">
+            <div class="search-result-url">medium.com &rsaquo; matrix-philosophy</div>
+            <div class="search-result-title">What The Matrix Teaches Us About Reality</div>
+            <div class="search-result-desc">A personal essay on Medium exploring how the film "changed the way I think about consciousness."</div>
+            <span class="search-result-badge verify">Verify Carefully: Personal Essay, Not Peer Reviewed</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="callout amber" style="margin-top:4px;">
+    <div class="callout-label">What to Do with Google Scholar Results</div>
+    <p>When you find a promising result on Google Scholar, <strong>do not stop there</strong>. Note the author, title, and journal name, then go into your library database and search for that specific article. The database version will give you reliable full-text access and confirm the source's publication details. Think of Google Scholar as a map that shows you what exists; the library database is where you actually retrieve it.</p>
+  </div>
+
+  <!-- FORMATIVE CHECK 2 -->
+  <div class="quiz-block" aria-label="Formative check: Search strategy" style="margin-top:28px;">
+    <div class="quiz-header">
+      <div class="quiz-header-icon">&#9998;</div>
+      <div class="quiz-header-text">Formative Check: Think First, Then Reveal</div>
+    </div>
+    <div class="quiz-items">
+
+      <div class="quiz-item">
+        <div class="quiz-q"><span class="quiz-q-num">1</span>You search for <em>Pan's Labyrinth themes</em> and get thousands of results, most of which are general summaries or listicles. How would you revise this search to find more relevant academic material?</div>
+        <button class="quiz-reveal-btn" onclick="revealAnswer(this)">&#9670; Reveal Answer</button>
+        <div class="quiz-answer hidden">
+          <div class="quiz-answer-label">Answer</div>
+          <p>Use phrase searching and a Boolean AND to specify the exact film and analytical focus: <em>"Pan's Labyrinth" AND fascism AND "political allegory"</em>. The quotation marks force the engine to find that exact film title, eliminating results about other labyrinth topics. You could also add terms to narrow the dystopian element you are focusing on: <em>"Pan's Labyrinth" AND "authoritarian control" AND del Toro</em>, or <em>"Pan's Labyrinth" AND "childhood innocence" AND resistance</em>.</p>
+        </div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-q"><span class="quiz-q-num">2</span>What is the difference between these two searches: (a) <em>Matrix movie philosophy</em> and (b) <em>"The Matrix" AND Baudrillard AND "simulated reality"</em>? Which is more appropriate for finding a secondary source for your essay?</div>
+        <button class="quiz-reveal-btn" onclick="revealAnswer(this)">&#9670; Reveal Answer</button>
+        <div class="quiz-answer hidden">
+          <div class="quiz-answer-label">Answer</div>
+          <p>Search (a) will return everything about the philosophy of The Matrix, from biographical overviews of the directors to general surveys to articles about dozens of different philosophical concepts. Search (b) is targeted: it uses phrase searching to focus on the specific film title, a Boolean AND to require both the film and the theorist, and a content keyword to filter toward criticism that addresses the exact dystopian concept you are writing about. For your essay, search (b) is far more appropriate because it looks for exactly what you need instead of generating hundreds of tangential results.</p>
+        </div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-q"><span class="quiz-q-num">3</span>You find a Google Scholar result that looks relevant: "Reproductive Politics and the Dystopian Imagination in Cuar&oacute;n's <em>Children of Men</em>," published in <em>Science Fiction Studies</em>, 2014. What should you do next?</div>
+        <button class="quiz-reveal-btn" onclick="revealAnswer(this)">&#9670; Reveal Answer</button>
+        <div class="quiz-answer hidden">
+          <div class="quiz-answer-label">Answer</div>
+          <p>Take the author, title, and journal name and search for that <strong>specific article in your library database</strong>, not in Google Scholar. This accomplishes two things: it confirms the source is real and accurately described (Google Scholar results occasionally contain errors), and it gives you reliable access to the full text through the database's licensed content. If the database does not carry <em>Science Fiction Studies</em>, the library's interlibrary loan service can usually get it for you within a day or two.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<!-- ═══════════════════════════════════
+     SECTION FOUR: SIFT
+═══════════════════════════════════ -->
+<section aria-labelledby="sift-heading" class="fade-in fade-d4">
+  <div class="section-header">
+    <span class="section-badge">SEC &middot; 04</span>
+    <h2 class="section-title" id="sift-heading">SIFT: A Framework for <em>Evaluating What You Find</em></h2>
+  </div>
+
+  <p class="prose">Once you have found a potential internet source, you need to evaluate it before using it. The most widely taught approach in academic libraries today is the <strong>SIFT method</strong>, developed by Mike Caulfield at the University of Washington's Center for an Informed Public. SIFT is based on how <em>professional fact-checkers</em> actually work, which turns out to be quite different from how most students approach source evaluation.</p>
+
+  <div class="callout lavender" style="margin-top:20px; margin-bottom:28px;">
+    <div class="callout-label">Why Not Just Read It Carefully?</div>
+    <p>The traditional approach to source evaluation (read the source deeply, look for signs of bias, check the author credentials on the page itself) has a significant flaw: it keeps your attention focused on the source you are trying to evaluate. But a fake or unreliable source can be designed to <em>look credible</em>, and reading it carefully only exposes you to more of its potentially misleading content.</p>
+    <p>Research comparing professional fact-checkers to students and historians found that fact-checkers were significantly faster and more accurate at identifying unreliable sources, because they did something counterintuitive: <strong>they immediately left the page</strong> and opened new tabs to investigate the source from the outside. This technique is called <em>lateral reading</em>, and it is at the heart of SIFT.</p>
+  </div>
+
+  <!-- SIFT Cards -->
+  <div class="sift-grid" role="list" aria-label="The four SIFT moves">
+
+    <div class="sift-card s fade-in" role="listitem">
+      <div class="sift-card-header">
+        <div class="sift-letter">S</div>
+        <div>
+          <div class="sift-card-move">Move One</div>
+          <div class="sift-card-title">Stop</div>
+        </div>
+      </div>
+      <div class="sift-card-body">
+        Before you do anything else, pause. Notice your emotional reaction to the source. Are you excited because it seems to confirm what you already believe? Skeptical because it contradicts it? Neither reaction is a reliable guide to credibility.
+        <div class="sift-card-tip">Ask yourself: Do I actually know anything about this source or website? What is my gut reaction telling me, and why should I not trust it without checking?</div>
+      </div>
+    </div>
+
+    <div class="sift-card i fade-in fade-d1" role="listitem">
+      <div class="sift-card-header">
+        <div class="sift-letter">I</div>
+        <div>
+          <div class="sift-card-move">Move Two</div>
+          <div class="sift-card-title">Investigate the Source</div>
+        </div>
+      </div>
+      <div class="sift-card-body">
+        Before reading the source in depth, open a new tab and find out who published it and why. Search for the website name or author in Google. What do <em>other</em> sources say about this outlet? This is the core of lateral reading: you are investigating the source from the outside.
+        <div class="sift-card-tip">Do not look for information <em>in</em> the source about itself. Look for what <em>others</em> say about it. Anyone can claim expertise on their own About page.</div>
+      </div>
+    </div>
+
+    <div class="sift-card f fade-in fade-d2" role="listitem">
+      <div class="sift-card-header">
+        <div class="sift-letter">F</div>
+        <div>
+          <div class="sift-card-move">Move Three</div>
+          <div class="sift-card-title">Find Better Coverage</div>
+        </div>
+      </div>
+      <div class="sift-card-body">
+        If the source makes a specific claim, look for other credible sources that confirm, refute, or add context to it. Do not rely on a single source. Look for coverage from multiple independent outlets. If only one source is making a particular claim, that is a reason to be cautious.
+        <div class="sift-card-tip">For your essay: if a source claims something specific about <em>Children of Men</em>, <em>Pan's Labyrinth</em>, or <em>The Matrix</em>, can you verify that claim in at least one other credible source?</div>
+      </div>
+    </div>
+
+    <div class="sift-card t fade-in fade-d3" role="listitem">
+      <div class="sift-card-header">
+        <div class="sift-letter">T</div>
+        <div>
+          <div class="sift-card-move">Move Four</div>
+          <div class="sift-card-title">Trace Claims to Their Origin</div>
+        </div>
+      </div>
+      <div class="sift-card-body">
+        If the source cites or quotes something, track it back to the original. A quote from a director may have been taken out of context, paraphrased inaccurately, or simply invented. Following a claim back to its original source tells you whether it has actually been reported the way the author says.
+        <div class="sift-card-tip">Be especially alert when a source does not link to or name its original reference. The absence of a citation is itself information.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- LATERAL READING DEMO -->
+  <h3 id="lateral-heading" style="font-family:var(--font-display); font-size:18px; font-weight:700; color:#fff; margin: 40px 0 10px;">Lateral Reading in Practice: A Worked Example</h3>
+  <p class="prose" style="margin-bottom:24px;">Imagine you have searched Google for cultural criticism of <em>Pan's Labyrinth</em> and found the following result: a site called <em>CineCrit Weekly</em> with an article titled "The Labyrinth as Political Metaphor: Fascism and Fantasy in del Toro's Masterwork." The site looks professional. The article is well-written. Here is how you would apply SIFT before deciding whether to use it.</p>
+
+  <div class="lateral-demo" aria-label="Worked example of SIFT with lateral reading">
+    <div class="lateral-demo-header">
+      <div class="lateral-demo-eyebrow">Worked Example</div>
+      <div class="lateral-demo-title">Applying SIFT to an Unfamiliar Website</div>
+    </div>
+    <div class="lateral-steps">
+
+      <div class="lateral-step">
+        <div class="lateral-step-num">S</div>
+        <div class="lateral-step-body">
+          <div class="lateral-step-label">Stop</div>
+          <div class="lateral-step-title">Notice your reaction, and pause</div>
+          <p class="prose">The article looks authoritative. It uses academic language, quotes specific scenes from the film, and makes points that seem insightful. Your instinct is to start highlighting passages. Instead, pause. You have never heard of <em>CineCrit Weekly</em>, and that matters.</p>
+        </div>
+      </div>
+
+      <div class="lateral-step">
+        <div class="lateral-step-num">I</div>
+        <div class="lateral-step-body">
+          <div class="lateral-step-label">Investigate the Source Laterally</div>
+          <div class="lateral-step-title">Open a new tab and search for the site</div>
+          <p class="prose">Without reading further on the original page, open a new browser tab and search Google for: <em>CineCrit Weekly</em>. Also check whether the author has any presence outside this site. Does their name appear in any scholarly database, university affiliation, or known publication?</p>
+          <div class="lateral-result"><strong>What you find:</strong> The site's domain was registered five months ago. There is no About page naming editors or institutional affiliation. A Reddit thread asks whether the site is credible and receives no confident answers. The author's name returns no results outside this site.</div>
+        </div>
+      </div>
+
+      <div class="lateral-step">
+        <div class="lateral-step-num">F</div>
+        <div class="lateral-step-body">
+          <div class="lateral-step-label">Find Better Coverage</div>
+          <div class="lateral-step-title">Look for corroboration from known, credible sources</div>
+          <p class="prose">Search Google Scholar and your library database for: <em>"Pan's Labyrinth" AND fascism AND "political allegory"</em>. See whether established film or cultural studies journals have published criticism making similar arguments.</p>
+          <div class="lateral-result"><strong>What you find:</strong> You find two articles in <em>Journal of Film and Video</em> and <em>Studies in Hispanic Cinemas</em> that discuss similar themes (the fairy-tale structure as resistance to fascism, Ofelia's choices as acts of political defiance). These are from peer-reviewed journals with editorial boards. The CineCrit Weekly article makes some of the same points, but there is no way to tell whether it is drawing on the same scholarship or simply summarizing it without attribution.</div>
+        </div>
+      </div>
+
+      <div class="lateral-step">
+        <div class="lateral-step-num">T</div>
+        <div class="lateral-step-body">
+          <div class="lateral-step-label">Trace Claims to Their Origin</div>
+          <div class="lateral-step-title">Check whether citations are real and accurate</div>
+          <p class="prose">The CineCrit Weekly article quotes what it calls "film scholar Dr. Elena Vargas" saying that "del Toro uses the labyrinth as a structural metaphor for the impossibility of moral neutrality under fascism." Check whether this quote can be traced to a real publication by a real scholar named Elena Vargas.</p>
+          <div class="lateral-result"><strong>What you find:</strong> No scholar named Elena Vargas appears in any film studies database with publications on del Toro. The quoted phrase returns no other results online. This is a red flag: the citation may be fabricated.</div>
+        </div>
+      </div>
+
+      <div class="lateral-step">
+        <div class="lateral-step-num" style="background:var(--teal);">&#10003;</div>
+        <div class="lateral-step-body">
+          <div class="lateral-step-label">Decision</div>
+          <div class="lateral-step-title">What to do with this source</div>
+          <p class="prose">CineCrit Weekly fails on every criterion: no institutional affiliation, a very recent domain, an unverifiable author, and at least one citation that appears to be fabricated. <strong>Do not use it.</strong> The two peer-reviewed articles you found while doing your lateral research are far better options, and you found them precisely <em>because</em> you applied SIFT rather than simply reading the first result that looked useful.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FORMATIVE CHECK 3 -->
+  <div class="quiz-block" aria-label="Formative check: SIFT and lateral reading" style="margin-top:28px;">
+    <div class="quiz-header">
+      <div class="quiz-header-icon">&#9998;</div>
+      <div class="quiz-header-text">Formative Check: Think First, Then Reveal</div>
+    </div>
+    <div class="quiz-items">
+
+      <div class="quiz-item">
+        <div class="quiz-q"><span class="quiz-q-num">1</span>You find a website that looks credible: clean design, academic language, a named author. According to SIFT, what is the <em>first</em> thing you should do, and why is "read it carefully" not the right answer?</div>
+        <button class="quiz-reveal-btn" onclick="revealAnswer(this)">&#9670; Reveal Answer</button>
+        <div class="quiz-answer hidden">
+          <div class="quiz-answer-label">Answer</div>
+          <p>The first move is <strong>Stop</strong>: noticing your reaction and not immediately trusting your instinct that the source looks good. The second move, which you should do <em>before</em> reading carefully, is <strong>Investigate the Source laterally</strong>: open a new tab and search for what others say about this website or author. Reading the source carefully first is a mistake because a well-designed fake source is designed to seem credible when read carefully. You are evaluating it before you have given yourself a chance to be misled by its presentation.</p>
+        </div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-q"><span class="quiz-q-num">2</span>What is lateral reading, and how is it different from reading the source carefully?</div>
+        <button class="quiz-reveal-btn" onclick="revealAnswer(this)">&#9670; Reveal Answer</button>
+        <div class="quiz-answer hidden">
+          <div class="quiz-answer-label">Answer</div>
+          <p><strong>Lateral reading</strong> means leaving the source and opening multiple new tabs to investigate it from the outside: searching for what other credible sources say about the website or author, rather than reading the source itself more deeply. It is the opposite of vertical reading (staying on the page and reading more carefully). Lateral reading reflects how professional fact-checkers actually work: they gain their accuracy not by reading suspicious sources carefully but by establishing the source's <em>context and reputation</em> before engaging with its content.</p>
+        </div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-q"><span class="quiz-q-num">3</span>You find a website that quotes Alfonso Cuar&oacute;n saying "I wanted the camera to feel like a witness, not a narrator." The site says this is from a 2007 Cannes press conference and uses it as evidence that Cuar&oacute;n rejects traditional storytelling. What SIFT move should you apply here, and what specifically should you check?</div>
+        <button class="quiz-reveal-btn" onclick="revealAnswer(this)">&#9670; Reveal Answer</button>
+        <div class="quiz-answer hidden">
+          <div class="quiz-answer-label">Answer</div>
+          <p>Apply <strong>Trace Claims to Their Origin</strong>. You should: (1) verify that the quote actually comes from a 2007 Cannes press conference as attributed, by searching for the quote or the event in other sources; (2) check whether the claim about "rejecting traditional storytelling" is an accurate characterization of what Cuar&oacute;n said, or just this site's interpretation. A real quote used out of context or misrepresented is still a misuse of evidence. The SIFT "Trace" move is not just about fake quotes; it is about ensuring that the claim the source is <em>making</em> with the quote is accurate to what the quote actually says and what the original context establishes.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<!-- ═══════════════════════════════════
+     SECTION FIVE: CREDIBILITY SIGNALS
+═══════════════════════════════════ -->
+<section aria-labelledby="quality-heading">
+  <div class="section-header">
+    <span class="section-badge teal">SEC &middot; 05</span>
+    <h2 class="section-title" id="quality-heading">Signals of Credibility, <em>and Their Absence</em></h2>
+  </div>
+
+  <p class="prose" style="margin-bottom:24px;">Even after applying SIFT, it helps to have a mental checklist of specific markers you are looking for. These are not a replacement for lateral reading; they are what you use to interpret what your lateral investigation surfaces.</p>
+
+  <div class="cred-grid">
+    <div class="cred-item fade-in">
+      <div class="cred-icon pass">&#10003;</div>
+      <div>
+        <div class="cred-name">Named, Verifiable Author</div>
+        <div class="cred-desc">The author's name appears, and they have a professional presence (university affiliation, publications, or known organizational role) you can verify <em>outside</em> the site.</div>
+      </div>
+    </div>
+    <div class="cred-item fade-in fade-d1">
+      <div class="cred-icon pass">&#10003;</div>
+      <div>
+        <div class="cred-name">Known Publisher or Platform</div>
+        <div class="cred-desc">The source comes from an established organization: a university press, a peer-reviewed journal, the British Film Institute, the Criterion Collection, Sight &amp; Sound, or similar.</div>
+      </div>
+    </div>
+    <div class="cred-item fade-in fade-d2">
+      <div class="cred-icon pass">&#10003;</div>
+      <div>
+        <div class="cred-name">Traceable Citations</div>
+        <div class="cred-desc">When the source cites other scholars or quotes from films, those citations can be traced to real, verifiable sources. Fabricated citations are a disqualifying red flag.</div>
+      </div>
+    </div>
+    <div class="cred-item fade-in fade-d3">
+      <div class="cred-icon pass">&#10003;</div>
+      <div>
+        <div class="cred-name">Clear Purpose</div>
+        <div class="cred-desc">The source exists to inform, not to sell, entertain, advocate, or generate clicks. Film criticism aims to illuminate a text; it should not feel like an ad, a blog post, or a summary service.</div>
+      </div>
+    </div>
+    <div class="cred-item fade-in fade-d4">
+      <div class="cred-icon fail">&#10007;</div>
+      <div>
+        <div class="cred-name">Anonymous or Unverifiable Authorship</div>
+        <div class="cred-desc">No named author, or a name that returns no results outside the site. If you cannot verify who wrote it, you cannot evaluate whether they have relevant expertise.</div>
+      </div>
+    </div>
+    <div class="cred-item fade-in fade-d4">
+      <div class="cred-icon fail">&#10007;</div>
+      <div>
+        <div class="cred-name">Study Guide or Essay Mill Sites</div>
+        <div class="cred-desc">GradeSaver, SparkNotes, StudyMode, Course Hero, Shmoop, Bartleby, and similar sites are not academic sources. Their content is written for students who have not done the reading, not by scholars for scholarly purposes.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout amber">
+    <div class="callout-label">One More Tool: AI Detectors and Source Verification</div>
+    <p>As AI-generated content becomes increasingly common on the web, a growing number of sources that look like film criticism are in fact generated by AI, with no human expert behind them and potentially fabricated citations. Before you commit to an internet source, a quick lateral investigation will often reveal whether the site has a history of publishing legitimate scholarship or has recently appeared with AI-generated content. When in doubt, find a source whose author and publisher you can verify.</p>
+  </div>
+</section>
+
+
+</div><!-- .page-wrap -->
+
+<script>
+function revealAnswer(btn) {
+  var answer = btn.nextElementSibling;
+  if (answer && answer.classList.contains('quiz-answer')) {
+    answer.classList.remove('hidden');
+    btn.textContent = '\u25C6 Answer Revealed';
+    btn.disabled = true;
+  }
+}
+</script>
+
+</body>
+</html>
