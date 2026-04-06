@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="identifier" content="dystopian-ai-research"/>
+<meta name="editing_roles" content="teachers"/>
+<meta name="workflow_state" content="active"/>
+<title>AI and Academic Research | ENC 1102 — Dystopian Research Essay</title>
+<style>
+
+  /* ═══════════════════════════════════════════════
+     DESIGN TOKENS — Dystopian Research Essay Module
+     ═══════════════════════════════════════════════ */
+
+  @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap');
+
+  :root {
+    --bg-deep:       #565e6e;
+    --bg-surface:    #3e4555;
+    --bg-elevated:   #353c4b;
+    --border-subtle: #4a5264;
+    --border-mid:    #5c6478;
+
+    --accent:        #e8a832;
+    --accent-soft:   #e8a83228;
+    --accent-mid:    #e8a83258;
+    --accent-text:   #f5c865;
+
+    --teal:          #5ba8a0;
+    --teal-soft:     #5ba8a028;
+    --teal-mid:      #5ba8a058;
+    --teal-text:     #90d8d0;
+
+    --lavender:      #9a9cc0;
+    --lavender-soft: #9a9cc028;
+    --lavender-mid:  #9a9cc058;
+    --lavender-text: #d0d2f0;
+
+    --warn:          #f47878;
+    --warn-soft:     #f4787822;
+
+    --text-primary:  #f0f2f5;
+    --text-secondary:#cdd3dc;
+    --text-muted:    #9aa2b2;
+
+    --font-display:  'Libre Baskerville', 'Georgia', serif;
+    --font-body:     'Source Sans Pro', 'Segoe UI', sans-serif;
+    --font-mono:     'IBM Plex Mono', 'Consolas', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg-deep);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--accent-text); text-decoration: underline; }
+  a:hover { color: #fff; }
+  strong, b { color: var(--text-primary); }
+  em, i { color: var(--text-secondary); }
+
+  .page-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 28px;
+  }
+
+  /* ═══ ANIMATIONS ═══ */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in { animation: fadeUp 0.5s ease both; }
+  .fade-d1 { animation-delay: 0.08s; }
+  .fade-d2 { animation-delay: 0.16s; }
+  .fade-d3 { animation-delay: 0.24s; }
+  .fade-d4 { animation-delay: 0.32s; }
+
+  /* ═══ HERO ═══ */
+  .hero {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-left: 4px solid var(--accent);
+    border-radius: 6px;
+    padding: 40px 44px 36px;
+    margin-bottom: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent-text);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 12px;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: 32px;
+    color: #fff;
+    line-height: 1.25;
+    margin-bottom: 10px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--accent-text);
+  }
+
+  .hero-subtitle {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 640px;
+  }
+
+  /* ═══ SECTION HEADERS ═══ */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+    margin-top: 48px;
+  }
+
+  .section-badge {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--accent-text);
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-mid);
+    border-radius: 4px;
+    padding: 3px 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+
+  .section-badge.teal {
+    color: var(--teal-text);
+    background: var(--teal-soft);
+    border-color: var(--teal-mid);
+  }
+
+  .section-badge.lavender {
+    color: var(--lavender-text);
+    background: var(--lavender-soft);
+    border-color: var(--lavender-mid);
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    color: #fff;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--accent-text);
+  }
+
+  .section-rule {
+    border: 0;
+    border-top: 1px solid var(--border-subtle);
+    margin: 48px 0 0 0;
+  }
+
+  /* ═══ PROSE ═══ */
+  .prose {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    max-width: 720px;
+  }
+
+  .prose + .prose { margin-top: 14px; }
+  .prose strong { color: var(--text-primary); }
+
+  /* ═══ CALLOUT BOXES ═══ */
+  .callout {
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    border-left: 3px solid;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .callout::after {
+    content: '';
+    position: absolute;
+    right: -30px; top: -30px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    pointer-events: none;
+  }
+
+  .callout.amber {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+  }
+
+  .callout.teal {
+    background: var(--teal-soft);
+    border-color: var(--teal);
+  }
+
+  .callout.lavender {
+    background: var(--lavender-soft);
+    border-color: var(--lavender);
+  }
+
+  .callout.warn {
+    background: var(--warn-soft);
+    border-color: var(--warn);
+  }
+
+  .callout-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+
+  .callout.amber .callout-label    { color: var(--accent-text); }
+  .callout.teal .callout-label     { color: var(--teal-text); }
+  .callout.lavender .callout-label { color: var(--lavender-text); }
+  .callout.warn .callout-label     { color: var(--warn); }
+
+  .callout p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .callout p + p { margin-top: 10px; }
+
+  /* ═══ HALLUCINATION DEMO ═══ */
+  .hallucination-demo {
+    margin: 28px 0;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+  }
+
+  .hallucination-demo-header {
+    background: var(--bg-elevated);
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .hallucination-demo-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal-text);
+    margin-bottom: 4px;
+  }
+
+  .hallucination-demo-title {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .chat-window {
+    background: var(--bg-surface);
+    padding: 24px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .chat-bubble {
+    max-width: 82%;
+    padding: 14px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .chat-bubble.user {
+    background: var(--teal);
+    color: #fff;
+    align-self: flex-end;
+    border-bottom-right-radius: 3px;
+  }
+
+  .chat-bubble.ai {
+    background: var(--bg-elevated);
+    color: var(--text-secondary);
+    align-self: flex-start;
+    border: 1px solid var(--border-subtle);
+    border-bottom-left-radius: 3px;
+  }
+
+  .chat-bubble-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .chat-bubble.user .chat-bubble-label { color: rgba(255,255,255,0.7); }
+  .chat-bubble.ai .chat-bubble-label { color: var(--text-muted); }
+
+  .fake-citation {
+    margin-top: 12px;
+    padding: 12px 16px;
+    background: rgba(255,255,255,0.05);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 5px 5px 0;
+    font-family: var(--font-display);
+    font-size: 13px;
+    color: var(--text-primary);
+    line-height: 1.7;
+    font-style: normal;
+  }
+
+  .annotation-flag {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-top: 10px;
+    padding: 12px 16px;
+    background: var(--warn-soft);
+    border-left: 3px solid var(--warn);
+    border-radius: 0 5px 5px 0;
+  }
+
+  .annotation-flag-icon {
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .annotation-flag-text {
+    font-size: 13px;
+    color: var(--warn);
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* ═══ USE PANELS ═══ */
+  .use-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .use-panel {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .use-panel::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; right: -40px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+    pointer-events: none;
+  }
+
+  .use-panel-header {
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .use-panel-header.yes { background: var(--teal-soft); }
+  .use-panel-header.no  { background: var(--warn-soft); }
+
+  .use-panel-icon {
+    font-size: 16px;
+  }
+
+  .use-panel-title {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .use-panel-header.yes .use-panel-title { color: var(--teal-text); }
+  .use-panel-header.no  .use-panel-title { color: var(--warn); }
+
+  .use-list {
+    list-style: none;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .use-list li {
+    position: relative;
+    padding-left: 18px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    text-align: left;
+  }
+
+  .use-list.yes li::before {
+    content: '\203A';
+    color: var(--teal);
+    font-weight: 700;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .use-list.no li::before {
+    content: '\00D7';
+    color: var(--warn);
+    font-weight: 700;
+    font-size: 16px;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  /* ═══ VERIFICATION STEPS ═══ */
+  .verify-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 24px 0;
+  }
+
+  .verify-step {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 16px;
+    padding-bottom: 24px;
+    position: relative;
+  }
+
+  .verify-step:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 23px;
+    top: 48px;
+    width: 2px;
+    bottom: 0;
+    background: var(--border-subtle);
+  }
+
+  .verify-step-num {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: var(--teal);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 16px;
+    font-weight: 700;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .verify-step-title {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+
+  .verify-step-body .prose {
+    font-size: 14px;
+    max-width: none;
+  }
+
+  /* ═══ PROMPT CARDS ═══ */
+  .prompt-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin-bottom: 14px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .prompt-card::after {
+    content: '';
+    position: absolute;
+    top: -20px; right: -20px;
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+    pointer-events: none;
+  }
+
+  .prompt-card-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal-text);
+    margin-bottom: 10px;
+  }
+
+  .prompt-text {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-style: italic;
+    color: var(--lavender-text);
+    line-height: 1.65;
+    background: var(--bg-elevated);
+    padding: 12px 16px;
+    border-radius: 5px;
+    border: 1px solid var(--border-subtle);
+  }
+
+  .prompt-result {
+    margin-top: 12px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  .prompt-result strong { color: var(--text-primary); font-weight: 600; }
+
+  /* ═══ FORMATIVE QUIZ ═══ */
+  .quiz-block {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 28px 0;
+  }
+
+  .quiz-header {
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 12px 22px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .quiz-header-icon {
+    font-size: 16px;
+    color: var(--accent-text);
+  }
+
+  .quiz-header-text {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-text);
+  }
+
+  .quiz-items {
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .quiz-item {
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 20px;
+  }
+
+  .quiz-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .quiz-q {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.65;
+    margin-bottom: 12px;
+    text-align: left;
+  }
+
+  .quiz-q-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--teal);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    margin-right: 8px;
+    flex-shrink: 0;
+    vertical-align: middle;
+  }
+
+  .quiz-reveal-btn {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--teal-text);
+    background: none;
+    border: 1px solid var(--teal-mid);
+    border-radius: 4px;
+    padding: 7px 16px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .quiz-reveal-btn:hover { background: var(--teal-soft); }
+
+  .quiz-reveal-btn:disabled {
+    color: var(--text-muted);
+    border-color: var(--border-subtle);
+    cursor: default;
+    background: none;
+  }
+
+  .quiz-answer {
+    margin-top: 14px;
+    background: var(--bg-elevated);
+    border-left: 3px solid var(--teal);
+    border-radius: 0 6px 6px 0;
+    padding: 12px 18px;
+  }
+
+  .quiz-answer.hidden { display: none; }
+
+  .quiz-answer-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--teal-text);
+    margin-bottom: 6px;
+  }
+
+  .quiz-answer p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+    text-align: left;
+  }
+
+  .quiz-answer p + p { margin-top: 8px; }
+
+  /* ═══ RESPONSIVE ═══ */
+  @media (max-width: 700px) {
+    .page-wrap { padding: 28px 16px; }
+    .hero { padding: 28px 24px 24px; }
+    .use-grid { grid-template-columns: 1fr; }
+    .verify-step { grid-template-columns: 40px 1fr; gap: 12px; }
+  }
+
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+<!-- ═══ HERO ═══ -->
+<header class="hero fade-in" role="banner">
+  <div class="hero-label">Dystopian Research Essay &middot; ENC 1102</div>
+  <h1 class="hero-title">AI and <em>Academic Research</em></h1>
+  <p class="hero-subtitle">What AI Can and Cannot Do for You, and Why the Difference Matters</p>
+</header>
+
+<!-- ═══════════════════════════════════
+     SECTION ONE: ORIENTATION
+═══════════════════════════════════ -->
+<section aria-labelledby="orient-heading" class="fade-in fade-d1">
+  <div class="section-header">
+    <span class="section-badge">SEC &middot; 01</span>
+    <h2 class="section-title" id="orient-heading">AI Tools Are Everywhere. <em>You Need to Understand What They Actually Are.</em></h2>
+  </div>
+
+  <p class="prose">You have almost certainly used AI writing tools: ChatGPT, Google Gemini, Perplexity, Microsoft Copilot, and others. These tools have become genuinely useful for a wide range of tasks, and they are only going to become more present in academic and professional life. Refusing to engage with them is not a realistic or useful approach.</p>
+  <p class="prose">But using AI tools <em>well</em>, especially for academic research, requires understanding what they actually do. And what they actually do is quite different from what they seem to do.</p>
+
+  <div class="callout lavender" style="margin-top:24px;">
+    <div class="callout-label">What AI Language Models Actually Are</div>
+    <p>Tools like ChatGPT are called <strong>large language models</strong> (LLMs). They work by predicting, based on enormous amounts of training data, what words are most likely to follow a given sequence of words. This makes them extraordinarily good at generating fluent, confident, authoritative-sounding prose.</p>
+    <p>What they are <em>not</em> is a search engine, a database, or a fact-checker. They generate plausible-sounding text based on patterns in their training data. This means they can produce text that sounds correct but is factually wrong, and because the text sounds fluent and confident, those errors are easy to miss.</p>
+  </div>
+
+  <div class="callout teal" style="margin-top:16px;">
+    <div class="callout-label">"But ChatGPT Searches the Web Now"</div>
+    <p>You may have noticed that some AI tools now claim to "search the web" or provide linked sources alongside their answers. Tools like Perplexity, ChatGPT with browsing, and Google Gemini can retrieve real web pages. This is a genuine improvement, but it does <strong>not</strong> eliminate the core problem.</p>
+    <p>Even when an AI tool retrieves real sources, it can still mischaracterize what those sources say, cherry-pick passages that support its answer while ignoring contradictory evidence, link to low-quality or non-academic sources, and synthesize information from multiple sources in ways that distort the original arguments. A linked citation is not the same as an accurate citation. You still need to read the source yourself and verify that the AI's characterization of it is correct.</p>
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<!-- ═══════════════════════════════════
+     SECTION TWO: HALLUCINATION
+═══════════════════════════════════ -->
+<section aria-labelledby="hallucination-heading" class="fade-in fade-d2">
+  <div class="section-header">
+    <span class="section-badge teal">SEC &middot; 02</span>
+    <h2 class="section-title" id="hallucination-heading">AI <em>Hallucination</em>, and Why It Matters for Your Essay</h2>
+  </div>
+
+  <p class="prose">The most serious problem with using AI for academic research is called <strong>hallucination</strong>: AI tools confidently generate information that is simply false, including citations for sources that do not exist. This is a fundamental feature of how large language models work. Because the model is predicting plausible text rather than retrieving verified facts, it fills in gaps with confident fabrications.</p>
+  <p class="prose">Studies of AI-generated citations have found that <strong>a significant proportion of citations produced by AI tools are completely fabricated</strong>: not approximations of real sources, but entirely invented author names, journal titles, volume numbers, and page ranges. Another significant percentage contain errors that make them unusable. The fabrications are not flagged or disclaimed. The AI presents them in exactly the same confident tone as accurate information.</p>
+
+  <div class="callout warn" style="margin-top:20px;">
+    <div class="callout-label">Why This Is a Serious Academic Integrity Issue</div>
+    <p>If you submit a paper with AI-generated citations that you have not verified, you may be citing sources that do not exist, which constitutes academic fraud whether you intended it or not. Every semester, students at colleges across the country receive failing grades or academic misconduct charges for submitting papers with fabricated sources they received from AI tools and never checked. Ignorance of the hallucination problem is not a defense.</p>
+  </div>
+
+  <!-- Hallucination demo -->
+  <h3 id="demo-heading" style="font-family:var(--font-display); font-size:18px; font-weight:700; color:#fff; margin: 36px 0 10px;">What AI Hallucination Looks Like: A Demonstration</h3>
+  <p class="prose" style="margin-bottom:24px;">Below is a realistic example of the kind of response you might get if you asked an AI tool to help you find film criticism of Alfonso Cuar&oacute;n's <em>Children of Men</em>. Read it carefully, then look at the annotations.</p>
+
+  <div class="hallucination-demo fade-in" aria-label="AI hallucination demonstration">
+    <div class="hallucination-demo-header">
+      <div class="hallucination-demo-eyebrow">Demonstration</div>
+      <div class="hallucination-demo-title">A Realistic AI Response, and Its Hidden Problems</div>
+    </div>
+    <div class="chat-window">
+
+      <div class="chat-bubble user">
+        <div class="chat-bubble-label">You</div>
+        Can you suggest some scholarly articles about the dystopian themes in Alfonso Cuar&oacute;n's film <em>Children of Men</em> that I could use for a research essay?
+      </div>
+
+      <div class="chat-bubble ai">
+        <div class="chat-bubble-label">AI Tool</div>
+        <div>Of course! Here are several scholarly articles that analyze the dystopian elements of <em>Children of Men</em> and would be appropriate for a film studies research essay:</div>
+
+        <div class="fake-citation">
+          Morrison, Rachel T. "Reproductive Anxiety and State Control in Cuar&oacute;n's <em>Children of Men</em>." <em>Science Fiction Film and Television</em>, vol. 7, no. 2, 2014, pp. 183&ndash;201.
+        </div>
+        <div class="annotation-flag">
+          <div class="annotation-flag-icon">&#9888;</div>
+          <div class="annotation-flag-text">This article does not exist. "Rachel T. Morrison" returns no results as a film scholar in any library database. The journal is real and does publish relevant criticism, but this specific article is not in that volume.</div>
+        </div>
+
+        <div class="fake-citation">
+          Caldwell, James A. "The Long Take as Political Statement: Cinematography and Dystopia in <em>Children of Men</em>." <em>Cinema Journal</em>, vol. 52, no. 3, 2013, pp. 88&ndash;107.
+        </div>
+        <div class="annotation-flag">
+          <div class="annotation-flag-icon">&#9888;</div>
+          <div class="annotation-flag-text">Also fabricated. No article by this title or author appears in <em>Cinema Journal</em> vol. 52. The page range is plausible; the source is not real.</div>
+        </div>
+
+        <div style="margin-top:12px; font-size:14px; color:var(--text-muted);">You might also find relevant discussion in <em>Screen</em> and <em>Jump Cut</em>, both of which have published criticism of Cuar&oacute;n's work...</div>
+        <div class="annotation-flag" style="margin-top:10px;">
+          <div class="annotation-flag-icon">&#9888;</div>
+          <div class="annotation-flag-text">Both journals are real. This observation is accurate. But notice: the AI's confident, accurate mention of real journals gives the whole response an air of reliability, even though the specific citations it provided are fabricated.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="callout amber" style="margin-top:4px;">
+    <div class="callout-label">What Makes This Dangerous</div>
+    <p>The citations in the demonstration above look exactly like real scholarly citations. They have author names, article titles, journal names, volume numbers, issue numbers, publication years, and page ranges, all formatted correctly in MLA style. A student who did not know to check would copy them directly into a Works Cited and submit a paper citing sources that do not exist.</p>
+    <p>This is why the verification principle, discussed below, is non-negotiable. Every citation from an AI tool must be verified in a library database before it appears in your work.</p>
+  </div>
+
+  <!-- FORMATIVE CHECK 1 -->
+  <div class="quiz-block" aria-label="Formative check: AI hallucination" style="margin-top:28px;">
+    <div class="quiz-header">
+      <div class="quiz-header-icon">&#9998;</div>
+      <div class="quiz-header-text">Formative Check: Think First, Then Reveal</div>
+    </div>
+    <div class="quiz-items">
+
+      <div class="quiz-item">
+        <div class="quiz-q"><span class="quiz-q-num">1</span>What is AI hallucination, and why does it happen?</div>
+        <button class="quiz-reveal-btn" onclick="revealAnswer(this)">&#9670; Reveal Answer</button>
+        <div class="quiz-answer hidden">
+          <div class="quiz-answer-label">Answer</div>
+          <p>AI hallucination is when an AI language model generates information that is false, including fabricated citations, invented quotes, or incorrect facts, and presents it with the same confident tone as accurate information. It happens because AI models do not retrieve verified information; they <em>predict plausible text</em> based on patterns in their training data. When they encounter gaps in their training data, they fill those gaps with what <em>looks</em> like a plausible answer, which may bear no relationship to reality.</p>
+        </div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-q"><span class="quiz-q-num">2</span>A classmate says: "I asked ChatGPT for sources about <em>The Matrix</em>, and the journal names it gave me look legit. I can tell it is not making them up." What is wrong with this reasoning?</div>
+        <button class="quiz-reveal-btn" onclick="revealAnswer(this)">&#9670; Reveal Answer</button>
+        <div class="quiz-answer hidden">
+          <div class="quiz-answer-label">Answer</div>
+          <p>The journal names may well be real. AI tools have learned the names of legitimate academic journals. But a real journal name does not mean the specific article, author, volume, or page range is real. As the demonstration on this page shows, AI can pair a completely fabricated article with an accurate journal name. Your classmate is making the same error as reading a suspicious website carefully and concluding it must be credible because the writing sounds professional: the surface features of credibility are not evidence of actual credibility.</p>
+        </div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-q"><span class="quiz-q-num">3</span>Why is submitting an AI-generated citation without verifying it an academic integrity issue, even if you did not intend to fabricate anything?</div>
+        <button class="quiz-reveal-btn" onclick="revealAnswer(this)">&#9670; Reveal Answer</button>
+        <div class="quiz-answer hidden">
+          <div class="quiz-answer-label">Answer</div>
+          <p>Academic integrity requires that the work you submit, including your citations, accurately represents actual scholarship. A citation to a non-existent source is a false claim regardless of how it got into your paper. The standard the college applies is whether the work is accurate, not whether you <em>meant</em> to submit inaccurate work. This is why verification is non-negotiable: submitting AI content you have not checked transfers the responsibility for the AI's errors to you.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<!-- ═══════════════════════════════════
+     SECTION THREE: LEGITIMATE USES
+═══════════════════════════════════ -->
+<section aria-labelledby="uses-heading" class="fade-in fade-d3">
+  <div class="section-header">
+    <span class="section-badge lavender">SEC &middot; 03</span>
+    <h2 class="section-title" id="uses-heading">Legitimate, and <em>Illegitimate</em>, Uses of AI in Your Research</h2>
+  </div>
+
+  <p class="prose">The hallucination problem does not mean AI tools have no role in academic work. It means their role is specific and limited, and that understanding where AI is genuinely useful will actually make you a better researcher, not a dependent one.</p>
+  <p class="prose">Think of AI as a <strong>research companion</strong> rather than a research source. It is excellent at helping you prepare to do research and reflect on what you have found, but it is not a substitute for the actual research itself.</p>
+
+  <div class="use-grid">
+    <div class="use-panel fade-in">
+      <div class="use-panel-header yes">
+        <div class="use-panel-icon">&#10003;</div>
+        <div class="use-panel-title">Appropriate Uses</div>
+      </div>
+      <ul class="use-list yes">
+        <li><strong>Brainstorming research angles.</strong> Ask AI to suggest interpretive angles or thematic lenses for the dystopian film you are writing about, then pursue those angles in library databases with actual scholarship.</li>
+        <li><strong>Generating search keywords.</strong> Ask AI: "What keywords and phrases would be useful for finding scholarly criticism of <em>Pan's Labyrinth</em> in an academic database?" The suggestions can jump-start your database search.</li>
+        <li><strong>Understanding unfamiliar terminology.</strong> If a scholarly article uses a critical theory term you do not recognize, such as "panopticon" or "Baudrillardian simulacra," ask AI to explain it in plain language.</li>
+        <li><strong>Understanding dense scholarly writing.</strong> If you are struggling with a difficult passage in an academic article, ask AI to rephrase it in plainer language. Then return to the original to make sure you understand the author's actual argument. This is a comprehension aid, not a substitute for reading the source yourself.</li>
+        <li><strong>Background orientation.</strong> Get a quick general overview of a director's career or a film's production history to give your analysis context, then verify key facts through reliable sources.</li>
+        <li><strong>Thinking through your argument.</strong> Describe your essay's thesis to an AI tool and ask it to identify potential counterarguments or weaknesses you should address.</li>
+      </ul>
+    </div>
+    <div class="use-panel fade-in fade-d1">
+      <div class="use-panel-header no">
+        <div class="use-panel-icon">&#10007;</div>
+        <div class="use-panel-title">Inappropriate Uses</div>
+      </div>
+      <ul class="use-list no">
+        <li><strong>Finding research sources.</strong> Do not ask AI to provide citations. As this page demonstrates, AI citations are frequently fabricated. Use library databases and Google Scholar instead.</li>
+        <li><strong>Writing or rewriting your essay.</strong> Your essay must be your own work. AI-generated text submitted as your own writing violates the academic integrity policy.</li>
+        <li><strong>Summarizing or paraphrasing sources you have not read.</strong> AI cannot accurately represent the contents of a specific scholarly article. It will hallucinate the argument.</li>
+        <li><strong>Checking whether a source exists or is credible.</strong> AI cannot verify sources. Only a library database search can confirm a source is real and accurately described.</li>
+        <li><strong>Generating or describing film scenes.</strong> AI frequently misremembers film details, conflates scenes from different films, or invents moments that never appear on screen. Always describe scenes based on your own viewing of the film.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- PROMPT EXAMPLES -->
+  <h3 id="prompt-heading" style="font-family:var(--font-display); font-size:18px; font-weight:700; color:#fff; margin: 36px 0 10px;">How to Prompt AI Productively for Research</h3>
+  <p class="prose" style="margin-bottom:20px;">Here are examples of prompts that use AI appropriately as a research companion, and what each one gives you:</p>
+
+  <div class="prompt-card fade-in">
+    <div class="prompt-card-label">Keyword Generation</div>
+    <div class="prompt-text">I am writing a research essay about the dystopian themes in Alfonso Cuar&oacute;n's film Children of Men. What search terms and keywords would be most useful for finding scholarly film criticism in an academic database?</div>
+    <div class="prompt-result">
+      <strong>What this gives you:</strong> A list of terms (reproductive politics, state surveillance, refugee crisis, infertility as metaphor, political allegory, dystopian cinema) that you can test in the library database. You are using AI to do terminology brainstorming, not to find sources.
+    </div>
+  </div>
+
+  <div class="prompt-card fade-in fade-d1">
+    <div class="prompt-card-label">Interpretive Brainstorming</div>
+    <div class="prompt-text">I am writing about Pan's Labyrinth. I have noticed that Ofelia's fantasy world becomes more dangerous as the real world under Captain Vidal becomes more violent. What interpretive angles might I take when analyzing how del Toro uses this parallel structure?</div>
+    <div class="prompt-result">
+      <strong>What this gives you:</strong> A list of possible angles (the fairy tale as political resistance, childhood imagination as survival mechanism, the relationship between fantasy and trauma, Gothic doubling of real and imagined spaces) that you can explore in your own analysis and then look for in scholarship. AI is helping you think, not thinking for you.
+    </div>
+  </div>
+
+  <div class="prompt-card fade-in fade-d2">
+    <div class="prompt-card-label">Argument Testing</div>
+    <div class="prompt-text">My thesis is that The Matrix uses the concept of simulated reality to argue that technological convenience can become a form of authoritarian control. What are the strongest objections to this argument that I should be prepared to address?</div>
+    <div class="prompt-result">
+      <strong>What this gives you:</strong> Potential counterarguments: the film might be more about individual awakening than systemic control; the machines' motives could be read as utilitarian rather than authoritarian; Neo's choice could undermine the "convenience as control" reading since he actively seeks discomfort. You are stress-testing your argument before you write it, not outsourcing the writing itself.
+    </div>
+  </div>
+
+  <div class="prompt-card fade-in fade-d3">
+    <div class="prompt-card-label">Comprehension Aid</div>
+    <div class="prompt-text">I am reading an article about Children of Men that keeps using the phrase "biopolitical governance." Can you explain what biopolitics means in the context of dystopian film criticism, in plain language?</div>
+    <div class="prompt-result">
+      <strong>What this gives you:</strong> A clear explanation of an unfamiliar concept (in this case, Michel Foucault's idea that modern governments exert power by regulating populations through policies about birth, health, and death) that helps you understand the scholarly article you already have. You are using AI as a dictionary for specialized vocabulary, not as a source of scholarly authority.
+    </div>
+  </div>
+
+  <!-- FORMATIVE CHECK 2 -->
+  <div class="quiz-block" aria-label="Formative check: Appropriate AI uses" style="margin-top:28px;">
+    <div class="quiz-header">
+      <div class="quiz-header-icon">&#9998;</div>
+      <div class="quiz-header-text">Formative Check: Think First, Then Reveal</div>
+    </div>
+    <div class="quiz-items">
+
+      <div class="quiz-item">
+        <div class="quiz-q"><span class="quiz-q-num">1</span>You are having trouble finding library database sources on the surveillance themes in <em>Children of Men</em> and decide to ask ChatGPT for suggestions. What specifically should, and should you not, ask it for?</div>
+        <button class="quiz-reveal-btn" onclick="revealAnswer(this)">&#9670; Reveal Answer</button>
+        <div class="quiz-answer hidden">
+          <div class="quiz-answer-label">Answer</div>
+          <p><strong>Ask AI for</strong>: keywords, related critical terms ("biopolitics," "reproductive futurism," "state surveillance," "refugee cinema," "dystopian allegory"), names of scholars known to work on Cuar&oacute;n or dystopian cinema (you can then search for them in the database), and subject headings that library databases might use. <strong>Do not ask AI for</strong>: specific article titles, author names with citations, or any source recommendation you intend to use in your paper. Everything AI tells you in response to those requests needs to be independently verified in a library database before you act on it, and at that point, you might as well just search the database directly.</p>
+        </div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-q"><span class="quiz-q-num">2</span>You ask an AI tool to explain what "Baudrillardian simulacra" means because you do not understand the term in an article you are reading about <em>The Matrix</em>. Is this an appropriate use of AI? Why or why not?</div>
+        <button class="quiz-reveal-btn" onclick="revealAnswer(this)">&#9670; Reveal Answer</button>
+        <div class="quiz-answer hidden">
+          <div class="quiz-answer-label">Answer</div>
+          <p>Yes, this is an appropriate use. Explaining established critical terminology is something AI tools do reasonably well. "Baudrillardian simulacra" is well documented in their training data, and a general explanation of the concept helps you read the scholarly article you already have. What you should <em>not</em> do is ask AI to <em>summarize the article's argument for you</em> or to find you additional articles on Baudrillard and <em>The Matrix</em>. Those would be inappropriate uses. Using AI to understand vocabulary is analogous to looking up a word in a dictionary: it is a tool for comprehension, not a source of scholarly authority.</p>
+        </div>
+      </div>
+
+      <div class="quiz-item">
+        <div class="quiz-q"><span class="quiz-q-num">3</span>A friend tells you they asked ChatGPT to "write a paragraph analyzing the dystopian imagery in <em>Pan's Labyrinth</em>" and then revised it to sound more like their own writing. Is this an appropriate use of AI for this assignment?</div>
+        <button class="quiz-reveal-btn" onclick="revealAnswer(this)">&#9670; Reveal Answer</button>
+        <div class="quiz-answer hidden">
+          <div class="quiz-answer-label">Answer</div>
+          <p>No. The assignment requires original analysis: the ability to watch a film closely and develop your own interpretation of its dystopian elements. A paragraph generated by AI and then lightly revised is still fundamentally AI-generated content, not the student's own analysis. This violates the academic integrity policy regardless of how much revision was done, because the <em>thinking</em>, the interpretive work, was outsourced. Additionally, AI frequently misremembers or fabricates film details, meaning the AI-generated analysis may contain factual errors about scenes that the student then inadvertently perpetuates in their essay.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<!-- ═══════════════════════════════════
+     SECTION FOUR: VERIFICATION
+═══════════════════════════════════ -->
+<section aria-labelledby="verify-heading" class="fade-in fade-d4">
+  <div class="section-header">
+    <span class="section-badge">SEC &middot; 04</span>
+    <h2 class="section-title" id="verify-heading">The Verification <em>Principle</em></h2>
+  </div>
+
+  <p class="prose">All of the appropriate uses of AI in research share a common feature: they produce output that you then <em>verify or act on independently</em>. AI suggestions for keywords only become useful when you test them in a library database. AI-generated background information only becomes trustworthy when you cross-check key facts against a reliable source. AI-proposed counterarguments are only useful when you evaluate them against your own viewing of the film.</p>
+  <p class="prose">This is the verification principle: <strong>never use AI output in your academic work without independently confirming that it is accurate.</strong> This applies to citations, to facts, to descriptions of scenes, and to any specific claim. If you cannot verify it, do not use it.</p>
+
+  <h3 id="verify-steps-heading" style="font-family:var(--font-display); font-size:18px; font-weight:700; color:#fff; margin: 32px 0 10px;">How to Verify an AI-Generated Citation</h3>
+  <p class="prose" style="margin-bottom:20px;">If you have asked AI for source suggestions (which is generally not recommended, but may happen), here is the only acceptable way to proceed:</p>
+
+  <div class="verify-steps">
+    <div class="verify-step fade-in">
+      <div class="verify-step-num">1</div>
+      <div class="verify-step-body">
+        <div class="verify-step-title">Take the author name and article title to a library database</div>
+        <p class="prose">Search Academic Search Complete, JSTOR, or the Film &amp; Television Literature Index for the exact author name and article title. Do not assume the article exists because the journal name sounds real.</p>
+      </div>
+    </div>
+    <div class="verify-step fade-in fade-d1">
+      <div class="verify-step-num">2</div>
+      <div class="verify-step-body">
+        <div class="verify-step-title">Confirm every detail of the citation</div>
+        <p class="prose">When you find the article in the database, confirm that the volume number, issue number, year, and page range match what the AI gave you. AI frequently gets these details wrong even when the article itself is real.</p>
+      </div>
+    </div>
+    <div class="verify-step fade-in fade-d2">
+      <div class="verify-step-num">3</div>
+      <div class="verify-step-body">
+        <div class="verify-step-title">Read the actual article before citing it</div>
+        <p class="prose">Do not cite an article you have not read. AI summaries of scholarly articles are frequently inaccurate. The AI may have described an argument the article never makes, attributed a claim to the wrong author, or simply invented the article's contents. You must read it to know what it actually says.</p>
+      </div>
+    </div>
+    <div class="verify-step fade-in fade-d3">
+      <div class="verify-step-num">4</div>
+      <div class="verify-step-body">
+        <div class="verify-step-title">If you cannot verify the source, do not use it</div>
+        <p class="prose">If a library database search returns nothing for the author and title the AI gave you, the source does not exist. Do not use it, and do not try to find a "similar" source to substitute for it. Return to your database and search for a real source using appropriate search terms.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout teal" style="margin-top:8px;">
+    <div class="callout-label">A Final Note on AI Transparency</div>
+    <p>The academic integrity statement for this course specifies that AI tools may be used for specific purposes when the instructor approves, and that any use must be acknowledged and cited. If you use an AI tool to help generate search keywords or brainstorm essay angles, a brief note in your process documentation is appropriate. What you may not do is use AI to write, substantively revise, or generate sources for work that you submit as your own, or submit any AI output that you have not independently verified.</p>
+    <p>When in doubt, ask. It is always better to ask your instructor whether a particular use of AI is appropriate than to assume and be wrong.</p>
+  </div>
+</section>
+
+</div><!-- .page-wrap -->
+
+<script>
+function revealAnswer(btn) {
+  var answer = btn.nextElementSibling;
+  if (answer && answer.classList.contains('quiz-answer')) {
+    answer.classList.remove('hidden');
+    btn.textContent = '\u25C6 Answer Revealed';
+    btn.disabled = true;
+  }
+}
+</script>
+
+</body>
+</html>
