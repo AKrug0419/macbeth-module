@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="identifier" content="dystopian-prewriting-planning"/>
+<meta name="editing_roles" content="teachers"/>
+<meta name="workflow_state" content="active"/>
+<title>The Writing Process: Prewriting &amp; Planning | ENC 1102 — Dystopian Research Essay</title>
+<style>
+
+  /* ═══════════════════════════════════════════════
+     DESIGN TOKENS — Dystopian Research Essay Module
+     ═══════════════════════════════════════════════ */
+
+  @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap');
+
+  :root {
+    --bg-deep:       #565e6e;
+    --bg-surface:    #3e4555;
+    --bg-elevated:   #353c4b;
+    --border-subtle: #4a5264;
+    --border-mid:    #5c6478;
+
+    --accent:        #e8a832;
+    --accent-soft:   #e8a83228;
+    --accent-mid:    #e8a83258;
+    --accent-text:   #f5c865;
+
+    --teal:          #5ba8a0;
+    --teal-soft:     #5ba8a028;
+    --teal-mid:      #5ba8a058;
+    --teal-text:     #90d8d0;
+
+    --lavender:      #9a9cc0;
+    --lavender-soft: #9a9cc028;
+    --lavender-text: #d0d2f0;
+
+    --warn:          #f47878;
+    --warn-soft:     #f4787822;
+
+    --text-primary:  #f0f2f5;
+    --text-secondary:#cdd3dc;
+    --text-muted:    #9aa2b2;
+
+    --font-display:  'Libre Baskerville', 'Georgia', serif;
+    --font-body:     'Source Sans Pro', 'Segoe UI', sans-serif;
+    --font-mono:     'IBM Plex Mono', 'Consolas', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg-deep);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--accent-text); text-decoration: underline; }
+  a:hover { color: #fff; }
+  strong, b { color: var(--text-primary); }
+  em, i { color: var(--text-secondary); }
+
+  .page-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 28px;
+  }
+
+  /* ═══ HERO ═══ */
+  .hero {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-left: 4px solid var(--accent);
+    border-radius: 6px;
+    padding: 40px 44px 36px;
+    margin-bottom: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent-text);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 6px;
+  }
+
+  .hero-process-tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--teal-text);
+    background: var(--teal-soft);
+    border: 1px solid var(--teal-mid);
+    border-radius: 4px;
+    padding: 3px 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: 32px;
+    color: #fff;
+    line-height: 1.25;
+    margin-bottom: 10px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--accent-text);
+  }
+
+  .hero-subtitle {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 640px;
+  }
+
+  /* ═══ SECTION HEADERS ═══ */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+    margin-top: 48px;
+  }
+
+  .section-badge {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--accent-text);
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-mid);
+    border-radius: 4px;
+    padding: 3px 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+
+  .section-badge.teal {
+    color: var(--teal-text);
+    background: var(--teal-soft);
+    border-color: var(--teal-mid);
+  }
+
+  .section-badge.lavender {
+    color: var(--lavender-text);
+    background: var(--lavender-soft);
+    border-color: #9a9cc040;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    color: #fff;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--accent-text);
+  }
+
+  .section-rule {
+    border: 0;
+    border-top: 1px solid var(--border-subtle);
+    margin: 48px 0 0 0;
+  }
+
+  /* ═══ STAGE STRIP ═══ */
+  .stage-strip {
+    display: flex;
+    gap: 4px;
+    margin: 0 0 40px 0;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .stage-strip .stage {
+    flex: 1;
+    text-align: center;
+    padding: 10px 8px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    border-right: 1px solid var(--border-subtle);
+  }
+
+  .stage-strip .stage:last-child { border-right: 0; }
+
+  .stage-strip .stage.active {
+    background: var(--accent-soft);
+    color: var(--accent-text);
+    font-weight: 700;
+  }
+
+  .stage-strip .stage.completed {
+    background: var(--teal-soft);
+    color: var(--teal-text);
+  }
+
+  /* ═══ PROSE ═══ */
+  .prose {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    max-width: 720px;
+  }
+
+  .prose + .prose { margin-top: 14px; }
+  .prose strong { color: var(--text-primary); }
+
+  /* ═══ CARDS ═══ */
+  .card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .card-header {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .card-header.amber  { background: var(--accent-soft); }
+  .card-header.teal   { background: var(--teal-soft); }
+  .card-header.lav    { background: var(--lavender-soft); }
+
+  .card-header-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .card-header.amber .card-header-label  { color: var(--accent-text); }
+  .card-header.teal .card-header-label   { color: var(--teal-text); }
+  .card-header.lav .card-header-label    { color: var(--lavender-text); }
+
+  .card-body {
+    padding: 20px;
+  }
+
+  .card-body p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    margin-bottom: 12px;
+  }
+
+  .card-body p:last-child { margin-bottom: 0; }
+
+  .card-body ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .card-body ul li {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    padding-left: 18px;
+    position: relative;
+  }
+
+  .card-body ul li::before {
+    content: '\203A';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .card-body ul.teal-list li::before { color: var(--teal); }
+  .card-body ul.lav-list li::before  { color: var(--lavender); }
+
+  /* ═══ CALLOUT BOXES ═══ */
+  .callout {
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    border-left: 3px solid;
+  }
+
+  .callout.amber {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+  }
+
+  .callout.teal {
+    background: var(--teal-soft);
+    border-color: var(--teal);
+  }
+
+  .callout.lavender {
+    background: var(--lavender-soft);
+    border-color: var(--lavender);
+  }
+
+  .callout.warn {
+    background: var(--warn-soft);
+    border-color: var(--warn);
+  }
+
+  .callout-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+
+  .callout.amber .callout-label    { color: var(--accent-text); }
+  .callout.teal .callout-label     { color: var(--teal-text); }
+  .callout.lavender .callout-label { color: var(--lavender-text); }
+  .callout.warn .callout-label     { color: var(--warn); }
+
+  .callout p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .callout p + p { margin-top: 8px; }
+
+  /* ═══ TOPIC CARDS ═══ */
+  .topic-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+
+  .topic-card-head {
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .topic-card-head.amber  { background: var(--accent-soft); }
+  .topic-card-head.teal   { background: var(--teal-soft); }
+  .topic-card-head.lav    { background: var(--lavender-soft); }
+
+  .topic-card-option {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .topic-card-head.amber .topic-card-option  { color: var(--accent-text); }
+  .topic-card-head.teal .topic-card-option   { color: var(--teal-text); }
+  .topic-card-head.lav .topic-card-option    { color: var(--lavender-text); }
+
+  .topic-card-film {
+    font-family: var(--font-display);
+    font-size: 18px;
+    color: #fff;
+    font-style: italic;
+    line-height: 1.3;
+  }
+
+  .topic-card-meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  .topic-card-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .topic-card-prompt {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+  }
+
+  .topic-card-focus {
+    border-radius: 6px;
+    padding: 16px 20px;
+  }
+
+  .topic-card-focus.amber   { background: var(--accent-soft); }
+  .topic-card-focus.teal    { background: var(--teal-soft); }
+  .topic-card-focus.lav     { background: var(--lavender-soft); }
+
+  .topic-card-focus-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .topic-card-focus.amber .topic-card-focus-label   { color: var(--accent-text); }
+  .topic-card-focus.teal .topic-card-focus-label    { color: var(--teal-text); }
+  .topic-card-focus.lav .topic-card-focus-label     { color: var(--lavender-text); }
+
+  .topic-card-focus ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .topic-card-focus li {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    padding-left: 18px;
+    position: relative;
+  }
+
+  .topic-card-focus.amber li::before {
+    content: '\203A';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .topic-card-focus.teal li::before {
+    content: '\203A';
+    position: absolute;
+    left: 0;
+    color: var(--teal);
+    font-weight: 700;
+  }
+
+  .topic-card-focus.lav li::before {
+    content: '\203A';
+    position: absolute;
+    left: 0;
+    color: var(--lavender);
+    font-weight: 700;
+  }
+
+  .topic-card-conclusion {
+    border-radius: 6px;
+    padding: 14px 18px;
+    border-left: 3px solid;
+  }
+
+  .topic-card-conclusion.amber   { background: var(--accent-soft); border-color: var(--accent); }
+  .topic-card-conclusion.teal    { background: var(--teal-soft); border-color: var(--teal); }
+  .topic-card-conclusion.lav     { background: var(--lavender-soft); border-color: var(--lavender); }
+
+  .topic-card-conclusion p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .topic-card-conclusion p strong { color: var(--text-primary); }
+
+  /* ═══ BODY PARAGRAPH DIAGRAM ═══ */
+  .diagram-wrapper {
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 28px 0;
+  }
+
+  .diagram-head {
+    background: var(--bg-elevated);
+    color: var(--text-primary);
+    padding: 14px 24px;
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .diagram-rows {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .diagram-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 14px 20px;
+    border-top: 1px solid var(--border-subtle);
+    background: var(--bg-surface);
+  }
+
+  .diagram-row:first-child { border-top: none; }
+
+  .diagram-row:nth-child(even) {
+    background: #3a4150;
+  }
+
+  .diagram-row.research-row {
+    background: rgba(91, 168, 160, 0.06);
+  }
+
+  .diagram-row.research-row.alt {
+    background: rgba(91, 168, 160, 0.10);
+  }
+
+  .diagram-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 2px;
+    letter-spacing: 0.02em;
+  }
+
+  .pill-topic    { background: var(--accent);  color: #1a1a1a; }
+  .pill-primary  { background: var(--border-mid); color: var(--text-primary); }
+  .pill-analysis { background: var(--teal);    color: #1a1a1a; }
+  .pill-research { background: var(--lavender); color: #1a1a1a; }
+  .pill-close    { background: #7a6090;        color: #fff; }
+
+  .diagram-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    flex: 1;
+  }
+
+  .diagram-desc strong { color: var(--text-primary); }
+
+  .research-note {
+    display: inline-block;
+    margin-top: 6px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--lavender-soft);
+    color: var(--lavender-text);
+    border: 1px solid #9a9cc040;
+    border-radius: 3px;
+    padding: 2px 8px;
+  }
+
+  /* ═══ SAMPLE OUTLINE ═══ */
+  .outline-tab-bar {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-bottom: none;
+    border-radius: 6px 6px 0 0;
+    padding: 14px 24px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent-text);
+    text-transform: uppercase;
+    letter-spacing: 0.10em;
+  }
+
+  .outline-card {
+    border: 1px solid var(--border-subtle);
+    border-radius: 0 0 6px 6px;
+    overflow: hidden;
+    margin-bottom: 48px;
+  }
+
+  .outline-topic-bar {
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .outline-film-badge {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a1a1a;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .outline-film-name {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--text-primary);
+  }
+
+  .outline-film-info {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  .outline-focus-badge {
+    margin-left: auto;
+    align-self: center;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 4px;
+    color: var(--accent-text);
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-mid);
+  }
+
+  .thesis-block {
+    background: var(--bg-elevated);
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .thesis-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-text);
+    margin-bottom: 8px;
+  }
+
+  .thesis-text {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-style: italic;
+    line-height: 1.7;
+    color: var(--text-secondary);
+  }
+
+  .outline-section {
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .outline-section:last-child { border-bottom: none; }
+
+  .outline-section-head {
+    background: #2e3440;
+    padding: 12px 24px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .outline-roman {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .outline-section-body {
+    background: var(--bg-surface);
+    padding: 6px 0;
+  }
+
+  .outline-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 12px 24px 12px 36px;
+    border-top: 1px solid rgba(74, 82, 100, 0.3);
+  }
+
+  .outline-row:first-child { border-top: none; }
+
+  .outline-row.research-draft {
+    background: rgba(154, 156, 192, 0.06);
+  }
+
+  .ol-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .ol-topic    { background: var(--accent);  color: #1a1a1a; }
+  .ol-primary  { background: var(--border-mid); color: var(--text-primary); }
+  .ol-analysis { background: var(--teal);    color: #1a1a1a; }
+  .ol-research { background: var(--lavender); color: #1a1a1a; }
+  .ol-close    { background: #7a6090;        color: #fff; }
+
+  .ol-content {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    flex: 1;
+  }
+
+  .ol-content strong { color: var(--text-primary); }
+  .ol-content em { font-style: italic; }
+
+  .ol-content .film-quote {
+    display: block;
+    margin-top: 8px;
+    background: var(--bg-elevated);
+    border-left: 3px solid var(--accent);
+    padding: 10px 16px;
+    border-radius: 0 6px 6px 0;
+    font-style: italic;
+    color: var(--text-primary);
+    line-height: 1.6;
+    font-size: 14px;
+  }
+
+  .ol-content .film-citation {
+    font-style: normal;
+    font-size: 12px;
+    color: var(--text-muted);
+    display: inline;
+  }
+
+  .ol-content .draft-later {
+    display: inline-block;
+    margin-top: 6px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--lavender-soft);
+    color: var(--lavender-text);
+    border: 1px solid #9a9cc040;
+    border-radius: 3px;
+    padding: 2px 8px;
+  }
+
+  .intro-concl-body {
+    background: var(--bg-surface);
+    padding: 18px 24px 18px 36px;
+  }
+
+  .intro-concl-body p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .intro-concl-body p + p { margin-top: 10px; }
+  .intro-concl-body p strong { color: var(--text-primary); }
+
+  /* ═══ SECTION LAYOUT: PROSE + GRAPHIC ═══ */
+  .section-layout {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 32px;
+    align-items: start;
+    margin-top: 10px;
+  }
+
+  .process-graphic-wrap {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    padding: 28px 20px 20px;
+    text-align: center;
+  }
+
+  .process-graphic-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-text);
+    margin-top: 14px;
+  }
+
+  .process-graphic-sublabel {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+    margin-top: 2px;
+  }
+
+  /* ═══ RESPONSIVE ═══ */
+  @media (max-width: 640px) {
+    .section-layout { grid-template-columns: 1fr; }
+    .card-grid { grid-template-columns: 1fr; }
+    .hero { padding: 28px 24px 24px; }
+    .hero-title { font-size: 26px; }
+    .stage-strip { flex-wrap: wrap; }
+    .stage-strip .stage { flex: none; width: 50%; border-bottom: 1px solid var(--border-subtle); }
+    .diagram-row { flex-direction: column; gap: 8px; }
+    .outline-row { flex-direction: column; gap: 8px; }
+    .outline-topic-bar { flex-direction: column; gap: 8px; }
+    .outline-focus-badge { margin-left: 0; }
+  }
+
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <!-- ═══════════════════════════════════════════════
+       HERO
+       ═══════════════════════════════════════════════ -->
+  <div class="hero" role="banner">
+    <div class="hero-label">Module Eight &middot; Dystopian Research Essay</div>
+    <div class="hero-process-tag">The Writing Process</div>
+    <h1 class="hero-title">Prewriting <em>&amp; Planning</em></h1>
+    <p class="hero-subtitle">Turning your Dystopian Literature &amp; Film module work into a focused research essay plan.</p>
+  </div>
+
+  <!-- Writing Process Stage Strip -->
+  <nav class="stage-strip" aria-label="Writing process stages">
+    <div class="stage active" aria-current="step">Prewriting &amp; Planning</div>
+    <div class="stage">Drafting &amp; Revising</div>
+    <div class="stage">Editing &amp; Proofreading</div>
+  </nav>
+
+
+  <!-- ═══════════════════════════════════════════════
+       SEC·01 — PREWRITING: ALREADY DONE
+       ═══════════════════════════════════════════════ -->
+  <div class="section-header">
+    <span class="section-badge">Stage One</span>
+    <h2 class="section-title">Prewriting &mdash; <em>Already Done</em></h2>
+  </div>
+
+  <div class="section-layout">
+    <div>
+      <p class="prose">In the traditional writing process, <strong>prewriting</strong> is the work you do on a topic before you draft an essay &mdash; reading, viewing, analyzing, discussing, forming initial interpretations. For this essay, that stage is already complete.</p>
+
+      <p class="prose">In the Dystopian Literature &amp; Film module, you studied the characteristics of dystopian societies, the types of dystopian control, and the traits of the dystopian protagonist. You applied those lenses to <em>Minority Report</em> during the in-class screening, and you wrote an analytical response about a film of your choice. That work <em>is</em> your prewriting.</p>
+
+      <p class="prose">This means you are already ahead: you have existing analysis, a working understanding of the dystopian framework, and practice identifying how dystopian elements function within a film. You can move directly into the planning stage.</p>
+    </div>
+
+    <div class="process-graphic-wrap">
+      <svg viewBox="0 0 200 220" width="200" height="220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Writing Process diagram with Prewriting highlighted as the active stage">
+        <title>The Writing Process &mdash; Prewriting</title>
+        <!-- Title -->
+        <text x="100" y="16" text-anchor="middle" font-family="'Libre Baskerville', Georgia, serif" font-size="11" font-weight="700" fill="#f0f2f5">The Writing Process</text>
+
+        <!-- Arrows (drawn first, behind circles) -->
+        <path d="M 132,46 L 148,58" stroke="#5c6478" stroke-width="1.5" fill="none" marker-end="url(#arrowGray)"/>
+        <path d="M 168,94 L 164,114" stroke="#5c6478" stroke-width="1.5" fill="none" marker-end="url(#arrowGray)"/>
+        <path d="M 148,158 L 130,170" stroke="#5c6478" stroke-width="1.5" fill="none" marker-end="url(#arrowGray)"/>
+        <path d="M 72,178 L 54,166" stroke="#5c6478" stroke-width="1.5" fill="none" marker-end="url(#arrowGray)"/>
+        <path d="M 34,132 L 32,112" stroke="#5c6478" stroke-width="1.5" fill="none" marker-end="url(#arrowGray)"/>
+        <path d="M 48,68 L 66,52" stroke="#5c6478" stroke-width="1.5" fill="none" marker-end="url(#arrowGray)"/>
+
+        <defs>
+          <marker id="arrowGray" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6" fill="none" stroke="#5c6478" stroke-width="1"/>
+          </marker>
+          <marker id="arrowAmber" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6" fill="none" stroke="#e8a832" stroke-width="1"/>
+          </marker>
+        </defs>
+
+        <!-- Prewriting (ACTIVE) -->
+        <circle cx="100" cy="38" r="24" fill="#e8a832" stroke="#f5c865" stroke-width="2"/>
+        <text x="100" y="35" text-anchor="middle" font-family="'Source Sans Pro', sans-serif" font-size="8.5" font-weight="700" fill="#1a1a1a">Prewriting</text>
+        <text x="100" y="45" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="6" fill="#1a1a1a" opacity="0.6">STAGE 1</text>
+
+        <!-- Planning -->
+        <circle cx="160" cy="78" r="22" fill="#3e4555" stroke="#4a5264" stroke-width="1.5"/>
+        <text x="160" y="80" text-anchor="middle" font-family="'Source Sans Pro', sans-serif" font-size="8.5" font-weight="600" fill="#cdd3dc">Planning</text>
+
+        <!-- Drafting -->
+        <circle cx="164" cy="134" r="22" fill="#3e4555" stroke="#4a5264" stroke-width="1.5"/>
+        <text x="164" y="136" text-anchor="middle" font-family="'Source Sans Pro', sans-serif" font-size="8.5" font-weight="600" fill="#cdd3dc">Drafting</text>
+
+        <!-- Revising -->
+        <circle cx="100" cy="182" r="22" fill="#3e4555" stroke="#4a5264" stroke-width="1.5"/>
+        <text x="100" y="184" text-anchor="middle" font-family="'Source Sans Pro', sans-serif" font-size="8.5" font-weight="600" fill="#cdd3dc">Revising</text>
+
+        <!-- Editing -->
+        <circle cx="36" cy="142" r="22" fill="#3e4555" stroke="#4a5264" stroke-width="1.5"/>
+        <text x="36" y="144" text-anchor="middle" font-family="'Source Sans Pro', sans-serif" font-size="8.5" font-weight="600" fill="#cdd3dc">Editing</text>
+
+        <!-- Proofreading -->
+        <circle cx="36" cy="80" r="22" fill="#3e4555" stroke="#4a5264" stroke-width="1.5"/>
+        <text x="36" y="76" text-anchor="middle" font-family="'Source Sans Pro', sans-serif" font-size="7.5" font-weight="600" fill="#cdd3dc">Proof-</text>
+        <text x="36" y="86" text-anchor="middle" font-family="'Source Sans Pro', sans-serif" font-size="7.5" font-weight="600" fill="#cdd3dc">reading</text>
+      </svg>
+      <div class="process-graphic-label">Stage One</div>
+      <div class="process-graphic-sublabel">Prewriting</div>
+    </div>
+  </div>
+
+  <div class="card-grid" style="margin-top: 24px;">
+    <div class="card">
+      <div class="card-header amber">
+        <span class="card-header-label">From the Dystopian Module</span>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li>Nine characteristics of dystopian societies (propaganda, surveillance, dehumanization, etc.)</li>
+          <li>Four types of dystopian control (corporate, bureaucratic, technological, philosophical/religious)</li>
+          <li>Four traits of the dystopian protagonist (feels trapped, questions the system, moral conviction, audience lens)</li>
+          <li>Practice analyzing <em>Minority Report</em> at six pause points through these lenses</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header teal">
+        <span class="card-header-label">From the Film Assignment</span>
+      </div>
+      <div class="card-body">
+        <ul class="teal-list">
+          <li>A film you selected and watched with an analytical eye</li>
+          <li>Three dystopian characteristics you identified and discussed in writing</li>
+          <li>Practice articulating analytical claims about how dystopian elements function in a film&rsquo;s narrative</li>
+          <li>Instructor feedback on your analysis &mdash; review any comments before you plan</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+  <hr class="section-rule">
+
+
+  <!-- ═══════════════════════════════════════════════
+       SEC·02 — CHOOSE YOUR TOPIC
+       ═══════════════════════════════════════════════ -->
+  <div class="section-header">
+    <span class="section-badge teal">Your Essay</span>
+    <h2 class="section-title">Choose Your Essay Topic</h2>
+  </div>
+
+  <p class="prose" style="margin-bottom: 8px;">Select one of the three films below. Each topic is designed for a <strong>four-paragraph essay</strong> (introduction, two body paragraphs, and conclusion) of approximately <strong>700 words</strong>. You will choose <strong>two dystopian characteristics</strong> to focus on &mdash; one per body paragraph &mdash; selected from any combination of the three lists you studied in the Dystopian Literature &amp; Film module:</p>
+
+  <div class="card-grid" style="margin-top: 16px; margin-bottom: 28px;">
+    <div class="card">
+      <div class="card-header amber">
+        <span class="card-header-label">Select From</span>
+      </div>
+      <div class="card-body">
+        <ul>
+          <li><strong>List A:</strong> Characteristics of a Dystopian Society (propaganda, surveillance, dehumanization, illusion of utopia, etc.)</li>
+          <li><strong>List B:</strong> Types of Dystopian Controls (corporate, bureaucratic, technological, philosophical/religious)</li>
+          <li><strong>List C:</strong> The Dystopian Protagonist (feels trapped, questions the system, moral conviction, audience lens)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header teal">
+        <span class="card-header-label">How to Choose</span>
+      </div>
+      <div class="card-body">
+        <ul class="teal-list">
+          <li>Your two characteristics can come from <strong>the same list</strong> or from <strong>different lists</strong></li>
+          <li>Choose characteristics that are <strong>clearly present</strong> in specific scenes you can describe and analyze</li>
+          <li>Choose characteristics that connect to each other &mdash; your thesis should explain <strong>how they work together</strong> to advance the film&rsquo;s argument</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ── Topic 1: Children of Men ── -->
+  <div class="topic-card">
+    <div class="topic-card-head amber">
+      <div class="topic-card-option">Topic One</div>
+      <h3 class="topic-card-film">Children of Men</h3>
+      <div class="topic-card-meta">2006 &bull; Alfonso Cuar&oacute;n &bull; Sci-Fi / Thriller</div>
+    </div>
+    <div class="topic-card-body">
+      <p class="topic-card-prompt">Analyze how two dystopian characteristics function within <em>Children of Men</em> to develop the film&rsquo;s argument about what happens to a society that has lost its future. Cuar&oacute;n&rsquo;s near-future Britain is saturated with dystopian elements: militarized borders, government-issued suicide kits, caged refugees, propaganda broadcasts urging citizens to report immigrants, and a pervasive atmosphere in which human beings have been reduced to categories &mdash; legal or illegal, useful or disposable. Beneath it all, the protagonist Theo must navigate a world he stopped caring about long ago and rediscover a reason to act. Consider which two characteristics are most central to the film&rsquo;s vision and how specific scenes make them visible.</p>
+      <div class="topic-card-focus amber">
+        <div class="topic-card-focus-label">Body Paragraph Focus</div>
+        <ul>
+          <li><strong>Body Paragraph One:</strong> Identify your first dystopian characteristic and analyze how it operates within specific scenes. Describe the scene in enough detail that a reader who has not seen the film can visualize it, then explain what the characteristic reveals about the society the film depicts. How does this element contribute to the film&rsquo;s broader argument?</li>
+          <li><strong>Body Paragraph Two:</strong> Identify your second dystopian characteristic and analyze how it operates within different scenes. Explain how this second element connects to the first &mdash; do they reinforce each other, create a cause-and-effect relationship, or reveal different dimensions of the same problem? How does the interplay between these two characteristics deepen the film&rsquo;s critique?</li>
+        </ul>
+      </div>
+      <div class="topic-card-conclusion amber">
+        <p><strong>Conclusion direction:</strong> What does <em>Children of Men</em> ultimately argue about the relationship between hope and social order? What does the film suggest happens to a society&rsquo;s moral framework when the future disappears &mdash; and what does Theo&rsquo;s arc reveal about what it takes to recover it?</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ── Topic 2: Pan's Labyrinth ── -->
+  <div class="topic-card">
+    <div class="topic-card-head teal">
+      <div class="topic-card-option">Topic Two</div>
+      <h3 class="topic-card-film">Pan&rsquo;s Labyrinth</h3>
+      <div class="topic-card-meta">2006 &bull; Guillermo del Toro &bull; Fantasy / Drama</div>
+    </div>
+    <div class="topic-card-body">
+      <p class="topic-card-prompt">Analyze how two dystopian characteristics function within <em>Pan&rsquo;s Labyrinth</em> to develop the film&rsquo;s argument about resistance, imagination, and the cost of authoritarian rule. Del Toro sets his story in the aftermath of the Spanish Civil War, where Captain Vidal&rsquo;s military outpost operates as a miniature totalitarian state: speech is monitored, obedience is enforced through violence, dissent is met with torture, and ideology is treated as absolute truth. Meanwhile, Ofelia retreats into a mythical underworld where the rules are different but the stakes are equally lethal. Consider which two dystopian characteristics are most visible across the film&rsquo;s <em>two</em> worlds &mdash; the historical and the fantastical &mdash; and how specific scenes in both registers make them concrete.</p>
+      <div class="topic-card-focus teal">
+        <div class="topic-card-focus-label">Body Paragraph Focus</div>
+        <ul>
+          <li><strong>Body Paragraph One:</strong> Identify your first dystopian characteristic and analyze how it operates within specific scenes &mdash; from either the historical world, the fantasy world, or both. Describe the scene in enough detail that a reader who has not seen the film can visualize it, then explain what the characteristic reveals about the kind of power the film is examining. How does this element contribute to the film&rsquo;s broader argument?</li>
+          <li><strong>Body Paragraph Two:</strong> Identify your second dystopian characteristic and analyze how it operates within different scenes. Explain how this second element connects to the first &mdash; do they mirror each other across the two worlds, escalate the film&rsquo;s critique, or reveal something about the relationship between real-world authoritarianism and the structures of fairy tales? How does their interplay shape the film&rsquo;s conclusion?</li>
+        </ul>
+      </div>
+      <div class="topic-card-conclusion teal">
+        <p><strong>Conclusion direction:</strong> What does <em>Pan&rsquo;s Labyrinth</em> ultimately argue about the relationship between authoritarianism and imagination? Is Ofelia&rsquo;s fantasy world an escape from the dystopia or a form of resistance against it &mdash; and what does the film&rsquo;s ending suggest about the cost of disobedience under totalitarian rule?</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ── Topic 3: The Matrix ── -->
+  <div class="topic-card">
+    <div class="topic-card-head lav">
+      <div class="topic-card-option">Topic Three</div>
+      <h3 class="topic-card-film">The Matrix</h3>
+      <div class="topic-card-meta">1999 &bull; The Wachowskis &bull; Sci-Fi / Action</div>
+    </div>
+    <div class="topic-card-body">
+      <p class="topic-card-prompt">Analyze how two dystopian characteristics function within <em>The Matrix</em> to develop the film&rsquo;s argument about the nature of control, freedom, and what it costs to see the truth. The Wachowskis construct a dystopia operating on two levels simultaneously: the simulated reality of the Matrix, where billions of people live unaware that their world is a digital prison, and the ravaged physical world, where the remnants of humanity fight a war most of the species doesn&rsquo;t know is happening. The film is dense with dystopian elements &mdash; total technological control, a protagonist whose awakening follows the classic pattern, surveillance systems that can inhabit any citizen, and an illusion of normality so complete that choosing to see through it requires an act of radical faith. Consider which two characteristics are most central to the film&rsquo;s argument and how specific scenes make them operate.</p>
+      <div class="topic-card-focus lav">
+        <div class="topic-card-focus-label">Body Paragraph Focus</div>
+        <ul>
+          <li><strong>Body Paragraph One:</strong> Identify your first dystopian characteristic and analyze how it operates within specific scenes. Describe the scene in enough detail that a reader who has not seen the film can visualize it, then explain what the characteristic reveals about the system the film is critiquing. How does this element contribute to the film&rsquo;s broader argument about reality, control, or freedom?</li>
+          <li><strong>Body Paragraph Two:</strong> Identify your second dystopian characteristic and analyze how it operates within different scenes. Explain how this second element connects to the first &mdash; do they represent different dimensions of the same system, create a cause-and-effect relationship, or force the protagonist (and the audience) to confront uncomfortable truths? How does their interplay drive the film&rsquo;s central question?</li>
+        </ul>
+      </div>
+      <div class="topic-card-conclusion lav">
+        <p><strong>Conclusion direction:</strong> What does <em>The Matrix</em> ultimately argue about the relationship between comfort and freedom? Is the film suggesting that most people would choose the illusion if given the choice &mdash; and what does Neo&rsquo;s journey reveal about the cost of waking up in a world designed to keep you asleep?</p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="callout amber" style="margin-top: 8px;">
+    <div class="callout-label">Choosing Your Characteristics</div>
+    <p>You are <strong>not</strong> required to use the same characteristics you discussed in the Dystopian Literature &amp; Film assignment. You may choose any two items from Lists A, B, and C &mdash; in any combination &mdash; that you believe are most central to your chosen film&rsquo;s argument. That said, if you wrote a strong analysis of a characteristic in the earlier assignment and want to develop it further, you are welcome to build on that work.</p>
+  </div>
+
+
+  <hr class="section-rule">
+
+
+  <!-- ═══════════════════════════════════════════════
+       SEC·03 — PLANNING: BODY PARAGRAPH STRUCTURE
+       ═══════════════════════════════════════════════ -->
+  <div class="section-header">
+    <span class="section-badge lavender">Stage Two</span>
+    <h2 class="section-title">Planning &mdash; <em>Body Paragraph Structure</em></h2>
+  </div>
+
+  <div class="section-layout">
+    <div>
+      <p class="prose">The <strong>planning stage</strong> is where you decide what your essay will argue and how it will be organized &mdash; before you begin drafting. Even though you are not required to submit a formal outline for this essay, planning before you write is strongly recommended.</p>
+
+      <p class="prose">At approximately <strong>700 words</strong> and <strong>four paragraphs</strong> (introduction + two body paragraphs + conclusion), the dystopian research essay is focused and tightly structured. There is no room for wandering &mdash; every sentence in every body paragraph needs to do specific work. The body paragraph structure below shows you exactly what that work is.</p>
+    </div>
+
+    <div class="process-graphic-wrap">
+      <svg viewBox="0 0 200 220" width="200" height="220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Writing Process diagram with Planning highlighted as the active stage">
+        <title>The Writing Process &mdash; Planning</title>
+        <!-- Title -->
+        <text x="100" y="16" text-anchor="middle" font-family="'Libre Baskerville', Georgia, serif" font-size="11" font-weight="700" fill="#f0f2f5">The Writing Process</text>
+
+        <!-- Arrows -->
+        <defs>
+          <marker id="arrowGray2" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6" fill="none" stroke="#5c6478" stroke-width="1"/>
+          </marker>
+        </defs>
+
+        <path d="M 132,46 L 148,58" stroke="#5c6478" stroke-width="1.5" fill="none" marker-end="url(#arrowGray2)"/>
+        <path d="M 168,94 L 164,114" stroke="#5c6478" stroke-width="1.5" fill="none" marker-end="url(#arrowGray2)"/>
+        <path d="M 148,158 L 130,170" stroke="#5c6478" stroke-width="1.5" fill="none" marker-end="url(#arrowGray2)"/>
+        <path d="M 72,178 L 54,166" stroke="#5c6478" stroke-width="1.5" fill="none" marker-end="url(#arrowGray2)"/>
+        <path d="M 34,132 L 32,112" stroke="#5c6478" stroke-width="1.5" fill="none" marker-end="url(#arrowGray2)"/>
+        <path d="M 48,68 L 66,52" stroke="#5c6478" stroke-width="1.5" fill="none" marker-end="url(#arrowGray2)"/>
+
+        <!-- Prewriting (completed) -->
+        <circle cx="100" cy="38" r="24" fill="#5ba8a0" stroke="#90d8d0" stroke-width="1.5" opacity="0.7"/>
+        <text x="100" y="35" text-anchor="middle" font-family="'Source Sans Pro', sans-serif" font-size="8.5" font-weight="700" fill="#1a1a1a">Prewriting</text>
+        <text x="100" y="45" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="6" fill="#1a1a1a" opacity="0.5">DONE</text>
+
+        <!-- Planning (ACTIVE) -->
+        <circle cx="160" cy="78" r="24" fill="#e8a832" stroke="#f5c865" stroke-width="2"/>
+        <text x="160" y="75" text-anchor="middle" font-family="'Source Sans Pro', sans-serif" font-size="8.5" font-weight="700" fill="#1a1a1a">Planning</text>
+        <text x="160" y="85" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="6" fill="#1a1a1a" opacity="0.6">STAGE 2</text>
+
+        <!-- Drafting -->
+        <circle cx="164" cy="134" r="22" fill="#3e4555" stroke="#4a5264" stroke-width="1.5"/>
+        <text x="164" y="136" text-anchor="middle" font-family="'Source Sans Pro', sans-serif" font-size="8.5" font-weight="600" fill="#cdd3dc">Drafting</text>
+
+        <!-- Revising -->
+        <circle cx="100" cy="182" r="22" fill="#3e4555" stroke="#4a5264" stroke-width="1.5"/>
+        <text x="100" y="184" text-anchor="middle" font-family="'Source Sans Pro', sans-serif" font-size="8.5" font-weight="600" fill="#cdd3dc">Revising</text>
+
+        <!-- Editing -->
+        <circle cx="36" cy="142" r="22" fill="#3e4555" stroke="#4a5264" stroke-width="1.5"/>
+        <text x="36" y="144" text-anchor="middle" font-family="'Source Sans Pro', sans-serif" font-size="8.5" font-weight="600" fill="#cdd3dc">Editing</text>
+
+        <!-- Proofreading -->
+        <circle cx="36" cy="80" r="22" fill="#3e4555" stroke="#4a5264" stroke-width="1.5"/>
+        <text x="36" y="76" text-anchor="middle" font-family="'Source Sans Pro', sans-serif" font-size="7.5" font-weight="600" fill="#cdd3dc">Proof-</text>
+        <text x="36" y="86" text-anchor="middle" font-family="'Source Sans Pro', sans-serif" font-size="7.5" font-weight="600" fill="#cdd3dc">reading</text>
+      </svg>
+      <div class="process-graphic-label">Stage Two</div>
+      <div class="process-graphic-sublabel">Planning</div>
+    </div>
+  </div>
+
+  <div class="callout lavender" style="margin-top: 16px;">
+    <div class="callout-label">No Outline Assignment This Time</div>
+    <p>Unlike previous essays, you will not be submitting a formal outline for the dystopian research essay. However, you are strongly encouraged to draft one before you begin writing &mdash; even informally. Writers who plan first tend to produce more focused, purposeful essays. If you&rsquo;d like feedback on your outline before you draft, email it to the instructor.</p>
+  </div>
+
+
+  <!-- BODY PARAGRAPH DIAGRAM -->
+  <h3 style="font-family: var(--font-display); font-size: 20px; font-weight: 700; color: #fff; margin: 40px 0 8px;">Body Paragraph Structure</h3>
+  <p class="prose" style="margin-bottom: 6px;">Every body paragraph in your research essay should follow this eight-part structure. <strong>During the planning stage</strong>, leave items &#9315; and &#9316; (the research source sections) blank &mdash; you haven&rsquo;t conducted research yet. You&rsquo;ll add them when you draft.</p>
+
+  <div class="diagram-wrapper">
+    <div class="diagram-head">Body Paragraph Structure &mdash; Dystopian Research Essay</div>
+    <div class="diagram-rows">
+
+      <div class="diagram-row">
+        <span class="diagram-pill pill-topic">&#9312; Topic Sentence</span>
+        <p class="diagram-desc">Your own claim about which dystopian characteristic you are analyzing in this paragraph and how it functions within the film&rsquo;s narrative. <strong>Your words only. No sources.</strong></p>
+      </div>
+
+      <div class="diagram-row">
+        <span class="diagram-pill pill-primary">&#9313; Scene Description</span>
+        <p class="diagram-desc">Describe a specific scene from the film that illustrates this dystopian characteristic. Provide enough visual and narrative detail that a reader who hasn&rsquo;t seen the film can picture the moment. <strong>Be concrete</strong>: name characters, describe what the camera shows, and identify what is happening in the scene.</p>
+      </div>
+
+      <div class="diagram-row">
+        <span class="diagram-pill pill-analysis">&#9314; Your Analysis</span>
+        <p class="diagram-desc">Explain what this scene reveals about the dystopian characteristic you identified. <strong>Films never explain themselves</strong> &mdash; your analysis connects what happens on screen to the dystopian concept and to the film&rsquo;s broader argument. This is the heart of the paragraph.</p>
+      </div>
+
+      <div class="diagram-row research-row">
+        <span class="diagram-pill pill-research">&#9315; Secondary Source</span>
+        <p class="diagram-desc">A quote, paraphrase, or summary from one of your secondary research sources &mdash; a piece of film criticism or dystopian scholarship that speaks to your analytical point. Introduce with a signal phrase. <span class="research-note">Complete During Drafting</span></p>
+      </div>
+
+      <div class="diagram-row research-row alt">
+        <span class="diagram-pill pill-research">&#9316; Source Analysis</span>
+        <p class="diagram-desc">Explain how the scholar&rsquo;s or critic&rsquo;s point deepens <em>your</em> argument &mdash; not just that they agree, but specifically <em>how</em> and <em>why</em> their insight strengthens this paragraph&rsquo;s claim. <span class="research-note">Complete During Drafting</span></p>
+      </div>
+
+      <div class="diagram-row">
+        <span class="diagram-pill pill-primary">&#9317; Second Scene or Detail</span>
+        <p class="diagram-desc">A second scene, moment, or visual detail from the film that extends or complicates the paragraph&rsquo;s argument. This can come from the same sequence or from a different part of the film.</p>
+      </div>
+
+      <div class="diagram-row">
+        <span class="diagram-pill pill-analysis">&#9318; Your Analysis</span>
+        <p class="diagram-desc">Explain what this additional evidence contributes to your argument. This analysis should advance the paragraph&rsquo;s point beyond what &#9314; established &mdash; not repeat it.</p>
+      </div>
+
+      <div class="diagram-row">
+        <span class="diagram-pill pill-close">&#9319; Closing Sentence</span>
+        <p class="diagram-desc">Wrap up the paragraph&rsquo;s argument and gesture toward the next paragraph&rsquo;s topic (or toward the essay&rsquo;s larger conclusion, if this is the final body paragraph). <strong>Your words only &mdash; no new evidence.</strong></p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="callout teal" style="margin-top: 4px;">
+    <div class="callout-label">On Describing Film Scenes</div>
+    <p>In a poetry essay, you quote specific lines. In a film essay, you <strong>describe specific scenes</strong>. This means your &ldquo;primary evidence&rdquo; is not a quotation but a <strong>detailed scene description</strong> &mdash; what the camera shows, what characters do and say, what the audience sees and hears. The more concrete and specific your description, the stronger your analysis will be. Avoid vague summaries like &ldquo;there is a lot of surveillance in the film.&rdquo; Instead, describe the specific moment where surveillance operates and explain what it reveals.</p>
+  </div>
+
+
+  <hr class="section-rule">
+
+
+  <!-- ═══════════════════════════════════════════════
+       SEC·04 — SAMPLE OUTLINE
+       ═══════════════════════════════════════════════ -->
+  <div class="section-header">
+    <span class="section-badge">Sample</span>
+    <h2 class="section-title">Sample Outline</h2>
+  </div>
+
+  <p class="prose" style="margin-bottom: 8px;">The outline below models how to plan a four-paragraph dystopian film research essay using <em>Minority Report</em> &mdash; the film you analyzed in class. Notice how each body paragraph follows the eight-part structure from the diagram above. Items &#9315; and &#9316; are left blank, since research comes later. The scene descriptions are planning notes, not finished prose.</p>
+
+  <div class="callout amber" style="margin-bottom: 28px;">
+    <div class="callout-label">Why Minority Report?</div>
+    <p>This sample uses <em>Minority Report</em> because you&rsquo;ve already seen and analyzed it in class. The purpose is to show how the dystopian lenses you practiced during the screening translate into a structured essay plan. <strong>You may not write your essay on <em>Minority Report</em></strong> &mdash; you must choose one of the three films on the previous page. This outline is a structural model only.</p>
+  </div>
+
+  <!-- Outline -->
+  <div class="outline-tab-bar">
+    Sample Outline &mdash; Minority Report
+  </div>
+
+  <div class="outline-card">
+    <div class="outline-topic-bar">
+      <div class="outline-film-badge" aria-hidden="true">S</div>
+      <div>
+        <div class="outline-film-name">Minority Report</div>
+        <div class="outline-film-info">2002 &bull; Steven Spielberg &bull; Sci-Fi / Thriller</div>
+      </div>
+      <span class="outline-focus-badge">Sample Only</span>
+    </div>
+
+    <!-- Thesis -->
+    <div class="thesis-block">
+      <div class="thesis-label">Thesis Statement</div>
+      <p class="thesis-text">In <em>Minority Report</em>, Steven Spielberg uses the dystopian characteristics of technological surveillance and the illusion of utopia to argue that a system designed to eliminate crime can itself become the most dangerous form of control &mdash; not because it fails, but precisely because it works.</p>
+    </div>
+
+    <!-- I. Introduction -->
+    <div class="outline-section">
+      <div class="outline-section-head">
+        <div class="outline-roman" aria-hidden="true">I</div>
+        Introduction Paragraph
+      </div>
+      <div class="intro-concl-body">
+        <p>Introduce the film, its director, and its premise: Washington D.C. in 2054, where the PreCrime Division uses three psychic &ldquo;precogs&rdquo; to arrest murderers before they act. Identify the essay&rsquo;s analytical focus: two dystopian characteristics &mdash; technological surveillance and the illusion of utopia &mdash; and how they work together to expose the hidden costs of a system that has achieved its stated goal. End with the thesis statement above.</p>
+      </div>
+    </div>
+
+    <!-- II. Body Paragraph 1 -->
+    <div class="outline-section">
+      <div class="outline-section-head">
+        <div class="outline-roman" aria-hidden="true">II</div>
+        Body Paragraph One &mdash; Technological Surveillance: Eyes Everywhere, Freedom Nowhere
+      </div>
+      <div class="outline-section-body">
+
+        <div class="outline-row">
+          <span class="ol-pill ol-topic">&#9312; Topic</span>
+          <div class="ol-content">In <em>Minority Report</em>, Spielberg depicts technological surveillance as a system so total that citizens cannot move, shop, or exist in public space without being identified, tracked, and targeted &mdash; and the film&rsquo;s most disturbing insight is that no one objects, because the surveillance is embedded in convenience.</div>
+        </div>
+
+        <div class="outline-row">
+          <span class="ol-pill ol-primary">&#9313; Scene</span>
+          <div class="ol-content">
+            Describe: <em>The personalized advertising scene in the shopping mall.</em>
+            <span class="film-quote">Anderton walks through a Gap store and retinal scanners instantly identify him, greeting him by name and recommending products based on his purchase history. Every surface in the mall does the same &mdash; billboards, storefronts, and transit ads all call out to individual passersby by name. The sequence is shot casually, as though this is ordinary. <span class="film-citation">(Spielberg, <em>Minority Report</em>, ~0:32)</span></span>
+          </div>
+        </div>
+
+        <div class="outline-row">
+          <span class="ol-pill ol-analysis">&#9314; Analysis</span>
+          <div class="ol-content">The retinal advertising scene illustrates how technological surveillance has been <strong>commercialized</strong>: the same eye-scanning infrastructure that enables PreCrime arrests also serves personalized ads. Spielberg blurs the line between state surveillance and corporate data harvesting, suggesting they are two faces of the same system. The scene&rsquo;s casual tone is the point &mdash; citizens don&rsquo;t resist because surveillance has been packaged as customer service. The characteristic of technological control becomes invisible precisely because it has been made <em>useful</em>.</div>
+        </div>
+
+        <div class="outline-row research-draft">
+          <span class="ol-pill ol-research">&#9315; Source</span>
+          <div class="ol-content">
+            <em>[Quote, paraphrase, or summary from one of your research sources &mdash; to be added during the Drafting stage]</em>
+            <span class="draft-later">Complete During Drafting</span>
+          </div>
+        </div>
+
+        <div class="outline-row research-draft">
+          <span class="ol-pill ol-research">&#9316; Source Analysis</span>
+          <div class="ol-content">
+            <em>[Explanation of how the scholar&rsquo;s or critic&rsquo;s point deepens this paragraph&rsquo;s argument &mdash; to be added during the Drafting stage]</em>
+            <span class="draft-later">Complete During Drafting</span>
+          </div>
+        </div>
+
+        <div class="outline-row">
+          <span class="ol-pill ol-primary">&#9317; Scene 2</span>
+          <div class="ol-content">
+            Describe: <em>The spider-bot apartment raid.</em>
+            <span class="film-quote">To locate the fugitive Anderton, PreCrime deploys spider-bots &mdash; small, autonomous robots that swarm through an entire apartment building, scanning every resident&rsquo;s retinas without consent. Families eating dinner, a couple in bed, children playing &mdash; all are interrupted and scanned. No one resists. The scene is shot to emphasize the invasion&rsquo;s <em>routine</em> quality: this has happened before. <span class="film-citation">(Spielberg, <em>Minority Report</em>, ~1:35)</span></span>
+          </div>
+        </div>
+
+        <div class="outline-row">
+          <span class="ol-pill ol-analysis">&#9318; Analysis</span>
+          <div class="ol-content">If the mall scene shows surveillance as convenience, the spider-bot scene shows its other face: <strong>total bodily intrusion</strong>. The robots do not knock; they do not ask. The residents&rsquo; compliance &mdash; their lack of surprise &mdash; reveals how deeply surveillance has been normalized. The body itself has become the site of state control: you cannot opt out of having eyes. Together, the two scenes argue that technological surveillance in <em>Minority Report</em> operates on a spectrum from seduction (personalized ads) to force (spider-bots), and that both ends of the spectrum depend on the same infrastructure.</div>
+        </div>
+
+        <div class="outline-row">
+          <span class="ol-pill ol-close">&#9319; Close</span>
+          <div class="ol-content">By presenting surveillance as simultaneously a consumer convenience and a tool of physical intrusion, Spielberg argues that the true danger of technological control is not that it <em>oppresses</em> people but that it makes oppression feel normal &mdash; a condition the film&rsquo;s second dystopian characteristic, the illusion of utopia, depends on entirely.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- III. Body Paragraph 2 -->
+    <div class="outline-section">
+      <div class="outline-section-head">
+        <div class="outline-roman" aria-hidden="true">III</div>
+        Body Paragraph Two &mdash; The Illusion of Utopia: A Perfect System Built on a Hidden Crime
+      </div>
+      <div class="outline-section-body">
+
+        <div class="outline-row">
+          <span class="ol-pill ol-topic">&#9312; Topic</span>
+          <div class="ol-content">The most unsettling aspect of the PreCrime system is not that it fails but that it <em>succeeds</em> &mdash; and Spielberg uses the dystopian characteristic of the illusion of utopia to argue that a society&rsquo;s belief in its own perfection is precisely what makes it most dangerous.</div>
+        </div>
+
+        <div class="outline-row">
+          <span class="ol-pill ol-primary">&#9313; Scene</span>
+          <div class="ol-content">
+            Describe: <em>The Hall of Containment (&ldquo;Hall of Souls&rdquo;).</em>
+            <span class="film-quote">Anderton escorts a visitor through the containment facility where PreCrime prisoners &mdash; people arrested for murders they have not yet committed &mdash; are stored in suspended animation inside translucent tubes, stacked in long rows. The prisoners are alive but unconscious, maintained indefinitely. A technician refers to them reverently as &ldquo;the more drugged-out ones.&rdquo; The facility is clean, orderly, and designed to look humane. <span class="film-citation">(Spielberg, <em>Minority Report</em>, ~0:58)</span></span>
+          </div>
+        </div>
+
+        <div class="outline-row">
+          <span class="ol-pill ol-analysis">&#9314; Analysis</span>
+          <div class="ol-content">The Hall of Containment is where PreCrime&rsquo;s utopian promise &mdash; the elimination of murder &mdash; reveals its hidden cost. The people stored in these tubes have not committed crimes; they have been arrested for what the system predicts they <em>would</em> do. The facility&rsquo;s clinical aesthetics are the point: it is designed to look like a hospital, not a prison, because PreCrime depends on the public believing that pre-emptive justice is <em>care</em>, not punishment. The illusion of utopia operates through visual design &mdash; the system hides its violence behind clean surfaces.</div>
+        </div>
+
+        <div class="outline-row research-draft">
+          <span class="ol-pill ol-research">&#9315; Source</span>
+          <div class="ol-content">
+            <em>[Quote, paraphrase, or summary from a second research source &mdash; to be added during the Drafting stage]</em>
+            <span class="draft-later">Complete During Drafting</span>
+          </div>
+        </div>
+
+        <div class="outline-row research-draft">
+          <span class="ol-pill ol-research">&#9316; Source Analysis</span>
+          <div class="ol-content">
+            <em>[Explanation of how the scholar&rsquo;s or critic&rsquo;s point deepens this paragraph&rsquo;s argument &mdash; to be added during the Drafting stage]</em>
+            <span class="draft-later">Complete During Drafting</span>
+          </div>
+        </div>
+
+        <div class="outline-row">
+          <span class="ol-pill ol-primary">&#9317; Scene 2</span>
+          <div class="ol-content">
+            Describe: <em>The revelation that Lamar Burgess murdered Anne Lively.</em>
+            <span class="film-quote">In the film&rsquo;s climax, Anderton discovers that Lamar Burgess &mdash; the director of PreCrime and Anderton&rsquo;s mentor &mdash; murdered the precog Agatha&rsquo;s mother years earlier to keep the program operational, then suppressed the &ldquo;minority report&rdquo; that recorded his crime. The system designed to prevent murder was founded on one. <span class="film-citation">(Spielberg, <em>Minority Report</em>, ~1:52)</span></span>
+          </div>
+        </div>
+
+        <div class="outline-row">
+          <span class="ol-pill ol-analysis">&#9318; Analysis</span>
+          <div class="ol-content">Burgess&rsquo;s murder is the film&rsquo;s definitive statement about the illusion of utopia: the perfect crime-prevention system was <strong>built on the very crime it promised to eliminate</strong>. Spielberg&rsquo;s argument is structural, not personal &mdash; Burgess is not a villain who corrupted a good system; the system <em>required</em> his crime to exist. The suppressed minority report proves that PreCrime was never infallible; it was maintained by concealing its own errors. The illusion of utopia is not a side effect of PreCrime &mdash; it is its operating principle.</div>
+        </div>
+
+        <div class="outline-row">
+          <span class="ol-pill ol-close">&#9319; Close</span>
+          <div class="ol-content">By revealing that PreCrime&rsquo;s utopian success depends on a founding act of violence and the ongoing suppression of evidence, Spielberg argues that the illusion of perfection is the most dangerous form of control &mdash; because it is the one form citizens will never question.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- IV. Conclusion -->
+    <div class="outline-section">
+      <div class="outline-section-head">
+        <div class="outline-roman" aria-hidden="true">IV</div>
+        Conclusion Paragraph
+      </div>
+      <div class="intro-concl-body">
+        <p>Return to the essay&rsquo;s central argument and explain its larger significance. <strong>Consider:</strong> What does <em>Minority Report</em> ultimately claim about the relationship between safety and freedom? If surveillance makes the system function and the illusion of utopia makes citizens accept it, what does the film suggest about the conditions under which people will tolerate &mdash; even celebrate &mdash; their own loss of autonomy? What does Anderton&rsquo;s journey reveal about what it takes to see through a system you helped build?</p>
+        <p><em>Do not introduce new scene descriptions in the conclusion. Synthesize what your two body paragraphs argued and leave the reader with the essay&rsquo;s broader claim about what Spielberg&rsquo;s dystopian vision achieves.</em></p>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="callout teal" style="margin-top: 0;">
+    <div class="callout-label">What to Do Next</div>
+    <p>Once you&rsquo;ve selected your film and your two dystopian characteristics, draft an outline following the structure modeled above. Identify the specific scenes you plan to describe, write your topic sentences, and draft your thesis statement. Leave the research source sections blank &mdash; you&rsquo;ll fill those in during the Drafting &amp; Revising stage after you&rsquo;ve located your secondary sources. If you&rsquo;d like feedback on your outline before you begin drafting, email it to the instructor.</p>
+  </div>
+
+
+</div><!-- end .page-wrap -->
+
+</body>
+</html>
