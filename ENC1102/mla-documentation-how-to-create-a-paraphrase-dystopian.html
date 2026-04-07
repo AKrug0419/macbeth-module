@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="identifier" content="dystopian-mla-paraphrase"/>
+<meta name="editing_roles" content="teachers"/>
+<meta name="workflow_state" content="active"/>
+<title>MLA Documentation: How to Create a Paraphrase | ENC 1102 Dystopian Research Essay</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap');
+
+  :root {
+    --bg-deep: #565e6e;
+    --bg-surface: #3e4555;
+    --bg-elevated: #353c4b;
+    --bg-deepest: #2b303c;
+    --border-subtle: #4a5264;
+    --border-mid: #5c6478;
+    --accent: #e8a832;
+    --accent-soft: #e8a83228;
+    --accent-mid: #e8a83258;
+    --accent-text: #f5c865;
+    --teal: #5ba8a0;
+    --teal-soft: #5ba8a028;
+    --teal-mid: #5ba8a058;
+    --teal-text: #90d8d0;
+    --lavender: #9a9cc0;
+    --lavender-soft: #9a9cc028;
+    --lavender-mid: #9a9cc058;
+    --lavender-text: #d0d2f0;
+    --warn: #f47878;
+    --warn-soft: #f4787822;
+    --warn-mid: #f4787858;
+    --warn-text: #f8a8a8;
+    --text-primary: #f0f2f5;
+    --text-secondary: #cdd3dc;
+    --text-muted: #9aa2b2;
+    --font-display: 'Libre Baskerville', 'Georgia', serif;
+    --font-body: 'Source Sans Pro', 'Segoe UI', sans-serif;
+    --font-mono: 'IBM Plex Mono', 'Consolas', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg-deep);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-wrap: break-word;
+  }
+
+  a { color: var(--accent-text); text-decoration: underline; }
+  a:hover { color: #fff; }
+  strong, b { color: var(--text-primary); }
+  em, i { color: var(--text-secondary); }
+
+  .page-wrap { max-width: 900px; margin: 0 auto; padding: 40px 28px; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-in { animation: fadeUp 0.5s ease both; }
+
+  .hero {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-left: 4px solid var(--lavender);
+    border-radius: 6px;
+    padding: 40px 44px 36px;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 220px; height: 220px;
+    background: radial-gradient(circle, var(--lavender-soft) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--lavender-text);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 12px;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(24px, 4.2vw, 32px);
+    color: #fff;
+    line-height: 1.25;
+    margin-bottom: 10px;
+  }
+  .hero-title em { font-style: italic; color: var(--lavender-text); }
+  .hero-subtitle {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 640px;
+    font-style: italic;
+  }
+
+  .part-band {
+    margin: 48px 0 20px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .part-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent-text);
+    margin-bottom: 4px;
+  }
+  .part-band.part-errors .part-label { color: var(--warn-text); }
+  .part-title {
+    font-family: var(--font-display);
+    font-size: 20px;
+    color: #fff;
+    line-height: 1.3;
+  }
+
+  .prose {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    max-width: 720px;
+  }
+  .prose + .prose { margin-top: 14px; }
+  .prose strong { color: var(--text-primary); }
+
+  /* RULE BLOCK */
+  .rule-block {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    padding: 26px 30px 24px;
+    margin-bottom: 20px;
+  }
+  .rule-block.amber    { border-left: 3px solid var(--accent); }
+  .rule-block.teal     { border-left: 3px solid var(--teal); }
+  .rule-block.lavender { border-left: 3px solid var(--lavender); }
+  .rule-block.warn     { border-left: 3px solid var(--warn); }
+
+  .rule-number {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-text);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .rule-block.teal     .rule-number { color: var(--teal-text); }
+  .rule-block.lavender .rule-number { color: var(--lavender-text); }
+  .rule-block.warn     .rule-number { color: var(--warn-text); }
+  .error-tag {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--warn-text);
+    background: var(--warn-soft);
+    border: 1px solid var(--warn-mid);
+    border-radius: 3px;
+    padding: 2px 8px;
+  }
+
+  .rule-title {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.35;
+    margin-bottom: 14px;
+  }
+  .rule-body {
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+  }
+  .rule-body p { margin-bottom: 12px; }
+  .rule-body p:last-of-type { margin-bottom: 0; }
+  .rule-body strong { color: var(--text-primary); }
+
+  /* Numbered steps */
+  .steps-list { margin: 14px 0 0; }
+  .step {
+    display: flex;
+    gap: 14px;
+    padding: 12px 16px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: 5px;
+    margin-bottom: 8px;
+  }
+  .step-num {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    background: var(--lavender-soft);
+    border: 1px solid var(--lavender-mid);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--lavender-text);
+  }
+  .step-text {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+  .step-text strong { color: var(--text-primary); display: block; margin-bottom: 2px; }
+
+  /* Two-column quote-vs-paraphrase */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 12px 0 0;
+  }
+  .mini-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: 5px;
+    padding: 14px 18px;
+  }
+  .mini-card.teal  { border-left: 3px solid var(--teal); }
+  .mini-card.amber { border-left: 3px solid var(--accent); }
+  .mini-card-title {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .mini-card.teal .mini-card-title  { color: var(--teal-text); }
+  .mini-card.amber .mini-card-title { color: var(--accent-text); }
+  .mini-card ul {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+  .mini-card ul li + li { margin-top: 4px; }
+
+  /* Format bar */
+  .fmt-bar {
+    background: var(--bg-deepest);
+    border: 1px solid var(--border-subtle);
+    border-left: 2px solid var(--accent);
+    border-radius: 4px;
+    padding: 12px 16px;
+    margin: 12px 0 14px;
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    color: var(--accent-text);
+    line-height: 1.6;
+  }
+  .fmt-bar-label {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  /* 4-pattern compact grid */
+  .pat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 12px;
+  }
+  .pat-card {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-left: 3px solid var(--lavender);
+    border-radius: 5px;
+    padding: 14px 18px;
+  }
+  .pat-card-title {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--lavender-text);
+    margin-bottom: 6px;
+  }
+  .pat-card p {
+    font-size: 13.5px;
+    color: var(--text-primary);
+    font-style: italic;
+    line-height: 1.7;
+    margin-bottom: 6px;
+  }
+  .pat-card-note {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-style: normal;
+    line-height: 1.5;
+  }
+
+  /* EXAMPLE BLOCKS */
+  .eg {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: 5px;
+    padding: 14px 18px;
+    margin: 12px 0 0;
+    font-size: 14px;
+    line-height: 1.75;
+  }
+  .eg-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    display: block;
+  }
+  .eg-good { border-left: 3px solid var(--teal); }
+  .eg-good .eg-tag { color: var(--teal-text); }
+  .eg-bad  { border-left: 3px solid var(--warn); background: var(--warn-soft); }
+  .eg-bad  .eg-tag { color: var(--warn-text); }
+  .eg-orig { border-left: 3px solid var(--text-muted); background: var(--bg-deepest); }
+  .eg-orig .eg-tag { color: var(--text-muted); }
+  .eg p { margin: 0; color: var(--text-primary); font-style: italic; }
+  .eg .eg-note {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid var(--border-subtle);
+    font-size: 12.5px;
+    color: var(--text-muted);
+    font-style: normal;
+  }
+  .eg .eg-note ul { margin: 4px 0 0; padding-left: 16px; }
+  .eg .eg-note ul li + li { margin-top: 2px; }
+  .eg-bad .eg-note { border-top-color: var(--warn-mid); }
+  .eg-good .eg-note { border-top-color: var(--teal-mid); }
+
+  .eg-stack { margin: 12px 0 0; }
+  .eg-stack .eg { margin: 0; border-radius: 0; }
+  .eg-stack .eg:first-child { border-radius: 5px 5px 0 0; border-bottom: none; }
+  .eg-stack .eg:not(:first-child):not(:last-child) { border-bottom: none; }
+  .eg-stack .eg:last-child { border-radius: 0 0 5px 5px; }
+
+  /* Complete example wrapper */
+  .full-example {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-top: 3px solid var(--accent);
+    border-radius: 6px;
+    padding: 22px 26px;
+    margin: 16px 0;
+  }
+  .full-example-title {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .full-example-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--border-mid), transparent);
+  }
+
+  .callout {
+    border-radius: 6px;
+    padding: 18px 22px;
+    margin: 18px 0 8px;
+    border-left: 3px solid var(--accent);
+    background: var(--accent-soft);
+  }
+  .callout.warn { border-left-color: var(--warn); background: var(--warn-soft); }
+  .callout.teal { border-left-color: var(--teal); background: var(--teal-soft); }
+  .callout-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-text);
+    margin-bottom: 8px;
+  }
+  .callout.warn .callout-label { color: var(--warn-text); }
+  .callout.teal .callout-label { color: var(--teal-text); }
+  .callout p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin: 0; }
+  .callout p strong { color: var(--text-primary); }
+  .callout p em { color: var(--text-secondary); }
+
+  @media (max-width: 760px) {
+    .hero { padding: 30px 24px; }
+    .page-wrap { padding: 28px 18px; }
+    .rule-block { padding: 22px 22px 20px; }
+    .two-col { grid-template-columns: 1fr; }
+    .pat-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="enhanceable_content">
+<div class="page-wrap">
+
+  <!-- HERO -->
+  <div class="hero fade-in">
+    <div class="hero-label">MLA Documentation &bull; Secondary Sources</div>
+    <h1 class="hero-title">How to Create a <em>Paraphrase</em></h1>
+    <p class="hero-subtitle">How to restate a scholar's or critic's idea in your own words without patchwriting, plus the citation rules and the most common errors students make when paraphrasing their secondary sources.</p>
+  </div>
+
+  <!-- INTRO -->
+  <p class="prose fade-in">A <strong>paraphrase</strong> is when you take a scholar's idea or argument from a secondary source and restate it <em>completely in your own words</em>. You are not quoting the critic directly. You are translating the point into your own prose while accurately representing the meaning. The scholar still receives full credit through a signal phrase, a parenthetical citation, and a Works Cited entry, just as they would for a direct quote.</p>
+  <p class="prose fade-in">The key word in that definition is <em>completely</em>. A paraphrase is not a light editing job. It is not a matter of replacing a few words with synonyms while keeping the original sentence structure. It requires that you understand the scholar's point well enough to reconstruct it in an entirely new sentence, your sentence, that captures the same idea.</p>
+
+  <!-- ═══ PART ONE ═══ -->
+  <div class="part-band fade-in">
+    <div class="part-label">Part One</div>
+    <div class="part-title">Core Skills</div>
+  </div>
+
+  <!-- RULE 1: WHAT IS A PARAPHRASE -->
+  <div class="rule-block amber fade-in">
+    <div class="rule-number">Rule 1</div>
+    <h3 class="rule-title">What a Paraphrase Must Do</h3>
+    <div class="rule-body">
+      <p>A successful paraphrase has to accomplish three things at once. If it fails any one of them, it is not yet a paraphrase.</p>
+      <div class="steps-list">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-text"><strong>Accurately represent the original.</strong> The scholar's actual argument must come through. Distorting or oversimplifying what a critic said is just as problematic as copying their words.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-text"><strong>Be written entirely in your own words.</strong> Every word, phrase, and sentence structure must be yours, except for proper nouns (names, titles) and highly technical terms with no alternatives.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-text"><strong>Acknowledge the source.</strong> A paraphrase without a signal phrase or citation is plagiarism, even though you rewrote the language. The idea still belongs to the scholar.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RULE 2: WHEN TO PARAPHRASE VS. QUOTE -->
+  <div class="rule-block teal fade-in">
+    <div class="rule-number">Rule 2</div>
+    <h3 class="rule-title">When to Paraphrase, When to Quote Directly</h3>
+    <div class="rule-body">
+      <p>Both direct quotes and paraphrases are legitimate ways to incorporate secondary source evidence, and your essay will use both. The choice between them depends on what you are trying to do with the critic's material. Understanding when each is appropriate makes your writing more purposeful.</p>
+      <div class="two-col">
+        <div class="mini-card teal">
+          <div class="mini-card-title">&#10003; Use a Direct Quote When</div>
+          <ul>
+            <li>The scholar's specific wording is precise, striking, or memorable.</li>
+            <li>The exact language is itself the subject of your analysis.</li>
+            <li>Paraphrasing would require so much explanation that quoting directly is more efficient.</li>
+            <li>The scholar coins or uses a specific term you want to introduce.</li>
+          </ul>
+        </div>
+        <div class="mini-card amber">
+          <div class="mini-card-title">&#10003; Use a Paraphrase When</div>
+          <ul>
+            <li>The scholar's idea matters more than the specific wording.</li>
+            <li>The original passage is longer than what you need.</li>
+            <li>The scholar's sentence is technical or complex and clearer in your own words.</li>
+            <li>You want to vary your evidence. Not every secondary source moment needs to be a direct quote.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout" style="margin-top: 18px;">
+        <div class="callout-label">Note on the sample essay</div>
+        <p>The sample Minority Report essay demonstrates the mix: Bakewell (PDF) is quoted directly because Bakewell's exact phrasing about Oedipus Tyrannus is the kind of scholarly vocabulary worth preserving. Edelstein (HTML) is paraphrased because Edelstein's point about sentimental humanism matters more than the specific prose. Eggert (HTML) is summarized because Eggert's entire argument, not a single sentence, is being invoked.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RULE 3: HOW TO BUILD -->
+  <div class="rule-block lavender fade-in">
+    <div class="rule-number">Rule 3</div>
+    <h3 class="rule-title">How to Build a Paraphrase &bull; A Step by Step Process</h3>
+    <div class="rule-body">
+      <p>A reliable paraphrase does not happen by staring at the original sentence and changing words one at a time. That process almost always produces patchwriting (see Rule 6). Instead, follow these steps to produce a genuinely rewritten version of the scholar's idea.</p>
+      <div class="steps-list">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-text"><strong>Read the passage carefully until you understand the scholar's point.</strong> Do not begin writing until you can summarize the idea in your head without looking at the text. If you cannot do this, you do not yet understand the passage well enough to paraphrase it.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-text"><strong>Set the original aside. Do not look at it while you write.</strong> Scroll past it or cover it on the page. Writing from memory forces you to use your own language instead of the scholar's. This single step eliminates most patchwriting problems.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-text"><strong>Consider restructuring the argument.</strong> If the original sentence moves from A to B, try writing your paraphrase moving from B to A, or entering from a different angle entirely. This ensures your organization is yours, not the scholar's.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-text"><strong>Keep it shorter than the original.</strong> A paraphrase that is as long as the original passage is almost certainly still too close to it. Aim to distill the scholar's point into one well constructed sentence of your own.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-text"><strong>Re-read your paraphrase alongside the original and check for borrowed language.</strong> Your brain naturally gravitates back toward the original phrasing. Re-reading with the source visible helps you catch any words or phrases that crept in without your noticing. If you find them, rewrite those parts. Do not just swap individual words for synonyms.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">6</div>
+          <div class="step-text"><strong>Add your signal phrase and citation, then your own analytical sentence.</strong> A paraphrase without a signal phrase is plagiarism, and a paraphrase without your own follow-up analysis is a wasted opportunity. The paraphrase delivers the scholar's point; your analysis connects that point to your argument.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RULE 4: CITATION RULES -->
+  <div class="rule-block amber fade-in">
+    <div class="rule-number">Rule 4</div>
+    <h3 class="rule-title">Citation Rules for Paraphrases</h3>
+    <div class="rule-body">
+      <p>Paraphrases follow the <strong>same four citation patterns</strong> as direct quotes: the patterns depend on the source format (PDF vs. HTML) and on where you place the author's name (signal phrase vs. parenthetical). The only difference between citing a quote and citing a paraphrase is that a paraphrase has <strong>no quotation marks</strong>.</p>
+      <div class="pat-grid">
+        <div class="pat-card">
+          <div class="pat-card-title">Pattern A &bull; PDF, Name in Citation</div>
+          <p>Spielberg's film turns on the paradox of a state that sees everything yet cannot see its own corruption (Bakewell 102).</p>
+          <div class="pat-card-note">No author in signal phrase. Last name plus page number in parenthetical, no comma between them.</div>
+        </div>
+        <div class="pat-card">
+          <div class="pat-card-title">Pattern B &bull; PDF, Name in Signal Phrase</div>
+          <p>Classicist Geoffrey Bakewell argues that Spielberg's film turns on the paradox of a state that sees everything yet cannot see its own corruption (102).</p>
+          <div class="pat-card-note">Author named in signal phrase, so page number only in the parenthetical.</div>
+        </div>
+        <div class="pat-card">
+          <div class="pat-card-title">Pattern C &bull; HTML, Name in Citation</div>
+          <p>The film's real moral center is the missing child, and that sentimentality pulls focus away from what ought to be a bleaker philosophical argument (Edelstein).</p>
+          <div class="pat-card-note">HTML source, no author in signal phrase. Last name only in parenthetical, no page number.</div>
+        </div>
+        <div class="pat-card">
+          <div class="pat-card-title">Pattern D &bull; HTML, Name in Signal Phrase</div>
+          <p>Critic David Edelstein argues that the film's real moral center is the missing child, and that this sentimentality pulls focus from what ought to be a bleaker philosophical argument.</p>
+          <div class="pat-card-note">HTML source plus author named in signal phrase. No parenthetical citation needed at all.</div>
+        </div>
+      </div>
+      <div class="callout warn">
+        <div class="callout-label">The most common citation error with paraphrases</div>
+        <p>Students sometimes feel that because they rewrote the language, no citation is needed. This is incorrect. The scholar's <em>idea</em> belongs to them, not just their words. A paraphrase without a citation is plagiarism. See Rule 8 below.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RULE 5: COMPLETE EXAMPLES -->
+  <div class="rule-block teal fade-in">
+    <div class="rule-number">Rule 5</div>
+    <h3 class="rule-title">Complete Paraphrase Examples &bull; Original, Bad, Good</h3>
+    <div class="rule-body">
+      <p>Each example below shows the original passage from a secondary source used in the sample Minority Report research essay, followed by a bad paraphrase and an explanation of why it fails, then a good paraphrase and an explanation of what makes it work. Read both versions. Understanding why the bad paraphrase fails is just as instructive as seeing the good one.</p>
+
+      <!-- EXAMPLE 1: BAKEWELL (PDF) -->
+      <div class="full-example">
+        <div class="full-example-title">Example 1 &bull; Bakewell on Vision and Power (PDF source)</div>
+        <div class="eg-stack">
+          <div class="eg eg-orig">
+            <span class="eg-tag">Original text (Bakewell, p. 102 &bull; PDF article)</span>
+            <p>"The eye in <em>Minority Report</em> functions as both the organ of state power and its Achilles' heel: Precrime's entire apparatus depends on converting human sight into data, and yet the film's plot turns on the moment when a single sighted man manages to hide from a machine that has reduced him to his own retina."</p>
+          </div>
+          <div class="eg eg-bad">
+            <span class="eg-tag">&#10007; Bad paraphrase</span>
+            <p>The eye in Minority Report works as both the organ of state power and its Achilles' heel, since Precrime's whole apparatus depends on turning human sight into data, and yet the film's plot turns on the moment when one sighted man manages to hide from a machine that has reduced him to his own retina.</p>
+            <div class="eg-note">
+              <strong>Why it fails:</strong>
+              <ul>
+                <li><strong>Patchwriting:</strong> "organ of state power," "Achilles' heel," "apparatus," "reduced him to his own retina," and the overall sentence structure are borrowed directly from Bakewell.</li>
+                <li><strong>Word substitution only:</strong> "functions as" becomes "works as," "entire" becomes "whole." These are synonyms, not a rewrite.</li>
+                <li><strong>No citation:</strong> Bakewell receives no credit.</li>
+                <li><strong>Too long:</strong> The paraphrase is nearly identical in length to the original.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="eg eg-good">
+            <span class="eg-tag">&#10003; Good paraphrase</span>
+            <p>Classicist Geoffrey Bakewell argues that Precrime's vulnerability is baked into its central premise: a system that can only recognize its citizens as retinal signatures cannot see anything a body does to hide itself, which is precisely why Anderton's flight is even possible (102).</p>
+            <div class="eg-note">
+              <strong>Why it works:</strong>
+              <ul>
+                <li><strong>Entirely new language:</strong> None of Bakewell's specific phrasing survives. Not "organ of state power," not "Achilles' heel," not "apparatus."</li>
+                <li><strong>Restructured:</strong> The sentence enters from a different angle, combining both halves of Bakewell's original insight into a single tighter construction.</li>
+                <li><strong>Shorter:</strong> Two clauses condensed into one without losing the core argument.</li>
+                <li><strong>Properly cited:</strong> Author named in the signal phrase; page number in the parenthetical.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EXAMPLE 2: EDELSTEIN (HTML) -->
+      <div class="full-example">
+        <div class="full-example-title">Example 2 &bull; Edelstein on the Film's Sentimentality (HTML source)</div>
+        <div class="eg-stack">
+          <div class="eg eg-orig">
+            <span class="eg-tag">Original text (Edelstein &bull; HTML article, no page number)</span>
+            <p>"What Spielberg has made here is not quite the Orwellian warning he seems to think he has made. Underneath all the surveillance imagery and Dickian paranoia, the film's actual moral center is the missing child, and Spielberg lets sentimentality about parenthood pull focus from what ought to be a bleaker philosophical argument."</p>
+          </div>
+          <div class="eg eg-bad">
+            <span class="eg-tag">&#10007; Bad paraphrase</span>
+            <p>According to Edelstein, what Spielberg has made here is not quite the Orwellian warning he seems to think he has made, because underneath all the surveillance imagery and Dickian paranoia, the film's actual moral center is the missing child, and Spielberg lets sentimentality about parenthood pull focus from what should be a bleaker philosophical argument.</p>
+            <div class="eg-note">
+              <strong>Why it fails:</strong>
+              <ul>
+                <li><strong>Patchwriting:</strong> "Orwellian warning," "surveillance imagery," "Dickian paranoia," "moral center," "sentimentality about parenthood," and "bleaker philosophical argument" are all lifted directly.</li>
+                <li><strong>Identical structure:</strong> The sentence follows Edelstein's original almost word for word.</li>
+                <li><strong>Citation is technically correct</strong> for an HTML source (name in signal phrase, no parenthetical needed), but the prose itself is still plagiarism because the language has not been rewritten.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="eg eg-good">
+            <span class="eg-tag">&#10003; Good paraphrase</span>
+            <p>Critic David Edelstein has argued that the film is less the dystopian warning it thinks it is than a disguised parental melodrama, with Anderton's grief for his lost son quietly displacing the larger political argument the surveillance imagery keeps promising.</p>
+            <div class="eg-note">
+              <strong>Why it works:</strong>
+              <ul>
+                <li><strong>New language:</strong> "Disguised parental melodrama" and "quietly displacing the larger political argument" are the student's own characterizations of Edelstein's point. No key phrase survives intact.</li>
+                <li><strong>Restructured:</strong> Edelstein's two-part sentence is collapsed into a single clean construction that enters from a different angle.</li>
+                <li><strong>HTML plus name in signal phrase:</strong> No parenthetical citation needed. Period ends the sentence normally.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ PART TWO ═══ -->
+  <div class="part-band part-errors fade-in">
+    <div class="part-label">Part Two</div>
+    <div class="part-title">Common Paraphrasing Errors</div>
+  </div>
+
+  <!-- RULE 6: PATCHWRITING -->
+  <div class="rule-block warn fade-in">
+    <div class="rule-number">Rule 6 <span class="error-tag">Most Serious</span></div>
+    <h3 class="rule-title">Patchwriting</h3>
+    <div class="rule-body">
+      <p><strong>Patchwriting</strong> is the term for a paraphrase that still closely mirrors the original text: using the same sentence structure, the same key phrases, and only substituting individual words for synonyms. It is the most common paraphrasing error, and it is treated as a form of plagiarism even when it is not intentional, because the writing still fundamentally belongs to the original author. The only real fix for patchwriting is to rewrite from scratch using the step by step process in Rule 3.</p>
+      <div class="callout warn">
+        <div class="callout-label">The Test</div>
+        <p>If you place your paraphrase next to the original and can draw a line connecting most of your words to matching words in the original, it is patchwriting. A genuine paraphrase, placed next to the original, should look structurally and lexically different in every meaningful way, even though the idea is the same.</p>
+      </div>
+      <div class="eg-stack">
+        <div class="eg eg-orig">
+          <span class="eg-tag">Original (Eggert &bull; HTML article)</span>
+          <p>"Spielberg's most radical gesture is less the technology on display than the film's insistence that the minority report itself, a suppressed alternative vision that dissents from the consensus, constitutes the ethical heart of the entire apparatus."</p>
+        </div>
+        <div class="eg eg-bad">
+          <span class="eg-tag">&#10007; Patchwriting</span>
+          <p>Eggert argues that Spielberg's most radical move is less the technology being shown than the film's insistence that the minority report itself, a suppressed alternative vision that dissents from the agreed-upon outcome, makes up the ethical heart of the whole system.</p>
+          <div class="eg-note">Every key phrase, "most radical," "suppressed alternative vision," "dissents," "ethical heart," is lifted from Eggert. Only minor word-for-word substitutions have been made.</div>
+        </div>
+        <div class="eg eg-good">
+          <span class="eg-tag">&#10003; Genuine paraphrase</span>
+          <p>Film critic Brian Eggert argues that what gives the film its real ethical weight is not its futuristic surfaces but its willingness to treat the one dissenting prediction, the vision Precrime tries to bury, as the single honest piece of evidence in an otherwise rigged system.</p>
+          <div class="eg-note">The sentence is entirely restructured. No phrases from Eggert survive. The idea is preserved.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RULE 7: TOO LONG -->
+  <div class="rule-block warn fade-in">
+    <div class="rule-number">Rule 7 <span class="error-tag">Common Error</span></div>
+    <h3 class="rule-title">Paraphrase Too Long</h3>
+    <div class="rule-body">
+      <p>One of the chief advantages of paraphrasing over quoting is efficiency: a paraphrase lets you incorporate a scholar's multi-sentence argument into a single, well placed sentence of your own. If your paraphrase is as long as the original, or nearly so, you have defeated its purpose, and you have likely been going sentence by sentence through the original, which almost always produces patchwriting as a side effect. A well executed paraphrase should typically be <strong>shorter than the original passage</strong>.</p>
+      <div class="eg-stack">
+        <div class="eg eg-bad">
+          <span class="eg-tag">&#10007; Paraphrase as long as the original</span>
+          <p>Bakewell argues that the eye in Minority Report works as both the organ of state power and its weakest point, because Precrime's entire system depends on turning human sight into data. On top of this, the plot of the film turns on the exact moment when a single man with working eyes manages to hide from a machine that has reduced him to his own retina (102).</p>
+          <div class="eg-note">This paraphrase is longer than Bakewell's original. It follows Bakewell sentence by sentence and still borrows key phrases.</div>
+        </div>
+        <div class="eg eg-good">
+          <span class="eg-tag">&#10003; Concise paraphrase in one sentence</span>
+          <p>Classicist Geoffrey Bakewell argues that Precrime's vulnerability is baked into its central premise: a system that can only recognize its citizens as retinal signatures cannot see anything a body does to hide itself (102).</p>
+          <div class="eg-note">Two original sentences condensed into one. The core insight is preserved. The length is not.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RULE 8: MISSING CITATION -->
+  <div class="rule-block warn fade-in">
+    <div class="rule-number">Rule 8 <span class="error-tag">Common Error</span></div>
+    <h3 class="rule-title">Missing Citation on a Paraphrase</h3>
+    <div class="rule-body">
+      <p>The most common paraphrasing error of all: students rewrite the language and then, feeling as though the idea is now "theirs," leave out the signal phrase or the parenthetical citation. A paraphrase without attribution is plagiarism. The words are yours; the <em>idea</em> belongs to the scholar, and the scholar must be credited. Always include both a signal phrase identifying the source and, for PDF sources, a parenthetical citation with the page number.</p>
+      <div class="eg-stack">
+        <div class="eg eg-bad">
+          <span class="eg-tag">&#10007; No attribution at all</span>
+          <p>Precrime's vulnerability is baked into its central premise: a system that can only recognize its citizens as retinal signatures cannot see anything a body does to hide itself.</p>
+          <div class="eg-note">No signal phrase, no citation. This passes Bakewell's argument off as the student's own idea. Plagiarism.</div>
+        </div>
+        <div class="eg eg-bad">
+          <span class="eg-tag">&#10007; Signal phrase but no page number (PDF source)</span>
+          <p>Bakewell argues that Precrime's vulnerability is baked into its central premise: a system that can only recognize its citizens as retinal signatures cannot see anything a body does to hide itself.</p>
+          <div class="eg-note">Author named, but this is a PDF source. The page number (102) must appear in a parenthetical citation.</div>
+        </div>
+        <div class="eg eg-good">
+          <span class="eg-tag">&#10003; Fully attributed (PDF source)</span>
+          <p>Classicist Geoffrey Bakewell argues that Precrime's vulnerability is baked into its central premise: a system that can only recognize its citizens as retinal signatures cannot see anything a body does to hide itself (102).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RULE 9: INACCURATE -->
+  <div class="rule-block warn fade-in">
+    <div class="rule-number">Rule 9 <span class="error-tag">Common Error</span></div>
+    <h3 class="rule-title">Inaccurate Paraphrase</h3>
+    <div class="rule-body">
+      <p>A paraphrase that distorts or oversimplifies the scholar's argument is not just a writing error. It misrepresents the source and undermines your essay's credibility. This often happens when a student paraphrases without fully understanding the original, or when the drive to simplify causes nuance to be lost. Re-read the original after writing your paraphrase and ask: "Would the scholar recognize this as their argument?"</p>
+      <div class="eg-stack">
+        <div class="eg eg-orig">
+          <span class="eg-tag">Original idea (Edelstein, HTML)</span>
+          <p>Edelstein argues the film is less the dystopian warning it thinks it is than a disguised parental melodrama, with Anderton's grief for his lost son displacing the larger political argument the surveillance imagery keeps promising.</p>
+        </div>
+        <div class="eg eg-bad">
+          <span class="eg-tag">&#10007; Inaccurate, meaning distorted</span>
+          <p>Edelstein argues that Minority Report is not a good dystopia because Spielberg gets distracted by the sad parts about Anderton's missing son.</p>
+          <div class="eg-note">This loses Edelstein's key point entirely. The original argument is structural (the sentimentality displaces the political argument, which is a criticism of the film's form). The bad paraphrase turns it into a vague complaint that Spielberg gets "distracted by the sad parts."</div>
+        </div>
+        <div class="eg eg-good">
+          <span class="eg-tag">&#10003; Accurate, nuance preserved</span>
+          <p>Critic David Edelstein has argued that the film is less the dystopian warning it thinks it is than a disguised parental melodrama, with Anderton's grief for his lost son quietly displacing the larger political argument the surveillance imagery keeps promising.</p>
+          <div class="eg-note">Edelstein's central claim, that the sentimentality is structural rather than incidental and that it displaces something the film owes us, is preserved in the paraphrase.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RULE 10: NO ANALYSIS -->
+  <div class="rule-block warn fade-in">
+    <div class="rule-number">Rule 10 <span class="error-tag">Common Error</span></div>
+    <h3 class="rule-title">Paraphrase With No Follow-Up Analysis</h3>
+    <div class="rule-body">
+      <p>A paraphrase that is dropped into a paragraph without any follow-up analysis is as incomplete as a floating quote. The paraphrase delivers the scholar's point; your job in the sentence or two that follow is to explain what that point contributes to <em>your</em> argument. Without your analysis, the paraphrase just sits there, evidence without interpretation. The same signal &rarr; evidence &rarr; analysis structure that applies to direct quotes applies equally to paraphrases.</p>
+      <div class="eg-stack">
+        <div class="eg eg-bad">
+          <span class="eg-tag">&#10007; Paraphrase without analysis</span>
+          <p>Critic David Edelstein has argued that the film is less the dystopian warning it thinks it is than a disguised parental melodrama, with Anderton's grief for his lost son quietly displacing the larger political argument the surveillance imagery keeps promising. This helps explain what is happening in the film.</p>
+          <div class="eg-note">The final sentence adds nothing. "This helps explain what is happening in the film" tells the reader nothing about what the critic's point contributes to the student's argument.</div>
+        </div>
+        <div class="eg eg-good">
+          <span class="eg-tag">&#10003; Paraphrase followed by genuine analysis</span>
+          <p>Critic David Edelstein has argued that the film is less the dystopian warning it thinks it is than a disguised parental melodrama, with Anderton's grief for his lost son quietly displacing the larger political argument the surveillance imagery keeps promising. Edelstein's reading is sharp, but the home video sequence complicates it: the film's deepest sympathy belongs not only to the Precogs but to the people, like Anderton, whose private losses the surveillance state cannot perceive at all.</p>
+          <div class="eg-note">The analysis engages Edelstein's point, partially agrees, and then uses it to make a specific claim about a specific scene. This is how secondary source evidence becomes part of an argument instead of decoration.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLOSING CALLOUT -->
+  <div class="callout teal fade-in" style="margin-top: 32px;">
+    <div class="callout-label">Cross Reference</div>
+    <p>The citation patterns on this page are identical to the ones on <a href="mla-documentation-quoting-secondary.html">MLA Documentation: Quoting from Your Secondary Research Sources</a>. If the four pattern grid in Rule 4 still feels unfamiliar, work through the quoting guide first, then return here. Paraphrasing and quoting are the two halves of the same skill.</p>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

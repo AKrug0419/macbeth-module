@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="identifier" content="dystopian-mla-writing-about-film"/>
+<meta name="editing_roles" content="teachers"/>
+<meta name="workflow_state" content="active"/>
+<title>MLA Documentation: Writing about Film | ENC 1102 Dystopian Research Essay</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap');
+
+  :root {
+    --bg-deep: #565e6e;
+    --bg-surface: #3e4555;
+    --bg-elevated: #353c4b;
+    --bg-deepest: #2b303c;
+    --border-subtle: #4a5264;
+    --border-mid: #5c6478;
+    --accent: #e8a832;
+    --accent-soft: #e8a83228;
+    --accent-mid: #e8a83258;
+    --accent-text: #f5c865;
+    --teal: #5ba8a0;
+    --teal-soft: #5ba8a028;
+    --teal-mid: #5ba8a058;
+    --teal-text: #90d8d0;
+    --lavender: #9a9cc0;
+    --lavender-soft: #9a9cc028;
+    --lavender-mid: #9a9cc058;
+    --lavender-text: #d0d2f0;
+    --warn: #f47878;
+    --warn-soft: #f4787822;
+    --warn-mid: #f4787858;
+    --warn-text: #f8a8a8;
+    --text-primary: #f0f2f5;
+    --text-secondary: #cdd3dc;
+    --text-muted: #9aa2b2;
+    --font-display: 'Libre Baskerville', 'Georgia', serif;
+    --font-body: 'Source Sans Pro', 'Segoe UI', sans-serif;
+    --font-mono: 'IBM Plex Mono', 'Consolas', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg-deep);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-wrap: break-word;
+  }
+
+  a { color: var(--accent-text); text-decoration: underline; }
+  a:hover { color: #fff; }
+  strong, b { color: var(--text-primary); }
+  em, i { color: var(--text-secondary); }
+
+  .page-wrap { max-width: 900px; margin: 0 auto; padding: 40px 28px; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-in { animation: fadeUp 0.5s ease both; }
+
+  .hero {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-left: 4px solid var(--accent);
+    border-radius: 6px;
+    padding: 40px 44px 36px;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 220px; height: 220px;
+    background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent-text);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 12px;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(24px, 4.2vw, 32px);
+    color: #fff;
+    line-height: 1.25;
+    margin-bottom: 10px;
+  }
+  .hero-title em { font-style: italic; color: var(--accent-text); }
+  .hero-subtitle {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 640px;
+    font-style: italic;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+    margin-top: 48px;
+  }
+  .section-badge {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--accent-text);
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-mid);
+    border-radius: 4px;
+    padding: 3px 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+  .section-badge.teal { color: var(--teal-text); background: var(--teal-soft); border-color: var(--teal-mid); }
+  .section-badge.lavender { color: var(--lavender-text); background: var(--lavender-soft); border-color: var(--lavender-mid); }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(18px, 3vw, 22px);
+    color: #fff;
+    line-height: 1.3;
+  }
+  .section-title em { font-style: italic; color: var(--accent-text); }
+
+  .prose {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    max-width: 720px;
+  }
+  .prose + .prose { margin-top: 14px; }
+  .prose strong { color: var(--text-primary); }
+
+  /* ═══ RULE BLOCK (reduced clutter pattern) ═══
+     One rule per block. Prose-led explanation, then a single
+     example row. For correct-only rules, one ✓ example.
+     For rules that contrast a common error, a single two-row
+     stack: ✗ incorrect on top, ✓ correct below, separated by
+     a thin divider. No 3-card grids. */
+
+  .rule-block {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    padding: 26px 30px 24px;
+    margin-bottom: 20px;
+  }
+  .rule-block.amber  { border-left: 3px solid var(--accent); }
+  .rule-block.teal   { border-left: 3px solid var(--teal); }
+  .rule-block.lavender { border-left: 3px solid var(--lavender); }
+
+  .rule-number {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-text);
+    margin-bottom: 6px;
+  }
+  .rule-block.teal .rule-number { color: var(--teal-text); }
+  .rule-block.lavender .rule-number { color: var(--lavender-text); }
+
+  .rule-title {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.35;
+    margin-bottom: 14px;
+  }
+  .rule-body {
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+  }
+  .rule-body p { margin-bottom: 12px; }
+  .rule-body p:last-of-type { margin-bottom: 0; }
+  .rule-body strong { color: var(--text-primary); }
+
+  /* Inline example (single block, no card) */
+  .eg {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: 5px;
+    padding: 14px 18px;
+    margin: 14px 0 4px;
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--text-primary);
+  }
+  .eg-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    display: block;
+  }
+  .eg-good .eg-tag { color: var(--teal-text); }
+  .eg-bad  .eg-tag { color: var(--warn-text); }
+  .eg-good { border-left: 3px solid var(--teal); }
+  .eg-bad  { border-left: 3px solid var(--warn); background: var(--warn-soft); }
+  .eg p { margin: 0; color: var(--text-primary); font-style: italic; }
+  .eg p + p { margin-top: 8px; }
+
+  /* Two-row compare: wrong stacked above right with tight spacing */
+  .eg-pair { margin: 14px 0 4px; }
+  .eg-pair .eg { margin: 0; border-radius: 0; }
+  .eg-pair .eg:first-child { border-radius: 5px 5px 0 0; border-bottom: none; }
+  .eg-pair .eg:last-child  { border-radius: 0 0 5px 5px; }
+
+  .note {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-top: 8px;
+    padding-left: 14px;
+    border-left: 2px solid var(--border-mid);
+  }
+
+  /* Cheat sheet */
+  .cheat {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-top: 3px solid var(--teal);
+    border-radius: 6px;
+    padding: 24px 28px;
+    margin-top: 20px;
+  }
+  .cheat-title {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .cheat-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--border-mid), transparent);
+  }
+  .cheat-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 18px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-subtle);
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+  .cheat-row:last-child { border-bottom: none; }
+  .cheat-row strong { color: var(--text-primary); }
+  .cheat-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--teal-text);
+  }
+
+  .callout {
+    border-radius: 6px;
+    padding: 18px 22px;
+    margin: 20px 0 8px;
+    border-left: 3px solid var(--accent);
+    background: var(--accent-soft);
+  }
+  .callout-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-text);
+    margin-bottom: 8px;
+  }
+  .callout p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin: 0; }
+  .callout p strong { color: var(--text-primary); }
+
+  @media (max-width: 760px) {
+    .hero { padding: 30px 24px; }
+    .page-wrap { padding: 28px 18px; }
+    .rule-block { padding: 22px 22px 20px; }
+    .cheat-row { grid-template-columns: 1fr; gap: 4px; }
+  }
+</style>
+</head>
+<body>
+<div class="enhanceable_content">
+<div class="page-wrap">
+
+  <!-- HERO -->
+  <div class="hero fade-in">
+    <div class="hero-label">MLA Documentation &bull; Primary Source</div>
+    <h1 class="hero-title">Writing about <em>Film</em></h1>
+    <p class="hero-subtitle">The rules for treating a film as a primary source: how to format titles, what tense to write in, how to handle dialogue, and how to cite specific moments using the director plus timecode.</p>
+  </div>
+
+  <!-- INTRO -->
+  <p class="prose fade-in">A film, for the purposes of MLA documentation, is treated much the way a short story or a novel is treated: it is a primary source, and you refer to it constantly throughout your essay. The rules below are the ones you will use on every page of your draft. They are not optional stylistic choices. They are the conventions that tell a reader of your essay that you are writing an analysis, not a review or a plot summary.</p>
+
+  <!-- ═══ SECTION 1: CORE RULES ═══ -->
+  <div class="section-header fade-in">
+    <span class="section-badge">SEC 01</span>
+    <h2 class="section-title">The Core Rules</h2>
+  </div>
+
+  <!-- RULE 1: Italicize -->
+  <div class="rule-block amber fade-in">
+    <div class="rule-number">Rule 1</div>
+    <h3 class="rule-title">Italicize Film Titles Every Time</h3>
+    <div class="rule-body">
+      <p>Film titles are <strong>always italicized</strong>, both in your prose and in your Works Cited entry. This is the same rule you already know for novels and long works. Shorter titles (a song, an episode of a TV series, a short story) go in quotation marks; a full feature film is italicized.</p>
+      <p>Do not underline. Do not put the title in quotation marks. Do not bold it. Italicize it, and do it consistently from the first sentence of your introduction to the last line of your conclusion.</p>
+      <div class="eg-pair">
+        <div class="eg eg-bad">
+          <span class="eg-tag">&#10007; Incorrect</span>
+          <p>In "Minority Report," Spielberg imagines a near future shaped by surveillance.</p>
+        </div>
+        <div class="eg eg-good">
+          <span class="eg-tag">&#10003; Correct</span>
+          <p>In <em>Minority Report</em>, Spielberg imagines a near future shaped by surveillance.</p>
+        </div>
+      </div>
+      <p class="note">Note: when a scholar writes <em>about</em> the film, the title of their article is in quotation marks and the film name inside the article title stays italicized: Bakewell's "The One-Eyed Man Is King: Oedipal Vision in <em>Minority Report</em>."</p>
+    </div>
+  </div>
+
+  <!-- RULE 2: Present tense -->
+  <div class="rule-block teal fade-in">
+    <div class="rule-number">Rule 2</div>
+    <h3 class="rule-title">Write in the Present Tense (the Literary Present)</h3>
+    <div class="rule-body">
+      <p>When you describe what happens in a film, you write in the <strong>present tense</strong>, not the past. This is the same convention you would use writing about a novel or a play. It is called the <em>literary present</em>, and it reflects the fact that the events of a work of art are always happening, every time the work is read or watched.</p>
+      <p>Choose the present tense and stick with it. Slipping into past tense for plot summary is one of the most common problems in student drafts of film papers, and it almost always creeps in during descriptions of action sequences, where past tense feels natural because the action unfolded over time.</p>
+      <div class="eg-pair">
+        <div class="eg eg-bad">
+          <span class="eg-tag">&#10007; Incorrect (past tense)</span>
+          <p>Anderton ran from the spider drones and hid in the ice bath to avoid having his retinas scanned. Spielberg shot the scene in cool blue tones to emphasize the horror of total surveillance.</p>
+        </div>
+        <div class="eg eg-good">
+          <span class="eg-tag">&#10003; Correct (present tense)</span>
+          <p>Anderton runs from the spider drones and hides in the ice bath to avoid having his retinas scanned. Spielberg shoots the scene in cool blue tones to emphasize the horror of total surveillance.</p>
+        </div>
+      </div>
+      <p>The same rule applies to the filmmakers themselves. Spielberg <strong>directs</strong>, not directed. The film <strong>argues</strong>, not argued. A scholar <strong>points out</strong>, not pointed out. Verbs that describe what a text or its maker does are present tense by convention, even though the film was made decades ago.</p>
+    </div>
+  </div>
+
+  <!-- RULE 3: Dialogue in quotation marks -->
+  <div class="rule-block amber fade-in">
+    <div class="rule-number">Rule 3</div>
+    <h3 class="rule-title">Dialogue Goes in Quotation Marks</h3>
+    <div class="rule-body">
+      <p>When you quote spoken dialogue from a film, treat it exactly the way you would treat a line of dialogue from a novel: put it inside <strong>double quotation marks</strong>. Do not italicize dialogue. Do not set it off as a block quote unless it runs longer than four lines of your own typed prose, which is rare in film writing.</p>
+      <p>If the line you are quoting contains a word or phrase that is itself in quotation marks inside the film's script, convert those inner quotation marks to single quotation marks.</p>
+      <div class="eg eg-good">
+        <span class="eg-tag">&#10003; Correct</span>
+        <p>Iris Hineman, speaking from inside a greenhouse full of carnivorous plants, tells Anderton that "in the land of the blind, the one eyed man is king" (Spielberg 01:14:22).</p>
+      </div>
+      <p>Notice that the quoted line is punctuated as part of your own sentence. The period comes <em>after</em> the parenthetical citation, not inside the quotation marks. See Rule 4 for the details of the parenthetical itself.</p>
+    </div>
+  </div>
+
+  <!-- RULE 4: Parenthetical citation -->
+  <div class="rule-block teal fade-in">
+    <div class="rule-number">Rule 4</div>
+    <h3 class="rule-title">Parenthetical Citation: Director's Last Name and Timecode</h3>
+    <div class="rule-body">
+      <p>When you cite a specific moment in the film, whether you are quoting dialogue or describing a shot, the parenthetical citation follows a single format: <strong>director's last name, a space, and the timecode in <code style="font-family: var(--font-mono); font-size: 13px; color: var(--accent-text);">hh:mm:ss</code> format</strong>. If the moment spans more than a few seconds, give the start and end times separated by the word <strong>to</strong>.</p>
+      <div class="eg eg-good">
+        <span class="eg-tag">&#10003; Single moment</span>
+        <p>Anderton reaches into the shimmering holographic image of his son, and his hand passes through the light (Spielberg 00:22:14).</p>
+      </div>
+      <div class="eg eg-good">
+        <span class="eg-tag">&#10003; Range of time</span>
+        <p>A swarm of mechanical spider drones crawls under doors and climbs onto sleeping faces to scan each resident's retina in turn (Spielberg 01:09:30 to 01:11:00).</p>
+      </div>
+      <p>If you have already named the director in your signal phrase, you may drop his name from the parenthetical and give just the timecode.</p>
+      <div class="eg eg-good">
+        <span class="eg-tag">&#10003; Director in signal phrase</span>
+        <p>Spielberg opens the film with the Precrime temple sequence, three pale figures floating in a shallow pool as their visions are projected onto curved glass (00:04:18 to 00:06:42).</p>
+      </div>
+      <p class="note">Use the word <strong>to</strong>, not a hyphen or a dash, between start and end timecodes. MLA 9 prefers the written form for clarity.</p>
+    </div>
+  </div>
+
+  <!-- RULE 5: First reference -->
+  <div class="rule-block lavender fade-in">
+    <div class="rule-number">Rule 5</div>
+    <h3 class="rule-title">First Reference vs. Later References</h3>
+    <div class="rule-body">
+      <p>The first time you mention the film in your essay, give both the <strong>title</strong> (italicized) and the <strong>director's full name</strong>. After that, you can refer to the film by its title alone, or to the director by last name alone.</p>
+      <div class="eg eg-good">
+        <span class="eg-tag">&#10003; First reference</span>
+        <p>Steven Spielberg's <em>Minority Report</em> (2002) opens inside a circular chamber that the officers of Precrime literally call "the temple."</p>
+      </div>
+      <div class="eg eg-good">
+        <span class="eg-tag">&#10003; Later references</span>
+        <p>Throughout <em>Minority Report</em>, Spielberg returns to the same visual motif: an eye that is being watched, scanned, or surgically replaced.</p>
+      </div>
+      <p>You may also include the release year in parentheses on first reference, as shown above. This is optional in a short essay, but it is a clean habit to develop.</p>
+    </div>
+  </div>
+
+  <!-- RULE 6: Characters vs. actors -->
+  <div class="rule-block amber fade-in">
+    <div class="rule-number">Rule 6</div>
+    <h3 class="rule-title">Refer to Characters by Character Name, Not Actor Name</h3>
+    <div class="rule-body">
+      <p>When you describe what happens in the film, refer to the people on screen by their <strong>character names</strong>, not by the actors playing them. <em>Minority Report</em> stars Tom Cruise, but in your essay, the protagonist is <strong>John Anderton</strong>, not Tom Cruise. Use actor names only when you are specifically making a point about the performance or the casting.</p>
+      <div class="eg-pair">
+        <div class="eg eg-bad">
+          <span class="eg-tag">&#10007; Incorrect</span>
+          <p>Tom Cruise runs across the rooftops as he tries to outpace his former colleagues. Colin Farrell pursues him with calm determination.</p>
+        </div>
+        <div class="eg eg-good">
+          <span class="eg-tag">&#10003; Correct</span>
+          <p>Anderton runs across the rooftops as he tries to outpace his former colleagues. Detective Danny Witwer pursues him with calm determination.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 2: THE CHEAT SHEET ═══ -->
+  <div class="section-header fade-in">
+    <span class="section-badge teal">SEC 02</span>
+    <h2 class="section-title">Quick Reference</h2>
+  </div>
+
+  <p class="prose fade-in">Keep this next to you while you draft. Every rule on this page is condensed into a single row.</p>
+
+  <div class="cheat fade-in">
+    <div class="cheat-title">Writing about Film &bull; At a Glance</div>
+    <div class="cheat-row"><div class="cheat-label">Film Title</div><div>Italicized every time: <em>Minority Report</em>. Not in quotation marks, not underlined.</div></div>
+    <div class="cheat-row"><div class="cheat-label">Verb Tense</div><div>Present tense. The film <strong>opens</strong>, the camera <strong>pans</strong>, Spielberg <strong>argues</strong>. Never "the film opened" or "Spielberg argued."</div></div>
+    <div class="cheat-row"><div class="cheat-label">Dialogue</div><div>Double quotation marks. Inner quotations become single quotation marks. Periods go outside the quotation marks when a parenthetical follows.</div></div>
+    <div class="cheat-row"><div class="cheat-label">Parenthetical</div><div>Director last name plus timecode in <code style="font-family: var(--font-mono); font-size: 12.5px; color: var(--accent-text);">hh:mm:ss</code>: (Spielberg 01:14:22). For ranges: (Spielberg 00:04:18 to 00:06:42).</div></div>
+    <div class="cheat-row"><div class="cheat-label">If Name in Signal</div><div>Drop the director from the parenthetical, keep only the timecode: (01:14:22).</div></div>
+    <div class="cheat-row"><div class="cheat-label">First Reference</div><div>Give full director name plus italicized title: <strong>Steven Spielberg's <em>Minority Report</em></strong>. After that, title or last name alone is fine.</div></div>
+    <div class="cheat-row"><div class="cheat-label">Characters</div><div>Refer to people by their <strong>character names</strong>, not the actors. Anderton, not Tom Cruise.</div></div>
+    <div class="cheat-row"><div class="cheat-label">Works Cited</div><div>One entry for the film, beginning with the italicized title: <em>Minority Report</em>. Directed by Steven Spielberg, Twentieth Century Fox and DreamWorks Pictures, 2002.</div></div>
+  </div>
+
+  <div class="callout fade-in">
+    <div class="callout-label">Remember</div>
+    <p>These rules apply to the <strong>primary source only</strong>: the film itself. Citing your secondary sources (scholarly articles and web reviews) follows a different set of rules, since those sources have authors, page numbers (sometimes), and publication venues. For secondary source citation, see <a href="mla-documentation-quoting-secondary.html">MLA Documentation: Quoting from Your Secondary Research Sources</a>.</p>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

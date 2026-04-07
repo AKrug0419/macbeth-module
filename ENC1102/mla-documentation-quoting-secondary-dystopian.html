@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="identifier" content="dystopian-mla-quoting-secondary"/>
+<meta name="editing_roles" content="teachers"/>
+<meta name="workflow_state" content="active"/>
+<title>MLA Documentation: Quoting from Secondary Sources | ENC 1102 Dystopian Research Essay</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap');
+
+  :root {
+    --bg-deep: #565e6e;
+    --bg-surface: #3e4555;
+    --bg-elevated: #353c4b;
+    --bg-deepest: #2b303c;
+    --border-subtle: #4a5264;
+    --border-mid: #5c6478;
+    --accent: #e8a832;
+    --accent-soft: #e8a83228;
+    --accent-mid: #e8a83258;
+    --accent-text: #f5c865;
+    --teal: #5ba8a0;
+    --teal-soft: #5ba8a028;
+    --teal-mid: #5ba8a058;
+    --teal-text: #90d8d0;
+    --lavender: #9a9cc0;
+    --lavender-soft: #9a9cc028;
+    --lavender-mid: #9a9cc058;
+    --lavender-text: #d0d2f0;
+    --warn: #f47878;
+    --warn-soft: #f4787822;
+    --warn-mid: #f4787858;
+    --warn-text: #f8a8a8;
+    --text-primary: #f0f2f5;
+    --text-secondary: #cdd3dc;
+    --text-muted: #9aa2b2;
+    --font-display: 'Libre Baskerville', 'Georgia', serif;
+    --font-body: 'Source Sans Pro', 'Segoe UI', sans-serif;
+    --font-mono: 'IBM Plex Mono', 'Consolas', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg-deep);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-wrap: break-word;
+  }
+
+  a { color: var(--accent-text); text-decoration: underline; }
+  a:hover { color: #fff; }
+  strong, b { color: var(--text-primary); }
+  em, i { color: var(--text-secondary); }
+
+  .page-wrap { max-width: 900px; margin: 0 auto; padding: 40px 28px; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-in { animation: fadeUp 0.5s ease both; }
+
+  /* HERO */
+  .hero {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-left: 4px solid var(--teal);
+    border-radius: 6px;
+    padding: 40px 44px 36px;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 220px; height: 220px;
+    background: radial-gradient(circle, var(--teal-soft) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--teal-text);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 12px;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(22px, 4vw, 30px);
+    color: #fff;
+    line-height: 1.25;
+    margin-bottom: 10px;
+  }
+  .hero-title em { font-style: italic; color: var(--teal-text); }
+  .hero-subtitle {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 640px;
+    font-style: italic;
+  }
+
+  /* PART BANDS */
+  .part-band {
+    margin: 48px 0 20px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .part-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent-text);
+    margin-bottom: 4px;
+  }
+  .part-band.part-errors .part-label { color: var(--warn-text); }
+  .part-title {
+    font-family: var(--font-display);
+    font-size: 20px;
+    color: #fff;
+    line-height: 1.3;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+    margin-top: 40px;
+  }
+  .section-badge {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--accent-text);
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-mid);
+    border-radius: 4px;
+    padding: 3px 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+  .section-badge.teal { color: var(--teal-text); background: var(--teal-soft); border-color: var(--teal-mid); }
+  .section-badge.lavender { color: var(--lavender-text); background: var(--lavender-soft); border-color: var(--lavender-mid); }
+  .section-badge.warn { color: var(--warn-text); background: var(--warn-soft); border-color: var(--warn-mid); }
+
+  .prose {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    max-width: 720px;
+  }
+  .prose + .prose { margin-top: 14px; }
+  .prose strong { color: var(--text-primary); }
+
+  /* ═══ RULE BLOCK ═══ */
+  .rule-block {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    padding: 26px 30px 24px;
+    margin-bottom: 20px;
+  }
+  .rule-block.amber    { border-left: 3px solid var(--accent); }
+  .rule-block.teal     { border-left: 3px solid var(--teal); }
+  .rule-block.lavender { border-left: 3px solid var(--lavender); }
+  .rule-block.warn     { border-left: 3px solid var(--warn); }
+
+  .rule-number {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-text);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .rule-block.teal     .rule-number { color: var(--teal-text); }
+  .rule-block.lavender .rule-number { color: var(--lavender-text); }
+  .rule-block.warn     .rule-number { color: var(--warn-text); }
+  .error-tag {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--warn-text);
+    background: var(--warn-soft);
+    border: 1px solid var(--warn-mid);
+    border-radius: 3px;
+    padding: 2px 8px;
+  }
+
+  .rule-title {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.35;
+    margin-bottom: 14px;
+  }
+  .rule-body {
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+  }
+  .rule-body p { margin-bottom: 12px; }
+  .rule-body p:last-of-type { margin-bottom: 0; }
+  .rule-body strong { color: var(--text-primary); }
+
+  /* FORMAT BAR (replaces old fmt-box) */
+  .fmt-bar {
+    background: var(--bg-deepest);
+    border: 1px solid var(--border-subtle);
+    border-left: 2px solid var(--accent);
+    border-radius: 4px;
+    padding: 12px 16px;
+    margin: 12px 0 14px;
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    color: var(--accent-text);
+    line-height: 1.6;
+  }
+  .fmt-bar-label {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 4px;
+  }
+  .rule-block.teal     .fmt-bar { border-left-color: var(--teal);     color: var(--teal-text); }
+  .rule-block.lavender .fmt-bar { border-left-color: var(--lavender); color: var(--lavender-text); }
+
+  /* EXAMPLE BOXES (single-block pattern, no card grid) */
+  .eg {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: 5px;
+    padding: 14px 18px;
+    margin: 12px 0 0;
+    font-size: 14px;
+    line-height: 1.75;
+  }
+  .eg-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    display: block;
+  }
+  .eg-good { border-left: 3px solid var(--teal); }
+  .eg-good .eg-tag { color: var(--teal-text); }
+  .eg-bad  { border-left: 3px solid var(--warn); background: var(--warn-soft); }
+  .eg-bad  .eg-tag { color: var(--warn-text); }
+  .eg-alt  { border-left: 3px solid var(--accent); }
+  .eg-alt  .eg-tag { color: var(--accent-text); }
+  .eg p {
+    margin: 0;
+    color: var(--text-primary);
+    font-style: italic;
+  }
+  .eg p + p { margin-top: 8px; }
+  .eg .eg-note {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid var(--border-subtle);
+    font-size: 12.5px;
+    color: var(--text-muted);
+    font-style: normal;
+  }
+  .eg-bad .eg-note { border-top-color: var(--warn-mid); }
+  .eg-alt .eg-note { border-top-color: var(--accent-mid); }
+  .eg-good .eg-note { border-top-color: var(--teal-mid); }
+
+  /* Stacked pair: wrong above right, no gap */
+  .eg-pair { margin: 12px 0 0; }
+  .eg-pair .eg { margin: 0; border-radius: 0; }
+  .eg-pair .eg:first-child { border-radius: 5px 5px 0 0; border-bottom: none; }
+  .eg-pair .eg:last-child  { border-radius: 0 0 5px 5px; }
+
+  /* Three-stack (for rules needing wrong + 2 variants) */
+  .eg-stack { margin: 12px 0 0; }
+  .eg-stack .eg { margin: 0; border-radius: 0; }
+  .eg-stack .eg:first-child { border-radius: 5px 5px 0 0; border-bottom: none; }
+  .eg-stack .eg:not(:first-child):not(:last-child) { border-bottom: none; }
+  .eg-stack .eg:last-child  { border-radius: 0 0 5px 5px; }
+
+  /* ═══ QUICK REFERENCE (four patterns) ═══ */
+  .pat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 14px;
+  }
+  .pat-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-top: 3px solid var(--lavender);
+    border-radius: 5px;
+    padding: 14px 16px;
+  }
+  .pat-card.a { border-top-color: var(--lavender); }
+  .pat-card.b { border-top-color: var(--teal); }
+  .pat-card.c { border-top-color: var(--accent); }
+  .pat-card.d { border-top-color: #c8b87a; }
+  .pat-title {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+  .pat-desc {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 10px;
+    min-height: 34px;
+  }
+  .pat-code {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent-text);
+    background: var(--bg-deepest);
+    border: 1px solid var(--border-subtle);
+    border-radius: 3px;
+    padding: 8px 10px;
+    word-break: break-word;
+    line-height: 1.5;
+  }
+  .pat-card.a .pat-code { color: var(--lavender-text); }
+  .pat-card.b .pat-code { color: var(--teal-text); }
+  .pat-card.c .pat-code { color: var(--accent-text); }
+  .pat-card.d .pat-code { color: #e0d8a0; }
+
+  /* CALLOUT */
+  .callout {
+    border-radius: 6px;
+    padding: 18px 22px;
+    margin: 18px 0 8px;
+    border-left: 3px solid var(--accent);
+    background: var(--accent-soft);
+  }
+  .callout.warn { border-left-color: var(--warn); background: var(--warn-soft); }
+  .callout-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-text);
+    margin-bottom: 8px;
+  }
+  .callout.warn .callout-label { color: var(--warn-text); }
+  .callout p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin: 0; }
+  .callout p strong { color: var(--text-primary); }
+
+  /* Verb bar */
+  .verb-bar {
+    background: var(--bg-deepest);
+    border: 1px solid var(--border-subtle);
+    border-left: 2px solid var(--teal);
+    border-radius: 4px;
+    padding: 14px 18px;
+    margin: 12px 0 14px;
+    font-size: 13px;
+    color: var(--teal-text);
+    line-height: 1.7;
+  }
+  .verb-bar-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  @media (max-width: 760px) {
+    .hero { padding: 30px 24px; }
+    .page-wrap { padding: 28px 18px; }
+    .rule-block { padding: 22px 22px 20px; }
+    .pat-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 480px) {
+    .pat-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="enhanceable_content">
+<div class="page-wrap">
+
+  <!-- HERO -->
+  <div class="hero fade-in">
+    <div class="hero-label">MLA Documentation &bull; Secondary Sources</div>
+    <h1 class="hero-title">Quoting from Your <em>Secondary Research Sources</em></h1>
+    <p class="hero-subtitle">The four citation patterns for scholarly and critical sources, plus the most common errors students make when weaving secondary voices into their film analysis.</p>
+  </div>
+
+  <!-- INTRO -->
+  <p class="prose fade-in">Your three secondary sources may be PDF articles retrieved from an academic database (with page numbers) or HTML articles published on the web (no page numbers). The citation format changes depending on the source type and on where you place the author's name. There are <strong>four patterns</strong> in total. Once you learn all four, you can integrate any secondary source cleanly into your prose.</p>
+
+  <!-- ═══ PART ONE ═══ -->
+  <div class="part-band fade-in">
+    <div class="part-label">Part One</div>
+    <div class="part-title">Core Skills</div>
+  </div>
+
+  <!-- RULE 1: SIGNAL PHRASES -->
+  <div class="rule-block amber fade-in">
+    <div class="rule-number">Rule 1</div>
+    <h3 class="rule-title">Signal Phrases for Secondary Sources</h3>
+    <div class="rule-body">
+      <p>A <strong>signal phrase</strong> introduces a quotation by naming the author and providing context. Strong signal phrases establish the scholar's identity and authority. It is generally preferable to name the scholar in the signal phrase rather than hide the name inside the parenthetical: this gives the scholar credit and makes the sentence read more naturally. Alternate between placing the name in the signal phrase and placing it in the parenthetical so your paragraphs do not become repetitive.</p>
+      <div class="verb-bar">
+        <span class="verb-bar-label">Signal verbs to vary throughout your essay</span>
+        argues &bull; claims &bull; contends &bull; maintains &bull; suggests &bull; observes &bull; notes &bull; explains &bull; writes &bull; points out &bull; concludes &bull; asserts &bull; demonstrates &bull; shows
+      </div>
+      <p><strong>Always use present tense</strong> for signal verbs with literary and film criticism: "Bakewell <em>argues</em>," not "Bakewell <em>argued</em>." A scholar's argument stays active in the present tense, even if the article was published decades ago.</p>
+      <div class="eg eg-good">
+        <span class="eg-tag">&#10003; Author introduced by name and role</span>
+        <p>Classicist Geoffrey Bakewell argues that Spielberg's film "is a legitimate child of Oedipus Tyrannus" because "in each, a powerful detective reopens an unsolved homicide case and is himself subsequently accused of murder" (95).</p>
+        <div class="eg-note">Naming the scholar and identifying the scholar's field establishes authority and makes the source feel purposeful.</div>
+      </div>
+      <div class="eg eg-good">
+        <span class="eg-tag">&#10003; Author name in parenthetical instead</span>
+        <p>Scholars of <em>Minority Report</em> have noted that the film "is a legitimate child of Oedipus Tyrannus," since "a powerful detective reopens an unsolved homicide case and is himself subsequently accused of murder" (Bakewell 95).</p>
+        <div class="eg-note">Name omitted from the signal phrase, so it must appear in the parenthetical citation before the page number.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RULE 2: PATTERN A -->
+  <div class="rule-block lavender fade-in">
+    <div class="rule-number">Rule 2</div>
+    <h3 class="rule-title">Pattern A &bull; PDF Article, Author's Name in the Citation</h3>
+    <div class="rule-body">
+      <p>When your secondary source is a <strong>PDF article</strong> (one you downloaded from a database such as Project MUSE, JSTOR, or EBSCOhost) and you have <strong>not named the author</strong> in your signal phrase, include both the author's last name and the page number inside the parenthetical citation. <strong>No comma</strong> separates them. The period falls after the closing parenthesis.</p>
+      <div class="fmt-bar">
+        <span class="fmt-bar-label">Format</span>
+        "quotation" (LastName PageNumber).&nbsp;&nbsp;&rarr;&nbsp;&nbsp;e.g., (Bakewell 95)
+      </div>
+      <div class="eg-pair">
+        <div class="eg eg-bad">
+          <span class="eg-tag">&#10007; Comma between name and page number</span>
+          <p>Scholars of <em>Minority Report</em> have argued that the film "is a legitimate child of Oedipus Tyrannus" (Bakewell, 95).</p>
+          <div class="eg-note">Never place a comma between the author's last name and the page number in MLA format.</div>
+        </div>
+        <div class="eg eg-good">
+          <span class="eg-tag">&#10003; Correct, no comma</span>
+          <p>Scholars of <em>Minority Report</em> have argued that the film "is a legitimate child of Oedipus Tyrannus" (Bakewell 95).</p>
+        </div>
+      </div>
+      <div class="eg eg-alt">
+        <span class="eg-tag">&#10003; Two-author source</span>
+        <p>Critics have observed that the spider drone sequence "stages the surveillance state not as distant abstraction but as something that crawls onto your sleeping face" (Schatz and Perkins 142).</p>
+        <div class="eg-note">Two-author source: use both last names connected with "and." This format applies if you happen to find a co-authored film studies article.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RULE 3: PATTERN B -->
+  <div class="rule-block teal fade-in">
+    <div class="rule-number">Rule 3</div>
+    <h3 class="rule-title">Pattern B &bull; PDF Article, Author's Name in the Signal Phrase</h3>
+    <div class="rule-body">
+      <p>When your secondary source is a <strong>PDF article</strong> and you have <strong>named the author in the signal phrase</strong>, the parenthetical citation contains the <strong>page number only</strong>. The author's name is not repeated.</p>
+      <div class="fmt-bar">
+        <span class="fmt-bar-label">Format</span>
+        Author argues that "quotation" (PageNumber).&nbsp;&nbsp;&rarr;&nbsp;&nbsp;e.g., Bakewell argues that "&hellip;" (95).
+      </div>
+      <div class="eg-pair">
+        <div class="eg eg-bad">
+          <span class="eg-tag">&#10007; Name repeated in citation</span>
+          <p>Classicist Geoffrey Bakewell argues that Spielberg's film "is a legitimate child of Oedipus Tyrannus" (Bakewell 95).</p>
+          <div class="eg-note">Author already named in the signal phrase, so do not repeat the name in the citation. Page number only.</div>
+        </div>
+        <div class="eg eg-good">
+          <span class="eg-tag">&#10003; Correct, page number only</span>
+          <p>Classicist Geoffrey Bakewell argues that Spielberg's film "is a legitimate child of Oedipus Tyrannus" (95).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RULE 4: PATTERN C -->
+  <div class="rule-block amber fade-in">
+    <div class="rule-number">Rule 4</div>
+    <h3 class="rule-title">Pattern C &bull; HTML Article, Author's Name in the Citation</h3>
+    <div class="rule-body">
+      <p>When your secondary source is an <strong>HTML article</strong> (one published on a website such as <em>Slate</em>, <em>Deep Focus Review</em>, or <em>The New Yorker</em>) and you have <strong>not named the author</strong> in your signal phrase, include only the author's last name in the parenthetical citation. There is no page number. <strong>Do not invent or estimate one.</strong></p>
+      <div class="fmt-bar">
+        <span class="fmt-bar-label">Format</span>
+        "quotation" (LastName).&nbsp;&nbsp;&rarr;&nbsp;&nbsp;e.g., (Edelstein) or (Eggert)
+      </div>
+      <div class="eg-pair">
+        <div class="eg eg-bad">
+          <span class="eg-tag">&#10007; Invented page number for HTML source</span>
+          <p>Critics have argued that the film "trades the bleak political warning of Philip K. Dick's original story for a more sentimental humanism" (Edelstein 4).</p>
+          <div class="eg-note">HTML articles have no fixed pages. Do not estimate or invent a page number.</div>
+        </div>
+        <div class="eg eg-good">
+          <span class="eg-tag">&#10003; Correct, author only, no page number</span>
+          <p>Critics have argued that the film "trades the bleak political warning of Philip K. Dick's original story for a more sentimental humanism" (Edelstein).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RULE 5: PATTERN D -->
+  <div class="rule-block teal fade-in">
+    <div class="rule-number">Rule 5</div>
+    <h3 class="rule-title">Pattern D &bull; HTML Article, Author's Name in the Signal Phrase</h3>
+    <div class="rule-body">
+      <p>When your secondary source is an <strong>HTML article</strong> and you have <strong>named the author in the signal phrase</strong>, no parenthetical citation is needed at all. Simply end the sentence with a period after the closing quotation mark.</p>
+      <div class="fmt-bar">
+        <span class="fmt-bar-label">Format</span>
+        Author argues that "quotation."&nbsp;&nbsp;&rarr;&nbsp;&nbsp;No parenthetical needed.
+      </div>
+      <div class="callout">
+        <div class="callout-label">Important Note on Punctuation</div>
+        <p>When there is no parenthetical citation, American English convention places the period <strong>inside</strong> the closing quotation mark: <em>"quotation."</em> This is the one situation where a period appears inside the quotation marks. When a parenthetical citation follows, the period always goes <em>after</em> the closing parenthesis: <em>"quotation" (Author Page).</em></p>
+      </div>
+      <div class="eg-pair">
+        <div class="eg eg-bad">
+          <span class="eg-tag">&#10007; Unnecessary citation added</span>
+          <p>Critic David Edelstein argues that the film "trades the bleak political warning of Philip K. Dick's original story for a more sentimental humanism" (Edelstein).</p>
+          <div class="eg-note">Author already named in the signal phrase, so the parenthetical citation is redundant. Remove it.</div>
+        </div>
+        <div class="eg eg-good">
+          <span class="eg-tag">&#10003; Correct, no parenthetical needed</span>
+          <p>Critic David Edelstein argues that the film "trades the bleak political warning of Philip K. Dick's original story for a more sentimental humanism."</p>
+        </div>
+      </div>
+      <div class="eg eg-alt">
+        <span class="eg-tag">&#10003; Another HTML plus signal phrase example</span>
+        <p>Film critic Brian Eggert notes that the suppressed alternative vision "stored in the Precog Agatha's unconscious" becomes "a sustained philosophical challenge to the entire idea that the future can be known in advance."</p>
+        <div class="eg-note">HTML source plus author in signal phrase equals no parenthetical citation needed.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RULE 6: NO AUTHOR -->
+  <div class="rule-block lavender fade-in">
+    <div class="rule-number">Rule 6</div>
+    <h3 class="rule-title">Articles With No Identified Author</h3>
+    <div class="rule-body">
+      <p>Occasionally, an article will not list a named author. The most common example for film research is a <em>Wikipedia</em> entry or an unsigned studio press release. In that case, use the first one to three significant words of the article's title inside the parenthetical citation, in quotation marks. These sources are relatively rare in ENC 1102, and it is generally preferable to choose sources with identifiable authors, since named scholars and critics carry more weight.</p>
+      <div class="fmt-bar">
+        <span class="fmt-bar-label">Format</span>
+        "quotation" ("First Words").&nbsp;&nbsp;&larr;&nbsp;HTML&nbsp;&nbsp;|&nbsp;&nbsp;"quotation" ("First Words" PageNumber).&nbsp;&nbsp;&larr;&nbsp;PDF
+      </div>
+      <div class="eg eg-good">
+        <span class="eg-tag">&#10003; HTML source, no author</span>
+        <p>Production accounts of <em>Minority Report</em> record that Spielberg "convened a three day summit in 1999 at a Santa Monica hotel" and asked the participants "to imagine the technologies of 2054" ("Minority Report").</p>
+        <div class="eg-note">No author identified, so use the first significant words of the title in quotation marks. HTML source, so no page number.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUICK REFERENCE: FOUR PATTERNS -->
+  <div class="section-header fade-in">
+    <span class="section-badge">SEC 02</span>
+    <h2 style="font-family: var(--font-display); font-size: clamp(18px, 3vw, 22px); color: #fff; line-height: 1.3;">Quick Reference &bull; The Four Citation Patterns</h2>
+  </div>
+
+  <p class="prose fade-in">Every secondary source citation in your essay will follow one of these four patterns. Keep this reference open while you draft.</p>
+
+  <div class="pat-grid fade-in">
+    <div class="pat-card a">
+      <div class="pat-title">Pattern A</div>
+      <div class="pat-desc">PDF, author name in citation</div>
+      <code class="pat-code">"&hellip;" (Bakewell 95).</code>
+    </div>
+    <div class="pat-card b">
+      <div class="pat-title">Pattern B</div>
+      <div class="pat-desc">PDF, author name in signal phrase</div>
+      <code class="pat-code">Bakewell argues "&hellip;" (95).</code>
+    </div>
+    <div class="pat-card c">
+      <div class="pat-title">Pattern C</div>
+      <div class="pat-desc">HTML, author name in citation</div>
+      <code class="pat-code">"&hellip;" (Edelstein).</code>
+    </div>
+    <div class="pat-card d">
+      <div class="pat-title">Pattern D</div>
+      <div class="pat-desc">HTML, author name in signal phrase</div>
+      <code class="pat-code">Edelstein argues "&hellip;."</code>
+    </div>
+  </div>
+
+  <div class="callout warn fade-in">
+    <div class="callout-label">The single most common error</div>
+    <p>Repeating the author's name in both the signal phrase <em>and</em> the citation. Pick one location for the name and use it there only. See Rule 11 below.</p>
+  </div>
+
+  <!-- ═══ PART TWO ═══ -->
+  <div class="part-band part-errors fade-in">
+    <div class="part-label">Part Two</div>
+    <div class="part-title">Common Quoting Errors</div>
+  </div>
+
+  <!-- RULE 7: FLOATING QUOTES -->
+  <div class="rule-block warn fade-in">
+    <div class="rule-number">Rule 7 <span class="error-tag">Common Error</span></div>
+    <h3 class="rule-title">Isolated or Floating Quotes</h3>
+    <div class="rule-body">
+      <p>A <strong>floating quote</strong> is a quotation that stands alone as its own sentence without being introduced or integrated into your own prose. Every secondary source quotation must be attached to your own words before and after: a signal phrase establishes who is speaking and why the words matter, and your own analysis explains what the evidence contributes to your argument.</p>
+      <div class="eg-pair">
+        <div class="eg eg-bad">
+          <span class="eg-tag">&#10007; Floating quote</span>
+          <p>The film is obsessed with eyes. "Minority Report is a legitimate child of Oedipus Tyrannus" (Bakewell 95). Spielberg uses this to show how surveillance works.</p>
+          <div class="eg-note">The quote stands alone with no signal phrase and only a vague sentence following it.</div>
+        </div>
+        <div class="eg eg-good">
+          <span class="eg-tag">&#10003; Quote introduced and followed by analysis</span>
+          <p>Classicist Geoffrey Bakewell argues that the film "is a legitimate child of Oedipus Tyrannus" (95). Bakewell's reading clarifies the stakes of the spider drone sequence: the visual imagery of mechanical sight is not a neutral aesthetic choice but the film's central argument turned into image, the claim that a society which sees too well has already begun to mistake its own gaze for justice.</p>
+        </div>
+      </div>
+      <div class="callout">
+        <div class="callout-label">The Signal &rarr; Quote &rarr; Analysis pattern</div>
+        <p>Every secondary source use follows the same three-part structure: <strong>(1) a signal phrase</strong> that names the scholar and establishes context, <strong>(2) the quoted or paraphrased material</strong>, and <strong>(3) your own sentence or two of analysis</strong> connecting the scholar's point to your argument. The analysis is not optional.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RULE 8: COMMA SPLICES -->
+  <div class="rule-block warn fade-in">
+    <div class="rule-number">Rule 8 <span class="error-tag">Common Error</span></div>
+    <h3 class="rule-title">Comma Splices Involving Quotes</h3>
+    <div class="rule-body">
+      <p>A common quoting error is using a comma to join your own complete independent clause to a quotation. If your lead-in is a complete sentence, use a <strong>colon</strong>, not a comma. Alternatively, restructure the lead-in so the quotation flows naturally from an incomplete construction, which is usually more elegant.</p>
+      <div class="eg-stack">
+        <div class="eg eg-bad">
+          <span class="eg-tag">&#10007; Comma between complete clause and quote</span>
+          <p>Bakewell makes an important point about this scene, "<em>Minority Report</em> is a legitimate child of Oedipus Tyrannus" (95).</p>
+          <div class="eg-note">"Bakewell makes an important point" is a complete sentence. A comma cannot join it to the quotation.</div>
+        </div>
+        <div class="eg eg-good">
+          <span class="eg-tag">&#10003; Colon after complete lead-in</span>
+          <p>Bakewell makes an important point about this scene: "<em>Minority Report</em> is a legitimate child of Oedipus Tyrannus" (95).</p>
+        </div>
+        <div class="eg eg-alt">
+          <span class="eg-tag">&#10003; Restructured so quote flows from incomplete lead-in</span>
+          <p>Bakewell connects the film to classical tragedy, arguing that "<em>Minority Report</em> is a legitimate child of Oedipus Tyrannus" (95).</p>
+          <div class="eg-note">"Bakewell connects the film to classical tragedy, arguing that" is incomplete, so the quote flows naturally. No colon needed.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RULE 9: COLON BEFORE QUOTE -->
+  <div class="rule-block warn fade-in">
+    <div class="rule-number">Rule 9 <span class="error-tag">Common Error</span></div>
+    <h3 class="rule-title">Colon Before a Quote &bull; Signal Phrase Must Be a Complete Sentence</h3>
+    <div class="rule-body">
+      <p>A colon may introduce a quotation <strong>only when the signal phrase is a complete sentence</strong>. If your lead-in is an incomplete construction (such as "Bakewell notes that" or "According to Edelstein"), do not use a colon. Let the quotation flow directly.</p>
+      <div class="eg-stack">
+        <div class="eg eg-bad">
+          <span class="eg-tag">&#10007; Colon after incomplete lead-in</span>
+          <p>Bakewell notes that: "<em>Minority Report</em> is a legitimate child of Oedipus Tyrannus" (95).</p>
+          <div class="eg-note">"Bakewell notes that" is not a complete sentence. A colon cannot follow it.</div>
+        </div>
+        <div class="eg eg-good">
+          <span class="eg-tag">&#10003; No colon, quote flows naturally</span>
+          <p>Bakewell notes that "<em>Minority Report</em> is a legitimate child of Oedipus Tyrannus" (95).</p>
+        </div>
+        <div class="eg eg-alt">
+          <span class="eg-tag">&#10003; Colon correct after a complete sentence</span>
+          <p>Bakewell identifies the film's central structural conceit: "<em>Minority Report</em> is a legitimate child of Oedipus Tyrannus" (95).</p>
+          <div class="eg-note">"Bakewell identifies the film's central structural conceit" is a complete sentence, so the colon is correct.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RULE 10: PUNCTUATION INSIDE -->
+  <div class="rule-block warn fade-in">
+    <div class="rule-number">Rule 10 <span class="error-tag">Common Error</span></div>
+    <h3 class="rule-title">Punctuation Left Inside the Quotation Marks</h3>
+    <div class="rule-body">
+      <p>When a quotation is followed by a parenthetical citation, do <strong>not</strong> leave the original text's ending punctuation inside the closing quotation mark. The exceptions are <strong>question marks</strong> and <strong>exclamation marks</strong> that belong to the quoted material itself. These stay inside.</p>
+      <div class="eg-stack">
+        <div class="eg eg-bad">
+          <span class="eg-tag">&#10007; Original period left inside</span>
+          <p>Bakewell argues that the film "is a legitimate child of Oedipus Tyrannus." (95).</p>
+          <div class="eg-note">The period from the original text should not appear here, and this also creates double punctuation.</div>
+        </div>
+        <div class="eg eg-good">
+          <span class="eg-tag">&#10003; Original period removed</span>
+          <p>Bakewell argues that the film "is a legitimate child of Oedipus Tyrannus" (95).</p>
+        </div>
+        <div class="eg eg-alt">
+          <span class="eg-tag">&#10003; Exception, question mark stays inside</span>
+          <p>Eggert poses a central question about the film's closing image: "Does Anderton's reunion with his wife actually earn its optimism, or does the surveillance state simply recede into the background?"</p>
+          <div class="eg-note">Question marks from the original text stay inside the quotation marks. Since this is an HTML source with the author named in the signal phrase, no parenthetical follows.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RULE 11: NAME IN BOTH -->
+  <div class="rule-block warn fade-in">
+    <div class="rule-number">Rule 11 <span class="error-tag">Common Error</span></div>
+    <h3 class="rule-title">Author's Name Appearing in Both Signal Phrase and Citation</h3>
+    <div class="rule-body">
+      <p>The author's name belongs in <em>one place only</em>: either in the signal phrase or in the parenthetical citation, never in both. When the name appears in the signal phrase, the citation contains only the page number (PDF) or nothing (HTML). Repeating the name in both places is redundant and incorrect.</p>
+      <div class="eg-stack">
+        <div class="eg eg-bad">
+          <span class="eg-tag">&#10007; Name repeated in signal phrase and citation</span>
+          <p>Classicist Geoffrey Bakewell argues that the film "is a legitimate child of Oedipus Tyrannus" (Bakewell 95).</p>
+          <div class="eg-note">Author named in the signal phrase, so remove the name from the citation. Page number only: (95).</div>
+        </div>
+        <div class="eg eg-good">
+          <span class="eg-tag">&#10003; Correct, name in signal phrase only</span>
+          <p>Classicist Geoffrey Bakewell argues that the film "is a legitimate child of Oedipus Tyrannus" (95).</p>
+        </div>
+        <div class="eg eg-alt">
+          <span class="eg-tag">&#10003; Correct, name in citation only</span>
+          <p>One scholar connects the film directly to classical tragedy, arguing that it "is a legitimate child of Oedipus Tyrannus" (Bakewell 95).</p>
+          <div class="eg-note">No name in the signal phrase, so the last name must appear in the citation.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RULE 12: MISSING END PUNCT -->
+  <div class="rule-block warn fade-in">
+    <div class="rule-number">Rule 12 <span class="error-tag">Common Error</span></div>
+    <h3 class="rule-title">Missing End Punctuation After a Quote</h3>
+    <div class="rule-body">
+      <p>When a quotation ends your sentence, the sentence still needs its own closing punctuation (a <strong>period, semicolon, or colon</strong>) placed <em>after</em> the parenthetical citation. When there is no parenthetical citation (HTML source, author in signal phrase), the period goes inside the closing quotation mark instead.</p>
+      <div class="eg-stack">
+        <div class="eg eg-bad">
+          <span class="eg-tag">&#10007; Missing period after citation</span>
+          <p>Bakewell argues that the film "is a legitimate child of Oedipus Tyrannus" (95)</p>
+          <div class="eg-note">The sentence ends after the closing parenthesis with no period.</div>
+        </div>
+        <div class="eg eg-good">
+          <span class="eg-tag">&#10003; Correct, period after citation</span>
+          <p>Bakewell argues that the film "is a legitimate child of Oedipus Tyrannus" (95).</p>
+        </div>
+        <div class="eg eg-alt">
+          <span class="eg-tag">&#10003; Semicolon after citation, joining two clauses</span>
+          <p>Bakewell argues that the film "is a legitimate child of Oedipus Tyrannus" (95); this reading clarifies why the Precrime apparatus is doomed from its opening shot to become the very thing it claims to prevent.</p>
+          <div class="eg-note">A semicolon after the citation is correct when joining two independent clauses.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLOSING CALLOUT -->
+  <div class="callout fade-in" style="margin-top: 32px;">
+    <div class="callout-label">Next Steps</div>
+    <p>Once you have internalized these twelve rules, apply the same logic to your paraphrased material: the citation format is identical, only the quotation marks disappear. See <a href="mla-documentation-how-to-create-a-paraphrase.html">MLA Documentation: How to Create a Paraphrase</a> for the full treatment.</p>
+  </div>
+
+</div>
+</div>
+</body>
+</html>
