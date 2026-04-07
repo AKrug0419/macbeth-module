@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="identifier" content="dystopian-source-analysis"/>
+<meta name="editing_roles" content="teachers"/>
+<meta name="workflow_state" content="active"/>
+<title>Film Research Essay Source Analysis Assignment | ENC 1102 Dystopian Research Essay</title>
+<style>
+
+  /* ═══════════════════════════════════════════════
+     DESIGN TOKENS — Dystopian Research Essay Module
+     ═══════════════════════════════════════════════ */
+
+  @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap');
+
+  :root {
+    --bg-deep:       #565e6e;
+    --bg-surface:    #3e4555;
+    --bg-elevated:   #353c4b;
+    --bg-deepest:    #2b303c;
+    --border-subtle: #4a5264;
+    --border-mid:    #5c6478;
+
+    --accent:        #e8a832;
+    --accent-soft:   #e8a83228;
+    --accent-mid:    #e8a83258;
+    --accent-text:   #f5c865;
+
+    --teal:          #5ba8a0;
+    --teal-soft:     #5ba8a028;
+    --teal-mid:      #5ba8a058;
+    --teal-text:     #90d8d0;
+
+    --lavender:      #9a9cc0;
+    --lavender-soft: #9a9cc028;
+    --lavender-mid:  #9a9cc058;
+    --lavender-text: #d0d2f0;
+
+    --warn:          #f47878;
+    --warn-soft:     #f4787822;
+
+    --text-primary:  #f0f2f5;
+    --text-secondary:#cdd3dc;
+    --text-muted:    #9aa2b2;
+
+    /* SIFT colors (ADA-compliant) */
+    --sift-s:        #c26a8a;
+    --sift-s-text:   #f0b0c5;
+    --sift-i:        #5a80b8;
+    --sift-i-text:   #b0cce8;
+    --sift-f:        #5ba8a0;
+    --sift-f-text:   #90d8d0;
+    --sift-t:        #e8a832;
+    --sift-t-text:   #f5c865;
+
+    --font-display:  'Libre Baskerville', 'Georgia', serif;
+    --font-body:     'Source Sans Pro', 'Segoe UI', sans-serif;
+    --font-mono:     'IBM Plex Mono', 'Consolas', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg-deep);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--accent-text); text-decoration: underline; }
+  a:hover { color: #fff; }
+  strong, b { color: var(--text-primary); }
+  em, i { color: var(--text-secondary); }
+
+  .page-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 28px;
+  }
+
+  /* ═══ ANIMATIONS ═══ */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in { animation: fadeUp 0.5s ease both; }
+  .fade-d1 { animation-delay: 0.08s; }
+  .fade-d2 { animation-delay: 0.16s; }
+  .fade-d3 { animation-delay: 0.24s; }
+  .fade-d4 { animation-delay: 0.32s; }
+
+  /* ═══ HERO ═══ */
+  .hero {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-left: 4px solid var(--accent);
+    border-radius: 6px;
+    padding: 40px 44px 36px;
+    margin-bottom: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 220px; height: 220px;
+    background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent-text);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 12px;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: 32px;
+    color: #fff;
+    line-height: 1.25;
+    margin-bottom: 10px;
+  }
+  .hero-title em { font-style: italic; color: var(--accent-text); }
+  .hero-subtitle {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 640px;
+  }
+
+  /* ═══ SECTION HEADERS ═══ */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+    margin-top: 48px;
+  }
+  .section-badge {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--accent-text);
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-mid);
+    border-radius: 4px;
+    padding: 3px 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+  .section-badge.teal {
+    color: var(--teal-text);
+    background: var(--teal-soft);
+    border-color: var(--teal-mid);
+  }
+  .section-badge.lavender {
+    color: var(--lavender-text);
+    background: var(--lavender-soft);
+    border-color: var(--lavender-mid);
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    color: #fff;
+    line-height: 1.3;
+  }
+  .section-title em { font-style: italic; color: var(--accent-text); }
+
+  .section-rule {
+    border: 0;
+    border-top: 1px solid var(--border-subtle);
+    margin: 48px 0 0 0;
+  }
+
+  /* ═══ PROSE ═══ */
+  .prose {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    max-width: 720px;
+  }
+  .prose + .prose { margin-top: 14px; }
+  .prose strong { color: var(--text-primary); }
+
+  /* ═══ CALLOUT BOXES ═══ */
+  .callout {
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    border-left: 3px solid;
+    position: relative;
+    overflow: hidden;
+  }
+  .callout::after {
+    content: '';
+    position: absolute;
+    right: -30px; top: -30px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    pointer-events: none;
+  }
+  .callout.amber    { background: var(--accent-soft); border-color: var(--accent); }
+  .callout.teal     { background: var(--teal-soft); border-color: var(--teal); }
+  .callout.lavender { background: var(--lavender-soft); border-color: var(--lavender); }
+  .callout.warn     { background: var(--warn-soft); border-color: var(--warn); }
+  .callout-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+  .callout.amber .callout-label    { color: var(--accent-text); }
+  .callout.teal .callout-label     { color: var(--teal-text); }
+  .callout.lavender .callout-label { color: var(--lavender-text); }
+  .callout.warn .callout-label     { color: var(--warn); }
+  .callout p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+  }
+  .callout p + p { margin-top: 10px; }
+
+  /* ═══ OUTCOMES GRID ═══ */
+  .outcomes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-top: 14px;
+  }
+  .outcomes-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    padding: 22px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .outcomes-card::after {
+    content: '';
+    position: absolute;
+    right: -30px; bottom: -30px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+    pointer-events: none;
+  }
+  .outcomes-card-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-text);
+    margin-bottom: 12px;
+  }
+  .outcomes-card.teal .outcomes-card-label { color: var(--teal-text); }
+  .outcomes-list {
+    list-style: none;
+    padding: 0; margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+  .outcomes-list li {
+    position: relative;
+    padding-left: 18px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+  .outcomes-list li::before {
+    content: '\25C6';
+    color: var(--accent);
+    font-size: 9px;
+    position: absolute;
+    left: 0;
+    top: 5px;
+  }
+  .outcomes-card.teal .outcomes-list li::before { color: var(--teal); }
+
+  /* ═══ PART BLOCKS ═══ */
+  .part-header {
+    background: var(--bg-deepest);
+    border: 1px solid var(--border-subtle);
+    border-bottom: none;
+    border-radius: 6px 6px 0 0;
+    padding: 14px 24px;
+    margin-top: 36px;
+  }
+  .part-header-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-text);
+    margin-bottom: 2px;
+  }
+  .part-header-title {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .part-body {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    padding: 28px;
+  }
+
+  /* ═══ SOURCE SLOT ═══ */
+  .source-slot {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .source-slot:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .source-slot-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  .source-num {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .source-num.db  { background: var(--accent); }
+  .source-num.web { background: var(--teal); }
+  .source-type-label {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
+  }
+  .source-type-sub {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-style: italic;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+  .source-requirements {
+    padding-left: 52px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .source-req {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+  .source-req-bullet {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    margin-top: 9px;
+  }
+  .source-req-bullet.web { background: var(--teal); }
+  .source-req strong { color: var(--text-primary); }
+
+  .nested-list {
+    margin: 8px 0 0 4px;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .nested-list li {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* ═══ SIFT PROMPTS ═══ */
+  .sift-prompts {
+    margin-top: 24px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .sift-prompts-header {
+    padding: 12px 22px;
+    background: var(--bg-deepest);
+    border-bottom: 1px solid var(--border-subtle);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--accent-text);
+  }
+  .sift-prompt-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .sift-prompt-item {
+    display: flex;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .sift-prompt-item:last-child { border-bottom: none; }
+  .sift-prompt-letter {
+    width: 52px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .sift-prompt-item.s .sift-prompt-letter { background: var(--sift-s); }
+  .sift-prompt-item.i .sift-prompt-letter { background: var(--sift-i); }
+  .sift-prompt-item.f .sift-prompt-letter { background: var(--sift-f); }
+  .sift-prompt-item.t .sift-prompt-letter { background: var(--sift-t); }
+  .sift-prompt-body {
+    padding: 16px 20px;
+    flex: 1;
+  }
+  .sift-prompt-move {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .sift-prompt-item.s .sift-prompt-move { color: var(--sift-s-text); }
+  .sift-prompt-item.i .sift-prompt-move { color: var(--sift-i-text); }
+  .sift-prompt-item.f .sift-prompt-move { color: var(--sift-f-text); }
+  .sift-prompt-item.t .sift-prompt-move { color: var(--sift-t-text); }
+  .sift-prompt-question {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.6;
+    margin-bottom: 4px;
+  }
+  .sift-prompt-note {
+    font-size: 13px;
+    font-style: italic;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+
+  /* ═══ FORM SAMPLE ═══ */
+  .form-sample {
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 32px 0 8px;
+    background: var(--bg-surface);
+    box-shadow: 0 2px 14px rgba(0,0,0,0.18);
+  }
+  .form-sample-banner {
+    display: flex;
+    align-items: stretch;
+    background: var(--bg-deepest);
+  }
+  .form-sample-banner-left {
+    padding: 18px 24px;
+    flex: 0 0 56%;
+    border-right: 1px solid var(--border-subtle);
+  }
+  .form-sample-banner-right {
+    padding: 14px 22px;
+    flex: 1;
+  }
+  .form-sample-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-text);
+    margin-bottom: 5px;
+  }
+  .form-sample-title {
+    font-family: var(--font-display);
+    font-size: 19px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .form-sample-submit-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--teal-text);
+    margin-bottom: 6px;
+  }
+  .form-sample-submit-item {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+  .form-sample-instructions {
+    background: var(--bg-elevated);
+    border-left: 3px solid var(--accent);
+    padding: 14px 22px;
+    font-size: 14px;
+    font-style: italic;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+  .form-sample-instructions strong {
+    font-style: normal;
+    color: var(--accent-text);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+  }
+  .form-sample-body {
+    padding: 26px 28px 30px;
+  }
+
+  .form-sample-part {
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 10px 0;
+    margin: 26px 0 18px;
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .form-sample-part:first-child { margin-top: 0; }
+  .form-sample-part-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--accent-text);
+  }
+  .form-sample-part-sub {
+    font-size: 13px;
+    font-style: italic;
+    color: var(--text-muted);
+  }
+
+  .form-sample-src {
+    border-left: 3px solid var(--accent);
+    padding: 4px 0 4px 14px;
+    margin: 22px 0 10px;
+  }
+  .form-sample-src.web { border-left-color: var(--teal); }
+  .form-sample-src-label {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .form-sample-src-sub {
+    font-size: 13px;
+    font-style: italic;
+    color: var(--text-muted);
+  }
+
+  .form-sample-flabel {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-text);
+    margin-bottom: 3px;
+  }
+  .form-sample-flabel.web { color: var(--teal-text); }
+  .form-sample-flabel.lav { color: var(--lavender-text); }
+  .form-sample-fnote {
+    font-size: 13px;
+    font-style: italic;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    line-height: 1.55;
+  }
+  .form-sample-field {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: 5px;
+    padding: 14px 18px;
+    margin-bottom: 16px;
+  }
+  .sample-citation {
+    font-family: var(--font-display);
+    font-size: 13.5px;
+    color: var(--text-primary);
+    line-height: 1.95;
+    padding-left: 32px;
+    text-indent: -32px;
+  }
+  .sample-citation em { color: var(--text-primary); }
+  .sample-response-text {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+  }
+
+  /* SIFT form blocks (sample) */
+  .fs-sift {
+    border: 1px solid var(--border-subtle);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+  .fs-sift-hdr {
+    display: flex;
+    align-items: stretch;
+  }
+  .fs-sift-badge {
+    width: 56px;
+    min-width: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .fs-sift-badge.s { background: var(--sift-s); }
+  .fs-sift-badge.i { background: var(--sift-i); }
+  .fs-sift-badge.f { background: var(--sift-f); }
+  .fs-sift-badge.t { background: var(--sift-t); }
+  .fs-sift-q {
+    padding: 12px 16px;
+    flex: 1;
+    background: var(--bg-deepest);
+  }
+  .fs-sift-move {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .fs-sift-move.s { color: var(--sift-s-text); }
+  .fs-sift-move.i { color: var(--sift-i-text); }
+  .fs-sift-move.f { color: var(--sift-f-text); }
+  .fs-sift-move.t { color: var(--sift-t-text); }
+  .fs-sift-qtext {
+    font-size: 13.5px;
+    color: var(--text-primary);
+    margin-left: 4px;
+  }
+  .fs-sift-note {
+    font-size: 12.5px;
+    font-style: italic;
+    color: var(--text-muted);
+    margin-top: 3px;
+    line-height: 1.55;
+  }
+  .fs-sift-resp {
+    background: var(--bg-elevated);
+    padding: 14px 18px 14px 74px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+  }
+  .fs-sift-resp em { color: var(--text-primary); font-style: italic; }
+
+  /* Checklist */
+  .form-sample-cl {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 26px;
+  }
+  .form-sample-cl-col {
+    background: var(--bg-elevated);
+    padding: 16px 20px;
+  }
+  .form-sample-cl-col:first-child { border-right: 1px solid var(--border-subtle); }
+  .form-sample-cl-hdr {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--accent-text);
+    margin-bottom: 12px;
+    padding-bottom: 9px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .form-sample-cl-item {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    padding: 3px 0;
+    display: flex;
+    gap: 8px;
+  }
+  .form-sample-cl-chk {
+    color: var(--teal-text);
+    flex-shrink: 0;
+  }
+
+  /* ═══ META GRID ═══ */
+  .meta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 18px;
+  }
+  .meta-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    padding: 18px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .meta-card::after {
+    content: '';
+    position: absolute;
+    right: -25px; bottom: -25px;
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+    pointer-events: none;
+  }
+  .meta-card-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--accent-text);
+    margin-bottom: 8px;
+  }
+  .meta-card-value {
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+  .meta-card-value strong { color: var(--text-primary); font-weight: 600; }
+
+  /* ═══ RESOURCES LIST ═══ */
+  .resources-list {
+    list-style: none;
+    padding: 0;
+    margin: 14px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .resources-list li {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  .resource-arrow {
+    font-size: 12px;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+  .resource-link {
+    font-size: 15px;
+    color: var(--accent-text);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-mid);
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .resource-link:hover { color: #fff; border-color: #fff; }
+
+  /* ═══ RESPONSIVE ═══ */
+  @media (max-width: 700px) {
+    .page-wrap { padding: 28px 16px; }
+    .hero { padding: 28px 24px 24px; }
+    .outcomes-grid, .meta-grid, .form-sample-cl { grid-template-columns: 1fr; }
+    .form-sample-cl-col:first-child { border-right: none; border-bottom: 1px solid var(--border-subtle); }
+    .source-requirements { padding-left: 0; }
+    .form-sample-banner { flex-direction: column; }
+    .form-sample-banner-left { border-right: none; border-bottom: 1px solid var(--border-subtle); }
+  }
+
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+<!-- ═══ HERO ═══ -->
+<header class="hero fade-in" role="banner">
+  <div class="hero-label">Dystopian Research Essay &middot; ENC 1102</div>
+  <h1 class="hero-title">Film Research Essay <em>Source Analysis</em> Assignment</h1>
+  <p class="hero-subtitle">Locate your three secondary sources and demonstrate how you evaluated the ones you found on the internet.</p>
+</header>
+
+<!-- ═══════════════════════════════════
+     SECTION ONE: LEARNING OUTCOMES
+═══════════════════════════════════ -->
+<section aria-labelledby="outcomes-heading" class="fade-in fade-d1">
+  <div class="section-header">
+    <span class="section-badge">SEC &middot; 01</span>
+    <h2 class="section-title" id="outcomes-heading">Learning Outcomes &amp; <em>Objectives</em></h2>
+  </div>
+
+  <div class="outcomes-grid">
+    <div class="outcomes-card">
+      <div class="outcomes-card-label">Course Learning Outcomes</div>
+      <ul class="outcomes-list">
+        <li>Demonstrate information literacy.</li>
+        <li>Synthesize information for a specific rhetorical aim.</li>
+        <li>Apply critical reading skills.</li>
+        <li>Document sources in accordance with a recognized documentation style.</li>
+      </ul>
+    </div>
+    <div class="outcomes-card teal">
+      <div class="outcomes-card-label">By the End of This Assignment</div>
+      <ul class="outcomes-list">
+        <li>Use academic databases to locate relevant film criticism and scholarship.</li>
+        <li>Use internet search strategies to locate credible secondary sources.</li>
+        <li>Apply the SIFT method and lateral reading to evaluate internet sources.</li>
+        <li>Format MLA citations for sources from databases and the web.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<!-- ═══════════════════════════════════
+     SECTION TWO: ASSIGNMENT OVERVIEW
+═══════════════════════════════════ -->
+<section aria-labelledby="overview-heading" class="fade-in fade-d2">
+  <div class="section-header">
+    <span class="section-badge teal">SEC &middot; 02</span>
+    <h2 class="section-title" id="overview-heading">Two Parts, <em>Three Sources</em></h2>
+  </div>
+
+  <p class="prose">For your Dystopian Film Research Essay, you will be working with <strong>three secondary sources</strong>. You will locate them using two different methods: one through an <strong>academic database</strong>, and two through <strong>internet research</strong>, using the search strategies and evaluation tools you studied in this module.</p>
+  <p class="prose">This assignment has two parts. In <strong>Part One</strong>, you will submit MLA formatted citations for all three sources. In <strong>Part Two</strong>, you will write a brief SIFT based evaluation for each of your two internet sources, demonstrating how you verified them before deciding to use them.</p>
+
+  <div class="callout lavender">
+    <div class="callout-label">A Note on Source Types</div>
+    <p>All three sources should be <strong>film criticism or film scholarship</strong>. These are secondary sources that analyze, interpret, or discuss the film (or the filmmaker's work) you are writing about. Your sources should be written by scholars, critics, or journalists with relevant expertise, published in academic or established critical contexts, and directly relevant to your essay's argument about <em>Children of Men</em>, <em>Pan's Labyrinth</em>, or <em>The Matrix</em>.</p>
+  </div>
+
+  <!-- PART ONE -->
+  <div class="part-header">
+    <div class="part-header-eyebrow">Part One</div>
+    <div class="part-header-title">Your Three MLA Citations</div>
+  </div>
+  <div class="part-body">
+    <p class="prose" style="margin-bottom: 22px;">Format an MLA style Works Cited entry for each of your three sources. Use the database's <strong>citation tool</strong> for your database source, and review the result carefully before pasting it in. For your internet sources, format your MLA citations following MLA 9th edition guidelines for online sources.</p>
+
+    <!-- Source 1: Database -->
+    <div class="source-slot">
+      <div class="source-slot-header">
+        <div class="source-num db">1</div>
+        <div>
+          <div class="source-type-label">Database Source</div>
+          <div class="source-type-sub">Film criticism or scholarship located through an academic database</div>
+        </div>
+      </div>
+      <div class="source-requirements">
+        <div class="source-req">
+          <div class="source-req-bullet"></div>
+          <div>Use one of the following databases available through Valencia College's library to locate a piece of film criticism or scholarship about your chosen film or director:
+            <ul class="nested-list">
+              <li>JSTOR</li>
+              <li>Academic Search Complete</li>
+              <li>Academic OneFile</li>
+              <li>Humanities Source</li>
+            </ul>
+          </div>
+        </div>
+        <div class="source-req">
+          <div class="source-req-bullet"></div>
+          <div><strong>How to Access Academic Databases:</strong>
+            <ol class="nested-list" style="list-style: decimal;">
+              <li>Click <strong>Library</strong> on the left in the Navigation menu.</li>
+              <li>Click <strong>Open in New Tab</strong>. If needed, log in using your MYVC credentials.</li>
+              <li>Click on <strong>Databases A-Z</strong> at the top.</li>
+              <li>In the Filters bar above the alphabet, click <strong>Subject</strong> and scroll to <strong>Film &amp; Media Studies</strong> (or <strong>Literature &amp; Language</strong> for broader humanities databases).</li>
+              <li>Click <strong>Search</strong>.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="source-req">
+          <div class="source-req-bullet"></div>
+          <div>Use the database's <strong>citation tool</strong> to generate your MLA citation, then review it for formatting accuracy before including it here. Database citation tools sometimes misformat italics, punctuation, or access dates, so always proofread the result against MLA guidelines.</div>
+        </div>
+        <div class="source-req">
+          <div class="source-req-bullet"></div>
+          <div>In one or two sentences following the citation, briefly explain <strong>how this source relates to your essay's argument</strong>: what does it discuss, and how do you plan to use it?</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Source 2: Internet -->
+    <div class="source-slot">
+      <div class="source-slot-header">
+        <div class="source-num web">2</div>
+        <div>
+          <div class="source-type-label">Internet Source One</div>
+          <div class="source-type-sub">Film criticism located through internet research</div>
+        </div>
+      </div>
+      <div class="source-requirements">
+        <div class="source-req">
+          <div class="source-req-bullet web"></div>
+          <div>Use <strong>Google Scholar</strong>, regular Google, or an AI assisted keyword search (see the <em>AI and Academic Research</em> page for appropriate AI use) to locate a second piece of film criticism about your chosen film or filmmaker.</div>
+        </div>
+        <div class="source-req">
+          <div class="source-req-bullet web"></div>
+          <div>Format your MLA citation for this source following MLA 9th edition guidelines for online sources. Include the author (if listed), article or page title, website name, publisher or sponsor (if different from the site name), publication or last updated date (if available), URL, and access date.</div>
+        </div>
+        <div class="source-req">
+          <div class="source-req-bullet web"></div>
+          <div>This source will be evaluated in <strong>Part Two</strong>.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Source 3: Internet -->
+    <div class="source-slot">
+      <div class="source-slot-header">
+        <div class="source-num web">3</div>
+        <div>
+          <div class="source-type-label">Internet Source Two</div>
+          <div class="source-type-sub">Film criticism located through internet research</div>
+        </div>
+      </div>
+      <div class="source-requirements">
+        <div class="source-req">
+          <div class="source-req-bullet web"></div>
+          <div>Locate a third piece of film criticism using the same internet research methods. This source should be <strong>from a different website or publication</strong> than Source 2.</div>
+        </div>
+        <div class="source-req">
+          <div class="source-req-bullet web"></div>
+          <div>Format your MLA citation for this source following MLA 9th edition guidelines for online sources, with all of the same fields listed above.</div>
+        </div>
+        <div class="source-req">
+          <div class="source-req-bullet web"></div>
+          <div>This source will also be evaluated in <strong>Part Two</strong>.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PART TWO -->
+  <div class="part-header" style="margin-top: 36px;">
+    <div class="part-header-eyebrow">Part Two</div>
+    <div class="part-header-title">SIFT Evaluation of Your Internet Sources</div>
+  </div>
+  <div class="part-body">
+    <p class="prose" style="margin-bottom: 18px;">For each of your two internet sources, write a brief evaluation using the four prompts below. Work through each prompt in order, labeling your response for each one. Your evaluation of each source should be at least <strong>150 words</strong>.</p>
+    <p class="prose" style="margin-bottom: 22px;">You are demonstrating that you actually investigated these sources before deciding to use them, not just that they look credible at first glance. Your evaluations should be specific: name the websites, publications, or search results you found during your lateral investigation, not just general impressions.</p>
+
+    <div class="sift-prompts" aria-label="SIFT evaluation prompts">
+      <div class="sift-prompts-header">Answer Each of the Following for Both Internet Sources</div>
+      <ul class="sift-prompt-list">
+        <li class="sift-prompt-item s">
+          <div class="sift-prompt-letter">S</div>
+          <div class="sift-prompt-body">
+            <div class="sift-prompt-move">Stop &middot; How You Found It</div>
+            <div class="sift-prompt-question">What search engine and search terms did you use to find this source? What was your initial impression of it, and what made you decide it was worth investigating further?</div>
+            <div class="sift-prompt-note">If you used an AI tool to generate search keywords, briefly describe how you used it and what terms it suggested.</div>
+          </div>
+        </li>
+        <li class="sift-prompt-item i">
+          <div class="sift-prompt-letter">I</div>
+          <div class="sift-prompt-body">
+            <div class="sift-prompt-move">Investigate &middot; Your Lateral Research</div>
+            <div class="sift-prompt-question">What did you find when you left the page and searched for the source, publication, or author in a new browser tab? Who publishes this source, and what did other sources tell you about its credibility?</div>
+            <div class="sift-prompt-note">Be specific: name what you searched for and what you found. "It looked legitimate" is not a sufficient answer here.</div>
+          </div>
+        </li>
+        <li class="sift-prompt-item f">
+          <div class="sift-prompt-letter">F</div>
+          <div class="sift-prompt-body">
+            <div class="sift-prompt-move">Find &middot; Corroboration</div>
+            <div class="sift-prompt-question">What other credible sources corroborate this source's focus or arguments? Does the scholarly conversation about your film support the general direction this source takes?</div>
+            <div class="sift-prompt-note">You do not need sources that make exactly the same argument, just evidence that the critical conversation this source participates in is real and established.</div>
+          </div>
+        </li>
+        <li class="sift-prompt-item t">
+          <div class="sift-prompt-letter">T</div>
+          <div class="sift-prompt-body">
+            <div class="sift-prompt-move">Trace &middot; Credibility Conclusion</div>
+            <div class="sift-prompt-question">Based on your investigation, what specific evidence makes you confident this source is credible and appropriate for an academic research essay? What would have disqualified it?</div>
+            <div class="sift-prompt-note">Consider: author credentials, publisher reputation, citation practices within the source, and whether any claims seemed unverifiable.</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- SAMPLE RESPONSE — FORM MIRROR -->
+    <div class="form-sample" aria-label="Complete sample assignment response">
+
+      <div class="form-sample-banner">
+        <div class="form-sample-banner-left">
+          <div class="form-sample-eyebrow">ENC 1102 &middot; Dystopian Research Essay</div>
+          <div class="form-sample-title">Source Analysis Assignment</div>
+        </div>
+        <div class="form-sample-banner-right">
+          <div class="form-sample-submit-label">What You'll Submit</div>
+          <div class="form-sample-submit-item">Part One: 3 MLA citations</div>
+          <div class="form-sample-submit-item">Part Two: 2 SIFT evaluations (150 words minimum each)</div>
+        </div>
+      </div>
+
+      <div class="form-sample-instructions">
+        <strong>Sample submission</strong> &nbsp; Alfonso Cuar&oacute;n, <em>Children of Men</em> (2006). This is a complete, model level response for both parts of the assignment. Use it as a guide for format, length, and depth.
+      </div>
+
+      <div class="form-sample-body">
+
+        <!-- PART ONE -->
+        <div class="form-sample-part">
+          <span class="form-sample-part-label">Part One &middot; Your Three MLA Citations</span>
+          <span class="form-sample-part-sub">One database source and two internet sources</span>
+        </div>
+
+        <!-- Source 1: Database -->
+        <div class="form-sample-src">
+          <span class="form-sample-src-label">Source 1</span>
+          <span class="form-sample-src-sub"> &middot; Database Source</span>
+        </div>
+        <div class="form-sample-flabel">MLA Citation</div>
+        <div class="form-sample-fnote">Use the database's citation tool. Apply double spacing and a hanging indent to the entry.</div>
+        <div class="form-sample-field">
+          <div class="sample-citation">Amago, Samuel. "Ethics, Aesthetics, and the Future in Alfonso Cuar&oacute;n's <em>Children of Men</em>." <em>Discourse</em>, vol. 32, no. 2, Spring 2010, pp. 212-235. <em>Academic OneFile</em>, link.gale.com/apps/doc/A253058624/AONE.</div>
+        </div>
+        <div class="form-sample-flabel lav">How does this source relate to your argument?</div>
+        <div class="form-sample-fnote">In one or two sentences, explain what this source discusses and how you plan to use it.</div>
+        <div class="form-sample-field">
+          <span class="sample-response-text">Amago argues that Cuar&oacute;n's film mobilizes its visual aesthetic in the service of a sustained political critique, organizing its dystopian imagery around a structuring tension between the foreground action and the background environment. I plan to draw on Amago's analysis of the film's long takes and background detail to support my argument that the camera in <em>Children of Men</em> trains viewers to attend to political conditions the protagonist himself ignores.</span>
+        </div>
+
+        <!-- Source 2: Internet 1 -->
+        <div class="form-sample-src web">
+          <span class="form-sample-src-label">Source 2</span>
+          <span class="form-sample-src-sub"> &middot; Internet Source One</span>
+        </div>
+        <div class="form-sample-flabel web">MLA Citation</div>
+        <div class="form-sample-fnote">Format using MLA 9th edition guidelines for online sources. Double space and apply a hanging indent.</div>
+        <div class="form-sample-field">
+          <div class="sample-citation">Ogrodnik, Ben. "Focalisation Realism and Narrative Asymmetry in Alfonso Cuar&oacute;n's <em>Children of Men</em>." <em>Senses of Cinema</em>, no. 71, June 2014, www.sensesofcinema.com/2014/feature-articles/focalization-realism-and-narrative-asymmetry-in-alfonso-cuarons-children-of-men/. Accessed 4 Apr. 2026.</div>
+        </div>
+
+        <!-- Source 3: Internet 2 -->
+        <div class="form-sample-src web">
+          <span class="form-sample-src-label">Source 3</span>
+          <span class="form-sample-src-sub"> &middot; Internet Source Two</span>
+        </div>
+        <div class="form-sample-flabel web">MLA Citation</div>
+        <div class="form-sample-fnote">Format using MLA 9th edition guidelines for online sources. Double space and apply a hanging indent.</div>
+        <div class="form-sample-field">
+          <div class="sample-citation">Jacobson, Gavin. "Why <em>Children of Men</em> Haunts the Present Moment." <em>New Statesman</em>, 1 July 2020, www.newstatesman.com/culture/film/2020/07/children-of-men-alfonso-cuaron-2006-apocalypse-coronavirus. Accessed 4 Apr. 2026.</div>
+        </div>
+
+        <!-- PART TWO -->
+        <div class="form-sample-part">
+          <span class="form-sample-part-label">Part Two &middot; SIFT Evaluations</span>
+          <span class="form-sample-part-sub">Complete a SIFT evaluation for each internet source</span>
+        </div>
+        <p style="font-size: 13.5px; font-style: italic; color: var(--text-muted); margin-bottom: 18px; line-height: 1.65;">For each source, all four SIFT letters are addressed in order. Responses name specific search terms, websites, and publications, not just general impressions.</p>
+
+        <!-- SIFT: Source 2 (Ogrodnik) -->
+        <div class="form-sample-src web">
+          <span class="form-sample-src-label">Internet Source One (Source 2)</span>
+          <span class="form-sample-src-sub"> &middot; SIFT Evaluation</span>
+        </div>
+
+        <div class="fs-sift">
+          <div class="fs-sift-hdr">
+            <div class="fs-sift-badge s">S</div>
+            <div class="fs-sift-q">
+              <span class="fs-sift-move s">Stop</span> <span class="fs-sift-qtext">What search engine and search terms did you use? What was your first impression?</span>
+              <div class="fs-sift-note">If you used an AI tool to suggest keywords, briefly describe how and what terms it offered.</div>
+            </div>
+          </div>
+          <div class="fs-sift-resp">I searched Google using the terms <em>Children of Men Cuar&oacute;n long take camera scholarly analysis</em>. The first page returned a mix of fan blogs, news features, and one result from a site called <em>Senses of Cinema</em>. The URL ended in .com but the page title described a feature article on focalisation and narrative asymmetry in the film, which sounded considerably more analytical than the surrounding results. The article had a named author, footnotes, and a list of works cited at the bottom, which made me decide it was worth investigating further.</div>
+        </div>
+
+        <div class="fs-sift">
+          <div class="fs-sift-hdr">
+            <div class="fs-sift-badge i">I</div>
+            <div class="fs-sift-q">
+              <span class="fs-sift-move i">Investigate</span> <span class="fs-sift-qtext">What did you find when you left the page and searched the source or author in a new tab?</span>
+              <div class="fs-sift-note">Name the specific websites, publications, or results you found. "It looked legitimate" is not sufficient.</div>
+            </div>
+          </div>
+          <div class="fs-sift-resp">I opened a new tab and searched <em>Senses of Cinema journal academic peer reviewed</em>. I learned that <em>Senses of Cinema</em> is an independent, online quarterly film journal founded in 1999 in Australia, with an international editorial board and an advisory board that includes recognized film scholars. The Wikipedia entry on the journal cited its inclusion in academic film studies course syllabi and described its editorial review process. I then searched for Ben Ogrodnik and found that he has published peer reviewed work on film and media in venues including <em>Film Criticism</em> and has been listed as a graduate scholar at the University of Pittsburgh. His other Senses of Cinema essays appeared on the same site and dealt with similar topics in narrative film theory.</div>
+        </div>
+
+        <div class="fs-sift">
+          <div class="fs-sift-hdr">
+            <div class="fs-sift-badge f">F</div>
+            <div class="fs-sift-q">
+              <span class="fs-sift-move f">Find</span> <span class="fs-sift-qtext">What other credible sources corroborate this source's focus or arguments?</span>
+              <div class="fs-sift-note">You do not need exact agreement, just evidence the critical conversation it joins is real and established.</div>
+            </div>
+          </div>
+          <div class="fs-sift-resp">My JSTOR search for <em>Children of Men long take Cuar&oacute;n</em> returned several articles discussing the film's camera technique and political critique, including the Samuel Amago article in <em>Discourse</em> that I am using as my database source. Both the Amago and the Ogrodnik essays foreground the relationship between camera movement and political meaning in the film, even though they reach somewhat different conclusions about how the spectator is positioned. The critical conversation Ogrodnik is participating in is clearly active and ongoing.</div>
+        </div>
+
+        <div class="fs-sift">
+          <div class="fs-sift-hdr">
+            <div class="fs-sift-badge t">T</div>
+            <div class="fs-sift-q">
+              <span class="fs-sift-move t">Trace</span> <span class="fs-sift-qtext">What specific evidence makes you confident this source is credible for academic use?</span>
+              <div class="fs-sift-note">Consider: author credentials, publisher reputation, citation practices, and any unverifiable claims.</div>
+            </div>
+          </div>
+          <div class="fs-sift-resp">I am confident this source is appropriate for academic use for three reasons: <em>Senses of Cinema</em> is an established film studies journal with an editorial board and a long publication history, the author has a verifiable graduate research profile and other peer reviewed work on film, and the article itself uses footnotes and an in text bibliography rather than unsupported assertions. What would have disqualified it: an anonymous author, a site with no editorial structure, or an article that just summarized the plot of the film without making an interpretive argument. None of those problems were present.</div>
+        </div>
+
+        <div style="height: 1px; background: var(--border-subtle); margin: 22px 0;"></div>
+
+        <!-- SIFT: Source 3 (Jacobson / New Statesman) -->
+        <div class="form-sample-src web">
+          <span class="form-sample-src-label">Internet Source Two (Source 3)</span>
+          <span class="form-sample-src-sub"> &middot; SIFT Evaluation</span>
+        </div>
+
+        <div class="fs-sift">
+          <div class="fs-sift-hdr">
+            <div class="fs-sift-badge s">S</div>
+            <div class="fs-sift-q">
+              <span class="fs-sift-move s">Stop</span> <span class="fs-sift-qtext">What search engine and search terms did you use? What was your first impression?</span>
+              <div class="fs-sift-note">If you used an AI tool to suggest keywords, briefly describe how and what terms it offered.</div>
+            </div>
+          </div>
+          <div class="fs-sift-resp">I used Google with the search terms <em>Children of Men contemporary politics dystopia essay 2020</em>. I asked an AI assistant for additional keywords and it suggested adding <em>capitalist realism</em> and <em>refugee crisis</em>, which narrowed my results. The article in <em>New Statesman</em> by Gavin Jacobson appeared on the first page. The headline argued that the film "haunts the present moment," which suggested a sustained interpretive argument rather than a list of trivia, and the byline identified a named writer, so it seemed worth a closer look.</div>
+        </div>
+
+        <div class="fs-sift">
+          <div class="fs-sift-hdr">
+            <div class="fs-sift-badge i">I</div>
+            <div class="fs-sift-q">
+              <span class="fs-sift-move i">Investigate</span> <span class="fs-sift-qtext">What did you find when you left the page and searched the source or author in a new tab?</span>
+              <div class="fs-sift-note">Name the specific websites, publications, or results you found. "It looked legitimate" is not sufficient.</div>
+            </div>
+          </div>
+          <div class="fs-sift-resp">In a new tab, I searched <em>New Statesman magazine credibility</em> and read its Wikipedia entry, which described it as a long established British weekly founded in 1913, known for political and cultural commentary. I then searched <em>Gavin Jacobson writer</em> and found his author page at <em>New Statesman</em>, where he is listed as a Senior Writer specializing in ideas and politics, with a substantial archive of essays. His byline also appeared on book reviews for <em>The New York Review of Books</em> and <em>Foreign Affairs</em>. None of the results I found suggested he was anonymous, undisclosed, or unaffiliated with established publications.</div>
+        </div>
+
+        <div class="fs-sift">
+          <div class="fs-sift-hdr">
+            <div class="fs-sift-badge f">F</div>
+            <div class="fs-sift-q">
+              <span class="fs-sift-move f">Find</span> <span class="fs-sift-qtext">What other credible sources corroborate this source's focus or arguments?</span>
+              <div class="fs-sift-note">You do not need exact agreement, just evidence the critical conversation it joins is real and established.</div>
+            </div>
+          </div>
+          <div class="fs-sift-resp">A search in JSTOR and Academic Search Complete for criticism that links <em>Children of Men</em> to contemporary politics returned multiple peer reviewed articles discussing the film's relevance to refugee policy, surveillance, and what theorists have called "capitalist realism," the same framework Jacobson invokes. Multiple academic essays cite Mark Fisher's book <em>Capitalist Realism</em> in connection with Cuar&oacute;n's film, which is the central reference Jacobson is drawing on. Jacobson's argument fits squarely within an established critical conversation rather than standing alone.</div>
+        </div>
+
+        <div class="fs-sift">
+          <div class="fs-sift-hdr">
+            <div class="fs-sift-badge t">T</div>
+            <div class="fs-sift-q">
+              <span class="fs-sift-move t">Trace</span> <span class="fs-sift-qtext">What specific evidence makes you confident this source is credible for academic use?</span>
+              <div class="fs-sift-note">Consider: author credentials, publisher reputation, citation practices, and any unverifiable claims.</div>
+            </div>
+          </div>
+          <div class="fs-sift-resp">The combination of a long established publication with an editorial process, a named senior writer with a verifiable byline at multiple reputable outlets, and an argument that draws on a recognizable theoretical framework makes me confident this source is appropriate for academic use. It is a journalistic essay rather than a peer reviewed scholarly article, so I plan to use it for context and argumentative framing rather than as my primary scholarly authority. What would have disqualified it: an unsigned post, a site with no editorial oversight, or claims about the film that I could not corroborate elsewhere. None of those problems were present.</div>
+        </div>
+
+        <!-- Checklist -->
+        <div class="form-sample-cl" role="table" aria-label="Pre submission checklist">
+          <div class="form-sample-cl-col">
+            <div class="form-sample-cl-hdr">Before You Submit &middot; Part One</div>
+            <div class="form-sample-cl-item"><span class="form-sample-cl-chk">&#x2611;</span> Three sources submitted (1 database + 2 internet)</div>
+            <div class="form-sample-cl-item"><span class="form-sample-cl-chk">&#x2611;</span> Citations formatted in MLA 9</div>
+            <div class="form-sample-cl-item"><span class="form-sample-cl-chk">&#x2611;</span> Citation tool used for database source</div>
+            <div class="form-sample-cl-item"><span class="form-sample-cl-chk">&#x2611;</span> Internet source citations formatted in MLA 9</div>
+            <div class="form-sample-cl-item"><span class="form-sample-cl-chk">&#x2611;</span> Relevance note included for Source 1</div>
+          </div>
+          <div class="form-sample-cl-col">
+            <div class="form-sample-cl-hdr">Before You Submit &middot; Part Two</div>
+            <div class="form-sample-cl-item"><span class="form-sample-cl-chk">&#x2611;</span> Both internet sources evaluated (Sources 2 and 3)</div>
+            <div class="form-sample-cl-item"><span class="form-sample-cl-chk">&#x2611;</span> All four SIFT letters addressed for each source</div>
+            <div class="form-sample-cl-item"><span class="form-sample-cl-chk">&#x2611;</span> Each evaluation is at least 150 words</div>
+            <div class="form-sample-cl-item"><span class="form-sample-cl-chk">&#x2611;</span> Responses are labeled S, I, F, and T</div>
+            <div class="form-sample-cl-item"><span class="form-sample-cl-chk">&#x2611;</span> Specific search terms and websites named in I</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<!-- ═══════════════════════════════════
+     SECTION THREE: GRADING & SUBMISSION
+═══════════════════════════════════ -->
+<section aria-labelledby="grading-heading" class="fade-in fade-d3">
+  <div class="section-header">
+    <span class="section-badge lavender">SEC &middot; 03</span>
+    <h2 class="section-title" id="grading-heading">Grading, Format, &amp; <em>Submission</em></h2>
+  </div>
+
+  <div class="callout amber">
+    <div class="callout-label">Grading</div>
+    <p>This assignment will be assessed on the accuracy of your MLA citations, the completeness of all three source entries in Part One, and the specificity and depth of your SIFT evaluations in Part Two. Evaluations that offer only general impressions without naming specific evidence from your lateral investigation will not receive full credit. There is no separate rubric for this assignment. Your instructor will provide written feedback directly on your document.</p>
+  </div>
+
+  <div class="meta-grid">
+    <div class="meta-card">
+      <div class="meta-card-label">Points</div>
+      <div class="meta-card-value">Worth a possible <strong>45 homework points</strong>.</div>
+    </div>
+    <div class="meta-card">
+      <div class="meta-card-label">Due Date</div>
+      <div class="meta-card-value"><strong>[Due Date TBD]</strong></div>
+    </div>
+    <div class="meta-card">
+      <div class="meta-card-label">Minimum Length</div>
+      <div class="meta-card-value"><strong>150 words</strong> per SIFT evaluation (Part Two). No minimum for Part One citations.</div>
+    </div>
+    <div class="meta-card">
+      <div class="meta-card-label">Grace Period</div>
+      <div class="meta-card-value">You will have <strong>two days</strong> after the due date to submit for full credit.</div>
+    </div>
+  </div>
+
+  <h3 style="font-family: var(--font-display); font-size: 18px; font-weight: 700; color: #fff; margin: 32px 0 12px;">Format &amp; Submission</h3>
+  <p class="prose">Word process your submission and upload it in <strong>.docx or .doc format</strong> (.doc is available in Office 365, Google Docs, and Apple Pages). Set up your document in MLA format. Organize your submission clearly: Part One first (all three citations with the one sentence relevance note for your database source), followed by Part Two (your SIFT evaluation for Internet Source 2, then your SIFT evaluation for Internet Source 3). Label each section.</p>
+</section>
+
+<hr class="section-rule">
+
+<!-- ═══════════════════════════════════
+     SECTION FOUR: RESOURCES
+═══════════════════════════════════ -->
+<section aria-labelledby="resources-heading" class="fade-in fade-d4">
+  <div class="section-header">
+    <span class="section-badge teal">SEC &middot; 04</span>
+    <h2 class="section-title" id="resources-heading">Module <em>Resources</em></h2>
+  </div>
+  <ul class="resources-list" role="list">
+    <li><span class="resource-arrow">&#x25C6;</span><a class="resource-link" href="#">Academic Research: Using the Internet</a></li>
+    <li><span class="resource-arrow">&#x25C6;</span><a class="resource-link" href="#">AI and Academic Research</a></li>
+    <li><span class="resource-arrow">&#x25C6;</span><a class="resource-link" href="#">Using Academic Databases for Film Research</a></li>
+    <li><span class="resource-arrow">&#x25C6;</span><a class="resource-link" href="#">MLA Documentation: Quoting &amp; Paraphrasing from Secondary Sources</a></li>
+    <li><span class="resource-arrow">&#x25C6;</span><a class="resource-link" href="#">Valencia College Library: Research Help</a></li>
+  </ul>
+</section>
+
+</div>
+
+</body>
+</html>
