@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="identifier" content="dystopian-drafting-revising"/>
+<meta name="editing_roles" content="teachers"/>
+<meta name="workflow_state" content="active"/>
+<title>The Writing Process: Drafting and Revising | ENC 1102 Dystopian Research Essay</title>
+<style>
+
+  /* ═══════════════════════════════════════════════
+     DESIGN TOKENS :: Dystopian Research Essay Module
+     ═══════════════════════════════════════════════ */
+
+  @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap');
+
+  :root {
+    --bg-deep:       #565e6e;
+    --bg-surface:    #3e4555;
+    --bg-elevated:   #353c4b;
+    --bg-deepest:    #2b303c;
+    --border-subtle: #4a5264;
+    --border-mid:    #5c6478;
+
+    --accent:        #e8a832;
+    --accent-soft:   #e8a83228;
+    --accent-mid:    #e8a83258;
+    --accent-text:   #f5c865;
+
+    --teal:          #5ba8a0;
+    --teal-soft:     #5ba8a028;
+    --teal-mid:      #5ba8a058;
+    --teal-text:     #90d8d0;
+
+    --lavender:      #9a9cc0;
+    --lavender-soft: #9a9cc028;
+    --lavender-mid:  #9a9cc058;
+    --lavender-text: #d0d2f0;
+
+    --warn:          #f47878;
+    --warn-soft:     #f4787822;
+
+    --text-primary:  #f0f2f5;
+    --text-secondary:#cdd3dc;
+    --text-muted:    #9aa2b2;
+
+    /* annotation rail colors (dark-mode adapted) */
+    --ann-struct-bg:     #3a4a40;
+    --ann-struct-text:   #b8d8c0;
+    --ann-struct-border: #5e7e62;
+    --ann-primary-bg:    #404754;
+    --ann-primary-text:  #c8d0dc;
+    --ann-primary-border:#6c7488;
+    --ann-secondary-bg:  #4a3e2a;
+    --ann-secondary-text:#f5c865;
+    --ann-secondary-border:#a07820;
+    --ann-analysis-bg:   #34424a;
+    --ann-analysis-text: #90d8d0;
+    --ann-analysis-border:#4a807a;
+
+    --hl-primary-bg:     #4a525e;
+    --hl-secondary-bg:   #5a4820;
+
+    --font-display:  'Libre Baskerville', 'Georgia', serif;
+    --font-body:     'Source Sans Pro', 'Segoe UI', sans-serif;
+    --font-mono:     'IBM Plex Mono', 'Consolas', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg-deep);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-wrap: break-word;
+  }
+
+  a { color: var(--accent-text); text-decoration: underline; }
+  a:hover { color: #fff; }
+  strong, b { color: var(--text-primary); }
+  em, i { color: var(--text-secondary); }
+
+  /* Light-background sample essay: italics must be dark for contrast (WCAG AA) */
+  .essay-col em, .essay-col i,
+  .essay-col strong, .essay-col b,
+  .mla-header em, .mla-header i,
+  .mla-header strong, .mla-header b,
+  .wc-entry-col em, .wc-entry-col i,
+  .wc-entry-col strong, .wc-entry-col b,
+  .wc-title em, .wc-title i {
+    color: #0a0a0a;
+    font-weight: inherit;
+  }
+  .essay-col strong, .essay-col b,
+  .mla-header strong, .mla-header b,
+  .wc-entry-col strong, .wc-entry-col b { font-weight: 700; }
+
+  .page-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 28px;
+  }
+
+  /* ═══ ANIMATIONS ═══ */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in { animation: fadeUp 0.5s ease both; }
+  .fade-d1 { animation-delay: 0.08s; }
+  .fade-d2 { animation-delay: 0.16s; }
+  .fade-d3 { animation-delay: 0.24s; }
+  .fade-d4 { animation-delay: 0.32s; }
+
+  /* ═══ HERO ═══ */
+  .hero {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-left: 4px solid var(--accent);
+    border-radius: 6px;
+    padding: 40px 44px 36px;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 220px; height: 220px;
+    background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent-text);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 12px;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(24px, 4.2vw, 32px);
+    color: #fff;
+    line-height: 1.25;
+    margin-bottom: 10px;
+    overflow-wrap: break-word;
+  }
+  .hero-title em { font-style: italic; color: var(--accent-text); }
+  .hero-subtitle {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 640px;
+    font-style: italic;
+  }
+
+  /* ═══ STAGE STRIP ═══ */
+  .stage-strip {
+    background: var(--bg-deepest);
+    border: 1px solid var(--border-subtle);
+    border-top: 3px solid var(--accent);
+    border-radius: 6px;
+    display: flex;
+    margin-bottom: 48px;
+    overflow: hidden;
+  }
+  .stage-item {
+    flex: 1;
+    padding: 14px 10px;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+    border-right: 1px solid var(--border-subtle);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .stage-item:last-child { border-right: none; }
+  .stage-item.active {
+    background: var(--accent-soft);
+    color: var(--accent-text);
+  }
+  .stage-num  { font-size: 9px; opacity: 0.7; text-transform: uppercase; letter-spacing: 0.1em; }
+  .stage-name { font-size: 12px; font-weight: 600; }
+
+  /* ═══ SECTION HEADERS ═══ */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+    margin-top: 48px;
+  }
+  .section-badge {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--accent-text);
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-mid);
+    border-radius: 4px;
+    padding: 3px 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+  .section-badge.teal {
+    color: var(--teal-text);
+    background: var(--teal-soft);
+    border-color: var(--teal-mid);
+  }
+  .section-badge.lavender {
+    color: var(--lavender-text);
+    background: var(--lavender-soft);
+    border-color: var(--lavender-mid);
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(18px, 3vw, 22px);
+    color: #fff;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+  }
+  .section-title em { font-style: italic; color: var(--accent-text); }
+  .section-rule {
+    border: 0;
+    border-top: 1px solid var(--border-subtle);
+    margin: 48px 0 0 0;
+  }
+
+  /* ═══ PROSE ═══ */
+  .prose {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    max-width: 720px;
+  }
+  .prose + .prose { margin-top: 14px; }
+  .prose strong { color: var(--text-primary); }
+
+  /* ═══ CALLOUT BOXES ═══ */
+  .callout {
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    border-left: 3px solid;
+    position: relative;
+    overflow: hidden;
+  }
+  .callout::after {
+    content: '';
+    position: absolute;
+    right: -30px; top: -30px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    pointer-events: none;
+  }
+  .callout.amber    { background: var(--accent-soft); border-color: var(--accent); }
+  .callout.teal     { background: var(--teal-soft); border-color: var(--teal); }
+  .callout.lavender { background: var(--lavender-soft); border-color: var(--lavender); }
+  .callout-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+  .callout.amber .callout-label    { color: var(--accent-text); }
+  .callout.teal .callout-label     { color: var(--teal-text); }
+  .callout.lavender .callout-label { color: var(--lavender-text); }
+  .callout p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+  }
+  .callout p + p { margin-top: 10px; }
+  .callout p strong { color: var(--text-primary); }
+
+  /* ═══ LEGEND GRID ═══ */
+  .legend-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin: 22px 0 24px;
+  }
+  .legend-card {
+    border-radius: 6px;
+    padding: 12px 14px;
+    border: 1px solid;
+    position: relative;
+  }
+  .legend-card.struct    { background: var(--ann-struct-bg);     border-color: var(--ann-struct-border); }
+  .legend-card.primary   { background: var(--ann-primary-bg);    border-color: var(--ann-primary-border); }
+  .legend-card.secondary { background: var(--ann-secondary-bg);  border-color: var(--ann-secondary-border); }
+  .legend-card.analysis  { background: var(--ann-analysis-bg);   border-color: var(--ann-analysis-border); }
+  .legend-key {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 5px;
+  }
+  .legend-card.struct    .legend-key { color: var(--ann-struct-text); }
+  .legend-card.primary   .legend-key { color: var(--ann-primary-text); }
+  .legend-card.secondary .legend-key { color: var(--ann-secondary-text); }
+  .legend-card.analysis  .legend-key { color: var(--ann-analysis-text); }
+  .legend-desc {
+    font-family: var(--font-body);
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+  }
+
+  /* ═══ ANNOTATED ESSAY WRAPPER ═══ */
+  .essay-wrapper {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 6px;
+  }
+  .essay-wrapper-head {
+    background: var(--bg-deepest);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 12px 24px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent-text);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .essay-row {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .essay-row:last-of-type { border-bottom: none; }
+
+  .ann-col {
+    background: var(--bg-elevated);
+    border-right: 1px solid var(--border-subtle);
+    padding: 20px 12px 20px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .essay-col {
+    padding: 22px 28px;
+    background: #f5f1e8;
+    color: #161616;
+  }
+
+  /* annotation pills */
+  .ann-pill {
+    border-radius: 5px;
+    padding: 8px 11px;
+    border: 1px solid;
+  }
+  .ann-pill .pill-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    line-height: 1.3;
+    margin-bottom: 3px;
+  }
+  .ann-pill .pill-desc {
+    font-family: var(--font-body);
+    font-size: 11px;
+    line-height: 1.5;
+    font-style: italic;
+  }
+  .ann-pill.struct    { background: var(--ann-struct-bg);    border-color: var(--ann-struct-border); }
+  .ann-pill.struct    .pill-label, .ann-pill.struct .pill-desc { color: var(--ann-struct-text); }
+  .ann-pill.primary   { background: var(--ann-primary-bg);   border-color: var(--ann-primary-border); }
+  .ann-pill.primary   .pill-label, .ann-pill.primary .pill-desc { color: var(--ann-primary-text); }
+  .ann-pill.secondary { background: var(--ann-secondary-bg); border-color: var(--ann-secondary-border); }
+  .ann-pill.secondary .pill-label, .ann-pill.secondary .pill-desc { color: var(--ann-secondary-text); }
+  .ann-pill.analysis  { background: var(--ann-analysis-bg);  border-color: var(--ann-analysis-border); }
+  .ann-pill.analysis  .pill-label, .ann-pill.analysis .pill-desc { color: var(--ann-analysis-text); }
+
+  .mla-header {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 14.5px;
+    line-height: 2;
+    padding: 20px 28px 14px;
+    border-bottom: 1px solid #d8d0bc;
+    background: #f5f1e8;
+    color: #161616;
+  }
+  .mla-header p { margin: 0; }
+
+  .essay-p {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 14.5px;
+    line-height: 2;
+    color: #111;
+    margin: 0;
+    text-indent: 36px;
+  }
+  .hl-primary {
+    background-color: #d6dce6;
+    border-radius: 3px;
+    padding: 1px 3px;
+  }
+  .hl-secondary {
+    background-color: #fce2a0;
+    border-radius: 3px;
+    padding: 1px 3px;
+  }
+
+  /* ═══ WORKS CITED INSIDE ESSAY WRAPPER ═══ */
+  .wc-section {
+    border-top: 1px solid var(--border-subtle);
+    background: var(--bg-surface);
+  }
+  .wc-title {
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 14.5px;
+    line-height: 2;
+    font-weight: normal;
+    padding: 14px 28px 0;
+    background: #f5f1e8;
+    color: #0a0a0a;
+    margin: 0;
+  }
+  .wc-row {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    border-top: 1px solid var(--border-subtle);
+  }
+  .wc-ann {
+    background: var(--bg-elevated);
+    border-right: 1px solid var(--border-subtle);
+    padding: 12px 12px 12px 14px;
+  }
+  .wc-entry-col {
+    padding: 10px 28px;
+    background: #f5f1e8;
+  }
+  .wc-entry {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 14.5px;
+    line-height: 2;
+    color: #111;
+    padding-left: 36px;
+    text-indent: -36px;
+    margin: 0;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .wc-notes {
+    background: var(--bg-elevated);
+    border-top: 1px solid var(--border-subtle);
+    padding: 18px 24px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+  .wc-notes-head {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-text);
+    margin-bottom: 12px;
+  }
+  .wc-notes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 24px;
+  }
+  .wc-notes-grid p { margin-bottom: 8px; }
+  .wc-notes-grid p:last-child { margin-bottom: 0; }
+  .wc-notes-grid strong { color: var(--text-primary); }
+
+  /* ═══ EVIDENCE CHECKLIST ═══ */
+  .evidence-wrap {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-top: 3px solid var(--teal);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 28px;
+  }
+  .evidence-head {
+    background: var(--bg-deepest);
+    padding: 14px 24px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--teal-text);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border-subtle);
+    margin: 0;
+  }
+  .evidence-body {
+    padding: 22px 24px;
+  }
+  .evidence-intro {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    line-height: 1.65;
+  }
+  .evidence-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .evidence-card {
+    border-radius: 6px;
+    padding: 16px 18px;
+    border: 1.5px solid;
+  }
+  .evidence-card.primary-card {
+    background: var(--ann-analysis-bg);
+    border-color: var(--ann-analysis-border);
+  }
+  .evidence-card.secondary-card {
+    background: var(--ann-secondary-bg);
+    border-color: var(--ann-secondary-border);
+  }
+  .evidence-card-head {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+  .evidence-list {
+    list-style: none;
+    padding: 0;
+  }
+  .evidence-list li {
+    font-size: 13px;
+    line-height: 1.7;
+    padding-left: 18px;
+    position: relative;
+    color: var(--text-secondary);
+  }
+  .evidence-list li::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    color: var(--teal-text);
+    font-size: 12px;
+  }
+  .evidence-card.secondary-card .evidence-list li::before { color: var(--accent-text); }
+  .evidence-card-total {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .evidence-note {
+    background: var(--lavender-soft);
+    border: 1px solid var(--lavender-mid);
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin-top: 16px;
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+  }
+  .evidence-note strong { color: var(--lavender-text); }
+
+  /* ═══ REVISING SECTION ═══ */
+  .revise-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 22px;
+  }
+  .revise-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    padding: 20px 22px;
+    position: relative;
+    overflow: hidden;
+  }
+  .revise-card::after {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+    pointer-events: none;
+  }
+  .revise-card-head {
+    font-family: var(--font-display);
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    z-index: 1;
+  }
+  .revise-num {
+    width: 28px; height: 28px;
+    background: var(--accent);
+    color: var(--bg-deepest);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .revise-list {
+    list-style: none;
+    padding: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .revise-list li {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    padding: 5px 0 5px 20px;
+    position: relative;
+  }
+  .revise-list li::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    color: var(--teal-text);
+    font-size: 12px;
+    top: 7px;
+  }
+
+  @media (max-width: 760px) {
+    .stage-strip { flex-wrap: wrap; }
+    .stage-item { flex-basis: 50%; border-bottom: 1px solid var(--border-subtle); }
+    .essay-row { grid-template-columns: 1fr; }
+    .ann-col { border-right: none; border-bottom: 1px solid var(--border-subtle); }
+    .wc-row { grid-template-columns: 1fr; }
+    .wc-ann { border-right: none; border-bottom: 1px solid var(--border-subtle); }
+    .legend-grid { grid-template-columns: 1fr 1fr; }
+    .evidence-grid { grid-template-columns: 1fr; }
+    .revise-grid { grid-template-columns: 1fr; }
+    .wc-notes-grid { grid-template-columns: 1fr; }
+    .hero { padding: 30px 24px; }
+    .page-wrap { padding: 28px 18px; }
+  }
+  /* WCAG 1.4.10 Reflow: support down to 320 CSS px without horizontal scroll */
+  @media (max-width: 480px) {
+    .legend-grid { grid-template-columns: 1fr; }
+    .stage-item { flex-basis: 100%; }
+    .hero { padding: 24px 18px; }
+    .page-wrap { padding: 20px 12px; }
+    .hero-inner { padding: 0; }
+    .essay-col { padding: 18px 16px; }
+    .mla-header { padding: 16px 16px 12px; }
+    .wc-entry-col { padding: 10px 16px; }
+    .wc-title { padding: 12px 16px 0; }
+    .evidence-body { padding: 18px 16px; }
+    .wc-notes { padding: 16px 14px; }
+    .essay-wrapper-head { padding: 10px 16px; font-size: 11px; }
+    .section-header { flex-wrap: wrap; gap: 8px; }
+  }
+
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <!-- HERO -->
+  <header class="hero fade-in" aria-labelledby="page-title">
+    <div class="hero-label">The Writing Process &middot; Dystopian Research Essay</div>
+    <h1 class="hero-title" id="page-title">Drafting <em>and Revising</em></h1>
+    <p class="hero-subtitle">Turning your outline into a full draft, and making it better.</p>
+  </header>
+
+  <!-- STAGE STRIP -->
+  <nav class="stage-strip fade-in fade-d1" aria-label="Writing Process Stages">
+    <div class="stage-item">
+      <span class="stage-num">Stage 1</span>
+      <span class="stage-name">Prewriting</span>
+    </div>
+    <div class="stage-item">
+      <span class="stage-num">Stage 2</span>
+      <span class="stage-name">Planning</span>
+    </div>
+    <div class="stage-item active">
+      <span class="stage-num">Stage 3</span>
+      <span class="stage-name">Drafting and Revising</span>
+    </div>
+    <div class="stage-item">
+      <span class="stage-num">Stage 4</span>
+      <span class="stage-name">Editing and Proofreading</span>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════
+       SECTION 1 :: DRAFTING YOUR ESSAY
+  ══════════════════════════════════ -->
+  <section class="fade-in fade-d2" aria-labelledby="s1-title">
+    <div class="section-header">
+      <span class="section-badge">SEC &middot; 01</span>
+      <h2 class="section-title" id="s1-title">Drafting <em>Your Essay</em></h2>
+    </div>
+    <p class="prose">You have done the hard thinking. You have a film, an angle, a thesis, an outline, and your sources gathered. Drafting is the stage where you translate that preparation into continuous prose, paragraphs that flow from one to the next and build a single, coherent argument. It is worth remembering that a first draft is not a finished essay. It is a working document. Your primary goal in drafting is to get the ideas down in the right order. Worrying too much about sentence level perfection at this stage slows you down. Revision is what the next pass is for.</p>
+    <p class="prose">For this essay, your drafting stage includes one task you deferred from your outline: filling in the <strong>secondary source</strong> sections of each body paragraph. This is the stage where you return to your three sources and decide exactly how to integrate each one at the most effective point in your argument.</p>
+
+    <div class="callout amber">
+      <div class="callout-label">Three Required Types of Source Integration</div>
+      <p>Your three secondary sources must appear as three <em>different</em> types of integration: one <strong>direct quote</strong>, one <strong>paraphrase</strong>, and one <strong>summary</strong>. Review the MLA Documentation pages from this module, especially the <em>How to Write a Summary</em> page, if you need a refresher on how to write a summary or paraphrase, or how to format parenthetical citations for PDF vs. HTML sources.</p>
+    </div>
+
+    <div class="callout teal">
+      <div class="callout-label">Citing the Film: Timestamps</div>
+      <p>When you quote dialogue from your film or describe a specific shot, MLA 9 requires <strong>timestamps</strong> in the parenthetical citation, not page numbers. Use the format <em>(hours:minutes:seconds)</em> for the start of the moment, with an en range only if you are citing a longer passage. For example, a single line of dialogue might appear as <em>(Spielberg 01:14:22)</em>, while a longer scene might appear as <em>(Spielberg 01:14:22 to 01:15:08)</em>. Use the word "to" between timestamps rather than a dash. The film itself is your <strong>primary source</strong> and goes on the Works Cited page.</p>
+    </div>
+  </section>
+
+  <hr class="section-rule">
+
+  <!-- ══════════════════════════════════
+       SECTION 2 :: SAMPLE STUDENT ESSAY
+  ══════════════════════════════════ -->
+  <section class="fade-in fade-d2" aria-labelledby="s2-title">
+    <div class="section-header">
+      <span class="section-badge teal">SEC &middot; 02</span>
+      <h2 class="section-title" id="s2-title">A Fully Annotated <em>Sample Essay</em></h2>
+    </div>
+    <p class="prose">The essay below models the structure, source integration, and argumentative approach your own essay should follow. It is written about Steven Spielberg's <em>Minority Report</em> (2002), a film that is <strong>not</strong> on the approved list for your assignment, so that you can see exactly how the moves work without anyone being tempted to lift sentences. Your essay will be about Children of Men, Pan's Labyrinth, or The Matrix, and your own analysis. Annotation labels in the left margin identify the key elements your instructor will look for. Highlighted sentences show exactly where and how sources are woven into the prose.</p>
+
+    <div class="legend-grid">
+      <div class="legend-card struct">
+        <div class="legend-key">&#9632; Green Labels</div>
+        <p class="legend-desc">Essay structure: introduction elements, paragraph roles, conclusion moves.</p>
+      </div>
+      <div class="legend-card primary">
+        <div class="legend-key">&#9632; Grey Highlight</div>
+        <p class="legend-desc">Sentences using primary source evidence: lines or shots cited from the film itself.</p>
+      </div>
+      <div class="legend-card secondary">
+        <div class="legend-key">&#9632; Amber Highlight</div>
+        <p class="legend-desc">Sentences using secondary source evidence: direct quote, paraphrase, or summary from a critic or scholar.</p>
+      </div>
+      <div class="legend-card analysis">
+        <div class="legend-key">&#9632; Teal Labels</div>
+        <p class="legend-desc">Student's own analysis: the writer's argument in their own words.</p>
+      </div>
+    </div>
+
+    <!-- ── ESSAY WRAPPER ── -->
+    <div class="essay-wrapper">
+      <h3 class="essay-wrapper-head">&#128196; The Sample Essay &middot; MLA Format</h3>
+
+      <!-- MLA Header Block -->
+      <div class="mla-header">
+        <p>Jordan Kim</p>
+        <p>Professor Holliday</p>
+        <p>ENC 1102</p>
+        <p>14 April 2026</p>
+        <p style="text-align: center;">In the Country of the Blind: Eyes, Surveillance, and the Cost of Perfect Sight in Steven Spielberg's <em>Minority Report</em></p>
+      </div>
+
+      <!-- ── INTRODUCTION ── -->
+      <div class="essay-row">
+        <div class="ann-col">
+          <div class="ann-pill struct">
+            <div class="pill-label">&bull; Introduction</div>
+          </div>
+          <div class="ann-pill struct">
+            <div class="pill-label">&#9312; Creative Opening</div>
+            <div class="pill-desc">Opens with a verifiable historical fact: a 16th century proverb collected by Erasmus that the film itself quotes.</div>
+          </div>
+          <div class="ann-pill struct">
+            <div class="pill-label">&#9313; Film and Director Introduced</div>
+            <div class="pill-desc">Title, director, year, and source story identified; historical context established.</div>
+          </div>
+          <div class="ann-pill struct">
+            <div class="pill-label">&#9314; Thesis Statement</div>
+            <div class="pill-desc">Last sentence; states exactly what the two image registers do and what argument they support.</div>
+          </div>
+        </div>
+        <div class="essay-col">
+          <p class="essay-p">In 1500, the Dutch humanist Desiderius Erasmus published a collection of classical proverbs called the <em>Adagia</em>, in which he recorded the Latin saying <em>In regione caecorum rex est luscus</em>: in the country of the blind, the one eyed man is king (Erasmus 335). Five centuries later, Steven Spielberg places that same proverb at the center of a film obsessed with eyeballs, surveillance, and the politics of who is allowed to see. <em>Minority Report</em> (2002), Spielberg's adaptation of a 1956 short story by Philip K. Dick, is set in a 2054 Washington, D.C. in which a Department of Precrime arrests citizens for murders they have not yet committed, on the strength of visions produced by three captive seers known as Precogs. The film is dominated by images of mechanical, institutional sight: optical scanners that read citizens' retinas as they walk through subway stations, holographic crime previews replayed in slow motion, and the Precogs themselves floating in a milk colored bath while their visions are extracted by machines. Yet the film is equally insistent on a second register of imagery, one that the Precrime apparatus cannot process at all: the small, embodied, deeply private images of grief that haunt the chief of Precrime, John Anderton, whose young son disappeared years before the film begins. In <em>Minority Report</em>, Spielberg uses this contrast between the cold, mechanical visual imagery of state surveillance and the fragile, embodied imagery of personal loss to argue that any system promising perfect sight is in fact blind to the human costs it cannot predict, prevent, or repair.</p>
+        </div>
+      </div>
+
+      <!-- ── BODY PARAGRAPH 1 ── -->
+      <div class="essay-row">
+        <div class="ann-col">
+          <div class="ann-pill struct">
+            <div class="pill-label">&#9312; Topic Sentence</div>
+            <div class="pill-desc">Body Paragraph 1: mechanical visual imagery of the Precrime apparatus.</div>
+          </div>
+          <div class="ann-pill primary">
+            <div class="pill-label">&#9313; Primary Source &middot; Shot 1</div>
+            <div class="pill-desc">First citation from the film: opening Precog "vision" sequence (timestamp).</div>
+          </div>
+          <div class="ann-pill analysis">
+            <div class="pill-label">&#9314; Student Analysis</div>
+            <div class="pill-desc">Unpacks the visual coldness of the temple and the milk bath imagery.</div>
+          </div>
+          <div class="ann-pill primary">
+            <div class="pill-label">&#9313; Primary Source &middot; Shot 2</div>
+            <div class="pill-desc">Spider drone retinal scan sequence (timestamp).</div>
+          </div>
+          <div class="ann-pill analysis">
+            <div class="pill-label">&#9314; Student Analysis</div>
+            <div class="pill-desc">Reads the spider sequence as the state's view of the citizen as a single eye.</div>
+          </div>
+          <div class="ann-pill secondary">
+            <div class="pill-label">&#9315; Secondary &middot; Direct Quote</div>
+            <div class="pill-desc">Bakewell (amber highlight): PDF via database, author named in signal phrase, page number only (95).</div>
+          </div>
+          <div class="ann-pill analysis">
+            <div class="pill-label">&#9316; Student Analysis</div>
+            <div class="pill-desc">Connects the scholar's reading to the paragraph's argument; closing sentence.</div>
+          </div>
+        </div>
+        <div class="essay-col">
+          <p class="essay-p">The first half of <em>Minority Report</em> is dominated by visual imagery that presents seeing itself as a state function, mechanical, institutional, and stripped of intimacy. The opening Precrime sequence establishes the register immediately: <span class="hl-primary">three pale figures float in a shallow pool inside a circular chamber the Precrime officers literally call "the temple," their eyes rolled back as their visions are pulled out of their skulls and projected as silvery, half formed images on a curved glass screen (Spielberg 00:04:18 to 00:06:42).</span> The space is cold, blue lit, and almost ecclesiastical, but the ritual it stages is technological, not spiritual: the Precogs are not consulted, they are harvested. Anderton scrubs back and forth through their visions on a transparent display, treating future murders the way an editor treats raw footage. Sight, in this opening, is something the state extracts from human bodies and replays at will. Spielberg extends the same logic into public space a few minutes later, when <span class="hl-primary">a swarm of small mechanical "spider" drones is released into a tenement building and crawls under doors, climbing onto sleeping faces to scan each resident's retina in turn (Spielberg 01:09:30 to 01:11:00).</span> The shot pulls back to a god's eye view of an entire apartment block with each unit lit up as the spiders pass through it, reducing every citizen to a single optical signature that the state has already filed, sorted, and made searchable. The image is unforgettable precisely because it makes seeing one directional: the state looks at the citizen, and the citizen, asleep, cannot look back. <span class="hl-secondary">Geoffrey Bakewell argues that the film's persistent imagery of vision and blindness is not incidental but structural, pointing out that "Minority Report is a legitimate child of Oedipus Tyrannus" because "in each, a powerful detective reopens an unsolved homicide case and is himself subsequently accused of murder" (95).</span> Bakewell's reading clarifies the stakes of the spider scene and the temple sequence taken together: the visual imagery of mechanical sight is not a neutral aesthetic choice but the film's central argument turned into image, the claim that a society which sees too well has already begun to mistake its own gaze for justice.</p>
+        </div>
+      </div>
+
+      <!-- ── BODY PARAGRAPH 2 ── -->
+      <div class="essay-row">
+        <div class="ann-col">
+          <div class="ann-pill struct">
+            <div class="pill-label">&#9312; Topic Sentence and Transition</div>
+            <div class="pill-desc">Body Paragraph 2: the shift to embodied, grieving imagery the apparatus cannot process.</div>
+          </div>
+          <div class="ann-pill primary">
+            <div class="pill-label">&#9313; Primary Source &middot; Shot 1</div>
+            <div class="pill-desc">Anderton watching home holograms of his lost son (timestamp).</div>
+          </div>
+          <div class="ann-pill analysis">
+            <div class="pill-label">&#9314; Student Analysis</div>
+            <div class="pill-desc">Reads the home video imagery as the inverse of the Precog projection.</div>
+          </div>
+          <div class="ann-pill secondary">
+            <div class="pill-label">&#9315; Secondary &middot; Paraphrase</div>
+            <div class="pill-desc">Edelstein (amber highlight): HTML internet source, author named in signal phrase, NO parenthetical at all.</div>
+          </div>
+          <div class="ann-pill primary">
+            <div class="pill-label">&#9313; Primary Source &middot; Shot 2</div>
+            <div class="pill-desc">Iris Hineman delivering the Erasmus line in the greenhouse (timestamp).</div>
+          </div>
+          <div class="ann-pill analysis">
+            <div class="pill-label">&#9314; Student Analysis</div>
+            <div class="pill-desc">"One eyed man" line as the film's pivot from institutional to embodied sight.</div>
+          </div>
+          <div class="ann-pill secondary">
+            <div class="pill-label">&#9315; Secondary &middot; Summary</div>
+            <div class="pill-desc">Eggert (amber highlight): HTML internet source, author named in signal phrase, NO parenthetical at all; summarizes the overall argument of the source.</div>
+          </div>
+          <div class="ann-pill analysis">
+            <div class="pill-label">&#9316; Student Analysis</div>
+            <div class="pill-desc">Ties both critics to the closing image of the paragraph; closing sentence.</div>
+          </div>
+        </div>
+        <div class="essay-col">
+          <p class="essay-p">Against this institutional register of sight, Spielberg builds a second image system that the Precrime apparatus is structurally incapable of processing: the small, private, grieving imagery of a father remembering a child the system could not save. The most devastating example arrives early. <span class="hl-primary">Alone in his apartment, Anderton sits in the dark and watches a holographic home recording of his missing son, Sean, projected into the room from a small disc; he reaches into the shimmering image as the boy laughs and runs, but his hand passes through the light and the projection scatters around him (Spielberg 00:21:40 to 00:23:55).</span> The shot is the exact inverse of the Precog visions in the opening sequence. Where the temple footage is institutional, monochrome, and consumed by Anderton at his desk like surveillance video, the home recording is warm, private, and physically out of reach: an image of love that he can see but cannot touch. The film makes the contrast unmistakable. The state can replay a future murder in slow motion, but it cannot return the one child whose absence drives the protagonist's grief. <span class="hl-secondary">Critic David Edelstein argues that the film ultimately trades the bleak political warning of Philip K. Dick's original story for a more sentimental humanism, less a protest against an Orwellian police state than a plea on behalf of the three enslaved Precogs, whose freedom matters more to the film than the freedom of all the citizens the system surveils.</span> Edelstein's reading is sharp, but the home video sequence complicates it: the film's deepest sympathy belongs not only to the Precogs but to the people, like Anderton, whose private losses the surveillance state cannot perceive at all. That blindness becomes literal at the film's structural pivot, when the retired scientist Iris Hineman, working in a greenhouse full of carnivorous plants, looks up at Anderton and tells him: <span class="hl-primary">"In the land of the blind, the one eyed man is king" (Spielberg 01:14:22).</span> Coming from the woman who helped invent the Precog program, the line is not a celebration of partial sight but an indictment of a country that has handed over its eyes to a machine. <span class="hl-secondary">In his career retrospective on the film, Brian Eggert argues that what Spielberg does with the title concept is convert the eponymous "minority report," the suppressed alternative vision stored in the Precog Agatha's unconscious, from a throwaway plot device into a sustained philosophical challenge to the entire idea that the future can be known in advance, and that the film's persistent imagery of fragile, partial, embodied sight (a hand passing through a hologram, a single divergent vision buried in one woman's mind) is the means by which it makes that case.</span> Eggert's reading clarifies why the home video and the greenhouse line carry so much weight in a film otherwise dominated by spectacle: the small, grieving images are the film's evidence that the apparatus, for all its slow motion clarity, has been looking in the wrong direction all along.</p>
+        </div>
+      </div>
+
+      <!-- ── CONCLUSION ── -->
+      <div class="essay-row" style="border-bottom: none;">
+        <div class="ann-col">
+          <div class="ann-pill struct">
+            <div class="pill-label">&bull; Conclusion</div>
+          </div>
+          <div class="ann-pill struct">
+            <div class="pill-label">&#9312; Creative Opening</div>
+            <div class="pill-desc">Does not begin with "In conclusion." Opens with a verifiable production fact: Spielberg's 1999 futurist think tank.</div>
+          </div>
+          <div class="ann-pill primary">
+            <div class="pill-label">&#9313; Film Referenced</div>
+            <div class="pill-desc">Brief reference to the film's final image as a frame.</div>
+          </div>
+          <div class="ann-pill struct">
+            <div class="pill-label">&#9314; Thesis Restated</div>
+            <div class="pill-desc">In new words; does not repeat the introduction's phrasing.</div>
+          </div>
+          <div class="ann-pill struct">
+            <div class="pill-label">&#9315; Broader Significance</div>
+            <div class="pill-desc">Extends the argument from 2054 fiction to the surveillance present.</div>
+          </div>
+          <div class="ann-pill struct">
+            <div class="pill-label">&#9316; Memorable Closing Sentence</div>
+            <div class="pill-desc">Returns to the Erasmus framing from the introduction.</div>
+          </div>
+        </div>
+        <div class="essay-col">
+          <p class="essay-p">In 1999, three years before <em>Minority Report</em> reached theaters, Steven Spielberg convened fifteen futurists, computer scientists, urbanists, and authors, including Peter Schwartz of the Global Business Network, virtual reality pioneer Jaron Lanier, and architect Peter Calthorpe, for a three day summit at a Santa Monica hotel and asked them to imagine, in plausible technological detail, the city of 2054 ("Minority Report"). What that summit produced was a city that could see almost everything: a city of retinal scanners, predictive policing, and personalized advertising that calls each passerby by name. <span class="hl-primary">The film ends not with that city in ruins but with the Precrime program quietly shut down and the three Precogs released to a small wooden cabin where, the camera lingers, they read books in the firelight (Spielberg 02:08:30).</span> Nothing about the surveillance world is undone. What changes is the film's relationship to sight itself: it returns the act of seeing to small, private rooms, to the act of reading by lamplight, to the kind of gaze that does not require a database. Spielberg's two image systems, the cold, institutional vision of Precrime and the fragile, embodied vision of grief and ordinary attention, do not resolve into a single picture; they remain in tension, and that tension is the argument. <em>Minority Report</em> insists that a society which builds machines to see for it has not gained sight but lost it, because the things most worth seeing, a child running through a hologram, a face asleep behind a closed door, the buried minority report of a woman who knew better, were never going to register on any apparatus designed to predict crime. Five centuries after Erasmus copied down his proverb about the kingdom of the blind, Spielberg returns the line to us with the warning embedded in the original: in a country that has given its eyes away, the one who can still see at all is the one who refuses to look away from what cannot be measured.</p>
+        </div>
+      </div>
+
+      <!-- ── WORKS CITED ── -->
+      <div class="wc-section">
+        <h3 class="wc-title">Works Cited</h3>
+
+        <div class="wc-row">
+          <div class="wc-ann">
+            <div class="ann-pill secondary" style="margin-bottom: 0;">
+              <div class="pill-label">&#9632; Secondary Source</div>
+              <div class="pill-desc">Journal article via database (JSTOR / Project MUSE); PDF source with page numbers.</div>
+            </div>
+          </div>
+          <div class="wc-entry-col">
+            <p class="wc-entry">Bakewell, Geoffrey W. "The One-Eyed Man Is King: Oedipal Vision in <em>Minority Report</em>." <em>Arethusa</em>, vol. 41, no. 1, Winter 2008, pp. 95-112. <em>Project MUSE</em>, muse.jhu.edu/article/232473.</p>
+          </div>
+        </div>
+
+        <div class="wc-row">
+          <div class="wc-ann">
+            <div class="ann-pill secondary" style="margin-bottom: 0;">
+              <div class="pill-label">&#9632; Secondary Source</div>
+              <div class="pill-desc">Online film review on a culture magazine website; HTML source with no page numbers.</div>
+            </div>
+          </div>
+          <div class="wc-entry-col">
+            <p class="wc-entry">Edelstein, David. "<em>Minority Report</em> Is a Fabulous, Witty Totalitarian Nightmare." <em>Slate</em>, 21 June 2002, slate.com/culture/2002/06/minority-report-is-a-fabulous-witty-totalitarian-nightmare.html.</p>
+          </div>
+        </div>
+
+        <div class="wc-row">
+          <div class="wc-ann">
+            <div class="ann-pill secondary" style="margin-bottom: 0;">
+              <div class="pill-label">&#9632; Secondary Source</div>
+              <div class="pill-desc">Online film criticism essay on a film review website; HTML source with no page numbers.</div>
+            </div>
+          </div>
+          <div class="wc-entry-col">
+            <p class="wc-entry">Eggert, Brian. "<em>Minority Report</em> (2002)." <em>Deep Focus Review</em>, The Definitives, deepfocusreview.com/definitives/minority-report.</p>
+          </div>
+        </div>
+
+        <div class="wc-row">
+          <div class="wc-ann">
+            <div class="ann-pill secondary" style="margin-bottom: 0;">
+              <div class="pill-label">&#9632; Secondary Source</div>
+              <div class="pill-desc">Print book from a scholarly series; translated and edited. In text citation uses the page number of the modern edition (335).</div>
+            </div>
+          </div>
+          <div class="wc-entry-col">
+            <p class="wc-entry">Erasmus, Desiderius. <em>Adages: III iv 1 to IV ii 100</em>. Translated by Denis L. Drysdall, edited by John N. Grant, University of Toronto Press, 2005. <em>Collected Works of Erasmus</em>, vol. 35.</p>
+          </div>
+        </div>
+
+        <div class="wc-row">
+          <div class="wc-ann">
+            <div class="ann-pill primary" style="margin-bottom: 0;">
+              <div class="pill-label">&bull; Primary Source</div>
+              <div class="pill-desc">The film itself; in text citations use timestamps, not page numbers.</div>
+            </div>
+          </div>
+          <div class="wc-entry-col">
+            <p class="wc-entry"><em>Minority Report</em>. Directed by Steven Spielberg, performances by Tom Cruise, Colin Farrell, and Samantha Morton, Twentieth Century Fox and DreamWorks Pictures, 2002.</p>
+          </div>
+        </div>
+
+        <div class="wc-row">
+          <div class="wc-ann">
+            <div class="ann-pill secondary" style="margin-bottom: 0;">
+              <div class="pill-label">&#9632; Secondary Source</div>
+              <div class="pill-desc">Corporate authored reference article on a website; HTML source with no page numbers. Parenthetical in text uses a shortened title in quotation marks.</div>
+            </div>
+          </div>
+          <div class="wc-entry-col">
+            <p class="wc-entry">"Minority Report (film)." <em>Wikipedia: The Free Encyclopedia</em>, Wikimedia Foundation, en.wikipedia.org/wiki/Minority_Report_(film). Accessed 7 Apr. 2026.</p>
+          </div>
+        </div>
+
+        <!-- Works Cited notes -->
+        <div class="wc-notes">
+          <div class="wc-notes-head">&#9998; Works Cited Format Notes</div>
+          <div class="wc-notes-grid">
+            <div>
+              <p><strong>Alphabetical order:</strong> Entries are arranged by the author's last name. Films with no individual author at the front of the entry are alphabetized by title, ignoring "A," "An," and "The."</p>
+              <p><strong>Hanging indent:</strong> The second and subsequent lines of each entry are indented half an inch, the opposite of a paragraph indent.</p>
+              <p><strong>Citing a film:</strong> For a film, MLA 9 lists the title in italics, followed by the director, key performers, the production companies, and the year. In text citations use timestamps in the format (Spielberg 01:14:22).</p>
+            </div>
+            <div>
+              <p><strong>Database entries:</strong> When a source was accessed through an academic database, add the database name (italicized) and the URL or stable link as a second container at the end of the entry.</p>
+              <p><strong>PDF vs. HTML sources:</strong> If a source is a PDF or print document with page numbers, include the page number in the parenthetical citation: (Bakewell 95). If a source is an HTML webpage with no page numbers, name the author in the signal phrase and use no parenthetical at all.</p>
+              <p><strong>Every cited source appears:</strong> Your primary source (the film) plus every secondary source you cite in the essay, including any brief historical or production facts, must appear on the Works Cited.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── EVIDENCE REQUIREMENTS CHECKLIST ── -->
+    <div class="evidence-wrap">
+      <h3 class="evidence-head">&#9989; Evidence Requirements: How This Sample Essay Meets Them</h3>
+      <div class="evidence-body">
+        <p class="evidence-intro">Use this checklist to verify that the sample essay meets all requirements, then use it to audit your own essay before submitting.</p>
+        <div class="evidence-grid">
+          <div class="evidence-card primary-card">
+            <div class="evidence-card-head">&#127909; Primary Source Evidence (Film)</div>
+            <ul class="evidence-list">
+              <li>Body Paragraph 1: 2 cited shots (00:04:18 to 00:06:42 and 01:09:30 to 01:11:00)</li>
+              <li>Body Paragraph 2: 3 cited moments (00:21:40 to 00:23:55, 01:14:22, and a paraphrased shot)</li>
+              <li>Conclusion: 1 brief cited reference (02:08:30) returning to the closing image</li>
+            </ul>
+            <div class="evidence-card-total">Requirement: 2 to 3 per body paragraph &#10003;</div>
+          </div>
+          <div class="evidence-card secondary-card">
+            <div class="evidence-card-head">&#128270; Secondary Source Evidence</div>
+            <ul class="evidence-list">
+              <li>Direct Quote: Bakewell (PDF / database), Body Paragraph 1, page number only: (95)</li>
+              <li>Paraphrase: Edelstein (HTML / internet), Body Paragraph 2, no parenthetical</li>
+              <li>Summary: Eggert (HTML / internet), Body Paragraph 2, no parenthetical</li>
+            </ul>
+            <div class="evidence-card-total">1 direct quote + 1 paraphrase + 1 summary = 3 types &#10003;</div>
+          </div>
+        </div>
+        <div class="evidence-note">
+          <strong>Note on HTML citations with no parenthetical:</strong> When a secondary source has no page numbers (HTML format) and you have named the author in your signal phrase, MLA 9 requires no parenthetical citation at all, not even the author's name. This is demonstrated in Body Paragraph 2 with both Edelstein (paraphrase) and Eggert (summary). The absence of a citation is not an error; it is the correct format. The author's name in the sentence fulfills the citation requirement.
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <hr class="section-rule">
+
+  <!-- ══════════════════════════════════
+       SECTION 3 :: REVISING YOUR DRAFT
+  ══════════════════════════════════ -->
+  <section class="fade-in fade-d3" aria-labelledby="s3-title">
+    <div class="section-header">
+      <span class="section-badge lavender">SEC &middot; 03</span>
+      <h2 class="section-title" id="s3-title">Revising <em>Your Draft</em></h2>
+    </div>
+    <p class="prose">Revising is not proofreading. Proofreading (fixing spelling, grammar, and formatting) comes in Stage Four. Revision is rethinking and reshaping: reading your draft with fresh eyes to ask whether the argument holds, whether the evidence supports it, and whether every paragraph does what you said it would do. The four revision questions below give you a framework for that rereading.</p>
+
+    <div class="revise-grid">
+      <div class="revise-card">
+        <div class="revise-card-head">
+          <div class="revise-num">1</div>
+          Argument and Thesis
+        </div>
+        <ul class="revise-list">
+          <li>Does your thesis make a specific, arguable claim about the film, not just a summary of what it is about?</li>
+          <li>Does every body paragraph advance that claim, or does any paragraph drift into plot description without analysis?</li>
+          <li>Does your conclusion restate the thesis in new words and add a broader reflection?</li>
+        </ul>
+      </div>
+      <div class="revise-card">
+        <div class="revise-card-head">
+          <div class="revise-num">2</div>
+          Primary Source Evidence
+        </div>
+        <ul class="revise-list">
+          <li>Does each body paragraph contain 2 to 3 brief, specific references to the film with timestamps?</li>
+          <li>Are all film references introduced with a signal phrase or context before the citation?</li>
+          <li>Is each cited shot or line followed by your own analysis, not just a restatement of what happens?</li>
+          <li>Are timestamps cited correctly in the format (Director Last Name 00:00:00)?</li>
+        </ul>
+      </div>
+      <div class="revise-card">
+        <div class="revise-card-head">
+          <div class="revise-num">3</div>
+          Secondary Source Integration
+        </div>
+        <ul class="revise-list">
+          <li>Have you used all three required types: one direct quote, one paraphrase, and one summary?</li>
+          <li>Is the PDF / database source cited with a page number in parentheses?</li>
+          <li>Are both HTML sources cited correctly: author named in signal phrase, no parenthetical at all?</li>
+          <li>After each secondary source, does your analysis explain how it connects to your argument?</li>
+        </ul>
+      </div>
+      <div class="revise-card">
+        <div class="revise-card-head">
+          <div class="revise-num">4</div>
+          Structure and Flow
+        </div>
+        <ul class="revise-list">
+          <li>Does your introduction open creatively (with a documented quote, fact, or framing) and end with the thesis?</li>
+          <li>Does each body paragraph open with a topic sentence that names the paragraph's specific focus?</li>
+          <li>Does each body paragraph close with a sentence that ties its evidence back to the thesis?</li>
+          <li>Does your conclusion avoid introducing new quotes or new evidence beyond a brief returning reference?</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>

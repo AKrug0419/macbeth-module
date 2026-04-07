@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="identifier" content="dystopian-editing-proofreading"/>
+<meta name="editing_roles" content="teachers"/>
+<meta name="workflow_state" content="active"/>
+<title>The Writing Process: Editing and Proofreading | ENC 1102 Dystopian Research Essay</title>
+<style>
+
+  /* ═══════════════════════════════════════════════
+     DESIGN TOKENS :: Dystopian Research Essay Module
+     ═══════════════════════════════════════════════ */
+
+  @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap');
+
+  :root {
+    --bg-deep:       #565e6e;
+    --bg-surface:    #3e4555;
+    --bg-elevated:   #353c4b;
+    --bg-deepest:    #2b303c;
+    --border-subtle: #4a5264;
+    --border-mid:    #5c6478;
+
+    --accent:        #e8a832;
+    --accent-soft:   #e8a83228;
+    --accent-mid:    #e8a83258;
+    --accent-text:   #f5c865;
+
+    --teal:          #5ba8a0;
+    --teal-soft:     #5ba8a028;
+    --teal-mid:      #5ba8a058;
+    --teal-text:     #90d8d0;
+
+    --lavender:      #9a9cc0;
+    --lavender-soft: #9a9cc028;
+    --lavender-mid:  #9a9cc058;
+    --lavender-text: #d0d2f0;
+
+    --warn:          #f47878;
+    --warn-soft:     #f4787822;
+    --warn-mid:      #f4787858;
+    --warn-text:     #f8a8a8;
+
+    --text-primary:  #f0f2f5;
+    --text-secondary:#cdd3dc;
+    --text-muted:    #9aa2b2;
+
+    --font-display:  'Libre Baskerville', 'Georgia', serif;
+    --font-body:     'Source Sans Pro', 'Segoe UI', sans-serif;
+    --font-mono:     'IBM Plex Mono', 'Consolas', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg-deep);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-wrap: break-word;
+  }
+
+  a { color: var(--accent-text); text-decoration: underline; }
+  a:hover { color: #fff; }
+  strong, b { color: var(--text-primary); }
+  em, i { color: var(--text-secondary); }
+
+  .page-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 28px;
+  }
+
+  /* ═══ ANIMATIONS ═══ */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in { animation: fadeUp 0.5s ease both; }
+  .fade-d1 { animation-delay: 0.08s; }
+  .fade-d2 { animation-delay: 0.16s; }
+  .fade-d3 { animation-delay: 0.24s; }
+  .fade-d4 { animation-delay: 0.32s; }
+
+  /* ═══ HERO ═══ */
+  .hero {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-left: 4px solid var(--accent);
+    border-radius: 6px;
+    padding: 40px 44px 36px;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 220px; height: 220px;
+    background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent-text);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 12px;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(24px, 4.2vw, 32px);
+    color: #fff;
+    line-height: 1.25;
+    margin-bottom: 10px;
+    overflow-wrap: break-word;
+  }
+  .hero-title em { font-style: italic; color: var(--accent-text); }
+  .hero-subtitle {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 640px;
+    font-style: italic;
+  }
+
+  /* ═══ STAGE STRIP ═══ */
+  .stage-strip {
+    background: var(--bg-deepest);
+    border: 1px solid var(--border-subtle);
+    border-top: 3px solid var(--accent);
+    border-radius: 6px;
+    display: flex;
+    margin-bottom: 48px;
+    overflow: hidden;
+  }
+  .stage-item {
+    flex: 1;
+    padding: 14px 10px;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+    border-right: 1px solid var(--border-subtle);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .stage-item:last-child { border-right: none; }
+  .stage-item.active {
+    background: var(--accent-soft);
+    color: var(--accent-text);
+  }
+  .stage-num  { font-size: 9px; opacity: 0.7; text-transform: uppercase; letter-spacing: 0.1em; }
+  .stage-name { font-size: 12px; font-weight: 600; }
+
+  /* ═══ SECTION HEADERS ═══ */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+    margin-top: 48px;
+  }
+  .section-badge {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--accent-text);
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-mid);
+    border-radius: 4px;
+    padding: 3px 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+  .section-badge.teal {
+    color: var(--teal-text);
+    background: var(--teal-soft);
+    border-color: var(--teal-mid);
+  }
+  .section-badge.lavender {
+    color: var(--lavender-text);
+    background: var(--lavender-soft);
+    border-color: var(--lavender-mid);
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(18px, 3vw, 22px);
+    color: #fff;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+  }
+  .section-title em { font-style: italic; color: var(--accent-text); }
+  .section-rule {
+    border: 0;
+    border-top: 1px solid var(--border-subtle);
+    margin: 48px 0 0 0;
+  }
+
+  /* ═══ PROSE ═══ */
+  .prose {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    max-width: 720px;
+  }
+  .prose + .prose { margin-top: 14px; }
+  .prose strong { color: var(--text-primary); }
+
+  /* ═══ SECTION LAYOUT: PROSE + PROCESS GRAPHIC ═══ */
+  .section-layout {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 32px;
+    align-items: start;
+    margin-top: 10px;
+  }
+  .process-graphic-wrap {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    padding: 28px 20px 20px;
+    text-align: center;
+  }
+  .process-graphic-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-text);
+    margin-top: 14px;
+  }
+  .process-graphic-sublabel {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+    margin-top: 2px;
+  }
+  @media (max-width: 640px) {
+    .section-layout { grid-template-columns: 1fr; }
+  }
+
+  /* ═══ OVERVIEW CARDS (intro: editing vs proofreading) ═══ */
+  .overview-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 22px;
+  }
+  .overview-card {
+    border-radius: 6px;
+    padding: 20px 22px;
+    border: 1px solid;
+    position: relative;
+    overflow: hidden;
+  }
+  .overview-card::after {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 130px; height: 130px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+    pointer-events: none;
+  }
+  .overview-card.editing-card {
+    background: var(--teal-soft);
+    border-color: var(--teal-mid);
+  }
+  .overview-card.proof-card {
+    background: var(--lavender-soft);
+    border-color: var(--lavender-mid);
+  }
+  .overview-card-head {
+    font-family: var(--font-display);
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+  }
+  .overview-card.editing-card .overview-card-head { color: var(--teal-text); }
+  .overview-card.proof-card    .overview-card-head { color: var(--lavender-text); }
+  .overview-card p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ═══ CHECKLIST CARDS (editing pass) ═══ */
+  .checklist-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 22px;
+  }
+  .checklist-card {
+    border-radius: 6px;
+    padding: 18px 20px;
+    border: 1px solid;
+    position: relative;
+    overflow: hidden;
+  }
+  .checklist-card::after {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 130px; height: 130px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+    pointer-events: none;
+  }
+  .checklist-card.sentence {
+    background: var(--teal-soft);
+    border-color: var(--teal-mid);
+  }
+  .checklist-card.source {
+    background: var(--accent-soft);
+    border-color: var(--accent-mid);
+  }
+  .checklist-card-head {
+    font-family: var(--font-display);
+    font-size: 13.5px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 1;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .checklist-card.sentence .checklist-card-head { color: var(--teal-text); }
+  .checklist-card.source   .checklist-card-head { color: var(--accent-text); }
+
+  .checklist {
+    list-style: none;
+    padding: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .checklist li {
+    font-size: 13.5px;
+    line-height: 1.6;
+    padding: 6px 0 6px 22px;
+    position: relative;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    color: var(--text-secondary);
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    font-size: 12px;
+    top: 7px;
+  }
+  .checklist-card.sentence .checklist li::before { color: var(--teal-text); }
+  .checklist-card.source   .checklist li::before { color: var(--accent-text); }
+
+  /* ═══ PRESENT TENSE TABLE ═══ */
+  .tense-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 14px;
+    font-size: 13.5px;
+    background: var(--bg-deepest);
+    border: 1px solid var(--border-subtle);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .tense-table th {
+    background: var(--bg-elevated);
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-subtle);
+    border-right: 1px solid var(--border-subtle);
+  }
+  .tense-table th:last-child { border-right: none; }
+  .tense-table td {
+    padding: 10px 14px;
+    border-top: 1px solid var(--border-subtle);
+    border-right: 1px solid var(--border-subtle);
+    vertical-align: top;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+  .tense-table td:last-child { border-right: none; }
+  .tense-table .wrong { color: var(--warn-text); }
+  .tense-table .right { color: var(--teal-text); font-weight: 600; }
+
+  /* ═══ SIGNAL PHRASE BANK ═══ */
+  .signal-wrap {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-top: 3px solid var(--lavender);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 28px;
+  }
+  .signal-head {
+    background: var(--bg-deepest);
+    padding: 14px 24px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--lavender-text);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .signal-body {
+    padding: 22px 24px;
+  }
+  .signal-intro {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 18px;
+  }
+  .signal-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  .signal-col {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: 5px;
+    padding: 14px 16px;
+  }
+  .signal-col-head {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--accent-text);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+  }
+  .signal-list {
+    list-style: none;
+    padding: 0;
+  }
+  .signal-list li {
+    font-size: 14px;
+    line-height: 1.85;
+    color: var(--text-secondary);
+    font-style: italic;
+  }
+
+  /* ═══ MLA CITATION AUDIT ═══ */
+  .audit-wrap {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-top: 3px solid var(--teal);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 24px;
+  }
+  .audit-head {
+    background: var(--bg-deepest);
+    padding: 14px 24px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--teal-text);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .audit-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .audit-step:last-of-type { border-bottom: none; }
+  .audit-step:nth-child(even) { background: var(--bg-elevated); }
+  .audit-badge {
+    width: 56px;
+    padding: 6px 8px;
+    border-radius: 20px;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .audit-badge.s1 { background: var(--teal-soft); color: var(--teal-text); border: 1px solid var(--teal-mid); }
+  .audit-badge.s2 { background: var(--accent-soft); color: var(--accent-text); border: 1px solid var(--accent-mid); }
+  .audit-badge.s3 { background: var(--lavender-soft); color: var(--lavender-text); border: 1px solid var(--lavender-mid); }
+  .audit-step-title {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+  .audit-step-body {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+  }
+  .audit-step-body strong { color: var(--text-primary); }
+  .audit-step-body em { color: var(--text-secondary); }
+
+  /* ═══ CALLOUT BOXES ═══ */
+  .callout {
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin: 24px 0;
+    border-left: 3px solid;
+    position: relative;
+    overflow: hidden;
+  }
+  .callout::after {
+    content: '';
+    position: absolute;
+    right: -30px; top: -30px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    pointer-events: none;
+  }
+  .callout.amber    { background: var(--accent-soft); border-color: var(--accent); }
+  .callout.teal     { background: var(--teal-soft); border-color: var(--teal); }
+  .callout.lavender { background: var(--lavender-soft); border-color: var(--lavender); }
+  .callout.warn     { background: var(--warn-soft); border-color: var(--warn); }
+  .callout-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  .callout.amber .callout-label    { color: var(--accent-text); }
+  .callout.teal .callout-label     { color: var(--teal-text); }
+  .callout.lavender .callout-label { color: var(--lavender-text); }
+  .callout.warn .callout-label     { color: var(--warn-text); }
+  .callout p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .callout p + p { margin-top: 10px; }
+  .callout p strong { color: var(--text-primary); }
+  .callout ul {
+    margin: 10px 0 0 0;
+    padding-left: 22px;
+    position: relative;
+    z-index: 1;
+  }
+  .callout ul li {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    margin-bottom: 8px;
+  }
+  .callout ul li:last-child { margin-bottom: 0; }
+  .callout ul li strong { color: var(--text-primary); }
+
+  /* ═══ RESOURCE GRID ═══ */
+  .resources-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 22px;
+  }
+  .resources-grid.two-col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .resource-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .resource-card-head {
+    background: var(--bg-elevated);
+    padding: 14px 16px;
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent-text);
+    line-height: 1.4;
+    border-bottom: 1px solid var(--border-subtle);
+    flex: 1;
+  }
+  .resource-card-foot {
+    padding: 12px 16px;
+    text-align: center;
+  }
+  .resource-link {
+    display: inline-block;
+    background: var(--accent-soft);
+    color: var(--accent-text);
+    border: 1px solid var(--accent-mid);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 7px 18px;
+    border-radius: 4px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .resource-link:hover { background: var(--accent-mid); color: #fff; }
+
+  @media (max-width: 760px) {
+    .stage-strip { flex-wrap: wrap; }
+    .stage-item { flex-basis: 50%; border-bottom: 1px solid var(--border-subtle); }
+    .overview-grid { grid-template-columns: 1fr; }
+    .checklist-grid { grid-template-columns: 1fr; }
+    .signal-grid { grid-template-columns: 1fr 1fr; }
+    .resources-grid { grid-template-columns: 1fr; }
+    .resources-grid.two-col { grid-template-columns: 1fr; }
+    .hero { padding: 30px 24px; }
+    .page-wrap { padding: 28px 18px; }
+  }
+  /* WCAG 1.4.10 Reflow: support down to 320 CSS px without horizontal scroll */
+  @media (max-width: 480px) {
+    .signal-grid { grid-template-columns: 1fr; }
+    .stage-item { flex-basis: 100%; }
+    .hero { padding: 24px 18px; }
+    .page-wrap { padding: 20px 12px; }
+    .section-header { flex-wrap: wrap; gap: 8px; }
+    .audit-step { flex-direction: column; gap: 10px; padding: 18px 16px; }
+    .tense-table th, .tense-table td { padding: 8px 10px; font-size: 12.5px; }
+  }
+
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <!-- HERO -->
+  <header class="hero fade-in" aria-labelledby="page-title">
+    <div class="hero-label">The Writing Process &middot; Dystopian Research Essay</div>
+    <h1 class="hero-title" id="page-title">Editing <em>and Proofreading</em></h1>
+    <p class="hero-subtitle">Two distinct passes: style first, mechanics second.</p>
+  </header>
+
+  <!-- STAGE STRIP -->
+  <nav class="stage-strip fade-in fade-d1" aria-label="Writing Process Stages">
+    <div class="stage-item">
+      <span class="stage-num">Stage 1</span>
+      <span class="stage-name">Prewriting</span>
+    </div>
+    <div class="stage-item">
+      <span class="stage-num">Stage 2</span>
+      <span class="stage-name">Planning</span>
+    </div>
+    <div class="stage-item">
+      <span class="stage-num">Stage 3</span>
+      <span class="stage-name">Drafting and Revising</span>
+    </div>
+    <div class="stage-item active">
+      <span class="stage-num">Stage 4</span>
+      <span class="stage-name">Editing and Proofreading</span>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════
+       SECTION 1 :: TWO DIFFERENT TASKS
+  ══════════════════════════════════ -->
+  <section class="fade-in fade-d2" aria-labelledby="s1-title">
+    <div class="section-header">
+      <span class="section-badge">SEC &middot; 01</span>
+      <h2 class="section-title" id="s1-title">Two Different Tasks, <em>Done in Order</em></h2>
+    </div>
+
+    <div class="section-layout">
+      <div>
+        <p class="prose">Editing and proofreading are the final stage of the writing process, and the ones most directly connected to the <strong>Sentence Structure</strong>, <strong>Grammar, Punctuation, and Mechanics</strong>, and <strong>Vocabulary</strong> criteria on the grading rubric. Though they are often treated as one thing, they are genuinely different tasks that work best when done separately and in order: editing first, proofreading second. For a research essay about a dystopian film, each stage has an additional layer: checking how your sources are being used and whether they are documented correctly.</p>
+      </div>
+
+      <div class="process-graphic-wrap">
+        <svg viewBox="0 0 200 220" width="200" height="220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Writing Process diagram with Editing and Proofreading highlighted as the active final stage">
+          <title>The Writing Process :: Editing and Proofreading</title>
+          <!-- Title -->
+          <text x="100" y="10" text-anchor="middle" font-family="'Libre Baskerville', Georgia, serif" font-size="9" font-weight="700" fill="#f0f2f5">The Writing Process</text>
+
+          <!-- Arrows -->
+          <defs>
+            <marker id="arrowGray3" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6" fill="none" stroke="#5c6478" stroke-width="1"/>
+            </marker>
+          </defs>
+
+          <path d="M 132,46 L 148,58" stroke="#5c6478" stroke-width="1.5" fill="none" marker-end="url(#arrowGray3)"/>
+          <path d="M 168,94 L 164,114" stroke="#5c6478" stroke-width="1.5" fill="none" marker-end="url(#arrowGray3)"/>
+          <path d="M 148,158 L 130,170" stroke="#5c6478" stroke-width="1.5" fill="none" marker-end="url(#arrowGray3)"/>
+          <path d="M 72,178 L 54,166" stroke="#5c6478" stroke-width="1.5" fill="none" marker-end="url(#arrowGray3)"/>
+          <path d="M 34,132 L 32,112" stroke="#5c6478" stroke-width="1.5" fill="none" marker-end="url(#arrowGray3)"/>
+          <path d="M 48,68 L 66,52" stroke="#5c6478" stroke-width="1.5" fill="none" marker-end="url(#arrowGray3)"/>
+
+          <!-- Prewriting (completed) -->
+          <circle cx="100" cy="38" r="24" fill="#5ba8a0" stroke="#90d8d0" stroke-width="1.5" opacity="0.5"/>
+          <text x="100" y="35" text-anchor="middle" font-family="'Source Sans Pro', sans-serif" font-size="8.5" font-weight="700" fill="#1a1a1a">Prewriting</text>
+          <text x="100" y="45" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="6" fill="#1a1a1a" opacity="0.5">DONE</text>
+
+          <!-- Planning (completed) -->
+          <circle cx="160" cy="78" r="22" fill="#5ba8a0" stroke="#90d8d0" stroke-width="1.5" opacity="0.5"/>
+          <text x="160" y="75" text-anchor="middle" font-family="'Source Sans Pro', sans-serif" font-size="8.5" font-weight="700" fill="#1a1a1a">Planning</text>
+          <text x="160" y="85" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="6" fill="#1a1a1a" opacity="0.5">DONE</text>
+
+          <!-- Drafting (completed) -->
+          <circle cx="164" cy="134" r="22" fill="#5ba8a0" stroke="#90d8d0" stroke-width="1.5" opacity="0.5"/>
+          <text x="164" y="131" text-anchor="middle" font-family="'Source Sans Pro', sans-serif" font-size="8.5" font-weight="700" fill="#1a1a1a">Drafting</text>
+          <text x="164" y="141" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="6" fill="#1a1a1a" opacity="0.5">DONE</text>
+
+          <!-- Revising (completed) -->
+          <circle cx="100" cy="182" r="22" fill="#5ba8a0" stroke="#90d8d0" stroke-width="1.5" opacity="0.5"/>
+          <text x="100" y="179" text-anchor="middle" font-family="'Source Sans Pro', sans-serif" font-size="8.5" font-weight="700" fill="#1a1a1a">Revising</text>
+          <text x="100" y="189" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="6" fill="#1a1a1a" opacity="0.5">DONE</text>
+
+          <!-- Editing (ACTIVE) -->
+          <circle cx="36" cy="142" r="22" fill="#e8a832" stroke="#f5c865" stroke-width="2"/>
+          <text x="36" y="139" text-anchor="middle" font-family="'Source Sans Pro', sans-serif" font-size="8.5" font-weight="700" fill="#1a1a1a">Editing</text>
+          <text x="36" y="149" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="6" fill="#1a1a1a" opacity="0.6">STAGE 5</text>
+
+          <!-- Proofreading (ACTIVE) -->
+          <circle cx="36" cy="80" r="22" fill="#e8a832" stroke="#f5c865" stroke-width="2"/>
+          <text x="36" y="76" text-anchor="middle" font-family="'Source Sans Pro', sans-serif" font-size="7.5" font-weight="700" fill="#1a1a1a">Proof-</text>
+          <text x="36" y="85" text-anchor="middle" font-family="'Source Sans Pro', sans-serif" font-size="7.5" font-weight="700" fill="#1a1a1a">reading</text>
+          <text x="36" y="94" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="5.5" fill="#1a1a1a" opacity="0.6">STAGE 6</text>
+        </svg>
+        <div class="process-graphic-label">Final Stage</div>
+        <div class="process-graphic-sublabel">Editing and Proofreading</div>
+      </div>
+    </div>
+
+    <div class="overview-grid">
+      <div class="overview-card editing-card">
+        <div class="overview-card-head">&#9999; Editing: Style and Clarity</div>
+        <p>Improving <em>how</em> your sentences are written. Are they clear? Concise? Well constructed? For research essays, editing also means assessing whether each source is working the way it should and whether your own analytical voice is still leading the argument.</p>
+      </div>
+      <div class="overview-card proof-card">
+        <div class="overview-card-head">&#128270; Proofreading: Errors and Mechanics</div>
+        <p>Catching mechanical mistakes: grammar, spelling, punctuation, capitalization, and MLA formatting. For research essays, this includes verifying that every in text citation is accurate and that every source cited in the essay has a properly formatted Works Cited entry.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-rule">
+
+  <!-- ══════════════════════════════════
+       SECTION 2 :: EDITING YOUR ESSAY
+  ══════════════════════════════════ -->
+  <section class="fade-in fade-d2" aria-labelledby="s2-title">
+    <div class="section-header">
+      <span class="section-badge teal">SEC &middot; 02</span>
+      <h2 class="section-title" id="s2-title">Editing <em>Your Essay</em></h2>
+    </div>
+    <p class="prose">Editing a research essay works at two levels simultaneously: the <strong>sentence level</strong>, where you ask whether your sentences are clear, precise, and varied, and the <strong>source level</strong>, where you ask whether your sources are integrated effectively and appropriately. Work through both passes before moving on to proofreading.</p>
+
+    <div class="checklist-grid">
+      <div class="checklist-card sentence">
+        <div class="checklist-card-head">Sentence Level Editing</div>
+        <ul class="checklist">
+          <li>Is every sentence clear and direct, with no unnecessary words?</li>
+          <li>Are you using the specific vocabulary of film analysis (<em>shot</em>, <em>frame</em>, <em>composition</em>, <em>mise en sc&egrave;ne</em>, <em>diegetic</em>, <em>nondiegetic</em>, <em>cut</em>, <em>match cut</em>, <em>tracking shot</em>, <em>montage</em>)?</li>
+          <li>Are sentences varied in structure, or does every one begin the same way?</li>
+          <li>Is each body paragraph's topic sentence specific enough to tell the reader exactly what the paragraph argues?</li>
+          <li>Do transitions clearly signal the relationship between ideas, both within paragraphs and between them?</li>
+          <li>Is every film, director, character, and critic discussed in the <strong>present tense</strong>? (Cuar&oacute;n "frames," not "framed.")</li>
+        </ul>
+      </div>
+      <div class="checklist-card source">
+        <div class="checklist-card-head">Source Level Editing</div>
+        <ul class="checklist">
+          <li>Is each source, whether a film moment or a secondary source, introduced with a signal phrase naming the director or author?</li>
+          <li>Does your own analysis follow every quote? Both film moments and secondary source passages need to be analyzed, not just dropped in.</li>
+          <li>Are you quoting too heavily? Your analytical voice should lead the argument; sources support it, not the other way around.</li>
+          <li>Are any secondary source quotes too long? For an essay of this length, keep direct quotes to three typed lines or fewer.</li>
+          <li>Does each source actually support the analytical point of its paragraph, or is it loosely related?</li>
+          <li>Did you meet the assignment requirements: one <strong>direct quote</strong>, one <strong>paraphrase</strong>, and one <strong>summary</strong> from three separate secondary sources?</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Present Tense Callout -->
+    <div class="callout teal" style="margin-top: 28px;">
+      <div class="callout-label">Cinematic Present Tense :: Film Essays</div>
+      <p>When analyzing a film, always use the <strong>present tense</strong>. The film exists as an ongoing artifact; its shots play, its characters speak, its imagery accumulates in the present, not the past. This convention applies to the film itself, to its director, and to what critics and scholars argue about it.</p>
+      <table class="tense-table">
+        <thead>
+          <tr>
+            <th>Incorrect</th>
+            <th>Correct</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="wrong">Cuar&oacute;n <em>used</em> long takes to immerse the viewer in the chase.</td>
+            <td class="right">Cuar&oacute;n <em>uses</em> long takes to immerse the viewer in the chase.</td>
+          </tr>
+          <tr>
+            <td class="wrong">Ofelia <em>descended</em> into the labyrinth and <em>met</em> the Faun.</td>
+            <td class="right">Ofelia <em>descends</em> into the labyrinth and <em>meets</em> the Faun.</td>
+          </tr>
+          <tr>
+            <td class="wrong">Bordwell <em>argued</em> that the green color palette signaled an unreal world.</td>
+            <td class="right">Bordwell <em>argues</em> that the green color palette signals an unreal world.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Signal Phrase Bank -->
+    <div class="signal-wrap">
+      <div class="signal-head">&#128172; Vary Your Signal Phrases</div>
+      <div class="signal-body">
+        <p class="signal-intro">A signal phrase introduces a quote, paraphrase, or summary by naming the author and characterizing what they do. Relying on "According to [author]" for every source is repetitive and weakens your analytical voice. Use the options below, all in the <strong>present tense</strong>, to vary your introductions and characterize each source's stance accurately.</p>
+        <div class="signal-grid">
+          <div class="signal-col">
+            <div class="signal-col-head">Neutral / Descriptive</div>
+            <ul class="signal-list">
+              <li>notes</li>
+              <li>explains</li>
+              <li>observes</li>
+              <li>writes</li>
+              <li>points out</li>
+              <li>describes</li>
+              <li>traces</li>
+            </ul>
+          </div>
+          <div class="signal-col">
+            <div class="signal-col-head">Analytical / Argumentative</div>
+            <ul class="signal-list">
+              <li>argues</li>
+              <li>contends</li>
+              <li>asserts</li>
+              <li>claims</li>
+              <li>maintains</li>
+              <li>insists</li>
+              <li>proposes</li>
+            </ul>
+          </div>
+          <div class="signal-col">
+            <div class="signal-col-head">Interpretive</div>
+            <ul class="signal-list">
+              <li>suggests</li>
+              <li>implies</li>
+              <li>demonstrates</li>
+              <li>examines</li>
+              <li>concludes</li>
+              <li>illuminates</li>
+              <li>reveals</li>
+            </ul>
+          </div>
+          <div class="signal-col">
+            <div class="signal-col-head">Contrasting / Qualifying</div>
+            <ul class="signal-list">
+              <li>acknowledges</li>
+              <li>concedes</li>
+              <li>qualifies</li>
+              <li>complicates</li>
+              <li>challenges</li>
+              <li>nuances</li>
+              <li>reconsiders</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-rule">
+
+  <!-- ══════════════════════════════════
+       SECTION 3 :: PROOFREADING YOUR ESSAY
+  ══════════════════════════════════ -->
+  <section class="fade-in fade-d3" aria-labelledby="s3-title">
+    <div class="section-header">
+      <span class="section-badge lavender">SEC &middot; 03</span>
+      <h2 class="section-title" id="s3-title">Proofreading <em>Your Essay</em></h2>
+    </div>
+    <p class="prose">Proofreading catches the errors editing leaves behind: grammar, spelling, punctuation, capitalization, and MLA formatting. For a research essay, verifying the MLA documentation is substantial enough to be its own dedicated pass, a citation audit, completed before you check grammar and mechanics. Work through the steps below in order.</p>
+
+    <!-- MLA Citation Audit -->
+    <div class="audit-wrap">
+      <div class="audit-head">&#128203; The Three Step Citation Audit</div>
+
+      <div class="audit-step">
+        <div class="audit-badge s1">Step 1</div>
+        <div>
+          <div class="audit-step-title">Match every in text citation to a Works Cited entry</div>
+          <p class="audit-step-body">Find every in text citation in your essay, whether the author appears in the signal phrase or in a parenthetical, and confirm that the same author has an entry on your Works Cited page. The rule works in both directions: if a source is cited in the essay, it must have a Works Cited entry; if a source has a Works Cited entry, it must appear at least once in the essay. Your Works Cited should have exactly four entries: the film as primary source and your three secondary sources.</p>
+        </div>
+      </div>
+
+      <div class="audit-step">
+        <div class="audit-badge s2">Step 2</div>
+        <div>
+          <div class="audit-step-title">Verify that paraphrases and summaries are attributed</div>
+          <p class="audit-step-body">Students reliably cite direct quotes but sometimes forget that <strong>paraphrases</strong> (a source's idea restated in your own words) and <strong>summaries</strong> (an overview of a source's overall argument) also require attribution. Read through your essay for any sentences clearly based on a source's ideas that do not identify the author either in the signal phrase or in a parenthetical citation, and correct them. Uncited paraphrases and summaries constitute plagiarism.</p>
+        </div>
+      </div>
+
+      <div class="audit-step">
+        <div class="audit-badge s3">Step 3</div>
+        <div>
+          <div class="audit-step-title">Review the Works Cited page formatting</div>
+          <p class="audit-step-body">Confirm the Works Cited page is correctly formatted: <strong>alphabetical order</strong> by author's last name (films with no individual author at the front of the entry are alphabetized by title, ignoring "A," "An," and "The"); <strong>double spaced</strong> throughout with no extra space between entries; <strong>hanging indent</strong> on each entry (first line flush left, all subsequent lines indented half an inch); the words <em>Works Cited</em> centered at the top in regular, not bold, font; and all URLs in plain text with no color or underline.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Film-specific MLA callout -->
+    <div class="callout amber" style="margin-top: 28px;">
+      <div class="callout-label">Film Specific MLA Format Checks</div>
+      <p>In addition to the standard citation audit, check the following rules specific to film essays before you submit:</p>
+      <ul>
+        <li><strong>Timestamps, not page numbers.</strong> Parenthetical citations for the film cite timestamps in the format <em>(Director Last Name HH:MM:SS)</em>, for example <em>(Cuar&oacute;n 00:42:18)</em>. The timestamp marks the start of the moment you are citing.</li>
+        <li><strong>Use "to" between timestamps for ranges.</strong> When you cite a longer scene, use the word "to" rather than a dash: <em>(Cuar&oacute;n 00:42:18 to 00:44:05)</em>. Do not use any kind of dash inside a timestamp range.</li>
+        <li><strong>Director in the signal phrase, timestamp only in the parenthetical.</strong> If you have already named the director in your sentence, you may use only the timestamp in the parenthetical: <em>(00:42:18)</em>. If the director has not yet been named in the paragraph, include the surname in the parenthetical.</li>
+        <li><strong>Film title in italics.</strong> Film titles always go in italics, both in the essay text and on the Works Cited page. Episode titles and short film titles use quotation marks, but feature length film titles do not.</li>
+        <li><strong>Quoting dialogue.</strong> Short lines of dialogue are run into your prose inside quotation marks, followed by the timestamp parenthetical: "We can never know about the days to come, but we think about them anyway" (Cuar&oacute;n 01:35:42). Do not use slash notation; that is a poetry convention.</li>
+        <li><strong>No parenthetical for HTML sources with author in signal phrase.</strong> When a secondary source has no page numbers (HTML format) and you have named the author in your signal phrase, there is no parenthetical citation at all. The absence of a citation is not an error; it is the correct format.</li>
+      </ul>
+    </div>
+
+    <!-- Grammar checklist callout -->
+    <div class="callout warn">
+      <div class="callout-label">Grammar and Mechanics Checklist</div>
+      <p>After completing the citation audit, do one final read for sentence level errors. The three most serious errors in academic writing are:</p>
+      <ul>
+        <li><strong>Sentence fragments:</strong> incomplete sentences that lack a subject, a verb, or both.</li>
+        <li><strong>Comma splices:</strong> two complete sentences joined only with a comma, with no coordinating conjunction.</li>
+        <li><strong>Run on sentences:</strong> two or more complete sentences run together without adequate punctuation or a conjunction.</li>
+      </ul>
+      <p style="margin-top: 12px;">Check also for consistent use of cinematic present tense throughout, proper capitalization of directors' names, characters' names, and film titles, and correct spelling of names that are easy to misspell (Cuar&oacute;n, del Toro, Wachowski, Lyra Belacqua, Ofelia, Theo Faron).</p>
+    </div>
+  </section>
+
+  <hr class="section-rule">
+
+  <!-- ══════════════════════════════════
+       SECTION 4 :: GRAMMAR RESOURCES
+  ══════════════════════════════════ -->
+  <section class="fade-in fade-d4" aria-labelledby="s4-title">
+    <div class="section-header">
+      <span class="section-badge">SEC &middot; 04</span>
+      <h2 class="section-title" id="s4-title">Grammar and Sentence Structure <em>Handouts</em></h2>
+    </div>
+    <p class="prose">Use the handouts below to review the sentence level rules most relevant to academic writing. Open whichever is most useful as you edit and proofread. Each handout covers one area; use them alongside your own draft.</p>
+
+    <div class="resources-grid">
+      <div class="resource-card">
+        <div class="resource-card-head">Common Grammar and Punctuation Errors</div>
+        <div class="resource-card-foot">
+          <a class="resource-link" href="https://online.valenciacollege.edu/courses/257240/pages/most-common-errors-quick-overview" target="_blank">Open &#8599;</a>
+        </div>
+      </div>
+      <div class="resource-card">
+        <div class="resource-card-head">Improving Your Sentence Structure: Coordination</div>
+        <div class="resource-card-foot">
+          <a class="resource-link" href="https://online.valenciacollege.edu/courses/257240/pages/improving-your-sentence-structure-coordination" target="_blank">Open &#8599;</a>
+        </div>
+      </div>
+      <div class="resource-card">
+        <div class="resource-card-head">Improving Your Sentence Structure: Subordination</div>
+        <div class="resource-card-foot">
+          <a class="resource-link" href="https://online.valenciacollege.edu/courses/257240/pages/improving-your-sentence-structure-subordination" target="_blank">Open &#8599;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="resources-grid two-col" style="margin-top: 12px;">
+      <div class="resource-card">
+        <div class="resource-card-head">Combining Coordination and Subordination</div>
+        <div class="resource-card-foot">
+          <a class="resource-link" href="https://online.valenciacollege.edu/courses/257240/pages/improving-your-sentence-structure-combining-coordination-and-subordination" target="_blank">Open &#8599;</a>
+        </div>
+      </div>
+      <div class="resource-card">
+        <div class="resource-card-head">Advanced Grammar Tools</div>
+        <div class="resource-card-foot">
+          <a class="resource-link" href="https://online.valenciacollege.edu/courses/257240/pages/improving-your-sentence-structure-advanced-tools" target="_blank">Open &#8599;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>

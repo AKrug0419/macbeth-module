@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="identifier" content="dystopian-mla-works-cited"/>
+<meta name="editing_roles" content="teachers"/>
+<meta name="workflow_state" content="active"/>
+<title>MLA Documentation: The Works Cited | ENC 1102 Dystopian Research Essay</title>
+<style>
+
+  /* ═══════════════════════════════════════════════
+     DESIGN TOKENS :: Dystopian Research Essay Module
+     ═══════════════════════════════════════════════ */
+
+  @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap');
+
+  :root {
+    --bg-deep:       #565e6e;
+    --bg-surface:    #3e4555;
+    --bg-elevated:   #353c4b;
+    --bg-deepest:    #2b303c;
+    --border-subtle: #4a5264;
+    --border-mid:    #5c6478;
+
+    --accent:        #e8a832;
+    --accent-soft:   #e8a83228;
+    --accent-mid:    #e8a83258;
+    --accent-text:   #f5c865;
+
+    --teal:          #5ba8a0;
+    --teal-soft:     #5ba8a028;
+    --teal-mid:      #5ba8a058;
+    --teal-text:     #90d8d0;
+
+    --lavender:      #9a9cc0;
+    --lavender-soft: #9a9cc028;
+    --lavender-mid:  #9a9cc058;
+    --lavender-text: #d0d2f0;
+
+    --warn:          #f47878;
+    --warn-soft:     #f4787822;
+    --warn-mid:      #f4787858;
+    --warn-text:     #f8a8a8;
+
+    --text-primary:  #f0f2f5;
+    --text-secondary:#cdd3dc;
+    --text-muted:    #9aa2b2;
+
+    --font-display:  'Libre Baskerville', 'Georgia', serif;
+    --font-body:     'Source Sans Pro', 'Segoe UI', sans-serif;
+    --font-mono:     'IBM Plex Mono', 'Consolas', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg-deep);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-wrap: break-word;
+  }
+
+  a { color: var(--accent-text); text-decoration: underline; }
+  a:hover { color: #fff; }
+  strong, b { color: var(--text-primary); }
+  em, i { color: var(--text-secondary); }
+
+  .page-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 28px;
+  }
+
+  /* ═══ ANIMATIONS ═══ */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in { animation: fadeUp 0.5s ease both; }
+  .fade-d1 { animation-delay: 0.08s; }
+  .fade-d2 { animation-delay: 0.16s; }
+  .fade-d3 { animation-delay: 0.24s; }
+  .fade-d4 { animation-delay: 0.32s; }
+
+  /* ═══ HERO ═══ */
+  .hero {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-left: 4px solid var(--accent);
+    border-radius: 6px;
+    padding: 40px 44px 36px;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 220px; height: 220px;
+    background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent-text);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 12px;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(24px, 4.2vw, 32px);
+    color: #fff;
+    line-height: 1.25;
+    margin-bottom: 10px;
+    overflow-wrap: break-word;
+  }
+  .hero-title em { font-style: italic; color: var(--accent-text); }
+  .hero-subtitle {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 640px;
+    font-style: italic;
+  }
+
+  /* ═══ SECTION HEADERS ═══ */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+    margin-top: 48px;
+  }
+  .section-badge {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--accent-text);
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-mid);
+    border-radius: 4px;
+    padding: 3px 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+  .section-badge.teal {
+    color: var(--teal-text);
+    background: var(--teal-soft);
+    border-color: var(--teal-mid);
+  }
+  .section-badge.lavender {
+    color: var(--lavender-text);
+    background: var(--lavender-soft);
+    border-color: var(--lavender-mid);
+  }
+  .section-badge.warn {
+    color: var(--warn-text);
+    background: var(--warn-soft);
+    border-color: var(--warn-mid);
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(18px, 3vw, 22px);
+    color: #fff;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+  }
+  .section-title em { font-style: italic; color: var(--accent-text); }
+  .section-rule {
+    border: 0;
+    border-top: 1px solid var(--border-subtle);
+    margin: 48px 0 0 0;
+  }
+
+  /* ═══ PROSE ═══ */
+  .prose {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    max-width: 720px;
+  }
+  .prose + .prose { margin-top: 14px; }
+  .prose strong { color: var(--text-primary); }
+
+  /* ═══ INTRO TWO-COL WITH ASIDE ═══ */
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 28px;
+    align-items: start;
+    margin-top: 8px;
+  }
+  .aside-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-top: 3px solid var(--teal);
+    border-radius: 6px;
+    padding: 20px 22px;
+    position: relative;
+    overflow: hidden;
+  }
+  .aside-card::after {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 130px; height: 130px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+    pointer-events: none;
+  }
+  .aside-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--teal-text);
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+  }
+  .aside-card p {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .aside-card p + p { margin-top: 10px; }
+  .aside-card strong { color: var(--text-primary); }
+
+  /* ═══ PROBLEM CARDS ═══ */
+  .problems-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+    margin-top: 18px;
+  }
+  .problem-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .problem-header {
+    padding: 12px 16px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .problem-header.red  { background: #8b3232; border-bottom: 2px solid var(--warn); }
+  .problem-header.warn { background: #7a5a20; border-bottom: 2px solid var(--accent); }
+  .problem-body {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .problem-body p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+  .problem-body strong { color: var(--text-primary); }
+  .problem-tag {
+    border-radius: 4px;
+    padding: 9px 12px;
+    font-size: 12.5px;
+    line-height: 1.55;
+  }
+  .problem-tag.wrong {
+    background: var(--warn-soft);
+    color: var(--warn-text);
+    border-left: 2px solid var(--warn);
+  }
+  .problem-tag.fix {
+    background: var(--teal-soft);
+    color: var(--teal-text);
+    border-left: 2px solid var(--teal);
+  }
+  .problem-tag strong { color: #fff; }
+
+  /* ═══ VIDEO CARDS ═══ */
+  .video-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-top: 18px;
+  }
+  .video-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .video-header {
+    background: var(--bg-deepest);
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .video-header-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-text);
+    margin-bottom: 4px;
+  }
+  .video-header-title {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.4;
+  }
+  .video-embed {
+    padding: 16px;
+    background: var(--bg-elevated);
+  }
+  .video-embed iframe {
+    border: none;
+    border-radius: 4px;
+    display: block;
+    width: 100%;
+    height: 240px;
+    background: #000;
+  }
+
+  /* ═══ PRIMARY SOURCE CARD ═══ */
+  .primary-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-top: 3px solid var(--accent);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 18px;
+  }
+  .primary-header {
+    background: var(--bg-deepest);
+    padding: 14px 24px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent-text);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .primary-body {
+    padding: 26px 28px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+  .primary-body p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0 0 12px 0;
+  }
+  .primary-body p:last-child { margin-bottom: 0; }
+  .primary-body strong { color: var(--text-primary); }
+
+  /* ═══ CALLOUT ═══ */
+  .callout {
+    border-radius: 6px;
+    padding: 18px 22px;
+    margin: 16px 0;
+    border-left: 3px solid;
+    position: relative;
+    overflow: hidden;
+  }
+  .callout::after {
+    content: '';
+    position: absolute;
+    right: -30px; top: -30px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    pointer-events: none;
+  }
+  .callout.amber    { background: var(--accent-soft); border-color: var(--accent); }
+  .callout.teal     { background: var(--teal-soft); border-color: var(--teal); }
+  .callout.lavender { background: var(--lavender-soft); border-color: var(--lavender); }
+  .callout-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
+  }
+  .callout.amber .callout-label    { color: var(--accent-text); }
+  .callout.teal .callout-label     { color: var(--teal-text); }
+  .callout.lavender .callout-label { color: var(--lavender-text); }
+  .callout p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .callout p strong { color: var(--text-primary); }
+
+  /* ═══ HANDOUT LINK BLOCK ═══ */
+  .handout-block {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 16px;
+  }
+  .handout-block-header {
+    background: var(--bg-deepest);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 10px 14px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-text);
+  }
+  .handout-block-body {
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .handout-icon {
+    width: 48px; height: 48px;
+    flex-shrink: 0;
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-mid);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+  }
+  .handout-text { flex: 1; }
+  .handout-title {
+    font-family: var(--font-display);
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+    line-height: 1.35;
+  }
+  .handout-desc {
+    font-size: 12.5px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+  }
+  .handout-link {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent-text);
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-mid);
+    border-radius: 4px;
+    padding: 7px 14px;
+    text-decoration: none;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+  .handout-link:hover { background: var(--accent-mid); color: #fff; }
+
+  /* ═══ CHECKLIST PANEL ═══ */
+  .checklist-panel {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-top: 3px solid var(--teal);
+    border-radius: 6px;
+    padding: 24px 28px;
+    margin-top: 18px;
+  }
+  .checklist-panel-title {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .checklist-panel-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--border-mid), transparent);
+  }
+  .checklist-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 32px;
+  }
+  .check-row {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .check-row:last-child { border-bottom: none; }
+  .check-box {
+    width: 15px; height: 15px;
+    border-radius: 3px;
+    border: 1.5px solid var(--border-mid);
+    flex-shrink: 0;
+    margin-top: 3px;
+    background: var(--bg-deepest);
+  }
+  .check-row strong { color: var(--text-primary); }
+
+  /* ═══ NEXT STEP BANNER ═══ */
+  .next-banner {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-left: 4px solid var(--teal);
+    border-radius: 6px;
+    padding: 24px 32px;
+    text-align: center;
+    margin-top: 52px;
+    position: relative;
+    overflow: hidden;
+  }
+  .next-banner::after {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 220px; height: 220px;
+    background: radial-gradient(circle, var(--teal-soft) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .next-banner-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal-text);
+    margin-bottom: 6px;
+    position: relative;
+    z-index: 1;
+  }
+  .next-banner-title {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+    line-height: 1.3;
+    position: relative;
+    z-index: 1;
+  }
+  .next-banner-desc {
+    font-size: 14px;
+    font-style: italic;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    position: relative;
+    z-index: 1;
+  }
+
+  @media (max-width: 760px) {
+    .intro-grid { grid-template-columns: 1fr; }
+    .problems-grid { grid-template-columns: 1fr; }
+    .video-grid { grid-template-columns: 1fr; }
+    .primary-body { grid-template-columns: 1fr; }
+    .checklist-cols { grid-template-columns: 1fr; }
+    .hero { padding: 30px 24px; }
+    .page-wrap { padding: 28px 18px; }
+    .handout-block-body { flex-wrap: wrap; }
+  }
+  /* WCAG 1.4.10 Reflow: support down to 320 CSS px without horizontal scroll */
+  @media (max-width: 480px) {
+    .hero { padding: 24px 18px; }
+    .page-wrap { padding: 20px 12px; }
+    .section-header { flex-wrap: wrap; gap: 8px; }
+    .primary-body { padding: 20px 18px; }
+    .video-embed iframe { height: 200px; }
+    .checklist-panel { padding: 20px 18px; }
+    .next-banner { padding: 20px 18px; }
+  }
+
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <!-- HERO -->
+  <header class="hero fade-in" aria-labelledby="page-title">
+    <div class="hero-label">MLA Documentation &middot; Dystopian Research Essay</div>
+    <h1 class="hero-title" id="page-title">The <em>Works Cited</em></h1>
+    <p class="hero-subtitle">Building, formatting, and cleaning up your Works Cited entries.</p>
+  </header>
+
+  <!-- ══════════════════════════════════
+       SECTION 1 :: WHAT THE WORKS CITED IS
+  ══════════════════════════════════ -->
+  <section class="fade-in fade-d2" aria-labelledby="s1-title">
+    <div class="section-header">
+      <span class="section-badge">SEC &middot; 01</span>
+      <h2 class="section-title" id="s1-title">What the Works Cited Is, <em>and Why It Is Annoying</em></h2>
+    </div>
+    <div class="intro-grid">
+      <div>
+        <p class="prose">Prepare to be annoyed.</p>
+        <p class="prose">Creating a Works Cited for a research essay is frustrating. Worse, teachers are allowed to make it worth as much of the essay's grade as they want, so too many errors on it can make your grade cry.</p>
+        <p class="prose">The Works Cited serves a very important function: it provides all of the bibliographic information about every source cited inside your essay, both your primary source (the film) and your secondary sources. Fortunately, a significant portion of the tedious work was already done for you during the Source Log Assignment, where you used each database's <strong>Citation Tool</strong> to collect bibliographic information for your secondary sources in MLA Works Cited format.</p>
+        <p class="prose">The main challenge is not the entries themselves. It is that <strong>formatting errors almost always appear when you transfer those entries from the Source Log into your essay document</strong>. Spacing shifts, indentations get lost, URLs become hyperlinks, and punctuation disappears. The problems section below walks through exactly how to recognize and fix each issue. Open your completed Source Log Assignment before you get started.</p>
+      </div>
+      <div class="aside-card">
+        <div class="aside-label">You Have Already Done Part of This</div>
+        <p>When you completed the Source Log Assignment, you used each source's <strong>Citation Tool</strong> to collect the bibliographic information for your secondary sources in MLA Works Cited format.</p>
+        <p>Open that completed assignment now. You will need it alongside this page.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-rule">
+
+  <!-- ══════════════════════════════════
+       SECTION 2 :: SIX TRANSFER PROBLEMS
+  ══════════════════════════════════ -->
+  <section class="fade-in fade-d2" aria-labelledby="s2-title">
+    <div class="section-header">
+      <span class="section-badge warn">SEC &middot; 02</span>
+      <h2 class="section-title" id="s2-title">What Goes Wrong When You Transfer Entries, <em>and How to Fix It</em></h2>
+    </div>
+    <p class="prose">When you copy and paste your Works Cited entries from the Source Log into your essay document, the transfer almost never comes through cleanly. Below are the six most common problems to check for after pasting.</p>
+
+    <!-- Row 1: critical -->
+    <div class="problems-grid">
+      <div class="problem-card">
+        <div class="problem-header red">Problem 1 :: Hanging Indent Missing</div>
+        <div class="problem-body">
+          <p>MLA Works Cited entries use a <strong>hanging indent</strong>: the first line of each entry starts at the left margin, and all subsequent lines are indented half an inch. This formatting is almost always lost when you paste entries in.</p>
+          <div class="problem-tag wrong"><strong>Looks wrong:</strong> All lines flush to the left margin with no indentation at all.</div>
+          <div class="problem-tag fix"><strong>Fix:</strong> Select the entry, open the paragraph formatting menu, and set a hanging indent of 0.5 inch. The first video below demonstrates this step by step.</div>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-header red">Problem 2 :: Double Spacing Lost or Added</div>
+        <div class="problem-body">
+          <p>The Works Cited page must be <strong>double spaced throughout</strong>, both within each entry and between entries. No extra blank lines between entries, and no single spaced lines within them.</p>
+          <div class="problem-tag wrong"><strong>Looks wrong:</strong> Single spaced entries, or large gaps where an extra blank line was inserted between them.</div>
+          <div class="problem-tag fix"><strong>Fix:</strong> Select all text on the Works Cited page and apply double spacing. Delete any blank lines between entries.</div>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-header red">Problem 3 :: URLs Are Hyperlinked</div>
+        <div class="problem-body">
+          <p>When a URL is pasted into a Word document, it automatically becomes a clickable blue hyperlink. MLA format requires URLs to appear as <strong>plain text</strong>, not styled hyperlinks.</p>
+          <div class="problem-tag wrong"><strong>Looks wrong:</strong> URL appears in blue underlined text.</div>
+          <div class="problem-tag fix"><strong>Fix:</strong> Right click the link and select "Remove Hyperlink." Then check that the text color matches the rest of the entry. The second video below covers this in detail.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2: moderate -->
+    <div class="problems-grid" style="margin-top: 14px;">
+      <div class="problem-card">
+        <div class="problem-header warn">Problem 4 :: Long URLs Breaking Awkwardly</div>
+        <div class="problem-body">
+          <p>Long web addresses sometimes push a line so far to the right that it creates a large blank space in the middle of the entry, making it look incorrectly formatted.</p>
+          <div class="problem-tag wrong"><strong>Looks wrong:</strong> A line that ends after one or two words with a large gap before the URL continues on the next line.</div>
+          <div class="problem-tag fix"><strong>Fix:</strong> The second video below demonstrates the specific technique for handling long URL line breaks.</div>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-header warn">Problem 5 :: Font or Size Mismatch</div>
+        <div class="problem-body">
+          <p>Pasted text often brings its own font and size. Your Works Cited entries may end up in a different typeface or size than the rest of your essay, a clear formatting violation.</p>
+          <div class="problem-tag wrong"><strong>Looks wrong:</strong> Works Cited entries appear in a slightly different font, size, or weight than the essay body.</div>
+          <div class="problem-tag fix"><strong>Fix:</strong> Select all the entries and apply your essay's standard font and size, Times New Roman 12 point for MLA.</div>
+        </div>
+      </div>
+      <div class="problem-card">
+        <div class="problem-header warn">Problem 6 :: Citation Tool Errors</div>
+        <div class="problem-body">
+          <p>Database Citation Tools are good but not perfect. They occasionally generate entries with missing punctuation, incorrect capitalization, or the wrong format for a specific source type.</p>
+          <div class="problem-tag wrong"><strong>Looks wrong:</strong> A missing period at the end of an entry, an all caps title, or an obviously blank or placeholder field.</div>
+          <div class="problem-tag fix"><strong>Fix:</strong> Compare each entry against the handout's models and correct any discrepancies by hand.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-rule">
+
+  <!-- ══════════════════════════════════
+       SECTION 3 :: FORMATTING VIDEOS
+  ══════════════════════════════════ -->
+  <section class="fade-in fade-d3" aria-labelledby="s3-title">
+    <div class="section-header">
+      <span class="section-badge teal">SEC &middot; 03</span>
+      <h2 class="section-title" id="s3-title">Works Cited <em>Formatting Videos</em></h2>
+    </div>
+    <p class="prose">Two of the most irritating aspects of building a Works Cited are getting the hanging indent right and dealing with long URLs that create awkward gaps on certain lines. The videos below address both problems directly.</p>
+
+    <div class="video-grid">
+      <div class="video-card">
+        <div class="video-header">
+          <div class="video-header-tag">Video 1 :: Fixes Problems 1 and 2</div>
+          <div class="video-header-title">How to Use the Hanging Indent Feature to Adjust Your Indentations</div>
+        </div>
+        <div class="video-embed">
+          <iframe
+            title="How to Use the Hanging Indent Feature"
+            src="https://www.youtube.com/embed/YPGiFak819Y?si=5EGpZRvekRdXFznq"
+            loading="lazy"
+            allowfullscreen
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share">
+          </iframe>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-header">
+          <div class="video-header-tag">Video 2 :: Fixes Problems 3 and 4</div>
+          <div class="video-header-title">How to Fill Empty Gaps Caused by Long URL Addresses</div>
+        </div>
+        <div class="video-embed">
+          <iframe
+            title="How to Handle Long URL Addresses in Works Cited"
+            src="https://www.youtube.com/embed/vWoio6AF5Hc?si=wzrnKum6YwVxrmqF"
+            loading="lazy"
+            allowfullscreen
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-rule">
+
+  <!-- ══════════════════════════════════
+       SECTION 4 :: PRIMARY SOURCE ENTRY
+  ══════════════════════════════════ -->
+  <section class="fade-in fade-d3" aria-labelledby="s4-title">
+    <div class="section-header">
+      <span class="section-badge lavender">SEC &middot; 04</span>
+      <h2 class="section-title" id="s4-title">Works Cited Entry for <em>Your Film</em></h2>
+    </div>
+    <p class="prose">Your primary source, the film you are writing about, also needs to appear on your Works Cited page. Unlike your secondary sources, no Citation Tool will generate this entry for you.</p>
+
+    <div class="callout lavender">
+      <div class="callout-label">Which Films Are on the Approved List</div>
+      <p>Your essay will focus on Alfonso Cuar&oacute;n's <em>Children of Men</em> (2006), Guillermo del Toro's <em>Pan's Labyrinth</em> (2006), or the Wachowskis' <em>The Matrix</em> (1999). When you build your Works Cited entry, use the correct director, production companies, and year for whichever film you chose. The handout below covers the standard MLA 9 format for a feature film.</p>
+    </div>
+
+    <div class="primary-card">
+      <div class="primary-header">&#127909; Film Works Cited Entry :: Format and Handout</div>
+      <div class="primary-body">
+        <div>
+          <p>Use the handout linked below to format the Works Cited entry for your film. It walks through the correct MLA format for a feature length film, field by field: title in italics, director, key performers, production companies, and year.</p>
+          <p>Because the film has no single author at the front of the entry, place it alphabetically by the first word of its title, ignoring "A," "An," and "The." <em>Children of Men</em> alphabetizes under C, <em>Pan's Labyrinth</em> under P, and <em>The Matrix</em> under M (ignoring "The").</p>
+          <div class="handout-block">
+            <div class="handout-block-header">Handout :: Open the Link</div>
+            <div class="handout-block-body">
+              <div class="handout-icon">&#128196;</div>
+              <div class="handout-text">
+                <div class="handout-title">MLA Documentation: Works Cited Entry for Your Film</div>
+                <div class="handout-desc">Step by step format for citing a feature film, with a completed model entry.</div>
+              </div>
+              <a class="handout-link" href="https://online.valenciacollege.edu/courses/250131/files/69264104?wrap=1" target="_blank" rel="noopener">Open &#8599;</a>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p><strong>A complete Works Cited for this essay will have four entries:</strong> one for your film and one for each of your three secondary sources.</p>
+          <p>The entries must appear in <strong>alphabetical order by the author's last name</strong>. If a source has no individual author listed (the film itself, or a website page attributed only to an organization), alphabetize by the first word of the title, ignoring articles like "A," "An," and "The."</p>
+          <div class="callout amber" style="margin-top: 16px; margin-bottom: 0;">
+            <div class="callout-label">Film Specific Note</div>
+            <p>Feature film titles go in <strong>italics</strong>. Episode titles and short film titles use quotation marks, but feature length film titles do not. Production company names (<em>Universal Pictures</em>, <em>Warner Bros.</em>, <em>Telecinco Cinema</em>) are not italicized when they appear in the publisher position of the entry.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-rule">
+
+  <!-- ══════════════════════════════════
+       SECTION 5 :: FINAL CHECKLIST
+  ══════════════════════════════════ -->
+  <section class="fade-in fade-d4" aria-labelledby="s5-title">
+    <div class="section-header">
+      <span class="section-badge teal">SEC &middot; 05</span>
+      <h2 class="section-title" id="s5-title">Final Works Cited <em>Checklist</em></h2>
+    </div>
+    <p class="prose">Run through each item below before submitting your essay. Every checked box is a formatting error you will not lose points for.</p>
+
+    <div class="checklist-panel">
+      <div class="checklist-panel-title">&#9989; Works Cited :: Final Check</div>
+      <div class="checklist-cols">
+        <div>
+          <div class="check-row"><div class="check-box"></div><span>Titled <strong>Works Cited</strong>, centered at the top, not bolded, not in quotation marks</span></div>
+          <div class="check-row"><div class="check-box"></div><span>Entries in <strong>alphabetical order</strong> by author's last name, or by title for the film</span></div>
+          <div class="check-row"><div class="check-box"></div><span>Entire page is <strong>double spaced</strong> with no extra blank lines between entries</span></div>
+          <div class="check-row"><div class="check-box"></div><span><strong>Hanging indent</strong> applied to all entries (first line flush left, subsequent lines indented 0.5 inch)</span></div>
+        </div>
+        <div>
+          <div class="check-row"><div class="check-box"></div><span>All URLs are <strong>plain text</strong> with no blue underlined hyperlinks</span></div>
+          <div class="check-row"><div class="check-box"></div><span>Font and size <strong>match the rest of the essay</strong> (Times New Roman 12 point)</span></div>
+          <div class="check-row"><div class="check-box"></div><span><strong>Four entries total:</strong> your film plus three secondary sources</span></div>
+          <div class="check-row"><div class="check-box"></div><span>Every source cited in the essay <strong>appears on the Works Cited</strong>, and vice versa</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEXT STEP BANNER -->
+  <div class="next-banner fade-in fade-d4">
+    <div class="next-banner-tag">Up Next in This Module</div>
+    <div class="next-banner-title">Dystopian Film Research Essay Assignment</div>
+    <div class="next-banner-desc">Instructions, requirements, and submission for the research essay itself.</div>
+  </div>
+
+</div>
+
+</body>
+</html>
