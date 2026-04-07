@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="identifier" content="dystopian-mla-summary"/>
+<meta name="editing_roles" content="teachers"/>
+<meta name="workflow_state" content="active"/>
+<title>MLA Documentation: How to Write a Summary | ENC 1102 Dystopian Research Essay</title>
+<style>
+
+  /* ═══════════════════════════════════════════════
+     DESIGN TOKENS — Dystopian Research Essay Module
+     ═══════════════════════════════════════════════ */
+
+  @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap');
+
+  :root {
+    --bg-deep:       #565e6e;
+    --bg-surface:    #3e4555;
+    --bg-elevated:   #353c4b;
+    --bg-deepest:    #2b303c;
+    --border-subtle: #4a5264;
+    --border-mid:    #5c6478;
+
+    --accent:        #e8a832;
+    --accent-soft:   #e8a83228;
+    --accent-mid:    #e8a83258;
+    --accent-text:   #f5c865;
+
+    --teal:          #5ba8a0;
+    --teal-soft:     #5ba8a028;
+    --teal-mid:      #5ba8a058;
+    --teal-text:     #90d8d0;
+
+    --lavender:      #9a9cc0;
+    --lavender-soft: #9a9cc028;
+    --lavender-mid:  #9a9cc058;
+    --lavender-text: #d0d2f0;
+
+    --warn:          #f47878;
+    --warn-soft:     #f4787822;
+
+    --text-primary:  #f0f2f5;
+    --text-secondary:#cdd3dc;
+    --text-muted:    #9aa2b2;
+
+    /* summary-type accent colors (adapted to dark palette) */
+    --sum-direct:      #5ba8a0;  /* teal  — direct quote */
+    --sum-direct-text: #90d8d0;
+    --sum-direct-soft: #5ba8a028;
+    --sum-para:        #9a9cc0;  /* lavender — paraphrase */
+    --sum-para-text:   #d0d2f0;
+    --sum-para-soft:   #9a9cc028;
+    --sum-sum:         #e8a832;  /* amber — summary */
+    --sum-sum-text:    #f5c865;
+    --sum-sum-soft:    #e8a83228;
+
+    --font-display:  'Libre Baskerville', 'Georgia', serif;
+    --font-body:     'Source Sans Pro', 'Segoe UI', sans-serif;
+    --font-mono:     'IBM Plex Mono', 'Consolas', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg-deep);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--accent-text); text-decoration: underline; }
+  a:hover { color: #fff; }
+  strong, b { color: var(--text-primary); }
+  em, i { color: var(--text-secondary); }
+
+  .page-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 28px;
+  }
+
+  /* ═══ ANIMATIONS ═══ */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in { animation: fadeUp 0.5s ease both; }
+  .fade-d1 { animation-delay: 0.08s; }
+  .fade-d2 { animation-delay: 0.16s; }
+  .fade-d3 { animation-delay: 0.24s; }
+  .fade-d4 { animation-delay: 0.32s; }
+
+  /* ═══ HERO ═══ */
+  .hero {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-left: 4px solid var(--accent);
+    border-radius: 6px;
+    padding: 40px 44px 36px;
+    margin-bottom: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 220px; height: 220px;
+    background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent-text);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 12px;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: 32px;
+    color: #fff;
+    line-height: 1.25;
+    margin-bottom: 10px;
+  }
+  .hero-title em { font-style: italic; color: var(--accent-text); }
+  .hero-subtitle {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 640px;
+  }
+
+  /* ═══ SECTION HEADERS ═══ */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+    margin-top: 48px;
+  }
+  .section-badge {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--accent-text);
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-mid);
+    border-radius: 4px;
+    padding: 3px 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+  .section-badge.teal {
+    color: var(--teal-text);
+    background: var(--teal-soft);
+    border-color: var(--teal-mid);
+  }
+  .section-badge.lavender {
+    color: var(--lavender-text);
+    background: var(--lavender-soft);
+    border-color: var(--lavender-mid);
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    color: #fff;
+    line-height: 1.3;
+  }
+  .section-title em { font-style: italic; color: var(--accent-text); }
+  .section-rule {
+    border: 0;
+    border-top: 1px solid var(--border-subtle);
+    margin: 48px 0 0 0;
+  }
+
+  /* ═══ PROSE ═══ */
+  .prose {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    max-width: 720px;
+  }
+  .prose + .prose { margin-top: 14px; }
+  .prose strong { color: var(--text-primary); }
+  .prose em { color: var(--text-secondary); }
+
+  /* ═══ CALLOUT BOXES ═══ */
+  .callout {
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    border-left: 3px solid;
+    position: relative;
+    overflow: hidden;
+  }
+  .callout::after {
+    content: '';
+    position: absolute;
+    right: -30px; top: -30px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    pointer-events: none;
+  }
+  .callout.amber    { background: var(--accent-soft); border-color: var(--accent); }
+  .callout.teal     { background: var(--teal-soft); border-color: var(--teal); }
+  .callout.lavender { background: var(--lavender-soft); border-color: var(--lavender); }
+  .callout.warn     { background: var(--warn-soft); border-color: var(--warn); }
+  .callout-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+  .callout.amber .callout-label    { color: var(--accent-text); }
+  .callout.teal .callout-label     { color: var(--teal-text); }
+  .callout.lavender .callout-label { color: var(--lavender-text); }
+  .callout.warn .callout-label     { color: var(--warn); }
+  .callout p {
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+  }
+  .callout p + p { margin-top: 10px; }
+  .callout p strong { color: var(--text-primary); }
+
+  /* ═══ THREE-TYPE COMPARISON GRID ═══ */
+  .type-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 28px 0;
+  }
+  .type-col {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .type-col::after {
+    content: '';
+    position: absolute;
+    bottom: -30px; right: -30px;
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+    pointer-events: none;
+  }
+  .type-head {
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .type-head.direct  { background: var(--sum-direct-soft); }
+  .type-head.para    { background: var(--sum-para-soft); }
+  .type-head.summary { background: var(--sum-sum-soft); }
+  .type-icon {
+    width: 26px; height: 26px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; color: #fff; flex-shrink: 0;
+  }
+  .type-head.direct  .type-icon { background: var(--sum-direct); }
+  .type-head.para    .type-icon { background: var(--sum-para); }
+  .type-head.summary .type-icon { background: var(--sum-sum); color: var(--bg-deepest); }
+  .type-head-label {
+    font-family: var(--font-mono);
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .type-head.direct  .type-head-label { color: var(--sum-direct-text); }
+  .type-head.para    .type-head-label { color: var(--sum-para-text); }
+  .type-head.summary .type-head-label { color: var(--sum-sum-text); }
+
+  .type-body {
+    padding: 16px 18px;
+    display: flex; flex-direction: column; gap: 12px;
+    flex: 1;
+    position: relative;
+    z-index: 1;
+  }
+  .type-def {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    border-left: 2px solid var(--border-subtle);
+    padding-left: 10px;
+  }
+  .type-def strong { color: var(--text-primary); }
+  .type-when-head {
+    font-family: var(--font-mono);
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+  .type-when-list {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .type-when-list li {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    padding-left: 14px;
+    position: relative;
+  }
+  .type-when-list li::before {
+    content: '\25C6';
+    position: absolute; left: 0; top: 0;
+    font-size: 8px; color: var(--text-muted);
+  }
+  .type-scope {
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-subtle);
+    font-size: 12.5px;
+    font-style: italic;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* ═══ STEP CARDS ═══ */
+  .step-grid {
+    display: flex; flex-direction: column; gap: 16px;
+    margin-top: 20px;
+  }
+  .step-card {
+    display: flex; gap: 18px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    padding: 20px 24px;
+    align-items: flex-start;
+    position: relative;
+    overflow: hidden;
+  }
+  .step-card::after {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+    pointer-events: none;
+  }
+  .step-num {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: var(--accent);
+    color: var(--bg-deepest);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 15px; font-weight: 700;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .step-content { flex: 1; position: relative; z-index: 1; }
+  .step-title {
+    font-family: var(--font-display);
+    font-size: 15.5px; font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+  .step-body {
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+  .step-body strong { color: var(--text-primary); }
+  .step-tip {
+    margin-top: 10px;
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-mid);
+    border-radius: 5px;
+    padding: 10px 14px;
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+  .step-tip strong { color: var(--accent-text); }
+
+  /* ═══ CITATION PATTERN BLOCKS ═══ */
+  .cite-section-head {
+    background: var(--bg-deepest);
+    color: #fff;
+    padding: 14px 20px;
+    border: 1px solid var(--border-subtle);
+    border-bottom: none;
+    border-radius: 6px 6px 0 0;
+    font-family: var(--font-display);
+    font-size: 15px; font-weight: 700;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .cite-section-head .src-label {
+    font-family: var(--font-mono);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.10em; text-transform: uppercase;
+    padding: 3px 9px; border-radius: 3px;
+    background: var(--accent-soft);
+    color: var(--accent-text);
+    border: 1px solid var(--accent-mid);
+  }
+  .cite-section-head.html-head .src-label {
+    background: var(--teal-soft);
+    color: var(--teal-text);
+    border-color: var(--teal-mid);
+  }
+  .cite-section-head.noauth-head .src-label {
+    background: var(--lavender-soft);
+    color: var(--lavender-text);
+    border-color: var(--lavender-mid);
+  }
+  .cite-section-body {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    margin-bottom: 28px;
+  }
+  .cite-pattern-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  .cite-pattern {
+    padding: 18px 22px;
+    border-top: 1px solid var(--border-subtle);
+  }
+  .cite-pattern:nth-child(even) {
+    border-left: 1px solid var(--border-subtle);
+  }
+  .cite-pattern-label {
+    font-family: var(--font-mono);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.10em; text-transform: uppercase;
+    color: var(--teal-text);
+    margin-bottom: 8px;
+  }
+  .cite-pattern-format {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    color: var(--accent-text);
+    line-height: 1.6;
+  }
+  .cite-pattern-example {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+  .cite-pattern-note {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin-top: 8px;
+  }
+  .cite-pattern-note strong { color: var(--text-secondary); }
+  .cite-rule-strip {
+    background: var(--bg-elevated);
+    border-top: 1px solid var(--border-subtle);
+    padding: 12px 22px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-secondary);
+    display: flex; gap: 10px; align-items: flex-start;
+  }
+  .cite-rule-strip::before {
+    content: '\2690';
+    color: var(--accent-text);
+    flex-shrink: 0;
+  }
+
+  /* ═══ TRANSFORM (SOURCE → SUMMARY) BLOCKS ═══ */
+  .transform-example-label {
+    font-family: var(--font-mono);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.10em; text-transform: uppercase;
+    color: var(--accent-text);
+    margin: 32px 0 6px;
+  }
+  .transform-block {
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 10px 0 0;
+    background: var(--bg-surface);
+  }
+  .transform-meta {
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 10px 20px;
+    display: flex; align-items: center; gap: 10px;
+    flex-wrap: wrap;
+  }
+  .transform-meta-label {
+    font-family: var(--font-mono);
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .transform-meta-badge {
+    font-family: var(--font-mono);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 3px 9px; border-radius: 3px;
+  }
+  .transform-meta-badge.pdf {
+    background: var(--accent-soft);
+    color: var(--accent-text);
+    border: 1px solid var(--accent-mid);
+  }
+  .transform-meta-badge.html {
+    background: var(--teal-soft);
+    color: var(--teal-text);
+    border: 1px solid var(--teal-mid);
+  }
+  .transform-meta-badge.noauthor {
+    background: var(--lavender-soft);
+    color: var(--lavender-text);
+    border: 1px solid var(--lavender-mid);
+  }
+  .transform-body {
+    display: grid;
+    grid-template-columns: 1fr 48px 1fr;
+  }
+  .transform-side {
+    padding: 22px 24px;
+  }
+  .transform-side.original {
+    background: var(--bg-surface);
+    border-right: 1px solid var(--border-subtle);
+  }
+  .transform-side.result {
+    background: var(--accent-soft);
+  }
+  .transform-side-label {
+    font-family: var(--font-mono);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .transform-side.original .transform-side-label { color: var(--text-muted); }
+  .transform-side.result   .transform-side-label { color: var(--accent-text); }
+  .transform-passage {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+  .transform-passage cite {
+    display: block;
+    margin-top: 12px;
+    font-style: normal;
+    font-size: 12px;
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .transform-summary {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--text-primary);
+    line-height: 1.7;
+  }
+  .transform-summary .highlight {
+    background: var(--accent-mid);
+    border-radius: 2px;
+    padding: 0 3px;
+    color: var(--accent-text);
+    font-style: normal;
+    font-weight: 600;
+  }
+  .transform-arrow {
+    display: flex; align-items: center; justify-content: center;
+    background: var(--bg-elevated);
+    border-right: 1px solid var(--border-subtle);
+    font-size: 22px;
+    color: var(--accent-text);
+    font-family: var(--font-mono);
+  }
+  .transform-footer {
+    background: var(--bg-elevated);
+    border-top: 1px solid var(--border-subtle);
+    padding: 12px 20px;
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+  .transform-footer strong { color: var(--accent-text); }
+
+  /* ═══ ERROR COMPARISON BLOCKS ═══ */
+  .error-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .error-card {
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+    background: var(--bg-surface);
+  }
+  .error-card-head {
+    padding: 10px 16px;
+    font-family: var(--font-mono);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.10em; text-transform: uppercase;
+  }
+  .error-card-head.bad {
+    background: var(--warn-soft);
+    color: var(--warn);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .error-card-head.good {
+    background: var(--teal-soft);
+    color: var(--teal-text);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .error-card-body {
+    padding: 16px 18px;
+  }
+  .error-card-body p {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+  }
+  .error-card-body .annotation {
+    margin-top: 12px;
+    font-style: normal;
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+  .error-card-body .annotation strong { color: var(--text-secondary); }
+
+  .error-heading {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+    margin: 28px 0 8px;
+  }
+  .error-heading:first-of-type { margin-top: 0; }
+
+  /* ═══ QUIZ BLOCKS ═══ */
+  .quiz-block {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-top: 3px solid var(--accent);
+    border-radius: 0 0 6px 6px;
+    padding: 22px 28px;
+    margin: 40px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .quiz-block::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; right: -40px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+    pointer-events: none;
+  }
+  .quiz-label {
+    font-family: var(--font-mono);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--accent-text);
+    margin-bottom: 12px;
+    display: flex; align-items: center; gap: 8px;
+    position: relative;
+    z-index: 1;
+  }
+  .quiz-label::before {
+    content: '';
+    display: inline-block;
+    width: 20px; height: 2px;
+    background: var(--accent);
+  }
+  .quiz-q {
+    font-family: var(--font-display);
+    font-size: 16px; font-weight: 700;
+    color: #fff;
+    line-height: 1.4;
+    margin-bottom: 14px;
+    position: relative;
+    z-index: 1;
+  }
+  .quiz-scenario {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 5px 5px 0;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-family: var(--font-display);
+    font-size: 14.5px;
+    font-style: italic;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+  }
+  .quiz-reveal-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: var(--bg-deepest);
+    border: none;
+    border-radius: 5px;
+    padding: 9px 20px;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.10em; text-transform: uppercase;
+    transition: background 0.15s ease;
+    position: relative;
+    z-index: 1;
+  }
+  .quiz-reveal-btn:hover { background: var(--accent-text); }
+  .quiz-answer {
+    display: none;
+    margin-top: 16px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--accent-mid);
+    border-radius: 6px;
+    padding: 18px 22px;
+    position: relative;
+    z-index: 1;
+  }
+  .quiz-answer-label {
+    font-family: var(--font-mono);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--accent-text);
+    margin-bottom: 8px;
+  }
+  .quiz-answer p {
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+  }
+  .quiz-answer p + p { margin-top: 10px; }
+  .quiz-answer p strong { color: var(--text-primary); }
+  .quiz-answer .example {
+    margin-top: 12px;
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-mid);
+    border-radius: 5px;
+    padding: 12px 16px;
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--text-primary);
+    line-height: 1.7;
+  }
+
+  @media (max-width: 720px) {
+    .type-grid { grid-template-columns: 1fr; }
+    .cite-pattern-grid { grid-template-columns: 1fr; }
+    .cite-pattern:nth-child(even) { border-left: none; }
+    .transform-body { grid-template-columns: 1fr; }
+    .transform-arrow { display: none; }
+    .transform-side.original { border-right: none; border-bottom: 1px solid var(--border-subtle); }
+    .error-pair { grid-template-columns: 1fr; }
+    .hero { padding: 32px 26px; }
+    .page-wrap { padding: 28px 18px; }
+  }
+
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <!-- ═══════════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════════ -->
+  <header class="hero fade-in" aria-labelledby="page-title">
+    <div class="hero-label">MLA Documentation &middot; Dystopian Research Essay</div>
+    <h1 class="hero-title" id="page-title">How to Write <em>a Summary</em></h1>
+    <p class="hero-subtitle">Condensing a film critic's argument into your own words, and how to cite it correctly in MLA 9 format.</p>
+  </header>
+
+  <!-- ══════════════════════════════════
+       SECTION 1: WHAT IS A SUMMARY?
+  ══════════════════════════════════ -->
+  <section class="fade-in fade-d1" aria-labelledby="s1-title">
+    <div class="section-header">
+      <span class="section-badge">SEC &middot; 01</span>
+      <h2 class="section-title" id="s1-title">What Is <em>a Summary</em>?</h2>
+    </div>
+
+    <p class="prose">A <strong>summary</strong> is a condensed restatement, written in your own words, of the <em>main argument or overall point</em> of a source or a large section of one. Unlike a direct quote or a paraphrase, a summary does not focus on the specific language or details of a passage. Instead, it steps back and captures the big picture: what is this critic ultimately claiming about the film?</p>
+    <p class="prose">Like a paraphrase, a summary must be written entirely in your own words and must still acknowledge the source through a signal phrase, a citation, or both. Summarizing someone else's argument without attribution is plagiarism. The idea remains theirs even when you compress it.</p>
+
+    <div class="callout amber" style="margin-top: 24px;">
+      <div class="callout-label">The Key Distinction</div>
+      <p>The most important thing to understand about summaries is how they differ from paraphrases. A <strong>paraphrase</strong> zooms in. It restates a specific passage in your own words, staying close to the original in scope and often in length. A <strong>summary</strong> zooms out. It compresses a larger argument, section, or article into a single sentence or two, focusing only on the main claim and leaving out the supporting details.</p>
+    </div>
+
+    <div class="type-grid" style="margin-top: 28px;">
+
+      <!-- DIRECT QUOTE -->
+      <div class="type-col">
+        <div class="type-head direct">
+          <div class="type-icon">&#10077;</div>
+          <span class="type-head-label">Direct Quote</span>
+        </div>
+        <div class="type-body">
+          <p class="type-def">You reproduce the critic's <strong>exact words</strong>, enclosed in quotation marks.</p>
+          <div>
+            <p class="type-when-head">Use when</p>
+            <ul class="type-when-list">
+              <li>The critic's exact wording is striking, precise, or will be the subject of your own analysis</li>
+              <li>The phrasing is so specific that paraphrasing would distort it</li>
+              <li>You want to introduce a term the critic coins</li>
+            </ul>
+          </div>
+          <p class="type-scope">Scope: a specific phrase or sentence.</p>
+        </div>
+      </div>
+
+      <!-- PARAPHRASE -->
+      <div class="type-col">
+        <div class="type-head para">
+          <div class="type-icon">&#9998;</div>
+          <span class="type-head-label">Paraphrase</span>
+        </div>
+        <div class="type-body">
+          <p class="type-def">You restate a <strong>specific passage</strong> completely in your own words, preserving the original's level of detail.</p>
+          <div>
+            <p class="type-when-head">Use when</p>
+            <ul class="type-when-list">
+              <li>The critic's <em>idea</em> matters more than their specific wording</li>
+              <li>The original passage is complex and clearer in your own words</li>
+              <li>You want to vary your evidence style within a paragraph</li>
+            </ul>
+          </div>
+          <p class="type-scope">Scope: a specific sentence or passage, similar in length to the original.</p>
+        </div>
+      </div>
+
+      <!-- SUMMARY -->
+      <div class="type-col">
+        <div class="type-head summary">
+          <div class="type-icon">&#9670;</div>
+          <span class="type-head-label">Summary</span>
+        </div>
+        <div class="type-body">
+          <p class="type-def">You condense a critic's <strong>overall argument or main point</strong> into one or two sentences. Details are left out.</p>
+          <div>
+            <p class="type-when-head">Use when</p>
+            <ul class="type-when-list">
+              <li>You need to mention a critic's general position without diving into specifics</li>
+              <li>A source's <em>conclusion</em> matters to your argument but its evidence does not</li>
+              <li>You want to gesture at a larger conversation about the film without stopping to quote it</li>
+            </ul>
+          </div>
+          <p class="type-scope">Scope: the whole article, a major section, or the critic's main thesis. Always <em>shorter</em> than the original.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- QUIZ 1 -->
+  <div class="quiz-block fade-in fade-d2">
+    <p class="quiz-label">Formative Check</p>
+    <p class="quiz-q">Which type of source use fits this situation?</p>
+    <div class="quiz-scenario">
+      A classics scholar publishes a fifteen-page article arguing that Steven Spielberg's Minority Report reworks the plot of Oedipus Tyrannus (a detective who reopens an old murder case and is then himself accused of murder) but ultimately rejects the tragedy's fatalism by siding with political agency over divine prophecy. You want to mention this argument in your body paragraph, not the scholar's specific wording or detailed evidence, just the main claim, because it supports the point you're making about the film's treatment of free will.
+    </div>
+    <button class="quiz-reveal-btn" onclick="revealAnswer(this)">&#9654; Reveal Answer</button>
+    <div class="quiz-answer">
+      <p class="quiz-answer-label">Answer</p>
+      <p><strong>Summary.</strong> You do not need the scholar's exact words (which would require a direct quote), and you do not need to restate a specific passage in detail (which would require a paraphrase). You just need to convey the scholar's central claim, which is exactly what a summary does. A one-sentence summary lets you bring in the scholar's authority without slowing your paragraph down with detail it does not need.</p>
+      <div class="example">In his analysis of the film's classical inheritance, Geoffrey Bakewell argues that Minority Report borrows the narrative shape of Oedipus Tyrannus but ultimately rejects the tragedy's fatalism, siding with political agency over divine prophecy (96).</div>
+    </div>
+  </div>
+
+  <hr class="section-rule">
+
+  <!-- ══════════════════════════════════
+       SECTION 2: HOW TO WRITE A SUMMARY
+  ══════════════════════════════════ -->
+  <section class="fade-in fade-d1" aria-labelledby="s2-title">
+    <div class="section-header">
+      <span class="section-badge teal">SEC &middot; 02</span>
+      <h2 class="section-title" id="s2-title">How to Write <em>a Summary</em></h2>
+    </div>
+    <p class="prose">A reliable summary does not happen by skimming the source and copying its topic sentences. The process requires you to understand the critic's argument well enough to express it in your own language. Follow these five steps.</p>
+
+    <div class="step-grid">
+
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <p class="step-title">Read the source all the way through</p>
+          <p class="step-body">Do not try to write a summary from an incomplete reading. Read the entire article, or the section you are summarizing, carefully before you write anything. Pay attention to the <strong>thesis statement</strong> (usually near the beginning), the topic sentence of each paragraph, and the <strong>conclusion</strong>, which often restates the main argument in a different form.</p>
+          <div class="step-tip"><strong>For your essay:</strong> Your two internet sources may be long. You do not have to memorize every detail, but you do need to understand what the critic is ultimately arguing about Children of Men, Pan's Labyrinth, or The Matrix before you can represent them fairly.</div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <p class="step-title">Set the source aside and identify the main claim</p>
+          <p class="step-body">Close the article (or look away from it) and ask yourself: <strong>"In one sentence, what is this critic's argument about the film?"</strong> Forcing yourself to answer without looking at the text is the most reliable way to produce a genuine summary rather than a disguised paraphrase. If you cannot answer the question, read the article again.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <p class="step-title">Write your sentence without looking at the original</p>
+          <p class="step-body">Draft your one or two sentence summary entirely in <strong>your own words</strong>. Do not look at the source while you write. The phrasing must be yours, not the critic's words rearranged, not their sentence structure with synonyms substituted. Proper nouns (the critic's name, the film's title, character names) may remain as is.</p>
+          <div class="step-tip"><strong>Watch for patchwriting:</strong> If your summary sentence still sounds like the original (same structure, same key phrases), you have produced a paraphrase at best and patchwriting at worst. Set the original aside and try again.</div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <p class="step-title">Check your sentence against the original</p>
+          <p class="step-body">Now look back at the source. Ask two questions: <strong>(1) Is my summary accurate?</strong> Does it represent what the critic actually argues, or have I distorted, oversimplified, or exaggerated their position? <strong>(2) Is my summary specific enough?</strong> A summary that says only "Eggert discusses Minority Report" tells the reader nothing. A useful summary identifies the critic's actual claim about the film.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <p class="step-title">Add your signal phrase and citation</p>
+          <p class="step-body">Introduce your summary with a <strong>signal phrase</strong> that names the critic (or provides context) and uses a present tense signal verb. Then add the appropriate parenthetical citation based on your source type. See Section Three for the citation formats.</p>
+          <div class="step-tip"><strong>Signal verbs for summaries</strong> (use present tense): <em>argues, contends, maintains, claims, traces, examines, surveys, explores, demonstrates, proposes, suggests, reads, interprets, situates.</em></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="section-rule">
+
+  <!-- ══════════════════════════════════
+       SECTION 3: CITATION RULES
+  ══════════════════════════════════ -->
+  <section class="fade-in fade-d1" aria-labelledby="s3-title">
+    <div class="section-header">
+      <span class="section-badge lavender">SEC &middot; 03</span>
+      <h2 class="section-title" id="s3-title">Citation Rules <em>for Summaries</em></h2>
+    </div>
+    <p class="prose" style="margin-bottom: 28px;">The citation format for a summary is identical to that for a direct quote or paraphrase. The critic still receives credit through a signal phrase, a parenthetical citation, or both. The format depends on <strong>your source type</strong> (PDF with fixed page numbers vs. HTML without page numbers) and <strong>where the critic's name appears</strong> in your sentence.</p>
+
+    <!-- PDF SOURCES -->
+    <div class="cite-section-head">
+      <span class="src-label">PDF Source</span>
+      Fixed Page Numbers
+    </div>
+    <div class="cite-section-body">
+      <div class="cite-pattern-grid">
+        <div class="cite-pattern">
+          <p class="cite-pattern-label">&#10003; &nbsp;Pattern A &nbsp;&middot;&nbsp; Author's Name in the Citation</p>
+          <div class="cite-pattern-format">Summary sentence (LastName PageNumber).</div>
+          <p class="cite-pattern-example">Critics have argued that Minority Report borrows the narrative structure of Oedipus Tyrannus but ultimately rejects the tragedy's fatalism by siding with political agency over divine prophecy (Bakewell 96).</p>
+          <p class="cite-pattern-note">Author not named in signal phrase, so include <strong>last name + page number</strong> in the parenthetical. No comma between them.</p>
+        </div>
+        <div class="cite-pattern">
+          <p class="cite-pattern-label">&#10003; &nbsp;Pattern B &nbsp;&middot;&nbsp; Author's Name in the Signal Phrase</p>
+          <div class="cite-pattern-format">Author argues that summary sentence (PageNumber).</div>
+          <p class="cite-pattern-example">In his reading of the film's classical inheritance, Geoffrey Bakewell argues that Minority Report inherits the plot of Oedipus Tyrannus but ultimately rejects its fatalism, siding with political agency over divine prophecy (96).</p>
+          <p class="cite-pattern-note">Author named in signal phrase, so include <strong>page number only</strong> in the parenthetical. Do not repeat the name.</p>
+        </div>
+      </div>
+      <div class="cite-rule-strip">
+        No comma between the author's last name and the page number in MLA format: (Bakewell 96) not (Bakewell, 96).
+      </div>
+    </div>
+
+    <!-- HTML SOURCES -->
+    <div class="cite-section-head html-head">
+      <span class="src-label">HTML / Internet Source</span>
+      No Fixed Page Numbers
+    </div>
+    <div class="cite-section-body">
+      <div class="cite-pattern-grid">
+        <div class="cite-pattern">
+          <p class="cite-pattern-label">&#10003; &nbsp;Pattern C &nbsp;&middot;&nbsp; Author's Name in the Citation</p>
+          <div class="cite-pattern-format">Summary sentence (LastName).</div>
+          <p class="cite-pattern-example">Some reviewers have read Minority Report not as a pure warning about a surveillance state but as a sentimental story whose central plea is that the Precogs themselves deserve freedom (Edelstein).</p>
+          <p class="cite-pattern-note">HTML source has no page numbers. Author not named in signal phrase, so include <strong>last name only</strong> in the parenthetical. Do not invent a page number.</p>
+        </div>
+        <div class="cite-pattern">
+          <p class="cite-pattern-label">&#10003; &nbsp;Pattern D &nbsp;&middot;&nbsp; Author's Name in the Signal Phrase</p>
+          <div class="cite-pattern-format">Author argues that summary sentence.</div>
+          <p class="cite-pattern-example">Critic David Edelstein argues that Minority Report works less as a warning against an Orwellian police state than as a humanist plea on behalf of the Precogs themselves.</p>
+          <p class="cite-pattern-note">HTML source plus author named in signal phrase means <strong>no parenthetical citation is needed.</strong> The period ends the sentence. Do not add a redundant (Edelstein) at the end.</p>
+        </div>
+      </div>
+      <div class="cite-rule-strip">
+        When the author is in the signal phrase and the source has no page numbers, no parenthetical citation is required. The reader can find the source on your Works Cited page.
+      </div>
+    </div>
+
+    <!-- NO AUTHOR -->
+    <div class="cite-section-head noauth-head">
+      <span class="src-label">No Identified Author</span>
+      Use Shortened Title
+    </div>
+    <div class="cite-section-body">
+      <div class="cite-pattern-grid">
+        <div class="cite-pattern">
+          <p class="cite-pattern-label">&#10003; &nbsp;HTML &nbsp;&middot;&nbsp; No Author</p>
+          <div class="cite-pattern-format">Summary sentence ("Shortened Title").</div>
+          <p class="cite-pattern-example">One recent overview of Spielberg's science fiction films notes that Minority Report should be read alongside A.I. Artificial Intelligence as a paired meditation on how technology both extends and betrays human judgment ("Spielberg's Science Fiction").</p>
+          <p class="cite-pattern-note">No author identified, so use the <strong>first two to three significant words of the title</strong> in quotation marks. HTML source means no page number.</p>
+        </div>
+        <div class="cite-pattern">
+          <p class="cite-pattern-label">&#10003; &nbsp;PDF &nbsp;&middot;&nbsp; No Author</p>
+          <div class="cite-pattern-format">Summary sentence ("Shortened Title" PageNumber).</div>
+          <p class="cite-pattern-example">A survey of critical responses to the film notes that most early reviewers read Minority Report primarily as a post 9/11 meditation on surveillance and civil liberties ("Critical Reception" 14).</p>
+          <p class="cite-pattern-note">No author plus a PDF source means a title fragment in quotes plus <strong>page number</strong>. Use the database's Citation Tool to confirm pagination.</p>
+        </div>
+      </div>
+      <div class="cite-rule-strip">
+        Sources without identified authors are less credible than named scholarship. When possible, choose sources with identifiable authors for your research essay.
+      </div>
+    </div>
+
+  </section>
+
+  <!-- QUIZ 2 -->
+  <div class="quiz-block fade-in fade-d2">
+    <p class="quiz-label">Formative Check</p>
+    <p class="quiz-q">Which citation format is correct for this situation?</p>
+    <div class="quiz-scenario">
+      You are summarizing an argument from a film criticism website, an HTML source with no fixed page numbers, written by critic Brian Eggert. You have already named him in your signal phrase: "Critic Brian Eggert argues that Spielberg treats the Precogs' minority report..." How does your sentence end, and do you include a parenthetical citation?
+    </div>
+    <button class="quiz-reveal-btn" onclick="revealAnswer(this)">&#9654; Reveal Answer</button>
+    <div class="quiz-answer">
+      <p class="quiz-answer-label">Answer</p>
+      <p><strong>No parenthetical citation is needed.</strong> Because you have named the author in the signal phrase and the source is an HTML article with no page numbers, Pattern D applies: the sentence ends with a period and no parenthetical appears. Adding (Eggert) at the end would be redundant. The reader already knows who you are citing.</p>
+      <div class="example">Critic Brian Eggert argues that Spielberg treats the Precogs' minority report not as a throwaway plot device but as the philosophical engine of the entire film, turning the familiar wrong man thriller into a sustained challenge to the idea that the future can be known in advance.</div>
+      <p style="margin-top: 12px; font-size: 13.5px; color: var(--text-muted);">Compare this to a situation where the author is <em>not</em> in the signal phrase, where (Eggert) would appear at the end before the period.</p>
+    </div>
+  </div>
+
+  <hr class="section-rule">
+
+  <!-- ══════════════════════════════════
+       SECTION 4: COMPLETE EXAMPLES
+  ══════════════════════════════════ -->
+  <section class="fade-in fade-d1" aria-labelledby="s4-title">
+    <div class="section-header">
+      <span class="section-badge">SEC &middot; 04</span>
+      <h2 class="section-title" id="s4-title">Complete <em>Summary Examples</em></h2>
+    </div>
+    <p class="prose">Each example below shows a source passage followed by a correctly written summary. Notice how the summary captures the critic's main argument in a single sentence without reproducing their wording, following their sentence structure, or including their supporting details. All three examples draw on real published criticism of Steven Spielberg's Minority Report, which serves as our sample throughout this module so that your own work on Children of Men, Pan's Labyrinth, or The Matrix remains yours.</p>
+
+    <!-- EXAMPLE 1: PDF, author in signal phrase -->
+    <p class="transform-example-label">Example 1 &nbsp;&middot;&nbsp; PDF Source, Author in Signal Phrase</p>
+    <div class="transform-block">
+      <div class="transform-meta">
+        <span class="transform-meta-label">Source type:</span>
+        <span class="transform-meta-badge pdf">PDF &middot; Fixed Pages</span>
+        <span class="transform-meta-label" style="margin-left: 8px;">Author location:</span>
+        <span class="transform-meta-badge pdf">Signal Phrase</span>
+      </div>
+      <div class="transform-body">
+        <div class="transform-side original">
+          <p class="transform-side-label">Original Passage</p>
+          <p class="transform-passage">"Minority Report is a legitimate child of Oedipus Tyrannus. In each, a powerful detective reopens an unsolved homicide case and is himself subsequently accused of murder. Both productions combine theme and imagery to explore the complex relationship between blindness, sight, and knowledge. Yet the film is not a tragedy in any Aristotelian sense. Whereas Sophocles' play upholds the authority of the oracle and the inevitability of fate, the film undermines both. In the conflict between the divine and the political, Minority Report undercuts the former to side with the latter."<cite>Bakewell, Geoffrey W. "The One-Eyed Man Is King: Oedipal Vision in Minority Report." Arethusa, vol. 41, no. 1, 2008, p. 96.</cite></p>
+        </div>
+        <div class="transform-arrow">&rarr;</div>
+        <div class="transform-side result">
+          <p class="transform-side-label">Summary (Written by You)</p>
+          <p class="transform-summary">In his reading of the film's classical inheritance, <span class="highlight">Geoffrey Bakewell argues</span> that Minority Report borrows the narrative shape of Oedipus Tyrannus (a detective reopening an old case and then being accused of murder) but ultimately rejects the tragedy's fatalism, siding with political agency over divine prophecy <span class="highlight">(96)</span>.</p>
+        </div>
+      </div>
+      <div class="transform-footer">
+        <strong>What the summary does:</strong> Identifies the critic, uses a present tense signal verb ("argues"), and captures the central claim (the film inherits Oedipus but rejects its fatalism) in one sentence, without reproducing Bakewell's phrasing or his paragraph's supporting observations about blindness, sight, and Aristotelian tragedy. Pattern B: author in signal phrase, so page number only in the citation.
+      </div>
+    </div>
+
+    <!-- EXAMPLE 2: HTML, author in parenthetical -->
+    <p class="transform-example-label">Example 2 &nbsp;&middot;&nbsp; HTML Source, Author in Parenthetical Citation</p>
+    <div class="transform-block">
+      <div class="transform-meta">
+        <span class="transform-meta-label">Source type:</span>
+        <span class="transform-meta-badge html">HTML &middot; No Page Numbers</span>
+        <span class="transform-meta-label" style="margin-left: 8px;">Author location:</span>
+        <span class="transform-meta-badge html">Parenthetical</span>
+      </div>
+      <div class="transform-body">
+        <div class="transform-side original">
+          <p class="transform-side-label">Original Passage</p>
+          <p class="transform-passage">"Whose idea was it to turn Minority Report into a mushy declaration of humanism? It ends up as less of a warning about an Orwellian police state than a protest that Pre-Cogs are people, too. Spielberg keeps the roller coaster going (the loop-the-loops are philosophical as well as visceral), but by the end he has traded the bleak political parable of Philip K. Dick's original story for something far more sentimental: a plea on behalf of the film's three enslaved seers, whose freedom matters more to the movie than the freedom of everyone else the Precrime system surveils."<cite>Edelstein, David. "Minority Report Is a Fabulous, Witty Totalitarian Nightmare." Slate, 21 June 2002.</cite></p>
+        </div>
+        <div class="transform-arrow">&rarr;</div>
+        <div class="transform-side result">
+          <p class="transform-side-label">Summary (Written by You)</p>
+          <p class="transform-summary">Some reviewers have read Minority Report not as a pure warning about a surveillance state but as a sentimental story whose central plea is that the Precogs themselves deserve freedom, a shift away from the bleaker politics of the Philip K. Dick original <span class="highlight">(Edelstein)</span>.</p>
+        </div>
+      </div>
+      <div class="transform-footer">
+        <strong>What the summary does:</strong> Accurately captures Edelstein's central claim (the film trades a bleak political warning for a humanist plea on behalf of the Precogs) without using his specific phrases ("mushy declaration of humanism," "roller coaster," "three enslaved seers") or following his sentence structure. Pattern C: HTML source, author not in signal, so last name only in the citation, no page number.
+      </div>
+    </div>
+
+    <!-- EXAMPLE 3: HTML, author in signal, no citation -->
+    <p class="transform-example-label">Example 3 &nbsp;&middot;&nbsp; HTML Source, Author in Signal Phrase (No Parenthetical Needed)</p>
+    <div class="transform-block">
+      <div class="transform-meta">
+        <span class="transform-meta-label">Source type:</span>
+        <span class="transform-meta-badge html">HTML &middot; No Page Numbers</span>
+        <span class="transform-meta-label" style="margin-left: 8px;">Author location:</span>
+        <span class="transform-meta-badge html">Signal Phrase</span>
+      </div>
+      <div class="transform-body">
+        <div class="transform-side original">
+          <p class="transform-side-label">Original Passage</p>
+          <p class="transform-passage">"What Spielberg does differently than Hitchcock is turn his central plot device, or MacGuffin, into a critical philosophical tool for the entire film. That MacGuffin is the eponymous file saved in the Precog's brain. Agatha's 'minority report' suggests that the Precogs' vision will not necessarily occur the way they have communally predicted. Burgess ordered that these reports be destroyed, though a copy remains stored away in Agatha's unconscious. From this detail Spielberg builds an argument against the certainty of Precrime itself: if even one vision can diverge, then the system's claim to see the future has already failed."<cite>Eggert, Brian. "Minority Report (2002)." Deep Focus Review, The Definitives.</cite></p>
+        </div>
+        <div class="transform-arrow">&rarr;</div>
+        <div class="transform-side result">
+          <p class="transform-side-label">Summary (Written by You)</p>
+          <p class="transform-summary">Critic <span class="highlight">Brian Eggert argues</span> that Spielberg treats the Precogs' "minority report" not as a throwaway plot device but as the philosophical engine of the entire film, turning the familiar wrong man thriller into a sustained challenge to Precrime's claim that the future can be known in advance.</p>
+        </div>
+      </div>
+      <div class="transform-footer">
+        <strong>What the summary does:</strong> Author named in signal phrase ("Brian Eggert argues") plus an HTML source equals <strong>no parenthetical citation at all.</strong> The sentence ends with a period. The reader can locate the source on the Works Cited page under "Eggert." Note also: the summary includes the phrase "minority report" in quotation marks because it is the film's actual title and the central term in Eggert's argument. That is not copying the critic's language but referring to the film itself.
+      </div>
+    </div>
+
+  </section>
+
+  <hr class="section-rule">
+
+  <!-- ══════════════════════════════════
+       SECTION 5: COMMON ERRORS
+  ══════════════════════════════════ -->
+  <section class="fade-in fade-d1" aria-labelledby="s5-title">
+    <div class="section-header">
+      <span class="section-badge warn" style="color: var(--warn); background: var(--warn-soft); border-color: var(--warn);">SEC &middot; 05</span>
+      <h2 class="section-title" id="s5-title">Common <em>Errors</em></h2>
+    </div>
+
+    <!-- ERROR 1: Over-detailing -->
+    <h3 class="error-heading">Error 1 &nbsp;&middot;&nbsp; Over Detailing: The "Summary" That Is Actually a Paraphrase</h3>
+    <p class="prose" style="margin-bottom: 16px;">The most common mistake is writing a summary that includes too much of the original's supporting detail. If your sentence follows the critic's argument step by step, reproducing their reasoning in condensed form, you have written a paraphrase, not a summary. A summary should be shorter than a paraphrase and should leave out the specific evidence and reasoning, keeping only the main claim.</p>
+    <div class="error-pair">
+      <div class="error-card">
+        <div class="error-card-head bad">&#10007; &nbsp;Over Detailed (Paraphrase, Not Summary)</div>
+        <div class="error-card-body">
+          <p>In his analysis, Bakewell argues that Minority Report is a legitimate child of Oedipus Tyrannus because in each a powerful detective reopens an unsolved homicide case and is himself subsequently accused of murder, and because both productions combine theme and imagery to explore the complex relationship between blindness, sight, and knowledge, though the film is not a tragedy in an Aristotelian sense because it undermines the authority of the oracle and the inevitability of fate, siding with the political over the divine (96).</p>
+          <p class="annotation"><strong>Problem:</strong> This sentence follows Bakewell's paragraph almost point by point, reproducing his specific examples (the detective reopening the case, the imagery of blindness and sight) and his conclusion. It is a compressed paraphrase, not a summary.</p>
+        </div>
+      </div>
+      <div class="error-card">
+        <div class="error-card-head good">&#10003; &nbsp;Correct (Main Claim Only)</div>
+        <div class="error-card-body">
+          <p>In his reading of the film's classical inheritance, Geoffrey Bakewell argues that Minority Report borrows the narrative shape of Oedipus Tyrannus but ultimately rejects the tragedy's fatalism, siding with political agency over divine prophecy (96).</p>
+          <p class="annotation"><strong>Why it works:</strong> The sentence captures Bakewell's thesis in original language without following his reasoning step by step. The supporting details (blindness, sight, Aristotelian tragedy) are omitted because they are the evidence for the claim, not the claim itself.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ERROR 2: Vague summary -->
+    <h3 class="error-heading">Error 2 &nbsp;&middot;&nbsp; The Empty Summary: Too Vague to Be Useful</h3>
+    <p class="prose" style="margin-bottom: 16px;">A summary that says only that the critic "discusses" or "talks about" a topic is useless. It does not tell the reader what the critic actually argues. Identify the critic's specific claim about the film, not just their subject.</p>
+    <div class="error-pair">
+      <div class="error-card">
+        <div class="error-card-head bad">&#10007; &nbsp;Too Vague</div>
+        <div class="error-card-body">
+          <p>In his article, David Edelstein discusses Minority Report and its relationship to Orwellian science fiction.</p>
+          <p class="annotation"><strong>Problem:</strong> This tells us only the topic, not the argument. What does Edelstein actually say about the film? What is his claim? A useful summary answers that question.</p>
+        </div>
+      </div>
+      <div class="error-card">
+        <div class="error-card-head good">&#10003; &nbsp;Specific</div>
+        <div class="error-card-body">
+          <p>Critic David Edelstein argues that Minority Report works less as a warning against an Orwellian police state than as a humanist plea on behalf of the Precogs themselves, a shift that softens the bleaker politics of Philip K. Dick's original story.</p>
+          <p class="annotation"><strong>Why it works:</strong> The reader now knows <em>what</em> Edelstein argues, not just that he wrote about the film. This summary contributes to the paragraph's argument rather than merely name dropping a source.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ERROR 3: Missing attribution -->
+    <h3 class="error-heading">Error 3 &nbsp;&middot;&nbsp; Missing Attribution: The Unacknowledged Summary</h3>
+    <p class="prose" style="margin-bottom: 16px;">A summary without a signal phrase or citation looks like your own original idea, which means you are presenting someone else's argument as your own. This is plagiarism, even though you did not quote directly. Every summary needs attribution.</p>
+    <div class="error-pair">
+      <div class="error-card">
+        <div class="error-card-head bad">&#10007; &nbsp;No Attribution (Plagiarism)</div>
+        <div class="error-card-body">
+          <p>Spielberg turns the Precogs' minority report into the philosophical engine of the entire film, using a single divergent vision to undo Precrime's claim that the future can be known in advance.</p>
+          <p class="annotation"><strong>Problem:</strong> This is Eggert's argument, but there is no signal phrase and no citation. The reader has no way to know this came from a source. This is plagiarism.</p>
+        </div>
+      </div>
+      <div class="error-card">
+        <div class="error-card-head good">&#10003; &nbsp;Properly Attributed</div>
+        <div class="error-card-body">
+          <p>Critic Brian Eggert argues that Spielberg turns the Precogs' minority report into the philosophical engine of the entire film, using a single divergent vision to undo Precrime's claim that the future can be known in advance.</p>
+          <p class="annotation"><strong>Why it works:</strong> The signal phrase ("Critic Brian Eggert argues") makes clear that this argument belongs to Eggert, not to you. No parenthetical is needed because the source is HTML and the author is already named.</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- QUIZ 3 -->
+  <div class="quiz-block fade-in fade-d2">
+    <p class="quiz-label">Formative Check</p>
+    <p class="quiz-q">Identify the error in this "summary" of a critic's argument about Minority Report.</p>
+    <div class="quiz-scenario">
+      In her article, critic Jane Moore argues that Minority Report works to define the limits of Precrime by showing the audience a series of small contradictions, beginning with Anderton's own flight from his unit, continuing with Agatha's buried minority report, and ending with Burgess's cover up, each of which opens a crack in the system's claim to see the future perfectly, demonstrating that a Precog system which cannot accommodate even one dissenting vision has already failed as a technology of justice (Moore 78).
+    </div>
+    <button class="quiz-reveal-btn" onclick="revealAnswer(this)">&#9654; Reveal Answer</button>
+    <div class="quiz-answer">
+      <p class="quiz-answer-label">Answer</p>
+      <p><strong>This is a paraphrase, not a summary.</strong> The sentence follows Moore's argument in detail, listing her specific examples (Anderton's flight, Agatha's buried report, Burgess's cover up), reproducing her interpretive logic step by step, and concluding with her specific reading. It is far more detailed than a summary needs to be and is essentially an over detailed paraphrase.</p>
+      <p>A summary of Moore's argument would capture only her central claim in one or two sentences, leaving out the specific examples and reasoning:</p>
+      <div class="example">Critic Jane Moore argues that Minority Report uses a series of small contradictions inside the Precrime system to show that any prediction apparatus unable to accommodate a single dissenting vision has already failed as a technology of justice (78).</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function revealAnswer(btn) {
+  var answer = btn.nextElementSibling;
+  if (answer.style.display === 'block') {
+    answer.style.display = 'none';
+    btn.innerHTML = '&#9654; Reveal Answer';
+  } else {
+    answer.style.display = 'block';
+    btn.innerHTML = '&#9660; Hide Answer';
+  }
+}
+</script>
+
+</body>
+</html>
