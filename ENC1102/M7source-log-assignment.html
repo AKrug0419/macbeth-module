@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poetry Research Essay Source Analysis Assignment | ENC 1102 | Module Seven</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+
+  /* ══════════════════════════════════════════
+     TOKENS: Naturalist's Field Journal
+  ══════════════════════════════════════════ */
+  :root {
+    --paper:         #f4ede0;
+    --vellum:        #ede3cf;
+    --aged:          #e4d8be;
+    --worn:          #d8c9a8;
+    --shadow:        #c4b48e;
+    --ink:           #1e160a;
+    --ink-warm:      #2c1f0e;
+    --ink-mid:       #4a3520;
+    --quill:         #6b4e2e;
+    --faded:         #7d6041;
+    --dust:          #7f6748;
+    --moss:          #4a6040;
+    --moss-mid:      #5e7852;
+    --moss-light:    #7a9468;
+    --moss-pale:     #c8d8bc;
+    --moss-wash:     rgba(90,120,72,0.08);
+    --moss-mid-aa:   #5a734e;
+    --umber:         #7a4e28;
+    --umber-mid:     #9a6438;
+    --umber-pale:    #dfc8a8;
+    --umber-wash:    rgba(122,78,40,0.08);
+    --indigo:        #3a4868;
+    --indigo-mid:    #4e608a;
+    --indigo-pale:   #c0cce0;
+    --indigo-wash:   rgba(58,72,104,0.08);
+    --plum:          #6a3a50;
+    --plum-mid:      #8a4e6a;
+    --plum-pale:     #d4b8c8;
+    --plum-wash:     rgba(106,58,80,0.10);
+    --rule:          rgba(74,53,32,0.18);
+    --rule-light:    rgba(74,53,32,0.10);
+
+    /* SIFT step colors */
+    --sift-s:      #6a3a50;
+    --sift-s-wash: rgba(106,58,80,0.10);
+    --sift-i:      #3a4868;
+    --sift-i-wash: rgba(58,72,104,0.10);
+    --sift-f:      #4a6040;
+    --sift-f-wash: rgba(74,96,64,0.10);
+    --sift-t:      #7a4e28;
+    --sift-t-wash: rgba(122,78,40,0.10);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; }
+
+  body {
+    text-align: left;
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.75;
+    min-height: 100vh;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    background-color: var(--ink-warm);
+    padding: 0; overflow: hidden;
+  }
+  .hero-texture {
+    position: absolute; inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(255,255,255,0.025) 28px, rgba(255,255,255,0.025) 29px),
+      repeating-linear-gradient(90deg, transparent, transparent 28px, rgba(255,255,255,0.015) 28px, rgba(255,255,255,0.015) 29px);
+    pointer-events: none;
+  }
+  .hero-ornament {
+    position: absolute; top: 0; right: 0;
+    width: 320px; height: 320px;
+    opacity: 0.06; pointer-events: none;
+  }
+  .hero-inner {
+    position: relative;
+    max-width: 960px; margin: 0 auto;
+    padding: 52px 48px 48px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .hero-module-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'Lora', serif; font-size: 12px; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--moss-pale); opacity: 0.8;
+  }
+  .hero-module-tag::before {
+    content: ''; display: inline-block;
+    width: 28px; height: 1px;
+    background: var(--moss-pale); opacity: 0.6;
+  }
+  .hero-title {
+    font-family: 'Lora', serif;
+    font-size: clamp(28px, 4.5vw, 44px);
+    font-weight: 700; color: var(--paper);
+    line-height: 1.1; letter-spacing: -0.01em;
+  }
+  .hero-title em { font-style: italic; color: var(--moss-pale); }
+  .hero-subtitle {
+    font-family: 'Crimson Pro', serif;
+    font-size: 17px; font-weight: 400; font-style: italic;
+    color: var(--umber-pale); line-height: 1.5;
+    max-width: 540px; opacity: 0.9;
+  }
+  .hero-rule {
+    width: 60px; height: 2px;
+    background: linear-gradient(90deg, var(--moss-light), transparent);
+    margin: 4px 0;
+  }
+
+  /* ── PAGE BODY ── */
+  .page-body {
+    max-width: 960px; margin: 0 auto;
+    padding: 52px 48px 80px;
+  }
+
+  /* ── SECTION ── */
+  .section { margin-bottom: 60px; }
+  .section-label {
+    font-family: 'Lora', serif; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--moss-mid-aa); margin-bottom: 10px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(90deg, var(--rule), transparent);
+    max-width: 120px;
+  }
+  .section-title {
+    font-family: 'Lora', serif;
+    font-size: clamp(20px, 3vw, 26px); font-weight: 700;
+    color: var(--ink-warm); line-height: 1.2; margin-bottom: 18px;
+  }
+  .section-title em { font-style: italic; color: var(--moss); }
+  .prose {
+    font-family: 'Crimson Pro', serif;
+    font-size: 17px; line-height: 1.8;
+    color: var(--ink-mid); max-width: 720px; text-align: left;
+  }
+  .prose + .prose { margin-top: 14px; }
+  .prose strong { color: var(--ink); font-weight: 600; }
+
+  /* ── DIVIDER ── */
+  .divider { border: none; border-top: 1px solid var(--rule); margin: 52px 0; }
+  .divider-ornament { text-align: center; margin: -10px 0 0; position: relative; }
+  .divider-ornament::before, .divider-ornament::after {
+    content: ''; display: inline-block;
+    width: 48px; height: 1px; background: var(--rule);
+    vertical-align: middle; margin: 0 12px;
+  }
+  .divider-ornament span {
+    font-family: 'Crimson Pro', serif; font-size: 18px;
+    color: var(--dust); vertical-align: middle;
+  }
+
+  /* ── CALLOUT BOXES ── */
+  .callout {
+    border-left: 3px solid var(--moss-mid);
+    background: var(--moss-wash);
+    border-radius: 0 8px 8px 0;
+    padding: 16px 22px; margin: 20px 0;
+  }
+  .callout-label {
+    font-family: 'Lora', serif; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--moss); margin-bottom: 6px;
+  }
+  .callout p {
+    font-family: 'Crimson Pro', serif; font-size: 16px;
+    color: var(--ink-mid); line-height: 1.7; margin: 0; text-align: left;
+  }
+  .callout p + p { margin-top: 8px; }
+  .callout.umber { border-color: var(--umber-mid); background: var(--umber-wash); }
+  .callout.umber .callout-label { color: var(--umber); }
+  .callout.indigo { border-color: var(--indigo-mid); background: var(--indigo-wash); }
+  .callout.indigo .callout-label { color: var(--indigo); }
+  .callout.plum { border-color: var(--plum-mid); background: var(--plum-wash); }
+  .callout.plum .callout-label { color: var(--plum); }
+
+  /* ── OUTCOMES LIST ── */
+  .outcomes-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 20px; margin-top: 8px;
+  }
+  .outcomes-card {
+    background: var(--vellum); border: 1px solid var(--rule);
+    border-radius: 10px; padding: 22px 24px;
+  }
+  .outcomes-card-label {
+    font-family: 'Lora', serif; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--moss-mid-aa); margin-bottom: 12px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .outcomes-card-label::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(90deg, var(--rule), transparent);
+  }
+  .outcomes-list {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 9px;
+  }
+  .outcomes-list li {
+    position: relative; padding-left: 18px;
+    font-family: 'Crimson Pro', serif; font-size: 15.5px;
+    line-height: 1.65; color: var(--ink-mid); text-align: left;
+  }
+  .outcomes-list li::before {
+    content: '◆'; color: var(--moss-mid);
+    font-size: 9px; position: absolute; left: 0; top: 6px;
+  }
+
+  /* ── PART HEADER ── */
+  .part-header {
+    background: var(--ink-warm);
+    border-radius: 8px 8px 0 0;
+    padding: 14px 24px;
+    margin-top: 36px;
+  }
+  .part-header-eyebrow {
+    font-family: 'Lora', serif; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--moss-pale); opacity: 0.85; margin-bottom: 2px;
+  }
+  .part-header-title {
+    font-family: 'Lora', serif; font-size: 18px; font-weight: 700;
+    color: var(--paper);
+  }
+  .part-body {
+    background: var(--vellum);
+    border: 1px solid var(--rule); border-top: none;
+    border-radius: 0 0 8px 8px;
+    padding: 28px 28px;
+  }
+
+  /* ── SOURCE SLOT ── */
+  .source-slot {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--rule-light);
+  }
+  .source-slot:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .source-slot-header {
+    display: flex; align-items: center; gap: 14px; margin-bottom: 12px;
+  }
+  .source-num {
+    width: 36px; height: 36px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Lora', serif; font-size: 15px; font-weight: 700;
+    color: white; flex-shrink: 0;
+  }
+  .source-num.db      { background: var(--moss-mid); }
+  .source-num.web     { background: var(--indigo-mid); }
+  .source-type-label {
+    font-family: 'Lora', serif; font-size: 13px; font-weight: 700;
+    color: var(--ink); line-height: 1.3;
+  }
+  .source-type-sub {
+    font-family: 'Crimson Pro', serif; font-size: 14px;
+    font-style: italic; color: var(--faded); line-height: 1.4;
+  }
+  .source-requirements {
+    padding-left: 50px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .source-req {
+    display: flex; gap: 10px; align-items: flex-start;
+    font-family: 'Crimson Pro', serif; font-size: 15.5px;
+    color: var(--ink-mid); line-height: 1.65;
+  }
+  .source-req-bullet {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--moss-mid); flex-shrink: 0; margin-top: 8px;
+  }
+  .source-req-bullet.web { background: var(--indigo-mid); }
+
+  /* ── SIFT PROMPT BLOCK ── */
+  .sift-prompts {
+    margin-top: 20px;
+    background: var(--aged);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .sift-prompts-header {
+    padding: 11px 20px;
+    background: rgba(74,53,32,0.08);
+    border-bottom: 1px solid var(--rule);
+    font-family: 'Lora', serif; font-size: 12px; font-weight: 700;
+    letter-spacing: 0.10em; text-transform: uppercase;
+    color: var(--ink-mid);
+  }
+  .sift-prompt-list {
+    padding: 0; margin: 0;
+    list-style: none;
+  }
+  .sift-prompt-item {
+    display: flex; gap: 0;
+    border-bottom: 1px solid var(--rule-light);
+  }
+  .sift-prompt-item:last-child { border-bottom: none; }
+  .sift-prompt-letter {
+    width: 44px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Lora', serif; font-size: 18px; font-weight: 700;
+    color: white;
+  }
+  .sift-prompt-item.s .sift-prompt-letter { background: var(--sift-s); }
+  .sift-prompt-item.i .sift-prompt-letter { background: var(--sift-i); }
+  .sift-prompt-item.f .sift-prompt-letter { background: var(--sift-f); }
+  .sift-prompt-item.t .sift-prompt-letter { background: var(--sift-t); }
+  .sift-prompt-body {
+    padding: 14px 18px; flex: 1;
+  }
+  .sift-prompt-move {
+    font-family: 'Lora', serif; font-size: 10px; font-weight: 700;
+    letter-spacing: 0.13em; text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+  .sift-prompt-item.s .sift-prompt-move { color: var(--sift-s); }
+  .sift-prompt-item.i .sift-prompt-move { color: var(--sift-i); }
+  .sift-prompt-item.f .sift-prompt-move { color: var(--sift-f); }
+  .sift-prompt-item.t .sift-prompt-move { color: var(--sift-t); }
+  .sift-prompt-question {
+    font-family: 'Crimson Pro', serif; font-size: 15.5px; font-weight: 600;
+    color: var(--ink); line-height: 1.55; margin-bottom: 4px;
+  }
+  .sift-prompt-note {
+    font-family: 'Crimson Pro', serif; font-size: 14px;
+    font-style: italic; color: var(--faded); line-height: 1.5;
+  }
+
+  /* ── SAMPLE RESPONSE ── */
+  /* ── FORM-MIRROR SAMPLE ── */
+  .form-sample {
+    border: 1px solid var(--rule); border-radius: 10px;
+    overflow: hidden; margin: 28px 0;
+    box-shadow: 0 2px 14px rgba(0,0,0,0.07);
+  }
+  .form-sample-banner { display: flex; align-items: stretch; }
+  .form-sample-banner-left {
+    background: #243418; padding: 18px 22px; flex: 0 0 58%;
+  }
+  .form-sample-banner-right {
+    background: #4a6040; padding: 14px 18px; flex: 1;
+  }
+  .form-sample-eyebrow {
+    font-family: 'Lora', serif; font-size: 11px; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: #c8d8bc; margin-bottom: 4px;
+  }
+  .form-sample-title {
+    font-family: 'Lora', serif; font-size: 20px; font-weight: 700; color: #fff;
+  }
+  .form-sample-submit-label {
+    font-family: 'Lora', serif; font-size: 10px; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: #c8d8bc; margin-bottom: 6px;
+  }
+  .form-sample-submit-item {
+    font-family: 'Crimson Pro', serif; font-size: 15px;
+    color: #fff; line-height: 1.6;
+  }
+  .form-sample-instructions {
+    background: #f4f2ee; border-left: 4px solid #4a6040;
+    padding: 12px 20px;
+    font-family: 'Crimson Pro', serif; font-size: 15px;
+    color: #333; line-height: 1.6;
+  }
+  .form-sample-body { padding: 22px 24px 28px; background: #f9f8f5; }
+
+  /* Part heading */
+  .form-sample-part {
+    border-top: 1px solid #CCCCCC; border-bottom: 1px solid #CCCCCC;
+    padding: 9px 0; margin: 24px 0 18px;
+    display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px;
+  }
+  .form-sample-part-label {
+    font-family: 'Lora', serif; font-size: 14px; font-weight: 700;
+    color: #243418; letter-spacing: 0.02em;
+  }
+  .form-sample-part-sub {
+    font-family: 'Crimson Pro', serif; font-size: 13px;
+    font-style: italic; color: #595959;
+  }
+
+  /* Source heading */
+  .form-sample-src {
+    border-left: 4px solid #4a6040;
+    padding: 5px 0 5px 14px; margin: 20px 0 10px;
+  }
+  .form-sample-src.ind { border-left-color: #3a4868; }
+  .form-sample-src-label {
+    font-family: 'Lora', serif; font-size: 13px; font-weight: 700; color: #243418;
+  }
+  .form-sample-src-sub {
+    font-family: 'Crimson Pro', serif; font-size: 13px;
+    font-style: italic; color: #595959;
+  }
+
+  /* Field label / note / content */
+  .form-sample-flabel {
+    font-family: 'Lora', serif; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.07em; text-transform: uppercase;
+    color: #4a6040; margin-bottom: 2px;
+  }
+  .form-sample-flabel.ind { color: #3a4868; }
+  .form-sample-flabel.umb { color: #7a4e28; }
+  .form-sample-fnote {
+    font-family: 'Crimson Pro', serif; font-size: 13.5px;
+    font-style: italic; color: #595959; margin-bottom: 6px; line-height: 1.55;
+  }
+  .form-sample-field {
+    background: #F5F7F4; border: 1px solid rgba(74,53,32,0.10);
+    border-radius: 4px; padding: 14px 18px; margin-bottom: 16px;
+  }
+  .sample-citation {
+    font-family: 'Libre Baskerville', serif; font-size: 14px;
+    color: var(--ink); line-height: 2.0;
+    padding-left: 32px; text-indent: -32px;
+  }
+  .sample-response-text {
+    font-family: 'Crimson Pro', serif; font-size: 15.5px;
+    color: var(--ink-mid); line-height: 1.75;
+  }
+
+  /* SIFT form blocks */
+  .fs-sift {
+    border: 1px solid rgba(74,53,32,0.10);
+    border-radius: 6px; overflow: hidden; margin-bottom: 8px;
+  }
+  .fs-sift-hdr { display: flex; align-items: stretch; }
+  .fs-sift-badge {
+    width: 52px; min-width: 52px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Lora', serif; font-size: 26px; font-weight: 700; color: #fff;
+  }
+  .fs-sift-badge.s { background: #6a3a50; }
+  .fs-sift-badge.i { background: #3a4868; }
+  .fs-sift-badge.f { background: #4a6040; }
+  .fs-sift-badge.t { background: #7a4e28; }
+  .fs-sift-q { padding: 10px 14px; flex: 1; }
+  .fs-sift-q.s { background: rgba(106,58,80,0.08); }
+  .fs-sift-q.i { background: rgba(58,72,104,0.08); }
+  .fs-sift-q.f { background: rgba(74,96,64,0.08); }
+  .fs-sift-q.t { background: rgba(122,78,40,0.08); }
+  .fs-sift-move {
+    font-family: 'Lora', serif; font-size: 12.5px; font-weight: 700;
+  }
+  .fs-sift-move.s { color: #6a3a50; }
+  .fs-sift-move.i { color: #3a4868; }
+  .fs-sift-move.f { color: #4a6040; }
+  .fs-sift-move.t { color: #7a4e28; }
+  .fs-sift-qtext {
+    font-family: 'Crimson Pro', serif; font-size: 14px; color: #333;
+  }
+  .fs-sift-note {
+    font-family: 'Crimson Pro', serif; font-size: 13px;
+    font-style: italic; color: #595959; margin-top: 3px;
+  }
+  .fs-sift-resp {
+    background: #F5F7F4; padding: 14px 18px 14px 70px;
+    font-family: 'Crimson Pro', serif; font-size: 15.5px;
+    color: var(--ink-mid); line-height: 1.75;
+  }
+
+  /* Checklist */
+  .form-sample-cl {
+    display: grid; grid-template-columns: 1fr 1fr;
+    border: 1px solid #CCCCCC; border-radius: 6px;
+    overflow: hidden; margin-top: 24px;
+  }
+  .form-sample-cl-col {
+    background: #F0F0EF; padding: 14px 18px;
+  }
+  .form-sample-cl-col:first-child { border-right: 1px solid #CCCCCC; }
+  .form-sample-cl-hdr {
+    font-family: 'Lora', serif; font-size: 12.5px; font-weight: 700;
+    color: #243418; margin-bottom: 10px; padding-bottom: 8px;
+    border-bottom: 1px solid #CCCCCC;
+  }
+  .form-sample-cl-item {
+    font-family: 'Crimson Pro', serif; font-size: 14px;
+    color: #333; line-height: 1.6; padding: 2px 0;
+    display: flex; gap: 6px;
+  }
+  .form-sample-cl-chk { color: #595959; flex-shrink: 0; }
+
+  /* ── GRADING / META BLOCKS ── */
+  .meta-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 16px; margin-top: 8px;
+  }
+  .meta-card {
+    background: var(--vellum); border: 1px solid var(--rule);
+    border-radius: 8px; padding: 18px 20px;
+  }
+  .meta-card-label {
+    font-family: 'Lora', serif; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.13em; text-transform: uppercase;
+    color: var(--moss-mid-aa); margin-bottom: 8px;
+  }
+  .meta-card-value {
+    font-family: 'Crimson Pro', serif; font-size: 16px;
+    color: var(--ink-mid); line-height: 1.65;
+  }
+  .meta-card-value strong { color: var(--ink); font-weight: 600; }
+
+  /* ── RESOURCES LIST ── */
+  .resources-list {
+    list-style: none; padding: 0; margin: 10px 0 0;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .resources-list li {
+    display: flex; gap: 10px; align-items: center;
+  }
+  .resource-link {
+    font-family: 'Crimson Pro', serif; font-size: 17px;
+    color: var(--moss); text-decoration: none;
+    border-bottom: 1px solid rgba(74,96,64,0.3);
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .resource-link:hover { color: var(--moss-mid); border-color: var(--moss-mid); }
+  .resource-arrow { font-size: 12px; color: var(--moss-mid); opacity: 0.6; flex-shrink: 0; }
+
+  /* ── CONTACT BOX ── */
+  .contact-box {
+    background: var(--vellum); border: 1px solid var(--rule);
+    border-radius: 10px; padding: 22px 26px;
+    display: flex; gap: 18px; align-items: flex-start; margin-top: 8px;
+  }
+  .contact-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+  .contact-title {
+    font-family: 'Lora', serif; font-size: 16px; font-weight: 600;
+    color: var(--ink); margin-bottom: 5px;
+  }
+  .contact-text {
+    font-family: 'Crimson Pro', serif; font-size: 15.5px;
+    color: var(--faded); line-height: 1.65;
+  }
+
+  /* ── CITE TOOL DEMO ── */
+  .cite-demo-wrap {
+    margin: 18px 0 6px; border: 1px solid #d0d0d0;
+    border-radius: 8px; overflow: hidden; background: #fff;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+  }
+  .cite-demo-caption {
+    background: var(--moss-wash); border-bottom: 1px solid rgba(74,96,64,0.15);
+    padding: 6px 14px;
+    font-family: 'Lora', serif; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.10em; text-transform: uppercase; color: var(--moss);
+  }
+  .cite-demo-toolbar {
+    background: #f5f5f5; border-bottom: 1px solid #ddd;
+    padding: 6px 12px; display: flex; align-items: center;
+    gap: 2px; flex-wrap: wrap;
+  }
+  .cite-tb-btn {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 2px; padding: 5px 9px; background: none; border: none;
+    cursor: default; font-family: Arial, sans-serif; font-size: 11px; color: #222;
+    border-radius: 3px;
+  }
+  .cite-tb-btn .cbi { font-size: 15px; line-height: 1; }
+  .cite-tb-sep { width: 1px; height: 34px; background: #ccc; margin: 0 3px; }
+  .cite-demo-dialog { background: #fff; }
+  .cite-demo-tabs {
+    display: flex; border-bottom: 1px solid #ccc; padding: 0 16px; background: #fff;
+  }
+  .cite-tab {
+    font-family: Arial, sans-serif; font-size: 13px; color: #1558b0;
+    padding: 10px 14px 8px; cursor: default;
+    border-bottom: 3px solid transparent; white-space: nowrap;
+  }
+  .cite-tab.on {
+    border-bottom-color: #1558b0; font-weight: 700;
+  }
+  .cite-demo-text {
+    font-family: 'Times New Roman', Times, serif; font-size: 14px;
+    line-height: 2.0; color: #000;
+    padding: 16px 20px 16px 52px; text-indent: -32px;
+  }
+  .cite-demo-footer {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 8px 18px 14px; border-top: 1px solid #eee;
+  }
+  .cite-disclaimer {
+    font-family: Arial, sans-serif; font-size: 13px; color: #1558b0; cursor: default;
+  }
+  .cite-copy-btn {
+    background: #1558b0; color: #fff; border: none; border-radius: 4px;
+    padding: 7px 20px; font-family: Arial, sans-serif;
+    font-size: 13.5px; font-weight: 600; cursor: default;
+  }
+  .cite-hint {
+    font-family: 'Crimson Pro', serif; font-size: 14px; font-style: italic;
+    color: var(--faded); margin: 6px 0 0; line-height: 1.6;
+  }
+  .cite-hint strong { font-style: normal; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 680px) {
+    .hero-inner { padding: 38px 24px 34px; }
+    .page-body { padding: 38px 24px 60px; }
+    .outcomes-grid, .meta-grid { grid-template-columns: 1fr; }
+    .source-requirements { padding-left: 0; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-texture"></div>
+  <svg class="hero-ornament" viewBox="0 0 340 340" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <ellipse cx="240" cy="100" rx="90" ry="30" transform="rotate(-35 240 100)" fill="white"/>
+    <ellipse cx="280" cy="60" rx="70" ry="22" transform="rotate(-55 280 60)" fill="white"/>
+    <ellipse cx="200" cy="140" rx="80" ry="25" transform="rotate(-20 200 140)" fill="white"/>
+    <line x1="240" y1="100" x2="300" y2="20" stroke="white" stroke-width="2"/>
+    <line x1="220" y1="120" x2="260" y2="30" stroke="white" stroke-width="1.5"/>
+    <ellipse cx="310" cy="30" rx="28" ry="10" transform="rotate(-60 310 30)" fill="white"/>
+  </svg>
+  <div class="hero-inner">
+    <div class="hero-module-tag">Module Seven &nbsp;·&nbsp; ENC 1102</div>
+    <div class="hero-rule"></div>
+    <h1 class="hero-title">Poetry Research Essay <em>Source Analysis</em> Assignment</h1>
+    <p class="hero-subtitle">Locate your research sources and demonstrate how you evaluated the ones you found on the internet.</p>
+  </div>
+</header>
+
+<main class="page-body">
+
+  <!-- ═══════════════════════════════════
+       LEARNING OUTCOMES
+  ═══════════════════════════════════ -->
+  <section class="section" aria-labelledby="outcomes-heading">
+    <div class="section-label">Goals</div>
+    <h2 class="section-title" id="outcomes-heading">Learning Outcomes &amp; <em>Objectives</em></h2>
+    <div class="outcomes-grid">
+      <div class="outcomes-card">
+        <div class="outcomes-card-label">Course Learning Outcomes</div>
+        <ul class="outcomes-list">
+          <li>Demonstrate information literacy.</li>
+          <li>Synthesize information for a specific rhetorical aim.</li>
+          <li>Apply critical reading skills.</li>
+          <li>Document sources in accordance with a recognized documentation style.</li>
+        </ul>
+      </div>
+      <div class="outcomes-card">
+        <div class="outcomes-card-label">By the End of This Assignment</div>
+        <ul class="outcomes-list">
+          <li>Use academic databases to locate relevant literary criticism.</li>
+          <li>Use internet search strategies to locate credible secondary sources.</li>
+          <li>Apply the SIFT method and lateral reading to evaluate internet sources.</li>
+          <li>Format MLA citations for sources from databases and the web.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider"><div class="divider-ornament"><span>✦</span></div>
+
+  <!-- ═══════════════════════════════════
+       ASSIGNMENT OVERVIEW
+  ═══════════════════════════════════ -->
+  <section class="section" aria-labelledby="overview-heading">
+    <div class="section-label">Assignment Instructions</div>
+    <h2 class="section-title" id="overview-heading">Two Parts, <em>Three Sources</em></h2>
+
+    <p class="prose">For your Poetry &amp; Literary Elements Research Essay, you'll be working with <strong>three secondary sources</strong>, the same number you used for your previous research essay. This time, however, you'll be locating them using two different methods: one through a <strong>literary criticism database</strong> and two through <strong>internet research</strong>, using the search strategies and evaluation tools you studied in this module.</p>
+    <p class="prose">This assignment has two parts. In <strong>Part One</strong>, you'll submit MLA-formatted citations for all three sources. In <strong>Part Two</strong>, you'll write a brief SIFT-based evaluation for each of your two internet sources, demonstrating how you verified them before deciding to use them.</p>
+
+    <div class="callout indigo" style="margin-top:20px;">
+      <div class="callout-label">A Note on Source Types</div>
+      <p>All three sources should be <strong>literary criticism</strong>, secondary sources that analyze, interpret, or discuss the poem (or the poet's work) you're writing about. The same requirements that applied to your previous research essay apply here: your sources should be written by scholars or critics with relevant expertise, published in academic or established literary contexts, and directly relevant to your essay's argument.</p>
+    </div>
+
+    <!-- PART ONE -->
+    <div class="part-header">
+      <div class="part-header-eyebrow">Part One</div>
+      <div class="part-header-title">Your Three MLA Citations</div>
+    </div>
+    <div class="part-body">
+      <p class="prose" style="margin-bottom:24px;">Format an MLA-style Works Cited entry for each of your three sources. Use the database's <strong>Citation Tool</strong> for your database source (see the demo in the Database Source section below). For your internet sources, format your MLA citations following MLA 9th edition guidelines for online sources.</p>
+
+      <!-- Source 1: Database -->
+      <div class="source-slot">
+        <div class="source-slot-header">
+          <div class="source-num db">1</div>
+          <div>
+            <div class="source-type-label">Database Source</div>
+            <div class="source-type-sub">Literary criticism located through an academic database</div>
+          </div>
+        </div>
+        <div class="source-requirements">
+          <div class="source-req">
+            <div class="source-req-bullet"></div>
+            <div>Use one of the following databases available through Valencia College's library to locate a piece of literary criticism about your chosen poem or poet:
+              <ul style="margin: 10px 0 0 4px; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; list-style: disc;">
+                <li style="font-family:'Crimson Pro',serif; font-size:15px; color:var(--ink-mid); line-height:1.6;">Bloom's Literature (Infobase Publishing)</li>
+                <li style="font-family:'Crimson Pro',serif; font-size:15px; color:var(--ink-mid); line-height:1.6;">Literature (Gale)</li>
+                <li style="font-family:'Crimson Pro',serif; font-size:15px; color:var(--ink-mid); line-height:1.6;">Literary Reference Plus (EBSCO)</li>
+                <li style="font-family:'Crimson Pro',serif; font-size:15px; color:var(--ink-mid); line-height:1.6;">Literature Criticism (Gale)</li>
+                <li style="font-family:'Crimson Pro',serif; font-size:15px; color:var(--ink-mid); line-height:1.6;">JSTOR</li>
+                <li style="font-family:'Crimson Pro',serif; font-size:15px; color:var(--ink-mid); line-height:1.6;">Ebook Central (ProQuest)</li>
+                <li style="font-family:'Crimson Pro',serif; font-size:15px; color:var(--ink-mid); line-height:1.6;">eBook Collection (ABC-CLIO)</li>
+                <li style="font-family:'Crimson Pro',serif; font-size:15px; color:var(--ink-mid); line-height:1.6;">eBook Collection (Infobase)</li>
+              </ul>
+            </div>
+          </div>
+          <div class="source-req">
+            <div class="source-req-bullet"></div>
+            <div><strong>How to Access Academic Databases:</strong>
+              <ol style="margin: 10px 0 0 4px; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; list-style: decimal;">
+                <li style="font-family:'Crimson Pro',serif; font-size:15px; color:var(--ink-mid); line-height:1.6;">Click <strong>Library</strong> on the left in the Navigation menu.</li>
+                <li style="font-family:'Crimson Pro',serif; font-size:15px; color:var(--ink-mid); line-height:1.6;">Click <strong>Open in New Tab</strong>. If needed, log in using your MYVC credentials.</li>
+                <li style="font-family:'Crimson Pro',serif; font-size:15px; color:var(--ink-mid); line-height:1.6;">Click on <strong>Databases A-Z</strong> at the top.</li>
+                <li style="font-family:'Crimson Pro',serif; font-size:15px; color:var(--ink-mid); line-height:1.6;">In the Filters bar above the alphabet, click <strong>Subject</strong> and scroll to <strong>Literature</strong>.</li>
+                <li style="font-family:'Crimson Pro',serif; font-size:15px; color:var(--ink-mid); line-height:1.6;">Click <strong>Search</strong>.</li>
+              </ol>
+            </div>
+          </div>
+          <div class="source-req">
+            <div class="source-req-bullet"></div>
+            <div>Use the database's <strong>Citation Tool</strong> to generate your MLA citation, then review it for formatting accuracy before including it here.</div>
+          </div>
+
+          <!-- ── Cite-tool demo ── -->
+          <div class="cite-demo-wrap">
+            <div class="cite-demo-caption">How the Database Citation Tool Works</div>
+            <div class="cite-demo-toolbar" role="toolbar" aria-label="Database toolbar (demo, not interactive)">
+              <div class="cite-tb-btn">
+                <span style="font-size:15px; line-height:1;">&#8592;</span>
+                <span>Results</span>
+              </div>
+              <div class="cite-tb-sep" aria-hidden="true"></div>
+              <div class="cite-tb-btn" style="background:#e8f0fe; border-radius:4px; padding:5px 11px;">
+                <span style="font-size:14px; line-height:1; color:#1558b0;">&#10077;&#10078;</span>
+                <span style="color:#1558b0; font-weight:700;">Cite</span>
+              </div>
+              <div class="cite-tb-sep" aria-hidden="true"></div>
+              <div class="cite-tb-btn">
+                <span style="font-size:14px; line-height:1;">&#9993;</span>
+                <span>Send To&hellip;</span>
+              </div>
+              <div class="cite-tb-btn">
+                <span style="font-size:14px; line-height:1;">&#8595;</span>
+                <span>Download</span>
+              </div>
+              <div class="cite-tb-btn">
+                <span style="font-size:14px; line-height:1;">&#128438;</span>
+                <span>Print</span>
+              </div>
+              <div class="cite-tb-btn">
+                <span style="font-size:14px; line-height:1;">&#128279;</span>
+                <span>Get Link</span>
+              </div>
+              <div class="cite-tb-btn">
+                <span style="font-size:14px; line-height:1;">&#9998;</span>
+                <span>Highlights &amp; Notes <span style="font-size:10px; color:#666;">(0)</span></span>
+              </div>
+            </div>
+            <div class="cite-demo-tabs" role="tablist" aria-label="Citation format tabs (demo)">
+              <div class="cite-tab on" role="tab" aria-selected="true">MLA 9th Edition</div>
+              <div class="cite-tab" role="tab" aria-selected="false">APA 7th Edition</div>
+              <div class="cite-tab" role="tab" aria-selected="false">Chicago 17th Edition</div>
+              <div class="cite-tab" role="tab" aria-selected="false">Harvard</div>
+            </div>
+            <div class="cite-demo-text" role="region" aria-label="Sample MLA citation output">Evans, Robert C. &#x201C;&#x2018;Abortions Will Not Let You Forget&#x2019;: A Close Reading of Gwendolyn Brooks&#x2019;s &#x2018;the mother&#x2019;.&#x201D; <em>Contemporary Literary Criticism</em>, edited by Lawrence J. Trudeau, vol. 349, Gale, 2014. <em>Gale Literature Resource Center</em>, link.gale.com/apps/doc/H1100115865/GLS?u=lincclin_vcc&amp;sid=bookmark-GLS&amp;xid=123d7452. Accessed 31 Mar. 2026. Originally published in <em>CLA Journal</em>, vol. 54, no. 3, 2011, pp. 223&#x2013;238.</div>
+            <div class="cite-demo-footer">
+              <a class="cite-disclaimer" href="#" tabindex="-1">Disclaimer</a>
+              <button class="cite-copy-btn" tabindex="-1" aria-label="Copy citation (demo, not interactive)">Copy Citation</button>
+            </div>
+          </div>
+          <p class="cite-hint">After copying, paste the citation into your document and review it carefully &#x2014; database tools sometimes misformat titles or omit the access date. Correct any errors before submitting.</p>
+
+          <div class="source-req">
+            <div class="source-req-bullet"></div>
+            <div>In one or two sentences following the citation, briefly explain <strong>how this source relates to your essay's argument</strong>: what does it discuss, and how do you plan to use it?</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Source 2: Internet -->
+      <div class="source-slot">
+        <div class="source-slot-header">
+          <div class="source-num web">2</div>
+          <div>
+            <div class="source-type-label">Internet Source One</div>
+            <div class="source-type-sub">Literary criticism located through internet research</div>
+          </div>
+        </div>
+        <div class="source-requirements">
+          <div class="source-req">
+            <div class="source-req-bullet web"></div>
+            <div>Use <strong>Google Scholar</strong>, regular Google, or an AI-assisted keyword search (see the <em>AI and Academic Research</em> page for appropriate AI use) to locate a second piece of literary criticism about your chosen poem or poet.</div>
+          </div>
+          <div class="source-req">
+            <div class="source-req-bullet web"></div>
+            <div>Format your MLA citation for this source following MLA 9th edition guidelines for online sources. Include the author (if listed), article or page title, website name, publisher or sponsor (if different from the site name), publication or last-updated date (if available), URL, and access date.</div>
+          </div>
+          <div class="source-req">
+            <div class="source-req-bullet web"></div>
+            <div>This source will be evaluated in <strong>Part Two</strong>.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Source 3: Internet -->
+      <div class="source-slot">
+        <div class="source-slot-header">
+          <div class="source-num web">3</div>
+          <div>
+            <div class="source-type-label">Internet Source Two</div>
+            <div class="source-type-sub">Literary criticism located through internet research</div>
+          </div>
+        </div>
+        <div class="source-requirements">
+          <div class="source-req">
+            <div class="source-req-bullet web"></div>
+            <div>Locate a third piece of literary criticism using the same internet research methods. This source should be <strong>from a different website or publication</strong> than Source 2.</div>
+          </div>
+          <div class="source-req">
+            <div class="source-req-bullet web"></div>
+            <div>Format your MLA citation for this source following MLA 9th edition guidelines for online sources. Include the author (if listed), article or page title, website name, publisher or sponsor (if different from the site name), publication or last-updated date (if available), URL, and access date.</div>
+          </div>
+          <div class="source-req">
+            <div class="source-req-bullet web"></div>
+            <div>This source will also be evaluated in <strong>Part Two</strong>.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── Internet Source Works Cited Format (annotated example) ─── -->
+      <div class="wc-format-wrap" style="margin: 40px 0 6px;">
+        <div style="background:var(--moss-wash); border:1px solid rgba(74,96,64,0.22); border-bottom:none; border-radius:8px 8px 0 0; padding:9px 18px; font-family:'Lora',serif; font-size:11px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--moss);">Internet Source Works Cited Format</div>
+        <div style="background:#fff; border:1px solid rgba(74,96,64,0.22); border-top:none; border-radius:0 0 8px 8px; box-shadow:0 6px 20px rgba(44,31,14,0.12), 0 1px 3px rgba(44,31,14,0.06); padding:46px 60px 40px 60px;">
+          <div style="font-family:'Times New Roman', Times, serif; font-size:15px; line-height:2.0; color:#000; padding-left:48px; text-indent:-48px;">
+            <span style="background:rgba(90,120,72,0.22); border-radius:2px; padding:0 3px;">Baker, Sarah.</span>
+            <span style="background:rgba(122,78,40,0.18); border-radius:2px; padding:0 3px;">&ldquo;The Aching Space of Gwendolyn Brooks&rsquo;s &lsquo;the mother.&rsquo;&rdquo;</span>
+            <span style="background:rgba(58,72,104,0.18); border-radius:2px; padding:0 3px;"><em>Poetry Foundation</em>,</span>
+            <span style="background:rgba(106,58,80,0.18); border-radius:2px; padding:0 3px;">Poetry Foundation,</span>
+            <span style="background:rgba(90,120,72,0.22); border-radius:2px; padding:0 3px;">14 Jan. 2023,</span>
+            <span style="background:rgba(122,78,40,0.18); border-radius:2px; padding:0 3px;">www.poetryfoundation.org/articles/155902/gwendolyn-brooks-mother.</span>
+            <span style="background:rgba(58,72,104,0.18); border-radius:2px; padding:0 3px;">Accessed 3 Apr. 2026.</span>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px 28px; margin-top:18px; font-family:'Crimson Pro',serif; font-size:14px; color:var(--ink-warm); line-height:1.55;">
+          <div style="display:flex; align-items:baseline; gap:10px;"><span style="display:inline-block; width:12px; height:12px; background:rgba(90,120,72,0.45); border-radius:2px; flex:none; position:relative; top:1px;"></span><span><strong>Author &amp; Publication Date:</strong> Author&rsquo;s name in Last, First format. Publication date in Day Month Year format (abbreviate months longer than four letters).</span></div>
+          <div style="display:flex; align-items:baseline; gap:10px;"><span style="display:inline-block; width:12px; height:12px; background:rgba(122,78,40,0.40); border-radius:2px; flex:none; position:relative; top:1px;"></span><span><strong>Title &amp; URL:</strong> Article or page title in quotation marks. URL without the https:// prefix, ending with a period.</span></div>
+          <div style="display:flex; align-items:baseline; gap:10px;"><span style="display:inline-block; width:12px; height:12px; background:rgba(58,72,104,0.40); border-radius:2px; flex:none; position:relative; top:1px;"></span><span><strong>Website Name &amp; Access Date:</strong> Name of the website italicized. Access date in Day Month Year format.</span></div>
+          <div style="display:flex; align-items:baseline; gap:10px;"><span style="display:inline-block; width:12px; height:12px; background:rgba(106,58,80,0.40); border-radius:2px; flex:none; position:relative; top:1px;"></span><span><strong>Publisher or Sponsor:</strong> Include only if the publisher differs from the website name. Omit it otherwise.</span></div>
+        </div>
+        <p class="cite-hint" style="margin-top:18px;">Your citation must be double-spaced with a hanging indent (second and following lines indented 0.5&rdquo;). The <strong>Research Sources Analysis Template</strong> in Format &amp; Submission is already formatted this way, so your entry will space correctly as you type.</p>
+      </div>
+    </div>
+
+    <!-- PART TWO -->
+    <div class="part-header" style="margin-top:32px;">
+      <div class="part-header-eyebrow">Part Two</div>
+      <div class="part-header-title">SIFT Evaluation of Your Internet Sources</div>
+    </div>
+    <div class="part-body">
+      <p class="prose" style="margin-bottom:20px;">For each of your two internet sources, write a brief evaluation using the four prompts below. Work through each prompt in order, labeling your response for each one. Your evaluation of each source should be at least <strong>150 words</strong>.</p>
+      <p class="prose" style="margin-bottom:24px;">You are demonstrating that you actually investigated these sources before deciding to use them, not just that they look credible at first glance. Your evaluations should be specific: name the websites, publications, or search results you found during your lateral investigation, not just general impressions.</p>
+
+      <div class="sift-prompts" aria-label="SIFT evaluation prompts">
+        <div class="sift-prompts-header">Answer Each of the Following for Both Internet Sources</div>
+        <ul class="sift-prompt-list">
+          <li class="sift-prompt-item s">
+            <div class="sift-prompt-letter">S</div>
+            <div class="sift-prompt-body">
+              <div class="sift-prompt-move">Stop: How You Found It</div>
+              <div class="sift-prompt-question">What search engine and search terms did you use to find this source? What was your initial impression of it, and what made you decide it was worth investigating further?</div>
+              <div class="sift-prompt-note">If you used an AI tool to generate search keywords, briefly describe how you used it and what terms it suggested.</div>
+            </div>
+          </li>
+          <li class="sift-prompt-item i">
+            <div class="sift-prompt-letter">I</div>
+            <div class="sift-prompt-body">
+              <div class="sift-prompt-move">Investigate: Your Lateral Research</div>
+              <div class="sift-prompt-question">What did you find when you left the page and searched for the source, publication, or author in a new browser tab? Who publishes this source, and what did other sources tell you about its credibility?</div>
+              <div class="sift-prompt-note">Be specific: name what you searched for and what you found. "It looked legitimate" is not a sufficient answer here.</div>
+            </div>
+          </li>
+          <li class="sift-prompt-item f">
+            <div class="sift-prompt-letter">F</div>
+            <div class="sift-prompt-body">
+              <div class="sift-prompt-move">Find: Corroboration</div>
+              <div class="sift-prompt-question">What other credible sources corroborate this source's focus or arguments? Does the scholarly conversation about your poem support the general direction this source takes?</div>
+              <div class="sift-prompt-note">You don't need sources that make exactly the same argument, just evidence that the critical conversation this source participates in is real and established.</div>
+            </div>
+          </li>
+          <li class="sift-prompt-item t">
+            <div class="sift-prompt-letter">T</div>
+            <div class="sift-prompt-body">
+              <div class="sift-prompt-move">Trace: Credibility Conclusion</div>
+              <div class="sift-prompt-question">Based on your investigation, what specific evidence makes you confident this source is credible and appropriate for an academic research essay? What would have disqualified it?</div>
+              <div class="sift-prompt-note">Consider: author credentials, publisher reputation, citation practices within the source, and whether any claims seemed unverifiable.</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- SAMPLE RESPONSE: FORM MIRROR -->
+      <div class="form-sample" aria-label="Complete sample assignment response">
+
+        <!-- Banner (mirrors Word form header) -->
+        <div class="form-sample-banner">
+          <div class="form-sample-banner-left">
+            <div class="form-sample-eyebrow">ENC 1102 &middot; Module Seven &middot; Poetry Research Essay</div>
+            <div class="form-sample-title">Source Analysis Assignment</div>
+          </div>
+          <div class="form-sample-banner-right">
+            <div class="form-sample-submit-label">What You&rsquo;ll Submit</div>
+            <div class="form-sample-submit-item">Part One: 3 MLA citations</div>
+            <div class="form-sample-submit-item">Part Two: 2 SIFT evaluations (150 words min. each)</div>
+          </div>
+        </div>
+
+        <!-- Label bar -->
+        <div class="form-sample-instructions">
+          <strong>Sample submission</strong>: Sylvia Plath, <em>&ldquo;Morning Song.&rdquo;</em> This is a complete, model-level response for both parts of the assignment. Use it as a guide for format, length, and depth.
+        </div>
+
+        <div class="form-sample-body">
+
+          <!-- ─── PART ONE ─────────────────────────── -->
+          <div class="form-sample-part">
+            <span class="form-sample-part-label">PART ONE: YOUR THREE MLA CITATIONS</span>
+            <span class="form-sample-part-sub">One database source and two internet sources</span>
+          </div>
+
+          <!-- Source 1: Database -->
+          <div class="form-sample-src">
+            <span class="form-sample-src-label">Source 1</span>
+            <span class="form-sample-src-sub">: Database Source</span>
+          </div>
+          <div class="form-sample-flabel">MLA Citation</div>
+          <div class="form-sample-fnote">Use the database&rsquo;s Citation Tool. Apply double spacing and a hanging indent to the entry.</div>
+          <div class="form-sample-field">
+            <div class="sample-citation">Axelrod, Steven Gould. &#x201C;Jealous Gods: Plath, Nature, and the Legacy of Romanticism.&#x201D; <em>Bloom&#x2019;s Modern Critical Views: Sylvia Plath</em>, edited by Harold Bloom, Infobase Publishing, 2007, pp. 117&#x2013;138. <em>Bloom&#x2019;s Literature</em>, online.infobase.com.</div>
+          </div>
+          <div class="form-sample-flabel umb">How does this source relate to your argument?</div>
+          <div class="form-sample-fnote">In 1 or 2 sentences, explain what this source discusses and how you plan to use it.</div>
+          <div class="form-sample-field">
+            <span class="sample-response-text">Axelrod traces Plath&#x2019;s use of natural imagery to register both tenderness and estrangement, a critical lens that maps directly onto &#x201C;Morning Song,&#x201D; where the speaker&#x2019;s description of her newborn oscillates between wonder and detachment. I plan to draw on Axelrod&#x2019;s analysis of Plath&#x2019;s ambivalent maternal speakers to support my argument that the poem refuses the conventional celebration of motherhood.</span>
+          </div>
+
+          <!-- Source 2: Internet 1 -->
+          <div class="form-sample-src ind">
+            <span class="form-sample-src-label">Source 2</span>
+            <span class="form-sample-src-sub">: Internet Source One</span>
+          </div>
+          <div class="form-sample-flabel ind">MLA Citation</div>
+          <div class="form-sample-fnote">Format using MLA 9th edition guidelines for online sources. Double-space and apply a hanging indent.</div>
+          <div class="form-sample-field">
+            <div class="sample-citation">Middlebrook, Diane Wood. &#x201C;What Was Confessional Poetry?&#x201D; <em>The Columbia History of American Poetry</em>, Columbia University Press, 1993. <em>Modern American Poetry</em>, Department of English, University of Illinois at Urbana-Champaign, www.modernamericanpoetry.org/content/diane-wood-middlebrook-what-was-confessional-poetry.</div>
+          </div>
+
+          <!-- Source 3: Internet 2 -->
+          <div class="form-sample-src ind">
+            <span class="form-sample-src-label">Source 3</span>
+            <span class="form-sample-src-sub">: Internet Source Two</span>
+          </div>
+          <div class="form-sample-flabel ind">MLA Citation</div>
+          <div class="form-sample-fnote">Format using MLA 9th edition guidelines for online sources. Double-space and apply a hanging indent.</div>
+          <div class="form-sample-field">
+            <div class="sample-citation">Brain, Tracy. &#x201C;Plath&#x2019;s Ariel and the Problem of Revision.&#x201D; <em>Plath Profiles: An Interdisciplinary Journal for Sylvia Plath Studies</em>, vol. 2, 2009, pp. 9&#x2013;40, www.plathprofiles.com/archives/vol2/brain.</div>
+          </div>
+
+          <!-- ─── PART TWO ─────────────────────────── -->
+          <div class="form-sample-part">
+            <span class="form-sample-part-label">PART TWO: SIFT EVALUATIONS</span>
+            <span class="form-sample-part-sub">Complete a SIFT evaluation for each internet source</span>
+          </div>
+          <p style="font-family:'Crimson Pro',serif; font-size:15px; font-style:italic; color:#595959; margin-bottom:20px; line-height:1.65;">For each source, all four SIFT letters are addressed in order. Responses name specific search terms, websites, and publications, not general impressions.</p>
+
+          <!-- SIFT: Source 2 (Middlebrook) -->
+          <div class="form-sample-src ind">
+            <span class="form-sample-src-label">Internet Source One (Source 2)</span>
+            <span class="form-sample-src-sub">: SIFT Evaluation</span>
+          </div>
+
+          <div class="fs-sift">
+            <div class="fs-sift-hdr">
+              <div class="fs-sift-badge s">S</div>
+              <div class="fs-sift-q s">
+                <span class="fs-sift-move s">Stop</span> <span class="fs-sift-qtext">What search engine and search terms did you use? What was your first impression?</span>
+                <div class="fs-sift-note">If you used an AI tool to suggest keywords, briefly describe how and what terms it offered.</div>
+              </div>
+            </div>
+            <div class="fs-sift-resp">I searched Google using the terms <em>Sylvia Plath &#x201C;Morning Song&#x201D; confessional poetry critical analysis</em>. The first page was dominated by student essay sites and SparkNotes-style summaries, so I scrolled past those. The <em>Modern American Poetry</em> site appeared on the second page of results. The URL showed a .org domain with a reference to the University of Illinois, which suggested institutional sponsorship. The page listed essays by named scholars, not anonymous summaries, and included an essay by Diane Wood Middlebrook, whose name I recognized in connection with confessional poetry scholarship. That combination made me decide it was worth a closer look.</div>
+          </div>
+
+          <div class="fs-sift">
+            <div class="fs-sift-hdr">
+              <div class="fs-sift-badge i">I</div>
+              <div class="fs-sift-q i">
+                <span class="fs-sift-move i">Investigate</span> <span class="fs-sift-qtext">What did you find when you left the page and searched the source or author in a new tab?</span>
+                <div class="fs-sift-note">Name the specific websites, publications, or results you found. &#x201C;It looked legitimate&#x201D; is not sufficient.</div>
+              </div>
+            </div>
+            <div class="fs-sift-resp">I opened a new tab and searched <em>Modern American Poetry University of Illinois English department</em>. The site is maintained by the Department of English at the University of Illinois at Urbana-Champaign and has served as a standard scholarly resource for decades. Multiple university course syllabi linked to it, and entries appeared in the works cited sections of peer-reviewed articles I found through JSTOR. I then searched for Diane Wood Middlebrook and found that she was a professor of English at Stanford University and the author of <em>Anne Sexton: A Biography</em> (1991), widely cited in confessional poetry scholarship. Her faculty page was no longer live, she passed away in 2007, but her biography and publication record were confirmed through Stanford&#x2019;s archived English department page and WorldCat.</div>
+          </div>
+
+          <div class="fs-sift">
+            <div class="fs-sift-hdr">
+              <div class="fs-sift-badge f">F</div>
+              <div class="fs-sift-q f">
+                <span class="fs-sift-move f">Find</span> <span class="fs-sift-qtext">What other credible sources corroborate this source&#x2019;s focus or arguments?</span>
+                <div class="fs-sift-note">You don&#x2019;t need exact agreement, just evidence the critical conversation it joins is real and established.</div>
+              </div>
+            </div>
+            <div class="fs-sift-resp">My search in Bloom&#x2019;s Literature returned several essays discussing confessional poetics and Plath&#x2019;s relationship to that tradition, including entries that cited Middlebrook&#x2019;s biography and critical writing directly. The term &#x201C;confessional poetry,&#x201D; central to Middlebrook&#x2019;s argument, recurs consistently across the scholarship I found, in JSTOR articles on Plath, in the Axelrod essay from Bloom&#x2019;s, and in multiple encyclopedia entries on postwar American poetry. The critical conversation Middlebrook is contributing to is clearly established and ongoing.</div>
+          </div>
+
+          <div class="fs-sift">
+            <div class="fs-sift-hdr">
+              <div class="fs-sift-badge t">T</div>
+              <div class="fs-sift-q t">
+                <span class="fs-sift-move t">Trace</span> <span class="fs-sift-qtext">What specific evidence makes you confident this source is credible for academic use?</span>
+                <div class="fs-sift-note">Consider: author credentials, publisher reputation, citation practices, and any unverifiable claims.</div>
+              </div>
+            </div>
+            <div class="fs-sift-resp">I am confident this source is appropriate for academic use for three reasons: the credibility of the host institution (University of Illinois), the author&#x2019;s verified scholarly standing (Stanford professor, widely cited biography), and the fact that the essay originally appeared in a scholarly anthology published by Columbia University Press. What would have disqualified it: an anonymous author, a site with no institutional affiliation, or a page that simply summarized Plath&#x2019;s life without advancing a critical argument. None of those problems were present. I also read beyond the first paragraph to confirm the essay engages in interpretive argument rather than just description.</div>
+          </div>
+
+          <div style="height:1px; background:var(--rule); margin:22px 0;"></div>
+
+          <!-- SIFT: Source 3 (Brain / Plath Profiles) -->
+          <div class="form-sample-src ind">
+            <span class="form-sample-src-label">Internet Source Two (Source 3)</span>
+            <span class="form-sample-src-sub">: SIFT Evaluation</span>
+          </div>
+
+          <div class="fs-sift">
+            <div class="fs-sift-hdr">
+              <div class="fs-sift-badge s">S</div>
+              <div class="fs-sift-q s">
+                <span class="fs-sift-move s">Stop</span> <span class="fs-sift-qtext">What search engine and search terms did you use? What was your first impression?</span>
+                <div class="fs-sift-note">If you used an AI tool to suggest keywords, briefly describe how and what terms it offered.</div>
+              </div>
+            </div>
+            <div class="fs-sift-resp">I used Google Scholar with the search terms <em>Plath &#x201C;Morning Song&#x201D; Ariel revision manuscript</em>. Among approximately fifty results, this article appeared on the first page with a title that matched my essay&#x2019;s focus closely, Plath&#x2019;s process of shaping the Ariel collection, which includes &#x201C;Morning Song.&#x201D; The journal name, <em>Plath Profiles</em>, suggested a specialized scholarly focus, which was both a reason to investigate it and a reason to verify it carefully. The abstract previewed an argument about revision and editorial choices relevant to understanding the poem&#x2019;s final form.</div>
+          </div>
+
+          <div class="fs-sift">
+            <div class="fs-sift-hdr">
+              <div class="fs-sift-badge i">I</div>
+              <div class="fs-sift-q i">
+                <span class="fs-sift-move i">Investigate</span> <span class="fs-sift-qtext">What did you find when you left the page and searched the source or author in a new tab?</span>
+                <div class="fs-sift-note">Name the specific websites, publications, or results you found. &#x201C;It looked legitimate&#x201D; is not sufficient.</div>
+              </div>
+            </div>
+            <div class="fs-sift-resp">Before reading the article, I opened a new tab and searched <em>Plath Profiles journal peer-reviewed academic</em>. I found it is a peer-reviewed, open-access journal dedicated to Sylvia Plath scholarship, archived through DePauw University, with an editorial board that includes scholars from Oxford and the University of Exeter. I then searched for Tracy Brain and found that she is a professor of creative writing and English at Bath Spa University, with a published book, <em>The Other Sylvia Plath</em> (Longman, 2001), that appears in academic databases and is cited in other Plath scholarship. Her faculty page at Bath Spa confirmed her credentials and a sustained research focus on Plath.</div>
+          </div>
+
+          <div class="fs-sift">
+            <div class="fs-sift-hdr">
+              <div class="fs-sift-badge f">F</div>
+              <div class="fs-sift-q f">
+                <span class="fs-sift-move f">Find</span> <span class="fs-sift-qtext">What other credible sources corroborate this source&#x2019;s focus or arguments?</span>
+                <div class="fs-sift-note">You don&#x2019;t need exact agreement, just evidence the critical conversation it joins is real and established.</div>
+              </div>
+            </div>
+            <div class="fs-sift-resp">My search in Bloom&#x2019;s Literature and JSTOR for criticism on the Ariel manuscript returned multiple articles on Plath&#x2019;s editorial process, several of which cited Brain&#x2019;s book directly. The question of how Plath ordered and shaped the Ariel poems is a documented area of scholarly discussion, with contributions from Ted Hughes&#x2019;s original edition, Karen Kukil&#x2019;s archival scholarship, and multiple peer-reviewed articles on the subject. Brain&#x2019;s article fits directly into that conversation rather than standing in isolation.</div>
+          </div>
+
+          <div class="fs-sift">
+            <div class="fs-sift-hdr">
+              <div class="fs-sift-badge t">T</div>
+              <div class="fs-sift-q t">
+                <span class="fs-sift-move t">Trace</span> <span class="fs-sift-qtext">What specific evidence makes you confident this source is credible for academic use?</span>
+                <div class="fs-sift-note">Consider: author credentials, publisher reputation, citation practices, and any unverifiable claims.</div>
+              </div>
+            </div>
+            <div class="fs-sift-resp">The combination of a peer-reviewed journal archived through a university, a verifiable academic author with a published book on the same subject, and a clearly argued thesis grounded in primary manuscript sources makes me confident this source is appropriate for academic use. What would have disqualified it: an unverifiable author, a self-published blog without editorial oversight, or an article that simply described the poems without advancing a critical argument. None of those problems are present. I also read the first five pages to confirm the article directly addresses aspects of &#x201C;Morning Song&#x201D; and the Ariel manuscript relevant to my essay&#x2019;s argument.</div>
+          </div>
+
+          <!-- Checklist (mirrors Word form checklist table) -->
+          <div class="form-sample-cl" role="table" aria-label="Pre-submission checklist">
+            <div class="form-sample-cl-col">
+              <div class="form-sample-cl-hdr">Before You Submit: Part One</div>
+              <div class="form-sample-cl-item"><span class="form-sample-cl-chk">&#x2611;</span> Three sources submitted (1 database + 2 internet)</div>
+              <div class="form-sample-cl-item"><span class="form-sample-cl-chk">&#x2611;</span> Citations formatted in MLA 9</div>
+              <div class="form-sample-cl-item"><span class="form-sample-cl-chk">&#x2611;</span> Citation Tool used for database source</div>
+              <div class="form-sample-cl-item"><span class="form-sample-cl-chk">&#x2611;</span> Internet source citations formatted in MLA 9</div>
+              <div class="form-sample-cl-item"><span class="form-sample-cl-chk">&#x2611;</span> Relevance note included for Source 1</div>
+            </div>
+            <div class="form-sample-cl-col">
+              <div class="form-sample-cl-hdr">Before You Submit: Part Two</div>
+              <div class="form-sample-cl-item"><span class="form-sample-cl-chk">&#x2611;</span> Both internet sources evaluated (Sources 2 and 3)</div>
+              <div class="form-sample-cl-item"><span class="form-sample-cl-chk">&#x2611;</span> All four SIFT letters addressed for each source</div>
+              <div class="form-sample-cl-item"><span class="form-sample-cl-chk">&#x2611;</span> Each evaluation is at least 150 words</div>
+              <div class="form-sample-cl-item"><span class="form-sample-cl-chk">&#x2611;</span> Responses are labeled S, I, F, and T</div>
+              <div class="form-sample-cl-item"><span class="form-sample-cl-chk">&#x2611;</span> Specific search terms and websites named in I</div>
+            </div>
+          </div>
+
+        </div><!-- /form-sample-body -->
+      </div><!-- /form-sample -->
+    </div>
+  </section>
+
+  <hr class="divider"><div class="divider-ornament"><span>✦</span></div>
+
+  <!-- ═══════════════════════════════════
+       GRADING & SUBMISSION
+  ═══════════════════════════════════ -->
+  <section class="section" aria-labelledby="grading-heading">
+    <div class="section-label">Evaluation &amp; Submission</div>
+    <h2 class="section-title" id="grading-heading">Grading, Format, &amp; <em>Submission</em></h2>
+
+    <div class="callout umber">
+      <div class="callout-label">Grading</div>
+      <p>This assignment will be assessed on the accuracy of your MLA citations, the completeness of all three source entries in Part One, and the specificity and depth of your SIFT evaluations in Part Two. Evaluations that offer only general impressions without naming specific evidence from your lateral investigation will not receive full credit. There is no separate rubric for this assignment, your instructor will provide written feedback directly on your document.</p>
+    </div>
+
+    <div class="meta-grid" style="margin-top:20px;">
+      <div class="meta-card">
+        <div class="meta-card-label">Points</div>
+        <div class="meta-card-value">Worth a possible <strong>45 homework points</strong>.</div>
+      </div>
+      <div class="meta-card">
+        <div class="meta-card-label">Due Date</div>
+        <div class="meta-card-value"><strong>Sunday, April 19th</strong> at 11:59 pm</div>
+      </div>
+      <div class="meta-card">
+        <div class="meta-card-label">Minimum Length</div>
+        <div class="meta-card-value"><strong>150 words</strong> per SIFT evaluation (Part Two). No minimum for Part One citations.</div>
+      </div>
+      <div class="meta-card">
+        <div class="meta-card-label">Grace Period</div>
+        <div class="meta-card-value"><strong>No grace period.</strong> Because the semester is almost over, there is no grace period for this assignment. The Late Policy, a two-point deduction per 24 hours it is late, begins accruing on Monday, April 20th.</div>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Lora',serif; font-size:clamp(17px,2.5vw,21px); font-weight:700; color:var(--ink-warm); margin: 32px 0 12px;">Format &amp; Submission</h3>
+
+    <!-- ─── Template Download Callout ─── -->
+    <a href="https://raw.githubusercontent.com/AKrug0419/courses/main/ENC1102/PoetryResearchEssaySourceAnalysisAssignmentTemplate.docx" download style="text-decoration:none; color:inherit; display:block;">
+      <div style="display:flex; align-items:center; gap:22px; background:linear-gradient(135deg, #f6f1e4 0%, #eee6d0 100%); border:2px solid var(--moss); border-left:8px solid var(--moss); border-radius:10px; padding:22px 26px; margin:18px 0 24px; box-shadow:0 4px 14px rgba(44,31,14,0.10); transition:transform 0.15s ease, box-shadow 0.15s ease;">
+        <div style="flex:none; width:64px; height:78px; background:#fff; border:1.5px solid var(--moss); border-radius:4px; position:relative; box-shadow:0 2px 6px rgba(44,31,14,0.12);">
+          <div style="position:absolute; top:8px; left:8px; right:8px; height:3px; background:var(--moss); opacity:0.7; border-radius:1px;"></div>
+          <div style="position:absolute; top:16px; left:8px; right:16px; height:2px; background:var(--faded); opacity:0.5; border-radius:1px;"></div>
+          <div style="position:absolute; top:22px; left:8px; right:10px; height:2px; background:var(--faded); opacity:0.5; border-radius:1px;"></div>
+          <div style="position:absolute; top:28px; left:8px; right:14px; height:2px; background:var(--faded); opacity:0.5; border-radius:1px;"></div>
+          <div style="position:absolute; top:38px; left:8px; right:8px; height:3px; background:var(--umber); opacity:0.7; border-radius:1px;"></div>
+          <div style="position:absolute; top:46px; left:8px; right:18px; height:2px; background:var(--faded); opacity:0.5; border-radius:1px;"></div>
+          <div style="position:absolute; top:52px; left:8px; right:12px; height:2px; background:var(--faded); opacity:0.5; border-radius:1px;"></div>
+          <div style="position:absolute; bottom:6px; left:6px; font-family:'Lora',serif; font-size:9px; font-weight:700; color:var(--moss);">.docx</div>
+        </div>
+        <div style="flex:1; min-width:0;">
+          <div style="font-family:'Lora',serif; font-size:11px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--moss); margin-bottom:4px;">Download the Assignment Template</div>
+          <div style="font-family:'Lora',serif; font-size:clamp(19px,2.6vw,23px); font-weight:700; color:var(--ink-warm); line-height:1.2; margin-bottom:6px;">Research Sources Analysis Template</div>
+          <div style="font-family:'Crimson Pro',serif; font-size:15px; color:var(--ink-warm); line-height:1.5;">Complete this Word file and submit it as your assignment. It is already formatted with double spacing, hanging indents, and labeled sections for each source and SIFT evaluation.</div>
+        </div>
+        <div style="flex:none; display:flex; align-items:center; gap:8px; background:var(--moss); color:#fff; font-family:'Lora',serif; font-size:13px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:12px 20px; border-radius:6px; box-shadow:0 2px 6px rgba(74,96,64,0.30);">
+          <span style="font-size:16px; line-height:1;">&#8595;</span>
+          <span>Download .docx</span>
+        </div>
+      </div>
+    </a>
+
+    <p class="prose">Open the template in Microsoft Word, Word Online (Office 365), Google Docs, or Apple Pages. The file is already set up in MLA format with double spacing and hanging indents, so you can click into any gray placeholder and begin typing. When you are finished, save the file and upload it in <strong>.docx format</strong> using the Submit Assignment button on this page.</p>
+
+    <p class="prose" style="margin-top:20px; font-style:italic; color:var(--faded); font-size:15px;">Organize your submission clearly: Part One first (all three citations with the one-sentence note for your database source), followed by Part Two (your SIFT evaluation for Internet Source One, then your SIFT evaluation for Internet Source Two). Each section is already labeled for you in the template.</p>
+  </section>
+
+  <hr class="divider"><div class="divider-ornament"><span>✦</span></div>
+
+  <!-- ═══════════════════════════════════
+       RESOURCES
+  ═══════════════════════════════════ -->
+  <section class="section" aria-labelledby="resources-heading">
+    <div class="section-label">Resources</div>
+    <h2 class="section-title" id="resources-heading">Module <em>Resources</em></h2>
+    <ul class="resources-list" role="list">
+      <li><span class="resource-arrow">◆</span><a class="resource-link" href="M7the-writing-process-prewriting-and-planning.html" target="_blank" rel="noopener">The Writing Process: Prewriting and Planning</a></li>
+      <li><span class="resource-arrow">◆</span><a class="resource-link" href="M7internet-research.html" target="_blank" rel="noopener">Using the Internet for Academic Research</a></li>
+      <li><span class="resource-arrow">◆</span><a class="resource-link" href="M7ai-and-research.html" target="_blank" rel="noopener">Using AI for Academic Research</a></li>
+      <li><span class="resource-arrow">◆</span><a class="resource-link" href="https://raw.githubusercontent.com/AKrug0419/courses/main/ENC1102/PoetryResearchEssaySourceAnalysisAssignmentTemplate.docx" download>Research Sources Analysis Template</a></li>
+    </ul>
+    <p class="prose" style="margin-top: 28px; font-size: 16px;">Questions about sources, the SIFT evaluation, or anything else in this assignment? Email me at <a href="mailto:cholliday@valenciacollege.edu" style="color: var(--moss); border-bottom: 1px solid rgba(74,96,64,0.3); text-decoration: none;">cholliday@valenciacollege.edu</a>.</p>
+  </section>
+
+
+</main>
+</body>
+</html>
