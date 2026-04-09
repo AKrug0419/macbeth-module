@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Writing Process: Drafting &amp; Revising — Module Seven</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* ══════════════════════════════════════
+       CSS CUSTOM PROPERTIES
+    ══════════════════════════════════════ */
+    :root {
+      --paper:      #f4ede0;
+      --vellum:     #ede3cf;
+      --moss:       #4a6040;
+      --moss-dark:  #2c3e1e;
+      --umber:      #7a4e28;
+      --indigo:     #3a4868;
+      --plum:       #6a3a50;
+      --shadow:     #c4b48e;
+      --faded:      #7d6041;
+      --border:     #d4c8ae;
+      --text:       #2c2416;
+      --text-light: #5a4e38;
+
+      /* annotation rail colors */
+      --ann-struct-bg:     #dde8d8;
+      --ann-struct-text:   #1a3218;
+      --ann-struct-border: #4a6040;
+      --ann-primary-bg:    #e8e8e8;
+      --ann-primary-text:  #333;
+      --ann-primary-border:#aaa;
+      --ann-secondary-bg:  #fef6dc;
+      --ann-secondary-text:#6a4e10;
+      --ann-secondary-border:#c8a030;
+      --ann-analysis-bg:   #eef4ea;
+      --ann-analysis-text: #2a442a;
+      --ann-analysis-border:#8aaa80;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--paper);
+      color: var(--text);
+      font-family: 'Lora', Georgia, serif;
+      line-height: 1.65;
+    }
+
+    /* ══════════════════════════════════════
+       HERO
+    ══════════════════════════════════════ */
+    .hero {
+      background: linear-gradient(135deg, #1e2e18 0%, #2c4020 100%);
+      color: #fff;
+      padding: 48px 40px 36px;
+    }
+    .hero-module-label {
+      font-family: 'Crimson Pro', serif;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #a8c898;
+      margin-bottom: 10px;
+    }
+    .hero-title {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    .hero-subtitle {
+      font-family: 'Crimson Pro', serif;
+      font-size: 18px;
+      color: #c8ddb8;
+      font-style: italic;
+    }
+
+    /* ══════════════════════════════════════
+       STAGE STRIP
+    ══════════════════════════════════════ */
+    .stage-strip {
+      background: #243418;
+      display: flex;
+      border-bottom: 3px solid var(--moss);
+    }
+    .stage-item {
+      flex: 1;
+      padding: 12px 10px;
+      text-align: center;
+      font-family: 'Crimson Pro', serif;
+      font-size: 13px;
+      color: #88a878;
+      letter-spacing: 0.05em;
+      border-right: 1px solid #3a5028;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+    }
+    .stage-item:last-child { border-right: none; }
+    .stage-item.active {
+      background: var(--moss);
+      color: #fff;
+    }
+    .stage-num  { font-size: 10px; opacity: 0.7; text-transform: uppercase; letter-spacing: 0.1em; }
+    .stage-name { font-size: 13px; font-weight: 600; }
+
+    /* ══════════════════════════════════════
+       MAIN LAYOUT
+    ══════════════════════════════════════ */
+    main { max-width: 960px; margin: 0 auto; padding: 48px 40px 64px; }
+
+    .section { margin-bottom: 52px; }
+
+    .section-label {
+      font-family: 'Crimson Pro', serif;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--faded);
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--moss-dark);
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+    .prose {
+      font-family: 'Crimson Pro', serif;
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .callout {
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-family: 'Crimson Pro', serif;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+    .callout-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .callout.moss {
+      background: #e8f0e0;
+      border-left: 4px solid var(--moss);
+      color: #1e3018;
+    }
+    .callout.moss .callout-label { color: var(--moss); }
+    .callout.indigo {
+      background: #e4e8f0;
+      border-left: 4px solid var(--indigo);
+      color: #1a2030;
+    }
+    .callout.indigo .callout-label { color: var(--indigo); }
+
+    .divider { border: none; border-top: 1px solid var(--border); margin: 40px 0 0; }
+    .divider-ornament {
+      text-align: center;
+      color: var(--shadow);
+      font-size: 14px;
+      margin: -10px 0 40px;
+      letter-spacing: 0.3em;
+    }
+
+    /* ══════════════════════════════════════
+       LEGEND GRID
+    ══════════════════════════════════════ */
+    .legend-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 20px 0 28px;
+    }
+    .legend-card {
+      border-radius: 7px;
+      padding: 12px 14px;
+    }
+    .legend-card.struct   { background: var(--ann-struct-bg);     border: 1px solid var(--ann-struct-border); }
+    .legend-card.primary  { background: var(--ann-primary-bg);    border: 1px solid var(--ann-primary-border); }
+    .legend-card.secondary{ background: var(--ann-secondary-bg);  border: 1px solid var(--ann-secondary-border); }
+    .legend-card.analysis { background: var(--ann-analysis-bg);   border: 1px solid var(--ann-analysis-border); }
+
+    .legend-key {
+      font-family: 'Crimson Pro', serif;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 5px;
+    }
+    .legend-card.struct    .legend-key { color: var(--ann-struct-text); }
+    .legend-card.primary   .legend-key { color: var(--ann-primary-text); }
+    .legend-card.secondary .legend-key { color: var(--ann-secondary-text); }
+    .legend-card.analysis  .legend-key { color: var(--ann-analysis-text); }
+
+    .legend-desc {
+      font-family: 'Crimson Pro', serif;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    /* ══════════════════════════════════════
+       ANNOTATED ESSAY WRAPPER
+    ══════════════════════════════════════ */
+    .essay-wrapper {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .essay-wrapper-head {
+      background: linear-gradient(90deg, #1e2e18, #2c4020);
+      padding: 12px 24px;
+      font-family: 'Crimson Pro', serif;
+      font-size: 14px;
+      color: #c8ddb8;
+      letter-spacing: 0.06em;
+    }
+
+    /* Essay annotation + text rows */
+    .essay-row {
+      display: grid;
+      grid-template-columns: 210px 1fr;
+      border-bottom: 1px solid #eee;
+    }
+    .essay-row:last-of-type { border-bottom: none; }
+
+    .ann-col {
+      background: #f8f7f3;
+      border-right: 1px solid #e4ddd0;
+      padding: 20px 12px 20px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .essay-col {
+      padding: 20px 30px;
+    }
+
+    /* Annotation pills */
+    .ann-pill {
+      border-radius: 5px;
+      padding: 7px 10px;
+    }
+    .ann-pill .pill-label {
+      font-family: 'Crimson Pro', serif;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      line-height: 1.3;
+      margin-bottom: 3px;
+    }
+    .ann-pill .pill-desc {
+      font-family: 'Crimson Pro', serif;
+      font-size: 11px;
+      line-height: 1.45;
+      font-style: italic;
+    }
+    .ann-pill.struct    { background: var(--ann-struct-bg);     border: 1px solid var(--ann-struct-border);    color: var(--ann-struct-text); }
+    .ann-pill.primary   { background: var(--ann-primary-bg);    border: 1px solid var(--ann-primary-border);   color: var(--ann-primary-text); }
+    .ann-pill.secondary { background: var(--ann-secondary-bg);  border: 1px solid var(--ann-secondary-border); color: var(--ann-secondary-text); }
+    .ann-pill.analysis  { background: var(--ann-analysis-bg);   border: 1px solid var(--ann-analysis-border);  color: var(--ann-analysis-text); }
+
+    /* MLA header block */
+    .mla-header {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 15px;
+      line-height: 2;
+      padding: 20px 30px 16px;
+      border-bottom: 1px solid #eee;
+    }
+
+    /* Essay paragraph text */
+    .essay-p {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 15px;
+      line-height: 2;
+      color: #111;
+      margin: 0;
+      text-indent: 40px;
+    }
+
+    /* Highlights within essay text */
+    .hl-primary   { background-color: #e2e2e2; border-radius: 3px; padding: 1px 2px; }
+    .hl-secondary { background-color: #fef0b0; border-radius: 3px; padding: 1px 2px; }
+
+    /* ══════════════════════════════════════
+       WORKS CITED
+    ══════════════════════════════════════ */
+    .wc-section {
+      border-top: 1px solid #eee;
+      padding: 0;
+    }
+    .wc-title {
+      text-align: center;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 15px;
+      line-height: 2;
+      font-weight: normal;
+      padding: 12px 30px 0;
+    }
+    .wc-row {
+      display: grid;
+      grid-template-columns: 210px 1fr;
+      border-top: 1px solid #f0ebe0;
+    }
+    .wc-ann {
+      background: #f8f7f3;
+      border-right: 1px solid #e4ddd0;
+      padding: 10px 12px 10px 14px;
+    }
+    .wc-entry-col {
+      padding: 10px 30px;
+    }
+    .wc-entry {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 15px;
+      line-height: 2;
+      padding-left: 40px;
+      text-indent: -40px;
+      margin: 0;
+    }
+
+    /* Works Cited notes box */
+    .wc-notes {
+      background: #f6f1e8;
+      border-top: 1px solid var(--border);
+      border-radius: 0 0 10px 10px;
+      padding: 18px 24px;
+      font-family: 'Crimson Pro', serif;
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text-light);
+    }
+    .wc-notes-head {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--faded);
+      margin-bottom: 12px;
+    }
+    .wc-notes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px 24px;
+    }
+    .wc-notes-grid strong { color: var(--text); }
+
+    /* ══════════════════════════════════════
+       EVIDENCE CHECKLIST
+    ══════════════════════════════════════ */
+    .evidence-wrap {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 24px;
+    }
+    .evidence-head {
+      background: linear-gradient(90deg, #2c2416, #3c3020);
+      padding: 12px 24px;
+      font-family: 'Crimson Pro', serif;
+      font-size: 14px;
+      color: #d8cebc;
+      letter-spacing: 0.06em;
+    }
+    .evidence-body {
+      padding: 20px 24px;
+    }
+    .evidence-intro {
+      font-family: 'Crimson Pro', serif;
+      font-size: 15px;
+      color: var(--text-light);
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .evidence-card {
+      border-radius: 8px;
+      padding: 16px 18px;
+    }
+    .evidence-card.primary-card {
+      background: #eef4ea;
+      border: 2px solid #8aaa80;
+    }
+    .evidence-card.secondary-card {
+      background: #fef8e4;
+      border: 2px solid #c8a030;
+    }
+    .evidence-card-head {
+      font-family: 'Crimson Pro', serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .evidence-list {
+      list-style: none;
+      padding: 0;
+    }
+    .evidence-list li {
+      font-family: 'Crimson Pro', serif;
+      font-size: 13px;
+      line-height: 1.8;
+      padding-left: 18px;
+      position: relative;
+      color: var(--text);
+    }
+    .evidence-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--moss);
+      font-size: 12px;
+    }
+    .evidence-card-total {
+      font-family: 'Crimson Pro', serif;
+      font-size: 12px;
+      font-weight: 700;
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(0,0,0,0.1);
+      color: var(--text);
+    }
+    .evidence-note {
+      background: #f0f4f8;
+      border: 2px solid #8090b0;
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-top: 14px;
+      font-family: 'Crimson Pro', serif;
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--indigo);
+    }
+    .evidence-note strong { color: #1a2030; }
+
+    /* ══════════════════════════════════════
+       REVISING SECTION
+    ══════════════════════════════════════ */
+    .revise-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .revise-card {
+      background: var(--vellum);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 18px 20px;
+    }
+    .revise-card-head {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--moss-dark);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .revise-num {
+      width: 24px; height: 24px;
+      background: var(--moss);
+      color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+    .revise-list {
+      list-style: none;
+      padding: 0;
+    }
+    .revise-list li {
+      font-family: 'Crimson Pro', serif;
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--text);
+      padding: 4px 0 4px 18px;
+      position: relative;
+    }
+    .revise-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--moss);
+      font-size: 12px;
+      top: 6px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<header class="hero">
+  <div class="hero-module-label">Module Seven · The Writing Process</div>
+  <h1 class="hero-title">Drafting &amp; Revising</h1>
+  <p class="hero-subtitle">Turning your outline into a full draft — and making it better</p>
+</header>
+
+<!-- ══════════════════════════════════════
+     STAGE STRIP
+══════════════════════════════════════ -->
+<nav class="stage-strip" aria-label="Writing Process Stages">
+  <div class="stage-item">
+    <span class="stage-num">Stage 1</span>
+    <span class="stage-name">Prewriting</span>
+  </div>
+  <div class="stage-item">
+    <span class="stage-num">Stage 2</span>
+    <span class="stage-name">Planning</span>
+  </div>
+  <div class="stage-item active">
+    <span class="stage-num">Stage 3</span>
+    <span class="stage-name">Drafting &amp; Revising</span>
+  </div>
+  <div class="stage-item">
+    <span class="stage-num">Stage 4</span>
+    <span class="stage-name">Editing &amp; Proofreading</span>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ══════════════════════════════════════
+       DRAFTING SECTION
+  ══════════════════════════════════════ -->
+  <section class="section">
+    <p class="section-label">Stage Three · Part One</p>
+    <h2 class="section-title">Drafting Your Essay</h2>
+    <p class="prose">You have done the hard thinking. You have a poem, an angle, a thesis, an outline, and your sources gathered. Drafting is the stage where you translate that preparation into continuous prose — paragraphs that flow from one to the next and build a single, coherent argument. It is worth remembering that a first draft is not a finished essay. It is a working document. Your primary goal in drafting is to get the ideas down in the right order. Worrying too much about sentence-level perfection at this stage slows you down; revision is what the next pass is for.</p>
+    <p class="prose">For this essay, your drafting stage includes one task you deferred from your outline: filling in the <strong>secondary source</strong> sections of each body paragraph — items ④ and ⑤. This is the stage where you return to your three sources and decide exactly how to integrate each one at the most effective point in your argument.</p>
+    <div class="callout moss">
+      <div class="callout-label">Three Required Types of Source Integration</div>
+      <p>Your three secondary sources must appear as three <em>different</em> types of integration: one <strong>direct quote</strong>, one <strong>paraphrase</strong>, and one <strong>summary</strong>. Review the MLA Documentation pages from this module — especially the new <em>How to Write a Summary</em> page — if you need a refresher on how to write a summary or paraphrase, or how to format parenthetical citations for PDF vs. HTML sources.</p>
+    </div>
+    <div class="callout indigo">
+      <div class="callout-label">Citing the Poem: Line Numbers</div>
+      <p>When you quote from your poem, MLA format requires <strong>line numbers</strong> in the parenthetical citation — not page numbers. On your <strong>first citation</strong>, spell out the word: <em>(lines 3–4)</em>. On all <strong>subsequent citations</strong>, use the number alone: <em>(7–8)</em> or <em>(line 11)</em>. Short quotations of three or fewer lines from the poem are run into your prose with a forward slash ( / ) marking each line break. Four or more lines require a block quote. See the <em>MLA Documentation: Quoting from a Poem</em> handout for full guidance.</p>
+    </div>
+  </section>
+
+  <hr class="divider">
+  <div class="divider-ornament"><span>✦</span></div>
+
+  <!-- ══════════════════════════════════════
+       SAMPLE ESSAY SECTION
+  ══════════════════════════════════════ -->
+  <section class="section">
+    <p class="section-label">Stage Three · Sample Student Essay</p>
+    <h2 class="section-title">A Fully Annotated <em>Sample Essay</em></h2>
+    <p class="prose">The essay below models the structure, source integration, and argumentative approach your own essay should follow. It is written about Sylvia Plath's "Morning Song" — a poem you analyzed on the <em>Defining Poetic Imagery</em> page — and focuses on imagery. Annotation labels in the left margin identify the key elements your instructor will look for. Highlighted sentences show exactly where and how sources are woven into the prose. Note that this sample runs near the top of the required word range to demonstrate thorough analysis — your goal is the same: use every word purposefully.</p>
+
+    <div class="legend-grid">
+      <div class="legend-card struct">
+        <div class="legend-key">■ Green Labels</div>
+        <p class="legend-desc">Essay structure — introduction elements, paragraph roles, conclusion moves</p>
+      </div>
+      <div class="legend-card primary">
+        <div class="legend-key">■ Grey Highlight</div>
+        <p class="legend-desc">Sentences using primary source evidence — direct quotes from the poem</p>
+      </div>
+      <div class="legend-card secondary">
+        <div class="legend-key">■ Yellow Highlight</div>
+        <p class="legend-desc">Sentences using secondary source evidence — direct quote, paraphrase, or summary from a scholarly article</p>
+      </div>
+      <div class="legend-card analysis">
+        <div class="legend-key">■ Light Green Labels</div>
+        <p class="legend-desc">Student's own analysis — the writer's argument in their own words</p>
+      </div>
+    </div>
+
+    <!-- ── ESSAY WRAPPER ── -->
+    <div class="essay-wrapper">
+      <div class="essay-wrapper-head">📄 The Essay — MLA Format</div>
+
+      <!-- MLA Header Block -->
+      <div class="mla-header">
+        <p>Jordan Kim</p>
+        <p>Professor Holliday</p>
+        <p>ENC 1102</p>
+        <p>14 April 2025</p>
+        <p style="text-align: center; font-family: 'Times New Roman', Times, serif; font-size: 15px;">From Watching to Listening: Imagery and the Arrival of Love in Sylvia Plath's "Morning Song"</p>
+      </div>
+
+      <!-- ── INTRODUCTION ── -->
+      <div class="essay-row">
+        <div class="ann-col">
+          <div class="ann-pill struct">
+            <div class="pill-label">● Introduction</div>
+          </div>
+          <div class="ann-pill struct">
+            <div class="pill-label">① Creative Opening</div>
+            <div class="pill-desc">Opens with an observation about the poem's unusual emotional logic — neither apology nor defense</div>
+          </div>
+          <div class="ann-pill struct">
+            <div class="pill-label">② Poem &amp; Author Introduced</div>
+            <div class="pill-desc">Title, author, year, and collection identified; historical context established</div>
+          </div>
+          <div class="ann-pill struct">
+            <div class="pill-label">③ Thesis Statement</div>
+            <div class="pill-desc">Last sentence; states exactly what the two image registers do and what argument they support</div>
+          </div>
+        </div>
+        <div class="essay-col">
+          <p class="essay-p">In 1961, Sylvia Plath wrote a poem about new motherhood that refused every sentiment the occasion was supposed to require. "Morning Song," published posthumously in <em>Ariel</em> (1965), does not begin with tenderness. It begins with a mechanical simile — the newborn compared to a wound-up watch — and it does not soften quickly. Across six tercets, the poem traces a speaker who initially views her infant with the detachment of a museum visitor and who does not, even by the poem's end, declare uncomplicated love. What she does instead is listen. Plath divides the poem between two distinct image registers: the first half is dominated by cold, visual, object-centered imagery that places the speaker at a distance from her child, and the second by fragile, intimate auditory imagery that slowly draws her back. In "Morning Song," Plath uses this contrast between the mechanical imagery of looking and the vulnerable imagery of listening to argue that maternal love is not an instinct that arrives with birth but a capacity that develops incrementally, through the act of paying attention.</p>
+        </div>
+      </div>
+
+      <!-- ── BODY PARAGRAPH 1 ── -->
+      <div class="essay-row">
+        <div class="ann-col">
+          <div class="ann-pill struct">
+            <div class="pill-label">① Topic Sentence</div>
+            <div class="pill-desc">Body Paragraph 1 — visual imagery of distance and disconnection in the poem's first half</div>
+          </div>
+          <div class="ann-pill primary">
+            <div class="pill-label">② Primary Source — Quote 1</div>
+            <div class="pill-desc">First citation from the poem: includes the word "line" — (line 1)</div>
+          </div>
+          <div class="ann-pill analysis">
+            <div class="pill-label">③ Student Analysis</div>
+            <div class="pill-desc">Unpacks the mechanical watch simile; brief reference to "new statue" imagery</div>
+          </div>
+          <div class="ann-pill primary">
+            <div class="pill-label">② Primary Source — Quote 2</div>
+            <div class="pill-desc">Second citation: number only, no "lines" — (7–9); 3-line quote with slashes for line breaks</div>
+          </div>
+          <div class="ann-pill analysis">
+            <div class="pill-label">③ Student Analysis</div>
+            <div class="pill-desc">Analyzes the cloud/mirror/effacement image as visual disconnection</div>
+          </div>
+          <div class="ann-pill secondary">
+            <div class="pill-label">④ Secondary Source — Direct Quote</div>
+            <div class="pill-desc">Barrett (yellow highlight) — PDF via database: author named in signal phrase; citation uses page number only: (68)</div>
+          </div>
+          <div class="ann-pill analysis">
+            <div class="pill-label">⑤ Student Analysis</div>
+            <div class="pill-desc">Connects scholar's reading to the paragraph's argument; closing sentence</div>
+          </div>
+        </div>
+        <div class="essay-col">
+          <p class="essay-p">The poem's first three stanzas are dominated by visual imagery that positions the newborn as object rather than person and the speaker as observer rather than mother — a register of deliberate emotional distance. The opening simile establishes the tone immediately: <span class="hl-primary">"Love set you going like a fat gold watch" (line 1).</span> The baby has been "set going" as a watch is wound, not held and welcomed into being. "Fat gold" has the quality of something valuable but impersonal — self-contained, ticking away independent of anyone's care. The second stanza extends the cold, visual language: the parents stand "blankly as walls" around a "new statue" in a "drafty museum," which converts the birth scene into something institutional, still, and cold. But the stanza's most striking move comes in the poem's turn away from any maternal feeling at all: <span class="hl-primary">"I'm no more your mother / Than the cloud that distils a mirror to reflect its own slow / Effacement at the wind's hand" (7–9).</span> The image is visual and almost aggressively abstract — a cloud reflected in rain that dissolves its own image, leaving nothing. The speaker is not uncertain about her feelings; she denies the relationship entirely, comparing herself to something already in the process of disappearing. <span class="hl-secondary">Scholar Allison Barrett describes the opening half of the poem as a scene in which "an uncomfortable current of air flows between mother and baby: the baby is something to be looked at, but not held" (68).</span> Barrett's reading clarifies what Plath builds across these first nine lines: the visual imagery of watch, statue, and dissolving cloud is not accidental coldness but a precise record of the speaker's inner state — a distance the poem will spend its second half working to cross.</p>
+        </div>
+      </div>
+
+      <!-- ── BODY PARAGRAPH 2 ── -->
+      <div class="essay-row">
+        <div class="ann-col">
+          <div class="ann-pill struct">
+            <div class="pill-label">① Topic Sentence &amp; Transition</div>
+            <div class="pill-desc">Body Paragraph 2 — the shift from visual to auditory imagery; fragile, intimate sounds</div>
+          </div>
+          <div class="ann-pill primary">
+            <div class="pill-label">② Primary Source — Quote 1</div>
+            <div class="pill-desc">3-line quote with slash marks; numbers only — (10–12)</div>
+          </div>
+          <div class="ann-pill analysis">
+            <div class="pill-label">③ Student Analysis</div>
+            <div class="pill-desc">Analyzes "moth-breath" and "A far sea" — fragility becoming vastness</div>
+          </div>
+          <div class="ann-pill primary">
+            <div class="pill-label">② Primary Source — Quote 2</div>
+            <div class="pill-desc">2-line quote with slash mark — (13–14)</div>
+          </div>
+          <div class="ann-pill analysis">
+            <div class="pill-label">③ Student Analysis</div>
+            <div class="pill-desc">"cow-heavy" as unglamorous, animal response — summoned by sound</div>
+          </div>
+          <div class="ann-pill secondary">
+            <div class="pill-label">④ Secondary Source — Paraphrase</div>
+            <div class="pill-desc">Katz (yellow highlight) — PDF source: author named in signal phrase; page number required even for paraphrases: (117). Paraphrasing does NOT exempt you from citing the page.</div>
+          </div>
+          <div class="ann-pill primary">
+            <div class="pill-label">② Primary Source — Quote 3</div>
+            <div class="pill-desc">Single line — (19)</div>
+          </div>
+          <div class="ann-pill secondary">
+            <div class="pill-label">④ Secondary Source — Summary</div>
+            <div class="pill-desc">Montgomery (yellow highlight) — HTML source: author named in signal phrase; NO parenthetical at all; summarizes the overall argument of the source, not just one passage</div>
+          </div>
+          <div class="ann-pill analysis">
+            <div class="pill-label">⑤ Student Analysis</div>
+            <div class="pill-desc">Connects both scholars to the closing image; closing sentence</div>
+          </div>
+        </div>
+        <div class="essay-col">
+          <p class="essay-p">The poem's emotional turn arrives in stanza four, when the speaker stops looking at the baby and begins listening to it — and the imagery shifts accordingly, from visual to auditory, from cold to fragile, from mechanism to breath. <span class="hl-primary">"All night your moth-breath / Flickers among the flat pink roses. I wake to listen: / A far sea moves in my ear" (10–12).</span> The "moth-breath" image marks the poem's first act of genuinely intimate attention: the mother lies awake in the dark, straining to hear the infant's breathing. "Moth-breath" carries the full weight of fragility — moths are nearly weightless, visible only at the edge of light — but "A far sea moves in my ear" converts that fragility into something vast. She hears in this barely audible breathing something as deep and continuous as the ocean. The shift from looking to listening is not merely sensory; it is the first voluntary act of attention the speaker has directed toward the child. When the cry comes, she responds bodily: <span class="hl-primary">"One cry, and I stumble from bed, cow-heavy and / floral / In my Victorian nightgown" (13–14).</span> The visual image of "cow-heavy" is deliberately unglamorous — she is animal, slow, not the serene mother of convention — but she has stumbled toward the baby, summoned not by sight but by sound. The auditory has become the means of connection where the visual could not. <span class="hl-secondary">Critic Lisa Katz argues that what rescues "Morning Song" from becoming a poem of maternal grief is precisely this turn toward sound: the speaker does not bond with her child through instinct or some essentialized femininity but constructs her own bond through the shared territory of voice and listening, making use of sound and language rather than an inherited maternal feeling (117).</span> Katz's reading illuminates why the poem's closing image lands with such force: <span class="hl-primary">"The clear vowels rise like balloons" (19).</span> Sound has become sight — the baby's vowels lift into the air, light and celebratory — and the image's joy stands in stark contrast to the cold mechanism of the opening line. <span class="hl-secondary">In his broader reading of Plath's poetics in "Precarious Verse," Erwin Montgomery argues that Plath systematically deflates her subjects, reducing persons and things to bare phenomena and refusing any sentimental adornment — a leveling move that, in "Morning Song," clears away the expected language of maternal devotion so that something more fragile and honest can take its place.</span> Montgomery's framing clarifies the stakes of the poem's imagery: the balloons are not a resolution. They are a beginning — the sound of a child's voice heard, finally, as beautiful.</p>
+        </div>
+      </div>
+
+      <!-- ── CONCLUSION ── -->
+      <div class="essay-row" style="border-bottom: none;">
+        <div class="ann-col">
+          <div class="ann-pill struct">
+            <div class="pill-label">● Conclusion</div>
+          </div>
+          <div class="ann-pill struct">
+            <div class="pill-label">① Creative Opening</div>
+            <div class="pill-desc">Does not begin with "In conclusion"; returns to the poem's last word as a frame</div>
+          </div>
+          <div class="ann-pill primary">
+            <div class="pill-label">② Poem Referenced</div>
+            <div class="pill-desc">Brief reference to close the essay's frame (grey highlight)</div>
+          </div>
+          <div class="ann-pill struct">
+            <div class="pill-label">③ Thesis Restated</div>
+            <div class="pill-desc">In new words; does not repeat the introduction's phrasing</div>
+          </div>
+          <div class="ann-pill struct">
+            <div class="pill-label">④ Broader Significance</div>
+            <div class="pill-desc">Extends the argument beyond the poem to a larger insight</div>
+          </div>
+          <div class="ann-pill struct">
+            <div class="pill-label">⑤ Memorable Closing Sentence</div>
+            <div class="pill-desc">Leaves the reader with something to hold onto</div>
+          </div>
+        </div>
+        <div class="essay-col">
+          <p class="essay-p"><span class="hl-primary">By the poem's last line, the baby's "clear vowels rise like balloons" (19) — and by this point, Plath has made that rising feel earned.</span> Nothing has been resolved neatly. The speaker has not declared that she loves her child or announced that the distance she felt in the opening stanzas has closed. What has changed is her mode of attention: she is no longer regarding the baby as a mechanism or a statue; she is listening to it, stumbling toward it in the dark, hearing the sea in its breathing and joy in its vowels. Plath's two image registers — the cold, mechanical visual imagery of the poem's first half and the fragile, intimate auditory imagery of its second — trace this shift with precise economy. The poem asks nothing more of love than this: not the overwhelming instinct we expect it to be, but the practice of attending carefully enough to hear what is small and fragile as something immense. "Morning Song" argues that love, at its beginning, is mostly the willingness to wake up and listen.</p>
+        </div>
+      </div>
+
+      <!-- ── WORKS CITED ── -->
+      <div class="wc-section">
+        <p class="wc-title">Works Cited</p>
+
+        <div class="wc-row">
+          <div class="wc-ann">
+            <div class="ann-pill secondary" style="margin-bottom: 0;">
+              <div class="pill-label">■ Secondary Source</div>
+              <div class="pill-desc">Journal article via database — <em>EBSCOhost</em>; PDF source with page numbers</div>
+            </div>
+          </div>
+          <div class="wc-entry-col">
+            <p class="wc-entry">Barrett, Allison. "The Identity In-Between: A Historical Close Reading of Sylvia Plath's 'Morning Song.'" <em>Oswald Review</em>, vol. 19, no. 1, Sept. 2017, pp. 66–75. <em>EBSCOhost</em>, research.ebsco.com/linkprocessor/plink?id=8cf3275b-6bf2-3640-a885-c0e481466efa. Accessed 15 Oct. 2025.</p>
+          </div>
+        </div>
+
+        <div class="wc-row">
+          <div class="wc-ann">
+            <div class="ann-pill secondary" style="margin-bottom: 0;">
+              <div class="pill-label">■ Secondary Source</div>
+              <div class="pill-desc">Open-access academic journal article — PDF source with page numbers</div>
+            </div>
+          </div>
+          <div class="wc-entry-col">
+            <p class="wc-entry">Katz, Lisa. "The Space of Motherhood: Sylvia Plath's 'Morning Song' and 'Three Women.'" <em>Journal of the Motherhood Initiative for Research and Community Involvement</em>, vol. 4, no. 2, Nov. 2002, pp. 113–20, jarm.journals.yorku.ca/index.php/jarm/article/view/1869. Accessed 15 Oct. 2025.</p>
+          </div>
+        </div>
+
+        <div class="wc-row">
+          <div class="wc-ann">
+            <div class="ann-pill secondary" style="margin-bottom: 0;">
+              <div class="pill-label">■ Secondary Source</div>
+              <div class="pill-desc">Online magazine article — HTML source; no page numbers</div>
+            </div>
+          </div>
+          <div class="wc-entry-col">
+            <p class="wc-entry">Montgomery, Erwin. "Precarious Verse." <em>The New Inquiry</em>, 10 Apr. 2012, thenewinquiry.com/precarious-verse/. Accessed 15 Oct. 2025.</p>
+          </div>
+        </div>
+
+        <div class="wc-row">
+          <div class="wc-ann">
+            <div class="ann-pill primary" style="margin-bottom: 0;">
+              <div class="pill-label">● Primary Source</div>
+              <div class="pill-desc">Poem via database — <em>Gale Literature: LitFinder</em>; line numbers used in text, not page numbers</div>
+            </div>
+          </div>
+          <div class="wc-entry-col">
+            <p class="wc-entry">Plath, Sylvia. "Morning Song." <em>The Norton Anthology of Poetry</em>, edited by Margaret Ferguson, et al., W. W. Norton, 2005, p. 1837. <em>Gale Literature: LitFinder</em>, link.gale.com/apps/doc/LTF0000539829WK/LITF?u=lincclin_vcc&amp;sid=bookmark-LITF&amp;xid=c6055a64. Accessed 15 Oct. 2025.</p>
+          </div>
+        </div>
+
+        <!-- Works Cited notes -->
+        <div class="wc-notes">
+          <div class="wc-notes-head">✎ Works Cited Format Notes</div>
+          <div class="wc-notes-grid">
+            <div>
+              <p style="margin-bottom: 8px;"><strong>Alphabetical order:</strong> Entries are arranged by the author's last name. "A," "An," and "The" at the start of a title are skipped when alphabetizing.</p>
+              <p style="margin-bottom: 8px;"><strong>Hanging indent:</strong> The second and subsequent lines of each entry are indented half an inch — the opposite of a paragraph indent.</p>
+              <p><strong>Citing a poem:</strong> For a poem, MLA 9 lists the author, poem title in quotation marks, collection title in italics, publisher, and year. In-text citations use line numbers, not page numbers: (lines 3–4) on first use, (7–8) thereafter.</p>
+            </div>
+            <div>
+              <p style="margin-bottom: 8px;"><strong>Database entries:</strong> When a source was accessed through an academic database, add the database name (italicized) and the URL or stable link as a second container at the end of the entry.</p>
+              <p style="margin-bottom: 8px;"><strong>PDF vs. HTML sources:</strong> If a source is a PDF or print document with page numbers, include the page number in the parenthetical citation: (422). If a source is an HTML webpage with no page numbers, name the author in the signal phrase — and then use no parenthetical at all.</p>
+              <p><strong>Four entries total:</strong> Your primary source (the poem) plus all three secondary sources must appear on the Works Cited.</p>
+            </div>
+          </div>
+        </div>
+      </div><!-- end wc-section -->
+    </div><!-- end essay-wrapper -->
+
+    <!-- ── EVIDENCE REQUIREMENTS CHECKLIST ── -->
+    <div class="evidence-wrap">
+      <div class="evidence-head">✅ Evidence Requirements: How This Essay Meets Them</div>
+      <div class="evidence-body">
+        <p class="evidence-intro">Use this checklist to verify that the sample essay meets all requirements — then use it to audit your own essay before submitting.</p>
+        <div class="evidence-grid">
+          <div class="evidence-card primary-card">
+            <div class="evidence-card-head">📖 Primary Source Evidence (Poem)</div>
+            <ul class="evidence-list">
+              <li>Body Paragraph 1 — 2 quotes: (line 1) and (7–9)</li>
+              <li>Body Paragraph 2 — 3 quotes: (10–12), (13–14), and (19)</li>
+              <li>Conclusion — 1 brief reference: (19), returning to the closing image</li>
+            </ul>
+            <div class="evidence-card-total">Requirement: 2–3 per body paragraph ✓</div>
+          </div>
+          <div class="evidence-card secondary-card">
+            <div class="evidence-card-head">🔍 Secondary Source Evidence</div>
+            <ul class="evidence-list">
+              <li>Direct Quote — Barrett (PDF/database), Body Paragraph 1, page number in parenthetical: (68)</li>
+              <li>Paraphrase — Katz (PDF/internet), Body Paragraph 2, page number in parenthetical: (117)</li>
+              <li>Summary — Montgomery (HTML/internet), Body Paragraph 2, no parenthetical</li>
+            </ul>
+            <div class="evidence-card-total">1 direct quote + 1 paraphrase + 1 summary = 3 types ✓</div>
+          </div>
+        </div>
+        <div class="evidence-note">
+          <strong>Note on two different citation formats in Body Paragraph 2:</strong> The Katz paraphrase and the Montgomery summary appear in the same paragraph but use different citation formats, and that difference is instructive. Katz is a PDF source with page numbers, so the paraphrase ends with a page-number parenthetical: (117). Paraphrasing does <em>not</em> exempt you from citing a specific page — if you are borrowing an idea from a PDF or print source, the page number is required whether you quote it, paraphrase it, or summarize it. Montgomery, by contrast, is an HTML source with no page numbers, and the author is already named in the signal phrase, so MLA 9 requires no parenthetical at all — not even the author's name. Both formats are correct; the difference is driven entirely by whether the source has page numbers.
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <hr class="divider">
+  <div class="divider-ornament"><span>✦</span></div>
+
+  <!-- ══════════════════════════════════════
+       REVISING SECTION
+  ══════════════════════════════════════ -->
+  <section class="section">
+    <p class="section-label">Stage Three · Part Two</p>
+    <h2 class="section-title">Revising Your Draft</h2>
+    <p class="prose">Revising is not proofreading. Proofreading — fixing spelling, grammar, and formatting — comes in Stage Four. Revision is re-thinking and re-shaping: reading your draft with fresh eyes to ask whether the argument holds, whether the evidence supports it, and whether every paragraph does what you said it would do. The four revision questions below give you a framework for that re-reading.</p>
+
+    <div class="revise-grid">
+      <div class="revise-card">
+        <div class="revise-card-head">
+          <div class="revise-num">1</div>
+          Argument &amp; Thesis
+        </div>
+        <ul class="revise-list">
+          <li>Does your thesis make a specific, arguable claim — not just a summary of what the poem is about?</li>
+          <li>Does every body paragraph advance that claim, or does any paragraph drift into description without analysis?</li>
+          <li>Does your conclusion restate the thesis in new words and add a broader reflection?</li>
+        </ul>
+      </div>
+      <div class="revise-card">
+        <div class="revise-card-head">
+          <div class="revise-num">2</div>
+          Primary Source Evidence
+        </div>
+        <ul class="revise-list">
+          <li>Does each body paragraph contain 2–3 brief, direct quotes from the poem?</li>
+          <li>Are all poem quotes introduced with a signal phrase before the quote begins?</li>
+          <li>Is each quote followed by your own analysis — not just a re-statement of what it says?</li>
+          <li>Are line numbers cited correctly: "lines" on first use, numbers only thereafter?</li>
+        </ul>
+      </div>
+      <div class="revise-card">
+        <div class="revise-card-head">
+          <div class="revise-num">3</div>
+          Secondary Source Integration
+        </div>
+        <ul class="revise-list">
+          <li>Have you used all three required types: one direct quote, one paraphrase, and one summary?</li>
+          <li>Is the PDF/database source cited with a page number in parentheses?</li>
+          <li>Are both HTML sources cited correctly — author named in signal phrase, no parenthetical at all?</li>
+          <li>After each secondary source, does your analysis explain how it connects to your argument?</li>
+        </ul>
+      </div>
+      <div class="revise-card">
+        <div class="revise-card-head">
+          <div class="revise-num">4</div>
+          Structure &amp; Flow
+        </div>
+        <ul class="revise-list">
+          <li>Does your introduction end with the thesis?</li>
+          <li>Does each body paragraph open with a topic sentence that names the paragraph's specific focus?</li>
+          <li>Does each body paragraph close with a sentence that ties its evidence back to the thesis?</li>
+          <li>Does your conclusion avoid introducing new quotes or new evidence?</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>
