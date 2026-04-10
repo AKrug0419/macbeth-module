@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="identifier" content="dystopian-module-eight-overview"/>
+<meta name="editing_roles" content="teachers"/>
+<meta name="workflow_state" content="active"/>
+<title>Module Eight Overview — The Dystopian Film Research Essay | ENC 1102</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=Barlow:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+  /* ── TOKENS ── */
+  :root {
+    --void:        #0a0a0b;
+    --concrete:    #111114;
+    --slab:        #1a1a1e;
+    --panel:       #222228;
+    --surface:     #2c2c34;
+    --rule:        #3a3a44;
+    --mid:         #555560;
+    --muted:       #7a7a88;
+    --ash:         #a8a8b8;
+    --light:       #d0d0dc;
+    --white:       #e8e8f0;
+    --signal:      #00e5ff;
+    --signal-dim:  #007a8a;
+    --signal-glow: rgba(0,229,255,0.12);
+    --warn:        #ff4040;
+    --warn-dim:    rgba(255,64,64,0.12);
+    --amber:       #ffaa00;
+    --amber-dim:   rgba(255,170,0,0.10);
+    --green:       #00e676;
+    --green-dim:   rgba(0,230,118,0.10);
+    --grid-line:   rgba(255,255,255,0.03);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--void);
+    color: var(--ash);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  /* ── BACKGROUND GRID ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none; z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.07) 2px, rgba(0,0,0,0.07) 4px);
+    pointer-events: none; z-index: 0;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 520px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 4rem 4rem 3.5rem;
+    overflow: hidden;
+    background:
+      linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(10,10,11,0.93) 62%, var(--void) 100%),
+      url('BRDystopiaPNG.png') center 40% / cover no-repeat;
+    z-index: 1;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: 2rem; left: 2rem;
+    width: 60px; height: 60px;
+    border-top: 2px solid var(--signal);
+    border-left: 2px solid var(--signal);
+    opacity: 0.6;
+  }
+  .hero-scan {
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--signal), transparent);
+    animation: scan 4s ease-in-out infinite;
+    opacity: 0.5;
+  }
+  @keyframes scan {
+    0%   { top: 0%; opacity: 0; }
+    10%  { opacity: 0.5; }
+    90%  { opacity: 0.5; }
+    100% { top: 100%; opacity: 0; }
+  }
+  .hero-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.2em;
+    color: var(--signal); margin-bottom: 1.2rem;
+    position: relative; z-index: 1;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .hero-tag::before { content: '▶'; font-size: 0.5rem; }
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-weight: 900; color: var(--white);
+    line-height: 0.92; letter-spacing: -0.01em;
+    text-transform: uppercase; position: relative; z-index: 1;
+  }
+  .hero h1 .dim { color: var(--muted); font-weight: 300; }
+  .hero h1 .accent { color: var(--signal); }
+  .hero-sub {
+    font-family: 'Barlow', sans-serif; font-weight: 300; font-size: 1rem;
+    color: var(--muted); margin-top: 1.2rem; max-width: 560px;
+    position: relative; z-index: 1; letter-spacing: 0.02em;
+  }
+  .hero-credit {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem; color: var(--mid);
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-top: 0.6rem; position: relative; z-index: 1;
+  }
+  .hero-bar {
+    width: 100%; height: 1px;
+    background: linear-gradient(90deg, var(--signal), var(--rule), transparent);
+    margin-top: 2rem; position: relative; z-index: 1;
+  }
+
+  /* ── LAYOUT ── */
+  .page-wrap {
+    max-width: 900px; margin: 0 auto;
+    padding: 0 2rem 6rem; position: relative; z-index: 1;
+  }
+  .section-head {
+    display: flex; align-items: baseline; gap: 1.5rem;
+    margin-bottom: 1.4rem; margin-top: 3.5rem;
+  }
+  .section-id {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem; color: var(--signal); letter-spacing: 0.15em;
+    white-space: nowrap; padding: 0.2rem 0.5rem;
+    border: 1px solid var(--signal-dim); background: var(--signal-glow);
+    flex-shrink: 0;
+  }
+  h2 {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 1.8rem; font-weight: 700;
+    color: var(--white); text-transform: uppercase; letter-spacing: 0.04em; line-height: 1;
+  }
+  h3 {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 600;
+    color: var(--signal); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.5rem;
+  }
+  p { margin-bottom: 1rem; color: var(--ash); }
+  p:last-child { margin-bottom: 0; }
+  em { color: var(--light); font-style: italic; }
+  strong { color: var(--light); font-weight: 500; }
+
+  /* ── RULE ── */
+  .rule {
+    height: 1px; background: linear-gradient(90deg, var(--rule), transparent);
+    margin: 3rem 0; position: relative;
+  }
+  .rule::before {
+    content: '//'; position: absolute; left: 0; top: -10px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem; color: var(--muted); letter-spacing: 0.1em;
+  }
+
+  /* ── PANEL ── */
+  .panel {
+    background: var(--concrete); border: 1px solid var(--rule);
+    border-left: 3px solid var(--signal-dim); padding: 1.5rem 1.8rem; margin: 1.5rem 0;
+  }
+
+  /* ── OUTCOME LIST ── */
+  .outcome-list {
+    margin: 1.2rem 0; display: flex; flex-direction: column; gap: 1px;
+    border: 1px solid var(--rule); background: var(--rule);
+  }
+  .outcome-item {
+    display: flex; align-items: flex-start; gap: 1rem;
+    padding: 0.85rem 1.2rem; background: var(--concrete);
+  }
+  .outcome-bullet {
+    font-family: 'Share Tech Mono', monospace; font-size: 0.72rem;
+    color: var(--signal); letter-spacing: 0.1em; white-space: nowrap;
+    margin-top: 0.2rem; flex-shrink: 0;
+  }
+  .outcome-text { font-size: 0.93rem; color: var(--ash); line-height: 1.6; }
+
+  /* ── ACTIVITY GRID ── */
+  .activity-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 1.5rem 0;
+  }
+  .activity-cell {
+    background: var(--concrete); padding: 1.5rem 1.8rem; position: relative;
+  }
+  .activity-cell::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  }
+  .activity-read::before  { background: var(--signal); }
+  .activity-view::before  { background: var(--amber); }
+  .activity-write::before { background: var(--green); }
+  .activity-label {
+    font-family: 'Share Tech Mono', monospace; font-size: 0.72rem;
+    letter-spacing: 0.18em; text-transform: uppercase; display: block; margin-bottom: 0.9rem;
+  }
+  .activity-read .activity-label  { color: var(--signal); }
+  .activity-view .activity-label  { color: var(--amber); }
+  .activity-write .activity-label { color: var(--green); }
+  .activity-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .activity-list li {
+    font-size: 0.88rem; color: var(--muted);
+    padding-left: 1rem; position: relative; line-height: 1.55;
+  }
+  .activity-list li::before {
+    content: '—'; position: absolute; left: 0;
+    font-family: 'Share Tech Mono', monospace; color: var(--mid); font-size: 0.72rem;
+  }
+  .activity-list li em { color: var(--light); }
+
+  /* ── WEEK BADGE ── */
+  .week-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-family: 'Share Tech Mono', monospace; font-size: 0.72rem;
+    color: var(--amber); letter-spacing: 0.12em; text-transform: uppercase;
+    border: 1px solid rgba(255,170,0,0.3); background: var(--amber-dim);
+    padding: 0.2rem 0.6rem; margin-bottom: 1rem;
+  }
+
+  /* ── ASSIGNMENT CARDS ── */
+  .assignment-list {
+    display: flex; flex-direction: column; gap: 1px;
+    background: var(--rule); border: 1px solid var(--rule); margin: 1.5rem 0;
+  }
+  .assignment-card {
+    background: var(--concrete); padding: 1.4rem 1.6rem;
+    display: flex; align-items: flex-start; gap: 1.4rem;
+  }
+  .assignment-num {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 2.2rem; font-weight: 900;
+    color: var(--signal-dim); line-height: 1; flex-shrink: 0; padding-top: 0.05rem;
+  }
+  .assignment-body { flex: 1; }
+  .assignment-title {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 1.05rem; font-weight: 700;
+    color: var(--white); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.45rem;
+  }
+  .assignment-title em { color: var(--light); font-style: italic; text-transform: none; }
+  .assignment-detail { font-size: 0.88rem; color: var(--muted); line-height: 1.55; margin-bottom: 0.7rem; }
+  .assignment-meta {
+    display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.55rem;
+  }
+  .meta-chip {
+    font-family: 'Share Tech Mono', monospace; font-size: 0.68rem;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.2rem 0.55rem; white-space: nowrap;
+  }
+  .chip-due {
+    color: var(--signal); border: 1px solid var(--signal-dim); background: var(--signal-glow);
+  }
+  .chip-grace {
+    color: var(--green); border: 1px solid rgba(0,230,118,0.3); background: var(--green-dim);
+  }
+  .chip-warn {
+    color: var(--warn); border: 1px solid rgba(255,64,64,0.3); background: var(--warn-dim);
+  }
+
+  /* ── LATE POLICY CALLOUT ── */
+  .callout-warn {
+    background: var(--concrete); border: 1px solid var(--rule);
+    border-left: 3px solid var(--warn); padding: 1.3rem 1.6rem; margin: 1.5rem 0;
+    position: relative;
+  }
+  .callout-warn-label {
+    font-family: 'Share Tech Mono', monospace; font-size: 0.72rem;
+    color: var(--warn); letter-spacing: 0.15em; text-transform: uppercase;
+    margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.5rem;
+  }
+  .callout-warn-label::before { content: '⚠'; font-size: 0.9rem; }
+  .callout-warn p { font-size: 0.9rem; color: var(--ash); margin: 0; line-height: 1.65; }
+  .callout-warn p strong { color: var(--white); }
+
+  /* ── SCHEDULE ── */
+  .schedule {
+    margin: 1.6rem 0;
+    border: 1px solid var(--rule);
+    background: var(--rule);
+    display: flex; flex-direction: column; gap: 1px;
+  }
+  .sched-week {
+    background: var(--concrete); padding: 0;
+  }
+  .sched-week-head {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+    padding: 1rem 1.5rem 0.8rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .sched-week-num {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 1.15rem; font-weight: 700;
+    color: var(--white); text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .sched-week-num .n { color: var(--signal); }
+  .sched-week-range {
+    font-family: 'Share Tech Mono', monospace; font-size: 0.72rem;
+    color: var(--amber); letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .sched-days {
+    display: grid; grid-template-columns: 1fr 1fr;
+  }
+  .sched-day {
+    padding: 1.2rem 1.5rem;
+  }
+  .sched-day + .sched-day {
+    border-left: 1px solid var(--rule);
+  }
+  .sched-day-label {
+    font-family: 'Share Tech Mono', monospace; font-size: 0.7rem;
+    color: var(--signal); letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 0.6rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .sched-day-label::before {
+    content: ''; display: inline-block; width: 6px; height: 6px;
+    background: var(--signal); border-radius: 1px;
+  }
+  .sched-topic {
+    font-size: 0.88rem; color: var(--light); line-height: 1.55; margin-bottom: 0.7rem;
+  }
+  .sched-hw {
+    font-size: 0.82rem; color: var(--muted); line-height: 1.55;
+    padding-top: 0.6rem; border-top: 1px dashed var(--rule);
+  }
+  .sched-hw-label {
+    font-family: 'Share Tech Mono', monospace; font-size: 0.66rem;
+    color: var(--amber); letter-spacing: 0.12em; text-transform: uppercase;
+    display: block; margin-bottom: 0.3rem;
+  }
+  .sched-hw em { color: var(--light); font-style: italic; }
+
+  /* ── RESOURCE LIST ── */
+  .resource-list {
+    display: flex; flex-direction: column; gap: 1px;
+    background: var(--rule); border: 1px solid var(--rule); margin: 1.5rem 0;
+  }
+  a.resource-link {
+    background: var(--concrete); padding: 1rem 1.4rem;
+    display: flex; align-items: center; justify-content: space-between;
+    text-decoration: none; color: var(--ash);
+    transition: background 0.15s, color 0.15s;
+  }
+  a.resource-link:hover { background: var(--slab); color: var(--light); }
+  .resource-link-left { display: flex; align-items: center; gap: 1rem; min-width: 0; }
+  .resource-tag {
+    font-family: 'Share Tech Mono', monospace; font-size: 0.72rem;
+    color: var(--signal); letter-spacing: 0.1em; white-space: nowrap; flex-shrink: 0;
+  }
+  .resource-tag.amber { color: var(--amber); }
+  .resource-tag.green { color: var(--green); }
+  .resource-name {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 0.95rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .resource-arrow {
+    font-family: 'Share Tech Mono', monospace; font-size: 0.8rem;
+    color: var(--muted); flex-shrink: 0; transition: color 0.15s;
+  }
+  a.resource-link:hover .resource-arrow { color: var(--signal); }
+  .resource-contact {
+    background: var(--concrete); padding: 1rem 1.4rem;
+    display: flex; align-items: center; gap: 0.8rem;
+    border-top: 1px solid var(--rule);
+  }
+  .contact-label {
+    font-family: 'Share Tech Mono', monospace; font-size: 0.72rem;
+    color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .resource-contact a {
+    color: var(--signal); text-decoration: none; font-size: 0.9rem;
+  }
+  .resource-contact a:hover { text-decoration: underline; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .hero { padding: 2rem 1.5rem 2.5rem; min-height: 420px; }
+    .page-wrap { padding: 0 1.25rem 4rem; }
+    .activity-grid { grid-template-columns: 1fr; }
+    .sched-days { grid-template-columns: 1fr; }
+    .sched-day + .sched-day { border-left: none; border-top: 1px solid var(--rule); }
+    .assignment-card { flex-direction: column; gap: 0.8rem; }
+  }
+</style>
+</head>
+<body>
+<div class="enhanceable_content">
+
+<!-- ══ HERO ══ -->
+<header class="hero">
+  <div class="hero-scan" aria-hidden="true"></div>
+  <p class="hero-tag">ENC 1102 &nbsp;·&nbsp; MODULE EIGHT &nbsp;·&nbsp; OVERVIEW</p>
+  <h1>
+    <span class="dim">Module Eight:</span><br>
+    The Dystopian<br>
+    <span class="accent">Film Research</span> Essay
+  </h1>
+  <p class="hero-sub">Researching and writing a 700-word analysis of how dystopian characteristics function within a film — supported by three secondary sources and documented in MLA format.</p>
+  <p class="hero-credit">Blade Runner 2049 (Alcon Entertainment)</p>
+  <div class="hero-bar" aria-hidden="true"></div>
+</header>
+
+<main class="page-wrap">
+
+  <!-- ══ ABOUT ══ -->
+  <section aria-labelledby="about-heading">
+    <div class="section-head">
+      <span class="section-id" aria-hidden="true">MOV·01</span>
+      <h2 id="about-heading">About This Module</h2>
+    </div>
+    <p>This module builds directly on the work you did in Module Seven. Having studied the key characteristics of dystopian societies, the varieties of dystopian control, and the traits of the dystopian protagonist, you will now apply those concepts to a <strong>focused research essay</strong> on a single film of your choice.</p>
+    <p>Over the next two weeks you will select a film from the college's streaming library, locate three secondary sources (one from an academic database, two from the open web), and write a four-paragraph, 700-word analysis of how two dystopian characteristics function within the film. Along the way, you'll practice the full research workflow: searching, evaluating, summarizing, paraphrasing, quoting, and documenting.</p>
+    <div class="panel">
+      <h3>The Essay at a Glance</h3>
+      <p><strong>700 words</strong> minimum · <strong>4 paragraphs</strong> (introduction, two body paragraphs, conclusion) · <strong>3 secondary sources</strong> (1 database article, 2 web sources) · <strong>MLA format</strong> · <em>Children of Men</em>, <em>Pan's Labyrinth</em>, or <em>The Matrix</em> as the primary source.</p>
+    </div>
+  </section>
+
+  <div class="rule" aria-hidden="true"></div>
+
+  <!-- ══ COURSE LEARNING OUTCOMES ══ -->
+  <section aria-labelledby="clo-heading">
+    <div class="section-head">
+      <span class="section-id" aria-hidden="true">MOV·02</span>
+      <h2 id="clo-heading">Course Learning Outcomes</h2>
+    </div>
+    <p>This module addresses the following course-level learning outcomes for ENC 1102:</p>
+    <div class="outcome-list">
+      <div class="outcome-item">
+        <span class="outcome-bullet" aria-hidden="true">CLO·01</span>
+        <span class="outcome-text">Apply conventions aligned to varied writing situations</span>
+      </div>
+      <div class="outcome-item">
+        <span class="outcome-bullet" aria-hidden="true">CLO·02</span>
+        <span class="outcome-text">Apply critical reading skills</span>
+      </div>
+      <div class="outcome-item">
+        <span class="outcome-bullet" aria-hidden="true">CLO·03</span>
+        <span class="outcome-text">Locate, evaluate, and integrate research sources using academic documentation conventions</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule" aria-hidden="true"></div>
+
+  <!-- ══ MODULE OBJECTIVES ══ -->
+  <section aria-labelledby="obj-heading">
+    <div class="section-head">
+      <span class="section-id" aria-hidden="true">MOV·03</span>
+      <h2 id="obj-heading">Module Objectives</h2>
+    </div>
+    <p>By the end of this module, you will be able to do the following:</p>
+    <div class="outcome-list">
+      <div class="outcome-item">
+        <span class="outcome-bullet" aria-hidden="true">OBJ·01</span>
+        <span class="outcome-text">Apply a multi-stage writing and revising process to produce a focused academic essay</span>
+      </div>
+      <div class="outcome-item">
+        <span class="outcome-bullet" aria-hidden="true">OBJ·02</span>
+        <span class="outcome-text">Locate and evaluate secondary sources using academic databases and the internet</span>
+      </div>
+      <div class="outcome-item">
+        <span class="outcome-bullet" aria-hidden="true">OBJ·03</span>
+        <span class="outcome-text">Recognize the limits of AI research tools and verify every AI-produced citation before use</span>
+      </div>
+      <div class="outcome-item">
+        <span class="outcome-bullet" aria-hidden="true">OBJ·04</span>
+        <span class="outcome-text">Integrate primary and secondary sources using MLA documentation conventions</span>
+      </div>
+      <div class="outcome-item">
+        <span class="outcome-bullet" aria-hidden="true">OBJ·05</span>
+        <span class="outcome-text">Analyze how specific dystopian characteristics contribute to a film's argument</span>
+      </div>
+      <div class="outcome-item">
+        <span class="outcome-bullet" aria-hidden="true">OBJ·06</span>
+        <span class="outcome-text">Synthesize your own analysis with secondary sources to support an original argument</span>
+      </div>
+      <div class="outcome-item">
+        <span class="outcome-bullet" aria-hidden="true">OBJ·07</span>
+        <span class="outcome-text">Construct a properly formatted Works Cited with entries for film and research sources</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule" aria-hidden="true"></div>
+
+  <!-- ══ LEARNING ACTIVITIES ══ -->
+  <section aria-labelledby="activities-heading">
+    <div class="section-head">
+      <span class="section-id" aria-hidden="true">MOV·04</span>
+      <h2 id="activities-heading">Learning Activities</h2>
+    </div>
+    <p>This module includes three types of learning activities. They run in parallel across the two weeks — as you view your chosen film, you will also be reading about research and drafting your essay.</p>
+    <div class="activity-grid">
+      <div class="activity-cell activity-read">
+        <span class="activity-label">Critical Reading</span>
+        <ul class="activity-list">
+          <li>Internet research strategy and the SIFT source-evaluation method</li>
+          <li>AI and academic research: hallucination, verification, and integrity</li>
+          <li>MLA documentation: film as primary source, secondary source patterns, paraphrase, summary, and Works Cited</li>
+        </ul>
+      </div>
+      <div class="activity-cell activity-view">
+        <span class="activity-label">Critical Viewing</span>
+        <ul class="activity-list">
+          <li><em>Children of Men</em>, <em>Pan's Labyrinth</em>, or <em>The Matrix</em> — streamed independently through the college's Swank library</li>
+        </ul>
+      </div>
+      <div class="activity-cell activity-write">
+        <span class="activity-label">Drafting &amp; Revising</span>
+        <ul class="activity-list">
+          <li>The Writing Process: prewriting and planning</li>
+          <li>The Writing Process: drafting and revising</li>
+          <li>The Writing Process: editing and proofreading</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule" aria-hidden="true"></div>
+
+  <!-- ══ SCHEDULE ══ -->
+  <section aria-labelledby="schedule-heading">
+    <div class="section-head">
+      <span class="section-id" aria-hidden="true">MOV·05</span>
+      <h2 id="schedule-heading">Two-Week Schedule</h2>
+    </div>
+    <p class="week-badge">⏱ Weeks 14 &amp; 15 · April 13 – April 26</p>
+    <p>This module covers Week 14 and Week 15. The class sessions below are matched with the homework you should complete before the next class meeting.</p>
+
+    <div class="schedule">
+
+      <!-- Week 14 -->
+      <div class="sched-week">
+        <div class="sched-week-head">
+          <div class="sched-week-num">Week <span class="n">14</span> &nbsp;·&nbsp; The Dystopian Film Research Essay</div>
+          <div class="sched-week-range">Apr 13 – 19</div>
+        </div>
+        <div class="sched-days">
+          <div class="sched-day">
+            <div class="sched-day-label">Monday · Apr 13</div>
+            <div class="sched-topic">Module 8 kickoff: the Second Literary Research Essay, using the internet and AI for academic research.</div>
+            <div class="sched-hw">
+              <span class="sched-hw-label">Homework</span>
+              Read <em>MLA Documentation: How to Write a Summary</em> in Module 8.
+            </div>
+          </div>
+          <div class="sched-day">
+            <div class="sched-day-label">Wednesday · Apr 15</div>
+            <div class="sched-topic">How to write a summary — in-class workshop and summary practice.</div>
+            <div class="sched-hw">
+              <span class="sched-hw-label">Homework</span>
+              Complete the <em>Film Research Essay Source Analysis Assignment</em>. Read <em>MLA Documentation: Quoting from Your Secondary Research Sources</em> in Module 8.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Week 15 -->
+      <div class="sched-week">
+        <div class="sched-week-head">
+          <div class="sched-week-num">Week <span class="n">15</span> &nbsp;·&nbsp; The Dystopian Film Research Essay</div>
+          <div class="sched-week-range">Apr 20 – 26</div>
+        </div>
+        <div class="sched-days">
+          <div class="sched-day">
+            <div class="sched-day-label">Monday · Apr 20</div>
+            <div class="sched-topic">Quoting from internet sources and writing about film — integrating primary and secondary evidence.</div>
+            <div class="sched-hw">
+              <span class="sched-hw-label">Homework</span>
+              Read <em>MLA Documentation: The Works Cited</em> in Module 8. Continue work on the Dystopian Film Research Essay.
+            </div>
+          </div>
+          <div class="sched-day">
+            <div class="sched-day-label">Wednesday · Apr 22</div>
+            <div class="sched-topic">In-class: complete the Works Cited for your essay and final editing workshop.</div>
+            <div class="sched-hw">
+              <span class="sched-hw-label">Homework</span>
+              Read <em>The Writing Process: Editing &amp; Proofreading</em> in Module 8. Complete the <em>Dystopian Film Research Essay Final Draft Assignment</em>.
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="rule" aria-hidden="true"></div>
+
+  <!-- ══ ASSIGNMENTS ══ -->
+  <section aria-labelledby="assignments-heading">
+    <div class="section-head">
+      <span class="section-id" aria-hidden="true">MOV·06</span>
+      <h2 id="assignments-heading">Assignments &amp; Due Dates</h2>
+    </div>
+    <p>There are two graded assignments in this module. Read the due dates and late-policy information carefully before you begin.</p>
+
+    <div class="assignment-list">
+      <div class="assignment-card">
+        <div class="assignment-num" aria-hidden="true">01</div>
+        <div class="assignment-body">
+          <div class="assignment-title">Film Research Essay <em>Source Analysis</em> Assignment</div>
+          <div class="assignment-detail">A structured pre-draft exercise in which you identify, summarize, and evaluate the three secondary sources you intend to use in your research essay. The source analysis confirms that your sources are real, credible, and relevant before you begin drafting.</div>
+          <div class="assignment-meta">
+            <span class="meta-chip chip-due">DUE · Thu Apr 16 · 11:59 PM</span>
+            <span class="meta-chip chip-grace">2-Day Grace Period</span>
+          </div>
+        </div>
+      </div>
+      <div class="assignment-card">
+        <div class="assignment-num" aria-hidden="true">02</div>
+        <div class="assignment-body">
+          <div class="assignment-title">The Dystopian <em>Film Research Essay</em></div>
+          <div class="assignment-detail">Your 700-word, four-paragraph research essay analyzing how two dystopian characteristics function within your chosen film. Three secondary sources, MLA format, one complete Works Cited page.</div>
+          <div class="assignment-meta">
+            <span class="meta-chip chip-due">DUE · Sun Apr 26 · 11:59 PM</span>
+            <span class="meta-chip chip-warn">No Grace Period</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout-warn">
+      <div class="callout-warn-label">Late Essay Policy</div>
+      <p>There is <strong>no grace period</strong> for the Dystopian Film Research Essay. Beginning <strong>Monday, April 27th</strong>, the Late Essay Policy goes into effect: <strong>five points will be deducted for every 24 hours the essay is late</strong>. Plan accordingly, and submit early if you can.</p>
+    </div>
+  </section>
+
+  <div class="rule" aria-hidden="true"></div>
+
+  <!-- ══ RESOURCES ══ -->
+  <section aria-labelledby="resources-heading">
+    <div class="section-head">
+      <span class="section-id" aria-hidden="true">MOV·07</span>
+      <h2 id="resources-heading">Resources</h2>
+    </div>
+    <p>All module resources are listed below in the order you should work through them. Each page is linked from the Canvas module as well.</p>
+    <nav aria-label="Module resources">
+      <div class="resource-list">
+
+        <a class="resource-link" href="selecting-a-film-for-the-dystopian-research-essay.html">
+          <div class="resource-link-left">
+            <span class="resource-tag">STEP·01</span>
+            <span class="resource-name">Selecting a Film for the Research Essay</span>
+          </div>
+          <span class="resource-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="resource-link" href="academic-research-using-the-internet-dystopia.html">
+          <div class="resource-link-left">
+            <span class="resource-tag">READING·01</span>
+            <span class="resource-name">Academic Research: Using the Internet</span>
+          </div>
+          <span class="resource-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="resource-link" href="ai-and-academic-research-dystopia.html">
+          <div class="resource-link-left">
+            <span class="resource-tag">READING·02</span>
+            <span class="resource-name">AI and Academic Research</span>
+          </div>
+          <span class="resource-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="resource-link" href="the-writing-process-prewriting-and-planning.html">
+          <div class="resource-link-left">
+            <span class="resource-tag green">PROCESS·01</span>
+            <span class="resource-name">The Writing Process: Prewriting &amp; Planning</span>
+          </div>
+          <span class="resource-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="resource-link" href="the-writing-process-drafting-and-revising.html">
+          <div class="resource-link-left">
+            <span class="resource-tag green">PROCESS·02</span>
+            <span class="resource-name">The Writing Process: Drafting &amp; Revising</span>
+          </div>
+          <span class="resource-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="resource-link" href="the-writing-process-editing-and-proofreading.html">
+          <div class="resource-link-left">
+            <span class="resource-tag green">PROCESS·03</span>
+            <span class="resource-name">The Writing Process: Editing &amp; Proofreading</span>
+          </div>
+          <span class="resource-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="resource-link" href="mla-documentation-dystopian.html">
+          <div class="resource-link-left">
+            <span class="resource-tag amber">MLA·HUB</span>
+            <span class="resource-name">MLA Documentation: Overview Hub</span>
+          </div>
+          <span class="resource-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="resource-link" href="mla-documentation-how-to-write-a-summary.html">
+          <div class="resource-link-left">
+            <span class="resource-tag amber">MLA·01</span>
+            <span class="resource-name">MLA: How to Write a Summary</span>
+          </div>
+          <span class="resource-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="resource-link" href="mla-documentation-how-to-create-a-paraphrase-dystopian.html">
+          <div class="resource-link-left">
+            <span class="resource-tag amber">MLA·02</span>
+            <span class="resource-name">MLA: How to Create a Paraphrase</span>
+          </div>
+          <span class="resource-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="resource-link" href="mla-documentation-writing-about-film-dystopian.html">
+          <div class="resource-link-left">
+            <span class="resource-tag amber">MLA·03</span>
+            <span class="resource-name">MLA: Writing about Film</span>
+          </div>
+          <span class="resource-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="resource-link" href="mla-documentation-quoting-secondary-dystopian.html">
+          <div class="resource-link-left">
+            <span class="resource-tag amber">MLA·04</span>
+            <span class="resource-name">MLA: Quoting from Secondary Sources</span>
+          </div>
+          <span class="resource-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="resource-link" href="mla-documentation-the-works-cited.html">
+          <div class="resource-link-left">
+            <span class="resource-tag amber">MLA·05</span>
+            <span class="resource-name">MLA: The Works Cited</span>
+          </div>
+          <span class="resource-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="resource-link" href="film-research-essay-source-analysis-assignment.html">
+          <div class="resource-link-left">
+            <span class="resource-tag">ASSIGN·01</span>
+            <span class="resource-name">Source Analysis Assignment</span>
+          </div>
+          <span class="resource-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <a class="resource-link" href="dystopian-research-essay-assignment.html">
+          <div class="resource-link-left">
+            <span class="resource-tag">ASSIGN·02</span>
+            <span class="resource-name">Dystopian Film Research Essay Assignment</span>
+          </div>
+          <span class="resource-arrow" aria-hidden="true">→</span>
+        </a>
+
+        <div class="resource-contact">
+          <span class="contact-label">My Email ·</span>
+          <a href="mailto:cholliday@mail.valenciacollege.edu">cholliday@mail.valenciacollege.edu</a>
+        </div>
+      </div>
+    </nav>
+  </section>
+
+</main>
+</div>
+</body>
+</html>
