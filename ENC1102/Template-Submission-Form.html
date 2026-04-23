@@ -1,0 +1,1543 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ENC 1102 · Template Modification Submission</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #f6f3ec;
+    --paper:     #fbf8f2;
+    --ink:       #1b1614;
+    --ink-2:     #3a2f2a;
+    --muted:     #3d3330;
+    --rule:      #d9cfc1;
+    --rule-soft: #e8dfd0;
+    --accent:    #7a1f2b;     /* claret */
+    --accent-ink:#5a1520;
+    --tint:      #f1e6d9;
+    --ok:        #3d6b4a;
+    --warn:      #9a5a1a;
+    --err:       #8a1f2b;
+    --radius:    4px;
+    --serif:     "Source Serif 4", Georgia, "Times New Roman", serif;
+    --sans:      "Inter Tight", -apple-system, system-ui, sans-serif;
+    --mono:      "JetBrains Mono", ui-monospace, Menlo, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .page {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 56px 48px 120px;
+  }
+
+  /* Masthead */
+  .masthead {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: end;
+    padding-bottom: 18px;
+    border-bottom: 1.5px solid var(--ink);
+    margin-bottom: 4px;
+  }
+  .masthead .marque {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .masthead h1 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 44px;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+    margin: 6px 0 0;
+    color: var(--ink);
+  }
+  .lede { color: var(--ink-2) !important; }
+  .masthead h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .masthead .meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: right;
+    white-space: nowrap;
+  }
+  .masthead .meta b { color: var(--ink); font-weight: 500; }
+
+  .subline {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0 0;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .subline .dots { letter-spacing: 0.3em; }
+
+  /* Role switcher */
+  .role-bar {
+    display: flex;
+    gap: 0;
+    margin: 28px 0 40px;
+    border: 1px solid var(--ink);
+    background: var(--paper);
+  }
+  .role-bar button {
+    flex: 1;
+    background: transparent;
+    border: 0;
+    padding: 14px 18px;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    cursor: pointer;
+    border-right: 1px solid var(--ink);
+    text-align: left;
+    transition: background .15s;
+  }
+  .role-bar button:last-child { border-right: 0; }
+  .role-bar button:hover { background: var(--tint); }
+  .role-bar button.active {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .role-bar .role-label {
+    display: block;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 3px;
+  }
+  .role-bar button.active .role-label { color: var(--tint); }
+
+  /* Page indicator */
+  .pagebar {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 0 0 28px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .pagebar .track {
+    flex: 1;
+    height: 2px;
+    background: var(--rule);
+    position: relative;
+    overflow: hidden;
+  }
+  .pagebar .track .fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    background: var(--accent);
+    width: 50%;
+    transition: width .35s cubic-bezier(.4,0,.2,1);
+  }
+  .pagebar .count b { color: var(--ink); font-weight: 500; }
+
+  /* Section frame */
+  section.sheet {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    padding: 36px 40px;
+    margin: 0 0 22px;
+    position: relative;
+  }
+  section.sheet .sec-tag {
+    position: absolute;
+    top: -9px;
+    left: 28px;
+    background: var(--paper);
+    padding: 0 10px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  section.sheet h2 {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    margin: 0 0 6px;
+    color: var(--ink);
+  }
+  section.sheet .lede {
+    color: var(--ink);
+    font-size: 14.5px;
+    max-width: 64ch;
+    margin: 0 0 28px;
+  }
+
+  /* Fields */
+  .fieldgrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px 26px;
+  }
+  .fieldgrid.cols-3 { grid-template-columns: 2fr 1fr 1fr; }
+  .f-col-span-2 { grid-column: span 2; }
+
+  .field label.l {
+    display: block;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .field .req { color: var(--accent); margin-left: 3px; }
+  .field input[type="text"],
+  .field input[type="email"],
+  .field input[type="date"],
+  .field textarea,
+  .field select {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--ink);
+    padding: 6px 0 8px;
+    font-family: var(--sans);
+    font-size: 15px;
+    color: var(--ink);
+    line-height: 1.4;
+    outline: none;
+    border-radius: 0;
+  }
+  .field textarea {
+    border: 1px solid var(--rule);
+    background: rgba(255,255,255,0.4);
+    padding: 10px 12px;
+    resize: vertical;
+    min-height: 68px;
+    font-size: 14.5px;
+  }
+  .field input:focus, .field textarea:focus, .field select:focus {
+    border-color: var(--accent);
+    background: rgba(255,255,255,0.65);
+  }
+  .field input::placeholder, .field textarea::placeholder {
+    color: var(--muted);
+    opacity: 0.6;
+    font-style: italic;
+  }
+  .field .hint {
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-top: 6px;
+    line-height: 1.4;
+  }
+
+  /* Radio card (submission type) */
+  .type-picker {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 4px;
+  }
+  .type-picker label {
+    display: block;
+    padding: 18px 20px;
+    border: 1px solid var(--rule);
+    background: rgba(255,255,255,0.4);
+    cursor: pointer;
+    transition: all .15s;
+    position: relative;
+  }
+  .type-picker label:hover { border-color: var(--ink); }
+  .type-picker input { position: absolute; opacity: 0; pointer-events: none; }
+  .type-picker label .k {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .type-picker label .t {
+    font-family: var(--serif);
+    font-size: 20px;
+    color: var(--ink);
+    font-weight: 500;
+    line-height: 1.15;
+    margin-bottom: 6px;
+  }
+  .type-picker label .d {
+    font-size: 13px;
+    color: var(--ink-2);
+    line-height: 1.45;
+  }
+  .type-picker input:checked + .wrap {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
+    background: var(--tint);
+  }
+  .type-picker label:has(input:checked) {
+    background: var(--tint);
+    border-color: var(--accent);
+    box-shadow: inset 3px 0 0 0 var(--accent);
+  }
+
+  /* Rubric criterion rows */
+  .criterion {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 22px 0;
+    border-top: 1px solid var(--rule-soft);
+  }
+  .criterion:first-of-type { border-top: 0; padding-top: 10px; }
+  .criterion-head {
+    display: grid;
+    grid-template-columns: 72px 1fr auto;
+    gap: 18px;
+    align-items: start;
+  }
+  .criterion-code {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    padding-top: 4px;
+  }
+  .criterion-title {
+    font-family: var(--serif);
+    font-size: 17.5px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.3;
+    margin: 0 0 4px;
+  }
+  .criterion-desc {
+    font-size: 13.5px;
+    color: var(--ink);
+    line-height: 1.5;
+    max-width: 62ch;
+  }
+  .criterion-score {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+
+  /* Score pills */
+  .pills { display: inline-flex; border: 1px solid var(--rule); background: #fff; }
+  .pill {
+    position: relative;
+    padding: 7px 12px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    cursor: pointer;
+    border-right: 1px solid var(--rule);
+    user-select: none;
+    transition: all .15s;
+    min-width: 82px;
+    text-align: center;
+  }
+  .pill:last-child { border-right: 0; }
+  .pill input { position: absolute; opacity: 0; pointer-events: none; }
+  .pill:hover { background: var(--tint); color: var(--ink); }
+  .pill.met:has(input:checked)       { background: var(--ok);     color: #fff; border-color: var(--ok); }
+  .pill.partial:has(input:checked)   { background: var(--warn);   color: #fff; border-color: var(--warn); }
+  .pill.notmet:has(input:checked)    { background: var(--err);    color: #fff; border-color: var(--err); }
+  .pill.confirmed:has(input:checked) { background: var(--ok);     color: #fff; border-color: var(--ok); }
+  .pill.notconfirmed:has(input:checked) { background: var(--err); color: #fff; border-color: var(--err); }
+
+  /* Expander (guidance) */
+  .criterion-detail {
+    margin-left: 90px;
+    margin-top: 10px;
+    display: none;
+  }
+  .criterion.open .criterion-detail { display: block; }
+  .guidance {
+    background: rgba(255,255,255,0.55);
+    border-left: 2px solid var(--accent);
+    padding: 12px 16px;
+    font-size: 13px;
+    color: var(--ink);
+    line-height: 1.55;
+    margin-bottom: 12px;
+  }
+  .guidance .lbl {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 4px;
+  }
+  .expander-btn {
+    background: none;
+    border: 0;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 4px 0;
+    margin-top: 4px;
+    margin-left: 90px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .expander-btn:hover { color: var(--accent); }
+  .expander-btn .chev { transition: transform .2s; display: inline-block; }
+  .criterion.open + .expander-btn, .criterion.open .expander-btn { color: var(--accent); }
+  .criterion.open .expander-btn .chev { transform: rotate(90deg); }
+
+  .comment-field {
+    margin-top: 4px;
+  }
+  .comment-field textarea {
+    width: 100%;
+    border: 1px dashed var(--rule);
+    background: rgba(255,255,255,0.35);
+    padding: 8px 10px;
+    font-family: var(--sans);
+    font-size: 13.5px;
+    color: var(--ink);
+    resize: vertical;
+    min-height: 38px;
+    outline: none;
+    border-radius: 0;
+  }
+  .comment-field textarea:focus { border-color: var(--accent); border-style: solid; background: rgba(255,255,255,0.6); }
+
+  /* Branched sections */
+  .branch {
+    display: none;
+    animation: fadeIn .3s ease;
+  }
+  .branch.active { display: block; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .notice {
+    display: flex;
+    gap: 12px;
+    padding: 14px 16px;
+    background: var(--tint);
+    border-left: 3px solid var(--accent);
+    margin: 0 0 24px;
+    font-size: 13.5px;
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+  .notice .n-lbl {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+
+  /* Part header */
+  .part-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin: 30px 0 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .part-head .kicker {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .part-head h3 {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0;
+    color: var(--ink);
+  }
+  .part-head .sub {
+    margin-left: auto;
+    font-size: 12.5px;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* Upload */
+  .upload {
+    border: 1.5px dashed var(--rule);
+    padding: 22px 24px;
+    text-align: left;
+    background: rgba(255,255,255,0.3);
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    cursor: pointer;
+    transition: all .15s;
+  }
+  .upload:hover { border-color: var(--accent); background: var(--tint); }
+  .upload .u-icon {
+    width: 40px; height: 40px;
+    border: 1px solid var(--ink);
+    display: grid; place-items: center;
+    font-family: var(--mono);
+    font-size: 18px;
+  }
+  .upload .u-text .t1 { font-weight: 500; font-size: 14px; color: var(--ink); }
+  .upload .u-text .t2 { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+  .upload input[type=file] { display: none; }
+
+  .files-list { margin-top: 10px; }
+  .files-list .file {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    background: rgba(255,255,255,0.5);
+    border: 1px solid var(--rule);
+    font-size: 13px;
+    margin-top: 6px;
+  }
+  .files-list .file .fname { flex: 1; font-family: var(--mono); font-size: 12px; color: var(--ink); }
+  .files-list .file .fsize { color: var(--muted); font-size: 11px; font-family: var(--mono); }
+  .files-list .file .remove { background: none; border: 0; color: var(--muted); cursor: pointer; font-size: 14px; }
+  .files-list .file .remove:hover { color: var(--err); }
+
+  /* Footer actions */
+  .footer-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-top: 28px;
+  }
+  .btn {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    padding: 12px 22px;
+    border: 1px solid var(--ink);
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+    transition: all .15s;
+  }
+  .btn:hover { background: var(--ink); color: var(--paper); }
+  .btn.primary {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+    padding: 12px 28px;
+  }
+  .btn.primary:hover { background: var(--accent-ink); border-color: var(--accent-ink); }
+  .btn.ghost { border-color: var(--rule); color: var(--muted); }
+  .btn.ghost:hover { border-color: var(--ink); color: var(--ink); background: transparent; }
+  .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  .draft-status {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .draft-status .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--ok);
+  }
+
+  /* Summary */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .summary-card {
+    padding: 18px 20px;
+    border: 1px solid var(--rule);
+    background: rgba(255,255,255,0.4);
+  }
+  .summary-card .scount {
+    font-family: var(--serif);
+    font-size: 36px;
+    font-weight: 500;
+    line-height: 1;
+  }
+  .summary-card .slabel {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+  .summary-card.accent .scount { color: var(--accent); }
+  .summary-card.ok .scount { color: var(--ok); }
+  .summary-card.warn .scount { color: var(--warn); }
+  .summary-card.err .scount { color: var(--err); }
+
+  /* Recommendation (reviewer only) */
+  .recom-picker {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 8px;
+  }
+  .recom-picker label {
+    display: block;
+    padding: 16px;
+    border: 1px solid var(--rule);
+    background: rgba(255,255,255,0.4);
+    cursor: pointer;
+    position: relative;
+    transition: all .15s;
+  }
+  .recom-picker input { position: absolute; opacity: 0; }
+  .recom-picker label:hover { border-color: var(--ink); }
+  .recom-picker label .t { font-family: var(--serif); font-size: 16px; font-weight: 500; }
+  .recom-picker label .d { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .recom-picker label:has(input:checked) {
+    border-color: var(--accent);
+    background: var(--tint);
+    box-shadow: inset 3px 0 0 var(--accent);
+  }
+
+  /* Reviewer mode styling */
+  body.reviewer .faculty-only .comment-field textarea { pointer-events: none; background: rgba(0,0,0,0.02); }
+  body.reviewer .review-only { display: block; }
+  body:not(.reviewer) .review-only { display: none !important; }
+  body.reviewer .faculty-score-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 3px 7px;
+    border: 1px solid var(--rule);
+    color: var(--muted);
+    margin-left: 10px;
+  }
+  body:not(.reviewer) .faculty-score-badge { display: none; }
+
+  /* Success screen */
+  .success-screen {
+    display: none;
+    text-align: center;
+    padding: 80px 20px;
+  }
+  body.submitted .page > *:not(.success-screen):not(.masthead) { display: none; }
+  body.submitted .success-screen { display: block; }
+  body.submitted .masthead { opacity: 0.4; }
+  .success-screen .ok-mark {
+    width: 72px; height: 72px; margin: 0 auto 24px;
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    display: grid; place-items: center;
+    color: var(--accent);
+    font-size: 28px;
+  }
+  .success-screen h2 {
+    font-family: var(--serif);
+    font-size: 36px;
+    font-weight: 500;
+    margin: 0 0 12px;
+  }
+  .success-screen p { color: var(--muted); max-width: 40ch; margin: 0 auto 24px; }
+  .success-screen .ref {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    color: var(--ink);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 14px;
+    display: inline-block;
+    margin-top: 8px;
+  }
+
+  /* Tweaks panel */
+  .tweaks-panel {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 280px;
+    background: var(--paper);
+    border: 1px solid var(--ink);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    padding: 18px;
+    z-index: 999;
+    display: none;
+    font-family: var(--sans);
+  }
+  .tweaks-panel.open { display: block; }
+  .tweaks-panel h4 {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin: 0 0 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .tweaks-panel .tweak-row { margin-bottom: 14px; }
+  .tweaks-panel .tweak-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+    display: block;
+  }
+  .tweaks-panel .chips { display: flex; gap: 4px; flex-wrap: wrap; }
+  .tweaks-panel .chip {
+    padding: 6px 10px;
+    font-size: 11px;
+    border: 1px solid var(--rule);
+    cursor: pointer;
+    background: #fff;
+    font-family: var(--sans);
+  }
+  .tweaks-panel .chip.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .tweaks-panel .swatches { display: flex; gap: 6px; }
+  .tweaks-panel .sw {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid var(--rule);
+  }
+  .tweaks-panel .sw.active { border-color: var(--ink); box-shadow: 0 0 0 2px var(--paper) inset; }
+
+  /* Required field indicator */
+  .required-indicator {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-left: 8px;
+  }
+
+  /* Hide scoring pills in faculty mode */
+  body:not(.reviewer) .criterion-score { display: none !important; }
+
+  /* Print */
+  @media print {
+    body { background: white; }
+    .role-bar, .tweaks-panel, .footer-actions { display: none; }
+    section.sheet { border: 1px solid #000; background: white; }
+  }
+
+  @media (max-width: 720px) {
+    .page { padding: 32px 20px; }
+    .masthead { grid-template-columns: 1fr; }
+    .masthead .meta { text-align: left; }
+    .masthead h1 { font-size: 32px; }
+    .fieldgrid, .fieldgrid.cols-3, .type-picker, .summary-grid, .recom-picker {
+      grid-template-columns: 1fr;
+    }
+    .f-col-span-2 { grid-column: auto; }
+    .criterion-head { grid-template-columns: 1fr; }
+    .criterion-score { margin-top: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Masthead -->
+  <header class="masthead">
+    <div>
+      <div class="marque">School of Writing &amp; Literature</div>
+      <h1>ENC&nbsp;1102 <em>Template Modification</em> Submission</h1>
+    </div>
+  </header>
+  <div class="subline">
+    <span class="dots">· · · · · · · · · · · · ·</span>
+    <span id="datestamp">—</span>
+  </div>
+
+  <!-- Role toggle -->
+  <div class="role-bar" role="tablist">
+    <button id="role-faculty" class="active" type="button">
+      <span class="role-label">01 · Faculty Submission Form</span>
+      Faculty Members: Fill out this portion of the form.
+    </button>
+    <button id="role-reviewer" type="button">
+      <span class="role-label">02 · Template Advisory Team Review Form</span>
+      Advisory Team Members: Fill out this portion of the form.
+    </button>
+  </div>
+
+  <!-- Page indicator -->
+  <div class="pagebar">
+    <span class="count">Page <b id="page-current">01</b> <span style="opacity:.5">/ 02</span></span>
+    <div class="track"><div class="fill" id="page-fill"></div></div>
+    <span id="page-title">Submission &amp; Rubric</span>
+  </div>
+
+  <!-- Success screen -->
+  <div class="success-screen">
+    <div class="ok-mark">✓</div>
+    <h2>Submission received</h2>
+    <p>Thank you for your submission. Your template modification proposal has been forwarded to the Advisory Team, and you will be notified by email once the review is complete.</p>
+    <div class="ref">Reference number: <span id="submit-ref"></span></div>
+  </div>
+
+  <!-- PAGE 1 -->
+  <div id="page-1">
+
+    <!-- Submission info -->
+    <section class="sheet">
+      <span class="sec-tag">§ Submission Information</span>
+      <h2></h2>
+      <p class="lede">Please complete the fields below. The Advisory Team reviewer will score each criterion independently after receiving your submission.</p>
+
+      <div class="fieldgrid">
+        <div class="field f-col-span-2">
+          <label class="l">Faculty member name <span class="req">●</span></label>
+          <input type="text" id="f-name" placeholder="First Last" autocomplete="name" />
+        </div>
+        <div class="field f-col-span-2">
+          <label class="l">Title or brief description of proposed material <span class="req">●</span></label>
+          <input type="text" id="f-title" placeholder="e.g. &ldquo;Supplemental video on MLA Works Cited formatting&rdquo;" />
+        </div>
+        <div class="field">
+          <label class="l">Date of submission</label>
+          <input type="date" id="f-date" />
+        </div>
+        <div class="field">
+          <label class="l">Faculty email <span class="req">●</span></label>
+          <input type="email" id="f-email" placeholder="name@valenciacollege.edu" />
+        </div>
+      </div>
+
+      <div style="margin-top: 32px;">
+        <label class="l" style="display:block; font-family: var(--mono); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px;">
+          Submission type <span class="req" style="color:var(--accent)">●</span>
+        </label>
+        <p style="font-size: 14px; color: var(--ink-2); margin: 0 0 14px; line-height: 1.6;">Please click on the option below that best describes your proposed modification. If you are submitting both supplemental learning material and an alternative reading selection, please complete both sections of the rubric.</p>
+        <div class="type-picker">
+          <label>
+            <input type="radio" name="sub-type" value="A" id="type-a" checked />
+            <div class="k">Option A</div>
+            <div class="t">Supplemental Learning Material</div>
+            <div class="d">Adds to the existing template without replacing or altering current content. May include readings, videos, links, or instructional pages.</div>
+          </label>
+          <label>
+            <input type="radio" name="sub-type" value="B" id="type-b" />
+            <div class="k">Option B</div>
+            <div class="t">Alternative Reading Selection</div>
+            <div class="d">Replaces one or more current literary selections (short story, poem) with a work of your own choosing. </div>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION A RUBRIC -->
+    <section class="sheet branch active" id="branch-a">
+      <span class="sec-tag">§ Section A · Rubric</span>
+      <h2>Supplemental Learning Materials</h2>
+      <p class="lede">Please review each criterion and select the score that best reflects your proposed material. Click on "Guidance &amp; Comment" to expand the guidance notes and add your comments.</p>
+
+      <!-- Criteria rendered by JS -->
+      <div id="rubric-a"></div>
+
+      <!-- Attachments for A -->
+      <div style="margin-top: 32px;">
+        <label class="l" style="display:block; font-family: var(--mono); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px;">Attachments</label>
+        <label class="upload" for="file-input-a">
+          <div class="u-icon">&#8593;</div>
+          <div class="u-text">
+            <div class="t1">Upload supplemental learning materials</div>
+            <div class="t2">Please upload all files containing your supplemental learning materials here. Word or PDF format, please.</div>
+          </div>
+          <input type="file" id="file-input-a" accept=".doc,.docx,.pdf" multiple />
+        </label>
+        <div class="files-list" id="files-list-a"></div>
+      </div>
+    </section>
+
+    <!-- SECTION B RUBRIC -->
+    <section class="sheet branch" id="branch-b">
+      <span class="sec-tag">§ Section B · Rubric</span>
+      <h2>Alternative Reading Selection</h2>
+      <p class="lede">This section is divided into two parts: "Required Conditions" and "Evaluative Criteria."</p>
+
+      <div class="notice">
+        <span class="n-lbl">Note</span>
+        <span>The Part I Required Conditions exist because of the nature of the template's research essays (the 8-week version of the template has just one research essay). They are in place to ensure that students will have legal access to the proposed literary selection as well as be able to locate in the college's literary criticism databases the necessary secondary research resources they will need to complete the research essays.</span>
+      </div>
+
+      <div class="part-head">
+        <span class="kicker">Part I</span>
+        <h3>Required Conditions</h3>
+        <span class="sub"></span>
+      </div>
+      <div id="rubric-b1"></div>
+
+      <div class="part-head">
+        <span class="kicker">Part II</span>
+        <h3>Evaluative Criteria</h3>
+        <span class="sub"></span>
+      </div>
+      <div id="rubric-b2"></div>
+
+      <!-- Attachments for B -->
+      <div style="margin-top: 28px;">
+        <label class="l" style="display:block; font-family: var(--mono); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px;">
+          Required Attachments
+        </label>
+        <label class="upload" for="file-input">
+          <div class="u-icon">&#8593;</div>
+          <div class="u-text">
+            <div class="t1">Please upload copies of the new study questions and essay topics here in PDF, Word, or DOC format. </div>
+            <div class="t2"></div>
+          </div>
+          <input type="file" id="file-input" accept=".doc,.docx,.pdf" multiple />
+        </label>
+        <div class="files-list" id="files-list"></div>
+      </div>
+    </section>
+
+    <div class="footer-actions">
+      <div class="draft-status">
+        <span class="dot"></span>
+        <span id="draft-text">Draft saved locally</span>
+      </div>
+      <div style="display:flex; gap:10px;">
+        <button class="btn ghost" type="button" id="btn-reset">Clear form</button>
+        <button class="btn primary" type="button" id="btn-next" data-faculty-label="Submit to the Advisory Team →" data-reviewer-label="Continue to Summary →">Submit to the Advisory Team →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE 2 -->
+  <div id="page-2" style="display:none;">
+
+    <section class="sheet">
+      <span class="sec-tag">§ Summary</span>
+      <h2>Review &amp; submit</h2>
+      <p class="lede">Thank you for completing the rubric. Here is a summary of the scores you have recorded. Please review your responses and add any final notes before submitting to the Advisory Team.</p>
+
+      <div class="summary-grid" id="summary-cards"></div>
+
+      <div style="margin-top: 32px;">
+        <div class="field">
+          <label class="l">Cover note (optional)</label>
+          <textarea id="summary-note" rows="3" placeholder="Please share anything you would like the Advisory Team to consider as they begin their review."></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviewer-only recommendation -->
+    <section class="sheet review-only">
+      <span class="sec-tag">§ Advisory Team Recommendation</span>
+      <h2>Your decision</h2>
+      <p class="lede">Please record the overall recommendation for this submission. If approving with conditions, kindly list each condition specifically so the faculty member has a clear understanding of what revisions or additions are needed.</p>
+
+      <div class="recom-picker">
+        <label>
+          <input type="radio" name="recom" value="approved" />
+          <div class="t">Approved</div>
+          <div class="d">All criteria met. No revisions required.</div>
+        </label>
+        <label>
+          <input type="radio" name="recom" value="conditions" />
+          <div class="t">Approved with Conditions</div>
+          <div class="d">Approval is contingent on the specified revisions.</div>
+        </label>
+        <label>
+          <input type="radio" name="recom" value="not-approved" />
+          <div class="t">Not Approved</div>
+          <div class="d">Does not currently meet template criteria.</div>
+        </label>
+      </div>
+
+      <div style="margin-top: 24px;">
+        <div class="fieldgrid">
+          <div class="field f-col-span-2">
+            <label class="l">Summary comments</label>
+            <textarea id="r-summary" rows="3" placeholder="Overall assessment. Note particular strengths and, if applicable, specific reasons for conditions or denial."></textarea>
+          </div>
+          <div class="field f-col-span-2">
+            <label class="l">Conditions required for approval (if applicable)</label>
+            <textarea id="r-conditions" rows="3" placeholder="Please list each condition clearly and specifically so the faculty member understands the revisions needed."></textarea>
+          </div>
+          <div class="field">
+            <label class="l">Reviewer name(s)</label>
+            <input type="text" id="r-name" placeholder="Full name(s)" />
+          </div>
+          <div class="field">
+            <label class="l">Date of review</label>
+            <input type="date" id="r-date" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer-actions">
+      <button class="btn" type="button" id="btn-back">← Back to Rubric</button>
+      <button class="btn primary" type="button" id="btn-submit">Submit to the Advisory Team →</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Tweaks panel -->
+<div class="tweaks-panel" id="tweaks-panel">
+  <h4>Tweaks</h4>
+
+  <div class="tweak-row">
+    <span class="tweak-label">Accent color</span>
+    <div class="swatches" id="tweak-accent">
+      <div class="sw active" data-accent="#7a1f2b" data-accent-ink="#5a1520" style="background:#7a1f2b"></div>
+      <div class="sw" data-accent="#1e3a5f" data-accent-ink="#142942" style="background:#1e3a5f"></div>
+      <div class="sw" data-accent="#2d5a3d" data-accent-ink="#1f3f2b" style="background:#2d5a3d"></div>
+      <div class="sw" data-accent="#6b4423" data-accent-ink="#4a2f17" style="background:#6b4423"></div>
+      <div class="sw" data-accent="#1a1a1a" data-accent-ink="#000000" style="background:#1a1a1a"></div>
+    </div>
+  </div>
+
+  <div class="tweak-row">
+    <span class="tweak-label">Paper tone</span>
+    <div class="chips" id="tweak-paper">
+      <div class="chip active" data-bg="#f6f3ec" data-paper="#fbf8f2">Warm</div>
+      <div class="chip" data-bg="#f4f4f2" data-paper="#fafaf8">Cool</div>
+      <div class="chip" data-bg="#ffffff" data-paper="#ffffff">White</div>
+    </div>
+  </div>
+
+  <div class="tweak-row">
+    <span class="tweak-label">Guidance default</span>
+    <div class="chips" id="tweak-guidance">
+      <div class="chip active" data-guidance="collapsed">Collapsed</div>
+      <div class="chip" data-guidance="expanded">Expanded</div>
+    </div>
+  </div>
+
+  <div class="tweak-row">
+    <span class="tweak-label">Density</span>
+    <div class="chips" id="tweak-density">
+      <div class="chip active" data-density="comfy">Comfortable</div>
+      <div class="chip" data-density="compact">Compact</div>
+    </div>
+  </div>
+</div>
+
+<script>
+/*EDITMODE-BEGIN*/
+const TWEAK_DEFAULTS = {
+  "accent": "#7a1f2b",
+  "accentInk": "#5a1520",
+  "bg": "#f6f3ec",
+  "paper": "#fbf8f2",
+  "guidance": "collapsed",
+  "density": "comfy"
+};
+/*EDITMODE-END*/
+
+// ---------- Rubric data (compressed from the 12-page PDF) ----------
+const RUBRIC = {
+  a: [
+    {
+      code: "A · 1",
+      title: "Alignment with Course Learning Outcomes",
+      desc: "The material demonstrably supports one or more of the five ENC 1102 Learning Outcomes.",
+      guidance: "Identify which Learning Outcomes the supplemental learning material meets and briefly explain the connection. Example: \"This video supports Learning Outcomes 3 and 4 because . . .\"",
+      scale: "met"
+    },
+    {
+      code: "A · 2",
+      title: "Clarity of Instructional Purpose",
+      desc: "The supplemental material's pedagogical purpose is clearly stated or self-evident.",
+      guidance: "Include 2–4 sentences describing the material's purpose and in which module or modules it will appear. Example: \"I will use the Revising Essays information in Modules Three and Five to teach how to revise essays as part of the writing process. Similarly, the learning material about thesis statements will also go in Modules Three and Five to supplement the information on how to write thesis statements.\"",
+      scale: "met"
+    },
+    {
+      code: "A · 3",
+      title: "Academic Appropriateness &amp; Quality",
+      desc: "Content is accurate, current, and appropriate in rigor and tone for a college composition course.",
+      guidance: "The learning material is accurate and pedagogically relevant to the course, module, and lesson.",
+      scale: "met"
+    },
+    {
+      code: "A · 4",
+      title: "Fit with Existing Template Materials",
+      desc: "Supplements rather than duplicates, contradicts, or undermines existing template content.",
+      guidance: "Because existing template materials cannot be deleted or substantively altered, supplemental material should avoid repeating unnecessarily what is already provided. If some overlap will occur, explain why the added perspective serves a distinct purpose.",
+      scale: "met"
+    },
+    {
+      code: "A · 5",
+      title: "Accessibility",
+      desc: "Meets minimum accessibility standards: captions/transcripts, alt text, standard format, free to students via a legal source.",
+      guidance: "All materials meet accessibility requirements: captions or transcript for video/audio, alt text for images, accessible format (HTML, accessible PDF, accessible Word or .doc file). Indicate whether all of the material meets accessibility requirements. Help will be provided to meet the standards if needed.",
+      scale: "met"
+    }
+  ],
+  b1: [
+    {
+      code: "B · I · 1",
+      title: "Legal and Free Access",
+      desc: "Available to all students at no cost via a college database, ebook platform, the Valencia Reader, or a legally published web source.",
+      guidance: "Provide the specific access pathway (database, ebook platform, internet URL) to the proposed literary selection. ",
+      scale: "condition"
+    },
+    {
+      code: "B · I · 2",
+      title: "Sufficient Critical Scholarship",
+      desc: "Substantive literary criticism exists and is accessible; scholarship on the work itself, not primarily biography or historical period.",
+      guidance: "Paste below the bibliographic information of at least two secondary sources related to the literary work found in a college literary database or ebook. Note: The secondary source should not be solely or primarily biographical information about the author or historical information about the period in which he or she lived. It should instead primarily concern the specific literary work itself. ",
+      comment_placeholder: "Paste secondary source bibliographic material here.",
+      scale: "condition"
+    },
+    {
+      code: "B · I · 3",
+      title: "Instructor-Created Accompanying Materials",
+      desc: "Study questions and essay topics for the proposed work are attached to this submission.",
+      guidance: "At the bottom of this page, please upload both the new study questions you've created for the story or poem as well as the new essay topics that will be used. Upload in PDF, Word, or DOC format, please. ",
+      no_comment: true,
+      scale: "condition"
+    }
+  ],
+  b2: [
+    {
+      code: "B · II · 1",
+      title: "Alignment with Course Learning Outcomes",
+      desc: "Alternative literary texts and study questions/topics should specifically address one or more ENC1102 Learning Outcomes. ",
+      guidance: "Identify which Learning Outcomes the alternative story/poem and accompanying questions/topics meets and briefly explain the connection. Example: \"This poem and study questions/topic support  Learning Outcomes 2 and 4 because . . .\"",
+      scale: "met"
+    }
+  ]
+};
+
+// ---------- Render criteria ----------
+function scorePills(code, scale) {
+  const id = code.replace(/[^a-z0-9]/gi, '');
+  if (scale === "condition") {
+    return `
+      <div class="pills">
+        <label class="pill confirmed"><input type="radio" name="s-${id}" value="confirmed">Confirmed</label>
+        <label class="pill notconfirmed"><input type="radio" name="s-${id}" value="notconfirmed">Not Confirmed</label>
+      </div>`;
+  }
+  return `
+    <div class="pills">
+      <label class="pill met"><input type="radio" name="s-${id}" value="met">Met</label>
+      <label class="pill partial"><input type="radio" name="s-${id}" value="partial">Partially</label>
+      <label class="pill notmet"><input type="radio" name="s-${id}" value="notmet">Not Met</label>
+    </div>`;
+}
+
+function renderCriteria(items, mount) {
+  const wrap = document.getElementById(mount);
+  wrap.innerHTML = items.map((c, i) => {
+    const id = c.code.replace(/[^a-z0-9]/gi, '');
+    return `
+      <div class="criterion" data-code="${c.code}" id="crit-${id}">
+        <div class="criterion-head">
+          <div class="criterion-code">${c.code}</div>
+          <div>
+            <div class="criterion-title">
+              ${c.title}
+              <span class="faculty-score-badge" id="fac-badge-${id}" style="display:none"></span>
+            </div>
+            <div class="criterion-desc">${c.desc}</div>
+          </div>
+          <div class="criterion-score">${scorePills(c.code, c.scale)}</div>
+        </div>
+      </div>
+      <button class="expander-btn" data-target="crit-${id}" type="button">
+        <span class="chev">›</span>
+        <span class="expander-lbl">Guidance &amp; comment</span>
+      </button>
+      <div class="criterion-detail" id="detail-${id}" style="display:none;">
+        <div class="guidance">
+          <span class="lbl">Guidance</span>
+          ${c.guidance}
+        </div>
+        ${c.no_comment ? '' : `<div class="comment-field">
+          <textarea placeholder="${c.comment_placeholder || (c.scale === 'condition' ? 'Please share any relevant notes or context here.' : 'Please briefly explain how this criterion is met.')}" rows="2" data-crit="${id}"></textarea>
+        </div>`}
+      </div>
+    `;
+  }).join('');
+}
+
+renderCriteria(RUBRIC.a, "rubric-a");
+renderCriteria(RUBRIC.b1, "rubric-b1");
+renderCriteria(RUBRIC.b2, "rubric-b2");
+
+// ---------- Expanders ----------
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('.expander-btn');
+  if (!btn) return;
+  const id = btn.dataset.target;
+  const crit = document.getElementById(id);
+  const detail = document.getElementById('detail-' + id.replace('crit-', ''));
+  const isOpen = crit.classList.toggle('open');
+  detail.style.display = isOpen ? 'block' : 'none';
+  btn.querySelector('.chev').style.transform = isOpen ? 'rotate(90deg)' : 'rotate(0deg)';
+  btn.querySelector('.expander-lbl').textContent = isOpen ? 'Hide guidance' : 'Guidance & comment';
+});
+
+// ---------- Submission type branching ----------
+const radiosType = document.querySelectorAll('input[name="sub-type"]');
+radiosType.forEach(r => r.addEventListener('change', () => {
+  const v = document.querySelector('input[name="sub-type"]:checked').value;
+  document.getElementById('branch-a').classList.toggle('active', v === 'A');
+  document.getElementById('branch-b').classList.toggle('active', v === 'B');
+}));
+
+// ---------- Page nav ----------
+const page1 = document.getElementById('page-1');
+const page2 = document.getElementById('page-2');
+const pageFill = document.getElementById('page-fill');
+const pageCurrent = document.getElementById('page-current');
+const pageTitle = document.getElementById('page-title');
+
+function showPage(n) {
+  page1.style.display = n === 1 ? 'block' : 'none';
+  page2.style.display = n === 2 ? 'block' : 'none';
+  pageFill.style.width = n === 1 ? '50%' : '100%';
+  pageCurrent.textContent = n === 1 ? '01' : '02';
+  pageTitle.textContent = n === 1 ? 'Submission & Rubric' : 'Summary & Submit';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.getElementById('btn-next').addEventListener('click', () => {
+  const isReviewer = document.body.classList.contains('reviewer');
+  if (isReviewer) {
+    buildSummary();
+    showPage(2);
+  } else {
+    const ref = 'TM-' + Math.random().toString(36).substring(2, 8).toUpperCase();
+    document.getElementById('submit-ref').textContent = ref;
+    document.body.classList.add('submitted');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    try { localStorage.removeItem('enc1102-draft'); } catch(e) {}
+  }
+});
+document.getElementById('btn-back').addEventListener('click', () => showPage(1));
+
+// ---------- Role switching ----------
+const roleFac = document.getElementById('role-faculty');
+const roleRev = document.getElementById('role-reviewer');
+
+function setRole(role) {
+  document.body.classList.toggle('reviewer', role === 'reviewer');
+  roleFac.classList.toggle('active', role === 'faculty');
+  roleRev.classList.toggle('active', role === 'reviewer');
+  const btn = document.getElementById('btn-next');
+  btn.innerHTML = role === 'reviewer' ? btn.dataset.reviewerLabel : btn.dataset.facultyLabel;
+}
+roleFac.addEventListener('click', () => setRole('faculty'));
+roleRev.addEventListener('click', () => setRole('reviewer'));
+
+// ---------- File upload (Section B) ----------
+const fileInput = document.getElementById('file-input');
+const filesList = document.getElementById('files-list');
+let uploadedFiles = [];
+if (fileInput) {
+  fileInput.addEventListener('change', (e) => {
+    uploadedFiles = [...uploadedFiles, ...Array.from(e.target.files)];
+    renderFiles();
+  });
+}
+function renderFiles() {
+  if (!filesList) return;
+  filesList.innerHTML = uploadedFiles.map((f, i) => `
+    <div class="file">
+      <span class="fname">${f.name}</span>
+      <span class="fsize">${(f.size/1024).toFixed(1)} KB</span>
+      <button class="remove" data-list="b" data-i="${i}" type="button">✕</button>
+    </div>
+  `).join('');
+}
+if (filesList) {
+  filesList.addEventListener('click', (e) => {
+    const rm = e.target.closest('.remove');
+    if (!rm) return;
+    uploadedFiles.splice(parseInt(rm.dataset.i), 1);
+    renderFiles();
+  });
+}
+
+// ---------- File upload (Section A) ----------
+const fileInputA = document.getElementById('file-input-a');
+const filesListA = document.getElementById('files-list-a');
+let uploadedFilesA = [];
+if (fileInputA) {
+  fileInputA.addEventListener('change', (e) => {
+    uploadedFilesA = [...uploadedFilesA, ...Array.from(e.target.files)];
+    renderFilesA();
+  });
+}
+function renderFilesA() {
+  if (!filesListA) return;
+  filesListA.innerHTML = uploadedFilesA.map((f, i) => `
+    <div class="file">
+      <span class="fname">${f.name}</span>
+      <span class="fsize">${(f.size/1024).toFixed(1)} KB</span>
+      <button class="remove" data-list="a" data-i="${i}" type="button">✕</button>
+    </div>
+  `).join('');
+}
+if (filesListA) {
+  filesListA.addEventListener('click', (e) => {
+    const rm = e.target.closest('.remove');
+    if (!rm) return;
+    uploadedFilesA.splice(parseInt(rm.dataset.i), 1);
+    renderFilesA();
+  });
+}
+
+// ---------- Summary builder ----------
+function buildSummary() {
+  const type = document.querySelector('input[name="sub-type"]:checked').value;
+  const items = type === 'A' ? RUBRIC.a : [...RUBRIC.b1, ...RUBRIC.b2];
+  let met = 0, partial = 0, notmet = 0, answered = 0;
+  items.forEach(c => {
+    const id = c.code.replace(/[^a-z0-9]/gi, '');
+    const checked = document.querySelector(`input[name="s-${id}"]:checked`);
+    if (!checked) return;
+    answered++;
+    if (checked.value === 'met' || checked.value === 'confirmed') met++;
+    else if (checked.value === 'partial') partial++;
+    else notmet++;
+  });
+  const total = items.length;
+  const cards = document.getElementById('summary-cards');
+  cards.innerHTML = `
+    <div class="summary-card accent">
+      <div class="scount">${answered}<span style="color:var(--muted); font-size:.55em;"> / ${total}</span></div>
+      <div class="slabel">Criteria scored · Section ${type}</div>
+    </div>
+    <div class="summary-card ok">
+      <div class="scount">${met}</div>
+      <div class="slabel">Met ${type === 'B' ? '/ Confirmed' : ''}</div>
+    </div>
+    <div class="summary-card warn" ${type === 'B' && partial === 0 ? 'style="display:none"' : ''}>
+      <div class="scount">${partial}</div>
+      <div class="slabel">Partially Met</div>
+    </div>
+    <div class="summary-card err">
+      <div class="scount">${notmet}</div>
+      <div class="slabel">Not Met ${type === 'B' ? '/ Not Confirmed' : ''}</div>
+    </div>
+  `;
+}
+
+// ---------- Draft autosave ----------
+const draftText = document.getElementById('draft-text');
+let saveTimer;
+function markDraft() {
+  draftText.textContent = 'Saving…';
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => {
+    const data = collectState();
+    try { localStorage.setItem('enc1102-draft', JSON.stringify(data)); } catch(e) {}
+    const t = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    draftText.textContent = `Draft saved · ${t}`;
+  }, 600);
+}
+function collectState() {
+  const state = { fields: {}, scores: {}, comments: {}, type: document.querySelector('input[name="sub-type"]:checked')?.value };
+  document.querySelectorAll('input[type="text"], input[type="email"], input[type="date"], select, textarea').forEach(el => {
+    if (el.id) state.fields[el.id] = el.value;
+  });
+  document.querySelectorAll('input[type="radio"]:checked').forEach(r => {
+    state.scores[r.name] = r.value;
+  });
+  document.querySelectorAll('[data-crit]').forEach(t => {
+    state.comments[t.dataset.crit] = t.value;
+  });
+  return state;
+}
+function restoreState() {
+  try {
+    const raw = localStorage.getItem('enc1102-draft');
+    if (!raw) return;
+    const state = JSON.parse(raw);
+    Object.entries(state.fields || {}).forEach(([id, v]) => {
+      const el = document.getElementById(id);
+      if (el) el.value = v;
+    });
+    Object.entries(state.scores || {}).forEach(([name, v]) => {
+      const r = document.querySelector(`input[name="${name}"][value="${v}"]`);
+      if (r) r.checked = true;
+    });
+    Object.entries(state.comments || {}).forEach(([crit, v]) => {
+      const t = document.querySelector(`[data-crit="${crit}"]`);
+      if (t) t.value = v;
+    });
+    if (state.type) {
+      const tr = document.querySelector(`input[name="sub-type"][value="${state.type}"]`);
+      if (tr) { tr.checked = true; tr.dispatchEvent(new Event('change')); }
+    }
+  } catch(e) {}
+}
+document.addEventListener('input', markDraft);
+document.addEventListener('change', markDraft);
+
+restoreState();
+
+// ---------- Initialize date ----------
+const today = new Date();
+const iso = today.toISOString().slice(0, 10);
+if (!document.getElementById('f-date').value) document.getElementById('f-date').value = iso;
+document.getElementById('datestamp').textContent = today.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }).toUpperCase();
+
+// ---------- Submit ----------
+document.getElementById('btn-submit').addEventListener('click', () => {
+  const ref = 'TM-' + Math.random().toString(36).substring(2, 8).toUpperCase();
+  document.getElementById('submit-ref').textContent = ref;
+  document.body.classList.add('submitted');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  try { localStorage.removeItem('enc1102-draft'); } catch(e) {}
+});
+
+// ---------- Reset ----------
+document.getElementById('btn-reset').addEventListener('click', () => {
+  if (!confirm('Clear all fields and start over? Your draft will be lost.')) return;
+  try { localStorage.removeItem('enc1102-draft'); } catch(e) {}
+  location.reload();
+});
+
+// ---------- Tweaks ----------
+function applyTweaks(t) {
+  const root = document.documentElement;
+  root.style.setProperty('--accent', t.accent);
+  root.style.setProperty('--accent-ink', t.accentInk);
+  root.style.setProperty('--bg', t.bg);
+  root.style.setProperty('--paper', t.paper);
+  document.body.dataset.density = t.density;
+  if (t.density === 'compact') {
+    document.querySelectorAll('section.sheet').forEach(s => s.style.padding = '24px 28px');
+    document.querySelectorAll('.criterion').forEach(c => c.style.padding = '14px 0');
+  } else {
+    document.querySelectorAll('section.sheet').forEach(s => s.style.padding = '');
+    document.querySelectorAll('.criterion').forEach(c => c.style.padding = '');
+  }
+  if (t.guidance === 'expanded') {
+    document.querySelectorAll('.criterion').forEach(c => {
+      if (!c.classList.contains('open')) {
+        const btn = c.nextElementSibling;
+        if (btn && btn.classList.contains('expander-btn')) btn.click();
+      }
+    });
+  }
+  // highlight chips
+  document.querySelectorAll('#tweak-accent .sw').forEach(s =>
+    s.classList.toggle('active', s.dataset.accent === t.accent));
+  document.querySelectorAll('#tweak-paper .chip').forEach(c =>
+    c.classList.toggle('active', c.dataset.paper === t.paper));
+  document.querySelectorAll('#tweak-guidance .chip').forEach(c =>
+    c.classList.toggle('active', c.dataset.guidance === t.guidance));
+  document.querySelectorAll('#tweak-density .chip').forEach(c =>
+    c.classList.toggle('active', c.dataset.density === t.density));
+}
+
+let currentTweaks = { ...TWEAK_DEFAULTS };
+applyTweaks(currentTweaks);
+
+document.getElementById('tweak-accent').addEventListener('click', (e) => {
+  const sw = e.target.closest('.sw'); if (!sw) return;
+  currentTweaks.accent = sw.dataset.accent;
+  currentTweaks.accentInk = sw.dataset.accentInk;
+  applyTweaks(currentTweaks);
+  persist();
+});
+document.getElementById('tweak-paper').addEventListener('click', (e) => {
+  const c = e.target.closest('.chip'); if (!c) return;
+  currentTweaks.bg = c.dataset.bg;
+  currentTweaks.paper = c.dataset.paper;
+  applyTweaks(currentTweaks);
+  persist();
+});
+document.getElementById('tweak-guidance').addEventListener('click', (e) => {
+  const c = e.target.closest('.chip'); if (!c) return;
+  currentTweaks.guidance = c.dataset.guidance;
+  applyTweaks(currentTweaks);
+  persist();
+});
+document.getElementById('tweak-density').addEventListener('click', (e) => {
+  const c = e.target.closest('.chip'); if (!c) return;
+  currentTweaks.density = c.dataset.density;
+  applyTweaks(currentTweaks);
+  persist();
+});
+
+function persist() {
+  try {
+    window.parent.postMessage({
+      type: '__edit_mode_set_keys',
+      edits: currentTweaks
+    }, '*');
+  } catch(e) {}
+}
+
+// Edit mode protocol — register listener FIRST, then announce
+const tweaksPanel = document.getElementById('tweaks-panel');
+window.addEventListener('message', (e) => {
+  if (!e.data || typeof e.data !== 'object') return;
+  if (e.data.type === '__activate_edit_mode') tweaksPanel.classList.add('open');
+  if (e.data.type === '__deactivate_edit_mode') tweaksPanel.classList.remove('open');
+});
+try { window.parent.postMessage({ type: '__edit_mode_available' }, '*'); } catch(e) {}
+
+</script>
+</body>
+</html>
